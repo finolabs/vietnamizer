@@ -4,7 +4,7 @@ Người dùng có thể gửi ca sửa sai hoặc đề xuất sửa bằng iss
 thể loại, người đọc, đoạn gốc, kết quả của skill, bản đối chiếu và lý do khác biệt. Chỉ gửi văn bản
 mày có quyền công bố; thay dữ kiện riêng bằng ví dụ giả lập trước khi gửi.
 
-[GitHub Issues](https://github.com/fioenix/vietnamizer/issues) dùng mẫu báo lỗi trong
+[GitHub Issues](https://github.com/finolabs/vietnamizer/issues) dùng mẫu báo lỗi trong
 `.github/ISSUE_TEMPLATE/bug_report.yml`. Ghi phiên bản và nguồn cài, client/provider, các bước tái
 hiện, kết quả mong đợi/thực tế và ví dụ tối thiểu đã ẩn dữ liệu. Nếu không biết phiên bản hoặc
 model thì ghi rõ; lỗi cài đặt không bắt buộc có văn bản đầu vào.
@@ -13,7 +13,7 @@ Không đăng API key, token, dữ liệu cá nhân, tài liệu nội bộ ho�
 gửi toàn bộ prompt, log hay tài liệu. Lỗi bảo mật dùng [kênh riêng trong SECURITY.md](SECURITY.md),
 không dùng Issues hoặc pull request công khai.
 
-`SKILL.md` sở hữu quy tắc chung; `profiles/` sở hữu quy tắc theo thể loại. Xem [AGENTS.md](AGENTS.md)
+`SKILL.md` sở hữu điều phối/chốt; bốn catalog V/T trong `references/` sở hữu nội dung quy tắc chung; `profiles/` sở hữu quy tắc theo thể loại. Xem [AGENTS.md](AGENTS.md)
 trước khi sửa rule. Sở thích văn phong cá nhân không được đưa vào calibration dùng chung.
 
 ## Chạy kiểm tra offline
@@ -79,8 +79,8 @@ Tooling được vendor từ GitHub Spec Kit v1.0.5 giữ [MIT notice của upst
   trong Git. `specs/*/research.md` là tài liệu thiết kế; `specs/*/evidence/` chứa báo cáo đã duyệt.
 - `artifacts/` dành cho raw evaluation runs; `output/` và root `research/` dành cho scratch output.
   Các thư mục này, `dist/`, agent local state, cache và environment files được ignore.
-- `.agents/skills/` là tooling sinh local; `.agents/plugins/marketplace.json` là catalog phân phối
-  phải được track. Không ignore toàn bộ `.agents/` khi thêm integration mới.
+- `.agents/skills/` là tooling sinh local và bị ignore; manifest `.claude-plugin/`, `.codex-plugin/` và
+  `.antigravity-plugin/` phải được track. Không ignore toàn bộ `.agents/` khi thêm integration mới.
 - `.env.example` và `.env.*.example` được phép commit khi chỉ chứa placeholder.
 - Corpus holdout đã được quan sát là evidence lịch sử. Trạng thái workflow `sealed` không làm file
   public trở thành bí mật; đánh giá độc lập tương lai phải dùng tập mới với quyền truy cập phù hợp.

@@ -15,7 +15,7 @@ khoản thay owner. Không thay quy tắc biên tập, manifest hoặc tài sả
 
 - Portal: [claude.ai/directory/manage](https://claude.ai/directory/manage).
 - Loại: **Plugin bundle**, không phải MCP connector.
-- Repository: `https://github.com/fioenix/vietnamizer`.
+- Repository: `https://github.com/finolabs/vietnamizer`.
 - Plugin path: để trống vì manifest ở root repo.
 - Branch/tag: chọn nguồn đã tích hợp. `v0.9.8` giữ commit phát hành cũ; `main` nhận commit
   mới. Không bật auto-publish hoặc tạo webhook trong lượt chuẩn bị này.

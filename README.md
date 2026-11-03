@@ -5,12 +5,12 @@
 
 > **Biên tập tiếng Việt rõ ý, giữ nghĩa và giọng người viết.**
 
-Vietnamizer là skill giúp Claude, Codex và các agent tương thích rà bản nháp AI,
-bản dịch sát và văn bản tiếng Việt đọc chưa thuận. Skill chọn quy tắc theo thể loại,
-chỉ sửa khi có căn cứ và kiểm lại nghĩa trước khi giữ thay đổi.
+Vietnamizer hướng dẫn Claude, Codex và các agent tương thích biên tập tiếng Việt:
+tìm câu thiếu từ, cách diễn đạt gượng hoặc cấu trúc dịch sát, rồi sửa theo thể loại.
+Mỗi chỗ sửa đều phải được đối chiếu với bản gốc để tránh làm đổi ý.
 
-**Không cần API key cho core Markdown.** Mặc định giữ giọng gốc; khi được yêu cầu rõ,
-có thể điều chỉnh theo mẫu người dùng cung cấp. Khả năng theo giọng mẫu vẫn đang được hiệu chỉnh.
+**Dùng được ngay, không cần API key.** Skill mặc định giữ giọng bản gốc. Nếu muốn viết
+theo mẫu, hãy nói rõ yêu cầu và gửi mẫu kèm theo. Khả năng này vẫn cần được kiểm chứng thêm.
 
 [Cài nhanh](#cài-nhanh) · [Xem bằng chứng](#bằng-chứng-và-kiểm-thử) · [Dùng ngay](#dùng-ngay) · [Tài liệu](#tài-liệu-chi-tiết)
 
@@ -19,12 +19,12 @@ có thể điều chỉnh theo mẫu người dùng cung cấp. Khả năng theo
 | Khi cần | Skill hướng agent làm gì? |
 |---|---|
 | Rà bản nháp AI hoặc bản dịch sát | Tìm lỗi cụ thể về từ, bổ ngữ và cấu trúc câu |
-| Biên tập blog, bài chuyên môn | Giữ ý định, mức khẳng định, câu rút gọn và nhịp dấu câu |
+| Biên tập blog, bài chuyên môn | Giữ ý người viết, độ chắc chắn của lời nói, câu rút gọn và nhịp dấu câu |
 | Rà README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
-| Biên tập theo giọng mẫu | Dùng đặc tính có bằng chứng, kiểm riêng việc thêm/bỏ hoặc đổi ý |
+| Biên tập theo giọng mẫu | Học cách diễn đạt từ mẫu, kiểm tra xem bản sửa có thêm, bỏ hoặc đổi ý không |
 
-Dùng như một bước biên tập có kiểm soát trước khi gửi hoặc xuất bản. Đọc lại những chỗ
-đổi xưng hô, cấu trúc và dấu câu; skill không xác minh sự thật trong bài.
+Có thể dùng Vietnamizer để rà bài trước khi gửi hoặc xuất bản. Vẫn cần đọc lại những chỗ
+đổi xưng hô, cấu trúc câu và dấu câu. Skill không kiểm chứng các thông tin trong bài.
 
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
@@ -42,7 +42,7 @@ MR12 đã rõ đối tượng từ câu trước. [Xem đủ ca và tiêu chí](
 
 ## Bằng chứng và kiểm thử
 
-**Có bằng chứng hồi quy về sửa lỗi và tránh sửa quá tay; chưa có chấm người độc lập.**
+**Các ca kiểm thử cho thấy một số lỗi sửa quá tay đã được khắc phục. Chưa có đánh giá độc lập từ người đọc.**
 Các phép so sánh dưới đây dùng cùng agent biên tập, không xếp hạng Codex với Gemini.
 
 ### Hồi quy: hai ca sửa quá tay đã được khắc phục trong lượt đối chiếu
@@ -53,8 +53,8 @@ Các phép so sánh dưới đây dùng cùng agent biên tập, không xếp h�
 </picture>
 
 **12 ca, 14 tình huống × 2 phiên bản = 28 đầu ra.** MR05 và MR12 chuyển từ chưa đạt sang đạt;
-không ca nào chuyển ngược trong lượt này. Đây là tập phát triển đã dùng để sửa skill,
-mỗi điều kiện sinh một lần; nhãn do agent đối chiếu và reviewer kiểm tra.
+không ca nào chuyển ngược trong lượt này. Các ca này cũng đã được dùng để sửa skill, nên chưa cho biết kết quả trên văn bản mới.
+Mỗi tình huống chỉ chạy một lần với từng phiên bản; agent đối chiếu kết quả và một agent khác rà lại.
 **12/12 không có nghĩa 100% văn bản sẽ được sửa đúng.**
 [Xem báo cáo hồi quy](specs/018-mr-version-comparison/results.md).
 
@@ -65,53 +65,59 @@ mỗi điều kiện sinh một lần; nhãn do agent đối chiếu và reviewe
   <img src="docs/figures/reference-voice.svg" alt="Pilot 0.13.2 so với prompt dùng cùng mẫu: Codex chấm 5 thắng, 3 hòa; Gemini chấm 3 thắng, 1 hòa, 3 thua và thiếu 1 phiếu.">
 </picture>
 
-Cả hai hàng là **model chấm ẩn nhãn**, cùng đánh giá đầu ra do **Codex biên tập**.
-So sánh dùng cùng bản gốc, mẫu giọng và yêu cầu theo mẫu. Mỗi hàng có tám nguồn dự kiến;
-phiếu V2–Gemini bị loại do trích dẫn sai và giữ ở trạng thái thiếu.
+Codex và Gemini ở đây là **hai model chấm bài**, không biết bản sửa dùng chế độ nào.
+Tất cả bản sửa đều do **cùng Codex biên tập**, với cùng bản gốc, mẫu giọng và yêu cầu theo mẫu.
+Mỗi model được giao tám nguồn; phiếu V2 của Gemini bị loại vì trích dẫn sai, nên còn thiếu một phiếu.
 
-Hai giám khảo đồng ý lựa chọn ở **4/7 nguồn cùng có phiếu**. Corpus đã được dùng để
-hiệu chỉnh skill; model chấm không thay thế tác giả hoặc người đọc. Chưa đủ bằng chứng
-Vietnamizer luôn tốt hơn prompt thông thường kèm mẫu.
+Hai model chọn giống nhau ở **4/7 nguồn có đủ phiếu**. Bộ văn bản này đã được dùng để
+điều chỉnh skill; điểm do model chấm cũng không thay thế nhận xét của tác giả hoặc người đọc.
+Kết quả chưa cho thấy Vietnamizer luôn tốt hơn một prompt thông thường có cùng mẫu giọng.
 [Xem pilot 0.13.2](specs/025-section-voice-pilot/results.md) · [Phương pháp, dữ liệu và mọi đợt đánh giá](docs/benchmarks.md).
 
-**Kết luận thực dụng:** đáng thử khi cần một quy trình rà tiếng Việt có quy tắc rõ và
-kiểm soát sửa quá tay. Với yêu cầu theo giọng mẫu, cần đọc lại từng bản sửa.
-Không dùng mức đổi ký tự, độ dài hay token làm điểm chất lượng.
+Vietnamizer đáng thử nếu cần rà lỗi diễn đạt và hạn chế những thay đổi không cần thiết.
+Riêng việc viết theo giọng mẫu, vẫn cần đọc lại từng bản sửa. Bài ngắn hơn, đổi nhiều chữ hơn
+hay dùng ít token hơn đều chưa đủ để kết luận chất lượng tốt hơn.
 
 ## Cài nhanh
 
-Bản hiện tại là **0.13.2**. [Tải các gói từ GitHub Release](https://github.com/fioenix/vietnamizer/releases/latest).
+Bản hiện tại là **0.13.2**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ### Skills CLI
 
 ```bash
-npx skills add fioenix/vietnamizer --skill vietnamizer
+npx skills add finolabs/vietnamizer --skill vietnamizer
 ```
 
-### Codex plugin — catalog Finolabs
-
-Với cài đặt mới chưa có marketplace `agybird` cũ:
+### Codex plugin
 
 ```bash
-codex plugin marketplace add fioenix/agybird
-codex plugin add vietnamizer@Finolabs
+codex plugin marketplace add finolabs/plugins
+codex plugin add vietnamizer@finolabs
 ```
 
-Đã đăng ký marketplace `agybird`? Đọc [hướng dẫn chuyển và khôi phục](docs/installation.md)
-trước khi đổi đăng ký. **Finolabs** là catalog dùng chung; không phải chứng nhận từ OpenAI.
+Đã đăng ký catalog `Finolabs` cũ hoặc `vietnamizer@vietnamizer`? Đọc
+[hướng dẫn chuyển](docs/installation.md#codex-plugin) trước khi đổi đăng ký.
+**Finolabs** là catalog dùng chung; không phải chứng nhận từ OpenAI.
 
 ### Claude Code plugin
 
-```text
-/plugin marketplace add fioenix/vietnamizer
-/plugin install vietnamizer@vietnamizer
+```bash
+claude plugin marketplace add finolabs/plugins
+claude plugin install vietnamizer@finolabs
+```
+
+### Antigravity plugin
+
+```bash
+agy plugin install https://github.com/finolabs/vietnamizer
 ```
 
 Mở session mới sau khi cài. [Claude web/Desktop, Claude Org, cài thủ công và đóng gói](docs/installation.md).
 
 ## Dùng ngay
 
-Gọi `Vietnamizer` và giao bản nháp, thể loại, người đọc cùng phần cần bảo toàn. Ví dụ:
+Gọi `Vietnamizer`, gửi bản nháp và cho biết bài viết dành cho ai, thuộc thể loại nào,
+có phần nào cần giữ nguyên. Ví dụ:
 
 ```text
 Use Vietnamizer to copyedit the Vietnamese draft below for a personal blog.
@@ -125,18 +131,19 @@ Có thể yêu cầu bảng trước/sau và lý do thay đổi. [Prompt theo t�
 
 ## Giữ giọng khi có mẫu
 
-Chỉ gửi mẫu chưa tự bật chuyển giọng. Để điều chỉnh theo mẫu, yêu cầu rõ việc đó và
-cung cấp mẫu/hồ sơ ngay trong tác vụ. Skill có thể đổi cách diễn đạt hoặc cấu trúc từ
-các ý đã có, vẫn phải giữ mệnh đề, điều kiện, mức chắc chắn và vùng bảo toàn.
+Nếu chỉ gửi mẫu mà không yêu cầu đổi giọng, skill vẫn giữ giọng bản gốc. Muốn biên tập
+theo mẫu, hãy nói rõ và gửi mẫu hoặc bản mô tả giọng văn trong cùng yêu cầu. Skill có thể
+đổi cách diễn đạt và cấu trúc câu, nhưng phải giữ đủ ý, điều kiện, mức độ chắc chắn
+và những phần được yêu cầu giữ nguyên.
 
-Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết.
+Skill không tự tìm hay lưu hồ sơ cá nhân, cũng không bịa trải nghiệm cho người viết.
 [Xem hai chế độ, ví dụ prompt và bảy style card](docs/style-and-voice.md).
 
 ## Phạm vi
 
 - Tự chọn profile theo thể loại; công văn, hợp đồng, thơ và changelog chỉ rà typography.
 - Bảo toàn dữ kiện, thuật ngữ, code và trích dẫn nguyên văn; không suy tác giả AI từ lỗi ngôn ngữ.
-- Khi host cấp key và quyền gửi, runner tự động thử tư vấn Jev; thiếu key hoặc lỗi dịch vụ vẫn dùng core.
+- Nếu môi trường chạy có API key và cho phép gửi văn bản, skill tự động thử dùng Jev để hỗ trợ rà lỗi. Không có key hoặc dịch vụ lỗi thì vẫn biên tập bằng quy tắc Markdown.
 - Chỉ cung cấp văn bản được phép chia sẻ, không chứa credential hoặc dữ liệu bị hạn chế.
 
 [Xem xử lý dữ liệu và Jev](docs/usage.md) · [Quyền riêng tư](PRIVACY.md) · [Báo lỗi bảo mật](SECURITY.md).
@@ -171,7 +178,7 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 
 ## Đóng góp
 
-[Gửi ca sửa sai hoặc góp mã](CONTRIBUTING.md) · [Issues](https://github.com/fioenix/vietnamizer/issues) · [Điều khoản](TERMS.md).
+[Gửi ca sửa sai hoặc góp mã](CONTRIBUTING.md) · [Issues](https://github.com/finolabs/vietnamizer/issues) · [Điều khoản](TERMS.md).
 
 ## Giấy phép
 

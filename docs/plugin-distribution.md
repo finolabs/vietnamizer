@@ -13,7 +13,7 @@ Báo cáo [plugin-readiness-2026-10-03.md](plugin-readiness-2026-10-03.md) ghi s
 
 ## Một nội dung, nhiều đường cài
 
-Root `SKILL.md` là nguồn chuẩn. Manifest source của Codex và Claude Code trỏ tới adapter mỏng
+Root `SKILL.md` là nguồn chuẩn. Manifest source của Codex, Claude Code và Antigravity trỏ tới adapter mỏng
 trong `.plugin-skills/`; adapter nạp file chuẩn và resolve resource từ root plugin. Gói plugin
 được sinh với layout `skills/vietnamizer/`, manifest trỏ tới `./skills/`. Không commit bản skill
 thứ hai. Các file trong `agents/` và `assets/` đi cùng skill để UI không mất icon khi cài riêng.
@@ -22,7 +22,7 @@ thứ hai. Các file trong `agents/` và `assets/` đi cùng skill để UI khô
 |---|---|---|
 | `vietnamizer.skill` | Custom skill và cài skill thông thường | `vietnamizer/SKILL.md` |
 | `vietnamizer-claude-org.zip` | Upload skill vào Claude Org | `SKILL.md` ở root |
-| `vietnamizer-plugin.zip` | Gói plugin Codex/Claude Code | Hai manifest, một `skills/vietnamizer/SKILL.md` |
+| `vietnamizer-plugin.zip` | Gói plugin Codex/Claude Code/Antigravity | Ba manifest, một `skills/vietnamizer/SKILL.md` |
 
 Tạo cả ba artifact bằng `python3 scripts/package-plugin.py`. `dist/` là output sinh ra, không
 commit. Plugin ZIP chỉ chứa public payload, MIT notice, nhận diện và manifest; không chứa Spec
@@ -44,7 +44,7 @@ key thì giữ workflow Markdown offline. Runner mới không dùng SDK hay mã 
 001/002/005 đã dừng. Hợp đồng input, coverage, lỗi và quyền gửi nằm trong
 [typesafe-advisor.md](../references/typesafe-advisor.md).
 
-Catalog source trỏ tới root repo, vẫn gồm tooling maintainer và hồ sơ lịch sử. Validator local
+Catalog chung `finolabs/plugins` trỏ tới repo này, vốn vẫn gồm tooling maintainer và hồ sơ lịch sử. Validator local
 và inventory ZIP không thay thế portal Validate cho commit GitHub thực tế; không suy ra directory
 approval hoặc bắt buộc tách repo chỉ từ kết quả đóng gói.
 
@@ -59,28 +59,17 @@ claude plugin validate .claude-plugin/plugin.json --strict
 npx --yes skills@1.5.20 add . --list
 ```
 
-`--check` không dựng archive. Cần kiểm thêm đường cài trên profile tạm: với môi trường mới chưa có
-đăng ký `agybird` cũ, có thể đăng ký marketplace từ `fioenix/agybird` hoặc bản clone cục bộ đã có
-`"name": "Finolabs"` (`displayName` là `Finolabs`) rồi cài `vietnamizer@Finolabs`; với đường tương
-thích ngược độc lập tại repo này, đăng ký clone `vietnamizer` và cài `vietnamizer@vietnamizer`. Ở
-cả hai đường, kiểm plugin cache có manifest đúng version và skill nạp đúng tên. Khi chuyển từ bản
-dùng chung cũ `@agybird` (từ catalog `agybird` `v0.2.1` ban đầu) sang `@Finolabs`, không dùng lệnh
-`upgrade` trên `agybird` để đổi tên (vì `marketplace_upgrade.rs` từ chối khi `marketplace.name`
-tải về khác tên đã cấu hình) và không chạy lại `marketplace add` cùng URL Git `fioenix/agybird`
-trước khi gỡ nguồn cũ (vì có thể tái sử dụng nguồn `agybird` cũ). Thay vào đó, sao lưu cấu
-hình/trạng thái đăng ký trước, dùng một bản clone/checkout cục bộ riêng của `fioenix/agybird` đã
-cập nhật `"name": "Finolabs"` (ví dụ `git clone https://github.com/fioenix/agybird.git /path/to/finolabs-catalog`)
-để đăng ký marketplace `Finolabs` song song (side-by-side) với `agybird` cũ đã đăng ký qua Git, cài
-và xác nhận các plugin `@Finolabs` liên quan (`agybird@Finolabs`, `vietnamizer@Finolabs`,
-`markmap-skills@Finolabs`) hoạt động trước, rồi mới gỡ các selector `@agybird` cũ và marketplace
-`agybird` cũ bằng lệnh CLI được hỗ trợ; giữ đăng ký từ bản clone cục bộ là đủ dùng, không suy đoán
-cơ chế thay thế tại chỗ sang URL Git từ xa. Nếu cần rollback thì khôi phục từ bản sao lưu, dùng
-checkout `fioenix/agybird` tại tag `v0.2.1` (`@agybird`) hoặc đăng ký lại nguồn độc lập
-`vietnamizer` (`vietnamizer@vietnamizer`), không xóa dữ liệu không thể khôi phục. Với Codex có thể
-dùng app-server `skills/list` để kiểm discovery mà không gọi model. Với Claude Code, cài xong mở
-session mới và kiểm `/vietnamizer:vietnamizer`; metadata validator, việc sửa tài liệu hoặc thông
-báo install thành công không tự chứng minh UI đã hiển thị, đã gom nhóm theo `Finolabs` hay
-invocation chạy được.
+`--check` không dựng archive. Chạy thêm `agy plugin validate .`: lệnh này còn một cảnh báo về
+`AGENTS.md` ở root, vì Antigravity chỉ nạp rules từ `rules/`; file đó dành cho người đóng góp và
+không đi vào gói. Cần kiểm thêm đường cài trên profile tạm: đăng ký `finolabs/plugins` (hoặc bản
+clone cục bộ của nó) và cài `vietnamizer@finolabs` trên Claude Code và Codex; trên Antigravity cài
+từ URL repository. Kiểm plugin cache có manifest đúng version và skill nạp đúng tên. Khi chuyển từ
+catalog `Finolabs` cũ (đăng ký từ `agybird`) hoặc `vietnamizer@vietnamizer`, gỡ plugin và
+marketplace cũ trước, rồi mới thêm `finolabs/plugins`, theo
+[hướng dẫn cài](installation.md#codex-plugin). Với Codex có thể dùng app-server `skills/list`
+để kiểm discovery mà không gọi model. Với Claude Code, cài xong mở session mới và kiểm
+`/vietnamizer:vietnamizer`; metadata validator, việc sửa tài liệu hoặc thông báo cài thành công
+không tự chứng minh UI đã hiển thị, đã gom nhóm theo `Finolabs` hay lời gọi chạy được.
 
 Không đưa credential hoặc raw input của người dùng vào log kiểm. Profile thật của maintainer
 không phải fixture kiểm thử. Các lệnh kiểm packaging ở trên chạy offline, không cần gọi TypeSafe.
@@ -124,11 +113,11 @@ Metadata Codex có logo, composer icon, màu và starter prompts; metadata Claud
 đường dẫn tài liệu, hỗ trợ, quyền riêng tư và điều kiện sử dụng. Các URL `main` chỉ có nội dung
 public sau khi thay đổi tương ứng đã merge.
 
-## Repo marketplace không phải directory chính thức
+## Catalog Finolabs không phải directory chính thức
 
 ### Mở đường hỗ trợ trước khi đón người dùng
 
-Hai manifest dùng cùng URL hỗ trợ `https://github.com/fioenix/vietnamizer/issues`. Không thay
+Ba manifest dùng cùng URL hỗ trợ `https://github.com/finolabs/vietnamizer/issues`. Không thay
 URL này bằng email hoặc địa chỉ chưa xác minh. Tại lần kiểm tra ngày 05/10/2026, GitHub API trả
 `has_issues: true`; Private Vulnerability Reporting trả `enabled: true` và trang Advisories
 hiển thị **Report a vulnerability**. Đây là trạng thái tại thời điểm kiểm, cần đọc lại trước
@@ -136,9 +125,9 @@ khi công bố tài liệu hỗ trợ.
 
 Chủ repo cần thực hiện:
 
-1. Giữ **Issues** bật trong **Settings → General → Features** của `fioenix/vietnamizer`.
+1. Giữ **Issues** bật trong **Settings → General → Features** của `finolabs/vietnamizer`.
 2. Sau khi thay đổi tài liệu/template được tích hợp, mở **Issues → New issue** và kiểm mẫu
-   báo lỗi; kiểm link support của cả hai manifest tới đúng repo. `config.yml` chỉ cấu hình
+   báo lỗi; kiểm link support của các manifest tới đúng repo. `config.yml` chỉ cấu hình
    mẫu và đường báo riêng, không bật tính năng Issues.
 3. Giữ Private Vulnerability Reporting đang bật. Trong **Security → Advisories**, kiểm
    **Report a vulnerability**. Nếu bị tắt, chủ repo mở **Settings → Advanced Security →
@@ -156,16 +145,13 @@ Tài liệu và template hỗ trợ không nằm trong payload do scripts đóng
 submit hoặc checksum từ nguồn được xác nhận mới kết luận được. Không suy ra thiếu đường hỗ trợ
 là nguyên nhân chậm duyệt.
 
-Catalog Codex dùng chung của Finolabs nằm tại `fioenix/agybird` với tên máy đúng chữ hoa–thường
-`Finolabs` và `displayName` là `Finolabs`, gồm ba mục `agybird@Finolabs`, `vietnamizer@Finolabs`
-và `markmap-skills@Finolabs` (hiệu chỉnh từ bản catalog dùng chung đầu tiên ở `agybird` v0.2.1
-vốn dùng tên máy `agybird`; có thể đăng ký từ GitHub hoặc bản clone cục bộ). Trong repo này,
-`.agents/plugins/marketplace.json` được giữ nguyên làm catalog độc lập một entry (`vietnamizer`,
-`displayName` là `Vietnamizer`) để tương thích ngược với `vietnamizer@vietnamizer` và đáp ứng
-kiểm tra của `scripts/package-plugin.py`; không đổi tên thành `Finolabs` và không nhân bản
-catalog ba mục tại đây. `.claude-plugin/marketplace.json` tiếp tục phục vụ Claude Code. Các
-catalog do maintainer kiểm soát giúp người dùng đăng ký nguồn và cài plugin, nhưng không phải
-dấu hiệu OpenAI hoặc Anthropic đã review hay bảo chứng plugin.
+Repo này không giữ marketplace riêng: Codex gom mỗi marketplace thành một nhóm, nên một plugin có
+catalog riêng sẽ tách khỏi nhóm Finolabs. Plugin được liệt kê ở catalog chung
+[`finolabs/plugins`](https://github.com/finolabs/plugins), gồm `.claude-plugin/marketplace.json`
+và `.agents/plugins/marketplace.json` cùng tên `finolabs`. Catalog theo dõi nhánh mặc định của repo
+này, nên nhánh `main` và tag `v*` cần được bảo vệ. Catalog do maintainer kiểm soát giúp người dùng
+đăng ký nguồn và cài plugin, nhưng không phải dấu hiệu OpenAI hoặc Anthropic đã review hay bảo
+chứng plugin.
 
 Gửi vào directory chính thức là bước riêng. Với OpenAI, chỉ tiếp tục sau khi có bằng chứng portal
 nhận hồ sơ này hoặc xác nhận phù hợp từ OpenAI, kiểm lại yêu cầu hiện hành, quyền publisher và
@@ -173,7 +159,7 @@ owner duyệt lần gửi cụ thể. Local validation không gỡ chặn intake
 screenshots giả hoặc capability không có thật chỉ để lấp trường metadata.
 
 Việc gửi Anthropic đang tạm dừng theo quyết định của owner ngày 04/10/2026. Người dùng vẫn có
-thể [tự thêm marketplace của repo hoặc upload plugin](installation.md#claude-web-và-claude-desktop-thêm-marketplace)
+thể [tự thêm catalog Finolabs hoặc upload plugin](installation.md#claude-web-và-claude-desktop-thêm-marketplace)
 theo gói và chính sách của Claude; không cần chờ listing chính thức.
 
 Khi tiếp tục gửi Anthropic, dùng [developer portal](https://claude.ai/directory/manage) và chọn

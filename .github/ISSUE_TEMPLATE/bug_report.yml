@@ -6,13 +6,13 @@ body:
       value: |
         Issues là nơi công khai. Không đăng API key, token, dữ liệu cá nhân, tài liệu nội bộ hoặc nội dung nhạy cảm, kể cả trong ảnh chụp.
         Không cần gửi toàn bộ prompt, log hay tài liệu. Chỉ dùng đoạn tối thiểu đã ẩn dữ liệu hoặc ví dụ giả lập mà bạn có quyền công bố.
-        Lỗi bảo mật không báo ở đây: dùng [Report a vulnerability](https://github.com/fioenix/vietnamizer/security/advisories/new).
+        Lỗi bảo mật không báo ở đây: dùng [Report a vulnerability](https://github.com/finolabs/vietnamizer/security/advisories/new).
   - type: input
     id: version
     attributes:
       label: Phiên bản Vietnamizer và nguồn cài
-      description: Ghi version và nguồn (Releases, repo marketplace hoặc Skills CLI). Nếu không xác định được, ghi rõ.
-      placeholder: "0.9.8; vietnamizer@vietnamizer từ repo marketplace"
+      description: Ghi version và nguồn (Releases, catalog Finolabs hoặc Skills CLI). Nếu không xác định được, ghi rõ.
+      placeholder: "0.9.8; vietnamizer@finolabs từ catalog Finolabs"
     validations:
       required: true
   - type: input

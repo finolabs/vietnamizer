@@ -84,7 +84,7 @@ def validate_metadata() -> dict[str, dict]:
     if not version:
         raise ValueError("Missing canonical skill version")
     manifests = {}
-    for platform in ("codex", "claude"):
+    for platform in ("codex", "claude", "antigravity"):
         relative = f".{platform}-plugin/plugin.json"
         manifest = json.loads(local_file(f"./{relative}").read_text())
         if manifest.get("name") != "vietnamizer" or manifest.get("version") != version[1]:
@@ -108,13 +108,7 @@ def validate_metadata() -> dict[str, dict]:
         if not match:
             raise ValueError("Skill UI icon is missing")
         validate_svg(icon_file(match[1]))
-    catalog = json.loads(local_file("./.agents/plugins/marketplace.json").read_text())
-    entries = catalog.get("plugins", [])
-    if catalog.get("name") != "vietnamizer" or len(entries) != 1 or entries[0].get("name") != "vietnamizer" or entries[0].get("source") != {"source": "local", "path": "./"}:
-        raise ValueError("Codex catalog must resolve the source plugin at the repo root")
-    claude = json.loads(local_file("./.claude-plugin/marketplace.json").read_text())
-    if claude.get("name") != "vietnamizer" or len(claude.get("plugins", [])) != 1 or claude["plugins"][0].get("source") != "./" or claude["plugins"][0].get("name") != "vietnamizer":
-        raise ValueError("Claude catalog must resolve the source plugin at the repo root")
+    validate_svg(icon_file(manifests["antigravity"]["logo"]))
     return manifests
 
 
@@ -156,9 +150,9 @@ def main() -> int:
         if not sys.argv[1:]:
             build(manifests)
     except (OSError, ValueError, KeyError, TypeError, ET.ParseError, zipfile.BadZipFile, subprocess.CalledProcessError):
-        print("Distribution validation failed; check versions, catalogs and local asset paths.", file=sys.stderr)
+        print("Distribution validation failed; check versions and local asset paths.", file=sys.stderr)
         return 1
-    print("Distribution metadata valid for Codex and Claude Code")
+    print("Distribution metadata valid for Codex, Claude Code and Antigravity")
     return 0
 
 

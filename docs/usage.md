@@ -17,6 +17,37 @@ Dùng vietnamizer để sửa phần văn xuôi trong docs/bai-viet.md.
 Giữ nguyên code, bảng tham số và các trích dẫn.
 ```
 
+### Viết từ ý hoặc biên tập bản có sẵn
+
+Cả hai đi qua tách ý → chọn giọng → khai triển → rà nghĩa và cách viết. Biên tập lấy ý từ
+bản gốc đầy đủ; viết mới lấy từ brief/dữ kiện được giao. Outline không thay nguồn đối chiếu.
+Không cần đưa qua một nháp AI trung gian. Nêu rõ người đọc, mục đích và phạm vi khi chúng
+ảnh hưởng cách viết; thiếu mẫu không có nghĩa được tự tìm hồ sơ hay bịa trải nghiệm.
+
+```text
+Dùng Vietnamizer viết một thông báo cho nhóm phát triển từ các ý sau:
+- Bản thử mở thứ Hai, tối đa 20 người.
+- Chưa chốt ngày kết thúc.
+Giọng ngắn gọn cho công việc. Không tự thêm giờ, hạn chót hoặc lời hứa.
+Chỉ trả thông báo cuối.
+```
+
+Khi chỉ sửa một cụm/câu, quy trình áp dụng trong đúng phạm vi đó; đọc đoạn xung quanh để hiểu,
+không tự viết lại cả bài. Khi giao biên tập toàn bài, tách các ý và sắc thái trước khi chọn
+cách diễn đạt; không mặc định phải thay mọi câu. Bản tách ý không phải đầu ra bắt buộc.
+Quy trình mới đang ở Unreleased, metadata giữ 0.13.2; chưa có pilot xác nhận nó tốt hơn
+payload 0.13.2 đã phát hành trước cập nhật này.
+
+### Đọc ít theo đúng việc
+
+- Sửa cụm/câu: core và catalog đúng nghi vấn; không cần workflow bài, resolver/profile/card hoặc guide mẫu.
+- Biên tập bài/viết từ brief: thêm `references/quy-trinh-viet.md` và một card được core chọn trực tiếp.
+- Theo mẫu: thêm `references/giu-giong-tu-mau.md`; không tự đọc danh mục nguồn khi mẫu đã đủ.
+- Pha chức năng/mâu thuẫn: mới đọc `references/bo-giai-phong-cach.md`.
+- Jev: core kiểm capability/key trước, có key và quyền gửi mới nạp hợp đồng evaluator.
+
+Các catalog giữ đủ 55 pattern để tra; giảm phần bắt buộc đọc không phải bỏ ngoại lệ hay bảo toàn nghĩa.
+
 ### Ba prompt dùng thử trên Claude
 
 Dán từng prompt bên dưới sau khi chọn skill Vietnamizer. Với Claude Code, thêm
@@ -57,13 +88,13 @@ Khi host cấp key và đã có quyền gửi dữ liệu, Vietnamizer tự đ�
 gọi dịch vụ. Xem [quyền riêng tư](../PRIVACY.md) và [hợp đồng Jev](../references/typesafe-advisor.md).
 
 - **Không thấy skill:** kiểm plugin đã bật, rồi mở phiên mới. Trong Claude Code kiểm đúng
-  marketplace `vietnamizer` và lời gọi `/vietnamizer:vietnamizer`.
+  marketplace `finolabs` và lời gọi `/vietnamizer:vietnamizer`.
 - **Mô tả hoặc phiên bản chưa đổi:** cập nhật đúng plugin cùng tên từ nguồn đã cài; tránh cài
   thêm bản review trùng tên. ZIP upload riêng không tự cập nhật từ GitHub.
 - **Icon mặc định:** manifest có icon, nhưng kết quả CLI validator không chứng minh client
   hiển thị nó. Kiểm preview listing; không coi icon mặc định là lỗi của quy trình biên tập.
 - **Sửa sai hoặc sửa quá tay:** gửi ca giả lập/đã ẩn danh cùng kết quả mong đợi qua
-  [GitHub Issues](https://github.com/fioenix/vietnamizer/issues) theo mẫu báo lỗi. Đọc
+  [GitHub Issues](https://github.com/finolabs/vietnamizer/issues) theo mẫu báo lỗi. Đọc
   [hướng dẫn đóng góp](../CONTRIBUTING.md) trước; không gửi toàn bộ prompt, log hay tài liệu.
 - **Lỗi bảo mật:** dùng [kênh báo riêng](../SECURITY.md), không đăng lên Issues công khai.
   Không gửi API key, token, dữ liệu cá nhân, tài liệu nội bộ hoặc nội dung nhạy cảm.
@@ -77,8 +108,8 @@ Skill xử lý ba lớp:
 - T1–T6 kiểm tra typography. Với văn xuôi thông thường, chỉ áp dụng khi đồng thời có ít nhất một lỗi
   V1–V25; với thể loại được giới hạn ở typography-only thì không cần lỗi V đi kèm.
 
-Trước khi sửa, skill xác định thể loại, đọc profile phù hợp và dùng mẫu văn hoặc hồ sơ phong cách
-người dùng chủ động cung cấp. Skill không tự truy xuất memory hay lịch sử hội thoại để tìm mẫu.
+Trước khi sửa, skill xác định thể loại/phạm vi; chỉ tra profile khi có nghi vấn phụ thuộc thể loại.
+Làm bài chọn một card; có mẫu/hồ sơ chủ động cung cấp mới đọc guide mẫu. Skill không tự truy xuất memory hay lịch sử hội thoại để tìm mẫu.
 
 Skill không dùng kết quả rà soát để xác định tác giả. Người viết song ngữ cũng có thể giữ cấu trúc tiếng Anh trong câu tiếng Việt; LLM cũng có thể tạo ra câu hoàn toàn tự nhiên.
 

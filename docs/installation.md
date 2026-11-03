@@ -23,13 +23,13 @@ repo và gói riêng vẫn tách biệt với việc duyệt Directory. Xem
 ### Codex và các agent dùng Skills CLI
 
 ```bash
-npx --yes skills@1.5.20 add fioenix/vietnamizer --global
+npx --yes skills@1.5.20 add finolabs/vietnamizer --global
 ```
 
 Cài cho mọi agent mà Skills CLI hỗ trợ:
 
 ```bash
-npx --yes skills@1.5.20 add fioenix/vietnamizer \
+npx --yes skills@1.5.20 add finolabs/vietnamizer \
   --skill vietnamizer \
   --agent '*' \
   --global \
@@ -39,26 +39,29 @@ npx --yes skills@1.5.20 add fioenix/vietnamizer \
 Bỏ `--global` nếu muốn cài trong phạm vi dự án. Có thể xem skill mà CLI tìm được trước khi cài:
 
 ```bash
-npx --yes skills@1.5.20 add fioenix/vietnamizer --list
+npx --yes skills@1.5.20 add finolabs/vietnamizer --list
 ```
 
 Skills CLI nhận repository, URL hoặc đường dẫn cục bộ làm nguồn. Cờ `--agent '*'` chọn mọi agent được hỗ trợ; cờ `--copy` buộc CLI sao chép file thay vì tạo liên kết tượng trưng.
 
 ### Claude Code plugin
 
-```text
-/plugin marketplace add fioenix/vietnamizer
-/plugin install vietnamizer@vietnamizer
+Cài từ catalog chung của Finolabs:
+
+```bash
+claude plugin marketplace add finolabs/plugins
+claude plugin install vietnamizer@finolabs
 ```
 
-Đây là marketplace của repo, không cần chờ Anthropic duyệt directory. Sau khi cài, gọi skill
+Cập nhật catalog bằng `claude plugin marketplace update finolabs`. Sau khi cài, gọi skill
 bằng `/vietnamizer:vietnamizer` kèm đoạn cần biên tập. Nếu chưa thấy skill, mở phiên mới.
+Repo này không còn marketplace riêng: selector cũ `vietnamizer@vietnamizer` không còn nguồn cập nhật.
 
 ### Claude web và Claude Desktop: thêm marketplace
 
 1. Mở **Customize → Plugins → Add → Add marketplace**.
-2. Chọn **Add from a repository**, nhập `fioenix/vietnamizer` hoặc
-   `https://github.com/fioenix/vietnamizer`.
+2. Chọn **Add from a repository**, nhập `finolabs/plugins` hoặc
+   `https://github.com/finolabs/plugins`.
 3. Trong **Discover**, chọn **Vietnamizer → Add**, rồi kiểm plugin đã bật.
 4. Trong cuộc trò chuyện, gõ `/` hoặc bấm `+`, chọn skill **Vietnamizer** và gửi đoạn cần sửa.
 
@@ -67,8 +70,8 @@ plugin trên web/Desktop dành cho các gói Pro, Max, Team và Enterprise. Nế
 kiểm tra gói và chính sách của tổ chức; cài riêng không bỏ qua các giới hạn này.
 
 Có thể tải `vietnamizer-plugin.zip` từ
-[Releases](https://github.com/fioenix/vietnamizer/releases/latest) để upload plugin thay vì thêm
-repo. Không dùng `vietnamizer.skill` hoặc `vietnamizer-claude-org.zip` ở bước upload plugin:
+[Releases](https://github.com/finolabs/vietnamizer/releases/latest) để upload plugin thay vì thêm
+catalog. Không dùng `vietnamizer.skill` hoặc `vietnamizer-claude-org.zip` ở bước upload plugin:
 hai file đó là gói skill riêng.
 
 Vietnamizer chưa được Anthropic duyệt vào directory; việc gửi duyệt đang tạm dừng. Các đường
@@ -82,88 +85,60 @@ Owner của tổ chức Team/Enterprise có thể tải `vietnamizer-plugin.zip`
 hoặc có sẵn rồi upload. Thành viên cài plugin từ **Discover** theo quyền được cấp.
 
 Đừng nhầm với **Sync from GitHub** của marketplace tổ chức: đường sync này yêu cầu repo
-GitHub private/internal, không nhận trực tiếp repo public `fioenix/vietnamizer`. Dùng upload
+GitHub private/internal, không nhận trực tiếp repo public `finolabs/vietnamizer`. Dùng upload
 ZIP cho trường hợp đó. Xem
 [hướng dẫn quản trị plugin](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization)
 về quyền, bật Cowork/Skills và chính sách phân phối.
 
-### Codex plugin và Marketplace
+### Codex plugin
 
-Catalog Codex dùng chung của Finolabs đặt tại nguồn `fioenix/agybird` với tên máy
-(`marketplace.name`) phân biệt hoa–thường là `Finolabs` và `displayName` là `Finolabs` (đã hiệu
-chỉnh từ bản catalog dùng chung đầu tiên ở `agybird` `v0.2.1` vốn đặt tên máy là `agybird`).
-Catalog này gồm ba mục `agybird@Finolabs`, `vietnamizer@Finolabs` và `markmap-skills@Finolabs`.
-
-Với máy **chưa từng đăng ký** nguồn `agybird` cũ, có thể đăng ký trực tiếp từ GitHub rồi cài
-`vietnamizer@Finolabs`:
+Cài từ catalog chung của Finolabs:
 
 ```bash
-codex plugin marketplace add fioenix/agybird
-codex plugin add vietnamizer@Finolabs
+codex plugin marketplace add finolabs/plugins
+codex plugin add vietnamizer@finolabs
 ```
 
-Hoặc đăng ký từ một bản checkout/clone cục bộ của `fioenix/agybird` đã có `"name": "Finolabs"`:
+Cập nhật catalog bằng `codex plugin marketplace upgrade finolabs`. Nếu máy còn catalog `Finolabs`
+cũ (đăng ký từ `agybird`, selector dạng `vietnamizer@Finolabs`) hoặc `vietnamizer@vietnamizer`,
+gỡ plugin và marketplace cũ trước khi thêm `finolabs/plugins`. Trên macOS, hai tên chỉ khác chữ
+hoa–thường dùng chung một thư mục cache, nên cùng một plugin cài từ cả hai nơi sẽ ghi đè lẫn nhau.
+Sao lưu cấu hình, rồi chạy:
 
 ```bash
-codex plugin marketplace add /path/to/finolabs-catalog
-codex plugin add vietnamizer@Finolabs
+codex plugin remove vietnamizer@Finolabs      # hoặc vietnamizer@vietnamizer
+codex plugin marketplace remove Finolabs      # hoặc vietnamizer
+codex plugin marketplace add finolabs/plugins
+codex plugin add vietnamizer@finolabs
 ```
 
-Repo này vẫn giữ `.agents/plugins/marketplace.json` độc lập (tên máy `vietnamizer`,
-`displayName` là `Vietnamizer`) để tương thích ngược và phục vụ kiểm tra gói tại chỗ:
+Cách Codex hiển thị tên nguồn và gom nhóm trong trang Plugins phụ thuộc từng bản client; tài liệu
+này không khẳng định client đã gom nhóm trên UI. Catalog Finolabs không phải xác nhận từ OpenAI
+hoặc Anthropic. Skills CLI ở trên vẫn là đường cài độc lập.
+
+### Antigravity plugin
+
+Antigravity 1.4 chỉ phân giải `plugin@marketplace` với marketplace chính thức của nó, nên cài
+trực tiếp từ repository:
 
 ```bash
-codex plugin marketplace add fioenix/vietnamizer
-codex plugin add vietnamizer@vietnamizer
+agy plugin install https://github.com/finolabs/vietnamizer
+agy plugin list
 ```
-
-**Chuyển từ `@agybird` (`vietnamizer@agybird`) hoặc `vietnamizer@vietnamizer` sang `vietnamizer@Finolabs` và hoàn tác (rollback):**
-trong Codex (`marketplace_upgrade.rs`), lệnh `upgrade` sẽ báo lỗi khi `marketplace.name` tải về
-(`Finolabs`) khác với tên đã cấu hình (`agybird`), còn chạy lại `marketplace add` cùng URL Git
-`fioenix/agybird` trước khi gỡ đăng ký cũ có thể tái sử dụng lại nguồn `agybird` cũ. Vì vậy,
-không dùng lệnh `upgrade` trên `agybird` để đổi tên marketplace và không thêm đè cùng URL Git khi
-nguồn `agybird` cũ vẫn còn. Hãy làm theo thứ tự song song (side-by-side) sau:
-
-1. Sao lưu cấu hình và trạng thái đăng ký plugin/marketplace hiện tại của Codex.
-2. Chuẩn bị một bản clone/checkout cục bộ riêng của `fioenix/agybird` đã cập nhật (ví dụ
-   `git clone https://github.com/fioenix/agybird.git /path/to/finolabs-catalog`), kiểm tra
-   `.agents/plugins/marketplace.json` tại đó có `"name": "Finolabs"`, rồi đăng ký đường dẫn cục bộ
-   này để tạo marketplace `Finolabs` song song với `agybird` cũ:
-   ```bash
-   codex plugin marketplace add /path/to/finolabs-catalog
-   codex plugin add vietnamizer@Finolabs
-   ```
-   (Nếu máy đang dùng cả bộ ba trong catalog dùng chung, cài luôn `agybird@Finolabs` và
-   `markmap-skills@Finolabs` ở bước này.)
-3. Xác nhận `vietnamizer@Finolabs` (cùng các plugin `@Finolabs` liên quan) đã cài và nạp đúng
-   trước khi dọn nguồn cũ.
-4. Dùng lệnh CLI được hỗ trợ để gỡ các selector `@agybird` cũ (`vietnamizer@agybird`, v.v.) và gỡ
-   marketplace `agybird` cũ (hoặc `vietnamizer@vietnamizer` / marketplace `vietnamizer` nếu chuyển
-   từ bản độc lập). Giữ nguyên đăng ký từ bản clone cục bộ là đủ để sử dụng; không giả định cơ chế
-   thay thế tại chỗ sang URL Git từ xa nếu client chưa hỗ trợ.
-
-Nếu cần hoàn tác (rollback), khôi phục từ bản sao lưu ban đầu, hoặc checkout `fioenix/agybird` tại
-tag cố định `v0.2.1` (nơi `marketplace.name` vẫn là `agybird`) để đăng ký lại `vietnamizer@agybird`,
-hoặc dùng nguồn độc lập `fioenix/vietnamizer` với `vietnamizer@vietnamizer`.
-
-Khả năng hiển thị tên nguồn `Finolabs` hoặc `Vietnamizer` và cách gom nhóm trong trang Plugins
-phụ thuộc từng bản client Codex; tài liệu này không khẳng định client đã tự gom nhóm trên UI
-hoặc đã cài đặt thực tế. Skills CLI ở trên vẫn là đường cài độc lập. Catalog của repo không đồng
-nghĩa plugin đã được duyệt vào directory chính thức của OpenAI hoặc Anthropic.
 
 Xem [hướng dẫn phân phối và kiểm thử](../docs/plugin-distribution.md),
 [quyền riêng tư](../PRIVACY.md) và [điều kiện sử dụng](../TERMS.md).
 
 ### Claude web và Claude Desktop: chỉ cài skill
 
-[Tải gói skill từ trang Releases](https://github.com/fioenix/vietnamizer/releases/latest),
+[Tải gói skill từ trang Releases](https://github.com/finolabs/vietnamizer/releases/latest),
 mở **Customize → Skills → + Create skill → Upload a skill**, chọn file vừa tải rồi bật skill.
 Claude cần bật **Code execution and file creation** để dùng custom skill. Xem thêm
 [hướng dẫn chính thức của Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
 
 ### Claude Org: chỉ cài skill
 
-[Tải gói Claude Org từ trang Releases](https://github.com/fioenix/vietnamizer/releases/latest),
+[Tải gói Claude Org từ trang Releases](https://github.com/finolabs/vietnamizer/releases/latest),
 mở **Organization settings → Plugins & skills → Add → Upload a skill**, rồi chọn file ZIP. Gói này
 đặt `SKILL.md` và `LICENSE` ở thư mục gốc, cùng các file cần khi skill chạy.
 
@@ -177,13 +152,13 @@ Người bảo trì repo có thể tự tạo lại cả hai artifact:
 
 Kết quả nằm ở `dist/vietnamizer.skill` và `dist/vietnamizer-claude-org.zip`.
 
-Để tạo gói plugin chung cho Codex và Claude Code:
+Để tạo gói plugin chung cho Codex, Claude Code và Antigravity:
 
 ```bash
 python3 scripts/package-plugin.py
 ```
 
-Kết quả là `dist/vietnamizer-plugin.zip`, có hai manifest và một skill trong
+Kết quả là `dist/vietnamizer-plugin.zip`, có ba manifest và một skill trong
 `skills/vietnamizer/`. Script tạo gói từ source chuẩn; không bảo trì bản Markdown thứ hai.
 Đây là gói để cài và kiểm tra riêng, không phải xác nhận OpenAI đang nhận submission.
 Trước khi dựng lại, giữ bản sao và SHA-256 của archive bị thay thế; không dùng candidate local
@@ -195,5 +170,5 @@ Chép `LICENSE`, `SKILL.md` cùng `profiles/`, `references/`, `calibration/`, `a
 thư mục skill của agent:
 
 ```bash
-git clone https://github.com/fioenix/vietnamizer.git /duong/dan/toi/skills/vietnamizer
+git clone https://github.com/finolabs/vietnamizer.git /duong/dan/toi/skills/vietnamizer
 ```
