@@ -1,11 +1,11 @@
 # Kiểm Vietnamizer trước khi gửi directory Claude
 
 **Tạm dừng gửi duyệt theo quyết định của owner ngày 04/10/2026.** Owner không tiếp tục bước
-đăng ký gói trả phí để submit lúc này. Tập trung phân phối qua marketplace của repo và gói
+đăng ký gói trả phí để submit lúc này. Tập trung phân phối qua catalog chung `finolabs/plugins` và gói
 upload; xem [hướng dẫn tự cài](installation.md#claude-web-và-claude-desktop-thêm-marketplace).
 Checklist dưới đây là tài liệu tham khảo khi mở lại việc gửi duyệt, không phải công việc đang chạy.
 
-Đường cài marketplace riêng không đồng nghĩa được Anthropic niêm yết. Chạy CLI validator,
+Đường cài qua catalog Finolabs không đồng nghĩa được Anthropic niêm yết. Chạy CLI validator,
 kiểm archive và cài sạch trước; portal Validate vẫn là cổng riêng cho đúng commit được gửi.
 
 Rà lại ngày 04/10/2026. Lượt này chuẩn bị source và hồ sơ, chưa submit hoặc chấp nhận điều

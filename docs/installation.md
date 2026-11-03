@@ -101,8 +101,9 @@ codex plugin add vietnamizer@finolabs
 
 Cập nhật catalog bằng `codex plugin marketplace upgrade finolabs`. Nếu máy còn catalog `Finolabs`
 cũ (đăng ký từ `agybird`, selector dạng `vietnamizer@Finolabs`) hoặc `vietnamizer@vietnamizer`,
-gỡ plugin và marketplace cũ trước khi thêm `finolabs/plugins`. Trên macOS, hai tên chỉ khác chữ
-hoa–thường dùng chung một thư mục cache, nên cùng một plugin cài từ cả hai nơi sẽ ghi đè lẫn nhau.
+gỡ plugin và marketplace cũ trước khi thêm `finolabs/plugins`. Trên macOS, Codex có thể dùng chung một thư mục cache cho hai tên chỉ khác chữ
+hoa–thường, khiến cùng một plugin cài từ cả hai nơi ghi đè lẫn nhau. Catalog cũ cũng có thể còn
+phục vụ plugin khác (`agybird`, `markmap-skills`): chạy `codex plugin list` để xem trước khi gỡ.
 Sao lưu cấu hình, rồi chạy:
 
 ```bash
