@@ -22,6 +22,7 @@ PACKAGE_FIXTURE_PATHS = (
     "agents",
     "assets",
     ".claude-plugin",
+    ".antigravity-plugin",
     "calibration",
     "profiles",
     "references",
@@ -172,14 +173,12 @@ class PackageSecurityTest(unittest.TestCase):
 
             self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
 
-    def test_rejects_unknown_marketplace_schema_url(self) -> None:
+    def test_rejects_antigravity_version_drift(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
-            manifest_path = repo / ".claude-plugin" / "marketplace.json"
+            manifest_path = repo / ".antigravity-plugin" / "plugin.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            manifest["$schema"] = (
-                "https://json.schemastore.org/claude-code-marketplace-manifest.json"
-            )
+            manifest["version"] = "0.0.0"
             manifest_path.write_text(
                 json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
                 encoding="utf-8",

@@ -124,7 +124,6 @@ FORBIDDEN_PAYLOAD_PATTERNS = (
     ),
 )
 PACKAGE_COPY_SOURCES = PACKAGE_PAYLOAD
-MARKETPLACE_SCHEMA = "https://json.schemastore.org/claude-code-marketplace.json"
 
 errors: list[str] = []
 
@@ -463,16 +462,10 @@ plugin = json.loads(plugin_path.read_text(encoding="utf-8")) if plugin_path.exis
 if not plugin:
     fail("Thiếu .claude-plugin/plugin.json")
 
-marketplace_path = ROOT / ".claude-plugin" / "marketplace.json"
-marketplace = (
-    json.loads(marketplace_path.read_text(encoding="utf-8"))
-    if marketplace_path.exists()
-    else {}
-)
-if not marketplace:
-    fail("Thiếu .claude-plugin/marketplace.json")
-elif marketplace.get("$schema") != MARKETPLACE_SCHEMA:
-    fail(f"marketplace.json phải dùng schema chính thức: {MARKETPLACE_SCHEMA}")
+antigravity_path = ROOT / ".antigravity-plugin" / "plugin.json"
+antigravity = json.loads(antigravity_path.read_text(encoding="utf-8")) if antigravity_path.exists() else {}
+if not antigravity:
+    fail("Thiếu .antigravity-plugin/plugin.json")
 
 # --- Frontmatter ---------------------------------------------------------
 
@@ -509,7 +502,8 @@ versions = {
     "SKILL.md": skill_version,
     "README.md": readme_version_match.group(1) if readme_version_match else "",
     "docs/changelog.md": changelog_version_match.group(1) if changelog_version_match else "",
-    "plugin.json": str(plugin.get("version", "")),
+    "claude plugin.json": str(plugin.get("version", "")),
+    "antigravity plugin.json": str(antigravity.get("version", "")),
 }
 if len(set(versions.values())) != 1:
     fail(f"Version lệch nhau: {versions}")

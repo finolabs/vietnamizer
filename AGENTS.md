@@ -39,13 +39,12 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `assets/` | Icon và wordmark SVG sáng/tối, nền trong suốt; chữ ă violet ở bản sáng, mint ở bản tối; được đóng gói cùng metadata UI |
 | `.codex-plugin/plugin.json` | Manifest và metadata hiển thị của plugin Codex |
 | `.plugin-skills/vietnamizer/SKILL.md` | Adapter discovery cho plugin source, nạp root `SKILL.md`; không sở hữu quy tắc biên tập |
-| `.agents/plugins/marketplace.json` | Catalog phân phối Codex được track, không phải tooling sinh local |
+| `.antigravity-plugin/plugin.json` | Manifest của plugin Antigravity; cài từ URL repo, không có catalog |
 | `.claude-plugin/plugin.json` | Manifest của plugin Claude Code |
-| `.claude-plugin/marketplace.json` | Manifest marketplace của repo |
 | `scripts/validate-package.py` | Kiểm tra version, số hiệu pattern, danh mục trong docs, điều hướng README và giới hạn dòng |
 | `scripts/package-skill.sh` | Đóng gói `dist/vietnamizer.skill` và `dist/vietnamizer-claude-org.zip` |
-| `scripts/package-plugin.py` | Kiểm metadata/asset và tạo ZIP plugin hai nền tảng từ cùng public payload |
-| `docs/plugin-distribution.md` | Hướng dẫn kiểm cài đặt và ranh giới repo marketplace với directory chính thức |
+| `scripts/package-plugin.py` | Kiểm metadata/asset và tạo ZIP plugin ba nền tảng từ cùng public payload |
+| `docs/plugin-distribution.md` | Hướng dẫn kiểm cài đặt; plugin phân phối qua catalog chung `finolabs/plugins`, không có marketplace riêng |
 | `docs/openai-marketplace-assessment-2026-10-23.md` | Quyết định owner ngày 23/10/2026: giữ skills-only, chưa làm MCP, tạm dừng gửi OpenAI; bằng chứng và điều kiện xét lại |
 | `PRIVACY.md`, `TERMS.md` | Thông tin dữ liệu và điều kiện dùng gói mã nguồn mở |
 | `SECURITY.md` | Ranh giới bảo mật và kênh báo lỗi riêng, không dùng Issues công khai |
@@ -128,10 +127,10 @@ cho resolver và registry, còn `SKILL.md` sở hữu thứ tự gọi.
 
 - **Số hiệu pattern:** bốn tiền tố `V`, `T`, `B`, `K` đều bắt đầu từ 1 và tăng liên tục. `V` và `T` do core uỷ quyền cho bốn catalog trong `references/`; `B` thuộc profile blog; `K` thuộc profile kỹ thuật. Khi thêm, bỏ hoặc đổi số, phải cập nhật bảng trong `docs/patterns.md` và số lượng/tóm tắt trong `README.md` cùng lúc.
 - **Ngưỡng thêm pattern:** một dấu hiệu chỉ được thành pattern riêng khi không pattern nào hiện có ngụ ý nó. Còn lại thì mở rộng mục **Dấu hiệu** của pattern gần nhất. Khi hai pattern chạm nhau, pattern hẹp hơn phải có một câu phân vai trỏ sang pattern kia, như K6 trỏ sang V21 cho phần lời chào và lời mời làm tiếp.
-- **Version:** `metadata.version` trong `SKILL.md`, mục mới nhất trong `docs/changelog.md`, bản tóm tắt phiên bản trong `README.md` và `version` trong `.claude-plugin/plugin.json` phải giống nhau. Giữ version bên trong `metadata`; không đặt khoá `version` ở cấp cao nhất của frontmatter vì một số nền tảng không nhận khoá này. `marketplace.json` không có version để tránh hai nguồn dữ liệu.
+- **Version:** `metadata.version` trong `SKILL.md`, mục mới nhất trong `docs/changelog.md`, bản tóm tắt phiên bản trong `README.md` và `version` trong ba manifest `.claude-plugin/`, `.codex-plugin/`, `.antigravity-plugin/` phải giống nhau. Giữ version bên trong `metadata`; không đặt khoá `version` ở cấp cao nhất của frontmatter vì một số nền tảng không nhận khoá này. Catalog chung `finolabs/plugins` theo dõi nhánh mặc định nên không ghi version.
 - **Giới hạn dòng:** `SKILL.md` tối đa 550 dòng, profile blog tối đa 320 dòng, profile kỹ thuật tối đa 220 dòng. Các file trong `references/` không bị giới hạn.
 - **Nguồn:** khi thêm pattern dựa trên tài liệu bên ngoài, phải thêm nguồn vào `docs/sources.md` và giữ đường dẫn từ `README.md`, ghi đúng mức độ tin cậy. Nếu chỉ là suy luận, phải nói rõ là suy luận. Không tự tạo nguồn hoặc số liệu tần suất.
-- **Kiểm tra trước khi phát hành:** chạy `python3 scripts/validate-package.py`, `python3 scripts/package-plugin.py`, `npx skills add . --list`, `claude plugin validate .` và `claude plugin validate .claude-plugin/plugin.json --strict`. Plugin ZIP phải chứa đúng một skill; icon và manifest phải resolve trong gói. Giữ root `SKILL.md` canonical, chỉ đổi layout trong output sinh ra.
+- **Kiểm tra trước khi phát hành:** chạy `python3 scripts/validate-package.py`, `python3 scripts/package-plugin.py`, `npx skills add . --list`, `claude plugin validate .` và `claude plugin validate .claude-plugin/plugin.json --strict` và `agy plugin validate .`. Plugin ZIP phải chứa đúng một skill; icon và manifest phải resolve trong gói. Giữ root `SKILL.md` canonical, chỉ đổi layout trong output sinh ra.
 
 ## Khi sửa nội dung
 

@@ -30,10 +30,10 @@ assets/                                       icon và wordmark SVG sáng/tối
 .codex-plugin/plugin.json                     manifest và nhận diện plugin Codex
 .plugin-skills/vietnamizer/SKILL.md          adapter source, nạp root SKILL.md; không sao chép rule
 .claude-plugin/                              manifest và catalog Claude Code
-.agents/plugins/marketplace.json             catalog Codex được track, không phải tooling sinh local
+.antigravity-plugin/plugin.json               manifest Antigravity
 scripts/validate-package.py                   kiểm tra tính đồng bộ của gói
 scripts/package-skill.sh                      tạo hai artifact cài đặt
-scripts/package-plugin.py                     kiểm metadata và tạo ZIP plugin hai nền tảng
+scripts/package-plugin.py                     kiểm metadata và tạo ZIP plugin ba nền tảng
 README.md                                    giới thiệu ngắn, bằng chứng trực quan và điều hướng
 docs/installation.md, docs/usage.md           cài đặt, cách dùng, phạm vi và dữ liệu
 docs/style-and-voice.md                       hướng dẫn giọng mẫu và phong cách

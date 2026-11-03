@@ -90,13 +90,13 @@ Khi host cấp key và đã có quyền gửi dữ liệu, Vietnamizer tự đ�
 gọi dịch vụ. Xem [quyền riêng tư](../PRIVACY.md) và [hợp đồng Jev](../references/typesafe-advisor.md).
 
 - **Không thấy skill:** kiểm plugin đã bật, rồi mở phiên mới. Trong Claude Code kiểm đúng
-  marketplace `vietnamizer` và lời gọi `/vietnamizer:vietnamizer`.
+  marketplace `finolabs` và lời gọi `/vietnamizer:vietnamizer`.
 - **Mô tả hoặc phiên bản chưa đổi:** cập nhật đúng plugin cùng tên từ nguồn đã cài; tránh cài
   thêm bản review trùng tên. ZIP upload riêng không tự cập nhật từ GitHub.
 - **Icon mặc định:** manifest có icon, nhưng kết quả CLI validator không chứng minh client
   hiển thị nó. Kiểm preview listing; không coi icon mặc định là lỗi của quy trình biên tập.
 - **Sửa sai hoặc sửa quá tay:** gửi ca giả lập/đã ẩn danh cùng kết quả mong đợi qua
-  [GitHub Issues](https://github.com/fioenix/vietnamizer/issues) theo mẫu báo lỗi. Đọc
+  [GitHub Issues](https://github.com/finolabs/vietnamizer/issues) theo mẫu báo lỗi. Đọc
   [hướng dẫn đóng góp](../CONTRIBUTING.md) trước; không gửi toàn bộ prompt, log hay tài liệu.
 - **Lỗi bảo mật:** dùng [kênh báo riêng](../SECURITY.md), không đăng lên Issues công khai.
   Không gửi API key, token, dữ liệu cá nhân, tài liệu nội bộ hoặc nội dung nhạy cảm.

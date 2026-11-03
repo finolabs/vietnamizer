@@ -80,31 +80,36 @@ Không dùng mức đổi ký tự, độ dài hay token làm điểm chất lư
 
 ## Cài nhanh
 
-Bản hiện tại là **0.13.3**. [Tải các gói từ GitHub Release](https://github.com/fioenix/vietnamizer/releases/latest).
+Bản hiện tại là **0.13.3**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ### Skills CLI
 
 ```bash
-npx skills add fioenix/vietnamizer --skill vietnamizer
+npx skills add finolabs/vietnamizer --skill vietnamizer
 ```
 
-### Codex plugin — catalog Finolabs
-
-Với cài đặt mới chưa có marketplace `agybird` cũ:
+### Codex plugin
 
 ```bash
-codex plugin marketplace add fioenix/agybird
-codex plugin add vietnamizer@Finolabs
+codex plugin marketplace add finolabs/plugins
+codex plugin add vietnamizer@finolabs
 ```
 
-Đã đăng ký marketplace `agybird`? Đọc [hướng dẫn chuyển và khôi phục](docs/installation.md)
-trước khi đổi đăng ký. **Finolabs** là catalog dùng chung; không phải chứng nhận từ OpenAI.
+Đã đăng ký catalog `Finolabs` cũ hoặc `vietnamizer@vietnamizer`? Đọc
+[hướng dẫn chuyển](docs/installation.md#codex-plugin) trước khi đổi đăng ký.
+**Finolabs** là catalog dùng chung; không phải chứng nhận từ OpenAI.
 
 ### Claude Code plugin
 
-```text
-/plugin marketplace add fioenix/vietnamizer
-/plugin install vietnamizer@vietnamizer
+```bash
+claude plugin marketplace add finolabs/plugins
+claude plugin install vietnamizer@finolabs
+```
+
+### Antigravity plugin
+
+```bash
+agy plugin install https://github.com/finolabs/vietnamizer
 ```
 
 Mở session mới sau khi cài. [Claude web/Desktop, Claude Org, cài thủ công và đóng gói](docs/installation.md).
@@ -171,7 +176,7 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 
 ## Đóng góp
 
-[Gửi ca sửa sai hoặc góp mã](CONTRIBUTING.md) · [Issues](https://github.com/fioenix/vietnamizer/issues) · [Điều khoản](TERMS.md).
+[Gửi ca sửa sai hoặc góp mã](CONTRIBUTING.md) · [Issues](https://github.com/finolabs/vietnamizer/issues) · [Điều khoản](TERMS.md).
 
 ## Giấy phép
 

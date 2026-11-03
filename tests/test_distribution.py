@@ -19,8 +19,8 @@ class DistributionTest(unittest.TestCase):
         repo.mkdir()
         for relative in (
             "SKILL.md", "LICENSE", "README.md", "profiles", "references", "calibration",
-            "agents", "assets", "jev", "scripts", "docs", ".claude-plugin", ".codex-plugin",
-            ".agents/plugins", ".plugin-skills", ".gitignore",
+            "agents", "assets", "jev", "scripts", "docs", ".claude-plugin", ".codex-plugin", ".antigravity-plugin",
+            ".plugin-skills", ".gitignore",
         ):
             source = ROOT / relative
             if not source.exists():
@@ -300,21 +300,21 @@ class DistributionTest(unittest.TestCase):
             result = subprocess.run([sys.executable, "scripts/package-plugin.py", "--check"], cwd=repo, capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
 
-    def test_metadata_rejects_catalog_identifier_drift(self) -> None:
+    def test_metadata_rejects_antigravity_identifier_drift(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             repo = self.fixture(Path(temporary))
-            catalog = repo / ".agents/plugins/marketplace.json"
+            catalog = repo / ".antigravity-plugin/plugin.json"
             data = json.loads(catalog.read_text())
-            data["name"] = "wrong-marketplace"
+            data["name"] = "wrong-plugin"
             catalog.write_text(json.dumps(data))
             result = subprocess.run([sys.executable, "scripts/package-plugin.py", "--check"], cwd=repo, capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
 
-    def test_codex_catalog_is_tracked_candidate_but_generated_skills_stay_ignored(self) -> None:
+    def test_generated_skills_stay_ignored(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             repo = self.fixture(Path(temporary))
             subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
-            for path, ignored in ((".agents/plugins/marketplace.json", False), (".agents/skills/local/SKILL.md", True)):
+            for path, ignored in ((".antigravity-plugin/plugin.json", False), (".agents/skills/local/SKILL.md", True)):
                 result = subprocess.run(
                     ["git", "-c", "core.excludesFile=/dev/null", "check-ignore", "--no-index", "-q", path], cwd=repo,
                 )

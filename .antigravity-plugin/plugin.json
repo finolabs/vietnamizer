@@ -1,0 +1,22 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "vietnamizer",
+  "displayName": "Vietnamizer",
+  "description": "Biên tập tiếng Việt theo thể loại và giọng người viết: giữ nguyên ý, dữ kiện, thuật ngữ và code.",
+  "version": "0.13.3",
+  "logo": "./assets/icon.svg",
+  "skills": "./.plugin-skills/",
+  "author": {
+    "name": "Fioenix",
+    "url": "https://github.com/fioenix"
+  },
+  "homepage": "https://github.com/finolabs/vietnamizer",
+  "repository": "https://github.com/finolabs/vietnamizer",
+  "license": "MIT",
+  "keywords": ["vietnamese", "writing", "editing", "translationese", "agent-skills"],
+  "suggestedPrompts": [
+    "Biên tập bản nháp tiếng Việt này, giữ nguyên ý và giọng người viết.",
+    "Rà phần tiếng Việt trong README này; giữ nguyên code, lệnh, trích dẫn và thuật ngữ.",
+    "Làm bản dịch sát từng chữ này đọc tự nhiên hơn, không thêm dữ kiện."
+  ]
+}

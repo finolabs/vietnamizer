@@ -6,8 +6,8 @@
     "name": "Fioenix",
     "url": "https://github.com/fioenix"
   },
-  "homepage": "https://github.com/fioenix/vietnamizer",
-  "repository": "https://github.com/fioenix/vietnamizer",
+  "homepage": "https://github.com/finolabs/vietnamizer",
+  "repository": "https://github.com/finolabs/vietnamizer",
   "license": "MIT",
   "keywords": [
     "vietnamese",
@@ -23,10 +23,10 @@
     "longDescription": "Edit Vietnamese drafts, workplace messages, articles, README prose, and literal translations. Designed for Vietnamese-speaking writers and professionals, Vietnamizer selects editing rules by genre and audience, checks explicit exceptions before changing text, and reviews each edit for meaning and voice preservation. Correct missing words, unnatural collocations, and awkward sentence structures while preserving facts, terminology, quotations, and code. By default, keep already-natural wording and source voice unchanged. When explicitly asked to follow supplied reference samples, adapt expression and existing structure while preserving meaning and protected text. No separate account or API key is required for core editing. This plugin does not detect AI-generated text. Provide only text you are authorized to share, without payment card data, protected health information, government identifiers, or authentication secrets. When the host supplies a TypeSafe key and authorizes transmission, the shipped Python runner automatically attempts Jev evaluation. Without a key or on service failure, core editing remains available.",
     "category": "Productivity",
     "capabilities": [],
-    "websiteURL": "https://github.com/fioenix/vietnamizer",
-    "supportURL": "https://github.com/fioenix/vietnamizer/issues",
-    "privacyPolicyURL": "https://github.com/fioenix/vietnamizer/blob/main/PRIVACY.md",
-    "termsOfServiceURL": "https://github.com/fioenix/vietnamizer/blob/main/TERMS.md",
+    "websiteURL": "https://github.com/finolabs/vietnamizer",
+    "supportURL": "https://github.com/finolabs/vietnamizer/issues",
+    "privacyPolicyURL": "https://github.com/finolabs/vietnamizer/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/finolabs/vietnamizer/blob/main/TERMS.md",
     "defaultPrompt": [
       "Edit this Vietnamese draft while preserving its meaning and the writer's voice.",
       "Review the Vietnamese prose in this README; preserve code, commands, quotations, and terminology.",

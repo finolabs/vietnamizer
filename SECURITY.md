@@ -2,8 +2,8 @@
 
 ## Kênh báo riêng
 
-Dùng [GitHub Private Vulnerability Reporting](https://github.com/fioenix/vietnamizer/security/advisories/new)
-của repository `fioenix/vietnamizer`. Có thể mở **Security → Advisories → Report a vulnerability**;
+Dùng [GitHub Private Vulnerability Reporting](https://github.com/finolabs/vietnamizer/security/advisories/new)
+của repository `finolabs/vietnamizer`. Có thể mở **Security → Advisories → Report a vulnerability**;
 GitHub yêu cầu đăng nhập để gửi báo cáo. Không báo lỗi bảo mật qua Issues, pull request hoặc bình
 luận công khai.
 
@@ -24,7 +24,7 @@ cần được trao đổi trong báo cáo riêng trước khi đăng công khai
 
 Repository chưa cam kết thời hạn phản hồi, thời hạn sửa hoặc lịch hỗ trợ bảo mật cho từng phiên
 bản. Ghi đúng bản bị ảnh hưởng, kể cả bản cũ; bản mới nhất nằm ở
-[Releases](https://github.com/fioenix/vietnamizer/releases/latest).
+[Releases](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ## Phạm vi và ranh giới
 
