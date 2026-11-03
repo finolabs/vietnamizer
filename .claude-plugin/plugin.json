@@ -8,7 +8,7 @@
   "supportUrl": "https://github.com/finolabs/vietnamizer/issues",
   "privacyPolicyUrl": "https://github.com/finolabs/vietnamizer/blob/main/PRIVACY.md",
   "termsOfServiceUrl": "https://github.com/finolabs/vietnamizer/blob/main/TERMS.md",
-  "description": "Biên tập bản nháp, bài viết, README và bản dịch tiếng Việt cho tự nhiên hơn. Sửa câu dịch sát, thiếu từ và cách diễn đạt khô cứng; giữ nguyên ý, dữ kiện, thuật ngữ và code. Mặc định giữ giọng gốc; theo mẫu khi người dùng yêu cầu rõ, cho phép đổi cấu trúc ý đã có mà giữ nghĩa. Không cần tài khoản riêng hay API key.",
+  "description": "Biên tập bản nháp, bài viết, README và bản dịch tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết.",
   "version": "0.13.3",
   "author": {
     "name": "Fioenix",
@@ -18,13 +18,10 @@
   "repository": "https://github.com/finolabs/vietnamizer",
   "license": "MIT",
   "keywords": [
-    "tieng-viet",
     "vietnamese",
     "writing",
     "editing",
-    "translationese",
-    "humanize",
-    "prose",
-    "style"
+    "translation",
+    "agent-skills"
   ]
 }
