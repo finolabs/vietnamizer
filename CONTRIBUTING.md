@@ -30,7 +30,7 @@ claude plugin validate .
 python3 scripts/package-plugin.py
 ```
 
-Skill packager cần `zip` và `unzip`; plugin packager dựng tiếp một ZIP chung cho hai nền tảng.
+Skill packager cần `zip` và `unzip`; plugin packager dựng tiếp một ZIP chung cho ba nền tảng.
 Các archive nằm trong `dist/`. Mỗi archive phải có `LICENSE`,
 đúng public inventory và nội dung khớp source.
 

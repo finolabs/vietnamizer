@@ -3,7 +3,7 @@
   "name": "vietnamizer",
   "displayName": "Vietnamizer",
   "description": "Biên tập tiếng Việt theo thể loại và giọng người viết: giữ nguyên ý, dữ kiện, thuật ngữ và code.",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "logo": "./assets/icon.svg",
   "skills": "./.plugin-skills/",
   "author": {

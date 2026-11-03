@@ -16,4 +16,3 @@ metadata/nhận xét dưới đây không thay việc đọc mẫu. Không dùng
 
 Các nguồn đã dùng để thiết kế hướng dẫn là dữ liệu phát triển, không đồng thời gọi là tập chấm
 độc lập giữ lại. Nhận xét trên là gợi ý lựa chọn theo nhiệm vụ, không tạo pattern hoặc chuẩn giọng chung.
-

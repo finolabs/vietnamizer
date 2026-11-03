@@ -4,7 +4,7 @@
 
 ## Kiến trúc
 
-`SKILL.md` là nguồn chuẩn về điều phối và chốt; từng catalog sở hữu duy nhất nội dung pattern được core uỷ quyền. Đây là cấu trúc Unreleased, metadata giữ 0.13.2:
+`SKILL.md` là nguồn chuẩn về điều phối và chốt; từng catalog sở hữu duy nhất nội dung pattern được core uỷ quyền. Đây là cấu trúc source 0.13.3:
 
 ```text
 SKILL.md                                      core gọn: phạm vi, chốt, tuyến đọc và trả kết quả
@@ -29,7 +29,7 @@ agents/openai.yaml                            tên hiển thị và lời gọi 
 assets/                                       icon và wordmark SVG sáng/tối
 .codex-plugin/plugin.json                     manifest và nhận diện plugin Codex
 .plugin-skills/vietnamizer/SKILL.md          adapter source, nạp root SKILL.md; không sao chép rule
-.claude-plugin/                              manifest Claude Code
+.claude-plugin/                              manifest và catalog Claude Code
 .antigravity-plugin/plugin.json               manifest Antigravity
 scripts/validate-package.py                   kiểm tra tính đồng bộ của gói
 scripts/package-skill.sh                      tạo hai artifact cài đặt
@@ -66,7 +66,7 @@ Trước khi chạy pattern, skill kiểm tra thể loại. Pháp quy, hợp đ�
 dụ đang được bàn tới là vùng bảo toàn từng byte. Xem danh sách và ngoại lệ đầy đủ trong `SKILL.md`.
 
 
-Trong phần cập nhật Unreleased, root điều khiển cùng quy trình lập ý → chọn giọng → khai triển → review cho
+Từ source 0.13.3, root điều khiển cùng quy trình lập ý → chọn giọng → khai triển → review cho
 viết mới và biên tập. Brief hoặc bản gốc đầy đủ là nguồn đối chiếu; outline không thay nguồn.
 Guide mẫu giữ chi tiết cách dùng bằng chứng giọng cá nhân/tham chiếu chuyên môn, không sở hữu
 quy trình riêng. Không đổi 55 pattern, schema, request hay runtime Jev; kiểm nghĩa với brief

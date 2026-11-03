@@ -130,7 +130,7 @@ cho resolver và registry, còn `SKILL.md` sở hữu thứ tự gọi.
 - **Version:** `metadata.version` trong `SKILL.md`, mục mới nhất trong `docs/changelog.md`, bản tóm tắt phiên bản trong `README.md` và `version` trong ba manifest `.claude-plugin/`, `.codex-plugin/`, `.antigravity-plugin/` phải giống nhau. Giữ version bên trong `metadata`; không đặt khoá `version` ở cấp cao nhất của frontmatter vì một số nền tảng không nhận khoá này. Catalog chung `finolabs/plugins` theo dõi nhánh mặc định nên không ghi version.
 - **Giới hạn dòng:** `SKILL.md` tối đa 550 dòng, profile blog tối đa 320 dòng, profile kỹ thuật tối đa 220 dòng. Các file trong `references/` không bị giới hạn.
 - **Nguồn:** khi thêm pattern dựa trên tài liệu bên ngoài, phải thêm nguồn vào `docs/sources.md` và giữ đường dẫn từ `README.md`, ghi đúng mức độ tin cậy. Nếu chỉ là suy luận, phải nói rõ là suy luận. Không tự tạo nguồn hoặc số liệu tần suất.
-- **Kiểm tra trước khi phát hành:** chạy `python3 scripts/validate-package.py`, `python3 scripts/package-plugin.py`, `npx skills add . --list`, `claude plugin validate .`, `claude plugin validate .claude-plugin/plugin.json --strict` và `agy plugin validate .`. Plugin ZIP phải chứa đúng một skill; icon và manifest phải resolve trong gói. Giữ root `SKILL.md` canonical, chỉ đổi layout trong output sinh ra.
+- **Kiểm tra trước khi phát hành:** chạy `python3 scripts/validate-package.py`, `python3 scripts/package-plugin.py`, `npx skills add . --list`, `claude plugin validate .` và `claude plugin validate .claude-plugin/plugin.json --strict` và `agy plugin validate .`. Plugin ZIP phải chứa đúng một skill; icon và manifest phải resolve trong gói. Giữ root `SKILL.md` canonical, chỉ đổi layout trong output sinh ra.
 
 ## Khi sửa nội dung
 
