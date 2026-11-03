@@ -1,7 +1,7 @@
 {
   "name": "vietnamizer",
   "version": "0.13.3",
-  "description": "Genre-aware Vietnamese editing that preserves meaning and the writer's voice.",
+  "description": "Biên tập bản nháp, bài viết, README và bản dịch tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết.",
   "author": {
     "name": "Fioenix",
     "url": "https://github.com/fioenix"
@@ -13,7 +13,8 @@
     "vietnamese",
     "writing",
     "editing",
-    "translationese"
+    "translation",
+    "agent-skills"
   ],
   "skills": "./.plugin-skills/",
   "interface": {
