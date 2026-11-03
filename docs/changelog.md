@@ -4,6 +4,12 @@
 
 ## Lịch sử phiên bản
 
+### Chưa phát hành
+
+Phân phối qua catalog chung `finolabs/plugins` (PR #30, sau 0.13.3): thêm manifest Antigravity, bỏ
+marketplace riêng của repo. Selector cài đổi từ `vietnamizer@vietnamizer` sang `vietnamizer@finolabs`;
+cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). Nội dung skill không đổi.
+
 - **0.13.3** — Rút core thành bộ điều phối, đọc catalog/workflow/mẫu/evaluator theo tác vụ; giữ quy trình ý trước câu và 55 pattern. Thêm review-only, tách nghĩa/cách viết và harness offline gắn review với candidate hiện tại. Giữ API/runtime, metadata và gói cài đồng bộ; chưa có A/B tiếng Việt hoặc actual-read trace chứng minh cải thiện chất lượng/token.
 
 ### Chi tiết thay đổi trong 0.13.3
