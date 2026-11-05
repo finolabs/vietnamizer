@@ -5,7 +5,7 @@ Initial implementation verification, 2026-10-16. The later owner-authorized Clau
 ## Workflow and authority
 
 - Owner approved spec 007, the active-advisory/shadow-clause amendment, implementation and the later project-local Codex integration bootstrap.
-- Canonical coding workflow was read through approved Obsidian CLI, explicitly targeting Fioenix Vault. Installed speckit-implement owns execution; installed speckit-tasks reconciled the earlier task checklist to story phases and IDs. Accepted design/approval was retained.
+- Canonical coding workflow was read through approved Obsidian CLI, explicitly targeting the owner's private vault. Installed speckit-implement owns execution; installed speckit-tasks reconciled the earlier task checklist to story phases and IDs. Accepted design/approval was retained.
 - `specify integration install codex --script sh --integration-options='--skills'` initially hit sandbox EPERM in `.agents/skills`; supported escalation then exited 0. The twelve existing shared infrastructure files were preserved. Generated skills/local state remain ignored. No global tooling, shared skill, commit, push, merge or release was performed.
 - No extension hook file or requirements-checklist directory exists, so those gates require no dispatch/marker changes.
 - Installed speckit-converge found one remaining documentation gap (FR-035), appended T021 and returned execution to implement. The obsolete no-runtime distribution statement was then corrected.

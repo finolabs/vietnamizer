@@ -19,7 +19,7 @@ import time
 
 ROOT=Path(__file__).resolve().parents[1]
 FROZEN=ROOT/'artifacts/014-gemini-isolated-20261026'
-WRAPPER=Path('/Users/fioenix/.codex/plugins/cache/Finolabs/agybird/0.3.0/scripts/agybird.mjs')
+WRAPPER=Path.home()/'.codex/plugins/cache/Finolabs/agybird/0.3.0/scripts/agybird.mjs'
 MODEL='gemini-3.8-flash-medium'
 ARMS=('bare','ordinary','vietnamizer','vietnamizer_jev')
 CELLS={f'R{i:03}-{a}' for i in range(1,21) for a in ARMS}

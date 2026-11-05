@@ -8,7 +8,7 @@ offline; không khởi chạy Antigravity, không gỡ hoặc thay đổi quyế
 ## Một lệnh để chạy
 
 ```sh
-python3 /Users/fioenix/Projects/vietnamizer/benchmarks/gemini_manual.py run
+python3 benchmarks/gemini_manual.py run
 ```
 
 Cần có `python3`, Node, Agybird 0.3.0 ở đường dẫn đã cài và CLI `agy` đã đăng nhập.
@@ -19,7 +19,7 @@ của bộ Codex được giữ nguyên từng byte, bao gồm advice Jev đã c
 Kết quả được lưu bền vững tại:
 
 ```text
-/Users/fioenix/Projects/vietnamizer/artifacts/014-gemini-manual-20261026/
+artifacts/014-gemini-manual-20261026/
 ```
 
 Thư mục làm việc của model nằm riêng trong `/private/tmp`, chứa dữ liệu của đúng
@@ -38,7 +38,7 @@ Script không tự đổi model hoặc chuyển sang API/credit trả phí.
 Xem tiến độ bằng lệnh không gọi model:
 
 ```sh
-python3 /Users/fioenix/Projects/vietnamizer/benchmarks/gemini_manual.py status
+python3 benchmarks/gemini_manual.py status
 ```
 
 ## Dữ liệu được giữ

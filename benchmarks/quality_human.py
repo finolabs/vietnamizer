@@ -25,7 +25,7 @@ def validate(packet,submission):
  return s
 
 def bundle(out):
- q.verify(out);root=q.ROOT/'benchmarks';design=Path('/Users/fioenix/Projects/finolabs/design-system')
+ q.verify(out);root=q.ROOT/'benchmarks';design=Path.home()/'Projects/finolabs/design-system'
  index={}
  for who in ('A','B'):
   folder=out/'human-handoff'/f'reviewer-{who}';folder.mkdir(parents=True,exist_ok=True)
