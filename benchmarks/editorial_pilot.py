@@ -17,7 +17,7 @@ import tempfile
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-AGYBIRD = Path('/Users/fioenix/.codex/plugins/cache/Finolabs/agybird/0.3.0/scripts/agybird.mjs')
+AGYBIRD = Path.home()/'.codex/plugins/cache/Finolabs/agybird/0.3.0/scripts/agybird.mjs'
 ARMS = ('bare', 'ordinary', 'vietnamizer')
 MODELS = {'codex':'gpt-6.1-sol', 'agy':'gemini-3.8-flash-medium'}
 COMMON = '''Edit the supplied Vietnamese document for its stated purpose and audience.
@@ -178,7 +178,7 @@ def records(out):
 
 def credit_preflight(path=None):
     # Inspect only route/credit selectors, never credential files or values.
-    path=path or Path('/Users/fioenix/.gemini/antigravity-cli/settings.json')
+    path=path or Path.home()/'.gemini/antigravity-cli/settings.json'
     try:
         d=json.loads(path.read_text()) if path.exists() else {}
     except (OSError,ValueError) as exc:

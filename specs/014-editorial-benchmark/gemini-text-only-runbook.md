@@ -3,7 +3,7 @@
 ## Lệnh chạy
 
 ```sh
-python3 /Users/fioenix/Projects/vietnamizer/benchmarks/gemini_text_only.py run
+python3 benchmarks/gemini_text_only.py run
 ```
 
 Đã nghiệm thu một cell thật trong đợt mới: R002-bare, đúng Gemini 3.8 Flash medium,
@@ -13,7 +13,7 @@ python3 /Users/fioenix/Projects/vietnamizer/benchmarks/gemini_text_only.py run
 Kết quả lưu tại:
 
 ```text
-/Users/fioenix/Projects/vietnamizer/artifacts/014-gemini-text-only-20261026/epoch-v3/
+artifacts/014-gemini-text-only-20261026/epoch-v3/
 ```
 
 Dùng đúng 80 prompt đã đóng băng từ bộ Codex: 20 nguồn công khai, bốn chế độ, một

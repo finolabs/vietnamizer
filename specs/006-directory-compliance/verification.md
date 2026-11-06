@@ -20,7 +20,7 @@ Portal upload and resubmission are outside that release step.
 - `git diff --check`: no whitespace errors.
 - Optional skill-creator `quick_validate.py`: initially blocked by missing PyYAML; resolved by
   running in a uv-managed isolated environment with PyYAML 6.0.2 and `/usr/bin/python3`.
-  Command: `UV_HTTP_RETRIES=0 UV_HTTP_TIMEOUT=15 uv --native-tls run --no-project --python /usr/bin/python3 --with PyYAML==6.0.2 python /Users/fioenix/.codex/skills/.system/skill-creator/scripts/quick_validate.py /Users/fioenix/Projects/vietnamizer`.
+  Command: `UV_HTTP_RETRIES=0 UV_HTTP_TIMEOUT=15 uv --native-tls run --no-project --python /usr/bin/python3 --with PyYAML==6.0.2 python ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .`.
   Result: `Skill is valid!`, exit 0. uv emitted warnings for the deprecated `--native-tls` flag
   and the redundant `--no-project` flag; neither affected validation. No repository dependency,
   lock file or system Python package was added. The initial connection retry was interrupted.

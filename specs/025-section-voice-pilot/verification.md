@@ -27,7 +27,7 @@ N2B→D:Codevoice4→4tie/readability4→4,Gemvoice4→5win/readability5→5;bot
 
 ## Archive receipt
 
-Path:`/Users/fioenix/Projects/vietnamizer/artifacts/025-section-voice-pilot-20261028-v1.tar.gz`
+Path:`artifacts/025-section-voice-pilot-20261028-v1.tar.gz`
 SHA-256:`8227e6c01b706a43ae5a5c63dc38382a96e8985f7833339759a007821b2b5bcf`
 Bytes:2678674
 Payloadfiles:768plusfinal-seal.json.

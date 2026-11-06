@@ -27,7 +27,7 @@ Independent final reviewer verified52raw/session/inputbindings,32outputs,80ratin
 
 ## Archive
 
-Path:`/Users/fioenix/Projects/vietnamizer/artifacts/023-voice-patch-pilot-20261028-v1.tar.gz`
+Path:`artifacts/023-voice-patch-pilot-20261028-v1.tar.gz`
 SHA-256:`2d88a89eb362429c1f3285c9fb927b5b4a1c0dd1e965a25278771c4b23131a44`
 Bytes:2627102
 Payload files:763plus seal.

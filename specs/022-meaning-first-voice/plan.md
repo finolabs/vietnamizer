@@ -19,7 +19,7 @@ Pre-design PASS: evidence021 and explicit owner approval; no language pattern ad
 Post-design PASS: proof level remains manual/static; no policy thresholds, fabricated labels or new API calls. Constitution amendment unnecessary: this enforces existing principleII.
 
 ## Source / routing / depth receipt
-Canonical source: Obsidian CLI, Fioenix Vault,04-PROCEDURAL/Workflows/coding-workflow.md; read succeeded after one supported escalation retry. Review-by2026-10-21 is expired; no source update made. Orrery search found workflow; returned Vietnamizer memories concern older T016 and do not supply current pilot decisions. Current repository/owner instruction is authoritative for this work.
+Canonical source: Obsidian CLI, the owner's private vault,04-PROCEDURAL/Workflows/coding-workflow.md; read succeeded after one supported escalation retry. Review-by2026-10-21 is expired; no source update made. Orrery search found workflow; returned Vietnamizer memories concern older T016 and do not supply current pilot decisions. Current repository/owner instruction is authoritative for this work.
 Route: Spec Kit specify→plan→tasks→implement. NORMAL, serial implementation. Direct-depth exception does not apply because root/profile/guide instruction contracts cross ownership boundaries. No unsettled activity-selection ambiguity; no Jev call needed. Citation cookbook live fetch failed; no evaluator integration added or API contract inferred. No approved new evaluator spend; manual judgment is disclosed.
 Supporting skills: skill-creator/writing-for-agents for instruction design; verification-before-completion; requesting-code-review for independent patch review only. No new generation/evaluation benchmark via subagents.
 

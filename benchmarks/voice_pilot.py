@@ -17,7 +17,7 @@ from benchmarks import mindfio_pilot as native
 from benchmarks import gemini_manual as gem
 
 ROOT=Path(__file__).resolve().parents[1]
-WRAPPER=Path('/Users/fioenix/.codex/plugins/cache/Finolabs/agybird/0.3.1/scripts/agybird.mjs')
+WRAPPER=Path.home()/'.codex/plugins/cache/Finolabs/agybird/0.3.1/scripts/agybird.mjs'
 MODEL='gemini-3.8-flash-medium'
 AGENT='voice-pilot-judge'
 CASES=tuple(f'{s}{i}' for s in ('V','N') for i in range(1,5))
