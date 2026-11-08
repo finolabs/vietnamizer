@@ -24,7 +24,9 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/han-viet-thuan-viet.md` | Bảng tra Hán-Việt và thuần Việt, kèm điều kiện phải giữ nguyên thuật ngữ |
 | `references/bang-tra-cuu.md` | Bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán |
 | `references/bo-giai-phong-cach.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
-| `references/giu-giong-tu-mau.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence, pattern hay lưu hồ sơ |
+| `references/giu-giong-tu-mau.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/ho-so-giong.md` |
+| `references/ho-so-giong.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn |
+| `references/phan-tich-giong-viet.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ và mức độ chắc chắn, không chứa dữ liệu cá nhân |
 | `references/typesafe-advisor.md` | Input, authority, coverage và fallback của runner Jev tự động |
 | `calibration/LOG.md` | Nhật ký bằng chứng dùng để sửa quy tắc chung; không lưu hồ sơ văn phong cá nhân |
 | `calibration/ca-kiem-thu.md` | Ca kiểm thử chạy tay cho từng pattern, gồm cả ca chống sửa quá tay |
@@ -164,10 +166,16 @@ Trước khi sửa skill, phải xếp quan sát vào đúng nhóm:
 ### Hồ sơ văn phong cá nhân
 
 Không ghi sở thích của một người vào `calibration/LOG.md`. Skill dùng mẫu hoặc hồ sơ phong cách
-người dùng chủ động cung cấp trong tác vụ; không tự truy xuất hoặc cập nhật memory. Có thể đề xuất
-một bản tóm tắt để người dùng tự giữ, gồm cách xưng hô, nhịp câu, thuật ngữ, viết hoa và dấu câu.
+người dùng dán hoặc chỉ định trong tác vụ; không tự tìm mẫu hay hồ sơ trong memory hoặc lịch sử.
+Tuyến opt-in trong `references/ho-so-giong.md` cho phép tạo và lưu nhiều hồ sơ có tên: đọc mẫu
+sau khi người dùng đồng ý, hiển thị hồ sơ trước khi lưu và chỉ lưu/cập nhật khi người dùng yêu
+cầu rõ. Người dùng chọn Orrery, Obsidian hoặc đường dẫn Markdown; chỉ đề nghị Orrery/Obsidian
+khi thấy công cụ tương ứng trong danh sách công cụ của agent. Nếu không có, hỏi đường dẫn và
+gợi ý `~/.agents/vietnamizer/profiles`; không tự tạo thư mục, không ghi đè đích đã có khi chưa được đồng ý,
+từ chối file chỉ dẫn của agent và chỉ ghi vào cây Git khi được xác nhận. Khi áp dụng, chỉ đọc hồ sơ người
+dùng dán hoặc chỉ định, không tự liệt kê, chọn hay nạp ở phiên sau.
 
-Mỗi đặc tính cần có phạm vi áp dụng và một ví dụ ngắn. Không chép nguyên văn bản, không lưu dữ kiện cá nhân không liên quan, không dùng hồ sơ của người này cho người khác. Yêu cầu trong lượt hiện tại luôn được ưu tiên hơn memory cũ.
+Mỗi đặc tính cần có phạm vi áp dụng và một ví dụ ngắn đã loại dữ liệu cá nhân. Không chép nguyên văn bản, không lưu dữ liệu cá nhân hoặc bí mật vào hồ sơ, không dùng hồ sơ của người này cho người khác. Yêu cầu trong lượt hiện tại luôn được ưu tiên hơn hồ sơ đã lưu; hồ sơ không thay đổi năm chốt trong `SKILL.md`.
 
 Không có mẫu hoặc hồ sơ được cung cấp thì tiếp tục theo thể loại và giọng của văn bản, không tự
 tìm dữ liệu bên ngoài tác vụ hoặc suy đoán danh tính. Cơ chế memory riêng của maintainer/host không
@@ -186,3 +194,7 @@ Không dùng quan sát của một cá nhân để âm thầm điều chỉnh sk
 - Repo chưa có bộ ngữ liệu đủ để đặt ngưỡng tần suất cho các dấu hiệu. Số lần xuất hiện chỉ dùng để tìm chỗ cần đọc kỹ hơn.
 - Một số nguồn trong `docs/sources.md` vẫn là nguồn trình bày lại. Xem mục “Nguồn còn thiếu” trước khi nâng mức độ tin cậy.
 - Skill không tự kiểm tra được những phát biểu về cấu trúc repo. Mỗi khi thêm, đổi tên hoặc xoá file, phải đối chiếu lại `README.md` và `AGENTS.md` với cây thư mục thật.
+
+## Agent skills
+
+This repository uses the finolabs-vibecode skills. Routing on: use `fnl-coding-router`. Use Spec Kit. Pull requests follow `fnl-review-gate` "Pull requests"; reviewers may post code/security reviews. Help: `/fnl-ask`.

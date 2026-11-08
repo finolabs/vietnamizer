@@ -79,7 +79,9 @@ EXPECTED_PROFILE_DIRECTORIES = {
     for relative in EXPECTED_PROFILE_FILES
     if PurePosixPath(relative).parent.name == "styles"
 }
-PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "calibration", "agents", "assets", "jev"}
+PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "assets", "jev"}
+# Nguồn của maintainer: được kiểm inventory và quét bí mật trong repo nhưng không vào gói phát hành.
+SOURCE_ONLY_DIRECTORIES = {"calibration"}
 REFERENCE_FILES = {
     "references/loi-thieu-tu.md", "references/loi-cau-va-quan-he.md",
     "references/loi-tu-va-loi-dan.md", "references/typography.md",
@@ -87,6 +89,8 @@ REFERENCE_FILES = {
     "references/bang-tra-cuu.md",
     "references/bo-giai-phong-cach.md",
     "references/giu-giong-tu-mau.md",
+    "references/ho-so-giong.md",
+    "references/phan-tich-giong-viet.md",
     "references/han-viet-thuan-viet.md",
     "references/typesafe-advisor.md",
 }
@@ -136,8 +140,17 @@ def ignored_generated_entry(path: Path) -> bool:
     return path.name == ".DS_Store" or "__pycache__" in path.parts or path.suffix == ".pyc"
 
 
-def validate_payload_tree(root: Path) -> None:
-    """Chỉ cho phép thư mục và file thường nằm bên trong payload root."""
+def validate_payload_tree(root: Path, source_checkout: bool = False) -> None:
+    """Chỉ cho phép thư mục và file thường nằm bên trong payload root.
+
+    source_checkout=True là repo nguồn: thư mục SOURCE_ONLY_DIRECTORIES cũng được kiểm.
+    Ở payload đã stage, các thư mục đó MUST NOT xuất hiện.
+    """
+    checked_names = set(PACKAGE_PAYLOAD) | (set(SOURCE_ONLY_DIRECTORIES) if source_checkout else set())
+    if not source_checkout:
+        for name in sorted(SOURCE_ONLY_DIRECTORIES):
+            if (root / name).exists() or (root / name).is_symlink():
+                fail(f"Payload phát hành không được chứa thư mục nguồn: {name}")
 
     try:
         resolved_root = root.resolve(strict=True)
@@ -181,7 +194,7 @@ def validate_payload_tree(root: Path) -> None:
             for child in children:
                 validate_entry(child)
 
-    for relative in sorted(PACKAGE_PAYLOAD):
+    for relative in sorted(checked_names):
         path = root / relative
         if not path.exists() and not path.is_symlink():
             fail(f"Thiếu payload bắt buộc: {relative}")
@@ -190,6 +203,8 @@ def validate_payload_tree(root: Path) -> None:
         validate_entry(path, expected_kind)
 
     for directory_name, expected_files in EXACT_DIRECTORY_FILES.items():
+        if directory_name not in checked_names:
+            continue
         directory_root = root / directory_name
         if not directory_root.is_dir() or directory_root.is_symlink():
             continue
@@ -286,7 +301,7 @@ def validate_payload_tree(root: Path) -> None:
     if extra_directories:
         fail(f"Profiles chứa thư mục ngoài inventory canonical: {extra_directories}")
 
-    for relative in sorted(PACKAGE_PAYLOAD):
+    for relative in sorted(checked_names):
         path = root / relative
         entries = [path]
         if path.is_dir() and not path.is_symlink():
@@ -443,7 +458,7 @@ if sys.argv[1:]:
         )
         raise SystemExit(2)
 
-validate_payload_tree(ROOT)
+validate_payload_tree(ROOT, source_checkout=True)
 exit_on_errors()
 
 skill = read("SKILL.md")

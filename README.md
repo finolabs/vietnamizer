@@ -80,7 +80,7 @@ Không dùng mức đổi ký tự, độ dài hay token làm điểm chất lư
 
 ## Cài nhanh
 
-Bản hiện tại là **0.13.3**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
+Bản hiện tại là **0.13.4**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ### Skills CLI
 
@@ -134,7 +134,7 @@ Chỉ gửi mẫu chưa tự bật chuyển giọng. Để điều chỉnh theo 
 cung cấp mẫu/hồ sơ ngay trong tác vụ. Skill có thể đổi cách diễn đạt hoặc cấu trúc từ
 các ý đã có, vẫn phải giữ mệnh đề, điều kiện, mức chắc chắn và vùng bảo toàn.
 
-Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết.
+Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết; chỉ tuyến hồ sơ giọng tùy chọn mới lưu hồ sơ, khi bạn yêu cầu rõ.
 [Xem hai chế độ, ví dụ prompt và bảy style card](docs/style-and-voice.md).
 
 ## Phạm vi
@@ -163,7 +163,7 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 |---|---|
 | Cài đặt theo nền tảng, marketplace và đóng gói | [Cài đặt](docs/installation.md) |
 | Prompt, phạm vi, dữ liệu và tư vấn Jev | [Sử dụng](docs/usage.md) |
-| Giữ giọng gốc, theo mẫu và chọn phong cách | [Giọng và phong cách](docs/style-and-voice.md) |
+| Giữ giọng gốc, theo mẫu, tuyến hồ sơ giọng tùy chọn và chọn phong cách | [Giọng và phong cách](docs/style-and-voice.md) |
 | Cây nguồn, các tầng quy tắc và thành phần | [Kiến trúc](docs/architecture.md) |
 | Tên và vai trò của từng pattern | [Danh mục 55 pattern](docs/patterns.md) |
 | Phương pháp, giới hạn và các kết quả benchmark | [Benchmark](docs/benchmarks.md) |
@@ -172,6 +172,7 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 
 ## Lịch sử phiên bản
 
+- **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn (chỉ lưu khi bạn yêu cầu rõ); gói phát hành bỏ `calibration/`; phân phối qua catalog `finolabs/plugins`. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.3** — Core gọn, đọc tài liệu theo tác vụ; review nghĩa và cách viết riêng, kiểm đúng candidate hiện tại. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md).
 
 ## Đóng góp

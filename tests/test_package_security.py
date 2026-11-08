@@ -258,6 +258,15 @@ class PackageSecurityTest(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("ghi-chu-rieng.md", result.stderr)
 
+    def test_release_payload_rejects_calibration_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            repo = self.copy_package_fixture(Path(temporary_directory))
+
+            result = self.run_payload_validator(repo, repo)
+
+            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("Payload phát hành không được chứa thư mục nguồn: calibration", result.stderr)
+
     def test_validator_rejects_extra_calibration_file(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
@@ -419,7 +428,7 @@ class PackageSecurityTest(unittest.TestCase):
             self.assertIn("vietnamizer/SKILL.md", names)
             self.assertTrue(any(name.startswith("vietnamizer/profiles/") for name in names))
             self.assertTrue(any(name.startswith("vietnamizer/references/") for name in names))
-            self.assertTrue(any(name.startswith("vietnamizer/calibration/") for name in names))
+            self.assertFalse(any(name.startswith("vietnamizer/calibration/") for name in names))
 
     def test_packages_the_license_notice_in_both_artifacts(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
@@ -468,13 +477,16 @@ class PackageSecurityTest(unittest.TestCase):
                 self.assertEqual(names, set())
                 self.assertIn(prefix + "references/typesafe-advisor.md", all_names)
                 self.assertIn(prefix + "references/giu-giong-tu-mau.md", all_names)
+                self.assertIn(prefix + "references/ho-so-giong.md", all_names)
+                self.assertIn(prefix + "references/phan-tich-giong-viet.md", all_names)
                 self.assertFalse(any("__pycache__" in name or name.startswith(prefix + "tests/") for name in all_names))
                 self.assertFalse(any(name.startswith(prefix + "guard_eval/") or name.startswith(prefix + "eval/") for name in all_names))
 
     def test_payload_scan_still_rejects_secrets(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
-            with (repo / "calibration/LOG.md").open("a") as log:
+            shutil.rmtree(repo / "calibration")
+            with (repo / "references/typesafe-advisor.md").open("a") as log:
                 log.write("\n" + "sk-" + "test-canary-not-a-real-key-1234567890" + "\n")
             result = self.run_payload_validator(repo, repo)
             self.assertNotEqual(result.returncode, 0)
@@ -506,7 +518,7 @@ class PackageSecurityTest(unittest.TestCase):
             self.assertIn("SKILL.md", names)
             self.assertTrue(any(name.startswith("profiles/") for name in names))
             self.assertTrue(any(name.startswith("references/") for name in names))
-            self.assertTrue(any(name.startswith("calibration/") for name in names))
+            self.assertFalse(any(name.startswith("calibration/") for name in names))
             self.assertFalse(any(name.startswith("vietnamizer/") for name in names))
             self.assertFalse(any(name.startswith(".claude-plugin/") for name in names))
             self.assertNotIn("README.md", names)
@@ -551,6 +563,7 @@ class PackageSecurityTest(unittest.TestCase):
                 package_result.stdout + package_result.stderr,
             )
             archive = repo / "dist" / "vietnamizer.skill"
+            shutil.rmtree(repo / "calibration")
 
             result = self.run_archive_validator(repo, archive, repo)
 

@@ -4,7 +4,16 @@
 
 ## Lịch sử phiên bản
 
-### Chưa phát hành
+### 0.13.4 (08/11/2026)
+
+Gói phát hành không còn chứa `calibration/` (nhật ký bằng chứng và ca kiểm thử tay của maintainer, khoảng 140KB, không nạp lúc chạy). `scripts/validate-package.py` vẫn kiểm inventory và quét bí mật `calibration/` trong repo nguồn và từ chối mọi payload phát hành có thư mục này; file `.skill` nén giảm khoảng 20%.
+
+Tuyến hồ sơ giọng cá nhân (opt-in): bổ sung `references/ho-so-giong.md` và `references/phan-tich-giong-viet.md`
+để tạo, lưu và áp dụng hồ sơ văn phong có tên từ văn bản người dùng dán hoặc chỉ định. Chỉ đọc mẫu
+sau khi người dùng đồng ý rõ ràng; chỉ lưu vào kho do người dùng chọn (Orrery, Obsidian hoặc Markdown
+tại đường dẫn bạn chọn, gợi ý `~/.agents/vietnamizer/profiles`) khi được yêu cầu rõ; khi tái sử dụng, chỉ đọc hồ sơ được chỉ định tên.
+Giữ nguyên 5 chốt bảo toàn nghĩa, vùng bảo toàn và 55 pattern; không tự động tra cứu hay lưu hồ sơ
+trong memory hoặc lịch sử; các tuyến biên tập thông thường không nạp thêm tài liệu.
 
 Phân phối qua catalog chung `finolabs/plugins` (PR #30, sau 0.13.3): thêm manifest Antigravity, bỏ
 marketplace riêng của repo. Selector cài đổi từ `vietnamizer@vietnamizer` sang `vietnamizer@finolabs`;
@@ -12,6 +21,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn, gói phát hành bỏ `calibration/`, phân phối qua catalog `finolabs/plugins`; giữ 55 pattern, runtime Jev và năm chốt.
 - **0.13.3** — Rút core thành bộ điều phối, đọc catalog/workflow/mẫu/evaluator theo tác vụ; giữ quy trình ý trước câu và 55 pattern. Thêm review-only, tách nghĩa/cách viết và harness offline gắn review với candidate hiện tại. Giữ API/runtime, metadata và gói cài đồng bộ; chưa có A/B tiếng Việt hoặc actual-read trace chứng minh cải thiện chất lượng/token.
 
 ### Chi tiết thay đổi trong 0.13.3

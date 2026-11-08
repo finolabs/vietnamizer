@@ -1,12 +1,17 @@
 <!--
 Sync Impact Report
-- Version change: 2.0.0 -> 2.1.0 (MINOR: explicit, bounded reference-voice editing).
-- Owner approval: 2026-10-28, “Chốt, triển khai ... tách giữ giọng gốc và theo giọng mẫu,
-  cho phép đổi cấu trúc nhưng giữ nghĩa.”
-- Modified principle II: distinguish pattern-backed correction from requested style edits.
+- Version change: 2.1.0 -> 2.2.0 (MINOR: explicit, opt-in voice-profile persistence).
+- Owner approval: 2026-11-08, spec 028, “Placement”: opt-in route in SKILL.md;
+  “Sample source (v1)”: only pasted or named text, no connectors;
+  “Profile location”: user-chosen Orrery, Obsidian or Markdown path.
+- Reason: allow users to save and reuse named voice profiles without automatic persistence.
+- Modified data constraints: explicit save request, user-chosen store and no memory/history search;
+  personal preferences remain in the user's own profile, never in calibration/LOG.md.
+- No core principle text changed.
 - No principles, meaning safeguards, protected spans or offline constraints removed.
+- Five meaning-preservation chốt and the existing Jev contract remain unchanged.
 - No template/command source changes. Feature implementation is a separate Spec Kit phase.
-- Deferred intent: implement the approved voice-intent workflow through speckit-specify/plan/tasks/implement.
+- Deferred intent: implement the approved voice-profile route through spec 028 tasks.
 -->
 # Constitution của vi-humanizer
 
@@ -59,6 +64,12 @@ không phải *pass*. Tích hợp tùy chọn MUST NOT làm gói skill phụ thu
 - `metadata.version` trong `SKILL.md`, mục lịch sử mới nhất của `README.md` và
   `.claude-plugin/plugin.json` MUST giống nhau.
 - Giới hạn dòng giữ nguyên: `SKILL.md` 550, profile blog 320, profile kỹ thuật 220.
+- Tuyến hồ sơ giọng trong `SKILL.md` MAY tạo và dùng lại hồ sơ có tên từ văn bản người dùng
+  dán hoặc chỉ định trong tác vụ; v1 MUST NOT lấy mẫu qua connector. Hồ sơ MUST chỉ được lưu
+  khi người dùng yêu cầu rõ, tại kho hoặc đường dẫn do họ chọn. Skill MUST NOT tự tìm hồ sơ
+  hoặc mẫu trong memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định. Ngoại lệ lưu
+  này MUST giữ nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm
+  trong hồ sơ riêng của đúng người dùng, MUST NOT ghi vào `calibration/LOG.md`.
 - Production evaluator MUST chỉ gửi phần văn bản cần cho phán đoán. Raw prose MUST NOT xuất
   hiện trong telemetry hoặc báo cáo health. Lọc credential không thay thế cho phân loại dữ liệu
   và tối thiểu hóa trường gửi đi.
@@ -93,4 +104,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.1.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-10-28
+**Version**: 2.2.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-08

@@ -98,7 +98,7 @@ Owner đối chiếu các dữ kiện này với câu hỏi thực tế; không 
 |---|---|
 | Đọc dữ liệu cá nhân | Văn bản, yêu cầu, ngữ cảnh và mẫu giọng chủ động cung cấp có thể chứa dữ liệu cá nhân; chỉ dùng phần cần cho biên tập |
 | File | Agent có thể sửa file người dùng giao theo phạm vi/quyền host; không tự khai thác memory, lịch sử hoặc file ngoài phạm vi |
-| Lưu dữ liệu | Không có backend/telemetry và không tự lưu prose/hồ sơ; ghi file theo yêu cầu hoặc bảo trì được cấp quyền vẫn có thể tạo dữ liệu lưu trên host |
+| Lưu dữ liệu | Không có backend/telemetry và không tự lưu prose/hồ sơ (hồ sơ giọng chỉ lưu khi người dùng yêu cầu rõ, tại nơi họ chọn); ghi file theo yêu cầu hoặc bảo trì được cấp quyền vẫn có thể tạo dữ liệu lưu trên host |
 | Retention/deletion | Không nhận prose qua backend maintainer; Claude, file host và issue công khai có cơ chế lưu/xóa riêng, không hứa zero retention cho các bên đó |
 | Gửi dịch vụ khác | Core không gửi tới maintainer. TypeSafe tùy chọn có thể nhận đoạn gốc/candidate/ngữ cảnh tối thiểu khi được phép, qua skill chính chủ đã có |
 | Dữ liệu bị hạn chế | Dừng đầu vào chứa PCI, PHI, định danh chính phủ hoặc secret xác thực; yêu cầu bản đã che/giả lập |

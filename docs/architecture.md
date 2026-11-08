@@ -22,9 +22,11 @@ references/han-viet-thuan-viet.md             bảng tra và điều kiện ph�
 references/bang-tra-cuu.md                    bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán
 references/bo-giai-phong-cach.md              bộ giải ngữ cảnh, precedence và registry đường dẫn
 references/giu-giong-tu-mau.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa
+references/ho-so-giong.md                     tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên
+references/phan-tich-giong-viet.md            hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ
 references/typesafe-advisor.md                workflow tự động, input và ranh giới Jev
-calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung
-calibration/ca-kiem-thu.md                    ca kiểm thử chạy tay cho từng pattern
+calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung (chỉ trong repo, không vào gói)
+calibration/ca-kiem-thu.md                    ca kiểm thử chạy tay cho từng pattern (chỉ trong repo, không vào gói)
 agents/openai.yaml                            tên hiển thị và lời gọi mặc định
 assets/                                       icon và wordmark SVG sáng/tối
 .codex-plugin/plugin.json                     manifest và nhận diện plugin Codex
@@ -74,6 +76,7 @@ khi viết mới vẫn do host thực hiện. Ca EW01–EW16 là kỳ vọng th�
 
 
 Tuyến mặc định không nạp catalog, resolver hoặc schema evaluator. Sửa nhỏ chỉ tra nghi vấn;
-làm bài thêm workflow và một card; có mẫu thêm guide. Resolver chỉ khi mâu thuẫn/pha chức năng,
-guide nguồn chỉ khi chọn nguồn. Trạng thái key/capability kiểm từ core trước; đầy đủ điều kiện
-mới đọc hợp đồng Jev. Tiết kiệm ký tự hướng dẫn chưa chứng minh giảm billing token hoặc tăng chất lượng.
+làm bài thêm workflow và một card; có mẫu thêm guide; tuyến hồ sơ giọng chỉ nạp khi có yêu cầu rõ ràng.
+Resolver chỉ khi mâu thuẫn/pha chức năng, guide nguồn chỉ khi chọn nguồn. Trạng thái key/capability kiểm
+từ core trước; đầy đủ điều kiện mới đọc hợp đồng Jev. Tiết kiệm ký tự hướng dẫn chưa chứng minh giảm billing
+token hoặc tăng chất lượng.
