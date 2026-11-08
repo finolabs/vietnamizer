@@ -4,7 +4,7 @@
 
 ## Lịch sử phiên bản
 
-### Chưa phát hành
+### 0.13.4 (08/11/2026)
 
 Gói phát hành không còn chứa `calibration/` (nhật ký bằng chứng và ca kiểm thử tay của maintainer, khoảng 140KB, không nạp lúc chạy). `scripts/validate-package.py` vẫn kiểm inventory và quét bí mật `calibration/` trong repo nguồn và từ chối mọi payload phát hành có thư mục này; file `.skill` nén giảm khoảng 20%.
 
@@ -21,6 +21,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn, gói phát hành bỏ `calibration/`, phân phối qua catalog `finolabs/plugins`; giữ 55 pattern, runtime Jev và năm chốt.
 - **0.13.3** — Rút core thành bộ điều phối, đọc catalog/workflow/mẫu/evaluator theo tác vụ; giữ quy trình ý trước câu và 55 pattern. Thêm review-only, tách nghĩa/cách viết và harness offline gắn review với candidate hiện tại. Giữ API/runtime, metadata và gói cài đồng bộ; chưa có A/B tiếng Việt hoặc actual-read trace chứng minh cải thiện chất lượng/token.
 
 ### Chi tiết thay đổi trong 0.13.3
