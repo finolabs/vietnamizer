@@ -194,3 +194,7 @@ Không dùng quan sát của một cá nhân để âm thầm điều chỉnh sk
 - Repo chưa có bộ ngữ liệu đủ để đặt ngưỡng tần suất cho các dấu hiệu. Số lần xuất hiện chỉ dùng để tìm chỗ cần đọc kỹ hơn.
 - Một số nguồn trong `docs/sources.md` vẫn là nguồn trình bày lại. Xem mục “Nguồn còn thiếu” trước khi nâng mức độ tin cậy.
 - Skill không tự kiểm tra được những phát biểu về cấu trúc repo. Mỗi khi thêm, đổi tên hoặc xoá file, phải đối chiếu lại `README.md` và `AGENTS.md` với cây thư mục thật.
+
+## Agent skills
+
+This repository uses the finolabs-vibecode skills. Routing on: use `fnl-coding-router`. Use Spec Kit. Pull requests follow `fnl-review-gate` "Pull requests"; reviewers may post code/security reviews. Help: `/fnl-ask`.
