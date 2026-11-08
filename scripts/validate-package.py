@@ -89,6 +89,8 @@ REFERENCE_FILES = {
     "references/bang-tra-cuu.md",
     "references/bo-giai-phong-cach.md",
     "references/giu-giong-tu-mau.md",
+    "references/ho-so-giong.md",
+    "references/phan-tich-giong-viet.md",
     "references/han-viet-thuan-viet.md",
     "references/typesafe-advisor.md",
 }

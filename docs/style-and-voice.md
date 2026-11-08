@@ -19,7 +19,8 @@ Hãy sửa đoạn dưới theo cùng cách xưng hô, nhịp câu và mức đ�
 Mẫu văn chỉ được ưu tiên đối với thói quen xuất hiện nhất quán, như cách xưng hô, nhịp câu, cách chêm tiếng Anh hoặc dùng dấu câu. Nó không hợp thức hoá lỗi ngôn ngữ rõ ràng và không vượt qua năm quy tắc chốt chặn trong `SKILL.md`.
 
 Có thể dán một hồ sơ phong cách ngắn trong yêu cầu thay cho mẫu văn. Hồ sơ chỉ dùng cho đúng người
-và phạm vi đã nêu; yêu cầu hiện tại được ưu tiên. Skill không tự tìm hay lưu hồ sơ ngoài tác vụ.
+và phạm vi đã nêu; yêu cầu hiện tại được ưu tiên. Skill không tự tìm hồ sơ ngoài tác vụ hay tự lưu hồ sơ;
+việc tạo và lưu hồ sơ có tên chỉ diễn ra khi người dùng yêu cầu rõ qua tuyến opt-in.
 
 ### Chọn phong cách theo mục đích
 
@@ -97,7 +98,7 @@ giọng tự viết không có AI. Không có mẫu và không yêu cầu theo m
 không khẳng định đã bắt chước đúng người. Từ source 0.13.3, workflow có nhánh viết mới từ ý được giao cùng các bước tách ý, chọn giọng và
 kiểm lại như biên tập. Chưa có pilot so quy trình mới/cũ hoặc xác nhận viết mới khớp giọng.
 
-Không tự truy xuất hoặc cập nhật hồ sơ trong HOME, memory hay nguồn ngoài tác vụ. Chỉ tạo bản tóm tắt giọng để người dùng xem/lưu khi họ yêu cầu; viết mới hay biên tập đều không tự tạo trải nghiệm hay quan điểm thay người viết. Chưa có benchmark độc lập chứng minh chất lượng giữ giọng của bản hiện tại.
+Không tự truy xuất hoặc cập nhật hồ sơ trong HOME, memory hay nguồn ngoài tác vụ. Việc tạo và lưu hồ sơ chỉ thực hiện khi người dùng yêu cầu rõ qua tuyến hồ sơ giọng; viết mới hay biên tập đều không tự tạo trải nghiệm hay quan điểm thay người viết. Chưa có benchmark độc lập chứng minh chất lượng giữ giọng của bản hiện tại.
 
 ## Dùng giọng để khai triển từ ý
 
@@ -128,8 +129,19 @@ Người dùng có thể tự giữ một hồ sơ và dán vào yêu cầu. H�
 - phạm vi áp dụng cùng một ví dụ ngắn.
 
 Skill chỉ dùng hồ sơ được cung cấp trong tác vụ, không tự truy xuất Claude memory, lịch sử chat
-hoặc dữ liệu khác, cũng không tự ghi hồ sơ. Không dùng mẫu của người này cho người khác;
+hoặc dữ liệu khác, và không tự lưu hồ sơ nếu không có yêu cầu rõ. Không dùng mẫu của người này cho người khác;
 yêu cầu hiện tại luôn được ưu tiên.
+
+### Tuyến hồ sơ giọng cá nhân (opt-in)
+
+Khi người dùng yêu cầu học hoặc tạo hồ sơ phong cách viết của mình, `vietnamizer` kích hoạt tuyến opt-in
+theo [`references/ho-so-giong.md`](../references/ho-so-giong.md) và [`references/phan-tich-giong-viet.md`](../references/phan-tich-giong-viet.md):
+
+- **Nguồn mẫu:** chỉ đọc văn bản do người dùng dán hoặc file chỉ định trong tác vụ sau khi hỏi và nhận được sự đồng ý rõ ràng. Không tự tìm trong memory, lịch sử chat, hòm thư hay các đầu nối ngoài.
+- **Phân tích và bảo vệ dữ liệu:** phân tích các chiều tiếng Việt quan sát được (xưng hô theo quan hệ, hư từ/tiểu từ, chêm tiếng Anh, dấu câu và số, nhịp điệu, mở/kết) kèm trích đoạn minh họa ngắn hoặc ước lượng số lần xuất hiện. Agent được chỉ dẫn bỏ tên riêng, số điện thoại, email, thông tin tài chính và dữ liệu nhạy cảm khỏi hồ sơ; v1 không có bộ lọc bằng mã, nên bước bảo vệ thực sự là bạn đọc toàn bộ dự thảo trước khi lưu.
+- **Duyệt trước khi lưu:** luôn hiển thị trọn vẹn dự thảo hồ sơ cho người dùng xem và chỉnh sửa.
+- **Lưu theo yêu cầu tại nơi người dùng chọn:** chỉ lưu khi người dùng yêu cầu rõ ràng. Skill phát hiện công cụ Orrery hoặc Obsidian từ danh sách công cụ sẵn có của agent để gợi ý; nếu không có thì hỏi đường dẫn file Markdown và đề xuất `~/.agents/vietnamizer/profiles`. Tuyệt đối không tự tạo thư mục trước khi xác nhận. Người dùng có thể lưu nhiều hồ sơ với các tên khác nhau cho từng kênh viết.
+- **Tái sử dụng:** khi biên tập hoặc viết mới, người dùng chỉ định tên hồ sơ đã lưu (hồ sơ dán thẳng trong yêu cầu đi tuyến “Theo mẫu”). Skill chỉ đọc đúng hồ sơ đó, không tự tra cứu, liệt kê hay gộp các hồ sơ. Yêu cầu trong lượt hiện tại luôn được ưu tiên hơn hồ sơ đã lưu; năm quy tắc chốt chặn trong `SKILL.md` luôn giữ nguyên giá trị.
 
 ### `calibration/LOG.md`
 

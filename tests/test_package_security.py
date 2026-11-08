@@ -477,6 +477,8 @@ class PackageSecurityTest(unittest.TestCase):
                 self.assertEqual(names, set())
                 self.assertIn(prefix + "references/typesafe-advisor.md", all_names)
                 self.assertIn(prefix + "references/giu-giong-tu-mau.md", all_names)
+                self.assertIn(prefix + "references/ho-so-giong.md", all_names)
+                self.assertIn(prefix + "references/phan-tich-giong-viet.md", all_names)
                 self.assertFalse(any("__pycache__" in name or name.startswith(prefix + "tests/") for name in all_names))
                 self.assertFalse(any(name.startswith(prefix + "guard_eval/") or name.startswith(prefix + "eval/") for name in all_names))
 

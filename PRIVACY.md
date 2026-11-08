@@ -22,10 +22,41 @@ giới hạn này. Ví dụ giả lập hoặc nội dung nói chung về sức 
 chủ đề. Việc biên tập không cần thu thập thêm dữ liệu cá nhân nhạy cảm; ưu tiên bản đã ẩn danh.
 
 Người dùng có thể không cung cấp mẫu giọng, từ chối thẩm định bên ngoài hoặc dùng bản giả lập
-mà vẫn dùng được quy trình cốt lõi. Skill không tự lưu phản hồi hoặc sửa quy tắc: ghi nhật ký
-hiệu chuẩn cần một tác vụ bảo trì và quyền ghi file cụ thể. Xóa hội thoại hoặc file được host
+mà vẫn dùng được quy trình cốt lõi. Skill không tự lưu phản hồi hoặc sửa quy tắc; hồ sơ giọng chỉ
+được lưu khi người dùng yêu cầu rõ theo tuyến bên dưới. Ghi nhật ký hiệu chuẩn cần một tác vụ
+bảo trì và quyền ghi file cụ thể. Xóa hội thoại hoặc file được host
 lưu phải thực hiện qua cơ chế của host; Vietnamizer không điều khiển hay bảo đảm thời hạn xóa
 của nền tảng đó.
+
+## Hồ sơ giọng
+
+Tuyến hồ sơ giọng chỉ chạy khi người dùng yêu cầu tạo, cập nhật hoặc áp dụng hồ sơ giọng.
+Trước khi đọc mẫu, skill nêu rõ nguồn sẽ đọc và chờ người dùng đồng ý. Mẫu chỉ là văn bản người
+dùng dán hoặc file người dùng chỉ định trong tác vụ; skill không tự tìm mẫu trong memory, lịch
+sử, email, connector hay kho lưu trữ. Khi áp dụng, skill chỉ đọc hồ sơ được người dùng dán hoặc
+chỉ định, không tự liệt kê hay chọn hồ sơ.
+
+Hồ sơ có thể gồm tên do người dùng chọn, ngày cập nhật, số mẫu theo kênh, đặc tính giọng, cách
+viết theo kênh và người đọc, điều nên/không nên dùng, cùng căn cứ ngắn đã loại dữ liệu cá nhân.
+Hồ sơ không được chứa dữ liệu cá nhân hoặc bí mật: tên người, thông tin liên hệ, mã định danh,
+chi tiết sức khỏe/tài chính, điều khoản giao dịch, công việc chưa công bố hay nhận xét về người
+khác. Agent được chỉ dẫn bỏ các dữ liệu này, nhưng v1 không có bộ lọc bằng mã: người dùng đọc toàn bộ dự thảo trước khi lưu là bước kiểm chính. Hồ sơ chỉ giữ trích đoạn ngắn đã lược chi tiết riêng, không chép nguyên mẫu.
+
+Skill hiển thị toàn bộ hồ sơ trước khi lưu; chỉ lưu hoặc cập nhật khi người dùng yêu cầu rõ.
+Người dùng đặt tên từng hồ sơ và chọn Orrery, Obsidian hoặc đường dẫn file Markdown. Skill chỉ
+đề nghị Orrery/Obsidian nếu thấy công cụ tương ứng trong danh sách công cụ của agent; nếu không
+có, skill hỏi đường dẫn và gợi ý `~/.agents/vietnamizer/profiles`. Tạo thư mục và ghi đè một hồ sơ đã có cũng cần người dùng
+đồng ý riêng; đích là file chỉ dẫn của agent bị từ chối, và đích trong cây Git cần người dùng xác nhận rõ. Không ghi được thì báo lỗi, không tự lưu sang nơi khác.
+
+Người dùng có thể đọc, sửa hoặc xóa file/ghi chú hồ sơ tại nơi đã chọn; bản người dùng sửa là
+bản chuẩn. Skill không tự cập nhật từ phản hồi, tự nạp hồ sơ ở phiên sau hay ghi hồ sơ vào nhật
+ký hiệu chuẩn chung. Nếu cần bản mẫu tạm ngoài hội thoại, skill đặt ngoài cây thư mục Git và
+xóa khi quy trình kết thúc hoặc người dùng dừng.
+
+Tạo hồ sơ không gọi Jev. Khi áp dụng hồ sơ để biên tập, chỉ các nét liên quan đã lọc dữ liệu riêng được đưa vào trường
+`register` làm ngữ cảnh phong cách theo [hợp đồng Jev hiện có](references/typesafe-advisor.md),
+cùng đầu vào biên tập được phép gửi. Việc gửi vẫn cần key do host cấp và quyền gửi dữ liệu;
+tuyến này không thêm quyền gửi hay thay đổi hợp đồng Jev.
 
 ## TypeSafe tự động khi host cấp key và quyền gửi
 
@@ -47,8 +78,9 @@ lưu dữ liệu. Người dùng cần kiểm chính sách dịch vụ trước 
 thẩm định và tiếp tục dùng core. Hướng dẫn nằm trong
 [ranh giới TypeSafe](references/typesafe-advisor.md).
 
-Skill chỉ dùng mẫu giọng hoặc hồ sơ người dùng chủ động cung cấp trong tác vụ, không tự truy
-xuất hay cập nhật memory. Việc lưu hội thoại hoặc file bởi host vẫn theo chính sách host.
+Ngoài tuyến hồ sơ giọng được người dùng yêu cầu rõ ở trên, skill chỉ dùng mẫu giọng hoặc hồ sơ
+người dùng chủ động cung cấp trong tác vụ, không tự truy xuất hay cập nhật memory. Việc lưu hội
+thoại hoặc file bởi host vẫn theo chính sách host.
 
 ## Issue, pull request và ca sửa sai
 

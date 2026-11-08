@@ -38,13 +38,40 @@ cách diễn đạt; không mặc định phải thay mọi câu. Bản tách ý
 Source 0.13.3 đóng gói quy trình mới; chưa có pilot xác nhận nó tốt hơn
 payload 0.13.2 đã phát hành trước cập nhật này.
 
+### Tuyến hồ sơ giọng cá nhân (opt-in)
+
+Khi muốn tạo hồ sơ phong cách viết để tái sử dụng, người dùng yêu cầu rõ và cung cấp mẫu văn do chính mình viết:
+
+```text
+Dùng Vietnamizer phân tích các mẫu văn tôi tự viết dưới đây để tạo hồ sơ giọng cá nhân:
+- Kênh: bài chia sẻ chuyên môn trên LinkedIn.
+- Người đọc: đồng nghiệp và kỹ sư trong ngành.
+Sau khi phân tích xong, hãy hiển thị hồ sơ để tôi duyệt trước khi lưu.
+
+<writing_samples>
+[Dán các đoạn văn bạn tự viết vào đây]
+</writing_samples>
+```
+
+Skill sẽ hỏi xác nhận phạm vi đọc và nội dung dự kiến tạo trước khi phân tích mẫu, hiển thị trọn vẹn dự thảo hồ sơ và chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn (Orrery, Obsidian hoặc file Markdown tại `~/.agents/vietnamizer/profiles`). Để sử dụng hồ sơ đã lưu khi biên tập hoặc viết mới, chỉ cần nêu tên hồ sơ hoặc dán hồ sơ vào yêu cầu; skill chỉ đọc đúng hồ sơ đó và yêu cầu hiện tại luôn được ưu tiên.
+
 ### Đọc ít theo đúng việc
 
 Chỉ review vẫn đọc năm chốt trước nhận xét; nếu review cả bài/giọng theo mẫu thì đọc đúng workflow/card/guide như tuyến tương ứng. Kết luận nghĩa và cách viết riêng, không tự sửa.
 
+| Khi cần | Bắt buộc đọc | Không nạp mặc định |
+|---|---|---|
+| Sửa một cụm/câu, rà cục bộ | Chỉ catalog đúng nghi vấn; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
+| Biên tập toàn bài hoặc viết từ brief/outline | `references/quy-trinh-viet.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
+| Theo mẫu được giao | Thêm `references/giu-giong-tu-mau.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
+| Học, tạo, cập nhật, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ | `references/ho-so-giong.md`; khi áp dụng, đọc thêm `references/giu-giong-tu-mau.md` | Không nạp tuyến này cho yêu cầu biên tập thông thường |
+| Pha chức năng/mâu thuẫn | Mới đọc `references/bo-giai-phong-cach.md` | Giữ nguyên khi lựa chọn đã rõ |
+| Jev evaluator | Core kiểm capability/key trước, có key và quyền gửi mới nạp hợp đồng evaluator | Khi host chưa cấp key hoặc quyền gửi |
+
 - Sửa cụm/câu: core và catalog đúng nghi vấn; không cần workflow bài, resolver/profile/card hoặc guide mẫu.
 - Biên tập bài/viết từ brief: thêm `references/quy-trinh-viet.md` và một card được core chọn trực tiếp.
 - Theo mẫu: thêm `references/giu-giong-tu-mau.md`; không tự đọc danh mục nguồn khi mẫu đã đủ.
+- Hồ sơ giọng (opt-in): thêm `references/ho-so-giong.md` khi người dùng yêu cầu rõ việc học, tạo, cập nhật, lưu hoặc áp dụng hồ sơ giọng cá nhân (khi áp dụng nạp thêm `references/giu-giong-tu-mau.md`); không nạp cho yêu cầu biên tập thông thường.
 - Pha chức năng/mâu thuẫn: mới đọc `references/bo-giai-phong-cach.md`.
 - Jev: core kiểm capability/key trước, có key và quyền gửi mới nạp hợp đồng evaluator.
 
