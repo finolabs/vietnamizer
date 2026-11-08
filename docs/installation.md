@@ -167,7 +167,7 @@ cùng version để ghi đè asset đã phát hành. Xem [quy trình đóng gói
 
 ### Cài thủ công
 
-Chép `LICENSE`, `SKILL.md` cùng `profiles/`, `references/`, `calibration/`, `agents/`, `assets/` và `jev/` vào
+Chép `LICENSE`, `SKILL.md` cùng `profiles/`, `references/`, `agents/`, `assets/` và `jev/` vào
 thư mục skill của agent:
 
 ```bash

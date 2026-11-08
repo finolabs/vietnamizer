@@ -23,8 +23,8 @@ references/bang-tra-cuu.md                    bảng tra hư từ, loại từ, 
 references/bo-giai-phong-cach.md              bộ giải ngữ cảnh, precedence và registry đường dẫn
 references/giu-giong-tu-mau.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa
 references/typesafe-advisor.md                workflow tự động, input và ranh giới Jev
-calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung
-calibration/ca-kiem-thu.md                    ca kiểm thử chạy tay cho từng pattern
+calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung (chỉ trong repo, không vào gói)
+calibration/ca-kiem-thu.md                    ca kiểm thử chạy tay cho từng pattern (chỉ trong repo, không vào gói)
 agents/openai.yaml                            tên hiển thị và lời gọi mặc định
 assets/                                       icon và wordmark SVG sáng/tối
 .codex-plugin/plugin.json                     manifest và nhận diện plugin Codex

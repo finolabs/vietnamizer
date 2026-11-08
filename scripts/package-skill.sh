@@ -33,7 +33,7 @@ CANDIDATE_ORG_ARCHIVE="$ARCHIVE_STAGE/vietnamizer-claude-org.zip"
 RELEASE_ORG_ARCHIVE="$DIST/vietnamizer-claude-org.zip"
 
 cp -P "$ROOT/SKILL.md" "$ROOT/LICENSE" "$STAGE/"
-cp -RP "$ROOT/profiles" "$ROOT/references" "$ROOT/calibration" "$STAGE/"
+cp -RP "$ROOT/profiles" "$ROOT/references" "$STAGE/"
 cp -RP "$ROOT/agents" "$ROOT/assets" "$ROOT/jev" "$STAGE/"
 python3 "$ROOT/scripts/validate-package.py" --payload-root "$STAGE"
 

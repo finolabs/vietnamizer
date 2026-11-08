@@ -6,6 +6,8 @@
 
 ### Chưa phát hành
 
+Gói phát hành không còn chứa `calibration/` (nhật ký bằng chứng và ca kiểm thử tay của maintainer, khoảng 140KB, không nạp lúc chạy). `scripts/validate-package.py` vẫn kiểm inventory và quét bí mật `calibration/` trong repo nguồn và từ chối mọi payload phát hành có thư mục này; file `.skill` nén giảm khoảng 20%.
+
 Phân phối qua catalog chung `finolabs/plugins` (PR #30, sau 0.13.3): thêm manifest Antigravity, bỏ
 marketplace riêng của repo. Selector cài đổi từ `vietnamizer@vietnamizer` sang `vietnamizer@finolabs`;
 cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). Nội dung skill không đổi.
