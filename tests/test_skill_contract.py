@@ -82,6 +82,26 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
 
+    def test_trait_boundary_and_open_points_rules(self) -> None:
+        guide = read("references/phan-tich-giong-viet.md")
+        for phrase in (
+            "Không có căn cứ thì ghi `ranh giới: chưa rõ`",
+            "hồ sơ `schema: 1` cũ không có ranh giới vẫn hợp lệ",
+            "Đề xuất chỉ để người dùng xác nhận hoặc bác; nó không phải nét đã xác lập",
+            "Không tạo điểm chỉ để mục có nội dung",
+            "## Điểm chưa quyết - <Điểm cần chốt>",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, guide)
+        route = read("references/ho-so-giong.md")
+        for phrase in (
+            "ranh giới là trần, không phải mức cần đạt",
+            "Không áp đề xuất trong `Điểm chưa quyết`",
+            "bỏ điểm khỏi `Điểm chưa quyết`",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, route)
+
     def test_consistency_guide_does_not_override_consistent_variants(self) -> None:
         text = read("references/thuat-ngu-va-nhat-quan.md")
         for phrase in (
