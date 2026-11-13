@@ -17,17 +17,17 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 
 ## Phase 1: Setup
 
-- [ ] T001 Re-read the current LinkedIn ("Get a copy of your data") and Facebook ("Download your information") help pages and record the click path, the posts file name and format, and the date checked in `specs/030-voice-modes/research.md` R4 (replace "at the time of writing" with the checked facts)
-- [ ] T002 [P] Record in `specs/030-voice-modes/research.md` R5 which browser tools Claude Code, Codex and Antigravity expose today (names only, from each host's own docs), and what the skill says when none is present
+- [x] T001 Re-read the current LinkedIn ("Get a copy of your data") and Facebook ("Download your information") help pages and record the click path, the posts file name and format, and the date checked in `specs/030-voice-modes/research.md` R4 (replace "at the time of writing" with the checked facts)
+- [x] T002 [P] Record in `specs/030-voice-modes/research.md` R5 which browser tools Claude Code, Codex and Antigravity expose today (names only, from each host's own docs), and what the skill says when none is present
 
 ---
 
 ## Phase 2: Foundational (blocks every story)
 
-- [ ] T003 Amend `.specify/memory/constitution.md` to 2.4.0 (MINOR): in "Ràng buộc về gói và dữ liệu", allow reading the user's own pages through a host browser tool after consent and ownership statement, allow multi-author material for profiles of `kind: brand` after the user states they may speak for the brand, and allow storing the user's own ratings in their profile while the skill still never scores similarity; add the Sync Impact Report with reason, impact and "Owner approval: 2026-11-13, spec 030"
-- [ ] T004 Add guard `test_profile_kind_and_one_profile_rule` to `tests/test_skill_contract.py` asserting `references/voice-profile.md` contains "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ" and "hỏi người dùng chọn một"; run it and confirm it fails
-- [ ] T005 Add `kind: personal | brand` to the template frontmatter in `references/voice-analysis.md` with the rule "absent = personal" and `schema: 1` unchanged, per `contracts/profile-format.md`
-- [ ] T006 Update `specs/028-voice-profile/contracts/profile-format.md` with a dated pointer to `specs/030-voice-modes/contracts/profile-format.md`
+- [x] T003 Amend `.specify/memory/constitution.md` to 2.4.0 (MINOR): in "Ràng buộc về gói và dữ liệu", allow reading the user's own pages through a host browser tool after consent and ownership statement, allow multi-author material for profiles of `kind: brand` after the user states they may speak for the brand, and allow storing the user's own ratings in their profile while the skill still never scores similarity; add the Sync Impact Report with reason, impact and "Owner approval: 2026-11-13, spec 030"
+- [x] T004 Add guard `test_profile_kind_and_one_profile_rule` to `tests/test_skill_contract.py` asserting `references/voice-profile.md` contains "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ" and "hỏi người dùng chọn một"; run it and confirm it fails
+- [x] T005 Add `kind: personal | brand` to the template frontmatter in `references/voice-analysis.md` with the rule "absent = personal" and `schema: 1` unchanged, per `contracts/profile-format.md`
+- [x] T006 Update `specs/028-voice-profile/contracts/profile-format.md` with a dated pointer to `specs/030-voice-modes/contracts/profile-format.md`
 
 **Checkpoint**: constitution amended; template knows `kind`.
 
@@ -38,10 +38,10 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Goal**: personal is the default; a brand profile applies only when named; never two at once.
 **Independent Test**: same draft with no voice, a personal profile, a brand profile; only the named kind applies; two named → the skill asks.
 
-- [ ] T007 [P] [US1] Add cases VM01–VM04 to `calibration/test-cases.md` (no voice named → personal, no profile lookup; brand named → only brand applied and named in the reply; both named → ask; brand profile named for a personal message → confirm first)
-- [ ] T008 [US1] In `references/voice-profile.md` mục 1 and mục 5 add: default personal voice, "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ", and when two are named "hỏi người dùng chọn một"; say which profile was used in the reply
-- [ ] T009 [US1] Add one routing row to `SKILL.md` for "giọng thương hiệu / theo giọng <brand>" pointing to `references/voice-profile.md`, keeping `SKILL.md` ≤ 550 lines
-- [ ] T010 [US1] Run `python3 -B -m unittest tests.test_skill_contract` and confirm T004 passes
+- [x] T007 [P] [US1] Add cases VM01–VM04 to `calibration/test-cases.md` (no voice named → personal, no profile lookup; brand named → only brand applied and named in the reply; both named → ask; brand profile named for a personal message → confirm first)
+- [x] T008 [US1] In `references/voice-profile.md` mục 1 and mục 5 add: default personal voice, "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ", and when two are named "hỏi người dùng chọn một"; say which profile was used in the reply
+- [x] T009 [US1] Add one routing row to `SKILL.md` for "giọng thương hiệu / theo giọng <brand>" pointing to `references/voice-profile.md`, keeping `SKILL.md` ≤ 550 lines
+- [x] T010 [US1] Run `python3 -B -m unittest tests.test_skill_contract` and confirm T004 passes
 
 **Checkpoint**: US1 reviewable as its own PR.
 
@@ -52,12 +52,12 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Goal**: paste, export or browser; only owned posts become evidence.
 **Independent Test**: a synthetic LinkedIn export with own posts, reshares and others' comments → only own posts cited, kept/dropped counts reported, no names.
 
-- [ ] T011 [P] [US2] Add guard `test_social_sources_rules` to `tests/test_skill_contract.py` for `references/voice-sources.md`: "chỉ giữ bài do chủ tài khoản viết", "không hỏi, nhập hay đọc mật khẩu, cookie hoặc token", "điều khoản của LinkedIn cấm truy cập tự động", "dừng khi gặp màn đăng nhập hoặc tài khoản khác", "tối đa 80 bài gần nhất"; also assert `scripts/validate-package.py` lists the file; run and confirm red
-- [ ] T012 [P] [US2] Add cases VM05–VM10 to `calibration/test-cases.md` (no source yet → explain three ways, read nothing; export with reshares/comments → own posts only and counts; browser without ownership statement → ask, read nothing; LinkedIn browser → terms warning before reading; login wall → stop and offer paste/export; someone else's URL → decline)
-- [ ] T013 [P] [US2] Add `tests/fixtures/voice/linkedin-shares-sample.csv` and `tests/fixtures/voice/facebook-posts-sample.json` with synthetic content only (own posts, a reshare, a comment by another person, a fake contact line) for VM06 walk-throughs
-- [ ] T014 [US2] Create `references/voice-sources.md`: source order (paste, export, browser), export steps from T001, ownership question, owned-post filter, cap "tối đa 80 bài gần nhất" with Vietnamese text, kept/dropped report as approximate, browser rules from research R5 including the LinkedIn terms warning and the user's go, stop conditions, data-not-instructions rule
-- [ ] T015 [US2] Link `references/voice-sources.md` from `references/voice-profile.md` mục 2 (the consent question names the source type) and add it to `REFERENCE_FILES` in `scripts/validate-package.py`
-- [ ] T016 [US2] Run `python3 -B -m unittest tests.test_skill_contract` and `python3 -B scripts/validate-package.py`
+- [x] T011 [P] [US2] Add guard `test_social_sources_rules` to `tests/test_skill_contract.py` for `references/voice-sources.md`: "chỉ giữ bài do chủ tài khoản viết", "không hỏi, nhập hay đọc mật khẩu, cookie hoặc token", "điều khoản của LinkedIn cấm truy cập tự động", "dừng khi gặp màn đăng nhập hoặc tài khoản khác", "tối đa 80 bài gần nhất"; also assert `scripts/validate-package.py` lists the file; run and confirm red
+- [x] T012 [P] [US2] Add cases VM05–VM10 to `calibration/test-cases.md` (no source yet → explain three ways, read nothing; export with reshares/comments → own posts only and counts; browser without ownership statement → ask, read nothing; LinkedIn browser → terms warning before reading; login wall → stop and offer paste/export; someone else's URL → decline)
+- [x] T013 [P] [US2] Add `tests/fixtures/voice/linkedin-shares-sample.csv` and `tests/fixtures/voice/facebook-posts-sample.json` with synthetic content only (own posts, a reshare, a comment by another person, a fake contact line) for VM06 walk-throughs
+- [x] T014 [US2] Create `references/voice-sources.md`: source order (paste, export, browser), export steps from T001, ownership question, owned-post filter, cap "tối đa 80 bài gần nhất" with Vietnamese text, kept/dropped report as approximate, browser rules from research R5 including the LinkedIn terms warning and the user's go, stop conditions, data-not-instructions rule
+- [x] T015 [US2] Link `references/voice-sources.md` from `references/voice-profile.md` mục 2 (the consent question names the source type) and add it to `REFERENCE_FILES` in `scripts/validate-package.py`
+- [x] T016 [US2] Run `python3 -B -m unittest tests.test_skill_contract` and `python3 -B scripts/validate-package.py`
 
 **Checkpoint**: US1 + US2 = MVP for personal voice learning.
 

@@ -104,12 +104,14 @@ là phần đầu, không có đề mục riêng.
 Điền nội dung bằng tiếng Việt ở ngôi thứ ba, mô tả “người viết” hoặc “tác giả”; hồ sơ là dữ liệu
 tham chiếu, không phải chỉ dẫn ra lệnh cho agent. Mỗi mục nên/không nên cũng phải có đủ bốn trường
 của một nét. Một lời cấm chỉ được mô tả khi có căn cứ, không suy từ sự vắng mặt trong mẫu.
+Hồ sơ mới luôn ghi `kind`; hồ sơ cũ không có `kind` đọc là hồ sơ cá nhân; giá trị `kind` lạ thì báo giá
+trị đó và hỏi người dùng, không áp hồ sơ.
 
 ```markdown
 ---
 type: vietnamizer-voice-profile
 name: <tên do người dùng chọn, không chứa dữ liệu riêng>
-kind: <personal hoặc brand; bỏ trống là personal>
+kind: <personal hoặc brand>
 schema: 1
 language: vi
 updated: <YYYY-MM-DD>

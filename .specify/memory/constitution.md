@@ -10,6 +10,12 @@ Sync Impact Report
   an ownership statement; a profile of `kind: brand` may draw on material by several authors after
   the user states they may speak for the brand; the user's own ratings may be stored in their
   profile, while the skill never scores voice similarity itself.
+- Not yet used: no shipped reference relies on the brand multi-author allowance or on stored
+  ratings; they wait for spec 030 US3 (brand voice) and US4 (rating). Until US3 ships, learning a
+  brand voice is not supported; only applying a brand profile the user names is.
+- Browser rules aligned with `references/voice-sources.md` (2026-11-13 review): no captcha, no
+  like/comment/post/send, no account settings change; stop on a login wall, another account, a
+  captcha or a rate-limit page.
 - Principle V unchanged: the package still ships no network code; the browser path uses a host
   tool and the route works without it.
 - No meaning-preservation chốt, protected span or pattern changed.
@@ -69,7 +75,9 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   dán hoặc chỉ định trong tác vụ, từ file export nền tảng người dùng tự đưa, hoặc từ trang của
   chính người dùng qua công cụ trình duyệt host sẵn có, sau câu đồng ý đọc và lời khẳng định chủ
   tài khoản; MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, và MUST NOT
-  xử lý mật khẩu, cookie hay token. Hồ sơ `kind: brand` MAY dùng tài liệu của nhiều người viết sau
+  xử lý mật khẩu, cookie hay token. Trên trình duyệt, skill MUST giữ các điều cấm: không giải
+  captcha; không bấm thích, bình luận, đăng hay gửi; không đổi cài đặt tài khoản; và MUST dừng khi
+  gặp màn đăng nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Hồ sơ `kind: brand` MAY dùng tài liệu của nhiều người viết sau
   khi người dùng khẳng định được nói thay thương hiệu; dữ liệu riêng vẫn phải được lược. Hồ sơ MAY
   lưu số lượt người dùng tự chấm, ghi rõ là đánh giá của người dùng; skill MUST NOT tự tính điểm
   giống giọng. Hồ sơ MUST chỉ được lưu
