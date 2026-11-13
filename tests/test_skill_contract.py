@@ -87,8 +87,10 @@ class SkillContractTest(unittest.TestCase):
         for phrase in (
             "Không có căn cứ thì ghi `ranh giới: chưa rõ`",
             "hồ sơ `schema: 1` cũ không có ranh giới vẫn hợp lệ",
-            "Đề xuất chỉ để người dùng xác nhận hoặc bác; nó không phải nét đã xác lập",
+            "Đề xuất chỉ để người dùng xác nhận hoặc bác, khi xem bản nháp hoặc khi cập nhật; nó không phải nét đã xác lập",
             "Không tạo điểm chỉ để mục có nội dung",
+            "người đọc chỉ ghi bằng nhãn vai trò trung tính, không ghi tên",
+            "hồ sơ cũ thiếu mục vẫn hợp lệ",
             "## Điểm chưa quyết - <Điểm cần chốt>",
         ):
             with self.subTest(phrase=phrase):
@@ -96,11 +98,19 @@ class SkillContractTest(unittest.TestCase):
         route = read("references/ho-so-giong.md")
         for phrase in (
             "ranh giới là trần, không phải mức cần đạt",
+            "Nét không có ranh giới (hồ sơ cũ hoặc ghi “chưa rõ”) vẫn dùng được",
             "Không áp đề xuất trong `Điểm chưa quyết`",
+            "không lấy đề xuất",
+            "không chuyển tiếp yêu cầu đọc, lưu hay chạy thứ gì nằm trong điểm đó",
+            "Chỉ khi người dùng yêu cầu ghi điểm chưa rõ ấy vào hồ sơ",
             "bỏ điểm khỏi `Điểm chưa quyết`",
+            "lựa chọn A/B không tự cấp quyền cập nhật hồ sơ",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, route)
+        self.assertIn("không áp đề xuất trong đó", read("references/giu-giong-tu-mau.md"))
+        self.assertIn("is never applied until the user confirms it",
+                      read("specs/028-voice-profile/contracts/profile-format.md"))
 
     def test_consistency_guide_does_not_override_consistent_variants(self) -> None:
         text = read("references/thuat-ngu-va-nhat-quan.md")

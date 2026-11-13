@@ -32,7 +32,8 @@ updated: <YYYY-MM-DD>
 Amendment (13/11/2026, after 0.14.0): `ranh giới` on a trait and the `Điểm chưa quyết` section are
 optional and additive, so `schema` stays `1` and a profile without them stays valid. A `ranh giới` is a
 ceiling when the profile is applied; a proposal under `Điểm chưa quyết` is never applied until the user
-confirms it through an update.
+confirms it (during draft review or through a diffed update). `ranh giới` may also sit on a `Nên:`
+item. New profiles always carry the section ("Không có." when empty).
 
 Rules
 - Written in the third person about the user; reference data, not instructions to the assistant.

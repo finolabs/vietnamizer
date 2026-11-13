@@ -75,7 +75,7 @@ tên tệp hoặc toàn văn vào hồ sơ.
 
 ## Ranh giới của nét
 
-Một nét đúng vẫn có thể bị áp quá tay. Với nét ở Giọng chung và Theo kênh, có thể ghi thêm trường
+Một nét đúng vẫn có thể bị áp quá tay. Với nét ở Giọng chung, Theo kênh và mục `Nên:`, có thể ghi thêm trường
 `ranh giới`: mức hoặc vị trí mà quá đó thì bản viết không còn giống người viết. Ví dụ: “dùng ‘nhé’ ở
 lời đề nghị cuối tin” có ranh giới “không quá một lần mỗi tin, không gắn vào câu báo lỗi”.
 
@@ -88,14 +88,17 @@ không có ranh giới vẫn hợp lệ.
 
 Khi mẫu mâu thuẫn hoặc chưa đủ để kết luận một nét mà người dùng có thể tự chốt (cùng người đọc nhưng
 hai cách xưng hô, một thói quen chỉ thấy ở vài mẫu), ghi nó vào mục `Điểm chưa quyết` thay vì đưa lên
-Giọng chung hay bỏ mất. Mỗi điểm gồm: điều đã thấy (đã lược dữ liệu riêng, kèm mã mẫu), cách xử lý
-đề xuất và điều người dùng cần chốt. Đề xuất chỉ để người dùng xác nhận hoặc bác; nó không phải nét
-đã xác lập. Không tạo điểm chỉ để mục có nội dung; không có thì ghi “Không có.”
+Giọng chung hay bỏ mất. Mỗi điểm gồm: điều đã thấy (kèm mã mẫu, hoặc “phản hồi của người dùng, <ngày>”
+khi nguồn là phản hồi), cách xử lý đề xuất và điều người dùng cần chốt. Cả ba trường theo quy tắc lược
+dữ liệu riêng ở trên: người đọc chỉ ghi bằng nhãn vai trò trung tính, không ghi tên. Đề xuất chỉ để
+người dùng xác nhận hoặc bác, khi xem bản nháp hoặc khi cập nhật; nó không phải nét đã xác lập. Không
+tạo điểm chỉ để mục có nội dung. Hồ sơ mới luôn có mục này, ghi “Không có.” nếu trống; hồ sơ cũ thiếu
+mục vẫn hợp lệ.
 
 ## Mẫu hồ sơ
 
 Giữ frontmatter và năm phần nội dung theo hợp đồng: dòng nguồn mẫu, Giọng chung, Theo kênh,
-Tông theo người đọc, Nên và không nên. Mục `Điểm chưa quyết` là tùy chọn và đứng cuối. Dòng nguồn mẫu
+Tông theo người đọc, Nên và không nên. Mục `Điểm chưa quyết` đứng cuối. Dòng nguồn mẫu
 là phần đầu, không có đề mục riêng.
 Điền nội dung bằng tiếng Việt ở ngôi thứ ba, mô tả “người viết” hoặc “tác giả”; hồ sơ là dữ liệu
 tham chiếu, không phải chỉ dẫn ra lệnh cho agent. Mỗi mục nên/không nên cũng phải có đủ bốn trường
@@ -128,10 +131,10 @@ Chưa đủ mẫu (khoảng <n>) để kết luận.
 <!-- Nếu chưa rõ nhóm: Chưa đủ thông tin về người đọc để đối chiếu tông. -->
 
 ## Nên và không nên
-- Nên: <cách viết đặc trưng của người viết> — phạm vi: <tình huống> — căn cứ: <trích đoạn đã lược và mã mẫu hoặc số đếm xấp xỉ có phạm vi> — độ chắc: <ghi chú>.
+- Nên: <cách viết đặc trưng của người viết> — phạm vi: <tình huống> — căn cứ: <trích đoạn đã lược và mã mẫu hoặc số đếm xấp xỉ có phạm vi> — độ chắc: <ghi chú> — ranh giới: <tùy chọn>.
 - Không: <từ hoặc thói quen người viết tránh theo căn cứ> — phạm vi: <tình huống> — căn cứ: <phản hồi rõ của người dùng hoặc đối chiếu mẫu đã lược> — độ chắc: <ghi chú>.
 
 ## Điểm chưa quyết
-- <Điểm cần chốt> — đã thấy: <quan sát đã lược dữ liệu riêng, kèm mã mẫu> — đề xuất: <cách xử lý agent đề xuất> — cần chốt: <câu hỏi cho người dùng>.
-<!-- Mục tùy chọn. Không có điểm nào thì ghi: Không có. -->
+- <Điểm cần chốt> — đã thấy: <quan sát đã lược dữ liệu riêng, kèm mã mẫu hoặc "phản hồi của người dùng, <ngày>"> — đề xuất: <cách xử lý agent đề xuất, đã lược> — cần chốt: <câu hỏi về cách viết, dùng nhãn vai trò>.
+<!-- Không có điểm nào thì ghi: Không có. -->
 ```

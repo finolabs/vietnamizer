@@ -10,7 +10,7 @@ Hồ sơ giọng, học ý tưởng từ một plugin brand voice (viết lại 
 Giọng chung và Theo kênh có thể kèm `ranh giới`, là trần khi áp để tránh áp quá tay; mục tùy chọn
 `Điểm chưa quyết` giữ chỗ mẫu mâu thuẫn kèm đề xuất, và đề xuất không được áp cho tới khi người dùng
 chốt qua cập nhật có diff. Hai trường đều tùy chọn nên hồ sơ `schema: 1` cũ vẫn hợp lệ. Thêm ca
-HG01–HG08 và test giữ quy tắc. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
+HG01–HG11 và test giữ quy tắc. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
 
 ### 0.14.0 (13/11/2026)
 
