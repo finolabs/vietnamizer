@@ -1,6 +1,6 @@
-# `van-hanh-doanh-nghiep`: Vận hành doanh nghiệp
+# `business-operations`: Vận hành doanh nghiệp
 
-- **Dùng khi:** SOP, báo cáo, biên bản hoặc hướng dẫn bàn giao cần giữ vai trò, điều kiện và trách nhiệm; base profile `ky-thuat-doanh-nghiep`.
+- **Dùng khi:** SOP, báo cáo, biên bản hoặc hướng dẫn bàn giao cần giữ vai trò, điều kiện và trách nhiệm; base profile `enterprise-technical`.
 - **Thanh ngữ vực:** trung tính và nghiệp vụ; không hành chính hoá câu chỉ để tạo vẻ chính thức.
 - **Xưng hô:** dùng vai trò hoặc chủ thể đã nêu. Không suy ai có thẩm quyền và không đổi lời nhờ thành mệnh lệnh.
 - **Nhịp:** ưu tiên cấu trúc dễ quét, song song khi các bước cùng cấp; không phá bảng, checklist hoặc nhãn–giá trị có chức năng.

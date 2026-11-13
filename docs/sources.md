@@ -62,7 +62,7 @@ Các pattern tiếng Việt được xây dựng riêng cho repo này.
 
 ### Tham chiếu văn phong chuyên môn theo nhiệm vụ
 
-[Danh mục tham chiếu theo nhu cầu](../references/nguon-van-phong.md) giữ metadata/link của năm bài:
+[Danh mục tham chiếu theo nhu cầu](../references/style-sources.md) giữ metadata/link của năm bài:
 Thanh An (Tia Sáng, 2018), Vũ Hữu Tiệp (Machine Learning Cơ Bản, 2017), Minh Monmen (Viblo, 2020),
 Phạm Huy Hoàng (Tôi Đi Code Dạo, 2015) và Nguyễn Văn Tuấn (Thời Sự Y Học, 2020).
 Phiên nghiên cứu nguồn ngày 31/10/2026 đã kiểm byline/ngày trên bài; chưa kiểm bản lưu lịch sử

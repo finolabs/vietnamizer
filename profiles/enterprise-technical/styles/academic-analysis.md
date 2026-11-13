@@ -1,6 +1,6 @@
-# `hoc-thuat-phan-tich`: Học thuật phân tích
+# `academic-analysis`: Học thuật phân tích
 
-- **Dùng khi:** giáo trình, đề án, bài nghiên cứu hoặc đoạn lập luận cần phân biệt dữ liệu, suy luận và giới hạn; base profile `ky-thuat-doanh-nghiep`.
+- **Dùng khi:** giáo trình, đề án, bài nghiên cứu hoặc đoạn lập luận cần phân biệt dữ liệu, suy luận và giới hạn; base profile `enterprise-technical`.
 - **Thanh ngữ vực:** trung tính, có mức dè dặt đúng bằng chứng; không làm thân mật hoặc nâng mức chắc chắn để câu dứt khoát hơn.
 - **Xưng hô:** giữ *chúng tôi* khi đó là nhóm tác giả; không thêm ngôi thứ nhất nếu văn bản đang dùng lối trình bày phi cá nhân.
 - **Nhịp:** ưu tiên quan hệ lập luận rõ, thuật ngữ ổn định và câu chuyển có chức năng; không cắt câu dài nếu việc cắt làm mất phạm vi hoặc điều kiện.

@@ -7,7 +7,7 @@ Giữ giọng ổn định, tiểu từ phù hợp và thuật ngữ cộng đ�
 
 ---
 
-Chỉ khi mục đích/người đọc mâu thuẫn hoặc pha chức năng mới đọc `references/bo-giai-phong-cach.md`.
+Chỉ khi mục đích/người đọc mâu thuẫn hoặc pha chức năng mới đọc `references/style-resolution.md`.
 
 ## Sáo ngữ và thổi phồng
 
@@ -73,7 +73,7 @@ B5 chỉ xử lý khuôn song hành nâng giọng hoặc lặp ý. Nếu câu đ
 
 **Dấu hiệu:** chọn từ Hán-Việt trang trọng ở chỗ thuần Việt tự nhiên hơn: *phương tiện di chuyển* thay *xe*, *thực phẩm* thay *đồ ăn*, *trang phục* thay *quần áo*, *nơi cư trú* thay *chỗ ở*, *thân nhân* thay *người nhà*, *sở hữu* thay *có*, *tiến hành* thay *làm*.
 **Vì sao:** LLM dễ nghiêng về vốn từ hành chính và báo chí. Trong bài viết cá nhân, lựa chọn trang trọng liên tiếp có thể khiến lời văn xa cách hơn giọng thật của người viết.
-**Sửa:** tra `references/han-viet-thuan-viet.md`. Đọc cột thứ ba trước khi thay vì cột này nêu điều kiện phải giữ nguyên từ Hán-Việt. Không dùng hai cột đầu như danh sách tìm và thay.
+**Sửa:** tra `references/sino-vietnamese.md`. Đọc cột thứ ba trước khi thay vì cột này nêu điều kiện phải giữ nguyên từ Hán-Việt. Không dùng hai cột đầu như danh sách tìm và thay.
 **Không flag:** năm phép thử trong file tham chiếu; chỉ cần một phép cho kết quả “giữ” là dừng. Người viết có thể dùng nhiều từ Hán-Việt một cách tự nhiên và nhất quán, nhất là trong môi trường nhà nước hoặc học thuật. Mục tiêu là giữ đúng thể loại và giọng tác giả, không phải loại bỏ từ Hán-Việt.
 
 ### B10. Thành ngữ dùng lệch và mật độ thành ngữ bất thường
@@ -150,4 +150,4 @@ Ba ràng buộc:
    trong bản gốc hay mẫu giọng đúng phạm vi. Không tự thêm phản ứng, ý kiến, mức chắc chắn, dữ kiện,
    tên, số hoặc ngày tháng mới.
 2. **Không nhại giọng.** Thêm *thì, mà, nhé, đấy* vào mọi câu chỉ tạo ra một kiểu máy móc khác. Chọn từ theo quan hệ thật trong câu và mẫu văn của người viết.
-3. **Không áp mục này lên văn trung tính.** Với báo cáo, tài liệu tham chiếu, nội dung học thuật thì trung tính và phẳng **chính là** giọng người đúng. Ở đó dùng `profiles/ky-thuat-doanh-nghiep/rules.md`.
+3. **Không áp mục này lên văn trung tính.** Với báo cáo, tài liệu tham chiếu, nội dung học thuật thì trung tính và phẳng **chính là** giọng người đúng. Ở đó dùng `profiles/enterprise-technical/rules.md`.

@@ -22,9 +22,9 @@
       "candidate": "Công cụ A lưu link. Riêng bản thử, chưa có đồng bộ.",
       "required_reads": [
         "SKILL.md",
-        "references/quy-trinh-viet.md",
-        "profiles/blog-ca-nhan/styles/chuyen-mon-cong-khai.md",
-        "references/giu-giong-tu-mau.md"
+        "references/writing-workflow.md",
+        "profiles/personal-blog/styles/public-expertise.md",
+        "references/voice-from-samples.md"
       ],
       "semantic_expectations": [
         "assess meaning separately from sample suitability",
@@ -38,8 +38,8 @@
       "candidate": "Sau một tuần dùng A, tôi tiết kiệm 30% thời gian.",
       "required_reads": [
         "SKILL.md",
-        "references/quy-trinh-viet.md",
-        "profiles/blog-ca-nhan/styles/chuyen-mon-cong-khai.md"
+        "references/writing-workflow.md",
+        "profiles/personal-blog/styles/public-expertise.md"
       ],
       "semantic_expectations": [
         "invented experience and metric unsupported",
@@ -53,8 +53,8 @@
       "candidate": "Tôi đã dùng cache cho hệ thống bán hàng của mình và thấy mọi truy vấn nhanh hơn.",
       "required_reads": [
         "SKILL.md",
-        "references/quy-trinh-viet.md",
-        "profiles/blog-ca-nhan/styles/chuyen-mon-cong-khai.md"
+        "references/writing-workflow.md",
+        "profiles/personal-blog/styles/public-expertise.md"
       ],
       "semantic_expectations": [
         "identify missing reader concept/example before expanding",
@@ -68,7 +68,7 @@
       "candidate": "Tôi đã xác nhận mọi bản thử đều chậm.",
       "required_reads": [
         "SKILL.md",
-        "references/loi-cau-va-quan-he.md"
+        "references/sentence-structure.md"
       ],
       "semantic_expectations": [
         "keep attribution, scope and uncertainty",

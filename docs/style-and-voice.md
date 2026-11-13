@@ -31,18 +31,18 @@ năng được chia theo phần, không ép chung một giọng.
 
 | Style card | Dùng cho | Base profile |
 |---|---|---|
-| [`ke-trai-nghiem`](../profiles/blog-ca-nhan/styles/ke-trai-nghiem.md) | Blog, bài kể có người viết hiện diện | `blog-ca-nhan` |
-| [`phoi-hop-cong-viec`](../profiles/blog-ca-nhan/styles/phoi-hop-cong-viec.md) | Chat, bình luận và lời nhờ trong công việc | `blog-ca-nhan` |
-| [`chuyen-mon-cong-khai`](../profiles/blog-ca-nhan/styles/chuyen-mon-cong-khai.md) | LinkedIn, bài quan điểm hoặc chia sẻ chuyên môn | `blog-ca-nhan` |
-| [`marketing-thuyet-phuc`](../profiles/blog-ca-nhan/styles/marketing-thuyet-phuc.md) | Nội dung giới thiệu có mục tiêu và CTA thật | `blog-ca-nhan` |
-| [`huong-dan-ky-thuat`](../profiles/ky-thuat-doanh-nghiep/styles/huong-dan-ky-thuat.md) | README, văn xuôi API và hướng dẫn xử lý lỗi | `ky-thuat-doanh-nghiep` |
-| [`van-hanh-doanh-nghiep`](../profiles/ky-thuat-doanh-nghiep/styles/van-hanh-doanh-nghiep.md) | SOP, báo cáo, biên bản và bàn giao | `ky-thuat-doanh-nghiep` |
-| [`hoc-thuat-phan-tich`](../profiles/ky-thuat-doanh-nghiep/styles/hoc-thuat-phan-tich.md) | Giáo trình, đề án và nghiên cứu | `ky-thuat-doanh-nghiep` |
+| [`personal-narrative`](../profiles/personal-blog/styles/personal-narrative.md) | Blog, bài kể có người viết hiện diện | `personal-blog` |
+| [`work-coordination`](../profiles/personal-blog/styles/work-coordination.md) | Chat, bình luận và lời nhờ trong công việc | `personal-blog` |
+| [`public-expertise`](../profiles/personal-blog/styles/public-expertise.md) | LinkedIn, bài quan điểm hoặc chia sẻ chuyên môn | `personal-blog` |
+| [`persuasive-marketing`](../profiles/personal-blog/styles/persuasive-marketing.md) | Nội dung giới thiệu có mục tiêu và CTA thật | `personal-blog` |
+| [`technical-guide`](../profiles/enterprise-technical/styles/technical-guide.md) | README, văn xuôi API và hướng dẫn xử lý lỗi | `enterprise-technical` |
+| [`business-operations`](../profiles/enterprise-technical/styles/business-operations.md) | SOP, báo cáo, biên bản và bàn giao | `enterprise-technical` |
+| [`academic-analysis`](../profiles/enterprise-technical/styles/academic-analysis.md) | Giáo trình, đề án và nghiên cứu | `enterprise-technical` |
 
 Card không phải khuôn để “làm màu” và không tự tạo lý do sửa. Yêu cầu hiện tại được ưu tiên;
 ràng buộc thể loại và năm quy tắc chốt chặn vẫn giới hạn mọi thay đổi; mẫu/hồ sơ chỉ được dùng khi
 đúng người, đúng phạm vi và có đặc tính ổn định. Chi tiết chuẩn nằm trong
-`references/bo-giai-phong-cach.md`.
+`references/style-resolution.md`.
 
 ## Giữ giọng khi có mẫu
 
@@ -51,7 +51,7 @@ nháp cùng mẫu tự viết, bản đã sửa từ nháp AI hoặc hồ sơ ph
 cung cấp. Skill dùng mẫu để chọn cách sửa phù hợp, không viết lại mọi câu cho
 giống một khuôn giọng.
 
-[Hướng dẫn đọc mẫu](../references/giu-giong-tu-mau.md) yêu cầu rút đặc tính có ví dụ
+[Hướng dẫn đọc mẫu](../references/voice-from-samples.md) yêu cầu rút đặc tính có ví dụ
 và phạm vi: đại từ làm chức năng gì, dùng thuật ngữ và cách viết số nào, nhịp câu/dấu ngắt,
 đề mục và mở/kết ra sao. Có thể theo cách dùng chữ số cho lượng cụ thể, giữ đề mục hỏi có
 chức năng và dùng nhiều đại từ theo vai trò; không thay toàn cục hoặc đưa dữ kiện của mẫu vào bài. Agent đối chiếu bản sửa với mẫu cùng kênh và mục đích; không suy tính
@@ -111,7 +111,7 @@ kiểm lại nghĩa phần bị ảnh hưởng. Quy trình đầy đủ do `SKIL
 Mẫu cá nhân được chỉ định giúp theo giọng một người. Bộ bài báo/blog/chuyên môn nhiều tác giả
 là tham chiếu cách viết theo nhiệm vụ: chọn phần cùng thể loại, người đọc và chức năng, giữ
 xuất xứ và giới hạn bằng chứng. Không trộn thành giọng trung bình hoặc mặc định bắt chước giọng
-chủ. Không lấy dữ kiện, chuyện riêng hay quan điểm của mẫu sang bài. Guide mẫu mô tả cách dùng bằng chứng; danh mục nguồn ở `references/nguon-van-phong.md` chỉ đọc khi được giao tìm/chọn nguồn, gồm báo chí, blog công nghệ/nghiên cứu và giải thích phương pháp khoa học. Danh mục chỉ giữ metadata/link cùng giới hạn, không tải corpus hoặc chép toàn văn.
+chủ. Không lấy dữ kiện, chuyện riêng hay quan điểm của mẫu sang bài. Guide mẫu mô tả cách dùng bằng chứng; danh mục nguồn ở `references/style-sources.md` chỉ đọc khi được giao tìm/chọn nguồn, gồm báo chí, blog công nghệ/nghiên cứu và giải thích phương pháp khoa học. Danh mục chỉ giữ metadata/link cùng giới hạn, không tải corpus hoặc chép toàn văn.
 
 ## Hồ sơ phong cách và nhật ký hiệu chuẩn
 
@@ -135,7 +135,7 @@ yêu cầu hiện tại luôn được ưu tiên.
 ### Tuyến hồ sơ giọng cá nhân (opt-in)
 
 Khi người dùng yêu cầu học hoặc tạo hồ sơ phong cách viết của mình, `vietnamizer` kích hoạt tuyến opt-in
-theo [`references/ho-so-giong.md`](../references/ho-so-giong.md) và [`references/phan-tich-giong-viet.md`](../references/phan-tich-giong-viet.md):
+theo [`references/voice-profile.md`](../references/voice-profile.md) và [`references/voice-analysis.md`](../references/voice-analysis.md):
 
 - **Nguồn mẫu:** chỉ đọc văn bản do người dùng dán hoặc file chỉ định trong tác vụ sau khi hỏi và nhận được sự đồng ý rõ ràng. Không tự tìm trong memory, lịch sử chat, hòm thư hay các đầu nối ngoài.
 - **Phân tích và bảo vệ dữ liệu:** phân tích các chiều tiếng Việt quan sát được (xưng hô theo quan hệ, hư từ/tiểu từ, chêm tiếng Anh, dấu câu và số, nhịp điệu, mở/kết) kèm trích đoạn minh họa ngắn hoặc ước lượng số lần xuất hiện. Agent được chỉ dẫn bỏ tên riêng, số điện thoại, email, thông tin tài chính và dữ liệu nhạy cảm khỏi hồ sơ; v1 không có bộ lọc bằng mã, nên bước bảo vệ thực sự là bạn đọc toàn bộ dự thảo trước khi lưu.

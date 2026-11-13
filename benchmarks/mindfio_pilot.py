@@ -150,9 +150,9 @@ def prepare(out):
         raise ValueError('public source not verified')
     original_manifest = read(PREP / 'manifest.json')
     save(out / 'preparation-manifest.json', original_manifest)
-    source_paths = ['SKILL.md', 'references/bo-giai-phong-cach.md', 'references/bang-tra-cuu.md',
-                    'references/han-viet-thuan-viet.md', 'references/giu-giong-tu-mau.md',
-                    'profiles/blog-ca-nhan/rules.md', 'profiles/blog-ca-nhan/styles/ke-trai-nghiem.md']
+    source_paths = ['SKILL.md', 'references/style-resolution.md', 'references/function-words.md',
+                    'references/sino-vietnamese.md', 'references/voice-from-samples.md',
+                    'profiles/personal-blog/rules.md', 'profiles/personal-blog/styles/personal-narrative.md']
     for name in source_paths:
         target = out / 'source' / name
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -175,7 +175,7 @@ def prepare(out):
         case = {'id': row['id'], 'title': row['title'], 'url': row['url'], 'source': text,
                 'audience': 'Người đọc công khai trên Mindfio Substack',
                 'purpose': 'Giữ bài đã đăng, chỉ sửa lỗi câu chữ cần thiết; không viết lại theo một giọng mới.',
-                'family': 'typography-only' if row['id'] == 'M01' else 'ke-trai-nghiem',
+                'family': 'typography-only' if row['id'] == 'M01' else 'personal-narrative',
                 'genre_note': 'Lời tựa văn chương/triết học có nhịp và ẩn dụ chủ ý: chỉ rà typography, giữ lập luận và hình ảnh.' if row['id'] == 'M01' else 'Blog suy ngẫm cá nhân, giữ đại từ và giọng sẵn có.'}
         quotes = re.findall('“[^”]+”', text)
         urls = re.findall(r'https?://[^\s]+', text)
@@ -193,7 +193,7 @@ def prepare(out):
         for arm in ARMS:
             bundle = common_bundle
             if arm == 'vietnamizer_profile':
-                name = 'references/giu-giong-tu-mau.md'
+                name = 'references/voice-from-samples.md'
                 bundle += f'\n<instruction_document path="{name}">\n{(out/"source"/name).read_text()}\n</instruction_document>'
             payload = {k: v for k, v in case.items() if k not in ('id', 'family', 'url')}
             prompt = prompt_for(payload, arm, approved.decode('utf-8'), bundle)

@@ -1,6 +1,6 @@
-# `ke-trai-nghiem`: Kể trải nghiệm cá nhân
+# `personal-narrative`: Kể trải nghiệm cá nhân
 
-- **Dùng khi:** người viết kể điều mình đã làm, thấy hoặc thay đổi suy nghĩ để người đọc hiểu trải nghiệm đó; base profile `blog-ca-nhan`.
+- **Dùng khi:** người viết kể điều mình đã làm, thấy hoặc thay đổi suy nghĩ để người đọc hiểu trải nghiệm đó; base profile `personal-blog`.
 - **Thanh ngữ vực:** tự nhiên theo mẫu, có thể thân mật nhưng không tự hạ giọng hoặc làm câu bông đùa.
 - **Xưng hô:** giữ ngôi kể và cách gọi người đọc đang có. Không đổi *tôi* thành *mình*, hoặc ngược lại, chỉ để tạo cảm giác gần gũi.
 - **Nhịp:** giữ diễn biến, chỗ ngập ngừng, câu ngắn và câu chen ngang có chức năng. Không san mọi đoạn thành một nhịp đều.

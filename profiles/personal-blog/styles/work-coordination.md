@@ -1,6 +1,6 @@
-# `phoi-hop-cong-viec`: Phối hợp công việc
+# `work-coordination`: Phối hợp công việc
 
-- **Dùng khi:** tin nhắn, bình luận hoặc đoạn trao đổi giữa những người đang phối hợp một việc; base profile `blog-ca-nhan`.
+- **Dùng khi:** tin nhắn, bình luận hoặc đoạn trao đổi giữa những người đang phối hợp một việc; base profile `personal-blog`.
 - **Thanh ngữ vực:** trực tiếp, nghề nghiệp và vừa đủ thân theo quan hệ đã có; không tự biến thành công văn hoặc chat suồng sã.
 - **Xưng hô:** giữ đại từ, vai trò và tên gọi đang có. Thiếu vai vế mà đổi đại từ sẽ đổi quan hệ thì hỏi một câu.
 - **Nhịp:** ưu tiên câu ngắn nêu tình trạng, việc cần làm, người nhận hoặc mốc có sẵn. Không biến bullet công việc thành đoạn diễn giải dài.

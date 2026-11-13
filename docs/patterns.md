@@ -5,9 +5,9 @@
 ## Danh mục pattern
 
 Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 ở
-[thiếu từ](../references/loi-thieu-tu.md); V9–V18,V24–V25 ở
-[câu và quan hệ](../references/loi-cau-va-quan-he.md); V19,V21–V23 ở
-[từ và lời dẫn](../references/loi-tu-va-loi-dan.md); T1–T6 ở
+[thiếu từ](../references/missing-words.md); V9–V18,V24–V25 ở
+[câu và quan hệ](../references/sentence-structure.md); V19,V21–V23 ở
+[từ và lời dẫn](../references/terms-and-lead-ins.md); T1–T6 ở
 [typography](../references/typography.md). B/K vẫn ở hai profile. Chỉ tra nhóm có nghi vấn;
 đọc Không flag trước sửa lỗi, không dùng danh mục này như checklist nạp mọi file.
 

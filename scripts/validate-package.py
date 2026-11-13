@@ -19,29 +19,29 @@ ROOT = Path(__file__).resolve().parent.parent
 # Ngân sách dòng cho từng loại file. references/ không giới hạn vì là bảng tra cứu.
 LINE_BUDGETS = {
     "SKILL.md": 550,
-    "profiles/blog-ca-nhan/rules.md": 320,
-    "profiles/ky-thuat-doanh-nghiep/rules.md": 220,
+    "profiles/personal-blog/rules.md": 320,
+    "profiles/enterprise-technical/rules.md": 220,
 }
 
 # Tiền tố pattern và file sở hữu. Mỗi tiền tố phải đánh số liên tục từ 1.
 PATTERN_OWNERS = {
-    "V": ("references/loi-thieu-tu.md", "references/loi-cau-va-quan-he.md", "references/loi-tu-va-loi-dan.md"),
+    "V": ("references/missing-words.md", "references/sentence-structure.md", "references/terms-and-lead-ins.md"),
     "T": ("references/typography.md",),
-    "B": ("profiles/blog-ca-nhan/rules.md",),
-    "K": ("profiles/ky-thuat-doanh-nghiep/rules.md",),
+    "B": ("profiles/personal-blog/rules.md",),
+    "K": ("profiles/enterprise-technical/rules.md",),
 }
 PATTERN_FIELDS = ["Dấu hiệu", "Vì sao", "Sửa", "Không flag"]
 
 STYLE_CARDS = [
-    "ke-trai-nghiem",
-    "phoi-hop-cong-viec",
-    "chuyen-mon-cong-khai",
-    "marketing-thuyet-phuc",
-    "huong-dan-ky-thuat",
-    "van-hanh-doanh-nghiep",
-    "hoc-thuat-phan-tich",
+    "personal-narrative",
+    "work-coordination",
+    "public-expertise",
+    "persuasive-marketing",
+    "technical-guide",
+    "business-operations",
+    "academic-analysis",
 ]
-STYLE_REGISTRY = "references/bo-giai-phong-cach.md"
+STYLE_REGISTRY = "references/style-resolution.md"
 STYLE_CARD_FIELDS = [
     "Dùng khi",
     "Thanh ngữ vực",
@@ -53,12 +53,12 @@ STYLE_CARD_FIELDS = [
     "Ca kiểm thử",
 ]
 STYLE_PROFILE_CARDS = {
-    "profiles/blog-ca-nhan/rules.md": {
-        card_id: f"profiles/blog-ca-nhan/styles/{card_id}.md"
+    "profiles/personal-blog/rules.md": {
+        card_id: f"profiles/personal-blog/styles/{card_id}.md"
         for card_id in STYLE_CARDS[:4]
     },
-    "profiles/ky-thuat-doanh-nghiep/rules.md": {
-        card_id: f"profiles/ky-thuat-doanh-nghiep/styles/{card_id}.md"
+    "profiles/enterprise-technical/rules.md": {
+        card_id: f"profiles/enterprise-technical/styles/{card_id}.md"
         for card_id in STYLE_CARDS[4:]
     },
 }
@@ -82,21 +82,21 @@ PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "a
 # Nguồn của maintainer: được kiểm inventory và quét bí mật trong repo nhưng không vào gói phát hành.
 SOURCE_ONLY_DIRECTORIES = {"calibration"}
 REFERENCE_FILES = {
-    "references/loi-thieu-tu.md", "references/loi-cau-va-quan-he.md",
-    "references/loi-tu-va-loi-dan.md", "references/typography.md",
-    "references/quy-trinh-viet.md", "references/nguon-van-phong.md",
-    "references/bang-tra-cuu.md",
-    "references/bo-giai-phong-cach.md",
-    "references/giu-giong-tu-mau.md",
-    "references/ho-so-giong.md",
-    "references/phan-tich-giong-viet.md",
-    "references/han-viet-thuan-viet.md",
-    "references/thuat-ngu-va-nhat-quan.md",
+    "references/missing-words.md", "references/sentence-structure.md",
+    "references/terms-and-lead-ins.md", "references/typography.md",
+    "references/writing-workflow.md", "references/style-sources.md",
+    "references/function-words.md",
+    "references/style-resolution.md",
+    "references/voice-from-samples.md",
+    "references/voice-profile.md",
+    "references/voice-analysis.md",
+    "references/sino-vietnamese.md",
+    "references/terminology-consistency.md",
 }
 CALIBRATION_FILES = {
     "calibration/LOG.md",
-    "calibration/ca-kiem-thu.md",
-    "calibration/ghi-chu-ngu-vuc.md",
+    "calibration/test-cases.md",
+    "calibration/register-notes.md",
 }
 EXACT_DIRECTORY_FILES = {
     "references": REFERENCE_FILES,
@@ -526,8 +526,8 @@ if extra:
 
 # --- Registry phong cách -------------------------------------------------
 
-blog_profile = read("profiles/blog-ca-nhan/rules.md")
-technical_profile = read("profiles/ky-thuat-doanh-nghiep/rules.md")
+blog_profile = read("profiles/personal-blog/rules.md")
+technical_profile = read("profiles/enterprise-technical/rules.md")
 style_registry = read(STYLE_REGISTRY)
 registry_rows = re.findall(
     r"(?m)^\| `([a-z0-9]+(?:-[a-z0-9]+)*)` \| `([a-z0-9]+(?:-[a-z0-9]+)*)` \| `(profiles/.+/styles/.+\.md)` \|$",
@@ -564,10 +564,10 @@ k_count = len(pattern_numbers(technical_profile, "K"))
 technical_registry_rows = [
     line
     for line in style_registry.splitlines()
-    if line.startswith("| `ky-thuat-doanh-nghiep` |")
+    if line.startswith("| `enterprise-technical` |")
 ]
 if len(technical_registry_rows) != 1:
-    fail("Style registry phải có đúng một dòng cho base profile ky-thuat-doanh-nghiep")
+    fail("Style registry phải có đúng một dòng cho base profile enterprise-technical")
 elif f"Pattern K1–K{k_count}" not in technical_registry_rows[0]:
     fail(
         "Style registry phải đồng bộ dải pattern kỹ thuật: "

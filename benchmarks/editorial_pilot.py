@@ -50,12 +50,12 @@ def freeze_manifest(path, manifest):
 
 
 def bundle_for(case):
-    paths = ['SKILL.md','references/bo-giai-phong-cach.md',
-             'references/bang-tra-cuu.md','references/han-viet-thuan-viet.md']
+    paths = ['SKILL.md','references/style-resolution.md',
+             'references/function-words.md','references/sino-vietnamese.md']
     family=case['family']
     if family != 'typography-only':
-        base = 'blog-ca-nhan' if family in ('ke-trai-nghiem','phoi-hop-cong-viec',
-                  'chuyen-mon-cong-khai','marketing-thuyet-phuc') else 'ky-thuat-doanh-nghiep'
+        base = 'personal-blog' if family in ('personal-narrative','work-coordination',
+                  'public-expertise','persuasive-marketing') else 'enterprise-technical'
         paths += [f'profiles/{base}/rules.md',f'profiles/{base}/styles/{family}.md']
     return '\n\n'.join(f'<instruction_document path="{p}">\n{(ROOT/p).read_text()}\n</instruction_document>' for p in paths)
 

@@ -1,7 +1,7 @@
 # Phân tích giọng viết tiếng Việt
 
 Dùng khi tuyến hồ sơ giọng cần rút đặc tính từ mẫu đã được giao. Tài liệu này chỉ hướng dẫn phân tích
-và trình bày hồ sơ; quy trình của tuyến nằm ở `references/ho-so-giong.md`. Cổng dữ liệu và năm chốt
+và trình bày hồ sơ; quy trình của tuyến nằm ở `references/voice-profile.md`. Cổng dữ liệu và năm chốt
 trong `SKILL.md` vẫn áp dụng.
 
 ## Giới hạn bằng chứng

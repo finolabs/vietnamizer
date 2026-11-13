@@ -73,7 +73,7 @@ class DistributionTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             repo = self.documentation_fixture(Path(temporary))
             path = repo / "docs/style-and-voice.md"
-            path.write_text(path.read_text().replace("`ke-trai-nghiem`", "`missing-card`"))
+            path.write_text(path.read_text().replace("`personal-narrative`", "`missing-card`"))
             self.assertNotEqual(self.package(repo).returncode, 0)
 
     def test_root_readme_must_link_to_relocated_catalog(self) -> None:
@@ -349,7 +349,7 @@ class DistributionTest(unittest.TestCase):
     def test_missing_canonical_catalog_prevents_packaging(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             repo = self.fixture(Path(temporary))
-            catalog = repo / "references/loi-thieu-tu.md"
+            catalog = repo / "references/missing-words.md"
             self.assertTrue(catalog.is_file(), "completion catalog must be shipped")
             catalog.unlink()
             result = self.package(repo)
@@ -359,8 +359,8 @@ class DistributionTest(unittest.TestCase):
     def test_duplicate_pattern_in_another_catalog_prevents_packaging(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             repo = self.fixture(Path(temporary))
-            source = repo / "references/loi-thieu-tu.md"
-            target = repo / "references/loi-tu-va-loi-dan.md"
+            source = repo / "references/missing-words.md"
+            target = repo / "references/terms-and-lead-ins.md"
             target.write_text(target.read_text() + "\n" + source.read_text())
             self.assertNotEqual(self.package(repo).returncode, 0)
 

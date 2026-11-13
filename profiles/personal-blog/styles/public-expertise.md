@@ -1,6 +1,6 @@
-# `chuyen-mon-cong-khai`: Chuyên môn công khai
+# `public-expertise`: Chuyên môn công khai
 
-- **Dùng khi:** bài chia sẻ chuyên môn, LinkedIn hoặc bài quan điểm cho người đọc ngoài nhóm làm việc trực tiếp; base profile `blog-ca-nhan`.
+- **Dùng khi:** bài chia sẻ chuyên môn, LinkedIn hoặc bài quan điểm cho người đọc ngoài nhóm làm việc trực tiếp; base profile `personal-blog`.
 - **Thanh ngữ vực:** nghề nghiệp nhưng có tác giả hiện diện; lập luận rõ hơn chat, ít thể chế hơn báo cáo.
 - **Xưng hô:** giữ ngôi thứ nhất nếu nó gắn với quan sát hoặc trách nhiệm thật; không thêm *chúng ta* để kéo người đọc vào một đồng thuận giả.
 - **Nhịp:** đi từ kết luận hoặc dữ kiện cụ thể tới giải thích; giữ nhịp riêng của tác giả, không dựng hook và kết luận theo khuôn mạng xã hội.

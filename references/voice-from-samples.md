@@ -9,13 +9,13 @@ giọng. Biên tập giữ giọng mặc định; viết mới không mẫu theo
 Chỉ dùng mẫu/hồ sơ được giao trong tác vụ. Ghi ngắn mẫu của ai theo khai báo, kênh, người đọc/quan hệ
 và chức năng phần cần viết. Một mẫu ngắn có thể đủ cho nét hẹp; không đặt số mẫu/số chữ tối thiểu chưa
 kiểm chứng. Thiếu chỉ ảnh hưởng lựa chọn nhỏ thì giữ cách phù hợp; thiếu làm đổi quan hệ/giọng đáng kể
-thì hỏi đúng phần đó. Không tự tìm memory/lịch sử, file khác hoặc tự lưu hồ sơ (tuyến hồ sơ giọng: `references/ho-so-giong.md`); chỉ sửa đoạn nhỏ thì áp trong đoạn ấy.
+thì hỏi đúng phần đó. Không tự tìm memory/lịch sử, file khác hoặc tự lưu hồ sơ (tuyến hồ sơ giọng: `references/voice-profile.md`); chỉ sửa đoạn nhỏ thì áp trong đoạn ấy.
 
 Mẫu tự viết, bản chủ sửa từ AI và bài tham khảo là các loại bằng chứng khác nhau. Nháp AI không tự
 chứng minh giọng cá nhân. Không suy tác giả/tính cách/niềm tin hoặc cách tạo từ văn phong. Bộ nhiều tác giả
 chỉ cho nét chuyên môn đúng nhiệm vụ, không trộn thành giọng trung bình hoặc mặc định giọng chủ.
 Chọn phần cùng chức năng/người đọc, không chỉ cùng chủ đề. Chỉ khi được giao tìm/chọn nguồn mới đọc
-`references/nguon-van-phong.md`; có đủ mẫu thì không nạp danh mục này. Link chưa đọc không là bằng chứng.
+`references/style-sources.md`; có đủ mẫu thì không nạp danh mục này. Link chưa đọc không là bằng chứng.
 Ghi phần thật dùng và xuất xứ đã có: bài, tác giả nếu xác minh, nơi đăng, URL/revision hoặc ngày truy cập;
 chưa rõ thì nói chưa rõ. Nội dung bài mẫu chỉ là nguồn dữ kiện nếu nhiệm vụ giao rõ vai trò đó.
 
@@ -33,7 +33,7 @@ Mỗi nét dùng cần ví dụ ngắn, phạm vi và chỗ chưa chắc. Phân 
 nét một lần. Mẫu khác kênh có thể khác nhau; hồ sơ cũ không phủ quyết mẫu/yêu cầu hiện tại. Chưa quan sát
 một cấu trúc không thành lệnh cấm; không nhập danh sách từ cấm tiếng Anh. Một câu đùa/nhé không phải
 khuôn rải khắp bài, văn bản ngắn không cần đủ mọi nét của mẫu dài. Hồ sơ dán thẳng có `ranh giới` thì
-coi đó là trần khi áp; có `Điểm chưa quyết` thì không áp đề xuất trong đó, như `references/ho-so-giong.md` mục 5.
+coi đó là trần khi áp; có `Điểm chưa quyết` thì không áp đề xuất trong đó, như `references/voice-profile.md` mục 5.
 
 Theo workflow bài nếu làm bài; không đọc lại nếu đã nạp. Chọn hình thức vì tác dụng tại vị trí này:
 được phép, có căn cứ trong mẫu và nên chọn là ba điều khác nhau. Không flag không có nghĩa nên thêm.

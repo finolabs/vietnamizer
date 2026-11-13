@@ -36,20 +36,20 @@ Mẫu khác kênh không được trộn thành giọng trung bình; hồ sơ kh
 
 | Họ | Phạm vi | Catalog chẩn đoán |
 |---|---|---|
-| `blog-ca-nhan` | Có tác giả/chat/marketing | Pattern B1–B17 ở profiles/blog-ca-nhan/rules.md |
-| `ky-thuat-doanh-nghiep` | Tra cứu/vận hành/học thuật | Pattern K1–K7 ở profiles/ky-thuat-doanh-nghiep/rules.md |
+| `personal-blog` | Có tác giả/chat/marketing | Pattern B1–B17 ở profiles/personal-blog/rules.md |
+| `enterprise-technical` | Tra cứu/vận hành/học thuật | Pattern K1–K7 ở profiles/enterprise-technical/rules.md |
 
 ## Registry card
 
 | Style card | Base profile | File |
 |---|---|---|
-| `ke-trai-nghiem` | `blog-ca-nhan` | `profiles/blog-ca-nhan/styles/ke-trai-nghiem.md` |
-| `phoi-hop-cong-viec` | `blog-ca-nhan` | `profiles/blog-ca-nhan/styles/phoi-hop-cong-viec.md` |
-| `chuyen-mon-cong-khai` | `blog-ca-nhan` | `profiles/blog-ca-nhan/styles/chuyen-mon-cong-khai.md` |
-| `marketing-thuyet-phuc` | `blog-ca-nhan` | `profiles/blog-ca-nhan/styles/marketing-thuyet-phuc.md` |
-| `huong-dan-ky-thuat` | `ky-thuat-doanh-nghiep` | `profiles/ky-thuat-doanh-nghiep/styles/huong-dan-ky-thuat.md` |
-| `van-hanh-doanh-nghiep` | `ky-thuat-doanh-nghiep` | `profiles/ky-thuat-doanh-nghiep/styles/van-hanh-doanh-nghiep.md` |
-| `hoc-thuat-phan-tich` | `ky-thuat-doanh-nghiep` | `profiles/ky-thuat-doanh-nghiep/styles/hoc-thuat-phan-tich.md` |
+| `personal-narrative` | `personal-blog` | `profiles/personal-blog/styles/personal-narrative.md` |
+| `work-coordination` | `personal-blog` | `profiles/personal-blog/styles/work-coordination.md` |
+| `public-expertise` | `personal-blog` | `profiles/personal-blog/styles/public-expertise.md` |
+| `persuasive-marketing` | `personal-blog` | `profiles/personal-blog/styles/persuasive-marketing.md` |
+| `technical-guide` | `enterprise-technical` | `profiles/enterprise-technical/styles/technical-guide.md` |
+| `business-operations` | `enterprise-technical` | `profiles/enterprise-technical/styles/business-operations.md` |
+| `academic-analysis` | `enterprise-technical` | `profiles/enterprise-technical/styles/academic-analysis.md` |
 
 Đọc đúng card được chọn, không đọc các card khác chỉ để so. Card chỉ hỗ trợ nhịp, xưng hô,
 thuật ngữ và cách kết trong phạm vi hợp lệ, không sở hữu pattern hoặc thêm quyền sửa. Metadata

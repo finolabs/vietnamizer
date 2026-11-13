@@ -39,11 +39,11 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Việc được giao | Đọc thêm trước khi làm | Không đọc mặc định |
 |---|---|---|
 | Sửa một cụm/câu, rà cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
-| Biên tập toàn bài hoặc viết từ brief/outline | `references/quy-trinh-viet.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
-| Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/thuat-ngu-va-nhat-quan.md` trên tuyến bài | Bài ngắn, sửa một cụm |
-| Theo mẫu được giao | Thêm `references/giu-giong-tu-mau.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
-| Học, lưu hoặc áp dụng hồ sơ giọng từ nơi lưu theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”) | `references/ho-so-giong.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
-| Chỉ review/nhận xét, không sửa | Trước nhận xét đọc năm chốt bên dưới; với cả bài đọc `references/quy-trinh-viet.md` và card; có mẫu đọc `references/giu-giong-tu-mau.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
+| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
+| Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/terminology-consistency.md` trên tuyến bài | Bài ngắn, sửa một cụm |
+| Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
+| Học, lưu hoặc áp dụng hồ sơ giọng từ nơi lưu theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”) | `references/voice-profile.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
+| Chỉ review/nhận xét, không sửa | Trước nhận xét đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
 
 Rà văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn;
@@ -53,12 +53,12 @@ chưa có căn cứ thì giữ nguyên hoặc hỏi đúng điểm làm đổi n
 
 | Nghi vấn | Catalog canonical |
 |---|---|
-| Thiếu hư từ, bổ ngữ, loại từ, tiếng trong từ; dấu thời gian, câu hỏi | `references/loi-thieu-tu.md` — V1–V8,V20 |
-| Câu dịch sát, trạng ngữ/quy chiếu, lặp khuôn, danh hóa/bị động, lượng tình thái hoặc quan hệ mờ | `references/loi-cau-va-quan-he.md` — V9–V18,V24–V25 |
-| Chêm tiếng Anh, lời trợ lý, phỏng đoán thiếu nguồn, phản biện không có đối tượng | `references/loi-tu-va-loi-dan.md` — V19,V21–V23 |
+| Thiếu hư từ, bổ ngữ, loại từ, tiếng trong từ; dấu thời gian, câu hỏi | `references/missing-words.md` — V1–V8,V20 |
+| Câu dịch sát, trạng ngữ/quy chiếu, lặp khuôn, danh hóa/bị động, lượng tình thái hoặc quan hệ mờ | `references/sentence-structure.md` — V9–V18,V24–V25 |
+| Chêm tiếng Anh, lời trợ lý, phỏng đoán thiếu nguồn, phản biện không có đối tượng | `references/terms-and-lead-ins.md` — V19,V21–V23 |
 | Dấu câu, viết hoa, nhãn trang trí, emoji | `references/typography.md` — T1–T6, theo cổng trên |
-| Sáo ngữ, nhịp, xưng hô hoặc ngữ vực ở blog/chat/marketing | `profiles/blog-ca-nhan/rules.md` — B1–B17 |
-| Diễn đạt/đề mục/viện dẫn hoặc siêu dữ liệu ở tài liệu kỹ thuật/doanh nghiệp/học thuật | `profiles/ky-thuat-doanh-nghiep/rules.md` — K1–K7 |
+| Sáo ngữ, nhịp, xưng hô hoặc ngữ vực ở blog/chat/marketing | `profiles/personal-blog/rules.md` — B1–B17 |
+| Diễn đạt/đề mục/viện dẫn hoặc siêu dữ liệu ở tài liệu kỹ thuật/doanh nghiệp/học thuật | `profiles/enterprise-technical/rules.md` — K1–K7 |
 
 V/T là lỗi ngôn ngữ/typography; B/K phụ thuộc thể loại. Không đem một lỗi của blog sang hợp đồng.
 Catalog là bảng tra, không phải lệnh đọc mọi nhóm hay mẫu để cài vào bài. Tra từng mục hoặc
@@ -70,15 +70,15 @@ nói đã gỡ context. Không có công cụ thì dùng phần được cấp, 
 
 | Mục đích/người đọc đã rõ | Card |
 |---|---|
-| Kể trải nghiệm/blog cá nhân | `profiles/blog-ca-nhan/styles/ke-trai-nghiem.md` |
-| Chat/phối hợp công việc | `profiles/blog-ca-nhan/styles/phoi-hop-cong-viec.md` |
-| Chia sẻ chuyên môn/thương hiệu cá nhân | `profiles/blog-ca-nhan/styles/chuyen-mon-cong-khai.md` |
-| Marketing có mục tiêu thuyết phục | `profiles/blog-ca-nhan/styles/marketing-thuyet-phuc.md` |
-| README/API/hướng dẫn tra cứu | `profiles/ky-thuat-doanh-nghiep/styles/huong-dan-ky-thuat.md` |
-| SOP/báo cáo/biên bản/vận hành | `profiles/ky-thuat-doanh-nghiep/styles/van-hanh-doanh-nghiep.md` |
-| Giáo trình/đề án/nghiên cứu | `profiles/ky-thuat-doanh-nghiep/styles/hoc-thuat-phan-tich.md` |
+| Kể trải nghiệm/blog cá nhân | `profiles/personal-blog/styles/personal-narrative.md` |
+| Chat/phối hợp công việc | `profiles/personal-blog/styles/work-coordination.md` |
+| Chia sẻ chuyên môn/thương hiệu cá nhân | `profiles/personal-blog/styles/public-expertise.md` |
+| Marketing có mục tiêu thuyết phục | `profiles/personal-blog/styles/persuasive-marketing.md` |
+| README/API/hướng dẫn tra cứu | `profiles/enterprise-technical/styles/technical-guide.md` |
+| SOP/báo cáo/biên bản/vận hành | `profiles/enterprise-technical/styles/business-operations.md` |
+| Giáo trình/đề án/nghiên cứu | `profiles/enterprise-technical/styles/academic-analysis.md` |
 
-Chọn tối đa một card tương thích mỗi phần. Chỉ đọc `references/bo-giai-phong-cach.md` khi
+Chọn tối đa một card tương thích mỗi phần. Chỉ đọc `references/style-resolution.md` khi
 mục đích/người đọc/quan hệ chưa rõ, có xung đột hoặc pha chức năng; không suy giọng chỉ từ tên kênh.
 Mẫu/hồ sơ/bộ tham chiếu được giao cần đúng phạm vi. Blog công nghệ vẫn có thể là blog;
 README/SOP không thành blog chỉ vì mẫu thân mật. Card không cấp quyền chuyển giọng hoặc thêm ý.

@@ -1,7 +1,7 @@
 # Thiếu từ và cấu trúc cần hoàn chỉnh
 
 Tra khi có nghi vấn đúng nhóm ở bảng của SKILL.md; đọc cả Không flag trước khi sửa.
-Cần ví dụ hư từ/loại từ mới tra mục liên quan trong `references/bang-tra-cuu.md`.
+Cần ví dụ hư từ/loại từ mới tra mục liên quan trong `references/function-words.md`.
 Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm khác chỉ vì có liên kết.
 
 ### V1. Thiếu bổ ngữ kết quả và bổ ngữ hướng
