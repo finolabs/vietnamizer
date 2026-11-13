@@ -56,13 +56,13 @@ specs/030-voice-modes/
 
 ```text
 SKILL.md                                  # 2 routing rows: help/onboarding, brand voice; one sentence on kind
-.plugin-skills/help/SKILL.md              # new plugin adapter → references/tro-giup.md
+.plugin-skills/help/SKILL.md              # new plugin adapter → references/help.md
 references/
 ├── ho-so-giong.md                        # kind, one-profile rule, source step, rating step (mục 7 rewritten)
 ├── phan-tich-giong-viet.md               # kind field, brand rules section, rating history section
-├── nguon-mau.md                          # new: paste, export (LinkedIn, Facebook), browser path, ownership, filtering
-├── giong-thuong-hieu.md                  # new: brand sources, guide rules vs observed traits, redaction
-└── tro-giup.md                           # new: help overview and onboarding flow
+├── voice-sources.md                          # new: paste, export (LinkedIn, Facebook), browser path, ownership, filtering
+├── brand-voice.md                  # new: brand sources, guide rules vs observed traits, redaction
+└── help.md                           # new: help overview and onboarding flow
 calibration/ca-kiem-thu.md                # VM01–VM16
 .specify/memory/constitution.md           # 2.4.0 amendment
 README.md, PRIVACY.md, docs/style-and-voice.md, docs/changelog.md, AGENTS.md
@@ -70,7 +70,7 @@ scripts/validate-package.py, scripts/package-plugin.py   # inventory and second 
 tests/test_skill_contract.py, tests/test_distribution.py, tests/test_package_security.py
 ```
 
-**Structure Decision**: keep one plugin; add `help` as a second adapter so the plugin exposes `/vietnamizer:help`. The help and onboarding text lives once in `references/tro-giup.md`, reached both from the adapter and from a routing row in `SKILL.md`, so standalone skill installs get the same help by asking for it.
+**Structure Decision**: keep one plugin; add `help` as a second adapter so the plugin exposes `/vietnamizer:help`. The help and onboarding text lives once in `references/help.md`, reached both from the adapter and from a routing row in `SKILL.md`, so standalone skill installs get the same help by asking for it.
 
 ## Phases
 

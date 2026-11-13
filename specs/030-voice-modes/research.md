@@ -4,7 +4,7 @@ Each item: Decision, Rationale, Alternatives considered. Platform facts were not
 
 ## R1. Where help and onboarding live
 
-- **Decision**: one reference file `references/tro-giup.md` holds the overview and the onboarding flow. A second plugin adapter `.plugin-skills/help/SKILL.md` points to it (plugin users get `/vietnamizer:help`); a routing row in `SKILL.md` sends "giúp", "hướng dẫn", "bắt đầu" requests there (standalone installs).
+- **Decision**: one reference file `references/help.md` holds the overview and the onboarding flow. A second plugin adapter `.plugin-skills/help/SKILL.md` points to it (plugin users get `/vietnamizer:help`); a routing row in `SKILL.md` sends "giúp", "hướng dẫn", "bắt đầu" requests there (standalone installs).
 - **Rationale**: one source of text; the adapter pattern already exists for the main skill; standalone `npx skills add` installs only the root skill.
 - **Alternatives**: a separate `help/` skill directory with its own copy (drift); help only as a route (no `/vietnamizer:help` in plugins, against decision 8).
 

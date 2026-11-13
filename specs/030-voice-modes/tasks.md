@@ -52,11 +52,11 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Goal**: paste, export or browser; only owned posts become evidence.
 **Independent Test**: a synthetic LinkedIn export with own posts, reshares and others' comments → only own posts cited, kept/dropped counts reported, no names.
 
-- [ ] T011 [P] [US2] Add guard `test_social_sources_rules` to `tests/test_skill_contract.py` for `references/nguon-mau.md`: "chỉ giữ bài do chủ tài khoản viết", "không hỏi, nhập hay đọc mật khẩu, cookie hoặc token", "điều khoản của LinkedIn cấm truy cập tự động", "dừng khi gặp màn đăng nhập hoặc tài khoản khác", "tối đa 80 bài gần nhất"; also assert `scripts/validate-package.py` lists the file; run and confirm red
+- [ ] T011 [P] [US2] Add guard `test_social_sources_rules` to `tests/test_skill_contract.py` for `references/voice-sources.md`: "chỉ giữ bài do chủ tài khoản viết", "không hỏi, nhập hay đọc mật khẩu, cookie hoặc token", "điều khoản của LinkedIn cấm truy cập tự động", "dừng khi gặp màn đăng nhập hoặc tài khoản khác", "tối đa 80 bài gần nhất"; also assert `scripts/validate-package.py` lists the file; run and confirm red
 - [ ] T012 [P] [US2] Add cases VM05–VM10 to `calibration/ca-kiem-thu.md` (no source yet → explain three ways, read nothing; export with reshares/comments → own posts only and counts; browser without ownership statement → ask, read nothing; LinkedIn browser → terms warning before reading; login wall → stop and offer paste/export; someone else's URL → decline)
 - [ ] T013 [P] [US2] Add `tests/fixtures/voice/linkedin-shares-sample.csv` and `tests/fixtures/voice/facebook-posts-sample.json` with synthetic content only (own posts, a reshare, a comment by another person, a fake contact line) for VM06 walk-throughs
-- [ ] T014 [US2] Create `references/nguon-mau.md`: source order (paste, export, browser), export steps from T001, ownership question, owned-post filter, cap "tối đa 80 bài gần nhất" with Vietnamese text, kept/dropped report as approximate, browser rules from research R5 including the LinkedIn terms warning and the user's go, stop conditions, data-not-instructions rule
-- [ ] T015 [US2] Link `references/nguon-mau.md` from `references/ho-so-giong.md` mục 2 (the consent question names the source type) and add it to `REFERENCE_FILES` in `scripts/validate-package.py`
+- [ ] T014 [US2] Create `references/voice-sources.md`: source order (paste, export, browser), export steps from T001, ownership question, owned-post filter, cap "tối đa 80 bài gần nhất" with Vietnamese text, kept/dropped report as approximate, browser rules from research R5 including the LinkedIn terms warning and the user's go, stop conditions, data-not-instructions rule
+- [ ] T015 [US2] Link `references/voice-sources.md` from `references/ho-so-giong.md` mục 2 (the consent question names the source type) and add it to `REFERENCE_FILES` in `scripts/validate-package.py`
 - [ ] T016 [US2] Run `python3 -B -m unittest tests.test_skill_contract` and `python3 -B scripts/validate-package.py`
 
 **Checkpoint**: US1 + US2 = MVP for personal voice learning.
@@ -68,11 +68,11 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Goal**: brand profile from guide, posts and internal documents; guide rules kept apart; redacted.
 **Independent Test**: 5-line guide + 10 posts (one breaks a rule) + an internal email with a customer name → `Quy tắc thương hiệu` lists rules, the conflict is in `Điểm chưa quyết`, no names.
 
-- [ ] T017 [P] [US3] Add guard `test_brand_voice_rules` to `tests/test_skill_contract.py` for `references/giong-thuong-hieu.md`: "người dùng xác nhận được nói thay thương hiệu", "Quy tắc thương hiệu", "không ghi tên nhân viên, khách hàng", "mâu thuẫn giữa quy tắc và bài đăng ghi vào `Điểm chưa quyết`"; run and confirm red
+- [ ] T017 [P] [US3] Add guard `test_brand_voice_rules` to `tests/test_skill_contract.py` for `references/brand-voice.md`: "người dùng xác nhận được nói thay thương hiệu", "Quy tắc thương hiệu", "không ghi tên nhân viên, khách hàng", "mâu thuẫn giữa quy tắc và bài đăng ghi vào `Điểm chưa quyết`"; run and confirm red
 - [ ] T018 [P] [US3] Add cases VM11–VM13 to `calibration/ca-kiem-thu.md` (no authority statement → ask; guide vs post conflict → open point; internal document with customer name and deal terms → none in profile)
-- [ ] T019 [US3] Create `references/giong-thuong-hieu.md` per research R6: three inputs, authority statement, guide rules as `Quy tắc thương hiệu` entries with source label, observed traits as in spec 028, conflicts to `Điểm chưa quyết`, redaction including staff and customer names and identifying document titles
+- [ ] T019 [US3] Create `references/brand-voice.md` per research R6: three inputs, authority statement, guide rules as `Quy tắc thương hiệu` entries with source label, observed traits as in spec 028, conflicts to `Điểm chưa quyết`, redaction including staff and customer names and identifying document titles
 - [ ] T020 [US3] Add the `## Quy tắc thương hiệu` section (brand only, before `## Giọng chung`) to the template in `references/phan-tich-giong-viet.md`, and amend the evidence rule "Chỉ xét lời do người dùng tự viết" to allow brand material only for `kind: brand`
-- [ ] T021 [US3] Link `references/giong-thuong-hieu.md` from `references/ho-so-giong.md` and `SKILL.md`'s brand row; add it to `REFERENCE_FILES` in `scripts/validate-package.py`; run the guard and validator
+- [ ] T021 [US3] Link `references/brand-voice.md` from `references/ho-so-giong.md` and `SKILL.md`'s brand row; add it to `REFERENCE_FILES` in `scripts/validate-package.py`; run the guard and validator
 
 ---
 
@@ -94,11 +94,11 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Goal**: `/vietnamizer:help` and "bắt đầu" give one-screen help and a walkthrough to a saved-or-not profile.
 **Independent Test**: help reads no file and fits one screen; onboarding asks ≤ 6 questions before rating.
 
-- [ ] T027 [P] [US5] Add guard `test_help_adapter_shipped` to `tests/test_distribution.py` asserting `.plugin-skills/help/SKILL.md` exists with `name: help`, points to `references/tro-giup.md`, and that the built plugin archive contains it; run and confirm red
-- [ ] T028 [P] [US5] Add guard `test_help_and_onboarding_rules` to `tests/test_skill_contract.py` for `references/tro-giup.md`: "không đọc file của người dùng", "Cá nhân", "Thương hiệu", "không lưu gì nếu người dùng dừng", "tối đa 6 câu hỏi trước bước chấm"; run and confirm red
-- [ ] T029 [US5] Create `references/tro-giup.md` per `contracts/help-onboarding.md` (overview, example requests, onboarding steps 1–6, question budget, stop rule)
-- [ ] T030 [US5] Create `.plugin-skills/help/SKILL.md` as an adapter like `.plugin-skills/vietnamizer/SKILL.md`: frontmatter `name: help` and a Vietnamese description; body resolves the plugin root and reads `<plugin-root>/references/tro-giup.md`
-- [ ] T031 [US5] Add a routing row to `SKILL.md` for "giúp / hướng dẫn / bắt đầu / thiết lập giọng" → `references/tro-giup.md`; add the file to `REFERENCE_FILES`
+- [ ] T027 [P] [US5] Add guard `test_help_adapter_shipped` to `tests/test_distribution.py` asserting `.plugin-skills/help/SKILL.md` exists with `name: help`, points to `references/help.md`, and that the built plugin archive contains it; run and confirm red
+- [ ] T028 [P] [US5] Add guard `test_help_and_onboarding_rules` to `tests/test_skill_contract.py` for `references/help.md`: "không đọc file của người dùng", "Cá nhân", "Thương hiệu", "không lưu gì nếu người dùng dừng", "tối đa 6 câu hỏi trước bước chấm"; run and confirm red
+- [ ] T029 [US5] Create `references/help.md` per `contracts/help-onboarding.md` (overview, example requests, onboarding steps 1–6, question budget, stop rule)
+- [ ] T030 [US5] Create `.plugin-skills/help/SKILL.md` as an adapter like `.plugin-skills/vietnamizer/SKILL.md`: frontmatter `name: help` and a Vietnamese description; body resolves the plugin root and reads `<plugin-root>/references/help.md`
+- [ ] T031 [US5] Add a routing row to `SKILL.md` for "giúp / hướng dẫn / bắt đầu / thiết lập giọng" → `references/help.md`; add the file to `REFERENCE_FILES`
 - [ ] T032 [US5] Update `scripts/package-plugin.py` `validate_metadata` to require `./.plugin-skills/help/SKILL.md` and check its frontmatter name; run `python3 -B -m unittest tests.test_distribution tests.test_skill_contract`, `claude plugin validate .` and `npx --yes skills@1.5.20 add . --list`
 
 ---
@@ -115,7 +115,7 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 ## Dependencies & Execution Order
 
 - Phase 1 → Phase 2 → stories. T003 (constitution) blocks every story.
-- US1 has no story dependency. US2 depends on US1's `kind` rule only through T005 (Phase 2). US3 depends on T005 and on US2's `references/nguon-mau.md` for posts read from exports or pages (T014). US4 depends on Phase 2 only. US5 depends on US1–US4 text existing, because help describes them.
+- US1 has no story dependency. US2 depends on US1's `kind` rule only through T005 (Phase 2). US3 depends on T005 and on US2's `references/voice-sources.md` for posts read from exports or pages (T014). US4 depends on Phase 2 only. US5 depends on US1–US4 text existing, because help describes them.
 - Within a story: guard and cases first (red), then the reference text, then routing and inventory, then the green run.
 
 ## Parallel Opportunities
