@@ -4,7 +4,7 @@
 
 ## Lịch sử phiên bản
 
-### Chưa phát hành (dự kiến 0.14.0)
+### 0.14.0 (13/11/2026)
 
 Gỡ Jev (evaluator TypeSafe) khỏi Vietnamizer, theo spec `specs/029-remove-jev/`. Đã bỏ: package `jev/`
 (runner, transport, chuẩn bị/coverage, registry 55 pattern), `references/typesafe-advisor.md`,
@@ -33,6 +33,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in.
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn, gói phát hành bỏ `calibration/`, phân phối qua catalog `finolabs/plugins`; giữ 55 pattern, runtime Jev và năm chốt.
 - **0.13.3** — Rút core thành bộ điều phối, đọc catalog/workflow/mẫu/evaluator theo tác vụ; giữ quy trình ý trước câu và 55 pattern. Thêm review-only, tách nghĩa/cách viết và harness offline gắn review với candidate hiện tại. Giữ API/runtime, metadata và gói cài đồng bộ; chưa có A/B tiếng Việt hoặc actual-read trace chứng minh cải thiện chất lượng/token.
 

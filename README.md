@@ -80,7 +80,7 @@ Không dùng mức đổi ký tự, độ dài hay token làm điểm chất lư
 
 ## Cài nhanh
 
-Bản hiện tại là **0.13.4**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
+Bản hiện tại là **0.14.0**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ### Skills CLI
 
@@ -172,6 +172,7 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 
 ## Lịch sử phiên bản
 
+- **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn (chỉ lưu khi bạn yêu cầu rõ); gói phát hành bỏ `calibration/`; phân phối qua catalog `finolabs/plugins`. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.3** — Core gọn, đọc tài liệu theo tác vụ; review nghĩa và cách viết riêng, kiểm đúng candidate hiện tại. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md).
 
