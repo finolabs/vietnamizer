@@ -207,6 +207,7 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn(phrase, section)
         self.assertNotIn("Không biến một lượt chọn thành điểm khớp giọng", route)
         self.assertIn("Quy tắc không cấp quyền thêm ý, CTA, khẳng định hay thông tin liên hệ mà nguồn không có", route)
+        self.assertIn("trừ điểm do bài đăng làm khác `Quy tắc thương hiệu`: ở đó theo quy tắc", route)
         analysis = read("references/voice-analysis.md")
         self.assertIn("## Lịch sử chấm", analysis)
         self.assertLess(analysis.index("## Điểm chưa quyết"), analysis.rindex("## Lịch sử chấm"))
