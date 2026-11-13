@@ -9,7 +9,7 @@
   "privacyPolicyUrl": "https://github.com/finolabs/vietnamizer/blob/main/PRIVACY.md",
   "termsOfServiceUrl": "https://github.com/finolabs/vietnamizer/blob/main/TERMS.md",
   "description": "Biên tập bản nháp, bài viết, README và bản dịch tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết.",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "author": {
     "name": "Fioenix",
     "url": "https://github.com/fioenix"
