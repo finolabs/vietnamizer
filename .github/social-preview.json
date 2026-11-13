@@ -1,0 +1,11 @@
+{
+  "name": "Vietnamizer",
+  "tagline": "Giúp AI viết tiếng Việt\ngiống con người hơn.",
+  "mark": "../assets/icon-dark.svg",
+  "input": "Đã tìm khắp nhà nhưng vẫn\nkhông tìm chìa khóa.",
+  "output": "Đã tìm khắp nhà nhưng vẫn\nkhông tìm thấy chìa khóa.\n\nMR04 · thiếu bổ ngữ\n0.12.1 · Codex · đạt",
+  "footer": [
+    "Skill cho **Claude Code**, **Codex** và **Antigravity**",
+    "MIT, github.com/finolabs/vietnamizer"
+  ]
+}
