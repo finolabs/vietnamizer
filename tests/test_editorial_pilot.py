@@ -99,7 +99,7 @@ class PilotContracts(unittest.TestCase):
 
     def test_baseline_gets_source_and_context_but_not_skill_or_labels(self):
         c={'id':'x','source':'Nội dung.','audience':'Đồng nghiệp','purpose':'Thông báo',
-           'family':'work-coordination','expected':['PRIVATE_LABEL']}
+           'family':'phoi-hop-cong-viec','expected':['PRIVATE_LABEL']}
         for arm in ('bare','ordinary'):
             prompt=self.p.make_prompt(c,arm,'PRIVATE_SKILL')
             self.assertIn('Nội dung.',prompt)
@@ -171,7 +171,7 @@ class PilotContracts(unittest.TestCase):
 
     def test_prompt_injection_is_data_not_a_shell_argument(self):
         c={'id':'x','source':'$(touch /tmp/unsafe) `echo bad`','audience':'Reader',
-           'purpose':'Edit','family':'technical-guide'}
+           'purpose':'Edit','family':'huong-dan-ky-thuat'}
         p=self.p.make_prompt(c,'bare','')
         self.assertIn('$(touch /tmp/unsafe)',p)
         args=self.p.codex_args(Path('/tmp/pilot'))

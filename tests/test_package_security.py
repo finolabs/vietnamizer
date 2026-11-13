@@ -532,8 +532,10 @@ class PackageSecurityTest(unittest.TestCase):
                 if name.startswith("profiles/") and not name.endswith("/")
             }
             self.assertEqual(actual_profile_files, expected_files)
-            self.assertNotIn("profiles/personal-blog.md", names)
-            self.assertNotIn("profiles/enterprise-technical.md", names)
+            for legacy in ("profiles/blog-ca-nhan.md", "profiles/ky-thuat-doanh-nghiep.md",
+                           "profiles/blog-ca-nhan/", "profiles/ky-thuat-doanh-nghiep/",
+                           "profiles/personal-blog.md", "profiles/enterprise-technical.md"):
+                self.assertNotIn(legacy, names)
 
     def test_validates_archive_bytes_against_the_staged_payload(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:

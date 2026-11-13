@@ -161,7 +161,7 @@ def prepare(out):
         if sha((out/'corpus'/f'{r["id"]}.txt').read_bytes())!=r['excerpt_sha256']:raise ValueError('source drift')
         families.setdefault(r['topic_family'],set()).add(r['role'])
     if any(len(x)>1 for x in families.values()):raise ValueError('family crosses split')
-    names=['SKILL.md','references/style-resolution.md','references/function-words.md','references/sino-vietnamese.md','references/voice-from-samples.md','profiles/enterprise-technical/rules.md','profiles/enterprise-technical/styles/technical-guide.md']
+    names=['SKILL.md','references/bo-giai-phong-cach.md','references/bang-tra-cuu.md','references/han-viet-thuan-viet.md','references/giu-giong-tu-mau.md','profiles/ky-thuat-doanh-nghiep/rules.md','profiles/ky-thuat-doanh-nghiep/styles/huong-dan-ky-thuat.md']
     for n in names:
         f=out/'skill'/n;f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes((ROOT/n).read_bytes())
     if 'version: "0.12.1"' not in (out/'skill/SKILL.md').read_text():raise ValueError('skill version')

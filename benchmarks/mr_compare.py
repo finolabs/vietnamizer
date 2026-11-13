@@ -140,8 +140,8 @@ def prepare(out):
     old=ROOT/'artifacts/017-mindfio-run-20261027-v2'
     old_receipt=read(calibration/'source-before.json')
     new_receipt=read(calibration/'source-after.json')
-    common=['references/style-resolution.md','references/function-words.md','references/sino-vietnamese.md',
-            'profiles/personal-blog/rules.md','profiles/personal-blog/styles/personal-narrative.md']
+    common=['references/bo-giai-phong-cach.md','references/bang-tra-cuu.md','references/han-viet-thuan-viet.md',
+            'profiles/blog-ca-nhan/rules.md','profiles/blog-ca-nhan/styles/ke-trai-nghiem.md']
     for version in VERSIONS:
         skill=(calibration/'source-before/SKILL.md').read_bytes() if version=='0.12.0' else (ROOT/'SKILL.md').read_bytes()
         expected=old_receipt['SKILL.md'] if version=='0.12.0' else new_receipt['SKILL.md']
@@ -156,7 +156,7 @@ def prepare(out):
     save(out/'scenarios.json',[{k:v for k,v in r.items() if k not in ('criterion','optional_opportunity')} for r in scenarios])
     save(out/'rubric.json',{'schema':'mr-regression-rubric-v1','label_source':'host-proposed development expectations, not author gold','cases':[{'scenario':r['id'],'mr_id':r['mr_id'],'required':r['criterion'],'optional_opportunity':r['optional_opportunity']} for r in scenarios],
          'aggregation':'Logical case passed only if all required subscenarios passed; failed if any failed; otherwise insufficient. Optional opportunities never alter safety status.',
-         'source_case_table_sha256':sha((ROOT/'calibration/test-cases.md').read_bytes())})
+         'source_case_table_sha256':sha((ROOT/'calibration/ca-kiem-thu.md').read_bytes())})
     for r in scenarios:
         for version in VERSIONS:
             names=['SKILL.md']+common[:3]+(common[3:] if r['family']=='blog' else [])

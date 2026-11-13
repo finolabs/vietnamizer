@@ -29,7 +29,7 @@ class VoiceVersionTests(unittest.TestCase):
   self.assertNotIn('0.13.0',v.judge_prompt(p));self.assertEqual(m['pairs']['p3']['contrast'],'D-B')
   assessment=v.fixture_assessment(p);v.validate_assessment(p,assessment)
  def test_zip_path_rejects_traversal(self):
-  self.assertTrue(v.safe_member('vietnamizer/profiles/personal-blog/rules.md'))
+  self.assertTrue(v.safe_member('vietnamizer/profiles/blog-ca-nhan/rules.md'))
   for n in ('vietnamizer/../../bad.md','/tmp/SKILL.md','vietnamizer/a\\b.md'):
    self.assertFalse(v.safe_member(n))
 

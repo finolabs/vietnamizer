@@ -86,7 +86,7 @@ def prepare(out):
             libraries.append(names)
         archives.append({'version':version,'original':str(path),'sha256':sha(dest.read_bytes())})
     if libraries[0]!=libraries[1]:raise ValueError('unequal library availability')
-    if not all(n in libraries[0] for n in ('SKILL.md','profiles/personal-blog/rules.md','profiles/enterprise-technical/rules.md')):raise ValueError('incomplete profiles')
+    if not all(n in libraries[0] for n in ('SKILL.md','profiles/blog-ca-nhan/rules.md','profiles/ky-thuat-doanh-nghiep/rules.md')):raise ValueError('incomplete profiles')
     save(out/'bundle-files.json',libraries[0]);save(out/'packages.json',archives)
     for n in (*CASES,'R1','R2','R3','H1','H2'):
         d=out/'corpus'/f'{n}.txt';d.parent.mkdir(exist_ok=True);shutil.copyfile(OLD/'corpus'/f'{n}.txt',d)

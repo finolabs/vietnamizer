@@ -17,8 +17,8 @@
 `phoi-hop-cong-viec` → `work-coordination`); `profiles/ky-thuat-doanh-nghiep` → `profiles/enterprise-technical`
 (`hoc-thuat-phan-tich` → `academic-analysis`, `huong-dan-ky-thuat` → `technical-guide`,
 `van-hanh-doanh-nghiep` → `business-operations`); `calibration/ca-kiem-thu` → `test-cases`,
-`ghi-chu-ngu-vuc` → `register-notes`. Spec cũ, `calibration/LOG.md` và tài liệu có ngày giữ tên cũ như
-lịch sử. Người dùng không cần làm gì; ai trỏ thẳng tới đường dẫn file trong gói thì đổi theo bảng trên.
+`ghi-chu-ngu-vuc` → `register-notes`. Spec cũ, `calibration/LOG.md`, tài liệu có ngày và các runner benchmark đã
+đóng băng (`benchmarks/`, đọc artifact cũ) giữ tên cũ như lịch sử. Người dùng không cần làm gì; ai trỏ thẳng tới đường dẫn file trong gói thì đổi theo bảng trên.
 
 Hồ sơ giọng, học ý tưởng từ một plugin brand voice (viết lại cho tiếng Việt, không chép): mỗi nét ở
 Giọng chung và Theo kênh có thể kèm `ranh giới`, là trần khi áp để tránh áp quá tay; mục tùy chọn
