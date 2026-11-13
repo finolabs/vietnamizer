@@ -7,7 +7,7 @@ description: |
   biên tập và theo mẫu khi được yêu cầu rõ; học/lưu/áp dụng hồ sơ giọng khi được yêu cầu.
 license: MIT
 metadata:
-  version: "0.14.0"
+  version: "0.15.0"
 ---
 
 # Vietnamizer
