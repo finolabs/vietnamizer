@@ -4,6 +4,8 @@ Ngày đánh giá: **23/10/2026**. Trạng thái sản phẩm: **owner đã ch�
 Giữ Vietnamizer ở dạng skills-only, chưa làm MCP và tiếp tục tạm dừng gửi OpenAI. Các use case
 MCP dưới đây chỉ là phân tích để tham khảo nếu owner mở lại quyết định; không phải kế hoạch triển khai.
 
+> Ghi chú 13/11/2026: mọi nhắc tới Jev/TypeSafe trong tài liệu này là lịch sử; Jev đã bị gỡ từ 0.14.0.
+
 ## Intake đang chặn bước nào
 
 Owner báo portal OpenAI hiển thị ngày 23/10/2026:

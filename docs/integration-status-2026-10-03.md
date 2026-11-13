@@ -1,8 +1,8 @@
 # Quyết định tích hợp Vietnamizer 0.9.7
 
-> Quyết định và kết quả tại thời điểm 03/10/2026. Phần TypeSafe bên dưới là lịch sử;
-> runner hiện hành được mô tả trong README và `references/typesafe-advisor.md`. Trạng thái
-> gửi OpenAI nằm trong [cập nhật 23/10/2026](openai-marketplace-assessment-2026-10-23.md).
+> Quyết định và kết quả tại thời điểm 03/10/2026. Phần TypeSafe bên dưới là lịch sử: Jev và
+> `references/typesafe-advisor.md` đã bị gỡ từ 0.14.0 (spec 029). Trạng thái gửi OpenAI nằm trong
+> [cập nhật 23/10/2026](openai-marketplace-assessment-2026-10-23.md).
 
 ## Phạm vi maintainer đã duyệt
 
