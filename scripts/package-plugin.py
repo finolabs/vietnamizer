@@ -95,6 +95,9 @@ def validate_metadata() -> dict[str, dict]:
             raise ValueError("Skills-only plugins do not declare apps, MCP servers or hooks")
         manifests[platform] = manifest
     local_file("./.plugin-skills/vietnamizer/SKILL.md")
+    help_adapter = local_file("./.plugin-skills/help/SKILL.md").read_text(encoding="utf-8")
+    if not re.match(r"---\nname: help\n", help_adapter):
+        raise ValueError("Help adapter must declare name: help")
     for name, square in ASSETS.items():
         validate_svg(local_file(f"./assets/{name}"), square=square)
     interface = manifests["codex"]["interface"]
@@ -120,6 +123,7 @@ def build(manifests: dict[str, dict]) -> None:
             if not entry.is_dir():
                 relative = entry.filename.removeprefix("vietnamizer/")
                 files[f"skills/vietnamizer/{relative}"] = skill.read(entry)
+    files["skills/help/SKILL.md"] = (ROOT / ".plugin-skills/help/SKILL.md").read_bytes()
     files["LICENSE"] = (ROOT / "LICENSE").read_bytes()
     for name in sorted(ASSETS):
         files[f"assets/{name}"] = (ROOT / "assets" / name).read_bytes()

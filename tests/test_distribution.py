@@ -162,7 +162,29 @@ class DistributionTest(unittest.TestCase):
             for platform in ("codex", "claude"):
                 manifest = json.loads((repo / f".{platform}-plugin/plugin.json").read_text())
                 root = repo / manifest["skills"]
-                self.assertEqual([path.relative_to(root).as_posix() for path in root.rglob("SKILL.md")], ["vietnamizer/SKILL.md"])
+                self.assertEqual(sorted(path.relative_to(root).as_posix() for path in root.rglob("SKILL.md")), ["help/SKILL.md", "vietnamizer/SKILL.md"])
+
+    def test_help_adapter_shipped(self) -> None:
+        adapter = (ROOT / ".plugin-skills/help/SKILL.md").read_text(encoding="utf-8")
+        self.assertRegex(adapter, r"(?m)^name: help$")
+        self.assertIn("references/help.md", adapter)
+        self.assertIn("skills/vietnamizer/references/help.md", adapter)
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.fixture(Path(temporary))
+            result = self.package(repo)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            with zipfile.ZipFile(repo / "dist/vietnamizer-plugin.zip") as archive:
+                names = archive.namelist()
+                self.assertEqual(archive.read("skills/help/SKILL.md"), adapter.encode("utf-8"))
+                self.assertIn("skills/vietnamizer/references/help.md", names)
+
+    def test_plugin_package_rejects_help_adapter_with_wrong_name(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.fixture(Path(temporary))
+            adapter = repo / ".plugin-skills/help/SKILL.md"
+            adapter.write_text(adapter.read_text(encoding="utf-8").replace("name: help", "name: helper"), encoding="utf-8")
+            result = self.package(repo)
+            self.assertNotEqual(result.returncode, 0)
 
     def test_plugin_archive_contains_both_wordmark_variants(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -200,7 +222,7 @@ class DistributionTest(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             with zipfile.ZipFile(repo / "dist/vietnamizer-plugin.zip") as archive:
                 names = archive.namelist()
-                self.assertEqual([name for name in names if name.endswith("SKILL.md")], ["skills/vietnamizer/SKILL.md"])
+                self.assertEqual(sorted(name for name in names if name.endswith("SKILL.md")), ["skills/help/SKILL.md", "skills/vietnamizer/SKILL.md"])
                 self.assertEqual(archive.read("skills/vietnamizer/SKILL.md"), (repo / "SKILL.md").read_bytes())
                 for platform in ("codex", "claude"):
                     manifest = json.loads(archive.read(f".{platform}-plugin/plugin.json"))

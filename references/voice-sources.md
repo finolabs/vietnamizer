@@ -19,8 +19,10 @@ Chưa có nguồn thì giới thiệu ba cách theo thứ tự này, chưa đọ
 Trước khi đọc export hay trang, hỏi người dùng xác nhận đó là tài khoản của chính họ. Lời xác nhận này
 nằm trong chính câu xin đồng ý đọc (`references/voice-profile.md` mục 2), không thành câu hỏi riêng. Skill
 không kiểm được danh tính và dựa vào lời xác nhận đó. Người dùng nói đó là của người khác thì không học
-giọng ấy và không đọc trang của người khác; đề nghị dùng bài do chính họ viết. Học giọng thương hiệu từ
-trang thương hiệu chưa được hỗ trợ (spec 030 US3); file này chỉ dùng cho hồ sơ cá nhân.
+giọng ấy và không đọc trang của người khác; đề nghị dùng bài do chính họ viết. Mục 3 (file export) cũng
+dùng cho bài của thương hiệu khi người dùng được phép tải export của trang; tài liệu thương hiệu và lời
+xác nhận được nói thay thương hiệu theo `references/brand-voice.md`. Đường trình duyệt ở mục 4 chỉ dành
+cho tài khoản cá nhân của chính người dùng.
 
 ## 3. File export
 
