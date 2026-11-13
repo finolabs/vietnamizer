@@ -18,6 +18,7 @@
 - `tone_shifts[]`: only where samples show a contrast; each with a trimmed contrasting pair
 - `dos[]`, `donts[]`: characteristic phrases; words and habits to avoid
 - Trait = {statement, scope, evidence (trimmed fragment or approximate count), confidence note}
+- Amendment (13/11/2026): a trait in `voice`, `surfaces[]` or `dos[]` may carry an optional `boundary` (`ranh giới`), a ceiling when applied; `open_points[]` (`Điểm chưa quyết`) holds {seen, proposal, question}, never applied until the user confirms. Both are additive; `schema` stays 1.
 - Validation: no personal data (FR-007), no text authored by others, third-person style, each trait traceable.
 
 ## Profile store

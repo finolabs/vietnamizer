@@ -388,6 +388,25 @@ thay hay độ giống bề mặt làm chuẩn. Lỗi nghĩa/vượt phạm vi k
 
 Ca 3, 5, 6 và 9 là ca chống sửa quá tay.
 
+## HG01–HG11 · ranh giới nét và điểm chưa quyết trong hồ sơ giọng
+
+Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải thiện. Mọi ca giả định người dùng đã
+gọi tên hồ sơ và đồng ý đọc (mục 2 của `references/ho-so-giong.md`). Ca 1, 2, 3, 6, 8, 9 và 10 là
+ca chống sửa quá tay.
+
+| # | Đầu vào | Mong đợi | Vì sao |
+|---|---|---|---|
+| 1 | Hồ sơ có nét “dùng ‘nhé’ ở lời đề nghị cuối tin chat”, ranh giới “không quá một lần mỗi tin, không gắn vào câu báo lỗi”. Nháp: *“Server lỗi từ 9h. Anh xem log giúp em. Chiều mình họp lại.”* | Giữ nguyên nháp là hợp lệ. Nếu áp, tối đa một “nhé” ở lời đề nghị cuối, ví dụ *“Chiều mình họp lại nhé.”*; không bao giờ gắn vào *“Server lỗi từ 9h.”* | Ranh giới là trần khi áp |
+| 2 | Hồ sơ `schema: 1` cũ, không có `ranh giới` và không có `Điểm chưa quyết` | Dùng bình thường; không đòi dựng lại hồ sơ, không báo hồ sơ lỗi | Hai trường mới là tùy chọn |
+| 3 | Đang dựng hồ sơ; mẫu cho thấy người viết hay chốt đoạn bằng câu ngắn, nhưng không có căn cứ về mức dày | Ghi nét với `ranh giới: chưa rõ`; không tự đặt “tối đa mỗi đoạn một câu” | Không suy ranh giới từ cảm nhận chung |
+| 4 | Kiểm A/B: bản không áp hồ sơ thắng, người dùng nói bản kia “nhé nhiều quá” | Đề xuất diff thêm `ranh giới` cho nét “nhé”; chỉ lưu khi người dùng xác nhận diff | Áp quá tay đi vào ranh giới, lựa chọn A/B không tự cấp quyền lưu |
+| 5 | Mẫu email gửi cùng nhóm người đọc: 3 thư xưng “anh/chị”, 2 thư gọi “bạn” | Không đưa cách gọi vào Giọng chung; ghi một mục `Điểm chưa quyết` gồm đã thấy (mã mẫu), đề xuất và câu cần chốt | Mẫu mâu thuẫn mà người dùng tự chốt được |
+| 6 | Áp hồ sơ có `Điểm chưa quyết` về cách gọi người đọc (đề xuất “anh/chị”). Nháp: *“Bạn gửi lại file giúp mình.”* | Giữ “bạn”; có thể báo ngắn điểm còn chờ chốt; không đổi thành “anh/chị” | Đề xuất chưa được xác nhận không được áp |
+| 7 | Người dùng trả lời điểm ở ca 5: “với khách hàng luôn gọi anh/chị” | Đề xuất diff: thêm nét vào Tông theo người đọc với phạm vi khách hàng, bỏ điểm khỏi `Điểm chưa quyết`; lưu sau xác nhận | Điểm đã chốt chuyển về đúng mục |
+| 8 | Hồ sơ có nét “câu chốt ngắn sau đoạn giải thích”, ranh giới “chỉ cuối đoạn”. Nháp kỹ thuật: *“Nếu hàng đợi quá 500 việc thì hệ thống tạm dừng nhận yêu cầu mới trong 60 giây.”* | Giữ nguyên điều kiện, số và thời gian; không cắt câu để có nhịp ngắn | Năm chốt thắng nét giọng, kể cả khi còn trong ranh giới |
+| 9 | Hồ sơ có `Điểm chưa quyết` về cách gọi khách hàng (đề xuất “anh/chị”). Yêu cầu viết mới một email cho khách hàng, brief không nêu cách gọi | Hỏi đúng điểm đó, hoặc dùng cách brief ngụ ý và báo điểm còn chờ chốt; không lấy “anh/chị” từ đề xuất | Viết mới không có cách viết sẵn để giữ |
+| 10 | Đang cập nhật hồ sơ; người dùng chỉ nói về một bản nháp: “đoạn này hơi cứng”, sau hai câu hỏi vẫn chưa rõ | Chỉ sửa bản viết; không đề xuất diff hồ sơ, không tạo `Điểm chưa quyết` | Phản hồi mơ hồ không thành quy tắc lâu dài |
+| 11 | Mẫu email gọi một người nhận có tên lúc “anh”, lúc “bạn” | Mục `Điểm chưa quyết` chỉ ghi nhãn vai trò (ví dụ “đồng nghiệp cùng nhóm”) và mã mẫu, không có tên người nhận | Lược dữ liệu riêng áp cả ba trường của điểm |
 
 ## CN01–CN06 · nhất quán trong bài dài và dừng thừa
 

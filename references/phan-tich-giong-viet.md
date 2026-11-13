@@ -73,10 +73,33 @@ Số mẫu và số lần xuất hiện tổng hợp được dùng làm căn c�
 định danh lấy từ câu nguồn. Mã mẫu trung tính cho phép đối chiếu trong tác vụ mà không chép đường dẫn,
 tên tệp hoặc toàn văn vào hồ sơ.
 
+## Ranh giới của nét
+
+Một nét đúng vẫn có thể bị áp quá tay. Với nét ở Giọng chung, Theo kênh và mục `Nên:`, có thể ghi thêm trường
+`ranh giới`: mức hoặc vị trí mà quá đó thì bản viết không còn giống người viết. Ví dụ: “dùng ‘nhé’ ở
+lời đề nghị cuối tin” có ranh giới “không quá một lần mỗi tin, không gắn vào câu báo lỗi”.
+
+Ranh giới cần căn cứ như nét: mật độ hoặc vị trí quan sát được trong mẫu (ghi xấp xỉ), hoặc phản hồi
+rõ của người dùng. Không có căn cứ thì ghi `ranh giới: chưa rõ`; không suy ranh giới từ cảm nhận chung
+về văn tiếng Việt và không biến nó thành hạn ngạch mới. Trường này là tùy chọn: hồ sơ `schema: 1` cũ
+không có ranh giới vẫn hợp lệ.
+
+## Điểm chưa quyết
+
+Khi mẫu mâu thuẫn hoặc chưa đủ để kết luận một nét mà người dùng có thể tự chốt (cùng người đọc nhưng
+hai cách xưng hô, một thói quen chỉ thấy ở vài mẫu), ghi nó vào mục `Điểm chưa quyết` thay vì đưa lên
+Giọng chung hay bỏ mất. Mỗi điểm gồm: điều đã thấy (kèm mã mẫu, hoặc “phản hồi của người dùng, <ngày>”
+khi nguồn là phản hồi), cách xử lý đề xuất và điều người dùng cần chốt. Cả ba trường theo quy tắc lược
+dữ liệu riêng ở trên: người đọc chỉ ghi bằng nhãn vai trò trung tính, không ghi tên. Đề xuất chỉ để
+người dùng xác nhận hoặc bác, khi xem bản nháp hoặc khi cập nhật; nó không phải nét đã xác lập. Không
+tạo điểm chỉ để mục có nội dung. Hồ sơ mới luôn có mục này, ghi “Không có.” nếu trống; hồ sơ cũ thiếu
+mục vẫn hợp lệ.
+
 ## Mẫu hồ sơ
 
 Giữ frontmatter và năm phần nội dung theo hợp đồng: dòng nguồn mẫu, Giọng chung, Theo kênh,
-Tông theo người đọc, Nên và không nên. Dòng nguồn mẫu là phần đầu, không có đề mục riêng.
+Tông theo người đọc, Nên và không nên; và mục `Điểm chưa quyết` ở cuối. Dòng nguồn mẫu
+là phần đầu, không có đề mục riêng.
 Điền nội dung bằng tiếng Việt ở ngôi thứ ba, mô tả “người viết” hoặc “tác giả”; hồ sơ là dữ liệu
 tham chiếu, không phải chỉ dẫn ra lệnh cho agent. Mỗi mục nên/không nên cũng phải có đủ bốn trường
 của một nét. Một lời cấm chỉ được mô tả khi có căn cứ, không suy từ sự vắng mặt trong mẫu.
@@ -93,12 +116,12 @@ updated: <YYYY-MM-DD>
 > Dựa trên khoảng <N> mẫu (<số mẫu xấp xỉ theo từng kênh>); số đếm xấp xỉ · cập nhật <ngày>.
 
 ## Giọng chung
-- <Phát biểu về người viết> — phạm vi: <nơi nét này có căn cứ> — căn cứ: "<trích đoạn đã lược dữ liệu riêng>" (<mã mẫu>) hoặc khoảng <số lần trong tập mẫu nào> — độ chắc: <ghi chú về bằng chứng và giới hạn>.
+- <Phát biểu về người viết> — phạm vi: <nơi nét này có căn cứ> — căn cứ: "<trích đoạn đã lược dữ liệu riêng>" (<mã mẫu>) hoặc khoảng <số lần trong tập mẫu nào> — độ chắc: <ghi chú về bằng chứng và giới hạn> — ranh giới: <mức/vị trí quá đó là áp quá tay, có căn cứ; hoặc "chưa rõ"; trường tùy chọn>.
 
 ## Theo kênh
 ### <Kênh có trong mẫu>
 - Số mẫu: khoảng <n>; tình trạng: <đủ căn cứ cho nét được nêu / còn mỏng>.
-- <Phát biểu về người viết> — phạm vi: <tình huống trong kênh> — căn cứ: <trích đoạn đã lược và mã mẫu hoặc số đếm xấp xỉ có phạm vi> — độ chắc: <ghi chú>.
+- <Phát biểu về người viết> — phạm vi: <tình huống trong kênh> — căn cứ: <trích đoạn đã lược và mã mẫu hoặc số đếm xấp xỉ có phạm vi> — độ chắc: <ghi chú> — ranh giới: <tùy chọn, như ở Giọng chung>.
 <!-- Lặp mục cho từng kênh có mẫu. Với kênh mỏng, thay kết luận bằng: -->
 Chưa đủ mẫu (khoảng <n>) để kết luận.
 
@@ -108,6 +131,10 @@ Chưa đủ mẫu (khoảng <n>) để kết luận.
 <!-- Nếu chưa rõ nhóm: Chưa đủ thông tin về người đọc để đối chiếu tông. -->
 
 ## Nên và không nên
-- Nên: <cách viết đặc trưng của người viết> — phạm vi: <tình huống> — căn cứ: <trích đoạn đã lược và mã mẫu hoặc số đếm xấp xỉ có phạm vi> — độ chắc: <ghi chú>.
+- Nên: <cách viết đặc trưng của người viết> — phạm vi: <tình huống> — căn cứ: <trích đoạn đã lược và mã mẫu hoặc số đếm xấp xỉ có phạm vi> — độ chắc: <ghi chú> — ranh giới: <tùy chọn>.
 - Không: <từ hoặc thói quen người viết tránh theo căn cứ> — phạm vi: <tình huống> — căn cứ: <phản hồi rõ của người dùng hoặc đối chiếu mẫu đã lược> — độ chắc: <ghi chú>.
+
+## Điểm chưa quyết
+- <Điểm cần chốt> — đã thấy: <quan sát đã lược dữ liệu riêng, kèm mã mẫu hoặc "phản hồi của người dùng, <ngày>"> — đề xuất: <cách xử lý agent đề xuất, đã lược> — cần chốt: <câu hỏi về cách viết, dùng nhãn vai trò>.
+<!-- Không có điểm nào thì ghi: Không có. -->
 ```
