@@ -1,14 +1,19 @@
 <!--
 Sync Impact Report
-- Version change: 2.2.0 -> 2.3.0 (MINOR: principle V loses its optional external-evaluator allowance;
-  no obligation of any other principle changes).
-- Owner approval: 2026-11-13, spec 029: "Tao muốn gỡ bỏ Jev khỏi Vietnamizer".
-- Reason: the Jev/TypeSafe evaluator and its runner were removed; the skill ships Markdown only.
-- Modified principle V: no external service, key or runner in the package. Governance item 4 of
-  the verification rules no longer allows an automatic external evaluator branch; the owner
-  decision of 2026-10-16 (spec 007) is superseded and kept as history.
+- Version change: 2.3.0 -> 2.4.0 (MINOR: the voice-profile constraint gains two sources and a
+  stored user rating; no other principle's obligation changes).
+- Owner approval: 2026-11-13, spec 030 settled decisions 3, 5 and 7 ("Tao muốn Vietnamizer hỗ trợ
+  cả brand voice và personal voice", learning from LinkedIn/Facebook, "Lưu cả điểm vào hồ sơ").
+- Reason: users learn their voice from their own social posts and teams keep a brand voice.
+- Modified constraint "Tuyến hồ sơ giọng": samples may also come from a platform export the user
+  supplies or from the user's own page through a browser tool the host offers, after consent and
+  an ownership statement; a profile of `kind: brand` may draw on material by several authors after
+  the user states they may speak for the brand; the user's own ratings may be stored in their
+  profile, while the skill never scores voice similarity itself.
+- Principle V unchanged: the package still ships no network code; the browser path uses a host
+  tool and the route works without it.
 - No meaning-preservation chốt, protected span or pattern changed.
-- No template/command source changes.
+- Previous amendment: 2.2.0 -> 2.3.0, spec 029 (Jev removed).
 -->
 # Constitution của vi-humanizer
 
@@ -61,7 +66,13 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   `.claude-plugin/plugin.json` MUST giống nhau.
 - Giới hạn dòng giữ nguyên: `SKILL.md` 550, profile blog 320, profile kỹ thuật 220.
 - Tuyến hồ sơ giọng trong `SKILL.md` MAY tạo và dùng lại hồ sơ có tên từ văn bản người dùng
-  dán hoặc chỉ định trong tác vụ; v1 MUST NOT lấy mẫu qua connector. Hồ sơ MUST chỉ được lưu
+  dán hoặc chỉ định trong tác vụ, từ file export nền tảng người dùng tự đưa, hoặc từ trang của
+  chính người dùng qua công cụ trình duyệt host sẵn có, sau câu đồng ý đọc và lời khẳng định chủ
+  tài khoản; MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, và MUST NOT
+  xử lý mật khẩu, cookie hay token. Hồ sơ `kind: brand` MAY dùng tài liệu của nhiều người viết sau
+  khi người dùng khẳng định được nói thay thương hiệu; dữ liệu riêng vẫn phải được lược. Hồ sơ MAY
+  lưu số lượt người dùng tự chấm, ghi rõ là đánh giá của người dùng; skill MUST NOT tự tính điểm
+  giống giọng. Hồ sơ MUST chỉ được lưu
   khi người dùng yêu cầu rõ, tại kho hoặc đường dẫn do họ chọn. Skill MUST NOT tự tìm hồ sơ
   hoặc mẫu trong memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định. Ngoại lệ lưu
   này MUST giữ nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm
@@ -98,4 +109,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.3.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-13
+**Version**: 2.4.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-13

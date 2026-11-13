@@ -125,6 +125,33 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn("`references/terminology-consistency.md`", read("SKILL.md"))
         self.assertIn("mặc định không có", read("SKILL.md"))
 
+    def test_profile_kind_and_one_profile_rule(self) -> None:
+        route = read("references/voice-profile.md")
+        for phrase in (
+            "Hồ sơ không có `kind` là hồ sơ cá nhân",
+            "Mỗi lần dùng chỉ áp một hồ sơ",
+            "hỏi người dùng chọn một",
+            "áp hồ sơ thương hiệu khi người dùng gọi tên nó trong yêu cầu hiện tại",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, route)
+        self.assertIn("kind: <personal hoặc brand", read("references/voice-analysis.md"))
+
+    def test_social_sources_rules(self) -> None:
+        text = read("references/voice-sources.md")
+        for phrase in (
+            "chỉ giữ bài do chủ tài khoản viết",
+            "Không hỏi, nhập hay đọc mật khẩu, cookie hoặc token",
+            "điều khoản của LinkedIn cấm truy cập tự động",
+            "Dừng khi gặp màn đăng nhập hoặc tài khoản khác",
+            "tối đa 80 bài gần nhất",
+            "không đọc trang của người khác",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        self.assertIn("`references/voice-sources.md`", read("references/voice-profile.md"))
+        self.assertIn('"references/voice-sources.md"', (ROOT / "scripts/validate-package.py").read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

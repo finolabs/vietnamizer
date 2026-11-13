@@ -25,12 +25,16 @@ Each item: Decision, Rationale, Alternatives considered. Platform facts were not
 - **Decision**: LinkedIn: the user requests "Get a copy of your data" and picks posts; the skill reads the posts file (`Shares.csv` at the time of writing) and keeps rows whose author is the account owner, dropping reshares without own text, comments, messages and connections. Facebook: "Download your information", posts only, JSON; the skill keeps the user's own posts and drops tagged posts by others, comments and messages. Cap: the most recent 80 owned posts with Vietnamese text; the skill states how many it kept and dropped.
 - **Rationale**: exports are the reliable, terms-compliant path; a cap keeps context bounded while 80 posts is well above the 10–20 the route needs.
 - **Alternatives**: read everything (context blow-up); ask the user to pre-filter (more effort, against "đơn giản hóa").
+- **Checked 13/11/2026 (T001)** against the official help pages ([LinkedIn a1339364](https://www.linkedin.com/help/linkedin/answer/a1339364), [Facebook 212802592074644](https://www.facebook.com/help/212802592074644)):
+  - LinkedIn, desktop only: **Me → Settings & Privacy → Data Privacy → Download your data**, pick specific categories (**Shares** is the posts category, "available within 48 hours") or the larger archive (within 24 hours), then **Request archive**; the email link stays valid 72 hours. Third-party guides describe `Shares.csv` as holding date, post link and own text; the official page does not name the file, so the skill looks for a posts/shares CSV and reports when it finds none.
+  - Facebook: profile picture → **Cài đặt và quyền riêng tư → Cài đặt → Trung tâm tài khoản → Thông tin và quyền của bạn → Xuất thông tin của bạn → Tạo nội dung xuất** → pick the profile → **Xuất sang thiết bị** → choose information (posts), date range, format **JSON**, media quality (low is enough) → **Bắt đầu xuất**. Facebook asks for the password to start, notifies when ready, and keeps the file 4 days. The official page does not name the posts category or file; the skill looks for a posts folder or file and reports when it finds none.
 
 ## R5. Browser path
 
 - **Decision**: only through a browser tool the host already lists, on the user's logged-in session, on a page the user names and states is theirs. Before LinkedIn, show the terms warning and continue only on the user's go. Stop on a login wall, a different account, a captcha or a rate-limit page; never type credentials, solve captchas or read cookies. Read at most the same cap as R4 by scrolling the user's own activity page.
 - **Rationale**: settled decisions 5 and FR-007; host safety rules already forbid credentials and captchas.
 - **Alternatives**: fetch public URLs (blocked by login walls, and LinkedIn forbids it).
+- **Host tools (T002, 13/11/2026)**: the skill does not name tools; it uses a browser tool only if one appears in the tools the agent sees. On Claude Code desktop that can be Claude in Chrome or the built-in browser pane; on other hosts the agent checks its own tool list. With none, the skill says the browser way is not available on this host and offers paste or export.
 
 ## R6. Brand sources
 

@@ -6,7 +6,8 @@ trong `SKILL.md` vẫn áp dụng.
 
 ## Giới hạn bằng chứng
 
-Chỉ xét lời do người dùng tự viết trong phần mẫu được giao: văn bản dán hoặc tệp được chỉ định.
+Chỉ xét lời do người dùng tự viết trong phần mẫu được giao: văn bản dán, tệp được chỉ định, hoặc bài
+đã lọc từ export hay trang của chính người dùng theo `references/voice-sources.md`.
 Loại lời của tác giả khác, phần trả lời được trích lại và chữ ký. Nháp AI chưa được đánh dấu là bản
 người dùng đã tự sửa không chứng minh giọng cá nhân; chưa rõ tác giả thì để phần đó ngoài bằng chứng.
 Bản người dùng sửa từ AI cần được ghi đúng loại, không đánh đồng với mẫu tự viết.
@@ -108,12 +109,13 @@ của một nét. Một lời cấm chỉ được mô tả khi có căn cứ, k
 ---
 type: vietnamizer-voice-profile
 name: <tên do người dùng chọn, không chứa dữ liệu riêng>
+kind: <personal hoặc brand; bỏ trống là personal>
 schema: 1
 language: vi
 updated: <YYYY-MM-DD>
 ---
 
-> Dựa trên khoảng <N> mẫu (<số mẫu xấp xỉ theo từng kênh>); số đếm xấp xỉ · cập nhật <ngày>.
+> Dựa trên khoảng <N> mẫu (<số mẫu xấp xỉ theo từng kênh và nguồn: dán / export / trình duyệt>); số đếm xấp xỉ · cập nhật <ngày>.
 
 ## Giọng chung
 - <Phát biểu về người viết> — phạm vi: <nơi nét này có căn cứ> — căn cứ: "<trích đoạn đã lược dữ liệu riêng>" (<mã mẫu>) hoặc khoảng <số lần trong tập mẫu nào> — độ chắc: <ghi chú về bằng chứng và giới hạn> — ranh giới: <mức/vị trí quá đó là áp quá tay, có căn cứ; hoặc "chưa rõ"; trường tùy chọn>.

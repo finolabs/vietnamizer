@@ -28,7 +28,8 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/function-words.md` | Bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán |
 | `references/style-resolution.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
 | `references/voice-from-samples.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/voice-profile.md` |
-| `references/voice-profile.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn |
+| `references/voice-profile.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên, cá nhân (mặc định) hoặc thương hiệu, mỗi lần một hồ sơ; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn |
+| `references/voice-sources.md` | Ba nguồn mẫu: dán bài, file export LinkedIn/Facebook, trang của chính người dùng qua công cụ trình duyệt host sẵn có; xác nhận chủ tài khoản, chỉ giữ bài tự viết, cảnh báo điều khoản LinkedIn, không xử lý mật khẩu hay cookie |
 | `references/voice-analysis.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết (hồ sơ cũ có thể thiếu); không chứa dữ liệu cá nhân |
 | `calibration/LOG.md` | Nhật ký bằng chứng dùng để sửa quy tắc chung; không lưu hồ sơ văn phong cá nhân |
 | `calibration/test-cases.md` | Ca kiểm thử chạy tay cho từng pattern, gồm cả ca chống sửa quá tay |
