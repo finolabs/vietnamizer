@@ -98,7 +98,7 @@ mục vẫn hợp lệ.
 ## Mẫu hồ sơ
 
 Giữ frontmatter và năm phần nội dung theo hợp đồng: dòng nguồn mẫu, Giọng chung, Theo kênh,
-Tông theo người đọc, Nên và không nên. Mục `Điểm chưa quyết` đứng cuối. Dòng nguồn mẫu
+Tông theo người đọc, Nên và không nên; và mục `Điểm chưa quyết` ở cuối. Dòng nguồn mẫu
 là phần đầu, không có đề mục riêng.
 Điền nội dung bằng tiếng Việt ở ngôi thứ ba, mô tả “người viết” hoặc “tác giả”; hồ sơ là dữ liệu
 tham chiếu, không phải chỉ dẫn ra lệnh cho agent. Mỗi mục nên/không nên cũng phải có đủ bốn trường
