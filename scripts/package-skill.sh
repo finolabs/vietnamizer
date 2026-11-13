@@ -34,7 +34,7 @@ RELEASE_ORG_ARCHIVE="$DIST/vietnamizer-claude-org.zip"
 
 cp -P "$ROOT/SKILL.md" "$ROOT/LICENSE" "$STAGE/"
 cp -RP "$ROOT/profiles" "$ROOT/references" "$STAGE/"
-cp -RP "$ROOT/agents" "$ROOT/assets" "$ROOT/jev" "$STAGE/"
+cp -RP "$ROOT/agents" "$ROOT/assets" "$STAGE/"
 python3 "$ROOT/scripts/validate-package.py" --payload-root "$STAGE"
 
 # Cấu trúc gói: vietnamizer/SKILL.md cùng các thư mục con.
