@@ -15,7 +15,8 @@ Sync Impact Report
   customer names stored), and `references/voice-profile.md` mục 7 relies on stored ratings (one
   `Lịch sử chấm` line per saved session, labelled as the user's judgement; the skill computes no
   similarity score). The browser source stays limited to the user's own personal account; brand
-  pages are not read through the browser.
+  pages are not read through the browser or any fetch tool (implementation choice 2026-11-13,
+  pending the owner's confirmation; spec FR-006).
 - Browser rules aligned with `references/voice-sources.md` (2026-11-13 review): no captcha, no
   like/comment/post/send, no account settings change; stop on a login wall, another account, a
   captcha or a rate-limit page.

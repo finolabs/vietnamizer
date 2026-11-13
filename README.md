@@ -174,7 +174,7 @@ Hồ sơ có thể là giọng cá nhân (mặc định) hoặc giọng thương
 file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt của host, còn giọng thương hiệu học
 từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ bạn đưa. Sau khi học, bạn có thể chấm vài đoạn mẫu theo
 bốn mức Kém, Trung bình, Khá, Tốt; số lượt chấm chỉ vào hồ sơ khi bạn lưu, ghi là đánh giá của bạn. Skill
-không tự tính điểm giống giọng. Gõ `/vietnamizer:help` (plugin) hoặc hỏi “Vietnamizer làm được gì?” để xem
+không tự tính điểm giống giọng. Gõ `/vietnamizer:help` (plugin trên Claude Code) hoặc hỏi “Vietnamizer làm được gì?” để xem
 hướng dẫn và bắt đầu thiết lập giọng.
 [Xem hai chế độ, ví dụ prompt và bảy style card](docs/style-and-voice.md).
 

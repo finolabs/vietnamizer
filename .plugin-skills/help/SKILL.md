@@ -1,6 +1,6 @@
 ---
 name: help
-description: Hướng dẫn dùng Vietnamizer trong một màn hình (biên tập, viết, giọng cá nhân, giọng thương hiệu, học và chấm giọng) và chạy bước thiết lập giọng khi người dùng muốn bắt đầu; không đọc file của người dùng, không lưu gì.
+description: Hướng dẫn dùng Vietnamizer trong một màn hình (biên tập, viết, giọng cá nhân, giọng thương hiệu, học và chấm giọng), không đọc file của người dùng và không lưu gì; khi người dùng muốn bắt đầu, chạy bước thiết lập giọng theo cổng đồng ý đọc và lưu của skill.
 ---
 
 # vietnamizer help adapter

@@ -1,7 +1,9 @@
 # Hướng dẫn dùng và thiết lập giọng
 
-Đọc khi người dùng hỏi Vietnamizer làm được gì, cách dùng, gõ `/vietnamizer:help`, hoặc nói “bắt đầu”,
-“thiết lập giọng”. Phần hướng dẫn không đọc file của người dùng, không tìm hồ sơ và không lưu gì. Trả
+Đọc khi người dùng hỏi Vietnamizer làm được gì, hỏi cách dùng Vietnamizer, gõ `/vietnamizer:help` (Claude
+Code), hoặc nói “bắt đầu dùng Vietnamizer”, “thiết lập giọng”. Yêu cầu sửa hay viết có chữ “giúp” hoặc
+“hướng dẫn” (“sửa giúp email này”, “viết hướng dẫn cài đặt”) vẫn là việc biên tập hay viết, không vào
+file này. Phần hướng dẫn không đọc file của người dùng, không tìm hồ sơ và không lưu gì. Trả
 lời bằng tiếng Việt, gọn trong một màn hình.
 
 ## 1. Hướng dẫn một màn hình
@@ -24,15 +26,19 @@ Kết bằng: “Muốn bắt đầu thiết lập giọng không?”. Người 
 
 ## 2. Thiết lập giọng từng bước
 
-Chạy khi người dùng đồng ý lời mời trên, hoặc nói “bắt đầu”, “thiết lập giọng”. Mỗi lựa chọn hỏi qua
+Chạy khi người dùng đồng ý lời mời trên, hoặc nói “bắt đầu dùng Vietnamizer”, “thiết lập giọng”. Mỗi lựa chọn hỏi qua
 công cụ câu hỏi của host khi có, lựa chọn đề xuất đứng đầu; không có thì hỏi bằng chữ. Người dùng có thể dừng
 ở bất kỳ bước nào: không lưu gì nếu người dùng dừng, và không đọc gì ngoài phần họ đã đồng ý.
 
 1. **Loại giọng:** Cá nhân (đề xuất) hoặc Thương hiệu.
-2. **Nguồn mẫu:** Dán bài (đề xuất), File export, hoặc Đọc trang qua trình duyệt. Chỉ đưa lựa chọn trình
-   duyệt khi agent thấy có công cụ trình duyệt và loại giọng là Cá nhân. File export thì nêu các bước của
-   nền tảng theo `references/voice-sources.md` mục 3; trình duyệt thì nêu cảnh báo điều khoản ở mục 4 của
-   file đó.
+2. **Nguồn mẫu:**
+   - Cá nhân: Dán bài (đề xuất), File export, hoặc Đọc trang qua trình duyệt. Chỉ đưa lựa chọn trình duyệt
+     khi agent thấy có công cụ trình duyệt và loại giọng là Cá nhân. File export thì nêu các bước của nền
+     tảng theo `references/voice-sources.md` mục 3; trình duyệt thì nêu cảnh báo điều khoản ở mục 4 của
+     file đó.
+   - Thương hiệu: nhờ người dùng dán hoặc gọi tên bộ quy chuẩn, bài thương hiệu đã đăng (dán, hoặc file
+     bài viết trong export của trang) và tài liệu nội bộ họ chọn đưa, theo `references/brand-voice.md`
+     mục 1; không nêu các bước export tài khoản cá nhân, không đưa lựa chọn trình duyệt.
 3. **Đồng ý đọc:** đúng một câu theo `references/voice-profile.md` mục 2, gọi tên nguồn, hỏi luôn tài khoản
    có phải của chính người dùng (hoặc người dùng có được nói thay thương hiệu không, theo
    `references/brand-voice.md`).

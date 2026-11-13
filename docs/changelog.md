@@ -23,7 +23,7 @@ Trung bình, Khá, Tốt; số lượt chấm chỉ vào mục mới `Lịch s�
 người dùng; skill không tự tính điểm giống giọng. Kiểm A/B ẩn chế độ giữ lại như lựa chọn tùy chọn.
 Plugin có thêm skill `help` (`/vietnamizer:help`, adapter `.plugin-skills/help/SKILL.md`) trỏ tới
 `references/help.md`: hướng dẫn một màn hình và bước thiết lập giọng, không đọc file của người dùng. Thêm ca
-VM16–VM23. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
+VM16–VM26. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
 
 Đổi tên file và thư mục sang tiếng Anh (nội dung vẫn tiếng Việt, không đổi chữ nào ngoài đường dẫn):
 `references/` (`bang-tra-cuu` → `function-words`, `bo-giai-phong-cach` → `style-resolution`,

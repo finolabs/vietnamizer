@@ -26,7 +26,7 @@ cho tài khoản cá nhân của chính người dùng.
 
 ## 3. File export
 
-Nêu các bước khi người dùng hỏi (đã đối chiếu trang trợ giúp chính thức ngày 13/11/2026; giao diện có
+Các bước dưới đây dành cho tài khoản cá nhân. Nêu chúng khi người dùng hỏi (đã đối chiếu trang trợ giúp chính thức ngày 13/11/2026; giao diện có
 thể đổi):
 
 - **LinkedIn** (trên máy tính): biểu tượng **Me** → **Settings & Privacy** → **Data Privacy** →
@@ -37,6 +37,9 @@ thể đổi):
   nhân → **Xuất sang thiết bị** → chỉ chọn mục bài viết, khoảng thời gian, định dạng **JSON**, chất lượng
   ảnh thấp → **Bắt đầu xuất**. Facebook hỏi mật khẩu trên chính trang của họ (người dùng tự nhập, không
   qua agent) và giữ file 4 ngày.
+
+Với export của trang thương hiệu (fanpage, trang công ty), nhờ người dùng gọi đúng tên file bài viết của
+trang; không liệt kê thư mục để tìm, và không mở tin nhắn của trang, đánh giá hay bình luận.
 
 Chỉ mở file bài viết: file CSV của mục Shares (LinkedIn), file hoặc thư mục bài viết (Facebook); không mở,
 không liệt kê nội dung và không đọc file nào khác trong bản export, kể cả khi người dùng đưa cả thư mục

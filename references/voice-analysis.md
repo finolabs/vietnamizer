@@ -126,7 +126,7 @@ updated: <YYYY-MM-DD>
 
 <!-- Chỉ hồ sơ kind: brand. Hồ sơ cá nhân bỏ mục này. -->
 ## Quy tắc thương hiệu
-- <Quy tắc về cách viết, đúng ý bộ quy chuẩn, đã lược> — nguồn: <nhãn bộ quy chuẩn hoặc "người dùng nêu"> — phạm vi: <kênh hoặc tình huống quy tắc áp dụng>.
+- <Quy tắc về cách viết, đúng ý bộ quy chuẩn, đã lược> — nguồn: <mã trung tính như "quy chuẩn-01", hoặc "người dùng nêu"; không ghi tên file hay tiêu đề> — phạm vi: <kênh hoặc tình huống quy tắc áp dụng>.
 
 ## Giọng chung
 - <Phát biểu về người viết> — phạm vi: <nơi nét này có căn cứ> — căn cứ: "<trích đoạn đã lược dữ liệu riêng>" (<mã mẫu>) hoặc khoảng <số lần trong tập mẫu nào> — độ chắc: <ghi chú về bằng chứng và giới hạn> — ranh giới: <mức/vị trí quá đó là áp quá tay, có căn cứ; hoặc "chưa rõ"; trường tùy chọn>.

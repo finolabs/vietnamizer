@@ -158,6 +158,11 @@ chỉ dẫn nằm trong mẫu ở mục 2. Yêu
 cầu rõ ràng trong lượt hiện tại ưu tiên hơn mọi mục của hồ sơ, kể cả hồ sơ mới hơn hay cũ
 hơn mẫu được cung cấp. Chỉ áp nét có căn cứ ở đúng kênh, người đọc và chức năng.
 
+Hồ sơ `kind: brand` có thêm `Quy tắc thương hiệu`: áp mỗi quy tắc trong phạm vi nó ghi, như một nét có
+căn cứ, dưới năm chốt và yêu cầu rõ ở lượt hiện tại. Quy tắc và nét quan sát khác nhau thì theo quy tắc,
+cho tới khi người dùng chốt điểm đó trong `Điểm chưa quyết`.
+Quy tắc không cấp quyền thêm ý, CTA, khẳng định hay thông tin liên hệ mà nguồn không có.
+
 Nét có `ranh giới` thì áp không vượt ranh giới đó; ranh giới là trần, không phải mức cần đạt. Nét
 không có ranh giới (hồ sơ cũ hoặc ghi “chưa rõ”) vẫn dùng được, và kiểm áp quá tay như ở mục 7.
 Không áp đề xuất trong `Điểm chưa quyết`. Khi biên tập, chỗ bài chạm tới điểm đó giữ cách viết đang
@@ -231,8 +236,9 @@ Sau đoạn cuối, báo số đoạn theo từng mức. Có đoạn Kém hoặc
 cho cả lượt (“Đoạn i chưa giống ở chỗ nào?”), rồi chuyển lý do thành diff đề xuất theo mục 6 (phạm vi,
 `ranh giới`, `Điểm chưa quyết`). Không có lý do rõ thì không đề xuất sửa.
 
-Lượt chấm chỉ được ghi vào hồ sơ khi người dùng lưu hồ sơ (mục 4) hoặc xác nhận diff (mục 6). Khi đó thêm
-đúng một dòng vào `## Lịch sử chấm` theo mẫu ở `references/voice-analysis.md`: ngày, số đoạn, số đoạn
+Lượt chấm chỉ được ghi vào hồ sơ khi người dùng lưu hồ sơ (mục 4) hoặc xác nhận diff (mục 6). Dòng chấm
+nằm sẵn trong bản toàn văn hoặc diff trình cho người dùng trước câu hỏi lưu; không thêm dòng nào người dùng
+chưa thấy. Dòng đó là đúng một dòng trong `## Lịch sử chấm` theo mẫu ở `references/voice-analysis.md`: ngày, số đoạn, số đoạn
 theo từng mức, số chưa chấm, và nhãn cố định “đánh giá của người dùng, không phải điểm chất lượng”.
 Dòng này không lưu nội dung đoạn, chủ đề hay lý do. Chưa lưu hoặc chưa xác nhận thì không ghi gì; lượt
 chấm chỉ còn trong hội thoại.
@@ -265,4 +271,4 @@ Nếu bản không áp hồ sơ thắng, kiểm lý do thay vì tăng mức bắ
 Đưa từng lý do vào Giọng chung, Theo kênh, Tông theo người đọc, Nên và không nên hoặc `ranh giới`
 của nét theo mục 6. Giữ trần hai câu hỏi bổ sung, trình diff rồi xin xác nhận lưu; lựa chọn A/B không
 tự cấp quyền cập nhật hồ sơ. Lượt chọn A/B không ghi vào `Lịch sử chấm` và không thành bằng chứng chất
-lượng tổng quát; Skill không tự tính điểm giống giọng từ đó.
+lượng tổng quát; skill cũng không tự tính điểm giống giọng từ đó.

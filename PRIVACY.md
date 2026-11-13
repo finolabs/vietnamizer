@@ -49,17 +49,20 @@ trang đi qua công cụ của host.
 Hồ sơ giọng thương hiệu học từ bộ quy chuẩn, bài thương hiệu đã đăng (dán hoặc file export của trang)
 và tài liệu nội bộ người dùng chọn đưa, sau khi người dùng xác nhận được nói thay thương hiệu; skill
 không kiểm được thẩm quyền đó. Đường trình duyệt không dùng cho trang thương hiệu. Tài liệu thương hiệu
-có thể do nhiều người viết; hồ sơ không ghi tên người viết, nhân viên, khách hàng hay đối tác, không ghi
-điều khoản hợp đồng, giá đàm phán, số liệu hay sản phẩm chưa công bố, tên hệ thống nội bộ và tiêu đề tài
-liệu nhận diện được người hay thương vụ.
+có thể do nhiều người viết; agent được chỉ dẫn không ghi tên người viết, nhân viên, khách hàng hay đối tác,
+điều khoản hợp đồng, giá đàm phán, số liệu hay sản phẩm chưa công bố, tên hệ thống nội bộ và tên hay tiêu
+đề tài liệu. Như mọi hồ sơ, không có bộ lọc bằng mã: người dùng đọc toàn bộ dự thảo trước khi lưu. Skill
+không mở link trang thương hiệu; người dùng dán nội dung hoặc gọi tên file export.
 
 Sau khi học, người dùng có thể chấm vài đoạn mẫu do skill viết theo bốn mức Kém, Trung bình, Khá, Tốt.
-Chỉ khi người dùng lưu hồ sơ hoặc xác nhận cập nhật, hồ sơ mới thêm một dòng `Lịch sử chấm`: ngày, số
+Chỉ khi người dùng lưu hồ sơ hoặc xác nhận cập nhật, hồ sơ mới thêm một dòng `Lịch sử chấm` (dòng này nằm
+trong bản người dùng xem trước khi lưu): ngày, số
 đoạn và số đoạn theo từng mức, ghi là đánh giá của người dùng; dòng đó không chứa nội dung đoạn, chủ đề
 hay lý do. Skill không tự tính điểm giống giọng và không đưa lượt chấm vào nhật ký hiệu chuẩn.
 
 Phần hướng dẫn (`/vietnamizer:help` hoặc câu hỏi “Vietnamizer làm được gì?”) không đọc file của người
-dùng và không lưu gì; bước thiết lập giọng theo đúng các cổng đồng ý và lưu ở trên.
+dùng và không lưu gì. Bước thiết lập giọng mà hướng dẫn mời bắt đầu thì có đọc mẫu và có thể lưu, theo
+đúng các cổng đồng ý đọc và lưu ở trên.
 
 Khi áp dụng, skill chỉ đọc hồ sơ được người dùng dán hoặc chỉ định, không tự liệt kê hay chọn hồ sơ.
 
