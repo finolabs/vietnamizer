@@ -346,6 +346,24 @@ class DistributionTest(unittest.TestCase):
                     for name in archive.namelist():
                         self.assertNotRegex(name, r"(^|/)jev/|typesafe-advisor", archive_name)
 
+    def test_missing_canonical_catalog_prevents_packaging(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.fixture(Path(temporary))
+            catalog = repo / "references/loi-thieu-tu.md"
+            self.assertTrue(catalog.is_file(), "completion catalog must be shipped")
+            catalog.unlink()
+            result = self.package(repo)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertFalse((repo / "dist/vietnamizer-plugin.zip").exists())
+
+    def test_duplicate_pattern_in_another_catalog_prevents_packaging(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.fixture(Path(temporary))
+            source = repo / "references/loi-thieu-tu.md"
+            target = repo / "references/loi-tu-va-loi-dan.md"
+            target.write_text(target.read_text() + "\n" + source.read_text())
+            self.assertNotEqual(self.package(repo).returncode, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
