@@ -141,10 +141,10 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 
 - Tự chọn profile theo thể loại; công văn, hợp đồng, thơ và changelog chỉ rà typography.
 - Bảo toàn dữ kiện, thuật ngữ, code và trích dẫn nguyên văn; không suy tác giả AI từ lỗi ngôn ngữ.
-- Khi host cấp key và quyền gửi, runner tự động thử tư vấn Jev; thiếu key hoặc lỗi dịch vụ vẫn dùng core.
+- Không gọi dịch vụ ngoài và không đọc API key; Jev/TypeSafe đã gỡ từ 0.14.0.
 - Chỉ cung cấp văn bản được phép chia sẻ, không chứa credential hoặc dữ liệu bị hạn chế.
 
-[Xem xử lý dữ liệu và Jev](docs/usage.md) · [Quyền riêng tư](PRIVACY.md) · [Báo lỗi bảo mật](SECURITY.md).
+[Xem xử lý dữ liệu](docs/usage.md) · [Quyền riêng tư](PRIVACY.md) · [Báo lỗi bảo mật](SECURITY.md).
 
 ## Danh mục pattern
 
@@ -162,7 +162,7 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 | Cần tìm | Tài liệu |
 |---|---|
 | Cài đặt theo nền tảng, marketplace và đóng gói | [Cài đặt](docs/installation.md) |
-| Prompt, phạm vi, dữ liệu và tư vấn Jev | [Sử dụng](docs/usage.md) |
+| Prompt, phạm vi và dữ liệu | [Sử dụng](docs/usage.md) |
 | Giữ giọng gốc, theo mẫu, tuyến hồ sơ giọng tùy chọn và chọn phong cách | [Giọng và phong cách](docs/style-and-voice.md) |
 | Cây nguồn, các tầng quy tắc và thành phần | [Kiến trúc](docs/architecture.md) |
 | Tên và vai trò của từng pattern | [Danh mục 55 pattern](docs/patterns.md) |

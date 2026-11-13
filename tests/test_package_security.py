@@ -27,7 +27,6 @@ PACKAGE_FIXTURE_PATHS = (
     "profiles",
     "references",
     "scripts",
-    "jev",
 )
 
 
@@ -44,24 +43,6 @@ class PackageSecurityTest(unittest.TestCase):
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(source, target)
         return repo
-
-    def test_source_gate_rejects_registry_recipe_drift(self):
-        with tempfile.TemporaryDirectory() as directory:
-            repo=self.copy_package_fixture(Path(directory))
-            path=repo/'jev/registry.json'; registry=json.loads(path.read_text())
-            registry['patterns'][0]['questions'][0]['instructions']='Drifted recipe'
-            path.write_text(json.dumps(registry,ensure_ascii=False))
-            run=subprocess.run([sys.executable,'-B','scripts/validate-package.py'],cwd=repo,capture_output=True,text=True)
-            self.assertNotEqual(run.returncode,0,run.stdout)
-            self.assertIn('recipe',run.stdout+run.stderr)
-
-    def test_source_gate_requires_recipe_generator(self):
-        with tempfile.TemporaryDirectory() as directory:
-            repo=self.copy_package_fixture(Path(directory))
-            (repo/'scripts/build-jev-registry.py').unlink()
-            run=subprocess.run([sys.executable,'-B','scripts/validate-package.py'],cwd=repo,capture_output=True,text=True)
-            self.assertNotEqual(run.returncode,0,run.stdout)
-            self.assertIn('recipe',run.stdout+run.stderr)
 
     def run_packager(
         self,
@@ -475,7 +456,8 @@ class PackageSecurityTest(unittest.TestCase):
                     }
                     all_names = set(package.namelist())
                 self.assertEqual(names, set())
-                self.assertIn(prefix + "references/typesafe-advisor.md", all_names)
+                self.assertFalse(any(name.startswith(prefix + "jev/") for name in all_names))
+                self.assertNotIn(prefix + "references/typesafe-advisor.md", all_names)
                 self.assertIn(prefix + "references/giu-giong-tu-mau.md", all_names)
                 self.assertIn(prefix + "references/ho-so-giong.md", all_names)
                 self.assertIn(prefix + "references/phan-tich-giong-viet.md", all_names)
@@ -486,17 +468,17 @@ class PackageSecurityTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
             shutil.rmtree(repo / "calibration")
-            with (repo / "references/typesafe-advisor.md").open("a") as log:
+            with (repo / "references/ho-so-giong.md").open("a") as log:
                 log.write("\n" + "sk-" + "test-canary-not-a-real-key-1234567890" + "\n")
             result = self.run_payload_validator(repo, repo)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("credential", result.stderr)
 
-    def test_package_does_not_capture_typesafe_key_from_environment(self) -> None:
+    def test_package_does_not_capture_api_key_from_environment(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
             env = os.environ.copy()
-            env["TYPESAFE_API_KEY"] = "PACKAGE-SECRET-CANARY-005"
+            env["EXAMPLE_API_KEY"] = "PACKAGE-SECRET-CANARY-005"
 
             result = self.run_packager(repo, env=env)
 

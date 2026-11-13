@@ -29,7 +29,7 @@ bản. Ghi đúng bản bị ảnh hưởng, kể cả bản cũ; bản mới nh
 ## Phạm vi và ranh giới
 
 Vietnamizer là skill Markdown và plugin phân phối hướng dẫn cho agent. Quy trình cốt lõi không
-có backend, telemetry, MCP server, hook hoặc SDK TypeSafe riêng. Phạm vi báo lỗi gồm source,
+có backend, telemetry, MCP server, hook, SDK hoặc runner đánh giá ngoài. Phạm vi báo lỗi gồm source,
 manifest, đường dẫn discovery, scripts đóng gói và gói phân phối của repo.
 
 Các thuộc tính cần bảo toàn khi đánh giá lỗi:
@@ -47,6 +47,6 @@ không mong muốn, là những tác động cần nêu rõ trong báo cáo. Đ�
 khẳng định mọi model hoặc host luôn thực thi được các giới hạn chỉ bằng hướng dẫn Markdown.
 
 Lỗi câu chữ thông thường dùng mẫu báo lỗi công khai sau khi ẩn dữ liệu. Nếu có tác động bảo mật,
-dùng kênh riêng. Lỗi của Claude, Codex, provider hoặc dịch vụ TypeSafe độc lập cần báo qua kênh
+dùng kênh riêng. Lỗi của Claude, Codex hoặc provider độc lập cần báo qua kênh
 bảo mật chính thức của bên đó; nếu chưa xác định được ranh giới với Vietnamizer, mô tả trong báo
 cáo riêng để maintainer phân loại. Xem [PRIVACY.md](PRIVACY.md) về xử lý dữ liệu.

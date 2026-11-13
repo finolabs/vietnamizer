@@ -93,7 +93,7 @@ After a draft, the user says what is off. The skill shows the exact change to th
 - **FR-019**: The constitution, `AGENTS.md`, `docs/style-and-voice.md`, `docs/usage.md`, `PRIVACY.md` and the "không tự lưu hồ sơ" wording in `SKILL.md` and `references/giu-giong-tu-mau.md` MUST be updated together so no document still states the old rule without the opt-in exception.
 - **FR-020**: Mandatory reads for existing routes (small edit, article, supplied-sample) MUST NOT grow; the new route's files load only when it is triggered. `SKILL.md` MUST stay within its line limit.
 
-- **FR-021**: Sending samples or a profile to the external evaluator MUST follow the existing Jev contract unchanged (key present and permission to send data); this route adds no separate rule. The plan MUST state which fields reach Jev, and the profile content that is saved MUST still contain no personal data (FR-007).
+- **FR-021** *(superseded 2026-11-13 by spec 029: Jev removed, nothing is sent to an evaluator)*: Sending samples or a profile to the external evaluator MUST follow the existing Jev contract unchanged (key present and permission to send data); this route adds no separate rule. The plan MUST state which fields reach Jev, and the profile content that is saved MUST still contain no personal data (FR-007).
 
 ### Key Entities
 - **Writing sample**: user-authored text with surface (email, chat, doc, post) and audience tags; transient.

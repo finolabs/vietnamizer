@@ -33,16 +33,7 @@ Trước khi chạy script, sao lưu các archive hiện có và SHA-256 vào m�
 README và `docs/` không nằm trong payload. Chỉ sửa tài liệu ngoài payload thì giữ archive hiện có;
 sửa tài liệu trong payload phải dựng lại rồi đối chiếu inventory, CRC, version và bytes với source.
 
-Từ v0.10.5, runtime có thêm `preparation.py` và `coverage.py`: mọi archive
-phải chạy `prepare` offline và có bytes khớp source, ngoài kiểm no-key `evaluate`. Contract v2 giữ
-input cũ nhưng full evaluation đòi hỏi ranh giới/ngữ cảnh/công việc hoàn tất; đủ answer không tự
-chứng minh đủ context. Thay đổi source không tự cập nhật cache hoặc skill dùng chung.
-
-Từ v0.10.0, cả ba archive chứa cùng runner Python standard library và registry 55 pattern trong
-`jev/`. Host có key được inject và quyền gửi dữ liệu thì phải thử đánh giá qua Jev 1.14; không có
-key thì giữ workflow Markdown offline. Runner mới không dùng SDK hay mã từ các nghiên cứu
-001/002/005 đã dừng. Hợp đồng input, coverage, lỗi và quyền gửi nằm trong
-[typesafe-advisor.md](../references/typesafe-advisor.md).
+Từ 0.14.0 cả ba archive chỉ chứa Markdown, profile, asset và manifest; không có runner Python, registry hay đường gọi dịch vụ ngoài.
 
 Catalog chung `finolabs/plugins` trỏ tới repo này, vốn vẫn gồm tooling maintainer và hồ sơ lịch sử. Validator local
 và inventory ZIP không thay thế portal Validate cho commit GitHub thực tế; không suy ra directory
@@ -72,11 +63,9 @@ marketplace cũ trước, rồi mới thêm `finolabs/plugins`, theo
 không tự chứng minh UI đã hiển thị, đã gom nhóm theo `Finolabs` hay lời gọi chạy được.
 
 Không đưa credential hoặc raw input của người dùng vào log kiểm. Profile thật của maintainer
-không phải fixture kiểm thử. Các lệnh kiểm packaging ở trên chạy offline, không cần gọi TypeSafe.
-Live smoke riêng phải có quyền gửi, dùng dữ liệu tổng hợp và credential injection đã được host
-cho phép. Chạy từ gói đã giải nén, đối chiếu bytes runtime với source, xác nhận model thực và
-coverage. Smoke thành công không chứng minh chất lượng biên tập tiếng Việt hay plugin đã nạp
-trong UI của mọi client.
+không phải fixture kiểm thử. Các lệnh kiểm packaging ở trên chạy offline.
+Smoke từ gói đã giải nén chỉ chứng minh inventory và bytes khớp source; không chứng minh chất lượng
+biên tập tiếng Việt hay plugin đã nạp trong UI của mọi client.
 
 ## Nhận diện và listing
 

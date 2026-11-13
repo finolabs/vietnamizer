@@ -19,7 +19,7 @@ trước khi sửa rule. Sở thích văn phong cá nhân không được đưa 
 ## Chạy kiểm tra offline
 
 Skill Markdown dùng trực tiếp, không cần build. Test đóng gói dùng Python 3.12 và standard library;
-không cần SDK, `uv` hoặc TypeSafe API key.
+không cần SDK, `uv` hoặc API key.
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py' -v
@@ -41,17 +41,8 @@ file được đóng gói, dùng quy trình trên rồi đối chiếu inventory
 Đóng gói thành công không chứng minh quyền gửi hoặc Directory approval. Trạng thái intake OpenAI
 và điều kiện tiếp tục nằm trong [báo cáo ngày 23/10/2026](docs/openai-marketplace-assessment-2026-10-23.md).
 
-Từ v0.10.5, runner bổ sung `python3 -B -m jev prepare --input input.json` chạy offline, input v2 và
-coverage theo câu/pattern/recipe. Bộ ca tổng hợp ở `tests/fixtures/segmentation/` cần gán nhãn độc lập
-với scanner; không dùng corpus tự sinh từ output để chứng minh segmentation đúng. Các test context,
-ledger, nhiều batch, fault và package đều chạy offline.
-
-Runner Jev nằm trong `jev/`, chỉ dùng Python standard library và key do host inject.
-Không lấy runtime từ nghiên cứu cũ hoặc thêm đường dẫn máy maintainer. Sau khi sửa recipe hoặc
-pattern canonical, chạy `python3 -B scripts/build-jev-registry.py` rồi kiểm `--check`. Registry
-được track và phải đồng bộ trong mọi archive. Chạy test runtime bằng
-`python3 -B -m unittest tests.test_jev -v`; live smoke chỉ dùng dữ liệu giả lập được phép gửi,
-không thay thế kiểm holdout cho policy số. Không gọi thật API trong test offline.
+Gói không có runtime Python: không thêm lại evaluator ngoài, đường gọi mạng hay đọc API key vào payload
+(constitution, nguyên tắc V). Sau khi sửa pattern canonical, chạy `python3 scripts/validate-package.py`.
 
 ## Tooling Spec Kit cho maintainer
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -19,7 +20,7 @@ class DistributionTest(unittest.TestCase):
         repo.mkdir()
         for relative in (
             "SKILL.md", "LICENSE", "README.md", "profiles", "references", "calibration",
-            "agents", "assets", "jev", "scripts", "docs", ".claude-plugin", ".codex-plugin", ".antigravity-plugin",
+            "agents", "assets", "scripts", "docs", ".claude-plugin", ".codex-plugin", ".antigravity-plugin",
             ".plugin-skills", ".gitignore",
         ):
             source = ROOT / relative
@@ -329,43 +330,39 @@ class DistributionTest(unittest.TestCase):
             with zipfile.ZipFile(repo / "dist/vietnamizer-plugin.zip") as archive:
                 archive.extractall(extracted)
             skill = extracted / "skills/vietnamizer"
-            self.assertTrue((skill / "jev/registry.json").is_file(), "shipped evaluator missing")
-            registry = json.loads((skill / "jev/registry.json").read_text())
-            self.assertEqual(len(registry["patterns"]), 55)
-            import os
-            env = {k: v for k, v in os.environ.items() if k != "TYPESAFE_API_KEY"}
-            run = subprocess.run([sys.executable, "-B", "-m", "jev", "evaluate"],
-                                 cwd=skill, env=env, capture_output=True, text=True)
-            self.assertEqual(run.returncode, 0, run.stderr)
-            self.assertEqual(json.loads(run.stdout)["status"], "key_absent")
+            self.assertFalse((skill / "jev").exists(), "evaluator must not ship")
+            headings = set()
+            for catalog in [*(skill / "references").glob("*.md"), *(skill / "profiles").rglob("*.md")]:
+                headings |= set(re.findall(r"(?m)^### ([VTBK]\d+)\.", catalog.read_text()))
+            self.assertEqual(len(headings), 55)
 
-    def test_all_archives_prepare_with_identical_runtime(self) -> None:
-        import os
+    def test_all_archives_ship_no_evaluator_runtime(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             repo = self.fixture(Path(temporary))
             result = self.package(repo)
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-            for archive_name, prefix in [('vietnamizer.skill','vietnamizer'),
-                                         ('vietnamizer-claude-org.zip',''),
-                                         ('vietnamizer-plugin.zip','skills/vietnamizer')]:
-                out=Path(temporary)/archive_name.replace('.','_')
-                with zipfile.ZipFile(repo/'dist'/archive_name) as archive:
-                    archive.extractall(out)
-                skill=out/prefix
-                for source in (ROOT/'jev').iterdir():
-                    if source.is_file():
-                        self.assertEqual((skill/'jev'/source.name).read_bytes(),source.read_bytes())
-                doc={'schema_version':2,'source':{'id':'article','layout':'paragraph-lines','text':'Tôi về. Bạn ở lại.'},'defaults':{'profile':'blog'}}
-                env={k:v for k,v in os.environ.items() if k!='TYPESAFE_API_KEY'}
-                run=subprocess.run([sys.executable,'-B','-m','jev','prepare'],cwd=skill,
-                    input=json.dumps(doc),env=env,capture_output=True,text=True)
-                self.assertEqual(run.returncode,0,run.stderr)
-                data=json.loads(run.stdout)
-                self.assertEqual(data['counts']['sentences'],2)
-                self.assertFalse(data['evaluation_complete'])
-                run=subprocess.run([sys.executable,'-B','-m','jev','evaluate'],cwd=skill,
-                    env=env,capture_output=True,text=True)
-                self.assertEqual(json.loads(run.stdout)['status'],'key_absent')
+            for archive_name in ('vietnamizer.skill', 'vietnamizer-claude-org.zip', 'vietnamizer-plugin.zip'):
+                with zipfile.ZipFile(repo / 'dist' / archive_name) as archive:
+                    for name in archive.namelist():
+                        self.assertNotRegex(name, r"(^|/)jev/|typesafe-advisor", archive_name)
+
+    def test_missing_canonical_catalog_prevents_packaging(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.fixture(Path(temporary))
+            catalog = repo / "references/loi-thieu-tu.md"
+            self.assertTrue(catalog.is_file(), "completion catalog must be shipped")
+            catalog.unlink()
+            result = self.package(repo)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertFalse((repo / "dist/vietnamizer-plugin.zip").exists())
+
+    def test_duplicate_pattern_in_another_catalog_prevents_packaging(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.fixture(Path(temporary))
+            source = repo / "references/loi-thieu-tu.md"
+            target = repo / "references/loi-tu-va-loi-dan.md"
+            target.write_text(target.read_text() + "\n" + source.read_text())
+            self.assertNotEqual(self.package(repo).returncode, 0)
 
 
 if __name__ == "__main__":

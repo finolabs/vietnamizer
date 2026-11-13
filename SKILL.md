@@ -115,16 +115,6 @@ khôi phục và so byte vùng bảo toàn; mọi sửa sau review phải kiểm
 Không thấy lỗi có căn cứ thì giữ nguyên. Phản hồi của người dùng áp dụng đúng tác vụ, không tự
 lưu hồ sơ hoặc viết calibration; chỉ bảo trì skill khi được giao rõ.
 
-## Evaluator: kiểm capability trước, đọc hợp đồng sau
-
-Sau cổng dữ liệu, nếu có thực thi Python thì từ skill root chạy `python3 -B -m jev status`;
-chỉ dùng biến host cấp, không in/tìm key. Không thực thi được thì tiếp tục core và không giả đã kiểm.
-`key_absent`: dùng core, không gọi API, xin key hoặc đề nghị thiết lập dịch vụ; không đọc hợp đồng evaluator. Có key **và** quyền gửi dữ liệu thì mới đọc
-`references/typesafe-advisor.md` và bắt buộc thử runner hiện có trước trả bản cuối. Thiếu quyền,
-API lỗi hoặc coverage thiếu thì tiếp tục core, nêu đúng giới hạn khi cần; không vượt quyền/sandbox.
-Jev chỉ hỗ trợ, không tự áp/loại edit, không chứng nhận giọng hoặc nghĩa; host vẫn kiểm năm chốt.
-Không tạo thêm lượt model để lập outline hay tự chấm. Chỉ báo đã dùng Jev khi có kết quả hợp lệ.
-
 ## Trả kết quả
 
 Review đúng candidate hiện tại (nội dung/file được giao), không thay bằng HEAD cũ hay tóm tắt agent.
