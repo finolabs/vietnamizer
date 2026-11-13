@@ -93,6 +93,8 @@ REFERENCE_FILES = {
     "references/sino-vietnamese.md",
     "references/terminology-consistency.md",
     "references/voice-sources.md",
+    "references/brand-voice.md",
+    "references/help.md",
 }
 CALIBRATION_FILES = {
     "calibration/LOG.md",
