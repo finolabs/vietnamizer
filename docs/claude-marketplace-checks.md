@@ -1,5 +1,7 @@
 # Kiểm Vietnamizer trước khi gửi directory Claude
 
+> **Ghi chú (13/11/2026):** các mục nhắc TypeSafe/Jev bên dưới là snapshot lịch sử; Jev đã gỡ (spec `specs/029-remove-jev/`), Vietnamizer không còn gửi dữ liệu tới dịch vụ ngoài.
+
 **Tạm dừng gửi duyệt theo quyết định của owner ngày 04/10/2026.** Owner không tiếp tục bước
 đăng ký gói trả phí để submit lúc này. Tập trung phân phối qua catalog chung `finolabs/plugins` và gói
 upload; xem [hướng dẫn tự cài](installation.md#claude-web-và-claude-desktop-thêm-marketplace).
