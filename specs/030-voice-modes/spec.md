@@ -13,7 +13,7 @@
 4. **Ownership**: the user states that an account or page is theirs, or a brand they are allowed to speak for. The skill cannot verify identity and says so; it never learns the voice of someone else.
 5. **Learning sources**: pasted posts (default); LinkedIn and Facebook data exports the user downloads; and reading the user's own pages through a browser tool the host offers, after consent, when the user is already logged in.
 6. **Rating after learning**: the skill asks how many paragraphs the user wants to review, then shows one generated paragraph at a time with a question form of four levels, **Kém, Trung bình, Khá, Tốt**, and repeats for the chosen count.
-7. **Ratings are stored in the profile** as the user's own judgement, not as a quality measure. This amends `references/ho-so-giong.md` mục 7 ("Không biến một lượt chọn thành điểm khớp giọng") and the README/style docs that say the skill does not score voice similarity: the skill still never scores similarity itself.
+7. **Ratings are stored in the profile** as the user's own judgement, not as a quality measure. This amends `references/voice-profile.md` mục 7 ("Không biến một lượt chọn thành điểm khớp giọng") and the README/style docs that say the skill does not score voice similarity: the skill still never scores similarity itself.
 8. **Help and onboarding**: a `help` skill and an onboarding flow ship inside the existing plugin, which today carries one skill.
 
 ## Clarifications
@@ -112,7 +112,7 @@ A user who does not know what Vietnamizer can do asks for help, or runs the help
 - **FR-014**: The plugin MUST ship a `help` skill that describes what Vietnamizer does and how to start each flow, reads no user file and saves nothing.
 - **FR-015**: The plugin MUST offer an onboarding flow, started from help or by request, that walks through voice kind, source, learning, rating and the save choice, asking each choice through the host's question form where available.
 - **FR-016**: The five meaning chốt, protected spans, consent gates, the explicit-save rule and the absence of any external evaluator MUST stay unchanged; profiles from spec 028 and PR #39 MUST remain valid.
-- **FR-017**: The constitution, `references/ho-so-giong.md` mục 7, README, PRIVACY and `docs/style-and-voice.md` MUST be amended where they conflict with decisions 3, 5 and 7 (brand material from many authors, the browser source, stored ratings), with the owner's approval recorded.
+- **FR-017**: The constitution, `references/voice-profile.md` mục 7, README, PRIVACY and `docs/style-and-voice.md` MUST be amended where they conflict with decisions 3, 5 and 7 (brand material from many authors, the browser source, stored ratings), with the owner's approval recorded.
 
 ### Key Entities
 

@@ -1,7 +1,7 @@
 # Tasks: Personal and brand voice, social sources, user rating, help and onboarding
 
 **Input**: `specs/030-voice-modes/` (spec.md, plan.md, research.md, data-model.md, contracts/, quickstart.md)
-**Tests**: required. The constitution's development gate 1 says new behaviour starts from a red case; here each story starts with guard phrases in `tests/test_skill_contract.py` (or `tests/test_distribution.py`) that fail before the Markdown change and calibration cases in `calibration/ca-kiem-thu.md`. Guards prove the rule text exists, not agent behaviour.
+**Tests**: required. The constitution's development gate 1 says new behaviour starts from a red case; here each story starts with guard phrases in `tests/test_skill_contract.py` (or `tests/test_distribution.py`) that fail before the Markdown change and calibration cases in `calibration/test-cases.md`. Guards prove the rule text exists, not agent behaviour.
 **Organization**: by user story; each story is a reviewable increment.
 
 ## Format: `[ID] [P?] [Story] Description`
@@ -25,8 +25,8 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 ## Phase 2: Foundational (blocks every story)
 
 - [ ] T003 Amend `.specify/memory/constitution.md` to 2.4.0 (MINOR): in "Ràng buộc về gói và dữ liệu", allow reading the user's own pages through a host browser tool after consent and ownership statement, allow multi-author material for profiles of `kind: brand` after the user states they may speak for the brand, and allow storing the user's own ratings in their profile while the skill still never scores similarity; add the Sync Impact Report with reason, impact and "Owner approval: 2026-11-13, spec 030"
-- [ ] T004 Add guard `test_profile_kind_and_one_profile_rule` to `tests/test_skill_contract.py` asserting `references/ho-so-giong.md` contains "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ" and "hỏi người dùng chọn một"; run it and confirm it fails
-- [ ] T005 Add `kind: personal | brand` to the template frontmatter in `references/phan-tich-giong-viet.md` with the rule "absent = personal" and `schema: 1` unchanged, per `contracts/profile-format.md`
+- [ ] T004 Add guard `test_profile_kind_and_one_profile_rule` to `tests/test_skill_contract.py` asserting `references/voice-profile.md` contains "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ" and "hỏi người dùng chọn một"; run it and confirm it fails
+- [ ] T005 Add `kind: personal | brand` to the template frontmatter in `references/voice-analysis.md` with the rule "absent = personal" and `schema: 1` unchanged, per `contracts/profile-format.md`
 - [ ] T006 Update `specs/028-voice-profile/contracts/profile-format.md` with a dated pointer to `specs/030-voice-modes/contracts/profile-format.md`
 
 **Checkpoint**: constitution amended; template knows `kind`.
@@ -38,9 +38,9 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Goal**: personal is the default; a brand profile applies only when named; never two at once.
 **Independent Test**: same draft with no voice, a personal profile, a brand profile; only the named kind applies; two named → the skill asks.
 
-- [ ] T007 [P] [US1] Add cases VM01–VM04 to `calibration/ca-kiem-thu.md` (no voice named → personal, no profile lookup; brand named → only brand applied and named in the reply; both named → ask; brand profile named for a personal message → confirm first)
-- [ ] T008 [US1] In `references/ho-so-giong.md` mục 1 and mục 5 add: default personal voice, "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ", and when two are named "hỏi người dùng chọn một"; say which profile was used in the reply
-- [ ] T009 [US1] Add one routing row to `SKILL.md` for "giọng thương hiệu / theo giọng <brand>" pointing to `references/ho-so-giong.md`, keeping `SKILL.md` ≤ 550 lines
+- [ ] T007 [P] [US1] Add cases VM01–VM04 to `calibration/test-cases.md` (no voice named → personal, no profile lookup; brand named → only brand applied and named in the reply; both named → ask; brand profile named for a personal message → confirm first)
+- [ ] T008 [US1] In `references/voice-profile.md` mục 1 and mục 5 add: default personal voice, "Hồ sơ không có `kind` là hồ sơ cá nhân", "Mỗi lần dùng chỉ áp một hồ sơ", and when two are named "hỏi người dùng chọn một"; say which profile was used in the reply
+- [ ] T009 [US1] Add one routing row to `SKILL.md` for "giọng thương hiệu / theo giọng <brand>" pointing to `references/voice-profile.md`, keeping `SKILL.md` ≤ 550 lines
 - [ ] T010 [US1] Run `python3 -B -m unittest tests.test_skill_contract` and confirm T004 passes
 
 **Checkpoint**: US1 reviewable as its own PR.
@@ -53,10 +53,10 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Independent Test**: a synthetic LinkedIn export with own posts, reshares and others' comments → only own posts cited, kept/dropped counts reported, no names.
 
 - [ ] T011 [P] [US2] Add guard `test_social_sources_rules` to `tests/test_skill_contract.py` for `references/voice-sources.md`: "chỉ giữ bài do chủ tài khoản viết", "không hỏi, nhập hay đọc mật khẩu, cookie hoặc token", "điều khoản của LinkedIn cấm truy cập tự động", "dừng khi gặp màn đăng nhập hoặc tài khoản khác", "tối đa 80 bài gần nhất"; also assert `scripts/validate-package.py` lists the file; run and confirm red
-- [ ] T012 [P] [US2] Add cases VM05–VM10 to `calibration/ca-kiem-thu.md` (no source yet → explain three ways, read nothing; export with reshares/comments → own posts only and counts; browser without ownership statement → ask, read nothing; LinkedIn browser → terms warning before reading; login wall → stop and offer paste/export; someone else's URL → decline)
+- [ ] T012 [P] [US2] Add cases VM05–VM10 to `calibration/test-cases.md` (no source yet → explain three ways, read nothing; export with reshares/comments → own posts only and counts; browser without ownership statement → ask, read nothing; LinkedIn browser → terms warning before reading; login wall → stop and offer paste/export; someone else's URL → decline)
 - [ ] T013 [P] [US2] Add `tests/fixtures/voice/linkedin-shares-sample.csv` and `tests/fixtures/voice/facebook-posts-sample.json` with synthetic content only (own posts, a reshare, a comment by another person, a fake contact line) for VM06 walk-throughs
 - [ ] T014 [US2] Create `references/voice-sources.md`: source order (paste, export, browser), export steps from T001, ownership question, owned-post filter, cap "tối đa 80 bài gần nhất" with Vietnamese text, kept/dropped report as approximate, browser rules from research R5 including the LinkedIn terms warning and the user's go, stop conditions, data-not-instructions rule
-- [ ] T015 [US2] Link `references/voice-sources.md` from `references/ho-so-giong.md` mục 2 (the consent question names the source type) and add it to `REFERENCE_FILES` in `scripts/validate-package.py`
+- [ ] T015 [US2] Link `references/voice-sources.md` from `references/voice-profile.md` mục 2 (the consent question names the source type) and add it to `REFERENCE_FILES` in `scripts/validate-package.py`
 - [ ] T016 [US2] Run `python3 -B -m unittest tests.test_skill_contract` and `python3 -B scripts/validate-package.py`
 
 **Checkpoint**: US1 + US2 = MVP for personal voice learning.
@@ -69,10 +69,10 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Independent Test**: 5-line guide + 10 posts (one breaks a rule) + an internal email with a customer name → `Quy tắc thương hiệu` lists rules, the conflict is in `Điểm chưa quyết`, no names.
 
 - [ ] T017 [P] [US3] Add guard `test_brand_voice_rules` to `tests/test_skill_contract.py` for `references/brand-voice.md`: "người dùng xác nhận được nói thay thương hiệu", "Quy tắc thương hiệu", "không ghi tên nhân viên, khách hàng", "mâu thuẫn giữa quy tắc và bài đăng ghi vào `Điểm chưa quyết`"; run and confirm red
-- [ ] T018 [P] [US3] Add cases VM11–VM13 to `calibration/ca-kiem-thu.md` (no authority statement → ask; guide vs post conflict → open point; internal document with customer name and deal terms → none in profile)
+- [ ] T018 [P] [US3] Add cases VM11–VM13 to `calibration/test-cases.md` (no authority statement → ask; guide vs post conflict → open point; internal document with customer name and deal terms → none in profile)
 - [ ] T019 [US3] Create `references/brand-voice.md` per research R6: three inputs, authority statement, guide rules as `Quy tắc thương hiệu` entries with source label, observed traits as in spec 028, conflicts to `Điểm chưa quyết`, redaction including staff and customer names and identifying document titles
-- [ ] T020 [US3] Add the `## Quy tắc thương hiệu` section (brand only, before `## Giọng chung`) to the template in `references/phan-tich-giong-viet.md`, and amend the evidence rule "Chỉ xét lời do người dùng tự viết" to allow brand material only for `kind: brand`
-- [ ] T021 [US3] Link `references/brand-voice.md` from `references/ho-so-giong.md` and `SKILL.md`'s brand row; add it to `REFERENCE_FILES` in `scripts/validate-package.py`; run the guard and validator
+- [ ] T020 [US3] Add the `## Quy tắc thương hiệu` section (brand only, before `## Giọng chung`) to the template in `references/voice-analysis.md`, and amend the evidence rule "Chỉ xét lời do người dùng tự viết" to allow brand material only for `kind: brand`
+- [ ] T021 [US3] Link `references/brand-voice.md` from `references/voice-profile.md` and `SKILL.md`'s brand row; add it to `REFERENCE_FILES` in `scripts/validate-package.py`; run the guard and validator
 
 ---
 
@@ -81,10 +81,10 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 **Goal**: count first, one paragraph at a time, four levels (Kém, Trung bình, Khá, Tốt), counts stored only on save.
 **Independent Test**: rate 3 paragraphs Tốt, Kém, Khá → one reason question, a diff, nothing written until save; saved profile has one `Lịch sử chấm` line with counts and the fixed label.
 
-- [ ] T022 [P] [US4] Add guard `test_rating_session_rules` to `tests/test_skill_contract.py` for `references/ho-so-giong.md` mục 7: "hỏi số đoạn muốn chấm (0–10)", "Kém, Trung bình, Khá, Tốt", "không lưu nội dung đoạn", "đánh giá của người dùng, không phải điểm chất lượng", "Skill không tự tính điểm giống giọng"; run and confirm red
-- [ ] T023 [P] [US4] Add cases VM14–VM16 to `calibration/ca-kiem-thu.md` (count 0 → skip; answer "không biết" → unrated; session not saved → nothing written; saved → exactly one history line with the given counts)
-- [ ] T024 [US4] Rewrite `references/ho-so-giong.md` mục 7 per `contracts/rating-session.md`: count question, paragraph rules (topic outside samples, five chốt, `ranh giới`, no open-point proposal), the four-option question in the order Kém, Trung bình, Khá, Tốt with none recommended, text fallback, at most two reason questions, diff via mục 6, save only on confirmation; keep the blind A/B check as an optional mode and replace "Không biến một lượt chọn thành điểm khớp giọng" with the stored-rating rule and "Skill không tự tính điểm giống giọng"
-- [ ] T025 [US4] Add `## Lịch sử chấm` with the line format from `contracts/profile-format.md` to the template in `references/phan-tich-giong-viet.md`
+- [ ] T022 [P] [US4] Add guard `test_rating_session_rules` to `tests/test_skill_contract.py` for `references/voice-profile.md` mục 7: "hỏi số đoạn muốn chấm (0–10)", "Kém, Trung bình, Khá, Tốt", "không lưu nội dung đoạn", "đánh giá của người dùng, không phải điểm chất lượng", "Skill không tự tính điểm giống giọng"; run and confirm red
+- [ ] T023 [P] [US4] Add cases VM14–VM16 to `calibration/test-cases.md` (count 0 → skip; answer "không biết" → unrated; session not saved → nothing written; saved → exactly one history line with the given counts)
+- [ ] T024 [US4] Rewrite `references/voice-profile.md` mục 7 per `contracts/rating-session.md`: count question, paragraph rules (topic outside samples, five chốt, `ranh giới`, no open-point proposal), the four-option question in the order Kém, Trung bình, Khá, Tốt with none recommended, text fallback, at most two reason questions, diff via mục 6, save only on confirmation; keep the blind A/B check as an optional mode and replace "Không biến một lượt chọn thành điểm khớp giọng" with the stored-rating rule and "Skill không tự tính điểm giống giọng"
+- [ ] T025 [US4] Add `## Lịch sử chấm` with the line format from `contracts/profile-format.md` to the template in `references/voice-analysis.md`
 - [ ] T026 [US4] Run `python3 -B -m unittest tests.test_skill_contract`
 
 ---
@@ -122,14 +122,14 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 
 - T001 ∥ T002.
 - Within each story, the guard task and the calibration task are [P] (different files).
-- US1 and US4 can proceed in parallel after Phase 2 (they touch different sections of `references/ho-so-giong.md`; still one writer per file at a time).
+- US1 and US4 can proceed in parallel after Phase 2 (they touch different sections of `references/voice-profile.md`; still one writer per file at a time).
 - T033 ∥ T034.
 
 ## Parallel Example: User Story 2
 
 ```text
 T011 guard in tests/test_skill_contract.py
-T012 cases VM05–VM10 in calibration/ca-kiem-thu.md
+T012 cases VM05–VM10 in calibration/test-cases.md
 T013 synthetic fixtures in tests/fixtures/voice/
 ```
 

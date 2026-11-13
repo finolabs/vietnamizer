@@ -6,14 +6,14 @@
 
 ## Summary
 
-Extend the opt-in voice-profile route (spec 028, PR #39) with a profile `kind` (personal or brand), three learning sources (paste, platform export, the user's own page through a host browser tool), a rating session of four levels whose counts are stored in the profile, and a help and onboarding entry. The package stays Markdown only: three new reference files, edits to `references/ho-so-giong.md` and `references/phan-tich-giong-viet.md`, two routing rows in `SKILL.md`, one plugin adapter for `help`, and coordinated amendments to the constitution, README, PRIVACY and `docs/style-and-voice.md`. No code in the package, no network call of its own, no evaluator; the browser path uses only a tool the host already has.
+Extend the opt-in voice-profile route (spec 028, PR #39) with a profile `kind` (personal or brand), three learning sources (paste, platform export, the user's own page through a host browser tool), a rating session of four levels whose counts are stored in the profile, and a help and onboarding entry. The package stays Markdown only: three new reference files, edits to `references/voice-profile.md` and `references/voice-analysis.md`, two routing rows in `SKILL.md`, one plugin adapter for `help`, and coordinated amendments to the constitution, README, PRIVACY and `docs/style-and-voice.md`. No code in the package, no network call of its own, no evaluator; the browser path uses only a tool the host already has.
 
 ## Technical Context
 
 **Language/Version**: Markdown instructions; package checks stay Python 3 standard library (`scripts/validate-package.py`, `scripts/package-plugin.py`, `unittest`).
 **Primary Dependencies**: none new. Optional host capabilities used only when present: a question form (`AskUserQuestion`, `request_user_input`, `ask_question`), a browser tool (Claude in Chrome, the in-app browser or an equivalent), Orrery or Obsidian for storage as in spec 028.
 **Storage**: unchanged from spec 028; the profile file the user chooses now also holds `kind`, brand rules and rating history.
-**Testing**: `tests/test_skill_contract.py` guards for the new rules; `tests/test_package_security.py` and `tests/test_distribution.py` for the new files and the second plugin skill; `scripts/validate-package.py`; `claude plugin validate .`; `npx skills add . --list`; manual cases in `calibration/ca-kiem-thu.md` (new block VM01–VM16).
+**Testing**: `tests/test_skill_contract.py` guards for the new rules; `tests/test_package_security.py` and `tests/test_distribution.py` for the new files and the second plugin skill; `scripts/validate-package.py`; `claude plugin validate .`; `npx skills add . --list`; manual cases in `calibration/test-cases.md` (new block VM01–VM16).
 **Target Platform**: Claude Code, Codex, Antigravity, standalone skill installs.
 **Project Type**: agent skill (Markdown) with packaging scripts.
 **Performance Goals**: the default editing path reads nothing new (SC-001); onboarding to a drafted profile in under 10 minutes and at most 6 questions before rating (SC-003).
@@ -30,7 +30,7 @@ Extend the opt-in voice-profile route (spec 028, PR #39) with a profile `kind` (
 | IV. Labelled evidence | Ratings are the user's judgement of their own profile and stay in that profile; they never enter `calibration/LOG.md` and are not used as quality evidence for the skill. Pass. |
 | V. Self-contained Markdown | No build, network call, secret or runner in the package. The browser path uses a host tool and works without it (paste and export remain). Pass, with the amendment below. |
 | Package constraints | "v1 MUST NOT lấy mẫu qua connector" conflicts with the browser source; the multi-author brand source conflicts with "chỉ phần do người dùng tự viết". **Gate: constitution MINOR amendment 2.3.0 → 2.4.0 with reason, impact report and the owner approval of 2026-11-13, landing before or with the route change.** |
-| Governance | `references/ho-so-giong.md` mục 7 and README/style docs say the skill does not score similarity; decision 7 stores user ratings. The amendment keeps "the skill never scores" and adds "user ratings may be stored, labelled as the user's judgement". Pass with FR-017 tasks. |
+| Governance | `references/voice-profile.md` mục 7 and README/style docs say the skill does not score similarity; decision 7 stores user ratings. The amendment keeps "the skill never scores" and adds "user ratings may be stored, labelled as the user's judgement". Pass with FR-017 tasks. |
 
 Post-design re-check: pass; residual risks listed below.
 
@@ -58,12 +58,12 @@ specs/030-voice-modes/
 SKILL.md                                  # 2 routing rows: help/onboarding, brand voice; one sentence on kind
 .plugin-skills/help/SKILL.md              # new plugin adapter → references/help.md
 references/
-├── ho-so-giong.md                        # kind, one-profile rule, source step, rating step (mục 7 rewritten)
-├── phan-tich-giong-viet.md               # kind field, brand rules section, rating history section
+├── voice-profile.md                        # kind, one-profile rule, source step, rating step (mục 7 rewritten)
+├── voice-analysis.md               # kind field, brand rules section, rating history section
 ├── voice-sources.md                          # new: paste, export (LinkedIn, Facebook), browser path, ownership, filtering
 ├── brand-voice.md                  # new: brand sources, guide rules vs observed traits, redaction
 └── help.md                           # new: help overview and onboarding flow
-calibration/ca-kiem-thu.md                # VM01–VM16
+calibration/test-cases.md                # VM01–VM16
 .specify/memory/constitution.md           # 2.4.0 amendment
 README.md, PRIVACY.md, docs/style-and-voice.md, docs/changelog.md, AGENTS.md
 scripts/validate-package.py, scripts/package-plugin.py   # inventory and second adapter
