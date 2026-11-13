@@ -461,6 +461,7 @@ class PackageSecurityTest(unittest.TestCase):
                 self.assertIn(prefix + "references/voice-from-samples.md", all_names)
                 self.assertIn(prefix + "references/voice-profile.md", all_names)
                 self.assertIn(prefix + "references/voice-analysis.md", all_names)
+                self.assertIn(prefix + "references/voice-sources.md", all_names)
                 self.assertFalse(any("__pycache__" in name or name.startswith(prefix + "tests/") for name in all_names))
                 self.assertFalse(any(name.startswith(prefix + "guard_eval/") or name.startswith(prefix + "eval/") for name in all_names))
 

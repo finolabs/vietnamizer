@@ -1,5 +1,7 @@
 # Contract: profile file format
 
+> 2026-11-13: spec 030 extends this format (`kind`, and later `Quy tắc thương hiệu` and `Lịch sử chấm`); see `specs/030-voice-modes/contracts/profile-format.md`.
+
 ```markdown
 ---
 type: vietnamizer-voice-profile

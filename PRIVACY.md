@@ -32,9 +32,22 @@ của nền tảng đó.
 
 Tuyến hồ sơ giọng chỉ chạy khi người dùng yêu cầu tạo, cập nhật hoặc áp dụng hồ sơ giọng.
 Trước khi đọc mẫu, skill nêu rõ nguồn sẽ đọc và chờ người dùng đồng ý. Mẫu chỉ là văn bản người
-dùng dán hoặc file người dùng chỉ định trong tác vụ; skill không tự tìm mẫu trong memory, lịch
-sử, email, connector hay kho lưu trữ. Khi áp dụng, skill chỉ đọc hồ sơ được người dùng dán hoặc
-chỉ định, không tự liệt kê hay chọn hồ sơ.
+dùng dán, file người dùng chỉ định trong tác vụ (kể cả file export LinkedIn hoặc Facebook họ tự tải),
+hoặc trang của chính người dùng đọc qua công cụ trình duyệt host sẵn có khi họ đã đăng nhập; skill
+không tự tìm mẫu trong memory, lịch sử, email, connector khác hay kho lưu trữ.
+
+Với export và trang, skill hỏi người dùng xác nhận đó là tài khoản của chính họ và không đọc trang của
+người khác. Skill đề nghị chỉ xuất mục bài viết, chỉ mở file bài viết trong bản export (không mở hay
+liệt kê file nào khác), chỉ giữ bài họ tự viết và bỏ bình luận, tin nhắn, danh bạ. Học giọng thương
+hiệu từ trang hay export chưa được hỗ trợ. Trước khi đọc qua trình duyệt, skill báo điều khoản của
+LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập dữ liệu tự động khi chưa được phép, và tài
+khoản có thể bị hạn chế; người dùng tự quyết. Trên trình duyệt, skill chỉ mở đường dẫn tài khoản của
+chính người dùng, chỉ đọc phần thân bài; không hỏi, nhập hay đọc mật khẩu, cookie hoặc token, không
+giải captcha, không bấm thích, bình luận, đăng hay gửi, không đổi cài đặt tài khoản; dừng khi gặp màn
+đăng nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Skill không có mã gọi mạng; việc đọc
+trang đi qua công cụ của host.
+
+Khi áp dụng, skill chỉ đọc hồ sơ được người dùng dán hoặc chỉ định, không tự liệt kê hay chọn hồ sơ.
 
 Hồ sơ có thể gồm tên do người dùng chọn, ngày cập nhật, số mẫu theo kênh, đặc tính giọng, cách
 viết theo kênh và người đọc, điều nên/không nên dùng, cùng căn cứ ngắn đã loại dữ liệu cá nhân.

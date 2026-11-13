@@ -125,6 +125,58 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn("`references/terminology-consistency.md`", read("SKILL.md"))
         self.assertIn("mặc định không có", read("SKILL.md"))
 
+    def test_profile_kind_and_one_profile_rule(self) -> None:
+        route = read("references/voice-profile.md")
+        for phrase in (
+            "Hồ sơ không có `kind` là hồ sơ cá nhân",
+            "Mỗi lần dùng chỉ áp một hồ sơ",
+            "hỏi người dùng chọn một",
+            "áp hồ sơ thương hiệu khi người dùng gọi tên nó trong yêu cầu hiện tại",
+            "nói ngắn trong câu trả lời đã dùng hồ sơ nào",
+            "hồ sơ thương hiệu được gọi cho một lời rõ là riêng tư (tin nhắn riêng, thư cho người thân) thì hỏi xác nhận trước",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, route)
+        analysis = read("references/voice-analysis.md")
+        for phrase in (
+            "kind: <personal hoặc brand>",
+            "Hồ sơ mới luôn ghi `kind`",
+            "hồ sơ cũ không có `kind` đọc là hồ sơ cá nhân",
+            "giá trị `kind` lạ thì báo giá trị đó và hỏi người dùng, không áp hồ sơ",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, analysis)
+        samples = read("references/voice-from-samples.md")
+        for phrase in (
+            "quy tắc `kind` và quy tắc một hồ sơ ở `references/voice-profile.md` mục 1",
+            "hai hồ sơ dán cùng lúc thì hỏi dùng hồ sơ nào",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, samples)
+
+    def test_brand_learning_not_yet_supported(self) -> None:
+        for relative in ("SKILL.md", "references/voice-profile.md"):
+            with self.subTest(file=relative):
+                self.assertIn("chưa hỗ trợ học hay dựng giọng thương hiệu", read(relative))
+        self.assertIn("`references/voice-sources.md`", read("SKILL.md"))
+
+    def test_social_sources_rules(self) -> None:
+        text = read("references/voice-sources.md")
+        for phrase in (
+            "chỉ giữ bài do chủ tài khoản viết",
+            "Không hỏi, nhập hay đọc mật khẩu, cookie hoặc token",
+            "điều khoản của LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập dữ liệu tự động khi chưa được phép",
+            "Chỉ mở file bài viết",
+            "không mở, không liệt kê nội dung và không đọc file nào khác trong bản export",
+            "Dừng khi gặp màn đăng nhập hoặc tài khoản khác",
+            "tối đa 80 bài gần nhất",
+            "không đọc trang của người khác",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        self.assertIn("`references/voice-sources.md`", read("references/voice-profile.md"))
+        self.assertIn('"references/voice-sources.md"', (ROOT / "scripts/validate-package.py").read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -6,6 +6,13 @@
 
 ### Chưa phát hành
 
+Spec 030, phần MVP (giọng cá nhân và thương hiệu, nguồn mạng xã hội): hồ sơ có trường `kind`
+(`personal` mặc định, `brand`), mỗi lần chỉ áp một hồ sơ và chỉ áp hồ sơ thương hiệu khi được gọi tên;
+`references/voice-sources.md` thêm hai nguồn mẫu ngoài dán bài: file export LinkedIn/Facebook người dùng
+tự tải, và trang của chính người dùng qua công cụ trình duyệt host sẵn có (cảnh báo điều khoản LinkedIn và Facebook,
+không xử lý mật khẩu hay cookie). Constitution lên 2.4.0. Thêm ca VM01–VM15 và fixture tổng hợp. Chưa
+chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
+
 Đổi tên file và thư mục sang tiếng Anh (nội dung vẫn tiếng Việt, không đổi chữ nào ngoài đường dẫn):
 `references/` (`bang-tra-cuu` → `function-words`, `bo-giai-phong-cach` → `style-resolution`,
 `giu-giong-tu-mau` → `voice-from-samples`, `han-viet-thuan-viet` → `sino-vietnamese`, `ho-so-giong` →

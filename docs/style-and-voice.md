@@ -132,12 +132,13 @@ Skill chỉ dùng hồ sơ được cung cấp trong tác vụ, không tự truy
 hoặc dữ liệu khác, và không tự lưu hồ sơ nếu không có yêu cầu rõ. Không dùng mẫu của người này cho người khác;
 yêu cầu hiện tại luôn được ưu tiên.
 
-### Tuyến hồ sơ giọng cá nhân (opt-in)
+### Tuyến hồ sơ giọng (opt-in)
 
 Khi người dùng yêu cầu học hoặc tạo hồ sơ phong cách viết của mình, `vietnamizer` kích hoạt tuyến opt-in
 theo [`references/voice-profile.md`](../references/voice-profile.md) và [`references/voice-analysis.md`](../references/voice-analysis.md):
 
-- **Nguồn mẫu:** chỉ đọc văn bản do người dùng dán hoặc file chỉ định trong tác vụ sau khi hỏi và nhận được sự đồng ý rõ ràng. Không tự tìm trong memory, lịch sử chat, hòm thư hay các đầu nối ngoài.
+- **Nguồn mẫu:** chỉ đọc văn bản do người dùng dán, file chỉ định trong tác vụ (kể cả file export LinkedIn/Facebook bạn tự tải), hoặc trang của chính bạn qua công cụ trình duyệt host sẵn có, sau khi hỏi và nhận được sự đồng ý rõ ràng cùng lời xác nhận chủ tài khoản ([`references/voice-sources.md`](../references/voice-sources.md)). Không tự tìm trong memory, lịch sử chat, hòm thư hay các đầu nối khác. Đọc LinkedIn hay Facebook qua trình duyệt có cảnh báo điều khoản trước.
+- **Cá nhân hay thương hiệu:** hồ sơ có trường `kind` (`personal` mặc định, `brand`). Không nêu giọng thì dùng giọng cá nhân; hồ sơ thương hiệu chỉ áp khi bạn gọi tên; mỗi lần chỉ một hồ sơ.
 - **Phân tích và bảo vệ dữ liệu:** phân tích các chiều tiếng Việt quan sát được (xưng hô theo quan hệ, hư từ/tiểu từ, chêm tiếng Anh, dấu câu và số, nhịp điệu, mở/kết) kèm trích đoạn minh họa ngắn hoặc ước lượng số lần xuất hiện. Agent được chỉ dẫn bỏ tên riêng, số điện thoại, email, thông tin tài chính và dữ liệu nhạy cảm khỏi hồ sơ; v1 không có bộ lọc bằng mã, nên bước bảo vệ thực sự là bạn đọc toàn bộ dự thảo trước khi lưu.
 - **Duyệt trước khi lưu:** luôn hiển thị trọn vẹn dự thảo hồ sơ cho người dùng xem và chỉnh sửa.
 - **Lưu theo yêu cầu tại nơi người dùng chọn:** chỉ lưu khi người dùng yêu cầu rõ ràng. Skill phát hiện công cụ Orrery hoặc Obsidian từ danh sách công cụ sẵn có của agent để gợi ý; nếu không có thì hỏi đường dẫn file Markdown và đề xuất `~/.agents/vietnamizer/profiles`. Tuyệt đối không tự tạo thư mục trước khi xác nhận. Người dùng có thể lưu nhiều hồ sơ với các tên khác nhau cho từng kênh viết.

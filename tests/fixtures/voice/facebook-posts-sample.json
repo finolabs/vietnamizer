@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": 1760000000,
+    "data": [{"post": "Sáng nay chạy được 5 km. Chậm thôi, nhưng đều."}],
+    "title": "Người dùng mẫu đã cập nhật trạng thái."
+  },
+  {
+    "timestamp": 1760100000,
+    "data": [{"post": "Ai cần mẫu kế hoạch tuần thì nhắn mình, mình gửi."}],
+    "title": "Người dùng mẫu đã cập nhật trạng thái."
+  },
+  {
+    "timestamp": 1760200000,
+    "data": [{"post": "Chúc mừng sinh nhật nhé!"}],
+    "title": "Một người khác đã viết trên dòng thời gian của Người dùng mẫu."
+  },
+  {
+    "timestamp": 1760300000,
+    "attachments": [{"data": [{"external_context": {"url": "https://example.com/tin-tuc"}}]}],
+    "title": "Người dùng mẫu đã chia sẻ một liên kết."
+  }
+]

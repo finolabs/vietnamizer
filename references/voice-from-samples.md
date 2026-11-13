@@ -10,6 +10,7 @@ Chỉ dùng mẫu/hồ sơ được giao trong tác vụ. Ghi ngắn mẫu của
 và chức năng phần cần viết. Một mẫu ngắn có thể đủ cho nét hẹp; không đặt số mẫu/số chữ tối thiểu chưa
 kiểm chứng. Thiếu chỉ ảnh hưởng lựa chọn nhỏ thì giữ cách phù hợp; thiếu làm đổi quan hệ/giọng đáng kể
 thì hỏi đúng phần đó. Không tự tìm memory/lịch sử, file khác hoặc tự lưu hồ sơ (tuyến hồ sơ giọng: `references/voice-profile.md`); chỉ sửa đoạn nhỏ thì áp trong đoạn ấy.
+Hồ sơ dán thẳng cũng theo quy tắc `kind` và quy tắc một hồ sơ ở `references/voice-profile.md` mục 1: hai hồ sơ dán cùng lúc thì hỏi dùng hồ sơ nào.
 
 Mẫu tự viết, bản chủ sửa từ AI và bài tham khảo là các loại bằng chứng khác nhau. Nháp AI không tự
 chứng minh giọng cá nhân. Không suy tác giả/tính cách/niềm tin hoặc cách tạo từ văn phong. Bộ nhiều tác giả

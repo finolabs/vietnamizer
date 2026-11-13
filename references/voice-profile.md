@@ -3,7 +3,8 @@
 ## 1. Chọn đúng tuyến (FR-001, FR-020)
 
 Chỉ mở tuyến này khi người dùng yêu cầu học, xây dựng, cập nhật hoặc áp dụng hồ sơ giọng
-viết cá nhân. Yêu cầu lưu hồ sơ đã được xem lại đi tiếp ở mục 4. Không tự mở tuyến vì một
+viết cá nhân, hoặc áp dụng một hồ sơ thương hiệu họ gọi tên. Yêu cầu lưu hồ sơ đã được xem
+lại đi tiếp ở mục 4. Không tự mở tuyến vì một
 yêu cầu sửa bài thông thường hoặc vì tác vụ có mẫu giọng; giữ tuyến do `SKILL.md` chọn.
 Chỉ nạp hướng dẫn phân tích khi xây dựng hồ sơ; dùng lại hồ sơ không cần phân tích lại mẫu.
 
@@ -11,6 +12,22 @@ Hồ sơ ngắn dán thẳng trong yêu cầu biên tập vẫn đi tuyến “T
 không qua tuyến này và không cần câu xin đồng ý đọc. Tuyến này dành cho học, lưu, cập nhật hoặc áp
 dụng hồ sơ lấy từ nơi lưu. Yêu cầu “theo giọng của tôi” không kèm mẫu hay hồ sơ không mở tuyến:
 tiếp tục biên tập theo giọng hiện có, không tìm hồ sơ và không coi việc có hồ sơ là điều kiện để sửa.
+
+### Giọng cá nhân và giọng thương hiệu (spec 030)
+
+Hồ sơ có hai loại, ghi ở trường `kind` của đầu hồ sơ: `personal` (giọng của chính người dùng) và
+`brand` (giọng một thương hiệu người dùng được nói thay). Hồ sơ không có `kind` là hồ sơ cá nhân.
+Người dùng không nêu giọng thì dùng giọng cá nhân: giọng hiện có của bản nháp, hoặc hồ sơ cá nhân họ
+gọi tên. Chỉ áp hồ sơ thương hiệu khi người dùng gọi tên nó trong yêu cầu hiện tại; hồ sơ thương hiệu
+được gọi cho một lời rõ là riêng tư (tin nhắn riêng, thư cho người thân) thì hỏi xác nhận trước.
+
+Hiện skill chưa hỗ trợ học hay dựng giọng thương hiệu (spec 030 US3; `references/brand-voice.md` đang
+lên kế hoạch); chỉ áp được hồ sơ thương hiệu người dùng đã có và gọi tên. Người dùng muốn học giọng
+thương hiệu thì nói rõ việc này chưa hỗ trợ và đề nghị dựng hồ sơ cá nhân từ bài họ tự viết.
+
+Mỗi lần dùng chỉ áp một hồ sơ. Yêu cầu gọi tên hai hồ sơ trở lên thì hỏi người dùng chọn một rồi mới
+sửa; không trộn nét của hai hồ sơ vào cùng một bài. Khi đã áp hồ sơ, nói ngắn trong câu trả lời đã
+dùng hồ sơ nào.
 
 ## 2. Xin đồng ý rồi mới đọc (FR-002–004)
 
@@ -26,8 +43,14 @@ cầu lưu là câu trả lời thay cho sự đồng ý đọc. Nếu chưa có
 hoặc gọi tên văn bản trước; không tự tìm nguồn để điền câu hỏi. Nguồn bổ sung ngoài phạm vi
 đã đồng ý cần được nêu rõ và xin đồng ý trước khi đọc.
 
-Chỉ nhận mẫu là văn bản người dùng dán hoặc file văn bản người dùng gọi tên trong tác vụ.
-Không tìm mẫu trong memory, lịch sử hội thoại, connector, hộp thư hoặc kho lưu trữ. Không
+Chỉ nhận mẫu là văn bản người dùng dán, file văn bản người dùng gọi tên trong tác vụ (kể cả file
+export LinkedIn hoặc Facebook họ tự tải), hoặc trang của chính người dùng đọc qua công cụ trình duyệt
+host sẵn có, theo `references/voice-sources.md`; câu đồng ý nêu rõ loại nguồn. Với file export hay
+trang, vẫn là đúng một câu đó: câu ấy gọi đúng tên file bài viết hoặc trang và nhờ người dùng xác
+nhận luôn tài khoản là của chính họ. Với đường trình duyệt, cảnh báo điều khoản nền tảng
+(`references/voice-sources.md` mục 4) đứng ngay trước câu hỏi, để câu trả lời đồng ý là quyết định
+của người dùng sau khi đã nghe cảnh báo.
+Không tìm mẫu trong memory, lịch sử hội thoại, connector khác, hộp thư hoặc kho lưu trữ. Không
 dùng đường dẫn tới kho hay quyền truy cập sẵn có làm lý do để duyệt nội dung. Quyền đọc
 một hồ sơ được chỉ định ở mục 5 không cấp quyền tìm mẫu trong kho đó.
 
