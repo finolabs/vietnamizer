@@ -6,5 +6,5 @@ description: Biên tập văn bản tiếng Việt đọc khô cứng, bị dị
 # vietnamizer plugin adapter
 
 Resolve the plugin root as two directories above the directory containing this file. Before
-writing, editing or reviewing, read `<plugin-root>/SKILL.md` in full: it owns routing and safeguards; the catalogs it selects own pattern bodies. Resolve its `profiles/`, `references/` and `jev/` paths from that plugin
+writing, editing or reviewing, read `<plugin-root>/SKILL.md` in full: it owns routing and safeguards; the catalogs it selects own pattern bodies. Resolve its `profiles/` and `references/` paths from that plugin
 root, not from this adapter directory. Follow the canonical workflow for the user's request.
