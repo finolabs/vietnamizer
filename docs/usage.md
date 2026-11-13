@@ -110,6 +110,27 @@ lưu hội thoại theo chính sách của nền tảng; plugin không biến vi
 toàn trên máy. Không gửi credential, định danh chính phủ, dữ liệu thẻ thanh toán hoặc PHI.
 Xem [quyền riêng tư](../PRIVACY.md) và [điều kiện sử dụng](../TERMS.md).
 
+- **Không thấy skill:** kiểm plugin đã bật, rồi mở phiên mới. Trong Claude Code kiểm đúng
+  marketplace `finolabs` và lời gọi `/vietnamizer:vietnamizer`.
+- **Mô tả hoặc phiên bản chưa đổi:** cập nhật đúng plugin cùng tên từ nguồn đã cài; tránh cài
+  thêm bản review trùng tên. ZIP upload riêng không tự cập nhật từ GitHub.
+- **Icon mặc định:** manifest có icon, nhưng kết quả CLI validator không chứng minh client
+  hiển thị nó. Kiểm preview listing; không coi icon mặc định là lỗi của quy trình biên tập.
+- **Sửa sai hoặc sửa quá tay:** gửi ca giả lập/đã ẩn danh cùng kết quả mong đợi qua
+  [GitHub Issues](https://github.com/finolabs/vietnamizer/issues) theo mẫu báo lỗi. Đọc
+  [hướng dẫn đóng góp](../CONTRIBUTING.md) trước; không gửi toàn bộ prompt, log hay tài liệu.
+- **Lỗi bảo mật:** dùng [kênh báo riêng](../SECURITY.md), không đăng lên Issues công khai.
+  Không gửi API key, token, dữ liệu cá nhân, tài liệu nội bộ hoặc nội dung nhạy cảm.
+
+## Phạm vi
+
+Skill xử lý ba lớp:
+
+- V1–V25 kiểm tra cách dùng từ và cấu trúc câu, chẳng hạn thiếu bổ ngữ kết quả, thiếu loại từ, dịch sát giới từ, đặt trạng ngữ gây mơ hồ hoặc để sót lời chào của trợ lý trong tài liệu.
+- B1–B17 và K1–K7 kiểm tra sự phù hợp với thể loại. Blog, tin nhắn, README và bài nghiên cứu không dùng cùng một giọng.
+- T1–T6 kiểm tra typography. Với văn xuôi thông thường, chỉ áp dụng khi đồng thời có ít nhất một lỗi
+  V1–V25; với thể loại được giới hạn ở typography-only thì không cần lỗi V đi kèm.
+
 Trước khi sửa, skill xác định thể loại/phạm vi; chỉ tra profile khi có nghi vấn phụ thuộc thể loại.
 Làm bài chọn một card; có mẫu/hồ sơ chủ động cung cấp mới đọc guide mẫu. Skill không tự truy xuất memory hay lịch sử hội thoại để tìm mẫu.
 
