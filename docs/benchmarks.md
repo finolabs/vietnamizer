@@ -2,6 +2,10 @@
 
 [← README](../README.md)
 
+> **Ghi chú (13/11/2026):** Jev đã bị gỡ khỏi Vietnamizer (spec `specs/029-remove-jev/`). Các mục dưới đây
+> nhắc nhánh "Vietnamizer + Jev", runner và test của nó là bằng chứng lịch sử đã ngừng dùng; script
+> benchmark Jev/công khai và `eval/guard/` đã bị xóa khỏi repo, các file raw nằm trong lịch sử Git.
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày
@@ -41,14 +45,14 @@ minh thay đổi đó tốt hơn; các ca giữ nguyên cũng được giữ tro
 
 | Bằng chứng hiện có | Có thể kiểm tra điều gì? | Giới hạn |
 |---|---|---|
-| [Test tự động](../tests/) | Hành vi runner: phân đoạn, vùng bảo toàn, coverage, xử lý phản hồi và lỗi dịch vụ | Test dùng phản hồi giả lập không đo chất lượng phán đoán của Jev hay bản biên tập cuối |
+| [Test tự động](../tests/) | Đóng gói, inventory, pilot giọng và hợp đồng review | Test không đo chất lượng bản biên tập cuối |
 | [Ca kiểm thử chạy tay](../calibration/ca-kiem-thu.md) | Kết quả mong đợi của từng tình huống, gồm cả ca không được sửa | Có ca kiểm thử chưa đồng nghĩa đã chạy và đạt |
 | [Nhật ký hiệu chuẩn](../calibration/LOG.md) | Bằng chứng và quyết định đằng sau các lần sửa quy tắc | Ca đã dùng để chỉnh quy tắc không phải tập đánh giá độc lập |
 
-Có thể chạy nhóm test về runner, vùng bảo toàn và lỗi dịch vụ mà không cần gọi API:
+Kiểm đóng gói không cần gọi API:
 
 ```bash
-python3 -B -m unittest tests.test_jev tests.test_context_protection tests.test_coverage_faults
+python3 -B -m unittest tests.test_distribution tests.test_package_security
 ```
 
 <details>

@@ -17,11 +17,11 @@ dữ liệu khác chỉ để dự phòng. Mục đích sử dụng là biên t�
 Không cung cấp dữ liệu thẻ thanh toán thuộc PCI DSS, thông tin sức khỏe cá nhân được bảo vệ
 (PHI), định danh do chính phủ cấp, mật khẩu, API key, mã MFA/OTP hoặc secret xác thực khác.
 Nếu nhận thấy các dữ liệu này, skill dừng biên tập đầu vào đó và yêu cầu bản đã che hoặc ví dụ
-giả lập; không trích lại, lưu thành ca hiệu chuẩn hay gửi sang TypeSafe. Consent không gỡ bỏ
+giả lập; không trích lại hay lưu thành ca hiệu chuẩn. Consent không gỡ bỏ
 giới hạn này. Ví dụ giả lập hoặc nội dung nói chung về sức khỏe và giấy tờ không bị cấm chỉ vì
 chủ đề. Việc biên tập không cần thu thập thêm dữ liệu cá nhân nhạy cảm; ưu tiên bản đã ẩn danh.
 
-Người dùng có thể không cung cấp mẫu giọng, từ chối thẩm định bên ngoài hoặc dùng bản giả lập
+Người dùng có thể không cung cấp mẫu giọng hoặc dùng bản giả lập
 mà vẫn dùng được quy trình cốt lõi. Skill không tự lưu phản hồi hoặc sửa quy tắc; hồ sơ giọng chỉ
 được lưu khi người dùng yêu cầu rõ theo tuyến bên dưới. Ghi nhật ký hiệu chuẩn cần một tác vụ
 bảo trì và quyền ghi file cụ thể. Xóa hội thoại hoặc file được host
@@ -53,30 +53,11 @@ bản chuẩn. Skill không tự cập nhật từ phản hồi, tự nạp hồ
 ký hiệu chuẩn chung. Nếu cần bản mẫu tạm ngoài hội thoại, skill đặt ngoài cây thư mục Git và
 xóa khi quy trình kết thúc hoặc người dùng dừng.
 
-Tạo hồ sơ không gọi Jev. Khi áp dụng hồ sơ để biên tập, chỉ các nét liên quan đã lọc dữ liệu riêng được đưa vào trường
-`register` làm ngữ cảnh phong cách theo [hợp đồng Jev hiện có](references/typesafe-advisor.md),
-cùng đầu vào biên tập được phép gửi. Việc gửi vẫn cần key do host cấp và quyền gửi dữ liệu;
-tuyến này không thêm quyền gửi hay thay đổi hợp đồng Jev.
+Skill không gửi hồ sơ hay mẫu giọng tới dịch vụ ngoài: chúng chỉ nằm trong ngữ cảnh hội thoại
+của agent mà người dùng chọn.
 
-## TypeSafe tự động khi host cấp key và quyền gửi
-
-Các gói chứa runner Jev dùng Python standard library. Mỗi lượt skill kiểm sự hiện diện của key
-được host inject; không có key thì không gọi TypeSafe. Có key và quyền gửi dữ liệu thì skill
-phải thử đánh giá: nguyên đoạn, ngữ cảnh liên quan và candidate có thể được gửi tới
-`https://api.typesafe.ai/v1/systemone`. Key không tạo quyền gửi văn bản; host tiếp tục áp giới hạn
-dữ liệu, sandbox và sự đồng ý đã có. Người dùng có thể từ chối truyền dữ liệu và tiếp tục core.
-
-Runner không tìm key trong file/keychain, không tạo tài khoản/connector và không ghi key hoặc
-văn bản gốc vào telemetry. Output chứa ID, trạng thái, hash, typed judgments, model và usage;
-input JSON tạm do host tạo vẫn thuộc chính sách lưu dữ liệu của host. Vùng bảo toàn phải được
-đánh dấu/che trước khi gửi. API lỗi hoặc bị chặn không được coi là đã kiểm tra thành công.
-
-Maintainer không nhận hoặc lưu văn bản biên tập qua một máy chủ Vietnamizer, nên không có thời
-hạn lưu phía maintainer cho dữ liệu này. Thời hạn lưu, cách xóa và log phía Claude/Codex hoặc
-TypeSafe phụ thuộc tài khoản, cấu hình và chính sách của từng bên; repo không bảo đảm họ không
-lưu dữ liệu. Người dùng cần kiểm chính sách dịch vụ trước khi cho phép gửi, có thể từ chối
-thẩm định và tiếp tục dùng core. Hướng dẫn nằm trong
-[ranh giới TypeSafe](references/typesafe-advisor.md).
+Từ bản 0.14.0, Vietnamizer không còn runner đánh giá ngoài (Jev/TypeSafe) và không đọc
+`TYPESAFE_API_KEY`. Các bản cũ hơn có tuyến đó; lịch sử nằm trong `docs/changelog.md`.
 
 Ngoài tuyến hồ sơ giọng được người dùng yêu cầu rõ ở trên, skill chỉ dùng mẫu giọng hoặc hồ sơ
 người dùng chủ động cung cấp trong tác vụ, không tự truy xuất hay cập nhật memory. Việc lưu hội

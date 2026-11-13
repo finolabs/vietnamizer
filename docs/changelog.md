@@ -4,6 +4,18 @@
 
 ## Lịch sử phiên bản
 
+### Chưa phát hành (dự kiến 0.14.0)
+
+Gỡ Jev (evaluator TypeSafe) khỏi Vietnamizer, theo spec `specs/029-remove-jev/`. Đã bỏ: package `jev/`
+(runner, transport, chuẩn bị/coverage, registry 55 pattern), `references/typesafe-advisor.md`,
+`scripts/build-jev-registry.py`, đoạn "Evaluator" trong `SKILL.md`, mọi xử lý `register`/ngữ cảnh phong
+cách gửi sang evaluator trong tuyến hồ sơ giọng, các benchmark và test chỉ phục vụ Jev, và `eval/guard/`.
+Gói phát hành nhỏ hơn khoảng 211KB (chưa nén). Năm chốt bảo toàn nghĩa và 55 pattern không đổi; hồ sơ giọng vẫn là tuyến opt-in.
+
+Việc người dùng cần làm: không bắt buộc. Skill không còn đọc `TYPESAFE_API_KEY`; nếu đã đặt key riêng
+cho Vietnamizer thì có thể xóa. Agent hoặc script gọi `python3 -B -m jev …` phải bỏ lời gọi đó. Spec cũ,
+`calibration/` và `docs/benchmarks.md` còn là hồ sơ lịch sử về Jev, không phải runtime hiện hành.
+
 ### 0.13.4 (08/11/2026)
 
 Gói phát hành không còn chứa `calibration/` (nhật ký bằng chứng và ca kiểm thử tay của maintainer, khoảng 140KB, không nạp lúc chạy). `scripts/validate-package.py` vẫn kiểm inventory và quét bí mật `calibration/` trong repo nguồn và từ chối mọi payload phát hành có thư mục này; file `.skill` nén giảm khoảng 20%.

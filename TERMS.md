@@ -8,10 +8,9 @@ Người dùng chịu trách nhiệm về quyền sử dụng văn bản đầu 
 bố. Skill hỗ trợ biên tập; không xác minh mọi dữ kiện, không thay thế review chuyên môn và không
 được mô tả như công cụ chứng nhận văn bản do người hay AI viết.
 
-Claude, Codex và TypeSafe là dịch vụ riêng. Việc dùng chúng chịu điều kiện của từng nhà cung cấp;
-MIT License của repo không cấp tài khoản hoặc quota cho các dịch vụ đó. Quy trình cốt lõi không
-cần TypeSafe. Xem [thông tin quyền riêng tư](PRIVACY.md) trước khi cho phép gửi văn bản tới TypeSafe; khi host cấp key và quyền gửi,
-skill tự động thử đánh giá. Không có key hoặc quyền gửi thì tiếp tục quy trình cốt lõi.
+Claude và Codex là dịch vụ riêng. Việc dùng chúng chịu điều kiện của từng nhà cung cấp;
+MIT License của repo không cấp tài khoản hoặc quota cho các dịch vụ đó. Xem
+[thông tin quyền riêng tư](PRIVACY.md) về xử lý dữ liệu.
 
 Báo lỗi hoặc đề xuất sửa qua [GitHub Issues](https://github.com/finolabs/vietnamizer/issues).
 Chỉ gửi ví dụ tối thiểu đã ẩn dữ liệu theo [hướng dẫn đóng góp](CONTRIBUTING.md).
