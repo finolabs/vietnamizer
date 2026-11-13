@@ -45,10 +45,14 @@ hoặc gọi tên văn bản trước; không tự tìm nguồn để điền c�
 
 Chỉ nhận mẫu là văn bản người dùng dán, file văn bản người dùng gọi tên trong tác vụ (kể cả file
 export LinkedIn hoặc Facebook họ tự tải), hoặc trang của chính người dùng đọc qua công cụ trình duyệt
-host sẵn có, theo `references/voice-sources.md`; câu đồng ý nêu rõ loại nguồn. Với file export hay
-trang, vẫn là đúng một câu đó: câu ấy gọi đúng tên file bài viết hoặc trang và nhờ người dùng xác
-nhận luôn tài khoản là của chính họ. Với đường trình duyệt, cảnh báo điều khoản nền tảng
-(`references/voice-sources.md` mục 4) đứng ngay trước câu hỏi, để câu trả lời đồng ý là quyết định
+host sẵn có, theo `references/voice-sources.md`; câu đồng ý nêu rõ loại nguồn. Văn bản dán
+không cần lời xác nhận chủ tài khoản; áp quy tắc tác giả ở cuối mục này. Với file export hay trang, vẫn
+là đúng một câu đó: câu ấy gọi đúng tên file bài viết, hoặc với trình duyệt gọi đúng đường dẫn tài khoản
+của chính mình sẽ mở (`https://www.linkedin.com/in/me/recent-activity/all/` hoặc
+`https://www.facebook.com/me`, theo `references/voice-sources.md` mục 4), không gọi URL người dùng đưa, và
+nhờ người dùng xác nhận luôn tài khoản là của chính họ. Với đường trình duyệt, cảnh báo điều khoản nền
+tảng (lời cảnh báo ở `references/voice-sources.md` mục 4) đứng ngay trước câu hỏi; đây là chỗ duy nhất
+nêu cảnh báo trong luồng, kể cả khi đi từ bước thiết lập giọng. Câu trả lời đồng ý vì vậy là quyết định
 của người dùng sau khi đã nghe cảnh báo.
 Không tìm mẫu trong memory, lịch sử hội thoại, connector khác, hộp thư hoặc kho lưu trữ. Không
 dùng đường dẫn tới kho hay quyền truy cập sẵn có làm lý do để duyệt nội dung. Quyền đọc
@@ -234,7 +238,12 @@ Với mỗi đoạn i trên n:
 
 Sau đoạn cuối, báo số đoạn theo từng mức. Có đoạn Kém hoặc Trung bình thì hỏi tối đa hai câu hỏi lý do
 cho cả lượt (“Đoạn i chưa giống ở chỗ nào?”), rồi chuyển lý do thành diff đề xuất theo mục 6 (phạm vi,
-`ranh giới`, `Điểm chưa quyết`). Không có lý do rõ thì không đề xuất sửa.
+`ranh giới`, `Điểm chưa quyết`). Không có lý do rõ thì không đề xuất sửa. Hai câu hỏi lý do này chính là
+hai câu bổ sung của mục 6 cho diff đó, dùng chung một trần, không cộng thêm.
+
+Diff từ lý do chấm đi theo một trong hai đường. Hồ sơ còn là bản nháp chưa lưu (mục 3): người dùng đồng ý
+diff thì gộp vào bản nháp và trình lại toàn bộ bản sẽ lưu trước câu hỏi lưu; chưa đồng ý thì không gộp.
+Hồ sơ đã lưu: diff cần người dùng xác nhận riêng theo mục 6.
 
 Lượt chấm chỉ được ghi vào hồ sơ khi người dùng lưu hồ sơ (mục 4) hoặc xác nhận diff (mục 6). Dòng chấm
 nằm sẵn trong bản toàn văn hoặc diff trình cho người dùng trước câu hỏi lưu; không thêm dòng nào người dùng

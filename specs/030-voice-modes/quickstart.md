@@ -13,7 +13,7 @@ npx --yes skills@1.5.20 add . --list
 
 Expected: package valid; tests pass; the plugin lists `vietnamizer` and `help`; the skills CLI lists the root skill.
 
-## Behaviour walk-through (manual, cases VM01–VM26 in `calibration/test-cases.md`)
+## Behaviour walk-through (manual, cases VM01–VM33 in `calibration/test-cases.md`)
 
 1. Run `/vietnamizer:help`: one-screen overview, no file read, offer to start (contract help-onboarding).
 2. Accept, pick Cá nhân → Dán bài, paste 12 synthetic posts, consent: a full draft profile with `kind` absent or `personal`.

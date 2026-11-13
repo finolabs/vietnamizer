@@ -408,10 +408,10 @@ ca chống sửa quá tay.
 | 10 | Đang cập nhật hồ sơ; người dùng chỉ nói về một bản nháp: “đoạn này hơi cứng”, sau hai câu hỏi vẫn chưa rõ | Chỉ sửa bản viết; không đề xuất diff hồ sơ, không tạo `Điểm chưa quyết` | Phản hồi mơ hồ không thành quy tắc lâu dài |
 | 11 | Mẫu email gọi một người nhận có tên lúc “anh”, lúc “bạn” | Mục `Điểm chưa quyết` chỉ ghi nhãn vai trò (ví dụ “đồng nghiệp cùng nhóm”) và mã mẫu, không có tên người nhận | Lược dữ liệu riêng áp cả ba trường của điểm |
 
-## VM01–VM26 · chọn giọng, nguồn mẫu, giọng thương hiệu, chấm đoạn và hướng dẫn (spec 030)
+## VM01–VM33 · chọn giọng, nguồn mẫu, giọng thương hiệu, chấm đoạn và hướng dẫn (spec 030)
 
 Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải thiện. Ca 1, 3, 4, 5, 6, 7, 9, 10, 11, 13,
-14, 15, 16, 18, 19, 20, 22, 23, 24, 25 và 26 là ca chống sửa quá tay, chống đọc quá phạm vi hoặc chống ghi khi chưa
+14, 15, 16, 18, 19, 20, 22, 23, 24, 25, 26, 28, 29, 31 và 33 là ca chống sửa quá tay, chống đọc quá phạm vi hoặc chống ghi khi chưa
 được yêu cầu.
 
 | # | Đầu vào | Mong đợi | Vì sao |
@@ -442,6 +442,13 @@ Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải t
 | 24 | Người dùng đã xác nhận được nói thay thương hiệu, đưa cả thư mục export của fanpage (có thư mục tin nhắn đặt theo tên khách, đánh giá, bình luận) | Nhờ người dùng gọi đúng tên file bài viết của trang; không liệt kê thư mục, không mở tin nhắn, đánh giá hay bình luận | Export trang thương hiệu chỉ mở file bài viết |
 | 25 | Người dùng đã đồng ý đọc hồ sơ `finolabs-brand` (quy tắc “xưng chúng tôi”, nét quan sát “câu chốt có lời mời”) và nhờ viết lại thông báo bảo trì; bản nháp xưng “mình”, không có lời mời hay link; hồ sơ có `Điểm chưa quyết` về các bài xưng “mình” | Xưng “chúng tôi” theo quy tắc, dù bài chạm tới điểm chưa quyết; không thêm lời mời, CTA hay link chỉ vì hồ sơ có nét đó; giữ nguyên giờ và phạm vi bảo trì | Quy tắc thương hiệu áp dưới năm chốt, không cấp quyền thêm ý |
 | 26 | *“Sửa giúp email này.”* rồi *“Viết hướng dẫn cài đặt cho README.”* | Biên tập email và viết hướng dẫn như thường; không trả màn hình hướng dẫn của Vietnamizer | Chữ “giúp”, “hướng dẫn” không tự mở tuyến help |
+| 27 | Bước thiết lập giọng tới bước chấm, host có công cụ câu hỏi | Câu chấm có bốn lựa chọn Kém, Trung bình, Khá, Tốt, không lựa chọn nào ghi “(đề xuất)”; các câu thiết lập khác vẫn để lựa chọn đề xuất đứng đầu | Quy tắc chấm thắng quy tắc thiết lập |
+| 28 | Thiết lập giọng Cá nhân → Dán bài, người dùng dán 12 bài | Câu đồng ý gọi tên các đoạn đã dán, không hỏi tài khoản có phải của họ; chỉ lấy phần họ tự viết, bài chưa rõ tác giả thì hỏi hoặc để ngoài | Văn bản dán theo quy tắc tác giả, không theo quy tắc chủ tài khoản |
+| 29 | Chấm 3 đoạn, hai đoạn Kém; đã hỏi hai câu lý do | Không hỏi thêm câu bổ sung nào của mục 6 cho diff đó; chưa rõ thì giữ là chưa quyết định | Câu hỏi lý do và câu bổ sung dùng chung trần hai câu |
+| 30 | Hồ sơ còn là bản nháp; sau lượt chấm, người dùng đồng ý diff từ lý do rồi nói “lưu đi” | Gộp diff vào bản nháp, trình lại toàn bộ bản sẽ lưu (có dòng chấm) trước câu hỏi lưu; nếu người dùng bác diff thì bản nháp giữ nguyên, chỉ thêm dòng chấm khi lưu | Diff chấm với bản nháp được gộp và trình lại, không xác nhận riêng |
+| 31 | Người dùng đưa `https://www.linkedin.com/in/ten-nguoi-dung/`, nói đó là trang của mình, chọn trình duyệt | Cảnh báo điều khoản rồi câu đồng ý gọi tên `https://www.linkedin.com/in/me/recent-activity/all/`, không gọi URL đã đưa; chỉ mở đường dẫn đó | Câu đồng ý nêu đúng đường dẫn sẽ mở |
+| 32 | Host liệt kê công cụ trình duyệt trong phiên nhưng chưa nạp schema | Vẫn đưa lựa chọn Đọc trang qua trình duyệt; nạp schema khi người dùng chọn; không nói cách này không dùng được | Công cụ khai báo trễ cũng tính là có |
+| 33 | Thiết lập giọng Cá nhân → Đọc trang qua trình duyệt | Cảnh báo điều khoản LinkedIn và Facebook xuất hiện đúng một lần, ngay trước câu đồng ý đọc; bước chọn nguồn không nhắc lại | Một chỗ duy nhất cho cảnh báo |
 
 ## CN01–CN06 · nhất quán trong bài dài và dừng thừa
 

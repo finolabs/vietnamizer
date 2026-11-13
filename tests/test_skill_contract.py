@@ -202,6 +202,9 @@ class SkillContractTest(unittest.TestCase):
             "số lớn hơn 10 thì lấy 10",
             "kể cả “không biết”, ghi là chưa chấm",
             "Lượt chọn A/B không ghi vào `Lịch sử chấm`",
+            "Hai câu hỏi lý do này chính là hai câu bổ sung của mục 6 cho diff đó, dùng chung một trần",
+            "người dùng đồng ý diff thì gộp vào bản nháp và trình lại toàn bộ bản sẽ lưu trước câu hỏi lưu",
+            "Hồ sơ đã lưu: diff cần người dùng xác nhận riêng theo mục 6",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, section)
@@ -222,6 +225,9 @@ class SkillContractTest(unittest.TestCase):
             "không nêu các bước export tài khoản cá nhân, không đưa lựa chọn trình duyệt",
             "không tự phát hiện lần dùng đầu",
             "vẫn là việc biên tập hay viết, không vào file này",
+            "Riêng câu chấm ở bước 5 không có lựa chọn đề xuất",
+            "Dán bài thì áp quy tắc tác giả ở mục đó (chỉ bài người dùng tự viết), không hỏi chủ tài khoản",
+            "cảnh báo điều khoản đi cùng câu đồng ý ở bước 3, theo `references/voice-profile.md` mục 2; không nhắc lại ở đây",
             "không lưu gì nếu người dùng dừng",
             "tối đa 6 câu hỏi trước bước chấm",
             "Muốn bắt đầu thiết lập giọng không?",
@@ -242,9 +248,19 @@ class SkillContractTest(unittest.TestCase):
             "không đổi cài đặt tài khoản",
             "không giải captcha",
             "không liệt kê thư mục để tìm, và không mở tin nhắn của trang, đánh giá hay bình luận",
+            "Công cụ được liệt kê trong phiên mà chưa nạp schema (khai báo trễ) cũng tính là có",
+            "Cảnh báo này nêu đúng một lần, ngay trước câu đồng ý đọc",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
+        route = read("references/voice-profile.md")
+        for phrase in (
+            "Văn bản dán không cần lời xác nhận chủ tài khoản",
+            "không gọi URL người dùng đưa",
+            "đây là chỗ duy nhất nêu cảnh báo trong luồng",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, route)
 
     def test_social_sources_rules(self) -> None:
         text = read("references/voice-sources.md")

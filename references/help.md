@@ -27,21 +27,23 @@ Kết bằng: “Muốn bắt đầu thiết lập giọng không?”. Người 
 ## 2. Thiết lập giọng từng bước
 
 Chạy khi người dùng đồng ý lời mời trên, hoặc nói “bắt đầu dùng Vietnamizer”, “thiết lập giọng”. Mỗi lựa chọn hỏi qua
-công cụ câu hỏi của host khi có, lựa chọn đề xuất đứng đầu; không có thì hỏi bằng chữ. Người dùng có thể dừng
+công cụ câu hỏi của host khi có, lựa chọn đề xuất đứng đầu; không có thì hỏi bằng chữ. Riêng câu chấm ở
+bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references/voice-profile.md` mục 7 thắng. Người dùng có thể dừng
 ở bất kỳ bước nào: không lưu gì nếu người dùng dừng, và không đọc gì ngoài phần họ đã đồng ý.
 
 1. **Loại giọng:** Cá nhân (đề xuất) hoặc Thương hiệu.
 2. **Nguồn mẫu:**
    - Cá nhân: Dán bài (đề xuất), File export, hoặc Đọc trang qua trình duyệt. Chỉ đưa lựa chọn trình duyệt
-     khi agent thấy có công cụ trình duyệt và loại giọng là Cá nhân. File export thì nêu các bước của nền
-     tảng theo `references/voice-sources.md` mục 3; trình duyệt thì nêu cảnh báo điều khoản ở mục 4 của
-     file đó.
+     khi agent thấy có công cụ trình duyệt theo `references/voice-sources.md` mục 1 và loại giọng là Cá
+     nhân. File export thì nêu các bước của nền tảng theo mục 3 của file đó. Trình duyệt thì cảnh báo điều
+     khoản đi cùng câu đồng ý ở bước 3, theo `references/voice-profile.md` mục 2; không nhắc lại ở đây.
    - Thương hiệu: nhờ người dùng dán hoặc gọi tên bộ quy chuẩn, bài thương hiệu đã đăng (dán, hoặc file
      bài viết trong export của trang) và tài liệu nội bộ họ chọn đưa, theo `references/brand-voice.md`
      mục 1; không nêu các bước export tài khoản cá nhân, không đưa lựa chọn trình duyệt.
-3. **Đồng ý đọc:** đúng một câu theo `references/voice-profile.md` mục 2, gọi tên nguồn, hỏi luôn tài khoản
-   có phải của chính người dùng (hoặc người dùng có được nói thay thương hiệu không, theo
-   `references/brand-voice.md`).
+3. **Đồng ý đọc:** đúng một câu theo `references/voice-profile.md` mục 2, gọi tên nguồn. Dán bài thì áp quy
+   tắc tác giả ở mục đó (chỉ bài người dùng tự viết), không hỏi chủ tài khoản. File export hay trang thì
+   hỏi luôn tài khoản có phải của chính người dùng. Thương hiệu thì hỏi luôn người dùng có được nói thay
+   thương hiệu không, theo `references/brand-voice.md`.
 4. **Học:** soạn và trình toàn bộ hồ sơ theo `references/voice-profile.md` mục 3.
 5. **Chấm:** mời chấm đoạn mẫu theo mục 7 của file đó; trả lời 0 là bỏ qua.
 6. **Lưu:** hỏi có lưu không, rồi theo mục 4 của file đó (nơi lưu, tên, đường dẫn). Không lưu thì hồ sơ

@@ -12,7 +12,9 @@ Chưa có nguồn thì giới thiệu ba cách theo thứ tự này, chưa đọ
 2. **File export**: người dùng tự tải dữ liệu từ nền tảng rồi gọi tên file (mục 3). Hợp khi muốn học
    từ nhiều bài.
 3. **Đọc qua trình duyệt**: chỉ khi trong các công cụ agent đang thấy có công cụ trình duyệt và người
-   dùng đã đăng nhập sẵn (mục 4). Không có công cụ đó thì nói cách này không dùng được ở host hiện tại.
+   dùng đã đăng nhập sẵn (mục 4). Công cụ được liệt kê trong phiên mà chưa nạp schema (khai báo trễ) cũng
+   tính là có, như quy tắc kho lưu ở `references/voice-profile.md` mục 4; nạp schema khi người dùng chọn
+   cách này. Không có công cụ đó thì nói cách này không dùng được ở host hiện tại.
 
 ## 2. Chủ tài khoản
 
@@ -60,8 +62,9 @@ Chỉ dùng công cụ trình duyệt host đã có, trên phiên người dùng
 dùng đã xác nhận là của mình (mục 2).
 
 - Trước khi đọc, báo rõ: điều khoản của LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập
-  dữ liệu tự động khi chưa được phép, và tài khoản có thể bị hạn chế. Chỉ đọc khi người dùng quyết định
-  tiếp tục; không thì đề nghị dán bài hoặc file export.
+  dữ liệu tự động khi chưa được phép, và tài khoản có thể bị hạn chế. Cảnh báo này nêu đúng một lần, ngay
+  trước câu đồng ý đọc (`references/voice-profile.md` mục 2). Chỉ đọc khi người dùng quyết định tiếp tục;
+  không thì đề nghị dán bài hoặc file export.
 - Chỉ mở đường dẫn tài khoản của chính mình do nền tảng cấp, không mở URL tùy ý người dùng đưa:
   LinkedIn `https://www.linkedin.com/in/me/recent-activity/all/`, Facebook `https://www.facebook.com/me`.
   Trang không có dấu hiệu là tài khoản của chính người dùng (ví dụ nút sửa trang cá nhân) thì dừng.
