@@ -29,7 +29,7 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/bo-giai-phong-cach.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
 | `references/giu-giong-tu-mau.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/ho-so-giong.md` |
 | `references/ho-so-giong.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn |
-| `references/phan-tich-giong-viet.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ và mức độ chắc chắn, không chứa dữ liệu cá nhân |
+| `references/phan-tich-giong-viet.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết tùy chọn; không chứa dữ liệu cá nhân |
 | `calibration/LOG.md` | Nhật ký bằng chứng dùng để sửa quy tắc chung; không lưu hồ sơ văn phong cá nhân |
 | `calibration/ca-kiem-thu.md` | Ca kiểm thử chạy tay cho từng pattern, gồm cả ca chống sửa quá tay |
 | `README.md` | Giới thiệu ngắn, ví dụ, biểu đồ bằng chứng, cài nhanh và điều hướng tài liệu |
