@@ -82,6 +82,19 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
 
+    def test_consistency_guide_does_not_override_consistent_variants(self) -> None:
+        text = read("references/thuat-ngu-va-nhat-quan.md")
+        for phrase in (
+            "Một biến thể dùng nhất quán là lựa chọn của tác giả",
+            "Không thống nhất khi hai dạng có thể khác nghĩa",
+            "Không biết dạng nào đúng thì giữ nguyên và hỏi đúng chỗ lệch",
+            "Mọi sửa do quét này phải qua chốt nghĩa của core",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        self.assertIn("`references/thuat-ngu-va-nhat-quan.md`", read("SKILL.md"))
+        self.assertIn("mặc định không có", read("SKILL.md"))
+
 
 if __name__ == "__main__":
     unittest.main()
