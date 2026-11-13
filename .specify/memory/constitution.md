@@ -1,17 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 2.1.0 -> 2.2.0 (MINOR: explicit, opt-in voice-profile persistence).
-- Owner approval: 2026-11-08, spec 028, “Placement”: opt-in route in SKILL.md;
-  “Sample source (v1)”: only pasted or named text, no connectors;
-  “Profile location”: user-chosen Orrery, Obsidian or Markdown path.
-- Reason: allow users to save and reuse named voice profiles without automatic persistence.
-- Modified data constraints: explicit save request, user-chosen store and no memory/history search;
-  personal preferences remain in the user's own profile, never in calibration/LOG.md.
-- No core principle text changed.
-- No principles, meaning safeguards, protected spans or offline constraints removed.
-- Five meaning-preservation chốt and the existing Jev contract remain unchanged.
-- No template/command source changes. Feature implementation is a separate Spec Kit phase.
-- Deferred intent: implement the approved voice-profile route through spec 028 tasks.
+- Version change: 2.2.0 -> 2.3.0 (MINOR: principle V loses its optional external-evaluator allowance;
+  no obligation of any other principle changes).
+- Owner approval: 2026-11-13, spec 029: "Tao muốn gỡ bỏ Jev khỏi Vietnamizer".
+- Reason: the Jev/TypeSafe evaluator and its runner were removed; the skill ships Markdown only.
+- Modified principle V: no external service, key or runner in the package. Governance item 4 of
+  the verification rules no longer allows an automatic external evaluator branch; the owner
+  decision of 2026-10-16 (spec 007) is superseded and kept as history.
+- No meaning-preservation chốt, protected span or pattern changed.
+- No template/command source changes.
 -->
 # Constitution của vi-humanizer
 
@@ -51,10 +48,9 @@ biệt; cùng một ca MUST NOT vừa dùng để chỉnh ngưỡng vừa dùng 
 
 ### V. Giữ skill Markdown tự đứng được
 
-`SKILL.md` và các profile MUST dùng được mà không cần build, dịch vụ mạng hoặc secret. External
-evaluator như TypeSafe MAY bổ sung một lớp kiểm tra tùy chọn, nhưng khi dịch vụ thiếu key, timeout
-hoặc lỗi thì quy trình Markdown hiện tại vẫn MUST chạy được và kết quả MUST ghi là *chưa kiểm tra*,
-không phải *pass*. Tích hợp tùy chọn MUST NOT làm gói skill phụ thuộc một repo local khác.
+`SKILL.md` và các profile MUST dùng được mà không cần build, dịch vụ mạng, secret hoặc runner. Gói
+phát hành MUST NOT chứa mã gọi dịch vụ ngoài hay đọc API key, và MUST NOT phụ thuộc một repo local khác.
+Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 13/11/2026; thêm lại cần amendment.
 
 ## Ràng buộc về gói và dữ liệu
 
@@ -86,11 +82,9 @@ không phải *pass*. Tích hợp tùy chọn MUST NOT làm gói skill phụ thu
    output mới của lệnh kiểm tra không phải bằng chứng.
 3. Behavioral eval MUST báo harmful-edit recall, valid-edit false-block rate, review rate, lỗi
    dịch vụ, latency và cost. Số lượt guard bắn chưa chứng minh guard đúng.
-4. External model MAY hỗ trợ Agent biên tập ngay khi người dùng cho phép gửi dữ liệu và host
-   có capability phù hợp. Agent MUST kiểm năm chốt chặn trước khi giữ edit; Jev không tự áp,
-   chấp nhận, loại hoặc hoàn edit. Policy số tự động quyết định edit MUST có bằng chứng trên
-   holdout và nhãn hậu kiểm từ lượt thật trước khi kích hoạt. Quyết định owner ngày 16/10/2026
-   trong spec 007 cho phép nhánh có key tự động thử Jev, không gỡ các giới hạn này.
+4. Không có evaluator ngoài trong gói. Agent MUST kiểm năm chốt chặn trước khi giữ edit; không có
+   policy số tự động quyết định edit. Quyết định owner ngày 16/10/2026 trong spec 007 (nhánh có key
+   tự động thử Jev) bị thay thế bởi quyết định ngày 13/11/2026 và chỉ còn là lịch sử.
 5. Trước khi phát hành, MUST chạy và đọc output của `python3 scripts/validate-package.py`,
    `npx skills add . --list` và `claude plugin validate .`. Sau đó cài lại gói cho mọi runtime
    đang dùng bản chép và đối chiếu bytes đã cài.
@@ -104,4 +98,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.2.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-08
+**Version**: 2.3.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-13
