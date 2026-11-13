@@ -12,19 +12,23 @@ Chưa có nguồn thì giới thiệu ba cách theo thứ tự này, chưa đọ
 2. **File export**: người dùng tự tải dữ liệu từ nền tảng rồi gọi tên file (mục 3). Hợp khi muốn học
    từ nhiều bài.
 3. **Đọc qua trình duyệt**: chỉ khi trong các công cụ agent đang thấy có công cụ trình duyệt và người
-   dùng đã đăng nhập sẵn (mục 4). Không có công cụ đó thì nói cách này không dùng được ở host hiện tại.
+   dùng đã đăng nhập sẵn (mục 4). Công cụ được liệt kê trong phiên mà chưa nạp schema (khai báo trễ) cũng
+   tính là có, như quy tắc kho lưu ở `references/voice-profile.md` mục 4; nạp schema khi người dùng chọn
+   cách này. Không có công cụ đó thì nói cách này không dùng được ở host hiện tại.
 
 ## 2. Chủ tài khoản
 
 Trước khi đọc export hay trang, hỏi người dùng xác nhận đó là tài khoản của chính họ. Lời xác nhận này
 nằm trong chính câu xin đồng ý đọc (`references/voice-profile.md` mục 2), không thành câu hỏi riêng. Skill
 không kiểm được danh tính và dựa vào lời xác nhận đó. Người dùng nói đó là của người khác thì không học
-giọng ấy và không đọc trang của người khác; đề nghị dùng bài do chính họ viết. Học giọng thương hiệu từ
-trang thương hiệu chưa được hỗ trợ (spec 030 US3); file này chỉ dùng cho hồ sơ cá nhân.
+giọng ấy và không đọc trang của người khác; đề nghị dùng bài do chính họ viết. Mục 3 (file export) cũng
+dùng cho bài của thương hiệu khi người dùng được phép tải export của trang; tài liệu thương hiệu và lời
+xác nhận được nói thay thương hiệu theo `references/brand-voice.md`. Đường trình duyệt ở mục 4 chỉ dành
+cho tài khoản cá nhân của chính người dùng.
 
 ## 3. File export
 
-Nêu các bước khi người dùng hỏi (đã đối chiếu trang trợ giúp chính thức ngày 13/11/2026; giao diện có
+Các bước dưới đây dành cho tài khoản cá nhân. Nêu chúng khi người dùng hỏi (đã đối chiếu trang trợ giúp chính thức ngày 13/11/2026; giao diện có
 thể đổi):
 
 - **LinkedIn** (trên máy tính): biểu tượng **Me** → **Settings & Privacy** → **Data Privacy** →
@@ -35,6 +39,9 @@ thể đổi):
   nhân → **Xuất sang thiết bị** → chỉ chọn mục bài viết, khoảng thời gian, định dạng **JSON**, chất lượng
   ảnh thấp → **Bắt đầu xuất**. Facebook hỏi mật khẩu trên chính trang của họ (người dùng tự nhập, không
   qua agent) và giữ file 4 ngày.
+
+Với export của trang thương hiệu (fanpage, trang công ty), nhờ người dùng gọi đúng tên file bài viết của
+trang; không liệt kê thư mục để tìm, và không mở tin nhắn của trang, đánh giá hay bình luận.
 
 Chỉ mở file bài viết: file CSV của mục Shares (LinkedIn), file hoặc thư mục bài viết (Facebook); không mở,
 không liệt kê nội dung và không đọc file nào khác trong bản export, kể cả khi người dùng đưa cả thư mục
@@ -55,8 +62,9 @@ Chỉ dùng công cụ trình duyệt host đã có, trên phiên người dùng
 dùng đã xác nhận là của mình (mục 2).
 
 - Trước khi đọc, báo rõ: điều khoản của LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập
-  dữ liệu tự động khi chưa được phép, và tài khoản có thể bị hạn chế. Chỉ đọc khi người dùng quyết định
-  tiếp tục; không thì đề nghị dán bài hoặc file export.
+  dữ liệu tự động khi chưa được phép, và tài khoản có thể bị hạn chế. Cảnh báo này nêu đúng một lần, ngay
+  trước câu đồng ý đọc (`references/voice-profile.md` mục 2). Chỉ đọc khi người dùng quyết định tiếp tục;
+  không thì đề nghị dán bài hoặc file export.
 - Chỉ mở đường dẫn tài khoản của chính mình do nền tảng cấp, không mở URL tùy ý người dùng đưa:
   LinkedIn `https://www.linkedin.com/in/me/recent-activity/all/`, Facebook `https://www.facebook.com/me`.
   Trang không có dấu hiệu là tài khoản của chính người dùng (ví dụ nút sửa trang cá nhân) thì dừng.

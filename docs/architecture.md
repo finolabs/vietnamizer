@@ -25,12 +25,16 @@ references/style-resolution.md              bộ giải ngữ cảnh, precedence
 references/voice-from-samples.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa
 references/voice-profile.md                     tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên
 references/voice-analysis.md            hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ
+references/voice-sources.md             nguồn mẫu: dán bài, file export, trang của chính người dùng qua trình duyệt
+references/brand-voice.md               dựng hồ sơ giọng thương hiệu từ tài liệu người dùng đưa
+references/help.md                      hướng dẫn một màn hình và bước thiết lập giọng
 calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung (chỉ trong repo, không vào gói)
 calibration/test-cases.md                    ca kiểm thử chạy tay cho từng pattern (chỉ trong repo, không vào gói)
 agents/openai.yaml                            tên hiển thị và lời gọi mặc định
 assets/                                       icon và wordmark SVG sáng/tối
 .codex-plugin/plugin.json                     manifest và nhận diện plugin Codex
 .plugin-skills/vietnamizer/SKILL.md          adapter source, nạp root SKILL.md; không sao chép rule
+.plugin-skills/help/SKILL.md                 adapter help, nạp references/help.md
 .claude-plugin/                              manifest và catalog Claude Code
 .antigravity-plugin/plugin.json               manifest Antigravity
 scripts/validate-package.py                   kiểm tra tính đồng bộ của gói

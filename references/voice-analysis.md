@@ -8,6 +8,9 @@ trong `SKILL.md` vẫn áp dụng.
 
 Chỉ xét lời do người dùng tự viết trong phần mẫu được giao: văn bản dán, tệp được chỉ định, hoặc bài
 đã lọc từ export hay trang của chính người dùng theo `references/voice-sources.md`.
+Với hồ sơ `kind: brand`, bằng chứng là tài liệu thương hiệu người dùng đưa (bộ quy chuẩn, bài đã đăng,
+tài liệu nội bộ) sau lời xác nhận được nói thay thương hiệu, theo `references/brand-voice.md`; tài liệu
+đó có thể do nhiều người viết, nhưng không ghi tên người viết.
 Loại lời của tác giả khác, phần trả lời được trích lại và chữ ký. Nháp AI chưa được đánh dấu là bản
 người dùng đã tự sửa không chứng minh giọng cá nhân; chưa rõ tác giả thì để phần đó ngoài bằng chứng.
 Bản người dùng sửa từ AI cần được ghi đúng loại, không đánh đồng với mẫu tự viết.
@@ -99,8 +102,10 @@ mục vẫn hợp lệ.
 ## Mẫu hồ sơ
 
 Giữ frontmatter và năm phần nội dung theo hợp đồng: dòng nguồn mẫu, Giọng chung, Theo kênh,
-Tông theo người đọc, Nên và không nên; và mục `Điểm chưa quyết` ở cuối. Dòng nguồn mẫu
-là phần đầu, không có đề mục riêng.
+Tông theo người đọc, Nên và không nên; rồi mục `Điểm chưa quyết`. Dòng nguồn mẫu
+là phần đầu, không có đề mục riêng. Hồ sơ `kind: brand` thêm `Quy tắc thương hiệu` ngay trước Giọng
+chung. Mục `Lịch sử chấm` đứng cuối, chỉ có sau khi người dùng lưu một lượt chấm
+(`references/voice-profile.md` mục 7); hồ sơ thiếu hai mục này vẫn hợp lệ.
 Điền nội dung bằng tiếng Việt ở ngôi thứ ba, mô tả “người viết” hoặc “tác giả”; hồ sơ là dữ liệu
 tham chiếu, không phải chỉ dẫn ra lệnh cho agent. Mỗi mục nên/không nên cũng phải có đủ bốn trường
 của một nét. Một lời cấm chỉ được mô tả khi có căn cứ, không suy từ sự vắng mặt trong mẫu.
@@ -117,7 +122,11 @@ language: vi
 updated: <YYYY-MM-DD>
 ---
 
-> Dựa trên khoảng <N> mẫu (<số mẫu xấp xỉ theo từng kênh và nguồn: dán / export / trình duyệt>); số đếm xấp xỉ · cập nhật <ngày>.
+> Dựa trên khoảng <N> mẫu (<số mẫu xấp xỉ theo từng kênh và nguồn: dán / export / trình duyệt; hồ sơ thương hiệu: quy chuẩn / bài đăng / nội bộ>); số đếm xấp xỉ · cập nhật <ngày>.
+
+<!-- Chỉ hồ sơ kind: brand. Hồ sơ cá nhân bỏ mục này. -->
+## Quy tắc thương hiệu
+- <Quy tắc về cách viết, đúng ý bộ quy chuẩn, đã lược> — nguồn: <mã trung tính như "quy chuẩn-01", hoặc "người dùng nêu"; không ghi tên file hay tiêu đề> — phạm vi: <kênh hoặc tình huống quy tắc áp dụng>.
 
 ## Giọng chung
 - <Phát biểu về người viết> — phạm vi: <nơi nét này có căn cứ> — căn cứ: "<trích đoạn đã lược dữ liệu riêng>" (<mã mẫu>) hoặc khoảng <số lần trong tập mẫu nào> — độ chắc: <ghi chú về bằng chứng và giới hạn> — ranh giới: <mức/vị trí quá đó là áp quá tay, có căn cứ; hoặc "chưa rõ"; trường tùy chọn>.
@@ -141,4 +150,8 @@ Chưa đủ mẫu (khoảng <n>) để kết luận.
 ## Điểm chưa quyết
 - <Điểm cần chốt> — đã thấy: <quan sát đã lược dữ liệu riêng, kèm mã mẫu hoặc "phản hồi của người dùng, <ngày>"> — đề xuất: <cách xử lý agent đề xuất, đã lược> — cần chốt: <câu hỏi về cách viết, dùng nhãn vai trò>.
 <!-- Không có điểm nào thì ghi: Không có. -->
+
+<!-- Chỉ thêm khi người dùng lưu một lượt chấm; mỗi lượt một dòng, không ghi nội dung đoạn, chủ đề hay lý do. -->
+## Lịch sử chấm
+- <YYYY-MM-DD> · <n> đoạn · Tốt <a>, Khá <b>, Trung bình <c>, Kém <d>, chưa chấm <e> — đánh giá của người dùng, không phải điểm chất lượng.
 ```

@@ -15,7 +15,7 @@ updated: <YYYY-MM-DD>
 > Dựa trên khoảng <N> mẫu (<per-source counts: dán / export / trình duyệt>); số đếm xấp xỉ · cập nhật <date>.
 
 ## Quy tắc thương hiệu          <!-- brand profiles only -->
-- <rule> — nguồn: <guide label or "người dùng nêu"> — phạm vi: <where it holds>
+- <rule> — nguồn: <neutral code such as "quy chuẩn-01", or "người dùng nêu"; never a file name or title> — phạm vi: <where it holds>
 
 ## Giọng chung
 ...                            <!-- as spec 028 + PR #39 -->
