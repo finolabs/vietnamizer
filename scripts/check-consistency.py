@@ -39,8 +39,10 @@ def clusters(word: str) -> list[tuple[str, set[str]]]:
 
 
 def tone_style(word: str) -> str | None:
-    """'dau-dau' khi dấu thanh ở nguyên âm đầu của oa/oe/uy (hoà, thuỷ), 'dau-cuoi' khi ở
-    nguyên âm cuối (hòa, thủy), None nếu từ không thuộc nhóm này."""
+    """'dau-dau' khi dấu thanh ở nguyên âm đầu của oa/oe/uy (hòa, thủy), 'dau-cuoi' khi ở
+    nguyên âm cuối (hoà, thuỷ), None nếu từ không thuộc nhóm này."""
+    if len(word) > 64:
+        return None
     cl = clusters(word)
     if len(cl) < 2:
         return None
@@ -71,7 +73,7 @@ def analyze(text: str) -> dict:
     if tone["dau-dau"] and tone["dau-cuoi"]:
         findings.append({
             "axis": "vi-tri-dau-thanh",
-            "note": "Cùng văn bản có dấu thanh đặt ở nguyên âm đầu (hoà, thuỷ) và ở nguyên âm cuối (hòa, thủy).",
+            "note": "Cùng văn bản có dấu thanh đặt ở nguyên âm đầu (hòa, thủy) và ở nguyên âm cuối (hoà, thuỷ).",
             "counts": {k: len(v) for k, v in tone.items()},
             "examples": {k: sorted(set(v))[:6] for k, v in tone.items()},
         })
@@ -83,10 +85,10 @@ def analyze(text: str) -> dict:
                 "counts": {a: counts[a], b: counts[b]},
             })
 
-    dot_thousand = len(re.findall(r"(?<![\d.,])\d{1,3}(?:\.\d{3})+(?![\d.,])", text))
-    comma_thousand = len(re.findall(r"(?<![\d.,])\d{1,3}(?:,\d{3})+(?![\d.,])", text))
-    comma_decimal = len(re.findall(r"(?<![\d.,])\d+,\d{1,2}(?![\d.,])", text))
-    dot_decimal = len(re.findall(r"(?<![\d.,])\d+\.\d{1,2}(?![\d.,])", text))
+    dot_thousand = len(re.findall(r"(?<![\d.,])\d{1,3}(?:\.\d{3})+(?!\d|[.,]\d)", text))
+    comma_thousand = len(re.findall(r"(?<![\d.,])\d{1,3}(?:,\d{3})+(?!\d|[.,]\d)", text))
+    comma_decimal = len(re.findall(r"(?<![\d.,])\d+,\d{1,2}(?!\d|[.,]\d)", text))
+    dot_decimal = len(re.findall(r"(?<![\d.,])\d+\.\d{1,2}(?!\d|[.,]\d)", text))
     if (dot_thousand and comma_thousand) or (comma_decimal and dot_decimal):
         findings.append({
             "axis": "so",
@@ -95,13 +97,18 @@ def analyze(text: str) -> dict:
                        "thap-phan-phay": comma_decimal, "thap-phan-cham": dot_decimal},
         })
 
-    lowered = text.lower()
+    def phrase_counts(phrases: list[str], source: str) -> dict[str, int]:
+        """Đếm cụm dài trước và che phần đã khớp để 'chúng tôi' không tính thêm 'tôi'."""
+        work = source.lower()
+        result: dict[str, int] = {}
+        for phrase in sorted(phrases, key=len, reverse=True):
+            pattern = re.compile(rf"(?<!\w){re.escape(phrase)}(?!\w)")
+            result[phrase] = len(pattern.findall(work))
+            work = pattern.sub(lambda m: " " * len(m.group(0)), work)
+        return result
 
-    def count_phrase(phrase: str) -> int:
-        return len(re.findall(rf"(?<!\w){re.escape(phrase)}(?!\w)", lowered))
-
-    first = {p: count_phrase(p) for p in FIRST_PERSON}
-    second = {p: count_phrase(p) for p in SECOND_PERSON}
+    first = phrase_counts(FIRST_PERSON, text)
+    second = phrase_counts(SECOND_PERSON, text)
     used_first = [p for p, n in first.items() if n]
     if len(used_first) >= 2:
         findings.append({
@@ -139,7 +146,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         for name in args.files:
             report[name] = analyze(read_input(name))
-    except (ValueError, UnicodeDecodeError) as error:
+    except (OSError, ValueError, UnicodeDecodeError) as error:
         print(f"LỖI: {error}", file=sys.stderr)
         return 2
     if args.json:

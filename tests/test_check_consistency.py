@@ -39,6 +39,35 @@ class CheckConsistencyTest(unittest.TestCase):
         self.assertIn("xung-ho", axes("Tôi nghĩ vậy. Chúng ta cần làm."))
         self.assertNotIn("xung-ho", axes("Tôi nghĩ vậy. Tôi sẽ làm."))
 
+    def test_compound_pronoun_alone_is_not_flagged(self) -> None:
+        for text in ("Chúng tôi làm. Chúng tôi xong.", "Chúng ta cần làm. Chúng ta xong.",
+                     "Chúng mình đi. Chúng mình về."):
+            with self.subTest(text=text):
+                self.assertNotIn("xung-ho", axes(text))
+
+    def test_tone_bucket_labels(self) -> None:
+        self.assertEqual(cc.tone_style("hòa"), "dau-dau")
+        self.assertEqual(cc.tone_style("hoà"), "dau-cuoi")
+        self.assertEqual(cc.tone_style("thủy"), "dau-dau")
+
+    def test_decimal_before_punctuation(self) -> None:
+        self.assertIn("so", axes("Phiên bản 2.5, tăng 1,5 lần."))
+
+    def test_long_token_is_skipped(self) -> None:
+        self.assertIsNone(cc.tone_style("h" * 100 + "oa"))
+
+    def test_unreadable_file_exits_2(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "x.md"
+            path.write_text("a", encoding="utf-8")
+            path.chmod(0)
+            try:
+                result = subprocess.run([sys.executable, "-I", str(SCRIPT), str(path)],
+                                        capture_output=True, text=True, check=False)
+            finally:
+                path.chmod(0o600)
+            self.assertEqual(result.returncode, 2)
+
     def test_cli_exit_codes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             good = Path(tmp) / "a.md"
