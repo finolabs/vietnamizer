@@ -5,7 +5,7 @@ doanh nghiệp/học thuật. Core sở hữu tuyến đọc; file này sở h�
 Đọc phần cần dùng, không tự nạp resolver/card hoặc các catalog V/T khác. Blog công nghệ có tác giả
 không tự thành tài liệu tra cứu. Theo mẫu vẫn giữ thuật ngữ/ngữ vực đúng người đọc và thể loại.
 
-Chỉ khi mục đích/người đọc mâu thuẫn hoặc pha chức năng mới đọc `references/bo-giai-phong-cach.md`.
+Chỉ khi mục đích/người đọc mâu thuẫn hoặc pha chức năng mới đọc `references/style-resolution.md`.
 
 ## Những giới hạn bắt buộc
 
@@ -17,7 +17,7 @@ Bốn điều dưới đây giữ cho bản sửa không làm sai thể loại h
 
 3. **Không thay thuật ngữ chỉ để tránh lặp.** Một thuật ngữ phải được gọi nhất quán trong cùng tài liệu. Có thể lặp nguyên cụm như *team dev* hoặc *tồn kho* qua nhiều câu nếu chúng vẫn chỉ cùng một đối tượng.
 
-4. **Không thuần Việt hoá thuật ngữ Hán-Việt.** Xem cột thứ ba trong `references/han-viet-thuan-viet.md`. Nhiều thuật ngữ khoa học, hành chính và pháp lý là từ Hán-Việt đã được định nghĩa. Chẳng hạn Bộ luật Dân sự phân biệt *chiếm hữu*, *sử dụng* và *định đoạt*; thay bằng từ đời thường có thể làm mất nghĩa pháp lý.
+4. **Không thuần Việt hoá thuật ngữ Hán-Việt.** Xem cột thứ ba trong `references/sino-vietnamese.md`. Nhiều thuật ngữ khoa học, hành chính và pháp lý là từ Hán-Việt đã được định nghĩa. Chẳng hạn Bộ luật Dân sự phân biệt *chiếm hữu*, *sử dụng* và *định đoạt*; thay bằng từ đời thường có thể làm mất nghĩa pháp lý.
 
 ## Cách áp V1–V25 và T1–T6
 

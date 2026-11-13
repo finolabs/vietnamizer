@@ -6,6 +6,20 @@
 
 ### Chưa phát hành
 
+Đổi tên file và thư mục sang tiếng Anh (nội dung vẫn tiếng Việt, không đổi chữ nào ngoài đường dẫn):
+`references/` (`bang-tra-cuu` → `function-words`, `bo-giai-phong-cach` → `style-resolution`,
+`giu-giong-tu-mau` → `voice-from-samples`, `han-viet-thuan-viet` → `sino-vietnamese`, `ho-so-giong` →
+`voice-profile`, `loi-cau-va-quan-he` → `sentence-structure`, `loi-thieu-tu` → `missing-words`,
+`loi-tu-va-loi-dan` → `terms-and-lead-ins`, `nguon-van-phong` → `style-sources`, `phan-tich-giong-viet` →
+`voice-analysis`, `quy-trinh-viet` → `writing-workflow`, `thuat-ngu-va-nhat-quan` → `terminology-consistency`);
+`profiles/blog-ca-nhan` → `profiles/personal-blog` (style `chuyen-mon-cong-khai` → `public-expertise`,
+`ke-trai-nghiem` → `personal-narrative`, `marketing-thuyet-phuc` → `persuasive-marketing`,
+`phoi-hop-cong-viec` → `work-coordination`); `profiles/ky-thuat-doanh-nghiep` → `profiles/enterprise-technical`
+(`hoc-thuat-phan-tich` → `academic-analysis`, `huong-dan-ky-thuat` → `technical-guide`,
+`van-hanh-doanh-nghiep` → `business-operations`); `calibration/ca-kiem-thu` → `test-cases`,
+`ghi-chu-ngu-vuc` → `register-notes`. Spec cũ, `calibration/LOG.md`, tài liệu có ngày và các runner benchmark đã
+đóng băng (`benchmarks/`, đọc artifact cũ) giữ tên cũ như lịch sử. Người dùng không cần làm gì; ai trỏ thẳng tới đường dẫn file trong gói thì đổi theo bảng trên.
+
 Hồ sơ giọng, học ý tưởng từ một plugin brand voice (viết lại cho tiếng Việt, không chép): mỗi nét ở
 Giọng chung và Theo kênh có thể kèm `ranh giới`, là trần khi áp để tránh áp quá tay; mục tùy chọn
 `Điểm chưa quyết` giữ chỗ mẫu mâu thuẫn kèm đề xuất, và đề xuất không được áp cho tới khi người dùng

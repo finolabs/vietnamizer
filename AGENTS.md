@@ -13,25 +13,25 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | File | Vai trò |
 |---|---|
 | `SKILL.md` | Kiểm tra thể loại, bộ điều phối tuyến đọc, cổng dữ liệu/thể loại, năm chốt và cách trả kết quả; uỷ quyền nội dung V/T cho catalog. **Đây là nguồn chuẩn.** |
-| `profiles/blog-ca-nhan/rules.md` | B1–B17 cho blog, bài cá nhân, nội dung công việc và marketing |
-| `profiles/blog-ca-nhan/styles/` | Bốn style card tương thích với profile có tác giả hiện diện |
-| `profiles/ky-thuat-doanh-nghiep/rules.md` | K1–K7 cùng các giới hạn riêng của tài liệu kỹ thuật, doanh nghiệp và học thuật |
-| `profiles/ky-thuat-doanh-nghiep/styles/` | Ba style card cho hướng dẫn kỹ thuật, vận hành và học thuật |
-| `references/loi-thieu-tu.md`, `references/loi-cau-va-quan-he.md`, `references/loi-tu-va-loi-dan.md` | Nguồn canonical duy nhất V1–V25, chia theo nghi vấn; không đọc cả ba mặc định |
+| `profiles/personal-blog/rules.md` | B1–B17 cho blog, bài cá nhân, nội dung công việc và marketing |
+| `profiles/personal-blog/styles/` | Bốn style card tương thích với profile có tác giả hiện diện |
+| `profiles/enterprise-technical/rules.md` | K1–K7 cùng các giới hạn riêng của tài liệu kỹ thuật, doanh nghiệp và học thuật |
+| `profiles/enterprise-technical/styles/` | Ba style card cho hướng dẫn kỹ thuật, vận hành và học thuật |
+| `references/missing-words.md`, `references/sentence-structure.md`, `references/terms-and-lead-ins.md` | Nguồn canonical duy nhất V1–V25, chia theo nghi vấn; không đọc cả ba mặc định |
 | `references/typography.md` | Nguồn canonical duy nhất T1–T6; cổng áp dụng ở core |
-| `references/quy-trinh-viet.md` | Workflow meaning-first cho bài/phần có tổ chức, không dùng cho sửa nhỏ |
-| `references/nguon-van-phong.md` | Metadata/link tham chiếu chuyên môn, chỉ đọc khi được giao tìm/chọn nguồn |
-| `references/han-viet-thuan-viet.md` | Bảng tra Hán-Việt và thuần Việt, kèm điều kiện phải giữ nguyên thuật ngữ |
-| `references/thuat-ngu-va-nhat-quan.md` | Bảng thuật ngữ, xưng hô, cách viết số khi nhận bài dài hoặc sửa nhiều vòng, và quét nhất quán trước khi trả; không thống nhất biến thể đang dùng nhất quán |
+| `references/writing-workflow.md` | Workflow meaning-first cho bài/phần có tổ chức, không dùng cho sửa nhỏ |
+| `references/style-sources.md` | Metadata/link tham chiếu chuyên môn, chỉ đọc khi được giao tìm/chọn nguồn |
+| `references/sino-vietnamese.md` | Bảng tra Hán-Việt và thuần Việt, kèm điều kiện phải giữ nguyên thuật ngữ |
+| `references/terminology-consistency.md` | Bảng thuật ngữ, xưng hô, cách viết số khi nhận bài dài hoặc sửa nhiều vòng, và quét nhất quán trước khi trả; không thống nhất biến thể đang dùng nhất quán |
 | `scripts/check-consistency.py` | Công cụ tùy chọn ngoài gói: đếm dấu thanh, i/y, dấu phân cách số, cách tự xưng; kết quả là ứng viên, không sửa file |
-| `calibration/ghi-chu-ngu-vuc.md` | Mẫu ghi chú ngữ vực có nhãn xuất xứ, chưa có số đo; không phải luật |
-| `references/bang-tra-cuu.md` | Bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán |
-| `references/bo-giai-phong-cach.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
-| `references/giu-giong-tu-mau.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/ho-so-giong.md` |
-| `references/ho-so-giong.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn |
-| `references/phan-tich-giong-viet.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết (hồ sơ cũ có thể thiếu); không chứa dữ liệu cá nhân |
+| `calibration/register-notes.md` | Mẫu ghi chú ngữ vực có nhãn xuất xứ, chưa có số đo; không phải luật |
+| `references/function-words.md` | Bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán |
+| `references/style-resolution.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
+| `references/voice-from-samples.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/voice-profile.md` |
+| `references/voice-profile.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn |
+| `references/voice-analysis.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết (hồ sơ cũ có thể thiếu); không chứa dữ liệu cá nhân |
 | `calibration/LOG.md` | Nhật ký bằng chứng dùng để sửa quy tắc chung; không lưu hồ sơ văn phong cá nhân |
-| `calibration/ca-kiem-thu.md` | Ca kiểm thử chạy tay cho từng pattern, gồm cả ca chống sửa quá tay |
+| `calibration/test-cases.md` | Ca kiểm thử chạy tay cho từng pattern, gồm cả ca chống sửa quá tay |
 | `README.md` | Giới thiệu ngắn, ví dụ, biểu đồ bằng chứng, cài nhanh và điều hướng tài liệu |
 | `docs/installation.md`, `docs/usage.md` | Cài đặt theo nền tảng, cách dùng, phạm vi và dữ liệu |
 | `docs/style-and-voice.md`, `docs/architecture.md` | Giọng mẫu/phong cách và cấu trúc nguồn; trỏ về quy tắc canonical |
@@ -93,7 +93,7 @@ Nếu một cách viết tự nhiên trong công văn nhưng dễ thành sáo ng
 
 Style card không phải tầng pattern thứ năm. Nó chỉ giải các lựa chọn đều hợp lệ sau khi cổng thể loại
 đã chọn đúng profile; quyền sửa lỗi hoặc điều chỉnh theo mẫu do chế độ trong `SKILL.md` quyết định. Mỗi profile family giữ pattern trong `rules.md` và card tương thích trong
-`styles/`; không sao chép nội dung card vào rules. `references/bo-giai-phong-cach.md` là nguồn chuẩn
+`styles/`; không sao chép nội dung card vào rules. `references/style-resolution.md` là nguồn chuẩn
 cho resolver và registry, còn `SKILL.md` sở hữu thứ tự gọi.
 
 ## Hợp đồng bảo trì
@@ -138,7 +138,7 @@ Trước khi sửa skill, phải xếp quan sát vào đúng nhóm:
 
 Không ghi sở thích của một người vào `calibration/LOG.md`. Skill dùng mẫu hoặc hồ sơ phong cách
 người dùng dán hoặc chỉ định trong tác vụ; không tự tìm mẫu hay hồ sơ trong memory hoặc lịch sử.
-Tuyến opt-in trong `references/ho-so-giong.md` cho phép tạo và lưu nhiều hồ sơ có tên: đọc mẫu
+Tuyến opt-in trong `references/voice-profile.md` cho phép tạo và lưu nhiều hồ sơ có tên: đọc mẫu
 sau khi người dùng đồng ý, hiển thị hồ sơ trước khi lưu và chỉ lưu/cập nhật khi người dùng yêu
 cầu rõ. Người dùng chọn Orrery, Obsidian hoặc đường dẫn Markdown; chỉ đề nghị Orrery/Obsidian
 khi thấy công cụ tương ứng trong danh sách công cụ của agent. Nếu không có, hỏi đường dẫn và

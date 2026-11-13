@@ -8,25 +8,25 @@
 
 ```text
 SKILL.md                                      core gọn: phạm vi, chốt, tuyến đọc và trả kết quả
-references/loi-thieu-tu.md                    V1–V8,V20
-references/loi-cau-va-quan-he.md               V9–V18,V24–V25
-references/loi-tu-va-loi-dan.md                V19,V21–V23
+references/missing-words.md                    V1–V8,V20
+references/sentence-structure.md               V9–V18,V24–V25
+references/terms-and-lead-ins.md                V19,V21–V23
 references/typography.md                      T1–T6
-references/quy-trinh-viet.md                  workflow bài, không nạp khi sửa nhỏ
-references/nguon-van-phong.md                 nguồn mẫu chuyên môn, không nạp khi đã có mẫu
-profiles/blog-ca-nhan/rules.md                B1–B17 cho văn bản có giọng cá nhân
-profiles/blog-ca-nhan/styles/                 bốn style card có tác giả hiện diện
-profiles/ky-thuat-doanh-nghiep/rules.md       K1–K7 và giới hạn của văn kỹ thuật, học thuật
-profiles/ky-thuat-doanh-nghiep/styles/        ba style card kỹ thuật, vận hành và học thuật
-references/han-viet-thuan-viet.md             bảng tra và điều kiện phải giữ thuật ngữ
-references/thuat-ngu-va-nhat-quan.md          bảng thuật ngữ và quét nhất quán cho bài dài
-references/bang-tra-cuu.md                    bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán
-references/bo-giai-phong-cach.md              bộ giải ngữ cảnh, precedence và registry đường dẫn
-references/giu-giong-tu-mau.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa
-references/ho-so-giong.md                     tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên
-references/phan-tich-giong-viet.md            hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ
+references/writing-workflow.md                  workflow bài, không nạp khi sửa nhỏ
+references/style-sources.md                 nguồn mẫu chuyên môn, không nạp khi đã có mẫu
+profiles/personal-blog/rules.md                B1–B17 cho văn bản có giọng cá nhân
+profiles/personal-blog/styles/                 bốn style card có tác giả hiện diện
+profiles/enterprise-technical/rules.md       K1–K7 và giới hạn của văn kỹ thuật, học thuật
+profiles/enterprise-technical/styles/        ba style card kỹ thuật, vận hành và học thuật
+references/sino-vietnamese.md             bảng tra và điều kiện phải giữ thuật ngữ
+references/terminology-consistency.md          bảng thuật ngữ và quét nhất quán cho bài dài
+references/function-words.md                    bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán
+references/style-resolution.md              bộ giải ngữ cảnh, precedence và registry đường dẫn
+references/voice-from-samples.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa
+references/voice-profile.md                     tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên
+references/voice-analysis.md            hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ
 calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung (chỉ trong repo, không vào gói)
-calibration/ca-kiem-thu.md                    ca kiểm thử chạy tay cho từng pattern (chỉ trong repo, không vào gói)
+calibration/test-cases.md                    ca kiểm thử chạy tay cho từng pattern (chỉ trong repo, không vào gói)
 agents/openai.yaml                            tên hiển thị và lời gọi mặc định
 assets/                                       icon và wordmark SVG sáng/tối
 .codex-plugin/plugin.json                     manifest và nhận diện plugin Codex
@@ -57,7 +57,7 @@ Generated agent skills, Spec Kit integration state, raw run và scratch output �
 Xem [hướng dẫn đóng góp](../CONTRIBUTING.md) để cài tooling maintainer và chạy kiểm tra offline.
 
 Bộ giải phong cách dùng đúng bảy card trong [hướng dẫn phong cách](style-and-voice.md). Nội dung chuẩn của từng card nằm
-trong thư mục `styles/` của profile tương thích; `references/bo-giai-phong-cach.md` chỉ sở hữu cách
+trong thư mục `styles/` của profile tương thích; `references/style-resolution.md` chỉ sở hữu cách
 chọn card, thứ tự ưu tiên và registry đường dẫn.
 
 Trước khi chạy pattern, skill kiểm tra thể loại. Pháp quy, hợp đồng, thơ, văn cổ phong và nghi lễ chỉ

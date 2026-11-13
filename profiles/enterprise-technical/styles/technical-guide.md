@@ -1,6 +1,6 @@
-# `huong-dan-ky-thuat`: Hướng dẫn kỹ thuật
+# `technical-guide`: Hướng dẫn kỹ thuật
 
-- **Dùng khi:** README, phần văn xuôi của tài liệu API, hướng dẫn cài đặt hoặc xử lý lỗi; base profile `ky-thuat-doanh-nghiep`.
+- **Dùng khi:** README, phần văn xuôi của tài liệu API, hướng dẫn cài đặt hoặc xử lý lỗi; base profile `enterprise-technical`.
 - **Thanh ngữ vực:** trung tính, chính xác, hướng hành động; không thêm thân mật để làm tài liệu có vẻ “người”.
 - **Xưng hô:** ưu tiên câu lệnh hoặc chủ thể kỹ thuật đã có; không thêm ngôi thứ nhất và không đổi tác nhân của thao tác.
 - **Nhịp:** điều kiện trước hành động khi cần, một bước cho một hành động, cấu trúc song song khi giúp quét nhanh; giữ code và thứ tự.

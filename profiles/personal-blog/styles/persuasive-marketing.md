@@ -1,6 +1,6 @@
-# `marketing-thuyet-phuc`: Marketing thuyết phục
+# `persuasive-marketing`: Marketing thuyết phục
 
-- **Dùng khi:** nội dung giới thiệu sản phẩm/dịch vụ có mục tiêu giúp người đọc cân nhắc hoặc thực hiện một CTA đã được giao; base profile `blog-ca-nhan`.
+- **Dùng khi:** nội dung giới thiệu sản phẩm/dịch vụ có mục tiêu giúp người đọc cân nhắc hoặc thực hiện một CTA đã được giao; base profile `personal-blog`.
 - **Thanh ngữ vực:** rõ lợi ích nhưng không thổi phồng; mức thân mật theo kênh và mẫu thương hiệu trong yêu cầu hiện tại.
 - **Xưng hô:** giữ cách gọi người đọc đang có. Không tự thêm *bạn, nhà mình, khách hàng thân yêu* nếu quan hệ chưa được xác định.
 - **Nhịp:** đưa giới hạn, lợi ích và điều kiện cụ thể trước; không dàn thành chuỗi slogan, câu hỏi tu từ hoặc nhịp ba trang trí.

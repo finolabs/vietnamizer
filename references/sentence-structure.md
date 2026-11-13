@@ -1,7 +1,7 @@
 # Cấu trúc câu và quan hệ nghĩa
 
 Tra khi có nghi vấn đúng nhóm ở bảng của SKILL.md; đọc cả Không flag trước khi sửa.
-Khi cần phân biệt thuật ngữ với từ vòng vo mới tra `references/han-viet-thuan-viet.md`.
+Khi cần phân biệt thuật ngữ với từ vòng vo mới tra `references/sino-vietnamese.md`.
 Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm khác chỉ vì có liên kết.
 
 ### V9. Cụm giới từ dài do dịch sát
@@ -50,7 +50,7 @@ Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm kh�
 
 **Dấu hiệu:** động từ bị biến thành cụm *việc / sự / tính / công tác / quá trình + động từ*, rồi câu phải dùng thêm một động từ ít nội dung như *thực hiện, tiến hành, đưa ra, có sự* để đỡ cụm đó. Dấu hiệu rõ nhất là chồng hai động từ như *tiến hành thực hiện*.
 **Vì sao:** danh hoá có thể cần trong văn bản chuyên môn, nhưng khi đi cùng động từ rỗng, hành động chính bị che sau nhiều lớp từ mà ý không đổi.
-**Sửa:** *"Nhóm tiến hành thực hiện việc rà soát toàn bộ dữ liệu và đưa ra quyết định về việc dừng chiến dịch"* → *"Nhóm rà soát lại toàn bộ dữ liệu rồi quyết định dừng chiến dịch"*. Dùng `references/han-viet-thuan-viet.md` để xem điều kiện giữ hoặc đổi từng cụm, không thay từ hàng loạt theo hai cột đầu.
+**Sửa:** *"Nhóm tiến hành thực hiện việc rà soát toàn bộ dữ liệu và đưa ra quyết định về việc dừng chiến dịch"* → *"Nhóm rà soát lại toàn bộ dữ liệu rồi quyết định dừng chiến dịch"*. Dùng `references/sino-vietnamese.md` để xem điều kiện giữ hoặc đổi từng cụm, không thay từ hàng loạt theo hai cột đầu.
 **Không flag:** *việc* danh hoá một mệnh đề có chủ ngữ riêng (*"Việc anh ấy nghỉ ngang khiến cả nhóm bối rối"*). *việc* nghĩa đen là công việc. *sự* trong từ ghép cố định: sự thật, sự kiện, sự cố, sự nghiệp. *tính* trong thuật ngữ: tính toàn vẹn dữ liệu, tính thanh khoản. Hành chính và pháp quy: *tiến hành thanh tra*, *thực hiện nghĩa vụ thuế* là thuật ngữ đúng chuẩn.
 
 ### V16. Câu bị động dịch sát "được / bị ... bởi"

@@ -67,20 +67,20 @@ Các ca dưới đây kiểm bộ giải phong cách, không kiểm một patter
 
 | Ca | Context và đầu vào | Route mong đợi | Không được rò sang |
 |---|---|---|---|
-| MS01 | Bài kể trải nghiệm cho người đọc cá nhân: *“Tôi thử quy trình mới ba lần. Lần thứ ba, thời gian xử lý còn sáu phút.”* | `blog-ca-nhan` + `ke-trai-nghiem`; giữ ngôi *tôi*, diễn biến và nhịp kể đang có | Không biến thành hướng dẫn từng bước hoặc báo cáo KPI |
-| MS02 | Báo cáo vận hành dùng đúng dữ kiện: *“Quy trình mới được thử ba lần; lần thứ ba mất sáu phút.”* | `ky-thuat-doanh-nghiep` + `van-hanh-doanh-nghiep` | Không thêm *tôi*, cảm xúc hoặc câu kết trải nghiệm |
-| MS03 | Chat giữa hai đồng nghiệp: *“Bản nháp còn hai số chưa đối chiếu. Rà lại giúp mình trước 15 giờ nhé.”* | `blog-ca-nhan` + `phoi-hop-cong-viec`; giữ lời nhờ trực tiếp và xưng hô đã có | Không đổi thành công văn hoặc CTA công khai |
-| MS04 | Thông báo công khai cùng dữ kiện: *“Bản nháp còn hai số chưa đối chiếu và sẽ được rà lại trước 15 giờ.”* | `blog-ca-nhan` + `chuyen-mon-cong-khai` | Không tự thêm *mình/nhé* hoặc quan hệ đồng nghiệp |
-| MS05 | Bài chuyên môn công khai: *“Cache giảm thời gian phản hồi từ 800 xuống 320 mili giây trong phép thử này. Tôi vẫn chưa coi đó là kết luận cho tải thật.”* | `blog-ca-nhan` + `chuyen-mon-cong-khai`; giữ quan điểm cùng giới hạn bằng chứng | Không làm phẳng thành README hoặc thêm lời bán hàng |
-| MS06 | README dùng cùng số liệu: *“Trong phép thử này, cache giảm thời gian phản hồi từ 800 xuống 320 mili giây. Kết quả chưa đại diện cho tải thật.”* | `ky-thuat-doanh-nghiep` + `huong-dan-ky-thuat` | Không thêm ngôi *tôi*, quan điểm cá nhân hoặc hook mạng xã hội |
-| MS07 | Trang giới thiệu có CTA sẵn: *“Gói thử nghiệm xử lý tối đa 200 bản ghi. Xem bảng giá để chọn mức phù hợp.”* | `blog-ca-nhan` + `marketing-thuyet-phuc`; giữ CTA có thật và giới hạn cụ thể | Không thêm khẩn cấp, lời hứa hiệu quả hoặc *tốt nhất* |
-| MS08 | Tài liệu API cùng giới hạn: *“Gói thử nghiệm xử lý tối đa 200 bản ghi.”* | `ky-thuat-doanh-nghiep` + `huong-dan-ky-thuat` | Không thêm CTA, lợi ích bán hàng hoặc độ khẩn cấp |
-| MS09 | Hướng dẫn kỹ thuật: *“Chạy `tool check` trước. Nếu mã thoát khác 0, dừng phát hành.”* | `ky-thuat-doanh-nghiep` + `huong-dan-ky-thuat`; giữ lệnh, điều kiện và thứ tự | Không thêm tiểu từ, trải nghiệm người viết hoặc ngôn ngữ thể chế |
-| MS10 | Nhật ký trải nghiệm dùng cùng hành động: *“Tôi chạy `tool check` trước. Mã thoát khác 0 nên tôi dừng phát hành.”* | `blog-ca-nhan` + `ke-trai-nghiem` | Không đổi thành câu mệnh lệnh hoặc bỏ ngôi người kể |
-| MS11 | SOP: *“Người trực ca đối chiếu hai bảng trước 15 giờ. Nếu số liệu lệch, ca sau chưa được tiếp nhận.”* | `ky-thuat-doanh-nghiep` + `van-hanh-doanh-nghiep`; giữ vai trò, thời điểm và điều kiện | Không thêm lời nhờ, *mình/nhé* hoặc quan điểm cá nhân |
-| MS12 | Chat dùng cùng việc: *“Mình đối chiếu hai bảng trước 15 giờ nhé. Nếu còn lệch thì chưa bàn giao ca sau.”* | `blog-ca-nhan` + `phoi-hop-cong-viec` | Không đổi thành điều khoản SOP hoặc thêm vai trò không có |
-| MS13 | Bài nghiên cứu: *“Trong mẫu 120 phiên, thời gian trung vị giảm 18%. Kết quả chưa cho phép suy rộng ngoài nhóm được quan sát.”* | `ky-thuat-doanh-nghiep` + `hoc-thuat-phan-tich`; giữ số liệu và giới hạn suy rộng | Không thêm CTA, lời hứa hay quan điểm cá nhân |
-| MS14 | Nội dung giới thiệu dùng cùng số liệu: *“Trong mẫu 120 phiên, thời gian trung vị giảm 18%.”* | `blog-ca-nhan` + `marketing-thuyet-phuc` chỉ khi người dùng xác định đây là nội dung quảng bá | Không tự thêm giới hạn nghiên cứu, trích dẫn giả hoặc lời hứa |
+| MS01 | Bài kể trải nghiệm cho người đọc cá nhân: *“Tôi thử quy trình mới ba lần. Lần thứ ba, thời gian xử lý còn sáu phút.”* | `personal-blog` + `personal-narrative`; giữ ngôi *tôi*, diễn biến và nhịp kể đang có | Không biến thành hướng dẫn từng bước hoặc báo cáo KPI |
+| MS02 | Báo cáo vận hành dùng đúng dữ kiện: *“Quy trình mới được thử ba lần; lần thứ ba mất sáu phút.”* | `enterprise-technical` + `business-operations` | Không thêm *tôi*, cảm xúc hoặc câu kết trải nghiệm |
+| MS03 | Chat giữa hai đồng nghiệp: *“Bản nháp còn hai số chưa đối chiếu. Rà lại giúp mình trước 15 giờ nhé.”* | `personal-blog` + `work-coordination`; giữ lời nhờ trực tiếp và xưng hô đã có | Không đổi thành công văn hoặc CTA công khai |
+| MS04 | Thông báo công khai cùng dữ kiện: *“Bản nháp còn hai số chưa đối chiếu và sẽ được rà lại trước 15 giờ.”* | `personal-blog` + `public-expertise` | Không tự thêm *mình/nhé* hoặc quan hệ đồng nghiệp |
+| MS05 | Bài chuyên môn công khai: *“Cache giảm thời gian phản hồi từ 800 xuống 320 mili giây trong phép thử này. Tôi vẫn chưa coi đó là kết luận cho tải thật.”* | `personal-blog` + `public-expertise`; giữ quan điểm cùng giới hạn bằng chứng | Không làm phẳng thành README hoặc thêm lời bán hàng |
+| MS06 | README dùng cùng số liệu: *“Trong phép thử này, cache giảm thời gian phản hồi từ 800 xuống 320 mili giây. Kết quả chưa đại diện cho tải thật.”* | `enterprise-technical` + `technical-guide` | Không thêm ngôi *tôi*, quan điểm cá nhân hoặc hook mạng xã hội |
+| MS07 | Trang giới thiệu có CTA sẵn: *“Gói thử nghiệm xử lý tối đa 200 bản ghi. Xem bảng giá để chọn mức phù hợp.”* | `personal-blog` + `persuasive-marketing`; giữ CTA có thật và giới hạn cụ thể | Không thêm khẩn cấp, lời hứa hiệu quả hoặc *tốt nhất* |
+| MS08 | Tài liệu API cùng giới hạn: *“Gói thử nghiệm xử lý tối đa 200 bản ghi.”* | `enterprise-technical` + `technical-guide` | Không thêm CTA, lợi ích bán hàng hoặc độ khẩn cấp |
+| MS09 | Hướng dẫn kỹ thuật: *“Chạy `tool check` trước. Nếu mã thoát khác 0, dừng phát hành.”* | `enterprise-technical` + `technical-guide`; giữ lệnh, điều kiện và thứ tự | Không thêm tiểu từ, trải nghiệm người viết hoặc ngôn ngữ thể chế |
+| MS10 | Nhật ký trải nghiệm dùng cùng hành động: *“Tôi chạy `tool check` trước. Mã thoát khác 0 nên tôi dừng phát hành.”* | `personal-blog` + `personal-narrative` | Không đổi thành câu mệnh lệnh hoặc bỏ ngôi người kể |
+| MS11 | SOP: *“Người trực ca đối chiếu hai bảng trước 15 giờ. Nếu số liệu lệch, ca sau chưa được tiếp nhận.”* | `enterprise-technical` + `business-operations`; giữ vai trò, thời điểm và điều kiện | Không thêm lời nhờ, *mình/nhé* hoặc quan điểm cá nhân |
+| MS12 | Chat dùng cùng việc: *“Mình đối chiếu hai bảng trước 15 giờ nhé. Nếu còn lệch thì chưa bàn giao ca sau.”* | `personal-blog` + `work-coordination` | Không đổi thành điều khoản SOP hoặc thêm vai trò không có |
+| MS13 | Bài nghiên cứu: *“Trong mẫu 120 phiên, thời gian trung vị giảm 18%. Kết quả chưa cho phép suy rộng ngoài nhóm được quan sát.”* | `enterprise-technical` + `academic-analysis`; giữ số liệu và giới hạn suy rộng | Không thêm CTA, lời hứa hay quan điểm cá nhân |
+| MS14 | Nội dung giới thiệu dùng cùng số liệu: *“Trong mẫu 120 phiên, thời gian trung vị giảm 18%.”* | `personal-blog` + `persuasive-marketing` chỉ khi người dùng xác định đây là nội dung quảng bá | Không tự thêm giới hạn nghiên cứu, trích dẫn giả hoặc lời hứa |
 
 Tất cả 14 ca phải qua năm quy tắc chốt chặn. Route đúng không cho phép sửa một câu vốn không có lỗi; nó chỉ xác định cách giữ giọng nếu một thay đổi khác đã được phép.
 
@@ -89,8 +89,8 @@ Tất cả 14 ca phải qua năm quy tắc chốt chặn. Route đúng không ch
 | Ca | Tín hiệu xung đột | Mong đợi | Vì sao |
 |---|---|---|---|
 | MSP01 | Yêu cầu hiện tại: *“giữ giọng trung tính, không xưng tôi”*; hồ sơ cũ cho biết người viết thường xưng *tôi* trên blog | Làm theo yêu cầu hiện tại, không dùng *tôi* | Yêu cầu hiện tại thắng bộ nhớ; không xoá hoặc sửa hồ sơ |
-| MSP02 | README kỹ thuật có mẫu hiện tại dùng câu ngắn, chủ động; card mặc định chỉ yêu cầu trung tính | Giữ nhịp câu ngắn của mẫu trong giới hạn `huong-dan-ky-thuat` | Mẫu đúng phạm vi thắng mặc định nhưng không đổi base profile |
-| MSP03 | Người dùng ghi nhãn *“giọng thân mật”* nhưng mô tả *“không dùng đại từ, không tiểu từ, viết cho hội đồng chuyên môn”* | Làm theo mô tả cụ thể; định tuyến tới `hoc-thuat-phan-tich` nếu nội dung là nghiên cứu | Mô tả cụ thể đáng tin hơn nhãn mơ hồ |
+| MSP02 | README kỹ thuật có mẫu hiện tại dùng câu ngắn, chủ động; card mặc định chỉ yêu cầu trung tính | Giữ nhịp câu ngắn của mẫu trong giới hạn `technical-guide` | Mẫu đúng phạm vi thắng mặc định nhưng không đổi base profile |
+| MSP03 | Người dùng ghi nhãn *“giọng thân mật”* nhưng mô tả *“không dùng đại từ, không tiểu từ, viết cho hội đồng chuyên môn”* | Làm theo mô tả cụ thể; định tuyến tới `academic-analysis` nếu nội dung là nghiên cứu | Mô tả cụ thể đáng tin hơn nhãn mơ hồ |
 | MSP04 | Trong một mẫu dài, chỉ một câu dùng *nha*, các câu khác không có tiểu từ | Không nâng *nha* thành đặc tính giọng; giữ cách hiện tại ở đoạn cần sửa | Một quan sát có thể là lỗi gõ hoặc ngoại lệ |
 | MSP05 | Tin nhắn cần gửi một người nhưng đầu vào không cho biết tuổi, vai vế hay cách xưng hô; đổi *bạn* thành *anh/chị/em* sẽ đổi quan hệ | Hỏi đúng một câu ngắn về cách xưng hô | Đây là ambiguity có hậu quả; không được tự suy vai vế |
 
@@ -124,12 +124,12 @@ Ca MSP01–MSP04 không được tạo câu hỏi cho người dùng. Ca MSP05 p
 
 | Phần | Route hoặc cách xử lý |
 |---|---|
-| Câu mở đầu có người kể | `blog-ca-nhan` + `ke-trai-nghiem` |
-| Hai câu hướng dẫn | `ky-thuat-doanh-nghiep` + `huong-dan-ky-thuat` |
+| Câu mở đầu có người kể | `personal-blog` + `personal-narrative` |
+| Hai câu hướng dẫn | `enterprise-technical` + `technical-guide` |
 | Khối code | Vùng bảo toàn; giữ nguyên byte |
 | Bảng tham số | Vùng bảo toàn; giữ nguyên byte |
 | Trích dẫn nguyên văn | Vùng bảo toàn; giữ nguyên byte |
-| CTA đã có | `blog-ca-nhan` + `marketing-thuyet-phuc`; không thêm độ khẩn cấp hay lời hứa |
+| CTA đã có | `personal-blog` + `persuasive-marketing`; không thêm độ khẩn cấp hay lời hứa |
 
 **Các phép khẳng định bắt buộc:**
 
@@ -217,7 +217,7 @@ trong LOG ngày26/10; không dùng bảng này làm tỷ lệ chất lượng c�
 
 Ví dụ tổng hợp để kiểm hợp đồng workflow, không phải hồ sơ của người dùng thật hoặc
 kết quả đã chạy model. Thực hiện sau cổng thể loại/vùng bảo toàn; theo hướng dẫn
-`references/giu-giong-tu-mau.md` khi tác vụ có mẫu hoặc hồ sơ được cung cấp.
+`references/voice-from-samples.md` khi tác vụ có mẫu hoặc hồ sơ được cung cấp.
 
 | ID | Ngữ cảnh và mẫu tổng hợp | Mong đợi | Ca chống sửa quá tay |
 |---|---|---|---|
@@ -391,7 +391,7 @@ Ca 3, 5, 6 và 9 là ca chống sửa quá tay.
 ## HG01–HG11 · ranh giới nét và điểm chưa quyết trong hồ sơ giọng
 
 Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải thiện. Mọi ca giả định người dùng đã
-gọi tên hồ sơ và đồng ý đọc (mục 2 của `references/ho-so-giong.md`). Ca 1, 2, 3, 6, 8, 9 và 10 là
+gọi tên hồ sơ và đồng ý đọc (mục 2 của `references/voice-profile.md`). Ca 1, 2, 3, 6, 8, 9 và 10 là
 ca chống sửa quá tay.
 
 | # | Đầu vào | Mong đợi | Vì sao |

@@ -62,16 +62,16 @@ Chỉ review vẫn đọc năm chốt trước nhận xét; nếu review cả b�
 | Khi cần | Bắt buộc đọc | Không nạp mặc định |
 |---|---|---|
 | Sửa một cụm/câu, rà cục bộ | Chỉ catalog đúng nghi vấn; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
-| Biên tập toàn bài hoặc viết từ brief/outline | `references/quy-trinh-viet.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
-| Theo mẫu được giao | Thêm `references/giu-giong-tu-mau.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
-| Học, tạo, cập nhật, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ | `references/ho-so-giong.md`; khi áp dụng, đọc thêm `references/giu-giong-tu-mau.md` | Không nạp tuyến này cho yêu cầu biên tập thông thường |
-| Pha chức năng/mâu thuẫn | Mới đọc `references/bo-giai-phong-cach.md` | Giữ nguyên khi lựa chọn đã rõ |
+| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
+| Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
+| Học, tạo, cập nhật, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ | `references/voice-profile.md`; khi áp dụng, đọc thêm `references/voice-from-samples.md` | Không nạp tuyến này cho yêu cầu biên tập thông thường |
+| Pha chức năng/mâu thuẫn | Mới đọc `references/style-resolution.md` | Giữ nguyên khi lựa chọn đã rõ |
 
 - Sửa cụm/câu: core và catalog đúng nghi vấn; không cần workflow bài, resolver/profile/card hoặc guide mẫu.
-- Biên tập bài/viết từ brief: thêm `references/quy-trinh-viet.md` và một card được core chọn trực tiếp.
-- Theo mẫu: thêm `references/giu-giong-tu-mau.md`; không tự đọc danh mục nguồn khi mẫu đã đủ.
-- Hồ sơ giọng (opt-in): thêm `references/ho-so-giong.md` khi người dùng yêu cầu rõ việc học, tạo, cập nhật, lưu hoặc áp dụng hồ sơ giọng cá nhân (khi áp dụng nạp thêm `references/giu-giong-tu-mau.md`); không nạp cho yêu cầu biên tập thông thường.
-- Pha chức năng/mâu thuẫn: mới đọc `references/bo-giai-phong-cach.md`.
+- Biên tập bài/viết từ brief: thêm `references/writing-workflow.md` và một card được core chọn trực tiếp.
+- Theo mẫu: thêm `references/voice-from-samples.md`; không tự đọc danh mục nguồn khi mẫu đã đủ.
+- Hồ sơ giọng (opt-in): thêm `references/voice-profile.md` khi người dùng yêu cầu rõ việc học, tạo, cập nhật, lưu hoặc áp dụng hồ sơ giọng cá nhân (khi áp dụng nạp thêm `references/voice-from-samples.md`); không nạp cho yêu cầu biên tập thông thường.
+- Pha chức năng/mâu thuẫn: mới đọc `references/style-resolution.md`.
 
 Các catalog giữ đủ 55 pattern để tra; giảm phần bắt buộc đọc không phải bỏ ngoại lệ hay bảo toàn nghĩa.
 

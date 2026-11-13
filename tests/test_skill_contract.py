@@ -65,11 +65,11 @@ class SkillContractTest(unittest.TestCase):
 
     def test_profile_route_is_routed_and_opt_in(self) -> None:
         text = read("SKILL.md")
-        self.assertIn("`references/ho-so-giong.md`", text)
+        self.assertIn("`references/voice-profile.md`", text)
         self.assertIn("Biên tập thông thường", text)
 
     def test_profile_route_consent_and_save_rules(self) -> None:
-        text = read("references/ho-so-giong.md")
+        text = read("references/voice-profile.md")
         for phrase in (
             "Chỉ tiếp tục sau câu đồng ý rõ ràng",
             "Chỉ lưu khi người dùng yêu cầu rõ ràng sau khi đã thấy toàn bộ hồ sơ",
@@ -83,7 +83,7 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn(phrase, text)
 
     def test_trait_boundary_and_open_points_rules(self) -> None:
-        guide = read("references/phan-tich-giong-viet.md")
+        guide = read("references/voice-analysis.md")
         for phrase in (
             "Không có căn cứ thì ghi `ranh giới: chưa rõ`",
             "hồ sơ `schema: 1` cũ không có ranh giới vẫn hợp lệ",
@@ -95,7 +95,7 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, guide)
-        route = read("references/ho-so-giong.md")
+        route = read("references/voice-profile.md")
         for phrase in (
             "ranh giới là trần, không phải mức cần đạt",
             "Nét không có ranh giới (hồ sơ cũ hoặc ghi “chưa rõ”) vẫn dùng được",
@@ -108,12 +108,12 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, route)
-        self.assertIn("không áp đề xuất trong đó", read("references/giu-giong-tu-mau.md"))
+        self.assertIn("không áp đề xuất trong đó", read("references/voice-from-samples.md"))
         self.assertIn("is never applied until the user confirms it",
                       read("specs/028-voice-profile/contracts/profile-format.md"))
 
     def test_consistency_guide_does_not_override_consistent_variants(self) -> None:
-        text = read("references/thuat-ngu-va-nhat-quan.md")
+        text = read("references/terminology-consistency.md")
         for phrase in (
             "Một biến thể dùng nhất quán là lựa chọn của tác giả",
             "Không thống nhất khi hai dạng có thể khác nghĩa",
@@ -122,7 +122,7 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
-        self.assertIn("`references/thuat-ngu-va-nhat-quan.md`", read("SKILL.md"))
+        self.assertIn("`references/terminology-consistency.md`", read("SKILL.md"))
         self.assertIn("mặc định không có", read("SKILL.md"))
 
 

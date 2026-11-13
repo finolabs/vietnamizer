@@ -46,7 +46,7 @@ minh thay đổi đó tốt hơn; các ca giữ nguyên cũng được giữ tro
 | Bằng chứng hiện có | Có thể kiểm tra điều gì? | Giới hạn |
 |---|---|---|
 | [Test tự động](../tests/) | Đóng gói, inventory, pilot giọng và hợp đồng review | Test không đo chất lượng bản biên tập cuối |
-| [Ca kiểm thử chạy tay](../calibration/ca-kiem-thu.md) | Kết quả mong đợi của từng tình huống, gồm cả ca không được sửa | Có ca kiểm thử chưa đồng nghĩa đã chạy và đạt |
+| [Ca kiểm thử chạy tay](../calibration/test-cases.md) | Kết quả mong đợi của từng tình huống, gồm cả ca không được sửa | Có ca kiểm thử chưa đồng nghĩa đã chạy và đạt |
 | [Nhật ký hiệu chuẩn](../calibration/LOG.md) | Bằng chứng và quyết định đằng sau các lần sửa quy tắc | Ca đã dùng để chỉnh quy tắc không phải tập đánh giá độc lập |
 
 Kiểm đóng gói không cần gọi API:

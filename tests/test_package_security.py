@@ -172,7 +172,7 @@ class PackageSecurityTest(unittest.TestCase):
     def test_validator_rejects_stale_style_registry_pattern_range(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
-            registry_path = repo / "references" / "bo-giai-phong-cach.md"
+            registry_path = repo / "references" / "style-resolution.md"
             registry = registry_path.read_text(encoding="utf-8")
             registry, replacements = re.subn(
                 r"Pattern K1–K\d+",
@@ -194,9 +194,9 @@ class PackageSecurityTest(unittest.TestCase):
             card_path = (
                 repo
                 / "profiles"
-                / "blog-ca-nhan"
+                / "personal-blog"
                 / "styles"
-                / "ke-trai-nghiem.md"
+                / "personal-narrative.md"
             )
             card = card_path.read_text(encoding="utf-8")
             card = card.replace("- **Cách kết:**", "- **Điểm dừng:**", 1)
@@ -205,7 +205,7 @@ class PackageSecurityTest(unittest.TestCase):
             result = self.run_package_validator(repo)
 
             self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
-            self.assertIn("ke-trai-nghiem", result.stderr)
+            self.assertIn("personal-narrative", result.stderr)
             self.assertIn("Cách kết", result.stderr)
 
     def test_validator_rejects_extra_style_card_file(self) -> None:
@@ -214,7 +214,7 @@ class PackageSecurityTest(unittest.TestCase):
             extra_card = (
                 repo
                 / "profiles"
-                / "blog-ca-nhan"
+                / "personal-blog"
                 / "styles"
                 / "ban-nhap-noi-bo.md"
             )
@@ -298,23 +298,23 @@ class PackageSecurityTest(unittest.TestCase):
             source = (
                 repo
                 / "profiles"
-                / "ky-thuat-doanh-nghiep"
+                / "enterprise-technical"
                 / "styles"
-                / "huong-dan-ky-thuat.md"
+                / "technical-guide.md"
             )
             incompatible = (
                 repo
                 / "profiles"
-                / "blog-ca-nhan"
+                / "personal-blog"
                 / "styles"
-                / "huong-dan-ky-thuat.md"
+                / "technical-guide.md"
             )
             shutil.copy2(source, incompatible)
 
             result = self.run_packager(repo)
 
             self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
-            self.assertIn("huong-dan-ky-thuat.md", result.stderr)
+            self.assertIn("technical-guide.md", result.stderr)
 
     def test_default_tell_scan_includes_nested_profile_markdown(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
@@ -322,9 +322,9 @@ class PackageSecurityTest(unittest.TestCase):
             card_path = (
                 repo
                 / "profiles"
-                / "blog-ca-nhan"
+                / "personal-blog"
                 / "styles"
-                / "ke-trai-nghiem.md"
+                / "personal-narrative.md"
             )
             with card_path.open("a", encoding="utf-8") as card:
                 card.write("\nĐiều quan trọng cần lưu ý rằng đây là probe.\n")
@@ -333,7 +333,7 @@ class PackageSecurityTest(unittest.TestCase):
 
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn(
-                "profiles/blog-ca-nhan/styles/ke-trai-nghiem.md",
+                "profiles/personal-blog/styles/personal-narrative.md",
                 result.stdout,
             )
 
@@ -458,9 +458,9 @@ class PackageSecurityTest(unittest.TestCase):
                 self.assertEqual(names, set())
                 self.assertFalse(any(name.startswith(prefix + "jev/") for name in all_names))
                 self.assertNotIn(prefix + "references/typesafe-advisor.md", all_names)
-                self.assertIn(prefix + "references/giu-giong-tu-mau.md", all_names)
-                self.assertIn(prefix + "references/ho-so-giong.md", all_names)
-                self.assertIn(prefix + "references/phan-tich-giong-viet.md", all_names)
+                self.assertIn(prefix + "references/voice-from-samples.md", all_names)
+                self.assertIn(prefix + "references/voice-profile.md", all_names)
+                self.assertIn(prefix + "references/voice-analysis.md", all_names)
                 self.assertFalse(any("__pycache__" in name or name.startswith(prefix + "tests/") for name in all_names))
                 self.assertFalse(any(name.startswith(prefix + "guard_eval/") or name.startswith(prefix + "eval/") for name in all_names))
 
@@ -468,7 +468,7 @@ class PackageSecurityTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
             shutil.rmtree(repo / "calibration")
-            with (repo / "references/ho-so-giong.md").open("a") as log:
+            with (repo / "references/voice-profile.md").open("a") as log:
                 log.write("\n" + "sk-" + "test-canary-not-a-real-key-1234567890" + "\n")
             result = self.run_payload_validator(repo, repo)
             self.assertNotEqual(result.returncode, 0)
@@ -516,15 +516,15 @@ class PackageSecurityTest(unittest.TestCase):
             with zipfile.ZipFile(archive) as package:
                 names = set(package.namelist())
             expected_files = {
-                "profiles/blog-ca-nhan/rules.md",
-                "profiles/blog-ca-nhan/styles/ke-trai-nghiem.md",
-                "profiles/blog-ca-nhan/styles/phoi-hop-cong-viec.md",
-                "profiles/blog-ca-nhan/styles/chuyen-mon-cong-khai.md",
-                "profiles/blog-ca-nhan/styles/marketing-thuyet-phuc.md",
-                "profiles/ky-thuat-doanh-nghiep/rules.md",
-                "profiles/ky-thuat-doanh-nghiep/styles/huong-dan-ky-thuat.md",
-                "profiles/ky-thuat-doanh-nghiep/styles/van-hanh-doanh-nghiep.md",
-                "profiles/ky-thuat-doanh-nghiep/styles/hoc-thuat-phan-tich.md",
+                "profiles/personal-blog/rules.md",
+                "profiles/personal-blog/styles/personal-narrative.md",
+                "profiles/personal-blog/styles/work-coordination.md",
+                "profiles/personal-blog/styles/public-expertise.md",
+                "profiles/personal-blog/styles/persuasive-marketing.md",
+                "profiles/enterprise-technical/rules.md",
+                "profiles/enterprise-technical/styles/technical-guide.md",
+                "profiles/enterprise-technical/styles/business-operations.md",
+                "profiles/enterprise-technical/styles/academic-analysis.md",
             }
             actual_profile_files = {
                 name
@@ -532,8 +532,10 @@ class PackageSecurityTest(unittest.TestCase):
                 if name.startswith("profiles/") and not name.endswith("/")
             }
             self.assertEqual(actual_profile_files, expected_files)
-            self.assertNotIn("profiles/blog-ca-nhan.md", names)
-            self.assertNotIn("profiles/ky-thuat-doanh-nghiep.md", names)
+            for legacy in ("profiles/blog-ca-nhan.md", "profiles/ky-thuat-doanh-nghiep.md",
+                           "profiles/blog-ca-nhan/", "profiles/ky-thuat-doanh-nghiep/",
+                           "profiles/personal-blog.md", "profiles/enterprise-technical.md"):
+                self.assertNotIn(legacy, names)
 
     def test_validates_archive_bytes_against_the_staged_payload(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
