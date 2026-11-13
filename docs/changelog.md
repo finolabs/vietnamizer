@@ -4,7 +4,7 @@
 
 ## Lịch sử phiên bản
 
-### 0.15.0 (13/11/2026)
+### 0.15.0 (14/11/2026)
 
 Spec 030, phần MVP (giọng cá nhân và thương hiệu, nguồn mạng xã hội): hồ sơ có trường `kind`
 (`personal` mặc định, `brand`), mỗi lần chỉ áp một hồ sơ và chỉ áp hồ sơ thương hiệu khi được gọi tên;
@@ -76,7 +76,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
-- **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt; chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập. Giữ 55 pattern và năm chốt.
+- **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt.
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in.
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn, gói phát hành bỏ `calibration/`, phân phối qua catalog `finolabs/plugins`; giữ 55 pattern, runtime Jev và năm chốt.
 - **0.13.3** — Rút core thành bộ điều phối, đọc catalog/workflow/mẫu/evaluator theo tác vụ; giữ quy trình ý trước câu và 55 pattern. Thêm review-only, tách nghĩa/cách viết và harness offline gắn review với candidate hiện tại. Giữ API/runtime, metadata và gói cài đồng bộ; chưa có A/B tiếng Việt hoặc actual-read trace chứng minh cải thiện chất lượng/token.

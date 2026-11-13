@@ -213,7 +213,7 @@ hướng dẫn và bắt đầu thiết lập giọng.
 
 ## Lịch sử phiên bản
 
-- **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt; chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập. Giữ 55 pattern và năm chốt. [Lịch sử đầy đủ](docs/changelog.md)
+- **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn (chỉ lưu khi bạn yêu cầu rõ); gói phát hành bỏ `calibration/`; phân phối qua catalog `finolabs/plugins`. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.3** — Core gọn, đọc tài liệu theo tác vụ; review nghĩa và cách viết riêng, kiểm đúng candidate hiện tại. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md).
