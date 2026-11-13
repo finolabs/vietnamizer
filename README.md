@@ -1,13 +1,27 @@
-# Vietnamizer
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/icon-dark.svg">
+    <img src="assets/icon.svg" alt="Biểu tượng Vietnamizer: chữ ă" width="88">
+  </picture>
+</p>
 
-![Vietnamizer — Giúp AI viết tiếng Việt giống con người hơn.](assets/wordmark.svg#gh-light-mode-only)
-![Vietnamizer — Giúp AI viết tiếng Việt giống con người hơn.](assets/wordmark-dark.svg#gh-dark-mode-only)
+<h1 align="center">Vietnamizer</h1>
 
-> **Biên tập tiếng Việt rõ ý, giữ nghĩa và giọng người viết.**
+<p align="center"><strong>Biên tập tiếng Việt rõ ý, giữ nghĩa và giọng người viết.</strong><br>
+Skill giúp Claude Code, Codex, Antigravity và các agent tương thích rà bản nháp AI, bản dịch sát và văn bản tiếng Việt đọc chưa thuận. Skill chọn quy tắc theo thể loại, chỉ sửa khi có căn cứ và kiểm lại nghĩa trước khi giữ thay đổi.</p>
 
-Vietnamizer là skill giúp Claude, Codex và các agent tương thích rà bản nháp AI,
-bản dịch sát và văn bản tiếng Việt đọc chưa thuận. Skill chọn quy tắc theo thể loại,
-chỉ sửa khi có căn cứ và kiểm lại nghĩa trước khi giữ thay đổi.
+<p align="center">
+  <a href="https://github.com/finolabs/vietnamizer/releases/latest"><img src="https://img.shields.io/github/v/release/finolabs/vietnamizer" alt="Bản phát hành mới nhất"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/finolabs/vietnamizer" alt="Giấy phép: MIT"></a>
+  <a href="https://github.com/finolabs/vietnamizer/actions/workflows/validate.yml"><img src="https://github.com/finolabs/vietnamizer/actions/workflows/validate.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="#claude-code-plugin"><img src="https://img.shields.io/badge/Claude%20Code-plugin-7FE2CE" alt="Claude Code plugin"></a>
+  <a href="#codex-plugin"><img src="https://img.shields.io/badge/Codex-plugin-7FE2CE" alt="Codex plugin"></a>
+  <a href="#antigravity-plugin"><img src="https://img.shields.io/badge/Antigravity-plugin-7FE2CE" alt="Antigravity plugin"></a>
+</p>
+
+<p align="center">
+  <img src="docs/figures/banner.png" alt="Banner Vietnamizer: câu gốc “Đã tìm khắp nhà nhưng vẫn không tìm chìa khóa.” được sửa thành “… không tìm thấy chìa khóa.”, ca MR04 thiếu bổ ngữ, bản 0.12.1 trên Codex đạt." width="920">
+</p>
 
 **Không cần API key cho core Markdown.** Mặc định giữ giọng gốc; khi được yêu cầu rõ,
 có thể điều chỉnh theo mẫu người dùng cung cấp. Khả năng theo giọng mẫu vẫn đang được hiệu chỉnh.
@@ -114,6 +128,27 @@ agy plugin install https://github.com/finolabs/vietnamizer
 
 Mở session mới sau khi cài. [Claude web/Desktop, Claude Org, cài thủ công và đóng gói](docs/installation.md).
 
+## Cho AI agent: cài và thiết lập
+
+Người dùng đưa link repo này và nhờ bạn cài. Làm theo thứ tự:
+
+1. **Xác định host**: Claude Code, Codex, Antigravity hoặc một agent khác đọc được Agent Skills.
+2. **Hỏi người dùng trước khi cài.** Plugin áp dụng cho mọi dự án của họ. Chỉ cài một trong hai cách, plugin hoặc skill lẻ, vì cài cả hai thì skill sẽ hiện hai lần.
+3. **Kiểm tra bản đã cài**: chạy `claude plugin list` hoặc `codex plugin list`. Nếu `vietnamizer` đã có từ catalog khác (`vietnamizer@vietnamizer` hoặc catalog `Finolabs` cũ), dừng lại và hỏi người dùng; các bước nằm trong [hướng dẫn chuyển](docs/installation.md#codex-plugin).
+4. **Cài** bằng lệnh của host:
+
+   | Host | Lệnh |
+   | --- | --- |
+   | Claude Code | `claude plugin marketplace add finolabs/plugins`, rồi `claude plugin install vietnamizer@finolabs` |
+   | Codex | `codex plugin marketplace add finolabs/plugins`, rồi `codex plugin add vietnamizer@finolabs` |
+   | Antigravity | `agy plugin install https://github.com/finolabs/vietnamizer` |
+   | Agent khác | `npx skills add finolabs/vietnamizer --skill vietnamizer` |
+
+5. **Kiểm tra** `claude plugin list`, `codex plugin list` hoặc `agy plugin list` đã liệt kê `vietnamizer`, rồi báo nguyên văn kết quả cho người dùng, kể cả khi lỗi.
+6. **Bàn giao**: nhắc người dùng mở session mới, rồi giao một bản nháp như ví dụ ở mục [Dùng ngay](#dùng-ngay).
+
+Xong khi host liệt kê `vietnamizer` và người dùng biết phải mở session mới.
+
 ## Dùng ngay
 
 Gọi `Vietnamizer` và giao bản nháp, thể loại, người đọc cùng phần cần bảo toàn. Ví dụ:
@@ -182,4 +217,4 @@ Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay
 
 ## Giấy phép
 
-Fioenix / FINOLABS · [Giấy phép MIT](LICENSE).
+MIT. Xem [LICENSE](LICENSE). Fioenix / FINOLABS.
