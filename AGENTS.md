@@ -57,7 +57,6 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `.agents/skills/` | Generated Codex tooling local, bị gitignore; bootstrap theo `CONTRIBUTING.md` |
 | `benchmarks/` | Corpus giả lập và runner pilot biên tập; kết quả raw giữ local trong `artifacts/`, không phải tập holdout hoặc bằng chứng chất lượng đã chấm độc lập |
 | `benchmarks/mr_compare.py` | Đối chiếu đóng băng MR01–MR12 giữa 0.12.0/0.12.1 trên cùng Codex: 14 tình huống × 2 phiên bản, raw riêng, không chạy lại mẫu; nhãn agent là kiểm tra hồi quy trên tập phát triển |
-| `benchmarks/simple_forms.py`, `benchmarks/simple_forms.gs` | Bộ chấm người đọc trực tiếp: ảnh gốc/sửa hai cột, ba câu hỏi, ghép item ID và kiểm tra thứ tự; dữ liệu model lịch sử giữ nguyên |
 | `benchmarks/gemini_text_only.py`, `benchmarks/gemini_text_guard.mjs`, `benchmarks/gemini-text-only-agent.md` | Đợt Gemini dùng agent riêng, guard đối soát registry theo capability proof và chặn tool call thực tế; raw ngoài workspace, live smoke 1/80 |
 | `benchmarks/gemini_manual.py` | Script để owner tự chạy 80 đầu ra Gemini qua Agybird trong terminal; prepare/test offline, giữ raw và trần lượt, không thay Forms |
 | `benchmarks/gemini_boundary.mjs`, `benchmarks/gemini_capture_cli.mjs` | Proxy egress Google HTTPS và bộ ghi raw theo byte cho runtime Gemini riêng; chưa nghiệm thu tích hợp/inference |
