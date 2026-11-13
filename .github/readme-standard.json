@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "what-you-get": "Vietnamizer hữu ích ở đâu\\?",
+    "install": "Cài nhanh",
+    "start-here": "Dùng ngay",
+    "for-ai-agents": "Cho AI agent: cài và thiết lập",
+    "contributing": "Đóng góp",
+    "license": "Giấy phép"
+  },
+  "badge_color": "7FE2CE",
+  "catalog": {
+    "repository": "finolabs/plugins",
+    "marketplace": "finolabs"
+  },
+  "banner_follow_up": "finolabs-social-preview"
+}
