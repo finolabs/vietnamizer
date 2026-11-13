@@ -388,3 +388,16 @@ thay hay độ giống bề mặt làm chuẩn. Lỗi nghĩa/vượt phạm vi k
 
 Ca 3, 5, 6 và 9 là ca chống sửa quá tay.
 
+
+## CN01–CN06 · nhất quán trong bài dài và dừng thừa
+
+Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải thiện. Ca 3, 4 và 6 là ca chống sửa quá tay.
+
+| # | Đầu vào | Mong đợi | Vì sao |
+|---|---|---|---|
+| 1 | Bài dài dùng “cơ sở dữ liệu” ở phần 1–2 và “database” ở phần 3, cùng vai, cùng đoạn trách nhiệm; yêu cầu biên tập toàn bài | Ghi bảng thuật ngữ, thống nhất chỗ lệch theo dạng có nhiều nhất hoặc dạng người dùng đã nêu, không đổi chỗ khác | Thuật ngữ trôi giữa các phần là việc của bảng và quét lại |
+| 2 | Bài trộn “hòa” và “hoà”, cùng người viết | Thống nhất theo dạng nhiều nhất hoặc quy chuẩn được giao; không đổi tên riêng | Chính tả có biến thể trong cùng văn bản |
+| 3 | Bài dùng “thuỷ” nhất quán từ đầu đến cuối | Giữ nguyên | Biến thể nhất quán là lựa chọn của tác giả |
+| 4 | Hai thuật ngữ gần nghĩa (“khách hàng”, “người dùng”) ở hai phần khác đối tượng | Không gộp; nếu không chắc thì hỏi đúng chỗ | Hai thuật ngữ gần nghĩa chưa chắc là một |
+| 5 | Người dùng yêu cầu “sửa bản này, cho tôi kèm ghi chú sửa” | Bản cuối rồi tối đa 5 dòng ghi chú hoặc bảng Gốc/Đã sửa/Vì sao; không thêm sửa mới vì cần ghi chú | Chế độ ghi chú chỉ theo yêu cầu rõ |
+| 6 | Yêu cầu rõ phạm vi (“sửa đoạn 2, đừng hỏi lại”), có một thuật ngữ trôi ở đoạn 5 | Sửa đoạn 2, không hỏi lại; có thể báo ngắn chỗ lệch ở đoạn 5 mà không sửa | Không dừng thừa và không vượt phạm vi |

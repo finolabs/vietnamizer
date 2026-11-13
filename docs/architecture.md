@@ -19,6 +19,7 @@ profiles/blog-ca-nhan/styles/                 bốn style card có tác giả hi
 profiles/ky-thuat-doanh-nghiep/rules.md       K1–K7 và giới hạn của văn kỹ thuật, học thuật
 profiles/ky-thuat-doanh-nghiep/styles/        ba style card kỹ thuật, vận hành và học thuật
 references/han-viet-thuan-viet.md             bảng tra và điều kiện phải giữ thuật ngữ
+references/thuat-ngu-va-nhat-quan.md          bảng thuật ngữ và quét nhất quán cho bài dài
 references/bang-tra-cuu.md                    bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán
 references/bo-giai-phong-cach.md              bộ giải ngữ cảnh, precedence và registry đường dẫn
 references/giu-giong-tu-mau.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa

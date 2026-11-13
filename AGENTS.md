@@ -22,6 +22,9 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/quy-trinh-viet.md` | Workflow meaning-first cho bài/phần có tổ chức, không dùng cho sửa nhỏ |
 | `references/nguon-van-phong.md` | Metadata/link tham chiếu chuyên môn, chỉ đọc khi được giao tìm/chọn nguồn |
 | `references/han-viet-thuan-viet.md` | Bảng tra Hán-Việt và thuần Việt, kèm điều kiện phải giữ nguyên thuật ngữ |
+| `references/thuat-ngu-va-nhat-quan.md` | Bảng thuật ngữ, xưng hô, cách viết số khi nhận bài dài hoặc sửa nhiều vòng, và quét nhất quán trước khi trả; không thống nhất biến thể đang dùng nhất quán |
+| `scripts/check-consistency.py` | Công cụ tùy chọn ngoài gói: đếm dấu thanh, i/y, dấu phân cách số, cách tự xưng; kết quả là ứng viên, không sửa file |
+| `calibration/ghi-chu-ngu-vuc.md` | Mẫu ghi chú ngữ vực có nhãn xuất xứ, chưa có số đo; không phải luật |
 | `references/bang-tra-cuu.md` | Bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán |
 | `references/bo-giai-phong-cach.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
 | `references/giu-giong-tu-mau.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/ho-so-giong.md` |
