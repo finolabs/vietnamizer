@@ -38,8 +38,7 @@ không tự tìm mẫu trong memory, lịch sử, email, connector khác hay kho
 
 Với export và trang, skill hỏi người dùng xác nhận đó là tài khoản của chính họ và không đọc trang của
 người khác. Skill đề nghị chỉ xuất mục bài viết, chỉ mở file bài viết trong bản export (không mở hay
-liệt kê file nào khác), chỉ giữ bài họ tự viết và bỏ bình luận, tin nhắn, danh bạ. Học giọng thương
-hiệu từ trang hay export chưa được hỗ trợ. Trước khi đọc qua trình duyệt, skill báo điều khoản của
+liệt kê file nào khác), chỉ giữ bài họ tự viết và bỏ bình luận, tin nhắn, danh bạ. Trước khi đọc qua trình duyệt, skill báo điều khoản của
 LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập dữ liệu tự động khi chưa được phép, và tài
 khoản có thể bị hạn chế; người dùng tự quyết. Trên trình duyệt, skill chỉ mở đường dẫn tài khoản của
 chính người dùng, chỉ đọc phần thân bài; không hỏi, nhập hay đọc mật khẩu, cookie hoặc token, không
@@ -47,10 +46,26 @@ giải captcha, không bấm thích, bình luận, đăng hay gửi, không đ�
 đăng nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Skill không có mã gọi mạng; việc đọc
 trang đi qua công cụ của host.
 
+Hồ sơ giọng thương hiệu học từ bộ quy chuẩn, bài thương hiệu đã đăng (dán hoặc file export của trang)
+và tài liệu nội bộ người dùng chọn đưa, sau khi người dùng xác nhận được nói thay thương hiệu; skill
+không kiểm được thẩm quyền đó. Đường trình duyệt không dùng cho trang thương hiệu. Tài liệu thương hiệu
+có thể do nhiều người viết; hồ sơ không ghi tên người viết, nhân viên, khách hàng hay đối tác, không ghi
+điều khoản hợp đồng, giá đàm phán, số liệu hay sản phẩm chưa công bố, tên hệ thống nội bộ và tiêu đề tài
+liệu nhận diện được người hay thương vụ.
+
+Sau khi học, người dùng có thể chấm vài đoạn mẫu do skill viết theo bốn mức Kém, Trung bình, Khá, Tốt.
+Chỉ khi người dùng lưu hồ sơ hoặc xác nhận cập nhật, hồ sơ mới thêm một dòng `Lịch sử chấm`: ngày, số
+đoạn và số đoạn theo từng mức, ghi là đánh giá của người dùng; dòng đó không chứa nội dung đoạn, chủ đề
+hay lý do. Skill không tự tính điểm giống giọng và không đưa lượt chấm vào nhật ký hiệu chuẩn.
+
+Phần hướng dẫn (`/vietnamizer:help` hoặc câu hỏi “Vietnamizer làm được gì?”) không đọc file của người
+dùng và không lưu gì; bước thiết lập giọng theo đúng các cổng đồng ý và lưu ở trên.
+
 Khi áp dụng, skill chỉ đọc hồ sơ được người dùng dán hoặc chỉ định, không tự liệt kê hay chọn hồ sơ.
 
-Hồ sơ có thể gồm tên do người dùng chọn, ngày cập nhật, số mẫu theo kênh, đặc tính giọng, cách
-viết theo kênh và người đọc, điều nên/không nên dùng, cùng căn cứ ngắn đã loại dữ liệu cá nhân.
+Hồ sơ có thể gồm tên do người dùng chọn, loại hồ sơ (cá nhân hay thương hiệu), ngày cập nhật, số mẫu
+theo kênh, quy tắc thương hiệu (chỉ hồ sơ thương hiệu), đặc tính giọng, cách viết theo kênh và người
+đọc, điều nên/không nên dùng, điểm chưa quyết, lịch sử chấm, cùng căn cứ ngắn đã loại dữ liệu cá nhân.
 Hồ sơ không được chứa dữ liệu cá nhân hoặc bí mật: tên người, thông tin liên hệ, mã định danh,
 chi tiết sức khỏe/tài chính, điều khoản giao dịch, công việc chưa công bố hay nhận xét về người
 khác. Agent được chỉ dẫn bỏ các dữ liệu này, nhưng v1 không có bộ lọc bằng mã: người dùng đọc toàn bộ dự thảo trước khi lưu là bước kiểm chính. Hồ sơ chỉ giữ trích đoạn ngắn đã lược chi tiết riêng, không chép nguyên mẫu.

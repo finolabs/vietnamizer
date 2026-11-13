@@ -13,6 +13,18 @@ tự tải, và trang của chính người dùng qua công cụ trình duyệt 
 không xử lý mật khẩu hay cookie). Constitution lên 2.4.0. Thêm ca VM01–VM15 và fixture tổng hợp. Chưa
 chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
 
+Spec 030, phần còn lại (giọng thương hiệu, chấm đoạn mẫu, hướng dẫn):
+`references/brand-voice.md` dựng hồ sơ `kind: brand` từ bộ quy chuẩn, bài thương hiệu đã đăng và tài
+liệu nội bộ người dùng đưa, sau lời xác nhận được nói thay thương hiệu; quy tắc từ bộ quy chuẩn nằm ở mục
+mới `Quy tắc thương hiệu`, chỗ bài đăng làm khác quy tắc vào `Điểm chưa quyết`, và hồ sơ không ghi tên
+người viết, nhân viên hay khách hàng. Đường trình duyệt vẫn chỉ cho tài khoản cá nhân. Mục 7 của
+`references/voice-profile.md` thêm bước chấm đoạn mẫu: hỏi số đoạn (0–10), từng đoạn một với bốn mức Kém,
+Trung bình, Khá, Tốt; số lượt chấm chỉ vào mục mới `Lịch sử chấm` khi người dùng lưu, ghi là đánh giá của
+người dùng; skill không tự tính điểm giống giọng. Kiểm A/B ẩn chế độ giữ lại như lựa chọn tùy chọn.
+Plugin có thêm skill `help` (`/vietnamizer:help`, adapter `.plugin-skills/help/SKILL.md`) trỏ tới
+`references/help.md`: hướng dẫn một màn hình và bước thiết lập giọng, không đọc file của người dùng. Thêm ca
+VM16–VM23. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
+
 Đổi tên file và thư mục sang tiếng Anh (nội dung vẫn tiếng Việt, không đổi chữ nào ngoài đường dẫn):
 `references/` (`bang-tra-cuu` → `function-words`, `bo-giai-phong-cach` → `style-resolution`,
 `giu-giong-tu-mau` → `voice-from-samples`, `han-viet-thuan-viet` → `sino-vietnamese`, `ho-so-giong` →
@@ -28,9 +40,9 @@ chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất 
 đóng băng (`benchmarks/`, đọc artifact cũ) giữ tên cũ như lịch sử. Người dùng không cần làm gì; ai trỏ thẳng tới đường dẫn file trong gói thì đổi theo bảng trên.
 
 Hồ sơ giọng, học ý tưởng từ một plugin brand voice (viết lại cho tiếng Việt, không chép): mỗi nét ở
-Giọng chung và Theo kênh có thể kèm `ranh giới`, là trần khi áp để tránh áp quá tay; mục tùy chọn
-`Điểm chưa quyết` giữ chỗ mẫu mâu thuẫn kèm đề xuất, và đề xuất không được áp cho tới khi người dùng
-chốt khi xem bản nháp hoặc qua cập nhật có diff. Hai trường đều tùy chọn nên hồ sơ `schema: 1` cũ vẫn hợp lệ. Thêm ca
+Giọng chung, Theo kênh và mục `Nên:` có thể kèm `ranh giới`, là trần khi áp để tránh áp quá tay; mục
+`Điểm chưa quyết` (hồ sơ mới luôn có, ghi “Không có.” khi trống) giữ chỗ mẫu mâu thuẫn kèm đề xuất, và đề xuất không được áp cho tới khi người dùng
+chốt khi xem bản nháp hoặc qua cập nhật có diff. Hồ sơ `schema: 1` cũ thiếu hai phần này vẫn hợp lệ. Thêm ca
 HG01–HG11 và test giữ quy tắc. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng.
 
 ### 0.14.0 (13/11/2026)

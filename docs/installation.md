@@ -52,7 +52,7 @@ claude plugin install vietnamizer@finolabs
 ```
 
 Cập nhật catalog bằng `claude plugin marketplace update finolabs`. Sau khi cài, gọi skill
-bằng `/vietnamizer:vietnamizer` kèm đoạn cần biên tập. Nếu chưa thấy skill, mở phiên mới.
+bằng `/vietnamizer:vietnamizer` kèm đoạn cần biên tập; gõ `/vietnamizer:help` để xem hướng dẫn một màn hình và bắt đầu thiết lập giọng. Nếu chưa thấy skill, mở phiên mới.
 Repo này không còn marketplace riêng: selector cũ `vietnamizer@vietnamizer` không còn nguồn cập nhật.
 
 ### Claude web và Claude Desktop: thêm marketplace

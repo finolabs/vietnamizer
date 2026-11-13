@@ -30,7 +30,9 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/voice-from-samples.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/voice-profile.md` |
 | `references/voice-profile.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên, cá nhân (mặc định) hoặc thương hiệu, mỗi lần một hồ sơ; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn |
 | `references/voice-sources.md` | Ba nguồn mẫu: dán bài, file export LinkedIn/Facebook, trang của chính người dùng qua công cụ trình duyệt host sẵn có; xác nhận chủ tài khoản, chỉ giữ bài tự viết, cảnh báo điều khoản LinkedIn và Facebook, không xử lý mật khẩu hay cookie |
-| `references/voice-analysis.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết (hồ sơ cũ có thể thiếu); không chứa dữ liệu cá nhân |
+| `references/brand-voice.md` | Dựng hồ sơ `kind: brand` từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ người dùng đưa, sau lời xác nhận được nói thay thương hiệu; quy tắc thương hiệu tách khỏi nét quan sát, mâu thuẫn vào điểm chưa quyết, lược tên nhân viên và khách hàng |
+| `references/help.md` | Hướng dẫn một màn hình và bước thiết lập giọng (loại giọng, nguồn, đồng ý, học, chấm, lưu); không đọc file của người dùng, không lưu nếu người dùng dừng |
+| `references/voice-analysis.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết (hồ sơ cũ có thể thiếu), quy tắc thương hiệu (chỉ hồ sơ thương hiệu) và lịch sử chấm do người dùng lưu; không chứa dữ liệu cá nhân |
 | `calibration/LOG.md` | Nhật ký bằng chứng dùng để sửa quy tắc chung; không lưu hồ sơ văn phong cá nhân |
 | `calibration/test-cases.md` | Ca kiểm thử chạy tay cho từng pattern, gồm cả ca chống sửa quá tay |
 | `README.md` | Giới thiệu ngắn, ví dụ, biểu đồ bằng chứng, cài nhanh và điều hướng tài liệu |
@@ -44,6 +46,7 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `assets/` | Icon và wordmark SVG sáng/tối, nền trong suốt; chữ ă violet ở bản sáng, mint ở bản tối; được đóng gói cùng metadata UI |
 | `.codex-plugin/plugin.json` | Manifest và metadata hiển thị của plugin Codex |
 | `.plugin-skills/vietnamizer/SKILL.md` | Adapter discovery cho plugin source, nạp root `SKILL.md`; không sở hữu quy tắc biên tập |
+| `.plugin-skills/help/SKILL.md` | Adapter `help` của plugin (`/vietnamizer:help`), nạp `references/help.md`; gói plugin đặt nó ở `skills/help/` |
 | `.antigravity-plugin/plugin.json` | Manifest của plugin Antigravity; cài từ URL repo, không có catalog |
 | `.claude-plugin/plugin.json` | Manifest của plugin Claude Code |
 | `scripts/validate-package.py` | Kiểm tra version, số hiệu pattern, danh mục trong docs, điều hướng README và giới hạn dòng |

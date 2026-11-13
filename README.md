@@ -170,6 +170,12 @@ cung cấp mẫu/hồ sơ ngay trong tác vụ. Skill có thể đổi cách di�
 các ý đã có, vẫn phải giữ mệnh đề, điều kiện, mức chắc chắn và vùng bảo toàn.
 
 Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết; chỉ tuyến hồ sơ giọng tùy chọn mới lưu hồ sơ, khi bạn yêu cầu rõ.
+Hồ sơ có thể là giọng cá nhân (mặc định) hoặc giọng thương hiệu, mỗi lần dùng một hồ sơ; học từ bài bạn dán,
+file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt của host, còn giọng thương hiệu học
+từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ bạn đưa. Sau khi học, bạn có thể chấm vài đoạn mẫu theo
+bốn mức Kém, Trung bình, Khá, Tốt; số lượt chấm chỉ vào hồ sơ khi bạn lưu, ghi là đánh giá của bạn. Skill
+không tự tính điểm giống giọng. Gõ `/vietnamizer:help` (plugin) hoặc hỏi “Vietnamizer làm được gì?” để xem
+hướng dẫn và bắt đầu thiết lập giọng.
 [Xem hai chế độ, ví dụ prompt và bảy style card](docs/style-and-voice.md).
 
 ## Phạm vi

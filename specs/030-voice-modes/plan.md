@@ -13,7 +13,7 @@ Extend the opt-in voice-profile route (spec 028, PR #39) with a profile `kind` (
 **Language/Version**: Markdown instructions; package checks stay Python 3 standard library (`scripts/validate-package.py`, `scripts/package-plugin.py`, `unittest`).
 **Primary Dependencies**: none new. Optional host capabilities used only when present: a question form (`AskUserQuestion`, `request_user_input`, `ask_question`), a browser tool (Claude in Chrome, the in-app browser or an equivalent), Orrery or Obsidian for storage as in spec 028.
 **Storage**: unchanged from spec 028; the profile file the user chooses now also holds `kind`, brand rules and rating history.
-**Testing**: `tests/test_skill_contract.py` guards for the new rules; `tests/test_package_security.py` and `tests/test_distribution.py` for the new files and the second plugin skill; `scripts/validate-package.py`; `claude plugin validate .`; `npx skills add . --list`; manual cases in `calibration/test-cases.md` (new block VM01–VM16).
+**Testing**: `tests/test_skill_contract.py` guards for the new rules; `tests/test_package_security.py` and `tests/test_distribution.py` for the new files and the second plugin skill; `scripts/validate-package.py`; `claude plugin validate .`; `npx skills add . --list`; manual cases in `calibration/test-cases.md` (block VM01–VM23: US1–US2 VM01–VM15, US3 VM16–VM18, US4 VM19–VM21, US5 VM22–VM23).
 **Target Platform**: Claude Code, Codex, Antigravity, standalone skill installs.
 **Project Type**: agent skill (Markdown) with packaging scripts.
 **Performance Goals**: the default editing path reads nothing new (SC-001); onboarding to a drafted profile in under 10 minutes and at most 6 questions before rating (SC-003).
@@ -63,7 +63,7 @@ references/
 ├── voice-sources.md                          # new: paste, export (LinkedIn, Facebook), browser path, ownership, filtering
 ├── brand-voice.md                  # new: brand sources, guide rules vs observed traits, redaction
 └── help.md                           # new: help overview and onboarding flow
-calibration/test-cases.md                # VM01–VM16
+calibration/test-cases.md                # VM01–VM23
 .specify/memory/constitution.md           # 2.4.0 amendment
 README.md, PRIVACY.md, docs/style-and-voice.md, docs/changelog.md, AGENTS.md
 scripts/validate-package.py, scripts/package-plugin.py   # inventory and second adapter
