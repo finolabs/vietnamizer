@@ -91,10 +91,12 @@ REFERENCE_FILES = {
     "references/ho-so-giong.md",
     "references/phan-tich-giong-viet.md",
     "references/han-viet-thuan-viet.md",
+    "references/thuat-ngu-va-nhat-quan.md",
 }
 CALIBRATION_FILES = {
     "calibration/LOG.md",
     "calibration/ca-kiem-thu.md",
+    "calibration/ghi-chu-ngu-vuc.md",
 }
 EXACT_DIRECTORY_FILES = {
     "references": REFERENCE_FILES,

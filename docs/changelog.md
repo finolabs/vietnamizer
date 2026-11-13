@@ -10,7 +10,9 @@ Gỡ Jev (evaluator TypeSafe) khỏi Vietnamizer, theo spec `specs/029-remove-je
 (runner, transport, chuẩn bị/coverage, registry 55 pattern), `references/typesafe-advisor.md`,
 `scripts/build-jev-registry.py`, đoạn "Evaluator" trong `SKILL.md`, mọi xử lý `register`/ngữ cảnh phong
 cách gửi sang evaluator trong tuyến hồ sơ giọng, các benchmark và test chỉ phục vụ Jev, và `eval/guard/`.
-Gói phát hành nhỏ hơn khoảng 211KB (chưa nén). Năm chốt bảo toàn nghĩa và 55 pattern không đổi; hồ sơ giọng vẫn là tuyến opt-in.
+Gói phát hành nhỏ hơn khoảng 211KB (chưa nén).
+
+Học từ nghiên cứu một kho skill viết học thuật công khai (ý tưởng viết lại, không chép): thêm `references/thuat-ngu-va-nhat-quan.md` (bảng thuật ngữ, xưng hô, cách viết số và quét lại cho bài dài hoặc nhiều vòng sửa), một câu trong `SKILL.md` về chế độ ghi chú sửa khi người dùng yêu cầu rõ, test giữ bất biến Markdown (`tests/test_skill_contract.py`), script đếm nhất quán tùy chọn ngoài gói (`scripts/check-consistency.py`), ca CN01–CN06 và mẫu ghi chú ngữ vực chưa có số đo (`calibration/ghi-chu-ngu-vuc.md`). Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất lượng. Năm chốt bảo toàn nghĩa và 55 pattern không đổi; hồ sơ giọng vẫn là tuyến opt-in.
 
 Việc người dùng cần làm: không bắt buộc. Skill không còn đọc `TYPESAFE_API_KEY`; nếu đã đặt key riêng
 cho Vietnamizer thì có thể xóa. Agent hoặc script gọi `python3 -B -m jev …` phải bỏ lời gọi đó. Spec cũ,

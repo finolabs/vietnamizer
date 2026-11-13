@@ -40,6 +40,7 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 |---|---|---|
 | Sửa một cụm/câu, rà cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
 | Biên tập toàn bài hoặc viết từ brief/outline | `references/quy-trinh-viet.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
+| Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/thuat-ngu-va-nhat-quan.md` trên tuyến bài | Bài ngắn, sửa một cụm |
 | Theo mẫu được giao | Thêm `references/giu-giong-tu-mau.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
 | Học, lưu hoặc áp dụng hồ sơ giọng từ nơi lưu theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”) | `references/ho-so-giong.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
 | Chỉ review/nhận xét, không sửa | Trước nhận xét đọc năm chốt bên dưới; với cả bài đọc `references/quy-trinh-viet.md` và card; có mẫu đọc `references/giu-giong-tu-mau.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
@@ -121,7 +122,7 @@ Review đúng candidate hiện tại (nội dung/file được giao), không tha
 Khi chỉ review, kết luận riêng **nghĩa** (chốt 2–4) và **cách viết** (giọng/nhịp/người đọc); không lấy cách viết bù sai ý.
 
 Dán văn bản/chỉ yêu cầu viết lại hoặc skill là một bước khác: trả bản cuối, không lời dẫn/phân tích.
-Chỉ nhận xét/đối chiếu khi được yêu cầu. Giao file: sửa đúng phần, giữ code/frontmatter/link và báo
+Chỉ nhận xét/đối chiếu khi được yêu cầu. Chỉ khi người dùng yêu cầu rõ mới kèm tối đa 5 dòng ghi chú sửa hoặc bảng Gốc/Đã sửa/Vì sao sau bản cuối; mặc định không có. Giao file: sửa đúng phần, giữ code/frontmatter/link và báo
 ngắn phần đổi, không dán cả file. Không âm thầm đổi dữ kiện. Quy tắc có thể dựa trên tài liệu, quan sát
 có đối chiếu hoặc suy luận; không gọi suy luận hay ca phát triển là kiểm định chất lượng. Đánh giá xuất xứ
 chỉ khi được giao, dùng tài liệu nguồn được cung cấp, không tự nạp hồ sơ bảo trì cho mỗi bài.
