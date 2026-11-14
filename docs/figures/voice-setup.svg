@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 488" width="960" height="488" role="img" aria-labelledby="voice-setup-title voice-setup-desc">
+<title id="voice-setup-title">Luồng thiết lập giọng của Vietnamizer</title>
+<desc id="voice-setup-desc">Năm bước chọn loại giọng, đưa nguồn mẫu, đồng ý đọc, xem hồ sơ nháp và chấm thử dẫn tới câu hỏi bạn có bảo lưu không; có thì hồ sơ được lưu và lần sau gọi bằng tên, không thì hồ sơ chỉ nằm trong cuộc trò chuyện. Dừng ở bước nào cũng không có gì được lưu.</desc>
+<defs>
+<marker id="voice-setup-a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#5B5B79"/></marker>
+<marker id="voice-setup-b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9750C4"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<path d="M 184 92 L 210 92" fill="none" stroke="#5B5B79" stroke-width="1.2" marker-end="url(#voice-setup-a)"/>
+<path d="M 372 92 L 398 92" fill="none" stroke="#5B5B79" stroke-width="1.2" marker-end="url(#voice-setup-a)"/>
+<path d="M 560 92 L 586 92" fill="none" stroke="#5B5B79" stroke-width="1.2" marker-end="url(#voice-setup-a)"/>
+<path d="M 748 92 L 774 92" fill="none" stroke="#5B5B79" stroke-width="1.2" marker-end="url(#voice-setup-a)"/>
+<path d="M 856 144 L 856 230" fill="none" stroke="#9750C4" stroke-width="1.2" marker-end="url(#voice-setup-b)"/>
+<path d="M 776 268 L 722 268" fill="none" stroke="#9750C4" stroke-width="1.2" marker-end="url(#voice-setup-b)"/>
+<rect x="732.0" y="240" width="32" height="16" rx="2" fill="#FFFFFF"/>
+<text x="748" y="252" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">CÓ</text>
+<path d="M 520 268 L 466 268" fill="none" stroke="#5B5B79" stroke-width="1.2" marker-end="url(#voice-setup-a)"/>
+<path d="M 856 304 L 856 372 Q 856 380 848 380 L 722 380" fill="none" stroke="#5B5B79" stroke-width="1.2" marker-end="url(#voice-setup-a)"/>
+<rect x="864" y="332" width="56" height="16" rx="2" fill="#FFFFFF"/>
+<text x="868" y="344" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start" letter-spacing="0.06em">KHÔNG</text>
+<rect x="24" y="40" width="160" height="104" rx="6" fill="#FFFFFF"/>
+<rect x="24" y="40" width="160" height="104" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="104.0" y="60" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.12em">BƯỚC 1</text>
+<text x="104.0" y="88" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Chọn loại giọng</text>
+<text x="104.0" y="112" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Cá nhân hoặc</text>
+<text x="104.0" y="128" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Thương hiệu</text>
+<rect x="212" y="40" width="160" height="104" rx="6" fill="#FFFFFF"/>
+<rect x="212" y="40" width="160" height="104" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="292.0" y="60" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.12em">BƯỚC 2</text>
+<text x="292.0" y="88" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Đưa nguồn mẫu</text>
+<text x="292.0" y="112" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">bài dán, file export,</text>
+<text x="292.0" y="128" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">trang qua trình duyệt</text>
+<rect x="400" y="40" width="160" height="104" rx="6" fill="#FFFFFF"/>
+<rect x="400" y="40" width="160" height="104" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="480.0" y="60" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.12em">BƯỚC 3</text>
+<text x="480.0" y="88" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Đồng ý đọc</text>
+<text x="480.0" y="112" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">mỗi nguồn, mỗi URL</text>
+<text x="480.0" y="128" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">một câu đồng ý</text>
+<rect x="588" y="40" width="160" height="104" rx="6" fill="#FFFFFF"/>
+<rect x="588" y="40" width="160" height="104" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="668.0" y="60" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.12em">BƯỚC 4</text>
+<text x="668.0" y="88" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Xem hồ sơ nháp</text>
+<text x="668.0" y="112" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">sửa tới khi ưng</text>
+<rect x="776" y="40" width="160" height="104" rx="6" fill="#FFFFFF"/>
+<rect x="776" y="40" width="160" height="104" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="856.0" y="60" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.12em">BƯỚC 5</text>
+<text x="856.0" y="88" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Chấm thử</text>
+<text x="856.0" y="112" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">0–10 đoạn,</text>
+<text x="856.0" y="128" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">từ Kém đến Tốt</text>
+<rect x="776" y="232" width="160" height="72" rx="6" fill="#FFFFFF"/>
+<rect x="776" y="232" width="160" height="72" rx="6" fill="#F5EDFA" stroke="#9750C4" stroke-width="1"/>
+<text x="856.0" y="268" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Bạn bảo lưu?</text>
+<rect x="520" y="232" width="200" height="72" rx="6" fill="#FFFFFF"/>
+<rect x="520" y="232" width="200" height="72" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="620.0" y="268" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Lưu hồ sơ</text>
+<text x="620.0" y="292" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">nơi bạn chọn, kèm sổ hồ sơ</text>
+<rect x="264" y="232" width="200" height="72" rx="6" fill="#FFFFFF"/>
+<rect x="264" y="232" width="200" height="72" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="364.0" y="268" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Lần sau gọi bằng tên</text>
+<text x="364.0" y="292" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">mỗi lần áp một hồ sơ</text>
+<rect x="520" y="344" width="200" height="72" rx="6" fill="#FFFFFF"/>
+<rect x="520" y="344" width="200" height="72" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
+<text x="620.0" y="380" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Không lưu</text>
+<text x="620.0" y="404" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">chỉ nằm trong cuộc trò chuyện</text>
+<line x1="24" y1="444" x2="936" y2="444" stroke="#BCBCD0" stroke-width="0.8" stroke-dasharray="4,4"/>
+<text x="24" y="472" fill="#5B5B79" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.12em">BƯỚC 1–5</text>
+<text x="112" y="472" fill="#0B0B17" font-size="16" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Dừng ở bước nào cũng được; dừng thì không có gì được lưu.</text>
+</svg>

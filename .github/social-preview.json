@@ -1,9 +1,9 @@
 {
   "name": "Vietnamizer",
-  "tagline": "Giúp AI viết tiếng Việt\ngiống con người hơn.",
+  "tagline": "Giúp AI viết tiếng Việt\n“con người” nhất có thể.",
   "mark": "../assets/icon-dark.svg",
-  "input": "Đã tìm khắp nhà nhưng vẫn\nkhông tìm chìa khóa.",
-  "output": "Đã tìm khắp nhà nhưng vẫn\nkhông tìm thấy chìa khóa.\n\nMR04 · thiếu bổ ngữ\n0.12.1 · Codex · đạt",
+  "input": "Đội đã làm việc chăm chỉ\nđể đạt được mục tiêu quý.",
+  "output": "Cả đội đã làm việc chăm chỉ\nđể đạt được mục tiêu quý.\n\nV20 · thiếu một tiếng\nVietnamizer 0.16.1",
   "footer": [
     "Skill cho **Claude Code**, **Codex** và **Antigravity**",
     "MIT, github.com/finolabs/vietnamizer"
