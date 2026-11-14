@@ -16,7 +16,8 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
    hoặc một hồ sơ giọng thương hiệu; mỗi lần chỉ dùng một hồ sơ. Gọi lại hồ sơ đã lưu bằng
    `/vietnamizer <tên>` (Claude Code), `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”;
    `/vietnamizer cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Sau mỗi lần lưu, skill
-   in đúng câu cần gõ. Ví dụ: “Viết lại bài này theo hồ sơ `giong-cong-viec`.”
+   in đúng câu cần gõ. Trên Chat không có file (claude.ai, Desktop), hồ sơ lưu được dưới dạng bản gọn trong
+   bộ nhớ của Chat. Ví dụ: “Viết lại bài này theo hồ sơ `giong-cong-viec`.”
 3. **Học giọng.** Dán 10–20 bài tự viết, đưa file export LinkedIn hoặc Facebook, hoặc để Vietnamizer
    đọc trang của chính bạn qua trình duyệt nếu host có công cụ đó (có cảnh báo điều khoản của LinkedIn và Facebook).
    Giọng thương hiệu học từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ người dùng đưa, hoặc đọc fanpage,
@@ -25,7 +26,8 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
 4. **Kiểm giọng.** Chấm vài đoạn mẫu theo bốn mức Kém, Trung bình, Khá, Tốt để sửa hồ sơ; đó là đánh giá
    của người dùng, skill không tự tính điểm giống giọng. Ví dụ: “Cho tôi chấm 3 đoạn mẫu của hồ sơ này.”
 
-Kết bằng: “Muốn bắt đầu thiết lập giọng không?” Người dùng không muốn thì dừng ở đây.
+Kết bằng: “Muốn bắt đầu thiết lập giọng không? Không bắt buộc: không có hồ sơ, Vietnamizer vẫn sửa và viết
+theo giọng sẵn có của bài.” Người dùng không muốn thì dừng ở đây.
 
 ## 2. Thiết lập giọng từng bước
 

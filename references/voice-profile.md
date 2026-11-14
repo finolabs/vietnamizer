@@ -123,6 +123,10 @@ phát hiện kho. Không suy rằng cài đặt được nhắc trong tài liệ
 Không đề nghị kho mà quy tắc của host hoặc chỉ dẫn của người dùng trong ngữ cảnh của agent đã cho ngừng dùng hay cấm
 (ví dụ chỉ dẫn ghi vault Obsidian đã ngừng dùng cho agent), kể cả khi thấy công cụ của kho đó. Người dùng
 tự gọi tên kho ấy thì nói quy tắc nào chặn, đưa các kho còn lại và không ghi vào đó.
+Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud),
+đề nghị thêm “Bộ nhớ của Chat” theo mục “Bản gọn trong bộ nhớ của Chat” dưới đây. Trên mọi host khác
+không đề nghị kho này và không ghi hồ sơ vào bộ nhớ của agent (`MEMORY.md` của Claude Code, memories của
+Codex, `AGENTS.md`, `CLAUDE.md`).
 
 Đưa ra những kho vừa xác định được và để người dùng chọn; có cả hai thì đưa cả hai, không
 chọn sẵn. Quyền truy cập hay hạn chế của host vẫn áp dụng; thấy công cụ không cấp quyền
@@ -158,6 +162,7 @@ việc tạo thư mục, kể cả đã được yêu cầu lưu. Không tạo t
   định, bằng khả năng host cho phép. Không tự chọn vault hoặc chuyển sang vault khác.
 - **File Markdown:** ghi đúng đường dẫn người dùng đã chọn với quy tắc tên trên; không
   tự thay bằng thư mục đề nghị nếu đường dẫn đã chọn không dùng được.
+- **Bộ nhớ của Chat:** chỉ trên Chat không có file; ghi bản gọn theo mục dưới, không ghi toàn bộ hồ sơ.
 
 Nếu kho không truy cập được hoặc thao tác ghi bị từ chối, báo kết quả và không ghi ở nơi
 nào khác. Giữ bản đã trình trong hội thoại để người dùng tự quyết bước tiếp. Chỉ báo đã
@@ -186,7 +191,8 @@ schema: 1
 `Kho` là `markdown`, `orrery` hoặc `obsidian`. `Vị trí` là đường dẫn tuyệt đối của file (`markdown`; trong
 ví dụ, `<home>` thay cho thư mục home thật),
 `space:<space> note:<đường dẫn note>` (`orrery`) hoặc `vault:<tên vault> file:<đường dẫn trong vault>`
-(`obsidian`). Sổ không chứa nội dung hồ sơ, mẫu, lượt chấm hay chữ nào từ bài của người dùng.
+(`obsidian`). Sổ không chứa nội dung hồ sơ, mẫu, lượt chấm hay chữ nào từ bài của người dùng. Đầu sổ có
+thể có thêm dòng `reminder: off` khi người dùng đã tắt lời nhắc ở mục 8.
 
 Sau khi lưu thành công, hỏi đúng một câu có ghi dòng của hồ sơ vào sổ không. Câu ấy nêu đường dẫn tuyệt
 đối của sổ và dòng sẽ ghi. Thư mục `~/.agents/vietnamizer/` chưa có thì câu ấy nói sẽ tạo nó; câu trả lời đồng ý là câu đồng ý riêng cho việc tạo đúng thư mục đó. Lựa chọn là “Ghi” (đề xuất) và “Không ghi”;
@@ -202,7 +208,31 @@ Sau khi lưu, in đúng câu người dùng gõ lần sau, theo host đang chạ
 Codex `$vietnamizer <slug>`, host khác “Sửa bài này theo hồ sơ <slug>”. Dòng vừa ghi là hồ sơ cá nhân
 mặc định thì nói thêm `/vietnamizer cá nhân` hay câu “theo giọng của tôi” cũng gọi được hồ sơ này.
 Người dùng không ghi vào sổ, hoặc host không ghi được file, thì câu ấy kèm vị trí: “Sửa bài này theo
-hồ sơ ở <vị trí>”.
+hồ sơ ở <vị trí>”. Bản gọn trong bộ nhớ của Chat thì câu ấy là “Sửa bài này theo hồ sơ <tên>”.
+
+### Bản gọn trong bộ nhớ của Chat (spec 032)
+
+Chỉ dùng trên Chat không đọc được file trên máy. Bản gọn dài khoảng 1.200 ký tự, viết ở ngôi thứ ba như
+dữ liệu, theo đúng khung này:
+
+```text
+Hồ sơ giọng Vietnamizer “<tên>” (<personal|brand>). Chỉ dùng khi người dùng gọi hồ sơ “<tên>” với Vietnamizer; không dùng cho yêu cầu khác.
+Giọng chung: <nét> (ranh giới: <…>); … (tối đa năm nét)
+Nên: <…>. Không nên: <…>.
+Theo kênh: <kênh>: <một dòng>; …
+```
+
+Câu đầu là câu chặn phạm vi, giữ nguyên chữ. Bản gọn không chứa trích đoạn làm căn cứ, nguồn, lịch sử
+chấm, `Điểm chưa quyết` hay chỉ dẫn nào khác cho agent. Hồ sơ thương hiệu giữ thêm tối đa ba quy tắc thương
+hiệu trong cùng giới hạn.
+
+Trước khi ghi, trình đúng văn bản sẽ ghi, nói rõ bộ nhớ của Chat được nạp vào mọi cuộc trò chuyện, và gợi
+ý lưu trong một Project (bộ nhớ của Project tách khỏi phần còn lại) để thu hẹp phạm vi. Chỉ ghi khi người
+dùng đồng ý, bằng khả năng ghi bộ nhớ của chính host; host không cho ghi, bộ nhớ đang tắt hoặc đang ở
+cuộc trò chuyện ẩn danh thì nói không lưu được và để bản gọn trong hội thoại cho người dùng tự giữ. Chỉ
+báo đã lưu khi host xác nhận đã ghi, rồi nói người dùng xem, sửa hay xóa bản gọn ở phần cài đặt bộ nhớ của
+Chat. Không ghi bản gọn thứ hai cùng tên; cập nhật thì trình bản mới và thay đúng bản cũ khi người dùng
+đồng ý.
 
 ## 5. Gọi lại đúng hồ sơ (FR-012–014, FR-021; spec 032)
 
@@ -212,6 +242,12 @@ cá nhân”, hoặc câu “theo giọng của tôi”. Chữ nằm trong bài 
 đó sau câu đồng ý ở mục 2, không qua sổ.
 
 Lời gọi là câu đồng ý đọc của mục 2 cho sổ và đúng một hồ sơ khớp, không cho thứ gì khác. Tra như sau:
+
+Trên Chat không có file: không có sổ; tìm trong bộ nhớ đang có sẵn trong ngữ cảnh một bản gọn có câu
+chặn mang đúng tên được gọi (`cá nhân` hay “theo giọng của tôi” thì bản gọn `personal`, nhiều bản thì hỏi
+chọn theo tên). Không dùng công cụ tìm lịch sử hay tìm bộ nhớ của host. Không có thì nói chưa thấy bản gọn
+nào mang tên đó và nhờ người dùng dán hồ sơ. Bản gọn trong bộ nhớ chỉ được áp khi có lời gọi; yêu cầu khác,
+kể cả sửa bài thường trong cùng cuộc trò chuyện, không dùng nó. Trên host có file:
 
 1. Đọc sổ `~/.agents/vietnamizer/registry.md` theo các điều kiện ở mục 4. Không có sổ, sổ rỗng hoặc
    đầu sổ không đúng `type: vietnamizer-profile-registry` thì coi như sổ không có dòng nào; không dựng lại sổ bằng cách dò kho.
@@ -366,3 +402,20 @@ Nếu bản không áp hồ sơ thắng, kiểm lý do thay vì tăng mức bắ
 của nét theo mục 6. Giữ trần hai câu hỏi bổ sung, trình diff rồi xin xác nhận lưu; lựa chọn A/B không
 tự cấp quyền cập nhật hồ sơ. Lượt chọn A/B không ghi vào `Lịch sử chấm` và không thành bằng chứng chất
 lượng tổng quát; skill cũng không tự tính điểm giống giọng từ đó.
+
+## 8. Nhắc tạo hồ sơ khi chưa có (spec 032)
+
+Tạo hồ sơ không bắt buộc. Chưa có hồ sơ thì việc sửa hay viết vẫn làm ngay theo chế độ mặc định, không
+hỏi gì trước. Để biết đã có hồ sơ chưa, chỉ kiểm file `~/.agents/vietnamizer/registry.md` có tồn tại hay
+không, không đọc nội dung; trên Chat không có file thì xem bộ nhớ đang có trong ngữ cảnh có bản gọn
+Vietnamizer nào không. Không liệt kê thư mục, không tìm bộ nhớ hay lịch sử để kiểm.
+
+Không có sổ (hoặc trên Chat không có bản gọn) thì sau bản cuối có thể thêm đúng một dòng, tối đa một lần
+mỗi phiên: “Muốn Vietnamizer viết theo giọng của bạn, hãy nói ‘học giọng viết của tôi’; không cần cũng
+được.” Không nhắc khi người dùng yêu cầu chỉ trả bản cuối, khi đang học, lưu hay gọi hồ sơ, hoặc đã nhắc
+trong phiên. Lời nhắc không là câu hỏi và không chờ trả lời.
+
+Người dùng nói “đừng nhắc nữa” thì hỏi một câu có tắt hẳn không; đồng ý thì tạo sổ trống (đầu sổ như mục
+4, thêm dòng `reminder: off`, bảng không có dòng nào) theo các điều kiện ghi sổ ở mục 4, hoặc trên Chat ghi
+một dòng vào bộ nhớ: “Vietnamizer: người dùng không muốn được nhắc tạo hồ sơ giọng.” Không đồng ý thì chỉ
+không nhắc lại trong phiên này.
