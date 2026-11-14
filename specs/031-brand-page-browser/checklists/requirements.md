@@ -14,7 +14,7 @@
 ## Requirement Completeness
 
 - [x] No [NEEDS CLARIFICATION] markers remain (open items are in the spec's "Open decisions" table, each with an owner)
-- [ ] Requirements are testable and unambiguous (FR-006 and FR-010 wait on open decisions O3 and O1)
+- [x] Requirements are testable and unambiguous (O1 and O3 settled 2026-11-14 as decisions 8 and 9)
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
 - [x] All acceptance scenarios are defined
@@ -43,5 +43,5 @@
 ## Notes
 
 - Decisions 2–4 settled by Fio on 2026-11-14 through the question form; decisions 5–7 settled the same day after the code and security reviews of PR #47 at f70b514: at most three URLs of the same brand per run, strict website limits, no terms warning for the brand's own website.
-- Open decisions O1 ("See more" expansion), O2 (URL shapes and page signs, unverified on live pages) and O3 (list of shared publishing platforms) are in the spec with owners.
+- O1 ("See more" expansion) and O3 (shared publishing platforms) were settled by Fio on 2026-11-14 (decisions 8 and 9). O2 (URL shapes and page signs, unverified on live pages) stays open, owned by the plan author with Fio approving.
 - This PR changes no reference, constitution, test or code; FR-015 and FR-016 list the implementation's edits.
