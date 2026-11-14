@@ -105,11 +105,14 @@ người dùng có thể lưu bản gọn của hồ sơ, khoảng 1.200 ký t�
 đầu bằng câu nói chỉ dùng khi người dùng gọi tên hồ sơ, và không chứa trích đoạn bài viết. Trước khi ghi,
 skill trình đúng văn bản sẽ ghi, báo rằng bộ nhớ của Chat được nạp vào mọi cuộc trò chuyện, gợi ý lưu
 trong một Project để thu hẹp phạm vi, và chỉ ghi khi người dùng đồng ý. Bộ nhớ ấy do nhà cung cấp Chat
-lưu theo chính sách của họ; người dùng xem, sửa hoặc xóa bản gọn trong phần cài đặt bộ nhớ. Trên các host
+lưu theo chính sách của họ; người dùng xem, sửa hoặc xóa bản gọn trong phần cài đặt bộ nhớ. Chat có thể viết lại mục nhớ
+theo cách của nó, nên câu đầu chỉ là chỉ dẫn cho model chứ không phải giới hạn kỹ thuật; skill nhờ người dùng xem
+câu ấy còn nguyên sau khi ghi. Trên các host
 khác, skill không ghi hồ sơ vào bộ nhớ của agent.
 
 Tạo hồ sơ không bắt buộc. Khi chưa có hồ sơ, skill chỉ kiểm sổ hồ sơ có tồn tại hay không (không đọc
-nội dung), hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh, rồi nhắc một dòng, tối đa một lần mỗi phiên.
+nội dung) sau khi đã trả bài, hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh không có bản gọn và không có
+dòng tắt nhắc của Vietnamizer, rồi nhắc một dòng, tối đa một lần mỗi phiên.
 Người dùng tắt hẳn lời nhắc thì skill, khi họ đồng ý, tạo một sổ trống chỉ có dòng `reminder: off`, hoặc
 ghi một dòng vào bộ nhớ của Chat.
 
@@ -131,8 +134,8 @@ bản chuẩn. Skill không tự cập nhật từ phản hồi, không tự n�
 không ghi hồ sơ vào nhật ký hiệu chuẩn chung. Nếu cần bản mẫu tạm ngoài hội thoại, skill đặt ngoài cây thư mục Git và
 xóa khi quy trình kết thúc hoặc người dùng dừng.
 
-Skill không gửi hồ sơ hay mẫu giọng tới dịch vụ ngoài: chúng chỉ nằm trong ngữ cảnh hội thoại
-của agent mà người dùng chọn.
+Skill không gửi hồ sơ hay mẫu giọng tới dịch vụ ngoài. Ngoài kho người dùng chọn (file, Orrery, Obsidian
+hoặc bộ nhớ của Chat), hồ sơ và mẫu chỉ nằm trong ngữ cảnh hội thoại của agent mà người dùng chọn.
 
 Từ bản 0.14.0, Vietnamizer không còn runner đánh giá ngoài (Jev/TypeSafe) và không đọc
 `TYPESAFE_API_KEY`. Các bản cũ hơn có tuyến đó; lịch sử nằm trong `docs/changelog.md`.

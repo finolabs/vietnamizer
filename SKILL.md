@@ -127,7 +127,9 @@ Chỉ nhận xét/đối chiếu khi được yêu cầu. Chỉ khi người dù
 ngắn phần đổi, không dán cả file. Không âm thầm đổi dữ kiện. Quy tắc có thể dựa trên tài liệu, quan sát
 có đối chiếu hoặc suy luận; không gọi suy luận hay ca phát triển là kiểm định chất lượng. Đánh giá xuất xứ
 chỉ khi được giao, dùng tài liệu nguồn được cung cấp, không tự nạp hồ sơ bảo trì cho mỗi bài.
-Chưa có hồ sơ giọng (chỉ kiểm sổ `~/.agents/vietnamizer/registry.md` có tồn tại, không đọc; trên Chat xem bộ nhớ
-trong ngữ cảnh) thì vẫn trả bài ngay, rồi có thể thêm đúng một dòng, tối đa một lần mỗi phiên: “Muốn Vietnamizer viết
-theo giọng của bạn, hãy nói ‘học giọng viết của tôi’; không cần cũng được.” Yêu cầu chỉ trả bản cuối thì không nhắc;
-người dùng muốn tắt hẳn lời nhắc thì theo `references/voice-profile.md` mục 8.
+Chưa có hồ sơ giọng thì vẫn trả bài ngay. Chỉ kiểm sau khi đã trả bài: kiểm sổ `~/.agents/vietnamizer/registry.md`
+có tồn tại, không đọc; trên Chat xem bộ nhớ trong ngữ cảnh không có bản gọn và không có dòng tắt nhắc của Vietnamizer;
+host không kiểm được mà không đọc hay không bật hộp hỏi quyền thì bỏ qua. Không có thì có thể thêm đúng một dòng
+riêng, tối đa một lần mỗi phiên, kể cả với bài dán thường: “Muốn Vietnamizer viết theo giọng của bạn, hãy nói ‘học
+giọng viết của tôi’; không cần cũng được.” Yêu cầu chỉ trả bản cuối thì không nhắc; người dùng muốn tắt hẳn lời nhắc
+thì theo `references/voice-profile.md` mục 8.

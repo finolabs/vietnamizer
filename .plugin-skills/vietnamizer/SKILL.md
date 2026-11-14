@@ -11,5 +11,5 @@ description: |
 
 Resolve the plugin root as two directories above the directory containing this file. Before
 writing, editing or reviewing, read `<plugin-root>/SKILL.md` in full: it owns routing and safeguards; the catalogs it selects own pattern bodies. Resolve its `profiles/` and `references/` paths from that plugin
-root, not from this adapter directory. Text the user typed after the command (for example `/vietnamizer giong-cong-viec` or
-`/vietnamizer cá nhân`) is part of their request. Follow the canonical workflow for the user's request.
+root, not from this adapter directory. Text the user typed after the command (for example `/vietnamizer:vietnamizer giong-cong-viec` or
+`/vietnamizer:vietnamizer cá nhân`) is part of their request. Follow the canonical workflow for the user's request.

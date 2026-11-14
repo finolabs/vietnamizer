@@ -202,8 +202,8 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   Trên các host khác, skill không ghi hồ sơ vào bộ nhớ của agent. Khi người dùng chưa có hồ sơ,
   skill vẫn sửa bài ngay theo giọng hiện có và chỉ nhắc một dòng, tối đa một lần mỗi phiên, rằng có
   thể tạo hồ sơ; tạo hay không là do người dùng. Để biết đã có hồ sơ chưa, skill chỉ kiểm sổ hồ sơ
-  có tồn tại hay không, hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh có bản gọn nào không; skill
-  không đọc nội dung sổ cho việc này. Người dùng muốn tắt lời nhắc thì, khi họ đồng ý, skill tạo sổ
+  có tồn tại hay không sau khi đã trả bài, hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh không có bản gọn và
+  không có dòng tắt nhắc của Vietnamizer; skill không đọc nội dung sổ cho việc này. Người dùng muốn tắt lời nhắc thì, khi họ đồng ý, skill tạo sổ
   trống có dòng `reminder: off`, hoặc trên Chat ghi một dòng vào bộ nhớ. Ngoại lệ lưu này
   MUST giữ nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm trong hồ sơ riêng
   của đúng người dùng, MUST NOT ghi vào `calibration/LOG.md`.

@@ -14,9 +14,9 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
    mới từ ý hoặc dàn ý. Ví dụ: “Sửa giúp email này cho tự nhiên hơn.”
 2. **Chọn giọng.** Mặc định giữ giọng của chính người viết. Có thể gọi tên một hồ sơ giọng cá nhân
    hoặc một hồ sơ giọng thương hiệu; mỗi lần chỉ dùng một hồ sơ. Gọi lại hồ sơ đã lưu bằng
-   `/vietnamizer <tên>` (Claude Code), `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”;
-   `/vietnamizer cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Sau mỗi lần lưu, skill
-   in đúng câu cần gõ. Trên Chat không có file (claude.ai, Desktop), hồ sơ lưu được dưới dạng bản gọn trong
+   `/vietnamizer:vietnamizer <tên>` (Claude Code cài qua plugin; cài skill riêng thì `/vietnamizer <tên>`),
+   `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”; cùng lệnh ấy với `cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Sau mỗi lần lưu, skill
+   in đúng câu cần gõ. Trên Chat không có file (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud), hồ sơ lưu được dưới dạng bản gọn trong
    bộ nhớ của Chat. Ví dụ: “Viết lại bài này theo hồ sơ `giong-cong-viec`.”
 3. **Học giọng.** Dán 10–20 bài tự viết, đưa file export LinkedIn hoặc Facebook, hoặc để Vietnamizer
    đọc trang của chính bạn qua trình duyệt nếu host có công cụ đó (có cảnh báo điều khoản của LinkedIn và Facebook).
