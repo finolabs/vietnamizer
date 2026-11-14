@@ -226,7 +226,9 @@ class SkillContractTest(unittest.TestCase):
             "**Loại giọng:** Cá nhân (đề xuất) hoặc Thương hiệu",
             "không nêu các bước export tài khoản cá nhân",
             "câu này dùng chỗ “nền tảng khi cần” của ngân sách",
-            "Trang thương hiệu thứ hai và thứ ba trong cùng lượt có câu đồng ý riêng, không tính vào 6 câu",
+            "Trang thứ hai và thứ ba trong cùng lượt, của mục 4b hay 4c, có câu đồng ý riêng, không tính vào 6 câu",
+            "câu đồng ý mục 4c theo sau cũng không tính vào 6 câu",
+            "Trang thì chỗ đó hỏi URL Trang và tên người dùng khi chưa có",
             "cảnh báo điều khoản chỉ cho Facebook và LinkedIn",
             "không tự phát hiện lần dùng đầu",
             "vẫn là việc biên tập hay viết, không vào file này",
@@ -289,7 +291,7 @@ class SkillContractTest(unittest.TestCase):
         text = read("references/voice-sources.md")
         self.assertIn("### 4a. Tài khoản cá nhân", text)
         self.assertIn("### 4b. Trang thương hiệu", text)
-        section = text[text.index("### 4b. Trang thương hiệu"):text.index("## 5.")]
+        section = text[text.index("### 4b. Trang thương hiệu"):text.index("### 4c.")]
         for phrase in (
             # FR-001, FR-002
             "không cần và không bao giờ đăng nhập",
@@ -341,7 +343,8 @@ class SkillContractTest(unittest.TestCase):
             "là trang của một người, không phải thương hiệu: dừng đường thương hiệu, chưa đọc bài",
             # FR-018
             "`<thương-hiệu>.substack.com/archive`, bài ở `/p/<tên-bài>` cùng host",
-            "không có trang danh sách giữ được đường bài: không mở",
+            "Ghost và mọi trang đặt bài như vậy thì không mở",
+            "Diễn đàn và trang cộng đồng (ví dụ Spiderum, Viblo) không có đường đọc cố định: luôn dừng",
             # redirect exemptions
             "nếu chuỗi truy vấn giữ nguyên",
             "`profile.php?id=<số>` chuyển sang `facebook.com/<tên-trang>` một đoạn",

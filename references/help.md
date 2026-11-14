@@ -15,28 +15,30 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
 2. **Chọn giọng.** Mặc định giữ giọng của chính người viết. Có thể gọi tên một hồ sơ giọng cá nhân
    hoặc một hồ sơ giọng thương hiệu; mỗi lần chỉ dùng một hồ sơ. Ví dụ: “Viết lại bài này theo hồ sơ
    `giong-cong-viec`.”
-3. **Học giọng.** Dán 10–20 bài tự viết, đưa file export LinkedIn hoặc Facebook, hoặc đọc trang của
-   chính mình qua trình duyệt nếu host có công cụ đó (có cảnh báo điều khoản của LinkedIn và Facebook).
+3. **Học giọng.** Dán 10–20 bài tự viết, đưa file export LinkedIn hoặc Facebook, hoặc để Vietnamizer
+   đọc trang của chính bạn qua trình duyệt nếu host có công cụ đó (có cảnh báo điều khoản của LinkedIn và Facebook).
    Giọng thương hiệu học từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ người dùng đưa, hoặc đọc fanpage,
    trang công ty LinkedIn hay blog của thương hiệu qua trình duyệt từ URL người dùng đưa. Ví dụ: “Học
    giọng viết LinkedIn của tôi.”
 4. **Kiểm giọng.** Chấm vài đoạn mẫu theo bốn mức Kém, Trung bình, Khá, Tốt để sửa hồ sơ; đó là đánh giá
    của người dùng, skill không tự tính điểm giống giọng. Ví dụ: “Cho tôi chấm 3 đoạn mẫu của hồ sơ này.”
 
-Kết bằng: “Muốn bắt đầu thiết lập giọng không?”. Người dùng không muốn thì dừng ở đây.
+Kết bằng: “Muốn bắt đầu thiết lập giọng không?” Người dùng không muốn thì dừng ở đây.
 
 ## 2. Thiết lập giọng từng bước
 
-Chạy khi người dùng đồng ý lời mời trên, hoặc nói “bắt đầu dùng Vietnamizer”, “thiết lập giọng”. Mỗi lựa chọn hỏi qua
+Chạy khi người dùng nhận lời mời trên, hoặc nói “bắt đầu dùng Vietnamizer”, “thiết lập giọng”. Mỗi lựa chọn hỏi qua
 công cụ câu hỏi của host khi có, lựa chọn đề xuất đứng đầu; không có thì hỏi bằng chữ. Riêng câu chấm ở
 bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references/voice-profile.md` mục 7 thắng. Người dùng có thể dừng
-ở bất kỳ bước nào: không lưu gì nếu người dùng dừng, và không đọc gì ngoài phần họ đã đồng ý.
+ở bất kỳ bước nào: không lưu gì nếu người dùng dừng, và không đọc gì ngoài phần họ đã đồng ý cho đọc.
 
 1. **Loại giọng:** Cá nhân (đề xuất) hoặc Thương hiệu.
 2. **Nguồn mẫu:**
    - Cá nhân: Dán bài (đề xuất), File export, hoặc Đọc trang qua trình duyệt. Chỉ đưa lựa chọn trình duyệt
-     khi agent thấy có công cụ trình duyệt theo `references/voice-sources.md` mục 1; đường đọc ở mục 4a,
-     hoặc mục 4c khi người dùng muốn học từ Trang Facebook mang tên chính họ (trang người nổi tiếng).
+     khi agent thấy có công cụ trình duyệt theo `references/voice-sources.md` mục 1. Trong cùng câu hỏi nguồn,
+     trình duyệt tách hai lựa chọn: tài khoản cá nhân (mục 4a) hay Trang Facebook mang tên chính người
+     dùng (trang người nổi tiếng, mục 4c). Tài khoản thì chỗ “nền tảng khi cần” hỏi LinkedIn hay Facebook;
+     Trang thì chỗ đó hỏi URL Trang và tên người dùng khi chưa có.
      File export thì nêu các bước của nền tảng theo mục 3 của file đó. Trình duyệt thì cảnh báo điều
      khoản đi cùng câu đồng ý ở bước 3, theo `references/voice-profile.md` mục 2; không nhắc lại ở đây.
    - Thương hiệu: nhờ người dùng dán hoặc gọi tên bộ quy chuẩn và tài liệu nội bộ họ chọn đưa, theo
@@ -47,7 +49,8 @@ bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references
      sách.
 3. **Đồng ý đọc:** đúng một câu theo `references/voice-profile.md` mục 2, gọi tên nguồn. Dán bài thì áp quy
    tắc tác giả ở mục đó (chỉ bài người dùng tự viết), không hỏi chủ tài khoản. File export hay trang thì
-   hỏi luôn tài khoản có phải của chính người dùng. Thương hiệu thì hỏi luôn người dùng có được nói thay
+   hỏi luôn tài khoản có phải của chính người dùng; Trang Facebook (mục 4c) thì hỏi luôn đó có phải Trang
+   của chính người dùng, kèm cảnh báo của mục đó. Thương hiệu thì hỏi luôn người dùng có được nói thay
    thương hiệu không, theo `references/brand-voice.md`; với trình duyệt, câu ấy gọi tên thương hiệu và
    URL, cảnh báo điều khoản chỉ cho Facebook và LinkedIn.
 4. **Học:** soạn và trình toàn bộ hồ sơ theo `references/voice-profile.md` mục 3.
@@ -56,8 +59,9 @@ bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references
    chỉ ở lại trong hội thoại.
 
 Ngân sách câu hỏi: tối đa 6 câu hỏi trước bước chấm, gồm loại giọng, nguồn, nền tảng khi cần, câu đồng ý
-đọc và tối đa một câu hỏi làm rõ. Trang thương hiệu thứ hai và thứ ba trong cùng lượt có câu đồng ý
-riêng, không tính vào 6 câu. Không hỏi thêm để lấp đủ hồ sơ; thiếu thì ghi thiếu như hướng dẫn phân
+đọc và tối đa một câu hỏi làm rõ. Trang thứ hai và thứ ba trong cùng lượt, của mục 4b hay 4c, có câu
+đồng ý riêng, không tính vào 6 câu. Khi mục 4b gặp Trang của một cá nhân, câu hỏi đó có phải Trang của
+chính người dùng không và câu đồng ý mục 4c theo sau cũng không tính vào 6 câu. Không hỏi thêm để lấp đủ hồ sơ; thiếu thì ghi thiếu như hướng dẫn phân
 tích.
 
 Thiết lập chỉ chạy khi người dùng yêu cầu; skill không tự phát hiện lần dùng đầu và không tạo file đánh

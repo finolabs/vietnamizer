@@ -109,8 +109,8 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
     `<thương-hiệu>.substack.com/archive`, bài ở `/p/<tên-bài>` cùng host; Medium `medium.com/@<thương-hiệu>`
     hoặc ấn phẩm `medium.com/<ấn-phẩm>`, bài nằm dưới đường đó; Blogspot và WordPress.com: trang lưu trữ
     theo năm `/<năm>/` (ví dụ `<thương-hiệu>.blogspot.com/2026/`), bài có năm đó trong đường dẫn nằm dưới
-    nó. Ghost bản host sẵn, và trang nào đặt bài ngay dưới trang gốc, không có trang danh sách giữ được
-    đường bài: không mở, đề nghị dán bài hoặc file export.
+    nó. Ghost bản host sẵn đặt bài ngay dưới trang gốc, nên không có trang danh sách giữ được đường bài.
+    Ghost và mọi trang đặt bài như vậy thì không mở; đề nghị dán bài hoặc file export.
 - **Từ chối trước khi mở.** Yêu cầu cho thấy trang thuộc thương hiệu người dùng không được nói thay (đối
   thủ, “bên X”, công ty khác, “xem bên X viết thế nào”) thì từ chối, không mở gì, kể cả khi người dùng nói
   mình được nói thay: muốn học cách một thương hiệu viết không phải là được nói thay thương hiệu đó.
@@ -126,7 +126,7 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
   ở cuối, không tính là chuyển hướng, nếu chuỗi truy vấn giữ nguyên; `profile.php?id=<số>` chuyển sang
   `facebook.com/<tên-trang>` một đoạn trên một trong ba host đó cũng không tính. Mọi kiểm khác vẫn chạy trên
   trang tới. URL là trang cá nhân (ví dụ `linkedin.com/in/…`) thì dừng; tài khoản cá nhân đi đường mục 4a.
-  Fanpage có hạng mục chỉ một người (ví dụ Nghệ sĩ, Người của công chúng, Nhà sáng tạo nội dung, Vận động
+  Fanpage có hạng mục dành cho một cá nhân (ví dụ Nghệ sĩ, Người của công chúng, Nhà sáng tạo nội dung, Vận động
   viên, Chính trị gia; tiếng Anh Artist, Public figure, Digital creator) là trang của một người, không phải
   thương hiệu: dừng đường thương hiệu, chưa đọc bài, nói đã thấy gì và hỏi đó có phải Trang của chính người
   dùng không. Có thì đề nghị học hồ sơ cá nhân theo mục 4c; không thì không đọc và đề nghị dùng bài người
@@ -140,11 +140,11 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
   khác hay ra ngoài tiền tố (nền tảng dùng chung: ra ngoài đường bài) thì bỏ trang đó, không đọc gì từ nó. Không theo link nào khác, không mở host khác, không mở link nằm trong bài, không sang trang
   tiếp theo của danh sách.
 - **Giới hạn website.** Không mở trang đăng nhập, tài khoản, liên hệ, tìm kiếm, bình luận, file PDF hay
-  URL có chuỗi truy vấn (`?`). Trên nền tảng đăng bài dùng chung (Medium, Substack, Blogspot, WordPress.com,
-  Ghost bản host sẵn), chỉ đọc trong không gian riêng của thương hiệu, tức tài khoản, ấn phẩm hay kênh
+  URL có chuỗi truy vấn (`?`). Trên nền tảng đăng bài dùng chung (Medium, Substack, Blogspot, WordPress.com),
+  chỉ đọc trong không gian riêng của thương hiệu, tức tài khoản, ấn phẩm hay kênh
   chính thức thương hiệu vận hành, với trang danh sách và đường bài ở mục “Nền tảng nhận”, và dừng khi ra
-  ngoài. Diễn đàn và trang cộng đồng (ví dụ Spiderum, Viblo): chỉ trong tài khoản chính thức
-  của thương hiệu. Trang báo và trang thông tin (kể cả báo Việt như VnExpress, Tuổi Trẻ, CafeF, Kenh14)
+  ngoài. Diễn đàn và trang cộng đồng (ví dụ Spiderum, Viblo) không có đường đọc cố định: luôn dừng và đề
+  nghị dán bài hoặc file export. Trang báo và trang thông tin (kể cả báo Việt như VnExpress, Tuổi Trẻ, CafeF, Kenh14)
   không có không gian riêng: luôn dừng, trừ khi tên miền thuộc thương hiệu. Trang thẻ, chủ đề, chuyên mục
   hay tìm kiếm về thương hiệu không bao giờ là không gian riêng của thương hiệu. Tên miền riêng của thương
   hiệu chạy trên các nền tảng ấy vẫn là website riêng. Chỉ giữ bài trang cho thấy do thương hiệu đăng (tên
