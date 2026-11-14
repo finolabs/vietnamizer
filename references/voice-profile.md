@@ -44,15 +44,22 @@ hoặc gọi tên văn bản trước; không tự tìm nguồn để điền c�
 đã đồng ý cần được nêu rõ và xin đồng ý trước khi đọc.
 
 Chỉ nhận mẫu là văn bản người dùng dán, file văn bản người dùng gọi tên trong tác vụ (kể cả file
-export LinkedIn hoặc Facebook họ tự tải), hoặc trang của chính người dùng đọc qua công cụ trình duyệt
-host sẵn có, theo `references/voice-sources.md`; câu đồng ý nêu rõ loại nguồn. Văn bản dán
+export LinkedIn hoặc Facebook họ tự tải), trang của chính người dùng đọc qua công cụ trình duyệt host
+sẵn có, hoặc với hồ sơ thương hiệu, trang công khai của thương hiệu từ URL người dùng đưa, theo
+`references/voice-sources.md`; câu đồng ý nêu rõ loại nguồn. Văn bản dán
 không cần lời xác nhận chủ tài khoản; áp quy tắc tác giả ở cuối mục này. Với file export hay trang, vẫn
 là đúng một câu đó: câu ấy gọi đúng tên file bài viết, hoặc với trình duyệt gọi đúng đường dẫn tài khoản
 của chính mình sẽ mở (`https://www.linkedin.com/in/me/recent-activity/all/` hoặc
-`https://www.facebook.com/me`, theo `references/voice-sources.md` mục 4), không gọi URL người dùng đưa, và
-nhờ người dùng xác nhận luôn tài khoản là của chính họ. Với đường trình duyệt, cảnh báo điều khoản nền
-tảng (lời cảnh báo ở `references/voice-sources.md` mục 4) đứng ngay trước câu hỏi; đây là chỗ duy nhất
-nêu cảnh báo trong luồng, kể cả khi đi từ bước thiết lập giọng. Câu trả lời đồng ý vì vậy là quyết định
+`https://www.facebook.com/me`, theo `references/voice-sources.md` mục 4a), không gọi URL người dùng đưa, và
+nhờ người dùng xác nhận luôn tài khoản là của chính họ. Trang thương hiệu qua trình duyệt
+(`references/voice-sources.md` mục 4b) thì mỗi URL một câu: câu ấy gọi tên thương hiệu và đúng URL người
+dùng đưa sẽ mở, hỏi luôn người dùng có được nói thay thương hiệu đó không và nói skill không kiểm được
+điều này. Trang Facebook mang tên chính người dùng (`references/voice-sources.md` mục 4c) thì mỗi URL một
+câu: câu ấy gọi đúng URL sẽ mở, hỏi người dùng xác nhận đó là Trang của chính họ, nói skill không kiểm
+được điều này và học giọng người khác là không được phép. Với đường trình duyệt, cảnh báo điều khoản nền tảng (lời cảnh báo ở
+`references/voice-sources.md` mục 4a) đứng ngay trước câu hỏi; với trang thương hiệu, trước câu đồng ý
+đầu tiên của mỗi nền tảng Facebook hay LinkedIn trong lượt, và website riêng của thương hiệu không có
+cảnh báo; đây là chỗ duy nhất nêu cảnh báo trong luồng, kể cả khi đi từ bước thiết lập giọng. Câu trả lời đồng ý vì vậy là quyết định
 của người dùng sau khi đã nghe cảnh báo.
 Không tìm mẫu trong memory, lịch sử hội thoại, connector khác, hộp thư hoặc kho lưu trữ. Không
 dùng đường dẫn tới kho hay quyền truy cập sẵn có làm lý do để duyệt nội dung. Quyền đọc

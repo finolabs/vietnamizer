@@ -33,26 +33,46 @@ của nền tảng đó.
 Tuyến hồ sơ giọng chỉ chạy khi người dùng yêu cầu tạo, cập nhật hoặc áp dụng hồ sơ giọng.
 Trước khi đọc mẫu, skill nêu rõ nguồn sẽ đọc và chờ người dùng đồng ý. Mẫu chỉ là văn bản người
 dùng dán, file người dùng chỉ định trong tác vụ (kể cả file export LinkedIn hoặc Facebook họ tự tải),
-hoặc trang của chính người dùng đọc qua công cụ trình duyệt host sẵn có khi họ đã đăng nhập; skill
-không tự tìm mẫu trong memory, lịch sử, email, connector khác hay kho lưu trữ.
+trang của chính người dùng đọc qua công cụ trình duyệt host sẵn có khi họ đã đăng nhập, hoặc với hồ sơ
+thương hiệu, trang công khai của thương hiệu từ URL người dùng đưa; skill không tự tìm mẫu trong memory, lịch sử, email, connector khác hay kho lưu trữ.
 
-Với export và trang, skill hỏi người dùng xác nhận đó là tài khoản của chính họ và không đọc trang của
+Với export và trang của tài khoản cá nhân, skill hỏi người dùng xác nhận đó là tài khoản của chính họ và không đọc trang của
 người khác. Skill đề nghị chỉ xuất mục bài viết, chỉ mở file bài viết trong bản export (không mở hay
-liệt kê file nào khác), chỉ giữ bài họ tự viết và bỏ bình luận, tin nhắn, danh bạ. Trước khi đọc qua trình duyệt, skill báo điều khoản của
+liệt kê file nào khác), chỉ giữ bài họ tự viết và bỏ bình luận, tin nhắn, danh bạ. Trước khi đọc LinkedIn hay Facebook qua trình duyệt, skill báo điều khoản của
 LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập dữ liệu tự động khi chưa được phép, và tài
-khoản có thể bị hạn chế; người dùng tự quyết. Trên trình duyệt, skill chỉ mở đường dẫn tài khoản của
-chính người dùng, chỉ đọc phần thân bài; không hỏi, nhập hay đọc mật khẩu, cookie hoặc token, không
+khoản có thể bị hạn chế; người dùng tự quyết. Trên trình duyệt với tài khoản cá nhân, skill chỉ mở đường
+dẫn tài khoản của chính người dùng, chỉ đọc phần thân bài; không hỏi, nhập hay đọc mật khẩu, cookie hoặc token, không
 giải captcha, không bấm thích, bình luận, đăng hay gửi, không đổi cài đặt tài khoản; dừng khi gặp màn
 đăng nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Skill không có mã gọi mạng; việc đọc
 trang đi qua công cụ của host.
 
 Hồ sơ giọng thương hiệu học từ bộ quy chuẩn, bài thương hiệu đã đăng (dán hoặc file export của trang)
 và tài liệu nội bộ người dùng chọn đưa, sau khi người dùng xác nhận được nói thay thương hiệu; skill
-không kiểm được thẩm quyền đó. Đường trình duyệt không dùng cho trang thương hiệu. Tài liệu thương hiệu
+không kiểm được thẩm quyền đó. Tài liệu thương hiệu
 có thể do nhiều người viết; agent được chỉ dẫn không ghi tên người viết, nhân viên, khách hàng hay đối tác,
 điều khoản hợp đồng, giá đàm phán, số liệu hay sản phẩm chưa công bố, tên hệ thống nội bộ và tên hay tiêu
 đề tài liệu. Như mọi hồ sơ, không có bộ lọc bằng mã: người dùng đọc toàn bộ dự thảo trước khi lưu. Skill
-không mở link trang thương hiệu; người dùng dán nội dung hoặc gọi tên file export.
+chỉ mở link trang thương hiệu qua đường dưới đây; không có công cụ trình duyệt thì người dùng dán nội dung
+hoặc gọi tên file export.
+
+Từ 0.16.0, hồ sơ thương hiệu có thể đọc trang công khai của thương hiệu qua công cụ trình duyệt host sẵn
+có: fanpage Facebook, trang công ty LinkedIn, hoặc trang danh sách bài trên website hay blog riêng của
+thương hiệu. Skill chỉ mở tối đa ba URL người dùng đưa trong một lượt, cùng một thương hiệu; mỗi URL có một
+câu đồng ý gọi tên thương hiệu và URL, kèm lời khẳng định được nói thay mà skill không kiểm được. Skill từ
+chối trang của đối thủ hay thương hiệu người dùng không được nói thay. Đường đọc cố định: chính trang đó và
+mục bài đăng; với website, các trang bài cùng host dưới tiền tố đường dẫn của trang danh sách, không mở
+trang đăng nhập, liên hệ, tìm kiếm hay URL có chuỗi truy vấn. Skill chỉ đọc thân bài thương hiệu đã đăng;
+bình luận, đánh giá, bài khách đăng, danh sách người theo dõi và tên nhân viên không được mở hay ghi, và chữ
+nào lần đọc trang trả về ngoài thân bài bị bỏ. Skill không đăng nhập, không bấm banner đồng ý hay cookie,
+chỉ bấm “Xem thêm” trong thân bài; dừng khi trang chuyển hướng, không mang tên thương hiệu người dùng nêu,
+hoặc gặp màn đăng nhập, captcha, tường trả phí hay trang chặn. Facebook và LinkedIn có cảnh báo điều khoản
+như trên; website riêng của thương hiệu thì không. Hồ sơ chỉ ghi số bài theo nguồn, không ghi URL.
+
+Fanpage có hạng mục chỉ một người (nghệ sĩ, người của công chúng, nhà sáng tạo) không được đọc như trang
+thương hiệu. Nếu người dùng nói đó là Trang của chính họ, skill báo điều khoản của Facebook (Meta), nói
+rằng nó không kiểm được Trang có phải của người dùng và học giọng người khác là không được phép, rồi hỏi
+xác nhận; chỉ khi người dùng xác nhận mới đọc Trang đó, với cùng đường đọc và giới hạn như trang thương
+hiệu, để dựng hồ sơ cá nhân.
 
 Sau khi học, người dùng có thể chấm vài đoạn mẫu do skill viết theo bốn mức Kém, Trung bình, Khá, Tốt.
 Chỉ khi người dùng lưu hồ sơ hoặc xác nhận cập nhật, hồ sơ mới thêm một dòng `Lịch sử chấm` (dòng này nằm

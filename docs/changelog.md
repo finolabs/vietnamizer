@@ -4,7 +4,25 @@
 
 ## Lịch sử phiên bản
 
-### Chưa phát hành
+### 0.16.0 (14/11/2026)
+
+Spec 031, đọc trang thương hiệu qua trình duyệt: hồ sơ `kind: brand` đọc được trang công khai của thương
+hiệu qua công cụ trình duyệt host sẵn có (fanpage Facebook, trang công ty LinkedIn, trang danh sách bài
+trên website hay blog riêng của thương hiệu), từ tối đa ba URL người dùng đưa trong một lượt, mỗi URL một
+câu đồng ý gọi tên thương hiệu và URL kèm lời khẳng định được nói thay mà skill không kiểm được. Đường đọc
+cố định, chỉ thân bài thương hiệu đã đăng, chỉ được bấm “Xem thêm” trong thân bài; từ chối trang đối thủ;
+dừng khi trang chuyển hướng, không mang tên thương hiệu người dùng nêu, là trang cá nhân, nằm ngoài không
+gian riêng của thương hiệu trên nền tảng dùng chung, hay gặp màn đăng nhập, captcha, tường trả phí, banner
+che nội dung hoặc trang chặn. Facebook và LinkedIn có cảnh báo điều khoản, website riêng thì không. Quy tắc
+nằm ở `references/voice-sources.md` mục 4b; mục 4a giữ đường tài khoản cá nhân. Dạng URL và dấu hiệu trang
+theo quy ước nền tảng, chưa đối chiếu trên trang thật. Substack, Medium, Blogspot và WordPress.com đọc
+qua trang danh sách và đường bài riêng của từng nền tảng; Ghost bản host sẵn không mở. Fanpage của một
+người (nghệ sĩ, người nổi tiếng) không đọc như trang thương hiệu; Trang của chính người dùng học được thành
+hồ sơ cá nhân sau cảnh báo và xác nhận (mục 4c). Constitution lên 2.5.0 (MINOR): ràng buộc “Tuyến hồ
+sơ giọng” thêm nguồn trang thương hiệu, đảo lại quyết định triển khai của spec 030 FR-006; rồi lên 2.6.0
+(MINOR): câu về đường đọc cố định nêu đường bài riêng của Substack, Blogspot và WordPress.com. Thêm ca
+BP01–BP27, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
+lượng.
 
 Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào:
 - Mục 7 của `references/voice-profile.md`: với hồ sơ đã lưu, dòng chấm nằm trong diff từ lý do; khi không
@@ -12,7 +30,7 @@ Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào:
 - Ca VM30: người dùng bác diff thì vẫn trình lại toàn bộ bản sẽ lưu, có dòng chấm, trước câu hỏi lưu.
 - Hợp đồng onboarding: cảnh báo điều khoản LinkedIn và Facebook đứng trước câu xin đồng ý đọc; câu hỏi chủ
   tài khoản hay quyền nói thay thương hiệu nằm trong chính câu đó, như `references/help.md`; lựa chọn trình
-  duyệt chỉ hiện cho giọng cá nhân.
+  duyệt chỉ hiện cho giọng cá nhân (spec 031 ở trên mở thêm cho giọng thương hiệu).
 - Constitution lên 2.4.1: điều khoản file export nêu thêm lời khẳng định được nói thay thương hiệu cho
   export của trang thương hiệu.
 
@@ -88,6 +106,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Constitution lên 2.6.0. Chưa chạy agent trên các ca mới.
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt.
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in.
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn, gói phát hành bỏ `calibration/`, phân phối qua catalog `finolabs/plugins`; giữ 55 pattern, runtime Jev và năm chốt.

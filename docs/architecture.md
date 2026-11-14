@@ -25,7 +25,7 @@ references/style-resolution.md              bộ giải ngữ cảnh, precedence
 references/voice-from-samples.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa
 references/voice-profile.md                     tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên
 references/voice-analysis.md            hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ
-references/voice-sources.md             nguồn mẫu: dán bài, file export, trang của chính người dùng qua trình duyệt
+references/voice-sources.md             nguồn mẫu: dán bài, file export, trang qua trình duyệt (tài khoản cá nhân; trang thương hiệu và Trang Facebook của chính người dùng từ URL họ đưa)
 references/brand-voice.md               dựng hồ sơ giọng thương hiệu từ tài liệu người dùng đưa
 references/help.md                      hướng dẫn một màn hình và bước thiết lập giọng
 calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung (chỉ trong repo, không vào gói)

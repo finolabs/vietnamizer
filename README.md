@@ -40,6 +40,36 @@ có thể điều chỉnh theo mẫu người dùng cung cấp. Khả năng theo
 Dùng như một bước biên tập có kiểm soát trước khi gửi hoặc xuất bản. Đọc lại những chỗ
 đổi xưng hô, cấu trúc và dấu câu; skill không xác minh sự thật trong bài.
 
+## Cài nhanh
+
+Gõ một lệnh trong terminal, theo host bạn dùng, rồi mở session mới:
+
+Claude Code:
+
+```bash
+claude plugin marketplace add finolabs/plugins && claude plugin install vietnamizer@finolabs
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add finolabs/plugins && codex plugin add vietnamizer@finolabs
+```
+
+Antigravity:
+
+```bash
+agy plugin install https://github.com/finolabs/vietnamizer
+```
+
+Agent khác đọc được Agent Skills:
+
+```bash
+npx skills add finolabs/vietnamizer --skill vietnamizer
+```
+
+Chỉ chọn một cách, plugin hoặc skill lẻ. Chi tiết từng host ở [Cài đặt theo nền tảng](#cài-đặt-theo-nền-tảng).
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Trích đầu ra thật trên cùng Codex trong lượt hồi quy **0.12.0/0.12.1** ngày 27/10/2026.
@@ -92,9 +122,78 @@ Vietnamizer luôn tốt hơn prompt thông thường kèm mẫu.
 kiểm soát sửa quá tay. Với yêu cầu theo giọng mẫu, cần đọc lại từng bản sửa.
 Không dùng mức đổi ký tự, độ dài hay token làm điểm chất lượng.
 
-## Cài nhanh
+## Dùng ngay
 
-Bản hiện tại là **0.15.0**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
+1. Nhờ trợ lý AI của bạn cài Vietnamizer từ repo này, hoặc chạy lệnh ở mục [Cài nhanh](#cài-nhanh).
+2. Mở session mới rồi gõ `/vietnamizer:help` (plugin trên Claude Code) hoặc hỏi “Vietnamizer làm được gì?”.
+3. Giao bản nháp như ví dụ dưới; skill đã chạy khi câu trả lời là bản đã biên tập, giữ nguyên dữ kiện và
+   thuật ngữ.
+
+Gọi `Vietnamizer` và giao bản nháp, thể loại, người đọc cùng phần cần bảo toàn. Ví dụ:
+
+```text
+Use Vietnamizer to copyedit the Vietnamese draft below for a personal blog.
+Preserve its meaning, level of certainty, terminology and existing voice.
+Keep quotations and code unchanged. Return only the edited article.
+
+<draft>Paste your draft here.</draft>
+```
+
+Có thể yêu cầu bảng trước/sau và lý do thay đổi. [Prompt theo tình huống và cách trả kết quả](docs/usage.md).
+
+## Cho AI agent: cài và thiết lập
+
+Người dùng đưa link repo này và nhờ bạn cài. Làm theo thứ tự:
+
+1. **Xác định host**: Claude Code, Codex, Antigravity hoặc một agent khác đọc được Agent Skills.
+2. **Hỏi người dùng trước khi cài.** Plugin áp dụng cho mọi dự án của họ. Chỉ cài một trong hai cách, plugin hoặc skill lẻ, vì cài cả hai thì skill sẽ hiện hai lần.
+3. **Kiểm tra bản đã cài**: chạy `claude plugin list` hoặc `codex plugin list`. Nếu `vietnamizer` đã có từ catalog khác (`vietnamizer@vietnamizer` hoặc catalog `Finolabs` cũ), dừng lại và hỏi người dùng; các bước nằm trong [hướng dẫn chuyển](docs/installation.md#codex-plugin).
+4. **Cài** bằng lệnh của host:
+
+   | Host | Lệnh |
+   | --- | --- |
+   | Claude Code | `claude plugin marketplace add finolabs/plugins`, rồi `claude plugin install vietnamizer@finolabs` |
+   | Codex | `codex plugin marketplace add finolabs/plugins`, rồi `codex plugin add vietnamizer@finolabs` |
+   | Antigravity | `agy plugin install https://github.com/finolabs/vietnamizer` |
+   | Agent khác | `npx skills add finolabs/vietnamizer --skill vietnamizer` |
+
+5. **Kiểm tra** `claude plugin list`, `codex plugin list` hoặc `agy plugin list` đã liệt kê `vietnamizer`, rồi báo nguyên văn kết quả cho người dùng, kể cả khi lỗi.
+6. **Bàn giao**: nhắc người dùng mở session mới, rồi giao một bản nháp như ví dụ ở mục [Dùng ngay](#dùng-ngay).
+
+Xong khi host liệt kê `vietnamizer` và người dùng biết phải mở session mới.
+
+## Giữ giọng khi có mẫu
+
+Chỉ gửi mẫu chưa tự bật chuyển giọng. Để điều chỉnh theo mẫu, yêu cầu rõ việc đó và
+cung cấp mẫu/hồ sơ ngay trong tác vụ. Skill có thể đổi cách diễn đạt hoặc cấu trúc từ
+các ý đã có, vẫn phải giữ mệnh đề, điều kiện, mức chắc chắn và vùng bảo toàn.
+
+Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết; chỉ tuyến hồ sơ giọng tùy chọn mới lưu hồ sơ, khi bạn yêu cầu rõ.
+Hồ sơ có thể là giọng cá nhân (mặc định) hoặc giọng thương hiệu, mỗi lần dùng một hồ sơ; học từ bài bạn dán,
+file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt của host, còn giọng thương hiệu học
+từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ bạn đưa, hoặc đọc fanpage, trang công ty LinkedIn hay blog
+của thương hiệu qua trình duyệt từ URL bạn đưa (tối đa ba trang, mỗi trang một câu đồng ý); Trang Facebook của chính bạn (nghệ sĩ, người nổi tiếng) học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Sau khi học, bạn có thể chấm vài đoạn mẫu theo
+bốn mức Kém, Trung bình, Khá, Tốt; số lượt chấm chỉ vào hồ sơ khi bạn lưu, ghi là đánh giá của bạn. Skill
+không tự tính điểm giống giọng. Gõ `/vietnamizer:help` (plugin trên Claude Code) hoặc hỏi “Vietnamizer làm được gì?” để xem
+hướng dẫn và bắt đầu thiết lập giọng.
+[Xem hai chế độ, ví dụ prompt và bảy style card](docs/style-and-voice.md).
+
+## Nền tảng hỗ trợ
+
+Không phụ thuộc hệ điều hành: gói chỉ gồm Markdown, không có mã chạy riêng, nên chạy ở nơi host chạy
+(macOS, Linux hay Windows, tùy host). Script đóng gói trong repo cần Bash và Python 3.
+
+| Host | Cách cài | Ghi chú |
+| --- | --- | --- |
+| Claude Code | Plugin từ catalog `finolabs/plugins` | Có thêm `/vietnamizer:help` |
+| Codex | Plugin từ catalog `finolabs/plugins` | |
+| Antigravity | Plugin từ URL repo | Không có catalog |
+| Claude web, Claude Desktop, Claude Org | Skill lẻ hoặc marketplace | Xem [Cài đặt](docs/installation.md) |
+| Agent khác đọc được Agent Skills | `npx skills add` | |
+
+## Cài đặt theo nền tảng
+
+Bản hiện tại là **0.16.0**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ### Skills CLI
 
@@ -128,55 +227,12 @@ agy plugin install https://github.com/finolabs/vietnamizer
 
 Mở session mới sau khi cài. [Claude web/Desktop, Claude Org, cài thủ công và đóng gói](docs/installation.md).
 
-## Cho AI agent: cài và thiết lập
+## Quyền riêng tư
 
-Người dùng đưa link repo này và nhờ bạn cài. Làm theo thứ tự:
-
-1. **Xác định host**: Claude Code, Codex, Antigravity hoặc một agent khác đọc được Agent Skills.
-2. **Hỏi người dùng trước khi cài.** Plugin áp dụng cho mọi dự án của họ. Chỉ cài một trong hai cách, plugin hoặc skill lẻ, vì cài cả hai thì skill sẽ hiện hai lần.
-3. **Kiểm tra bản đã cài**: chạy `claude plugin list` hoặc `codex plugin list`. Nếu `vietnamizer` đã có từ catalog khác (`vietnamizer@vietnamizer` hoặc catalog `Finolabs` cũ), dừng lại và hỏi người dùng; các bước nằm trong [hướng dẫn chuyển](docs/installation.md#codex-plugin).
-4. **Cài** bằng lệnh của host:
-
-   | Host | Lệnh |
-   | --- | --- |
-   | Claude Code | `claude plugin marketplace add finolabs/plugins`, rồi `claude plugin install vietnamizer@finolabs` |
-   | Codex | `codex plugin marketplace add finolabs/plugins`, rồi `codex plugin add vietnamizer@finolabs` |
-   | Antigravity | `agy plugin install https://github.com/finolabs/vietnamizer` |
-   | Agent khác | `npx skills add finolabs/vietnamizer --skill vietnamizer` |
-
-5. **Kiểm tra** `claude plugin list`, `codex plugin list` hoặc `agy plugin list` đã liệt kê `vietnamizer`, rồi báo nguyên văn kết quả cho người dùng, kể cả khi lỗi.
-6. **Bàn giao**: nhắc người dùng mở session mới, rồi giao một bản nháp như ví dụ ở mục [Dùng ngay](#dùng-ngay).
-
-Xong khi host liệt kê `vietnamizer` và người dùng biết phải mở session mới.
-
-## Dùng ngay
-
-Gọi `Vietnamizer` và giao bản nháp, thể loại, người đọc cùng phần cần bảo toàn. Ví dụ:
-
-```text
-Use Vietnamizer to copyedit the Vietnamese draft below for a personal blog.
-Preserve its meaning, level of certainty, terminology and existing voice.
-Keep quotations and code unchanged. Return only the edited article.
-
-<draft>Paste your draft here.</draft>
-```
-
-Có thể yêu cầu bảng trước/sau và lý do thay đổi. [Prompt theo tình huống và cách trả kết quả](docs/usage.md).
-
-## Giữ giọng khi có mẫu
-
-Chỉ gửi mẫu chưa tự bật chuyển giọng. Để điều chỉnh theo mẫu, yêu cầu rõ việc đó và
-cung cấp mẫu/hồ sơ ngay trong tác vụ. Skill có thể đổi cách diễn đạt hoặc cấu trúc từ
-các ý đã có, vẫn phải giữ mệnh đề, điều kiện, mức chắc chắn và vùng bảo toàn.
-
-Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết; chỉ tuyến hồ sơ giọng tùy chọn mới lưu hồ sơ, khi bạn yêu cầu rõ.
-Hồ sơ có thể là giọng cá nhân (mặc định) hoặc giọng thương hiệu, mỗi lần dùng một hồ sơ; học từ bài bạn dán,
-file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt của host, còn giọng thương hiệu học
-từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ bạn đưa. Sau khi học, bạn có thể chấm vài đoạn mẫu theo
-bốn mức Kém, Trung bình, Khá, Tốt; số lượt chấm chỉ vào hồ sơ khi bạn lưu, ghi là đánh giá của bạn. Skill
-không tự tính điểm giống giọng. Gõ `/vietnamizer:help` (plugin trên Claude Code) hoặc hỏi “Vietnamizer làm được gì?” để xem
-hướng dẫn và bắt đầu thiết lập giọng.
-[Xem hai chế độ, ví dụ prompt và bảy style card](docs/style-and-voice.md).
+Skill không có mã gọi mạng và không đọc API key. Văn bản bạn giao đi qua host bạn đang dùng, theo chính
+sách của host đó. Hồ sơ giọng chỉ được lưu khi bạn yêu cầu rõ, tại nơi bạn chọn; đường đọc trang qua
+trình duyệt chỉ chạy khi host có công cụ trình duyệt và sau câu đồng ý của bạn. Không muốn thì không dùng
+tuyến hồ sơ giọng, hoặc chọn dán bài. [Chi tiết trong PRIVACY.md](PRIVACY.md).
 
 ## Phạm vi
 
@@ -213,10 +269,10 @@ hướng dẫn và bắt đầu thiết lập giọng.
 
 ## Lịch sử phiên bản
 
+- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Constitution lên 2.6.0. Chưa chạy agent trên các ca mới. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn (chỉ lưu khi bạn yêu cầu rõ); gói phát hành bỏ `calibration/`; phân phối qua catalog `finolabs/plugins`. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md)
-- **0.13.3** — Core gọn, đọc tài liệu theo tác vụ; review nghĩa và cách viết riêng, kiểm đúng candidate hiện tại. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md).
 
 ## Đóng góp
 

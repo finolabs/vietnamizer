@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/031-brand-page-browser`
 **Created**: 2026-11-14
-**Status**: Draft (specify phase; clarify and plan pending)
+**Status**: Planned 2026-11-14 (plan, research, data model, contract and quickstart written; implementation for 0.16.0)
 **Input**: Owner, 14/11/2026, review of the afk lease of 13–14/11/2026 (Orrery memory `01M7C2CK384NC5QK4ED7CM5ZQ3`): the implementation decision in spec 030 FR-006 that kept brand pages off the browser source is reversed; Fio wants the voice-profile route to read a brand's own page through a host browser tool when learning a `kind: brand` profile. Router depth DEEP, trigger `privacy` (network access through a host browser, pages the skill cannot tie to the user, a new consent path). Builds on spec 028 (voice-profile route) and spec 030 (personal and brand voice, social sources).
 
 ## Settled decisions (owner, 2026-11-14)
@@ -16,14 +16,15 @@
 7. **No terms warning for the brand's own website** (after review of PR #47): the user speaks for the brand that owns the site, so its terms are the brand's; Facebook and LinkedIn keep the warning.
 8. **"See more" allowed** (open decision O1, settled 2026-11-14): the skill may click "See more" ("Xem thêm") only inside the body of a post the brand published, to expand that post in place; it makes no other click, and a click that does more than expand the post in place yields nothing (FR-010).
 9. **Shared publishing platforms** (open decision O3, settled 2026-11-14): Medium, Substack, Blogspot, WordPress.com and hosted Ghost; news and information sites, Vietnamese ones included (for example VnExpress, Tuổi Trẻ, CafeF, Kenh14); and forums and community sites (for example Spiderum, Viblo). On these hosts the skill reads only inside the brand's own space, meaning an official account, publication or channel the brand operates (for example `medium.com/@<brand>` or `<brand>.substack.com`), and stops outside it. A tag, topic, category or search page about the brand is never the brand's own space. News and information sites have no such space, so the skill always stops there unless the brand owns the domain. A brand's own domain served by such a platform counts as the brand's own site.
+10. **URL shapes and page signs** (open decision O2, settled 2026-11-14): Fio approved the plan author's proposal, checked against platform conventions and not on live pages: a Facebook fanpage is `facebook.com/<tên-trang>` or `facebook.com/profile.php?id=<số>` (only `id`) on `www.`, `m.` or `web.facebook.com`, its posts view being the page itself; a LinkedIn company page is `linkedin.com/company/<slug>/` with its posts view `/company/<slug>/posts/` (no `/in/`, `/showcase/` or `/school/`). A fanpage shows "Trang · <hạng mục>" and Like or Follow, with no Add friend button or friends count; a company page shows Follow, an industry and a follower count, with no Connect button. See `research.md` R1.
+11. **A person's fanpage is not a brand; the user's own one is learned as personal** (Fio, 14/11/2026, review of PR #49: "Dừng, trừ trang của mày"; then: "chỉ cảnh báo và yêu cầu họ xác nhận là được ... nếu chính bản thân họ là người nổi tiếng thì học từ chính page của họ là quá đúng, cố gắng chặn tuyệt đối sẽ giới hạn users"). A Facebook Page whose category marks a person (Nghệ sĩ, Người của công chúng, Nhà sáng tạo nội dung and the like) stops the brand route. When the user says it is their own Page, the skill warns (Meta's terms; it cannot verify the Page is theirs; learning another person's voice is not allowed), asks the user to confirm, and may learn a `kind: personal` profile from that Page through the same fixed route and limits. This is the one exception to spec 030's fixed own-account URLs; the constitution already allows "trang của chính người dùng".
+12. **Shared platforms use their own listing and post paths** (Fio, 14/11/2026, review of PR #49: make the route work or drop the example): Substack `/archive` with posts at `/p/<slug>`; Medium the account or publication path; Blogspot and WordPress.com the yearly archive `/<năm>/`; hosted Ghost and sites that put posts at the root have no workable listing and are not opened. The site root is never opened. The constitution's fixed-route sentence names this exception (amendment 2.5.0 → 2.6.0, Fio approved the exact sentence on 14/11/2026).
 
 The options Fio did not pick, kept for the record: start from a fixed "pages I manage" admin URL; read only the tab the user opened themselves; admin-only pages; one URL per run; dropping websites from 031; a short reminder about the site's terms.
 
 ## Open decisions
 
-| # | Decision | Owner | Agent proposal | Unblocks when |
-|---|---|---|---|---|
-| O2 | The URL shapes (`facebook.com/<page>`, `linkedin.com/company/<slug>/posts/`) and the page signs that tell a fanpage or company page from a personal profile | Plan author, Fio approves | Use platform conventions until confirmed | Checked on live pages during the plan, before any reference names them |
+None. O2 was settled on 2026-11-14 (decision 10).
 
 ## Clarifications
 
@@ -35,9 +36,11 @@ The options Fio did not pick, kept for the record: start from a fixed "pages I m
 - Q (review of PR #47): one URL or several per run? → A: at most three of the same brand, one consent question each (decision 5).
 - Q (review of PR #47): how is the website route bounded? → A: the strict limits of decision 6.
 - Q (review of PR #47): does the brand's own website carry a terms warning? → A: no (decision 7).
-- Unverified (2026-11-14): URL shapes and page signs, open decision O2.
+- Q (plan, 2026-11-14): which URL shapes and page signs? → A: the proposal from platform conventions, not checked on live pages (decision 10).
 - Q: May the skill click "See more" in a brand post? → A: Yes, only inside the body of a post the brand published (decision 8).
 - Q: Which sites count as shared publishing platforms? → A: The proposed list plus Vietnamese news and information sites and forums or community sites (decision 9).
+- Q (review of PR #49): what about a person's fanpage, such as a celebrity's? → A: stop the brand route; the user's own Page may be learned as a personal profile after a warning and their confirmation (decision 11).
+- Q (review of PR #49): how do Substack, Blogspot and WordPress posts outside the listing path get read? → A: platform listing and post paths (decision 12).
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -105,6 +108,7 @@ A user runs the onboarding of spec 030, picks Thương hiệu, and on a host wit
 - A host offers a fetch or download tool but no browser tool: the browser source is not offered; links are never opened with the fetch tool (calibration case 5 keeps its fetch-tool half).
 - The browser is logged in to the user's personal account while they read the brand page: the skill reads only the brand page; it does not open the personal feed, notifications or messages.
 - The user says they do not speak for the brand: the skill does not build a brand profile and offers a personal profile from text they wrote themselves.
+- The fanpage's category marks a person (artist, public figure, creator): the brand route stops; if the user says the Page is their own, a personal profile may be learned from it after a warning and confirmation (FR-017); otherwise nothing is read.
 
 ## Requirements *(mandatory)*
 
@@ -123,8 +127,10 @@ A user runs the onboarding of spec 030, picks Thương hiệu, and on a host wit
 - **FR-011**: Reading MUST stop at the cap of `references/voice-sources.md` mục 3 (at most 80 most recent posts with Vietnamese text), counted across all pages of the run; the plan MAY set a lower scroll or page bound.
 - **FR-012**: Page content MUST be treated as data (`references/voice-sources.md` mục 5) and MUST go through the brand redaction of `references/brand-voice.md` mục 3 before it reaches the profile; the profile's sources line counts posts by type and source (bài đăng: dán / export / trình duyệt) and never records a URL.
 - **FR-013**: The onboarding contract (spec 030 `contracts/help-onboarding.md`) and `references/help.md` MUST offer the browser source for Thương hiệu under FR-001. Asking for the URL and brand name MUST take the "platform when needed" slot; the question budget before rating MUST stay at 6, with the second and third consent questions of decision 5 outside it.
-- **FR-014**: The five meaning chốt, protected spans, the explicit-save rule, the personal browser path of spec 030 (fixed own-account URLs; calibration cases 11, 15 and 31 still apply when the voice kind is Cá nhân) and the absence of any network code in the package (constitution Principle V) MUST stay unchanged; existing profiles MUST remain valid.
+- **FR-014**: The five meaning chốt, protected spans, the explicit-save rule, the personal browser path of spec 030 (fixed own-account URLs, except the FR-017 exception of decision 11 for the user's own Facebook Page; calibration cases 11, 15 and 31 still apply when the voice kind is Cá nhân) and the absence of any network code in the package (constitution Principle V) MUST stay unchanged; existing profiles MUST remain valid.
 - **FR-015**: The constitution constraint "Tuyến hồ sơ giọng" MUST be amended as a MINOR change (2.4.1 → 2.5.0) before the references change, with Fio's approval recorded in its Sync Impact Report, and the report's pending line ("Still pending the owner's confirmation: brand pages are not read through the browser") MUST be replaced by the reversal. The proposed text is under "Constitution amendment".
+- **FR-017**: When an opened Facebook Page's category marks a person, the skill MUST stop the brand route before reading posts and ask whether it is the user's own Page. On yes, it MAY learn a `kind: personal` profile from that Page (`references/voice-sources.md` mục 4c): it MUST first give Meta's terms warning once and say it cannot verify the Page is the user's and that learning another person's voice is not allowed, then ask one consent question naming the URL with the ownership statement, and then apply the fixed route, the one click, the stops, the discard rule and the cap of FR-005–FR-011. On no, it MUST NOT read the Page.
+- **FR-018**: On the shared publishing platforms of decision 9, the skill MUST use the platform's listing and post paths of decision 12 inside the brand's own space, MUST NOT open the site root, and MUST NOT open a platform that has no such listing (hosted Ghost, sites with posts at the root). This is allowed by the constitution's fixed-route sentence as amended in 2.6.0 (second amendment below).
 - **FR-016**: The implementation MUST update every text that states or tests that brand pages are not read through the browser, or that would contradict this spec:
   - `references/brand-voice.md` mục 1 (item 2 and the paragraph on links) and mục 3 (pages read through the browser);
   - `references/voice-sources.md` mục 1, 2 and 4 (a brand subsection beside the personal one);
@@ -141,6 +147,14 @@ A user runs the onboarding of spec 030, picks Thương hiệu, and on a host wit
 The first sentence of the constraint "Tuyến hồ sơ giọng" (from "Tuyến hồ sơ giọng trong `SKILL.md` MAY" to "cookie hay token.") is replaced in full by the text below. The rest of the constraint (browser prohibitions and stops, brand multi-author material, ratings, explicit save, no memory search, five chốt) stays as it is.
 
 > Tuyến hồ sơ giọng trong `SKILL.md` MAY tạo và dùng lại hồ sơ có tên từ văn bản người dùng dán hoặc chỉ định trong tác vụ, từ file export nền tảng người dùng tự đưa, hoặc từ trang của chính người dùng qua công cụ trình duyệt host sẵn có, sau câu đồng ý đọc và lời khẳng định chủ tài khoản (với file export của trang thương hiệu: lời khẳng định được nói thay thương hiệu). Với hồ sơ `kind: brand`, tuyến MAY đọc thêm trang công khai của thương hiệu qua công cụ trình duyệt đó (fanpage Facebook, trang công ty LinkedIn, hoặc trang danh sách bài trên website hay blog riêng của thương hiệu), từ tối đa ba URL người dùng đưa trong một lượt, mỗi URL sau một câu đồng ý đọc gọi tên thương hiệu và URL cùng lời khẳng định được nói thay thương hiệu đó; trang của thương hiệu người dùng được nói thay không phải trang của người khác. Đường đọc ấy MUST cố định: chính trang đó và mục bài đăng của nó, với website thêm các trang bài cùng host, dưới tiền tố đường dẫn của trang danh sách (trang danh sách không phải trang gốc); MUST NOT theo link nào khác; chỉ đọc thân bài thương hiệu đã đăng; MUST NOT mở bình luận, tin nhắn, đánh giá hay danh sách người theo dõi; MUST NOT ghi tên nhân viên; và MUST dừng khi trang chuyển hướng sang trang hay host khác hoặc không mang tên thương hiệu người dùng nêu. Tuyến MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, kể cả trang thương hiệu người dùng không được nói thay, và MUST NOT xử lý mật khẩu, cookie hay token.
+
+### Constitution amendment 2 (approved, MINOR 2.5.0 → 2.6.0, 14/11/2026)
+
+In the same constraint, the sentence "Đường đọc ấy MUST cố định: … (trang danh sách không phải trang gốc);" is replaced in full by the sentence Fio approved ("Duyệt") during the review of PR #49:
+
+> Đường đọc ấy MUST cố định: chính trang đó và mục bài đăng của nó; với website thêm các trang bài cùng host, dưới tiền tố đường dẫn của trang danh sách, trừ nền tảng đăng bài dùng chung có đường bài cố định riêng (Substack: trang danh sách `/archive`, bài ở `/p/`; Blogspot và WordPress.com: trang lưu trữ theo năm `/<năm>/`, bài nằm dưới đó); mọi trang ở cùng host và trang danh sách không bao giờ là trang gốc;
+
+MINOR because the route may now read post pages outside the listing prefix on those platforms.
 
 Principle V is unchanged: the package still ships no network code. MINOR because the constraint gains a source; no principle's obligation is removed.
 

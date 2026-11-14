@@ -122,7 +122,7 @@ language: vi
 updated: <YYYY-MM-DD>
 ---
 
-> Dựa trên khoảng <N> mẫu (<số mẫu xấp xỉ theo từng kênh và nguồn: dán / export / trình duyệt; hồ sơ thương hiệu: quy chuẩn / bài đăng / nội bộ>); số đếm xấp xỉ · cập nhật <ngày>.
+> Dựa trên khoảng <N> mẫu (<số mẫu xấp xỉ theo từng kênh và nguồn: dán / export / trình duyệt; hồ sơ thương hiệu: quy chuẩn / bài đăng (dán / export / trình duyệt) / nội bộ; không ghi URL>); số đếm xấp xỉ · cập nhật <ngày>.
 
 <!-- Chỉ hồ sơ kind: brand. Hồ sơ cá nhân bỏ mục này. -->
 ## Quy tắc thương hiệu

@@ -64,7 +64,7 @@ Chỉ review vẫn đọc năm chốt trước nhận xét; nếu review cả b�
 | Sửa một cụm/câu, rà cục bộ | Chỉ catalog đúng nghi vấn; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
 | Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
 | Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
-| Học, tạo, cập nhật, lưu, chấm hoặc áp dụng hồ sơ giọng cá nhân hay thương hiệu theo yêu cầu rõ | `references/voice-profile.md`; nguồn mạng xã hội thêm `references/voice-sources.md`; giọng thương hiệu thêm `references/brand-voice.md`; khi áp dụng, đọc thêm `references/voice-from-samples.md` | Không nạp tuyến này cho yêu cầu biên tập thông thường |
+| Học, tạo, cập nhật, lưu, chấm hoặc áp dụng hồ sơ giọng cá nhân hay thương hiệu theo yêu cầu rõ | `references/voice-profile.md`; nguồn mạng xã hội hay trang thương hiệu qua trình duyệt thêm `references/voice-sources.md`; giọng thương hiệu thêm `references/brand-voice.md`; khi áp dụng, đọc thêm `references/voice-from-samples.md` | Không nạp tuyến này cho yêu cầu biên tập thông thường |
 | Hỏi Vietnamizer làm được gì, “bắt đầu dùng Vietnamizer”, “thiết lập giọng” (“sửa giúp”, “viết hướng dẫn”, “bắt đầu sửa bài” vẫn là biên tập hay viết) | `references/help.md` | Không đọc file của người dùng |
 | Pha chức năng/mâu thuẫn | Mới đọc `references/style-resolution.md` | Giữ nguyên khi lựa chọn đã rõ |
 
