@@ -5,7 +5,7 @@
 ## Cài nhanh
 
 Tên mới từ bản **0.9.7**: Vietnamizer, định danh `vietnamizer` (trước đây là
-`vi-humanizer`). Bản hiện tại là **0.15.0**, giữ nghĩa trước rồi chọn nét giọng theo chức năng từng phần; câu hỏi, đề mục, đại từ và danh sách được chọn theo việc chúng giúp người đọc làm gì. Các chốt giữ ý định, đối tượng lược, nhịp dấu câu và vùng bảo toàn vẫn áp dụng. Phát hành trên GitHub không có nghĩa là Directory đã chấp thuận.
+`vi-humanizer`). Bản hiện tại là **0.16.0**, giữ nghĩa trước rồi chọn nét giọng theo chức năng từng phần; câu hỏi, đề mục, đại từ và danh sách được chọn theo việc chúng giúp người đọc làm gì. Các chốt giữ ý định, đối tượng lược, nhịp dấu câu và vùng bảo toàn vẫn áp dụng. Phát hành trên GitHub không có nghĩa là Directory đã chấp thuận.
 Asset của các release trước 0.9.7 vẫn mang tên
 `vi-humanizer.*` và chứa định danh cũ.
 Xem [hướng dẫn chuyển tên](../docs/rename-vietnamizer-2026-10-03.md).
