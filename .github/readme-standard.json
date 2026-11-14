@@ -1,9 +1,12 @@
 {
   "sections": {
     "what-you-get": "Vietnamizer hữu ích ở đâu\\?",
-    "install": "Cài nhanh",
+    "install-at-a-glance": "Cài nhanh",
     "start-here": "Dùng ngay",
     "for-ai-agents": "Cho AI agent: cài và thiết lập",
+    "supported-platforms": "Nền tảng hỗ trợ",
+    "install": "Cài đặt theo nền tảng",
+    "privacy": "Quyền riêng tư",
     "contributing": "Đóng góp",
     "license": "Giấy phép"
   },

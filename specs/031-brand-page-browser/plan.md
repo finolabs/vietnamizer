@@ -30,6 +30,7 @@ Reverse the spec 030 FR-006 implementation decision: a `kind: brand` profile may
 | IV. Labelled evidence | Brand pages feed one user's profile only; nothing enters `calibration/LOG.md`. Pass. |
 | V. Self-contained Markdown | No build, network call, secret or runner in the package; the brand path uses a host browser tool and the route works without it (paste and export first). Pass. |
 | Package constraint "Tuyến hồ sơ giọng" | Version 2.4.1 forbade reading another party's page and kept the browser to the user's own account. **Gate met**: MINOR amendment 2.4.1 → 2.5.0 applied verbatim from the spec's "Constitution amendment" text, Fio's approval of 14/11/2026 recorded in the Sync Impact Report, pending line replaced by the reversal (commit `4569441`, before any reference change; FR-015). |
+| Personal Page route (decision 11) | `references/voice-sources.md` mục 4c reads a Facebook Page named for the user for a `kind: personal` profile. The constraint already allows "trang của chính người dùng ... sau câu đồng ý đọc và lời khẳng định chủ tài khoản"; no amendment. Only spec 030's fixed own-account URL rule gets an exception (FR-007 note). Pass. |
 | Governance | The amendment keeps "MUST NOT đọc trang của người khác, kể cả trang thương hiệu người dùng không được nói thay"; FR-007 (competitor decline) implements it. Pass. |
 
 Post-design re-check: pass; residual risks below.

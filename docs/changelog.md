@@ -15,9 +15,12 @@ dừng khi trang chuyển hướng, không mang tên thương hiệu người d�
 gian riêng của thương hiệu trên nền tảng dùng chung, hay gặp màn đăng nhập, captcha, tường trả phí, banner
 che nội dung hoặc trang chặn. Facebook và LinkedIn có cảnh báo điều khoản, website riêng thì không. Quy tắc
 nằm ở `references/voice-sources.md` mục 4b; mục 4a giữ đường tài khoản cá nhân. Dạng URL và dấu hiệu trang
-theo quy ước nền tảng, chưa đối chiếu trên trang thật. Constitution lên 2.5.0 (MINOR): ràng buộc “Tuyến hồ
+theo quy ước nền tảng, chưa đối chiếu trên trang thật. Substack, Medium, Blogspot và WordPress.com đọc
+qua trang danh sách và đường bài riêng của từng nền tảng; Ghost bản host sẵn không mở. Fanpage của một
+người (nghệ sĩ, người nổi tiếng) không đọc như trang thương hiệu; Trang của chính người dùng học được thành
+hồ sơ cá nhân sau cảnh báo và xác nhận (mục 4c). Constitution lên 2.5.0 (MINOR): ràng buộc “Tuyến hồ
 sơ giọng” thêm nguồn trang thương hiệu, đảo lại quyết định triển khai của spec 030 FR-006. Thêm ca
-BP01–BP21, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
+BP01–BP27, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
 lượng.
 
 Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào:

@@ -60,8 +60,16 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 
 - [x] T018 `uptime`, then `tests.test_skill_contract`, `tests.test_package_security`, `tests.test_distribution` (separate commands), `python3 -B scripts/validate-package.py`, `claude plugin validate .`
 - [x] T019 `security-audit` on the change (new trust boundary: pages from URLs the user gives)
-- [ ] T020 Open the PR with `<!-- fnl-router depth=DEEP trigger=privacy -->`; fresh-context `fnl-reviewer` and `fnl-security-reviewer`; post both with `review-gate`'s `post_review.py`; `merge_check.py --repo finolabs/vietnamizer <PR>`
-- [ ] T021 Build archives in `dist/` and list their SHA-256 in `.finolabs/release-0.16.0.md`; no merge, tag, release or catalog pin without Fio's go
+- [x] T020 Open the PR with `<!-- fnl-router depth=DEEP trigger=privacy -->`; fresh-context `fnl-reviewer` and `fnl-security-reviewer`; post both with `review-gate`'s `post_review.py`; `merge_check.py --repo finolabs/vietnamizer <PR>`
+- [x] T021 Build archives in `dist/` and list their SHA-256 in `.finolabs/release-0.16.0.md`; no merge, tag, release or catalog pin without Fio's go
+
+## Phase 10: Owner review of PR #49 (Fio, 14/11/2026, "Sửa trước")
+
+- [x] T022 Person's fanpage: stop the brand route; the user's own Page learned as a personal profile after a warning and confirmation (decision 11, FR-017, `references/voice-sources.md` mục 4c, BP22–BP25, guards)
+- [x] T023 Shared platforms: Substack `/archive` → `/p/`, Medium account or publication path, Blogspot and WordPress.com yearly archive; hosted Ghost not opened (decision 12, FR-018, BP26)
+- [x] T024 Facebook host move keeps the query string; `profile.php?id=` to the page name is not a redirect; contract and data model follow the tightened URL shapes (BP27)
+- [x] T025 README to the standard's section order (install at a glance, supported platforms, install, privacy) with `.github/readme-standard.json` mapping; `readme_check.py` clean; product docs reviewed against 0.16.0
+- [x] T026 Release notes through Vietnamizer; archives rebuilt from the new head; SHA-256 table updated; checks rerun; both re-reviews posted; `merge_check.py`
 
 ## Dependencies
 
