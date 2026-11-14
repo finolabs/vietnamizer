@@ -107,6 +107,9 @@ blog.` Có thể xin thêm bảng trước/sau và lý do từng chỗ sửa.
 
 ## Thiết lập giọng của bạn
 
+Phần này là tùy chọn. Chưa có hồ sơ giọng thì Vietnamizer vẫn biên tập như ở mục [Dùng ngay](#dùng-ngay),
+và bạn có thể dựng hồ sơ lúc nào cũng được.
+
 Mặc định Vietnamizer giữ giọng sẵn có của bài. Gửi kèm mẫu cũng chưa đổi giọng, trừ khi bạn nói rõ là
 muốn viết theo mẫu. Còn muốn skill nhớ giọng qua nhiều lần dùng thì bạn dựng một hồ sơ giọng. Chỉ việc mở
 đầu bằng một trong các câu sau là được:
