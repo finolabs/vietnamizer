@@ -5,7 +5,7 @@
 ## Cài nhanh
 
 Mỗi agent có một đường cài riêng. Bạn chỉ cần tìm đúng mục cho công cụ mình đang dùng ở bên dưới.
-Cài xong là biên tập được ngay, không cần thiết lập gì thêm. Bản hiện tại là **0.16.0**.
+Cài xong là biên tập được ngay, không cần thiết lập gì thêm. Bản hiện tại là **0.16.1**.
 
 Catalog Finolabs và bản phát hành trên GitHub không phải chứng nhận hay chấp thuận của OpenAI hoặc
 Anthropic. Vietnamizer chưa được duyệt vào directory của Anthropic.
