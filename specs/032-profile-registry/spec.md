@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/032-profile-registry`
 **Created**: 2026-11-14
-**Status**: Draft; constitution amendment awaiting the owner's approval of the exact text
+**Status**: Implemented on `spec/032-profile-registry` (constitution 2.7.0 approved by Fio 14/11/2026); cases PR01–PR16 not yet agent-run; release 0.16.0 pending the owner's go
 **Input**: Owner, 14/11/2026, hands-on test of the unreleased 0.16.0 through the local build `vietnamizer@vietnamizer-dev` (findings F12 and F13 of the test session). Relayed verbatim: "1. Về nơi lưu, đồng ý kiến nghị trên của mày. 2. Về tìm đọc lại, để biên tập theo hồ sơ thì skill phải hỗ trợ kiểu `/vietnamizer cá nhân` hoặc `/vietnamizer personal` hoặc `/vietnamizer <tên profile>` và agent sẽ tự tìm đến chỗ lưu, vì users không thể nào nhớ được path lưu." Router depth DEEP, trigger `privacy`: this reverses shipped rules that forbid listing, searching or auto-loading profiles in later sessions. Builds on spec 028 (voice-profile route) and spec 030 (personal and brand voice).
 
 ## Problem
