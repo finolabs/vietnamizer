@@ -3,7 +3,7 @@
 ## 1. Chọn đúng tuyến (FR-001, FR-020)
 
 Chỉ mở tuyến này khi người dùng yêu cầu học, xây dựng, cập nhật hoặc áp dụng hồ sơ giọng
-viết cá nhân, hoặc dựng, cập nhật hay áp dụng một hồ sơ thương hiệu họ nêu tên. Yêu cầu lưu hồ sơ đã được xem
+viết cá nhân, hoặc dựng, cập nhật hay áp dụng một hồ sơ thương hiệu họ gọi bằng tên. Yêu cầu lưu hồ sơ đã được xem
 lại đi tiếp ở mục 4. Không tự mở tuyến vì một
 yêu cầu sửa bài thông thường hoặc vì tác vụ có mẫu giọng; giữ tuyến do `SKILL.md` chọn.
 Chỉ nạp hướng dẫn phân tích khi xây dựng hồ sơ; dùng lại hồ sơ không cần phân tích lại mẫu.
@@ -20,13 +20,14 @@ không coi việc có hồ sơ là điều kiện để sửa.
 Hồ sơ có hai loại, ghi ở trường `kind` của đầu hồ sơ: `personal` (giọng của chính người dùng) và
 `brand` (giọng một thương hiệu người dùng được nói thay). Hồ sơ không có `kind` là hồ sơ cá nhân.
 Người dùng không nêu giọng thì dùng giọng cá nhân: giọng hiện có của bản nháp, hoặc hồ sơ cá nhân họ
-nêu tên. Chỉ áp hồ sơ thương hiệu khi người dùng nêu tên nó trong yêu cầu hiện tại; hồ sơ thương hiệu
+gọi bằng tên. Chỉ áp hồ sơ thương hiệu khi người dùng gọi đúng tên hồ sơ đó để áp dụng trong yêu cầu hiện tại;
+bài chỉ nhắc tới tên thương hiệu thì chưa phải là gọi hồ sơ; hồ sơ thương hiệu
 được gọi cho một lời rõ là riêng tư (tin nhắn riêng, thư cho người thân) thì hỏi xác nhận trước.
 
 Dựng hoặc cập nhật hồ sơ thương hiệu thì đọc thêm `references/brand-voice.md`: tài liệu nhận được, lời
 xác nhận được nói thay thương hiệu, cách tách quy tắc khỏi nét quan sát và phần phải lược.
 
-Mỗi lần dùng chỉ áp một hồ sơ. Yêu cầu nêu tên hai hồ sơ trở lên thì hỏi người dùng chọn một rồi mới
+Mỗi lần dùng chỉ áp một hồ sơ. Yêu cầu gọi từ hai hồ sơ trở lên thì hỏi người dùng chọn một rồi mới
 sửa; không trộn nét của hai hồ sơ vào cùng một bài. Khi đã áp hồ sơ, nói ngắn trong câu trả lời đã
 dùng hồ sơ nào.
 
@@ -112,7 +113,7 @@ riêng, không phải bản sao tạm của mẫu.
 Chỉ lưu khi người dùng yêu cầu rõ ràng sau khi đã thấy toàn bộ hồ sơ. Đồng ý với nội dung
 không tự thành yêu cầu lưu. Không tự lưu cuối tác vụ, không lưu như tác dụng phụ của sửa
 bài và không tạo chỉ dẫn tự nạp hồ sơ ở phiên sau. Sổ hồ sơ ở cuối mục này là dữ liệu để tìm lại hồ
-sơ khi người dùng nêu tên, không phải chỉ dẫn tự nạp.
+sơ khi người dùng gọi hồ sơ bằng tên, không phải chỉ dẫn tự nạp.
 
 Xác định khả năng lưu từ danh sách công cụ và lệnh mà chính agent đang thấy; tên công cụ đã khai
 báo nhưng chưa nạp schema cũng tính là thấy (nạp schema khi người dùng chọn). Người dùng luôn có

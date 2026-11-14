@@ -150,7 +150,10 @@ class SkillContractTest(unittest.TestCase):
         terms = read("references/terms-and-lead-ins.md")
         self.assertIn("### V19. Chêm tiếng Anh hoặc từ nghề không hợp người đọc hoặc lĩnh vực", terms)
         self.assertIn("Giữ từ nghề khi người đọc là người trong nghề", terms)
-        self.assertIn("giữ ngữ nghĩa và giọng văn người viết", read("references/missing-words.md"))
+        missing = read("references/missing-words.md")
+        self.assertIn("*nghĩa* và *giọng* nên thành *ngữ nghĩa* và *giọng văn*", missing)
+        self.assertIn("chỉ sửa chỗ này khi không làm đổi giọng", missing)
+        self.assertIn("*\"Bản dịch giữ nghĩa của nguyên tác.\"*", missing)
         shipped = ["SKILL.md", "README.md", "PRIVACY.md", "docs/usage.md", "docs/style-and-voice.md", "docs/patterns.md"]
         shipped += [p.relative_to(ROOT).as_posix() for d in ("references", "profiles", ".plugin-skills")
                     for p in (ROOT / d).rglob("*.md") if p.name != "sentence-structure.md"]
@@ -177,7 +180,8 @@ class SkillContractTest(unittest.TestCase):
             "Hồ sơ không có `kind` là hồ sơ cá nhân",
             "Mỗi lần dùng chỉ áp một hồ sơ",
             "hỏi người dùng chọn một",
-            "áp hồ sơ thương hiệu khi người dùng nêu tên nó trong yêu cầu hiện tại",
+            "áp hồ sơ thương hiệu khi người dùng gọi đúng tên hồ sơ đó để áp dụng trong yêu cầu hiện tại",
+            "bài chỉ nhắc tới tên thương hiệu thì chưa phải là gọi hồ sơ",
             "nói ngắn trong câu trả lời đã dùng hồ sơ nào",
             "hồ sơ thương hiệu được gọi cho một lời rõ là riêng tư (tin nhắn riêng, thư cho người thân) thì hỏi xác nhận trước",
         ):

@@ -102,7 +102,7 @@ cứ lúc nào; xóa sổ không xóa hồ sơ.
 
 Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud),
 người dùng có thể lưu bản gọn của hồ sơ, khoảng 1.200 ký tự, vào bộ nhớ của chính Chat đó. Bản gọn mở
-đầu bằng câu nói chỉ dùng khi người dùng nêu tên hồ sơ, và không chứa trích đoạn bài viết. Trước khi ghi,
+đầu bằng câu nói chỉ dùng khi người dùng gọi hồ sơ đó bằng tên với Vietnamizer, và không chứa trích đoạn bài viết. Trước khi ghi,
 skill trình đúng văn bản sẽ ghi, báo rằng bộ nhớ của Chat được nạp vào mọi cuộc trò chuyện, gợi ý lưu
 trong một Project để thu hẹp phạm vi, và chỉ ghi khi người dùng đồng ý. Bộ nhớ ấy do nhà cung cấp Chat
 lưu theo chính sách của họ; người dùng xem, sửa hoặc xóa bản gọn trong phần cài đặt bộ nhớ. Chat có thể viết lại mục nhớ

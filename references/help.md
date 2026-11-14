@@ -12,7 +12,7 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
 
 1. **Biên tập và viết.** Sửa bản nháp, bản dịch hay bài AI còn gượng; giữ nghĩa và giọng hiện có. Viết
    mới từ ý hoặc dàn ý. Ví dụ: “Sửa giúp email này cho tự nhiên hơn.”
-2. **Chọn giọng.** Mặc định giữ giọng của chính người viết. Có thể nêu tên một hồ sơ giọng cá nhân
+2. **Chọn giọng.** Mặc định giữ giọng của chính người viết. Có thể gọi bằng tên một hồ sơ giọng cá nhân
    hoặc một hồ sơ giọng thương hiệu; mỗi lần chỉ dùng một hồ sơ. Gọi lại hồ sơ đã lưu bằng
    `/vietnamizer:vietnamizer <tên>` (Claude Code cài qua plugin; cài skill riêng thì `/vietnamizer <tên>`),
    `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”; cùng lệnh ấy với `cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Sau mỗi lần lưu, skill
