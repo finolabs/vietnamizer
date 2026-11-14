@@ -6,11 +6,15 @@
 
 ### Chưa phát hành
 
-Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào: mục 7 của `references/voice-profile.md` nói rõ
-dòng chấm của hồ sơ đã lưu nằm trong diff từ lý do, hoặc thành diff riêng khi không có diff đó; ca VM30
-trình lại toàn bộ bản sẽ lưu, có dòng chấm, cả khi người dùng bác diff; hợp đồng onboarding đưa câu hỏi
-chủ tài khoản và cảnh báo điều khoản LinkedIn và Facebook sang bước 3. Constitution lên 2.4.1: điều khoản
-file export nêu thêm lời khẳng định được nói thay thương hiệu cho export của trang thương hiệu.
+Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào:
+- Mục 7 của `references/voice-profile.md`: với hồ sơ đã lưu, dòng chấm nằm trong diff từ lý do; khi không
+  có diff đó hoặc người dùng bác nó, dòng chấm thành một diff riêng.
+- Ca VM30: người dùng bác diff thì vẫn trình lại toàn bộ bản sẽ lưu, có dòng chấm, trước câu hỏi lưu.
+- Hợp đồng onboarding: cảnh báo điều khoản LinkedIn và Facebook đứng trước câu xin đồng ý đọc; câu hỏi chủ
+  tài khoản hay quyền nói thay thương hiệu nằm trong chính câu đó, như `references/help.md`; lựa chọn trình
+  duyệt chỉ hiện cho giọng cá nhân.
+- Constitution lên 2.4.1: điều khoản file export nêu thêm lời khẳng định được nói thay thương hiệu cho
+  export của trang thương hiệu.
 
 ### 0.15.0 (14/11/2026)
 

@@ -85,7 +85,8 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
 - Tuyến hồ sơ giọng trong `SKILL.md` MAY tạo và dùng lại hồ sơ có tên từ văn bản người dùng
   dán hoặc chỉ định trong tác vụ, từ file export nền tảng người dùng tự đưa, hoặc từ trang của
   chính người dùng qua công cụ trình duyệt host sẵn có, sau câu đồng ý đọc và lời khẳng định chủ
-  tài khoản (với file export của trang thương hiệu: lời khẳng định được nói thay thương hiệu); MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, và MUST NOT
+  tài khoản (với file export của trang thương hiệu: lời khẳng định được nói thay thương hiệu);
+  MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, và MUST NOT
   xử lý mật khẩu, cookie hay token. Trên trình duyệt, skill MUST giữ các điều cấm: không giải
   captcha; không bấm thích, bình luận, đăng hay gửi; không đổi cài đặt tài khoản; và MUST dừng khi
   gặp màn đăng nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Hồ sơ `kind: brand` MAY dùng tài liệu của nhiều người viết sau
