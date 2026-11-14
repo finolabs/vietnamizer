@@ -8,74 +8,96 @@
 ## Settled decisions (owner, 2026-11-14)
 
 1. **Reversal**: the spec 030 FR-006 implementation decision of 2026-11-13 ("the browser path is not used for brand pages") is reversed. Until this spec is implemented and released, the shipped rule (no browser for brand pages) still applies.
-2. **Route: one URL the user gives, checked**: the user gives exactly one URL of the brand's page. The skill opens only that page and the posts view of that same page, after checking that the URL is on a supported platform and that the page shown carries the brand name the user stated. It follows no other link.
+2. **Route: URLs the user gives, checked**: the user gives the URL of each brand page. The skill opens only that page and the posts view of that same page, after checking that the URL is on a supported platform and that the page shown carries the brand name the user stated. It follows no other link, except the post pages of a website listing under decision 6.
 3. **Platforms**: Facebook fanpages, LinkedIn company pages, and the brand's own website or blog.
 4. **Authority: any public brand page, on the user's statement**: the skill reads any public brand page once the user states they may speak for that brand. It does not require the logged-in account to be a page admin and checks no admin sign. It cannot verify the user's authority and says so, as spec 030 decision 4 and `references/brand-voice.md` mục 1 already do.
+5. **Up to three URLs per run** (after review of PR #47): one learning run reads at most three pages of the same brand. Each page has its own consent question; the second and third consent questions sit outside the six-question budget before rating.
+6. **Website limits: strict** (after review of PR #47): the URL must be a listing page of posts, not the site root; only post pages on the same host under the same path prefix are opened; login, account, contact, search, comment and query-string URLs are never opened; the skill stops on a shared publishing platform outside the brand's own space; each post must be published by the brand.
+7. **No terms warning for the brand's own website** (after review of PR #47): the user speaks for the brand that owns the site, so its terms are the brand's; Facebook and LinkedIn keep the warning.
 
-The options Fio did not pick, kept for the record: start from a fixed "pages I manage" admin URL; read only the tab the user opened themselves; admin-only pages.
+The options Fio did not pick, kept for the record: start from a fixed "pages I manage" admin URL; read only the tab the user opened themselves; admin-only pages; one URL per run; dropping websites from 031; a short reminder about the site's terms.
+
+## Open decisions
+
+| # | Decision | Owner | Agent proposal | Unblocks when |
+|---|---|---|---|---|
+| O1 | Whether the skill may click "See more" ("Xem thêm") to expand a truncated post | Fio | Allow it only inside the body of a post the brand published; no other click (FR-008) | Fio confirms at plan review |
+| O2 | The URL shapes (`facebook.com/<page>`, `linkedin.com/company/<slug>/posts/`) and the page signs that tell a fanpage or company page from a personal profile | Plan author, Fio approves | Use platform conventions until confirmed | Checked on live pages during the plan, before any reference names them |
+| O3 | The list of shared publishing platforms the website route stops on (FR-006) | Fio | Medium, Substack, Blogspot, WordPress.com, Ghost hosted, news sites; a brand's own custom domain on such a platform counts as its own space | Fio confirms at plan review |
 
 ## Clarifications
 
 ### Session 2026-11-14
-- Q: Which route reaches a brand page, given brand pages have no fixed "my page" URL like `/in/me`? → A: one URL the user gives, checked for platform and brand name; no other link followed (decision 2).
+- Q: Which route reaches a brand page, given brand pages have no fixed "my page" URL like `/in/me`? → A: URLs the user gives, checked for platform and brand name; no other link followed (decision 2).
 - Q: Which platforms? → A: Facebook fanpage, LinkedIn company page, brand website or blog (decision 3).
 - Q: Page admins only, or any public brand page with the user's statement? → A: any public brand page with the statement (decision 4).
-- Unverified (2026-11-14): the URL shapes below (`facebook.com/<page>`, `linkedin.com/company/<slug>/posts/`) and the page signs that tell a fanpage from a personal profile come from platform conventions; no live page was opened to confirm them. The plan confirms them on real pages before the reference text names them.
+- Q (review of PR #47): one URL or several per run? → A: at most three of the same brand, one consent question each (decision 5).
+- Q (review of PR #47): how is the website route bounded? → A: the strict limits of decision 6.
+- Q (review of PR #47): does the brand's own website carry a terms warning? → A: no (decision 7).
+- Unverified (2026-11-14): URL shapes and page signs, open decision O2.
 
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 — Learn a brand voice from the brand's fanpage or company page (Priority: P1)
 
-A user who speaks for a brand asks Vietnamizer to learn the brand voice from the brand's Facebook fanpage or LinkedIn company page. The host has a browser tool. The skill asks for the page URL if none was given, warns once about the platform's terms, asks the one consent question that names the URL and includes the authority statement, then opens that page, reads up to the cap of the brand's own published posts, and drafts a `kind: brand` profile as in spec 030 US3.
+A user who speaks for a brand asks Vietnamizer to learn the brand voice from the brand's Facebook fanpage or LinkedIn company page. The host has a browser tool. The skill asks for the page URL and the brand name if they were not given, warns once about the platform's terms, asks one consent question that names the brand and the URL and asks the authority statement, then opens that page, reads up to the cap of the brand's own published posts, and drafts a `kind: brand` profile as in spec 030 US3.
 
 **Why this priority**: this is the reversal Fio asked for; it removes copying posts by hand for brands that have no export at hand.
-**Independent Test**: on a host with a browser tool, give a fanpage URL and state authority; the skill warns about Meta's terms once, asks one consent question naming that URL, reads only the page's posts, and the draft profile cites only brand posts, with no names of staff, customers or commenters.
+**Independent Test**: on a host with a browser tool, give a fanpage URL, name the brand and state authority; the skill warns about Meta's terms once, asks one consent question naming the brand and that URL, reads only the page's posts, and the draft profile cites only brand posts, with no names of staff, customers or commenters.
 **Acceptance Scenarios**:
-1. **Given** a request to learn a brand voice from "our fanpage" with no URL, **When** the user picks the browser source, **Then** the skill asks for the page URL and reads nothing yet.
-2. **Given** a fanpage or company-page URL, **When** the user has not stated they may speak for the brand, **Then** the consent question asks for that statement and the skill reads nothing until the user answers yes.
+1. **Given** a request to learn a brand voice from "our fanpage" with no URL, **When** the user picks the browser source, **Then** the skill asks for the page URL (and the brand name when not yet given) and reads nothing yet.
+2. **Given** a fanpage or company-page URL, **When** the consent question is asked, **Then** it names the brand and the exact URL, asks the user to state they may speak for that brand, says the skill cannot verify it, and nothing is read until the user answers yes.
 3. **Given** consent and the statement, **When** the skill reads, **Then** it opens only the given page and its posts view, keeps only posts the brand published, and reports approximate kept and dropped counts.
 4. **Given** a URL that resolves to a personal profile (`linkedin.com/in/…`, or a Facebook profile of a person), **When** the user says it is the brand's page, **Then** the skill stops and does not read it; a personal account goes through the personal route of spec 030.
+5. **Given** a fanpage and a LinkedIn company page of the same brand, **When** the user gives both, **Then** each gets its own terms warning and consent question, at most three pages run, and the post cap counts across all of them.
 
 ### User Story 2 — Learn from the brand's own website or blog (Priority: P2)
 
-A user gives the URL of the brand's blog or news page. The skill asks the same consent question with the authority statement, opens the listing page, opens post pages linked from it on the same host and path, and reads their article text up to the cap.
+A user gives the URL of the brand's blog or news listing. The skill asks the same consent question with the brand name and the authority statement, opens the listing page, opens post pages linked from it on the same host under the same path prefix, and reads the body of posts the brand published, up to the cap.
 
 **Why this priority**: many brands write their longest Vietnamese text on their own site; it carries no platform terms risk but has no admin or account sign the skill can check.
-**Independent Test**: give a blog listing URL; the skill opens only pages on that host under that path, never a link to another host, a login page, a comment section or a contact form, and reports the pages used.
+**Independent Test**: give a blog listing URL; the skill opens only pages on that host under that path, never the site root, another host, a login, account, contact, search or comment page, or a URL with a query string, and reports the pages used.
 **Acceptance Scenarios**:
-1. **Given** a blog URL and consent, **When** reading, **Then** the skill opens only the listing and post pages on the same host under the same path prefix, at most the cap.
-2. **Given** a post page that links to another host, a social page or a PDF, **When** reading, **Then** the skill does not follow it.
-3. **Given** a site that shows a login wall, a paywall, a captcha or a block page, **When** reading, **Then** the skill stops and offers paste or the page's export.
+1. **Given** a blog listing URL and consent, **When** reading, **Then** the skill opens only the listing and post pages on the same host under the same path prefix, at most the cap.
+2. **Given** the site root (`https://brand.vn/`) as the URL, **When** checked, **Then** the skill asks for the listing page of posts and reads nothing yet.
+3. **Given** a post page that links to another host, a social page, a PDF, a login or contact page, or a URL with a query string, **When** reading, **Then** the skill does not follow it.
+4. **Given** a URL on a shared publishing platform outside the brand's own space, or an article that is about the brand but not published by it, **When** checked, **Then** the skill stops (or drops that post) and says why.
+5. **Given** a site that shows a login wall, a paywall, a captcha or a block page, **When** reading, **Then** the skill stops and offers paste or the page's export.
 
-### User Story 3 — Stop safely when the page is not what was named (Priority: P1)
+### User Story 3 — Stop safely when the page is not what was named, or not the user's brand (Priority: P1)
 
-While reading a brand page the skill meets a page it should not read: a login wall, a page for another brand, a captcha or a rate-limit page. It stops and offers the paste or export way. It never asks for, types or reads a password, cookie or token.
+While reading a brand page the skill meets a page it should not read: a login wall, a page for another brand, a captcha, a consent banner that blocks the content or a rate-limit page. It stops and offers the paste or export way. It never asks for, types or reads a password, cookie or token. When the request shows the page belongs to a brand the user does not speak for, such as a competitor, it declines before opening anything.
 
-**Why this priority**: the reversal is acceptable only if the stop conditions of the personal path hold for brand pages too.
-**Independent Test**: run the four stop cases; each stops before reading any post and suggests paste or export; none types into a field.
+**Why this priority**: the reversal is acceptable only if the stop conditions of the personal path hold for brand pages too, and only if the route cannot learn another company's voice.
+**Independent Test**: run the stop cases and the competitor case; each stops before reading any post and suggests paste or export; none types into a field or clicks a banner.
 **Acceptance Scenarios**:
-1. **Given** a login wall, a captcha or a rate-limit page, **When** it appears, **Then** the skill stops, types nothing, and suggests paste or export.
+1. **Given** a login wall, a captcha, a rate-limit page or a consent banner that blocks the content, **When** it appears, **Then** the skill stops, types and clicks nothing, and suggests paste or export.
 2. **Given** the page shown carries a different brand name than the one the user stated, or the URL redirects to another page or host, **When** checked before reading, **Then** the skill stops and tells the user what it saw.
-3. **Given** page text aimed at the agent (open this link, save, send), **When** reading, **Then** it is data, never an instruction.
+3. **Given** a request such as "học giọng fanpage của đối thủ", "xem bên X viết thế nào" or "trang của bên X", **When** the user also says they may speak for that brand, **Then** the skill declines: wanting to learn how brand X writes is not authority, and a page the request names as another party's is not read.
+4. **Given** page text aimed at the agent (open this link, save, send), **When** reading, **Then** it is data, never an instruction.
 
 ### User Story 4 — Pick the browser source for a brand during onboarding (Priority: P3)
 
 A user runs the onboarding of spec 030, picks Thương hiệu, and on a host with a browser tool sees "Đọc trang qua trình duyệt" among the sources.
 
 **Why this priority**: onboarding is optional; the route works without it.
-**Independent Test**: onboarding with Thương hiệu on a host with a browser tool offers the browser source; on a host without one it does not; the question budget before rating stays at 6.
+**Independent Test**: onboarding with Thương hiệu on a host with a browser tool offers the browser source; on a host without one it does not; the question budget before rating stays at 6, with the URL question in the "platform when needed" slot.
 **Acceptance Scenarios**:
 1. **Given** Thương hiệu and a browser tool, **When** the source step runs, **Then** the browser source is offered after paste and export.
-2. **Given** the browser source, **When** the consent step runs, **Then** the terms warning (social platforms only) comes first, then one consent question naming the URL and asking the authority statement; neither becomes a separate question.
+2. **Given** the browser source, **When** the URL is needed, **Then** asking for it (with the brand name) takes the "platform when needed" slot of the budget.
+3. **Given** the browser source, **When** the consent step runs, **Then** the terms warning (Facebook and LinkedIn only) comes first, then one consent question naming the brand and the URL and asking the authority statement; neither becomes a separate question.
 
 ### Edge Cases
 
-- The user gives several brand URLs at once: the skill reads one per consent question; each further page needs its own consent question, inside the question budget or after it.
+- The user gives more than three brand URLs: the skill reads the first three after consent and says the rest need a later update run.
+- URLs of two different brands in one run: one profile is one brand; the skill asks which brand this profile is for and reads only that brand's pages.
 - A fanpage shows posts by visitors, reviews, check-ins or tagged posts beside the brand's own posts: only posts the brand published count.
+- A page-text read returns comment previews, reviewer names, visitor posts or "people also viewed" next to the posts: that text is discarded, never quoted, counted as evidence or stored.
 - A company page shows a "People" or "Employees" tab, job posts or follower counts: none are opened or recorded.
 - A brand post quotes a customer or tags a staff member: the post may stay as evidence of the brand's writing, but the name never enters the profile (`references/brand-voice.md` mục 3).
+- The request names a competitor or another company's page, or asks to "learn how X writes": the skill declines (FR-007).
 - Posts mostly in English: only Vietnamese text counts as evidence (spec 030 edge case).
-- A host offers a fetch or download tool but no browser tool: the browser source is not offered; links are never opened with the fetch tool (calibration case 5 keeps holding).
+- A host offers a fetch or download tool but no browser tool: the browser source is not offered; links are never opened with the fetch tool (calibration case 5 keeps its fetch-tool half).
 - The browser is logged in to the user's personal account while they read the brand page: the skill reads only the brand page; it does not open the personal feed, notifications or messages.
 - The user says they do not speak for the brand: the skill does not build a brand profile and offers a personal profile from text they wrote themselves.
 
@@ -83,48 +105,61 @@ A user runs the onboarding of spec 030, picks Thương hiệu, and on a host wit
 
 ### Functional Requirements
 
-- **FR-001**: For a `kind: brand` profile, the skill MUST offer reading the brand's page through a browser tool the host already offers, as the third source after pasted posts and the page's export, and only when the agent sees such a tool (a deferred tool counts, as in `references/voice-sources.md` mục 1). Without one, the skill MUST say the way is unavailable on this host.
-- **FR-002**: The skill MUST read a brand page only from exactly one URL the user gives in the current request, on a supported platform: a Facebook fanpage, a LinkedIn company page, or the brand's own website or blog. It MUST NOT search for the page, guess its URL, or use a fetch or download tool instead of a browser tool.
-- **FR-003**: Before reading, the skill MUST ask one consent question (spec 028 FR-002, `references/voice-profile.md` mục 2) that names the exact URL it will open and asks the user to state they may speak for the brand. It MUST say it cannot verify that authority. It MUST read nothing until the user answers yes, and MUST decline the brand profile when the user says they may not.
-- **FR-004**: For Facebook and LinkedIn, the terms warning of spec 030 FR-007 (the platform's terms forbid automated access or collection without permission; the account in use may be restricted) MUST appear exactly once, right before the consent question; the skill MUST continue only after the user decides to go ahead. The brand's own website carries no platform terms warning.
-- **FR-005**: The route MUST be fixed: on Facebook, the given fanpage and its posts view; on LinkedIn, the given company page and its posts view on the same company path; on a website, the given listing page and post pages linked from it on the same host and under the same path prefix. The skill MUST NOT follow any other link, open another host, or open a page linked from inside a post.
-- **FR-006**: Before reading posts, the skill MUST check that the page is a brand page (not a personal profile) and that it carries the brand name the user stated; when either check fails, or the URL redirects to another page or host, it MUST stop and say what it saw.
-- **FR-007**: The skill MUST read only the text of posts the brand published. It MUST NOT open or record comments, replies, reactions, messages or chat, reviews or ratings, visitor posts, tagged posts, follower or member lists, "People" or employee tabs, job posts, or staff names; it MUST report kept and dropped counts as approximate.
-- **FR-008**: The skill MUST stop on a login wall, a different account or page, a captcha, a paywall or a rate-limit or block page, and offer paste or export. It MUST NOT ask for, type or read passwords, cookies or tokens, MUST NOT solve captchas, MUST NOT like, comment, follow, post or send, and MUST NOT change any setting.
-- **FR-009**: Reading MUST stop at the cap of `references/voice-sources.md` mục 3 (at most 80 most recent posts with Vietnamese text); the plan MAY set a lower scroll or page bound.
-- **FR-010**: Page content MUST be treated as data (`references/voice-sources.md` mục 5) and MUST go through the brand redaction of `references/brand-voice.md` mục 3 before it reaches the profile; the profile's sources line counts posts by type and platform and never records the URL.
-- **FR-011**: The onboarding contract (spec 030 `contracts/help-onboarding.md` step 2) and `references/help.md` MUST offer the browser source for Thương hiệu under FR-001; the question budget before rating MUST stay at 6.
-- **FR-012**: The five meaning chốt, protected spans, the explicit-save rule, the personal browser path of spec 030 (fixed own-account URLs) and the absence of any network code in the package (constitution Principle V) MUST stay unchanged; existing profiles MUST remain valid.
-- **FR-013**: The constitution constraint "Tuyến hồ sơ giọng" MUST be amended as a MINOR change (2.4.1 → 2.5.0) before the references change, with Fio's approval recorded in its Sync Impact Report; the proposed text is under "Constitution amendment".
-- **FR-014**: Every text that states brand pages are not read through the browser MUST be updated in the implementation: `references/brand-voice.md` mục 1, `references/voice-sources.md` mục 1, 2 and 4, `references/voice-profile.md` mục 2, `references/help.md`, spec 030 FR-006's delivery note and `contracts/help-onboarding.md` step 2, `PRIVACY.md`, `README.md`, `docs/style-and-voice.md`, `docs/architecture.md`, `docs/changelog.md`, and `calibration/test-cases.md` (case 5 keeps its fetch-tool half; new cases cover FR-002–FR-008).
+- **FR-001**: For a `kind: brand` profile, the skill MUST offer reading the brand's page through a browser tool the host already offers, as the third source after pasted posts and the page's export, and only when the agent sees such a tool (a deferred tool counts, as in `references/voice-sources.md` mục 1). Without one, the skill MUST say the way is unavailable on this host. The route MUST NOT require a logged-in session: it uses whatever session the browser already has, never logs in, and a page that shows a login wall stops it (FR-008).
+- **FR-002**: The skill MUST read brand pages only from URLs the user gives in the current request, at most three per run, all of the same brand, on a supported platform: a Facebook fanpage, a LinkedIn company page, or a listing page on the brand's own website or blog. It MUST NOT search for a page, guess its URL, or use a fetch or download tool instead of a browser tool.
+- **FR-003**: Before reading each page, the skill MUST ask one consent question (spec 028 FR-002, `references/voice-profile.md` mục 2) that names the brand and the exact URL it will open and asks the user to state they may speak for that brand. When the brand name or URL is missing, the skill MUST ask for it first. It MUST say it cannot verify that authority, MUST read nothing until the user answers yes, and MUST decline the brand profile when the user says they may not.
+- **FR-004**: For Facebook and LinkedIn, the terms warning of spec 030 FR-007 (the platform's terms forbid automated access or collection without permission; the account in use may be restricted) MUST appear once per platform in a run, right before that platform's first consent question; the skill MUST continue only after the user decides to go ahead. The brand's own website carries no terms warning (decision 7).
+- **FR-005**: The route MUST be fixed: on Facebook, the given fanpage and its posts view; on LinkedIn, the given company page and its posts view on the same company path; on a website, the given listing page and post pages linked from it on the same host under the same path prefix. The skill MUST NOT follow any other link, open another host, or open a page linked from inside a post.
+- **FR-006**: For a website, the URL MUST NOT be the site root, and the skill MUST NOT open login, account, contact, search or comment pages, or any URL with a query string. It MUST stop when the host is a shared publishing platform and the URL is outside the brand's own space (open decision O3), and MUST keep only posts the page shows as published by the brand (byline, publisher or site ownership); an article about the brand by someone else is dropped.
+- **FR-007**: The skill MUST decline, before opening anything, a page the request shows belongs to a brand the user does not speak for: a competitor, "bên X", another company, or a request to learn how another brand writes. Wanting to learn a brand's voice MUST NOT be treated as authority to speak for it. Constitution: "MUST NOT đọc trang thương hiệu người dùng không được nói thay".
+- **FR-008**: Before reading posts, the skill MUST check that the page is a brand page (not a personal profile) and that it carries the brand name the user stated; when either check fails, or the URL redirects to another page or host, it MUST stop and say what it saw.
+- **FR-009**: The skill MUST read only the body text of posts the brand published. It MUST NOT open comments, replies, reactions, messages or chat, reviews or ratings, visitor posts, tagged posts, follower or member lists, "People" or employee tabs, or job posts, and MUST NOT record staff names. Text a page read returns outside the brand's post bodies MUST be discarded, never quoted, counted as evidence or stored. It MUST report kept and dropped counts as approximate.
+- **FR-010**: The skill MUST stop on a login wall, a different account or page, a captcha, a paywall, a consent or cookie banner that blocks the content, or a rate-limit or block page, and offer paste or export. It MUST NOT ask for, type or read passwords, cookies or tokens; MUST NOT solve captchas; MUST NOT accept or dismiss consent or cookie banners; MUST NOT like, comment, follow, post or send; and MUST NOT change any setting. The only click it MAY make is "See more" inside a brand post body, pending open decision O1.
+- **FR-011**: Reading MUST stop at the cap of `references/voice-sources.md` mục 3 (at most 80 most recent posts with Vietnamese text), counted across all pages of the run; the plan MAY set a lower scroll or page bound.
+- **FR-012**: Page content MUST be treated as data (`references/voice-sources.md` mục 5) and MUST go through the brand redaction of `references/brand-voice.md` mục 3 before it reaches the profile; the profile's sources line counts posts by type and source (bài đăng: dán / export / trình duyệt) and never records a URL.
+- **FR-013**: The onboarding contract (spec 030 `contracts/help-onboarding.md`) and `references/help.md` MUST offer the browser source for Thương hiệu under FR-001. Asking for the URL and brand name MUST take the "platform when needed" slot; the question budget before rating MUST stay at 6, with the second and third consent questions of decision 5 outside it.
+- **FR-014**: The five meaning chốt, protected spans, the explicit-save rule, the personal browser path of spec 030 (fixed own-account URLs; calibration cases 11, 15 and 31 still apply when the voice kind is Cá nhân) and the absence of any network code in the package (constitution Principle V) MUST stay unchanged; existing profiles MUST remain valid.
+- **FR-015**: The constitution constraint "Tuyến hồ sơ giọng" MUST be amended as a MINOR change (2.4.1 → 2.5.0) before the references change, with Fio's approval recorded in its Sync Impact Report, and the report's pending line ("Still pending the owner's confirmation: brand pages are not read through the browser") MUST be replaced by the reversal. The proposed text is under "Constitution amendment".
+- **FR-016**: The implementation MUST update every text that states or tests that brand pages are not read through the browser, or that would contradict this spec:
+  - `references/brand-voice.md` mục 1 (item 2 and the paragraph on links) and mục 3 (pages read through the browser);
+  - `references/voice-sources.md` mục 1, 2 and 4 (a brand subsection beside the personal one);
+  - `references/voice-profile.md` mục 2;
+  - `references/voice-analysis.md:125` and spec 030 `contracts/profile-format.md:15` (sources line: trình duyệt for brand posts);
+  - `references/help.md`, and spec 030 `contracts/help-onboarding.md` help item 3, onboarding steps 2 and 3, and the budget line;
+  - spec 030 FR-006's delivery note;
+  - `tests/test_skill_contract.py:173` and `:225`, which assert the old no-browser phrases;
+  - `calibration/test-cases.md`: case 5 keeps its fetch-tool half; cases 11, 15 and 31 say they apply to Cá nhân; new cases cover FR-002–FR-010, including the competitor case of FR-007;
+  - `AGENTS.md:32` file map, `PRIVACY.md`, `README.md`, `docs/style-and-voice.md`, `docs/architecture.md`, `docs/changelog.md`.
 
 ### Constitution amendment (proposed, MINOR 2.4.1 → 2.5.0)
 
-The constraint "Tuyến hồ sơ giọng" today allows the browser only for "trang của chính người dùng". The proposed change adds one clause and keeps every prohibition:
+The first sentence of the constraint "Tuyến hồ sơ giọng" (from "Tuyến hồ sơ giọng trong `SKILL.md` MAY" to "cookie hay token.") is replaced in full by the text below. The rest of the constraint (browser prohibitions and stops, brand multi-author material, ratings, explicit save, no memory search, five chốt) stays as it is.
 
-> … hoặc từ trang của chính người dùng qua công cụ trình duyệt host sẵn có, sau câu đồng ý đọc và lời khẳng định chủ tài khoản; với hồ sơ `kind: brand`, skill MAY đọc trang công khai của thương hiệu (fanpage Facebook, trang công ty LinkedIn, website hay blog của thương hiệu) qua công cụ trình duyệt đó, chỉ từ đúng một URL người dùng đưa, sau câu đồng ý đọc gọi tên URL và lời khẳng định được nói thay thương hiệu; chỉ đọc bài thương hiệu đã đăng, MUST NOT mở bình luận, tin nhắn, đánh giá, danh sách người theo dõi hay tên nhân viên, và MUST NOT theo link nào khác.
+> Tuyến hồ sơ giọng trong `SKILL.md` MAY tạo và dùng lại hồ sơ có tên từ văn bản người dùng dán hoặc chỉ định trong tác vụ, từ file export nền tảng người dùng tự đưa, hoặc từ trang của chính người dùng qua công cụ trình duyệt host sẵn có, sau câu đồng ý đọc và lời khẳng định chủ tài khoản (với file export của trang thương hiệu: lời khẳng định được nói thay thương hiệu). Với hồ sơ `kind: brand`, tuyến MAY đọc thêm trang công khai của thương hiệu qua công cụ trình duyệt đó (fanpage Facebook, trang công ty LinkedIn, hoặc trang danh sách bài trên website hay blog riêng của thương hiệu), từ tối đa ba URL người dùng đưa trong một lượt, mỗi URL sau một câu đồng ý đọc gọi tên thương hiệu và URL cùng lời khẳng định được nói thay thương hiệu đó; trang của thương hiệu người dùng được nói thay không phải trang của người khác. Đường đọc ấy MUST cố định: chính trang đó và mục bài đăng của nó, với website thêm các trang bài cùng host dưới cùng tiền tố đường dẫn không phải gốc; MUST NOT theo link nào khác; chỉ đọc thân bài thương hiệu đã đăng; MUST NOT mở bình luận, tin nhắn, đánh giá hay danh sách người theo dõi; MUST NOT ghi tên nhân viên; và MUST dừng khi trang chuyển hướng sang trang hay host khác hoặc không mang tên thương hiệu người dùng nêu. Tuyến MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, kể cả trang thương hiệu người dùng không được nói thay, và MUST NOT xử lý mật khẩu, cookie hay token.
 
-"MUST NOT đọc trang của người khác" stays; the amendment states that a brand page the user speaks for is not "trang của người khác", while a personal profile of anyone else still is. Principle V is unchanged: the package still ships no network code. MINOR because the constraint gains a source; no principle's obligation is removed.
+Principle V is unchanged: the package still ships no network code. MINOR because the constraint gains a source; no principle's obligation is removed.
 
 ### Key Entities
 
-- **Brand page source**: platform (Facebook, LinkedIn, website), the one URL the user gave, the brand name the user stated, the authority statement and its date, approximate kept and dropped counts. Only the counts and the platform reach the profile's sources line.
-- **Stop event**: the condition met (login wall, other page, captcha, paywall, limit), shown to the user; not stored.
+- **Brand page source**: platform (Facebook, LinkedIn, website), the URL the user gave, the brand name the user stated, the authority statement and its date, approximate kept and dropped counts. Only the counts and the source type reach the profile's sources line.
+- **Stop event**: the condition met (login wall, other page, redirect, brand-name mismatch, captcha, paywall, consent banner, limit, shared platform, competitor), shown to the user; not stored.
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-- **SC-001**: In calibration cases, 100% of brand browser runs ask the consent question with the authority statement before any page is opened, and 0 open a page when the user has not answered yes.
-- **SC-002**: 100% of runs meeting a login wall, another page, a captcha, a paywall or a limit page stop before reading any post, and 0 type into any field.
-- **SC-003**: Across the cases, 0 pages outside the fixed route of FR-005 are opened, and 0 comments, reviews, follower names or staff names appear in the drafted profile.
-- **SC-004**: The terms warning appears exactly once in Facebook and LinkedIn runs and 0 times in website runs.
-- **SC-005**: All existing voice-profile cases (route cases 1–9, HG01–HG11, spec 030 cases) still pass review, with case 5 rewritten as FR-014 says.
+- **SC-001**: In calibration cases, 100% of brand browser runs ask the consent question naming the brand and the URL with the authority statement before any page is opened, and 0 open a page when the user has not answered yes.
+- **SC-002**: 100% of runs meeting a login wall, another page, a redirect, a brand-name mismatch, a captcha, a paywall, a blocking consent banner or a limit page stop before reading any post, and 0 type into a field or click a banner.
+- **SC-003**: 100% of competitor or "bên X" requests are declined before any page opens.
+- **SC-004**: Across the cases, 0 pages outside the fixed route of FR-005 and FR-006 are opened, no run reads more than three pages, and 0 comments, reviews, follower names, staff names or other non-post text appear in the drafted profile.
+- **SC-005**: The terms warning appears exactly once per platform in Facebook and LinkedIn runs and 0 times in website runs.
+- **SC-006**: All existing voice-profile cases (route cases 1–9, HG01–HG11, spec 030 cases) still pass review, with the cases FR-016 names rewritten.
 
 ## Assumptions
 
 - Hosts differ: Claude Code may offer a browser tool (built-in pane or Chrome extension); other hosts may not. Paste and export stay the defaults, and every step has a text fallback.
 - Public fanpages and company pages may show fewer posts, or a login wall, when the browser is not logged in; the login-wall stop covers that.
-- The user's authority statement is the only authority signal (decision 4); the skill's checks of platform, page type and brand name guard against a wrong page, not against a false statement.
+- The user's authority statement is the only authority signal (decision 4); the checks of platform, page type, brand name and competitor wording guard against a wrong page, not against a false statement.
 - Version: a new brand source and a constitution MINOR are a MINOR change in phase 0 (0.16.0 or later); the release is the owner's call.
+- The implementation runs `security-audit` on the new trust boundary (pages from URLs the user gives), as the security review of PR #47 recommends.
 - Out of scope: Instagram, TikTok, YouTube and other platforms; reading a brand's ads library; fetch or download tools; any network code in the package.
