@@ -68,11 +68,13 @@ chỉ bấm “Xem thêm” trong thân bài; dừng khi trang chuyển hướng
 hoặc gặp màn đăng nhập, captcha, tường trả phí hay trang chặn. Facebook và LinkedIn có cảnh báo điều khoản
 như trên; website riêng của thương hiệu thì không. Hồ sơ chỉ ghi số bài theo nguồn, không ghi URL.
 
-Fanpage có hạng mục chỉ một người (nghệ sĩ, người của công chúng, nhà sáng tạo) không được đọc như trang
+Fanpage có hạng mục dành cho một cá nhân (nghệ sĩ, người của công chúng, nhà sáng tạo) không được đọc như trang
 thương hiệu. Nếu người dùng nói đó là Trang của chính họ, skill báo điều khoản của Facebook (Meta), nói
 rằng nó không kiểm được Trang có phải của người dùng và học giọng người khác là không được phép, rồi hỏi
 xác nhận; chỉ khi người dùng xác nhận mới đọc Trang đó, với cùng đường đọc và giới hạn như trang thương
-hiệu, để dựng hồ sơ cá nhân.
+hiệu, để dựng hồ sơ cá nhân. Người dùng học hồ sơ cá nhân cũng có thể đưa thẳng URL Trang Facebook mang tên
+chính họ (mục 4c của `references/voice-sources.md`), không qua đường thương hiệu: tối đa ba URL một lượt,
+cùng cảnh báo, câu xác nhận cho từng URL và cùng giới hạn như trên.
 
 Sau khi học, người dùng có thể chấm vài đoạn mẫu do skill viết theo bốn mức Kém, Trung bình, Khá, Tốt.
 Chỉ khi người dùng lưu hồ sơ hoặc xác nhận cập nhật, hồ sơ mới thêm một dòng `Lịch sử chấm` (dòng này nằm

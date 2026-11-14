@@ -230,9 +230,14 @@ Mở session mới sau khi cài. [Claude web/Desktop, Claude Org, cài thủ cô
 ## Quyền riêng tư
 
 Skill không có mã gọi mạng và không đọc API key. Văn bản bạn giao đi qua host bạn đang dùng, theo chính
-sách của host đó. Hồ sơ giọng chỉ được lưu khi bạn yêu cầu rõ, tại nơi bạn chọn; đường đọc trang qua
-trình duyệt chỉ chạy khi host có công cụ trình duyệt và sau câu đồng ý của bạn. Không muốn thì không dùng
-tuyến hồ sơ giọng, hoặc chọn dán bài. [Chi tiết trong PRIVACY.md](PRIVACY.md).
+sách của host đó. Hồ sơ giọng chỉ được lưu khi bạn yêu cầu rõ, tại nơi bạn chọn.
+
+Đường đọc trang qua trình duyệt chỉ chạy khi host có công cụ trình duyệt và sau câu đồng ý của bạn. Gói
+không có mã mạng, nhưng công cụ trình duyệt của host thì mở trang bên ngoài: Facebook, LinkedIn hay
+website của thương hiệu. Trước khi đọc Facebook hay LinkedIn, skill cảnh báo rằng điều khoản của Meta và
+LinkedIn có thể cấm thu thập tự động. Tài khoản là của bạn, Trang Facebook mang tên bạn, hay quyền nói thay
+một thương hiệu: skill tin lời bạn và không kiểm được. Không muốn thì không dùng tuyến hồ sơ giọng, hoặc
+chọn dán bài. [Chi tiết trong PRIVACY.md](PRIVACY.md).
 
 ## Phạm vi
 
@@ -269,7 +274,7 @@ tuyến hồ sơ giọng, hoặc chọn dán bài. [Chi tiết trong PRIVACY.md]
 
 ## Lịch sử phiên bản
 
-- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Constitution lên 2.6.0. Chưa chạy agent trên các ca mới. [Lịch sử đầy đủ](docs/changelog.md)
+- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Constitution lên 2.6.1. Chưa chạy agent trên các ca mới. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn (chỉ lưu khi bạn yêu cầu rõ); gói phát hành bỏ `calibration/`; phân phối qua catalog `finolabs/plugins`. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md)

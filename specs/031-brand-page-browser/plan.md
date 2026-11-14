@@ -54,7 +54,7 @@ specs/031-brand-page-browser/
 ### Source (repository root)
 
 ```text
-.specify/memory/constitution.md            # 2.5.0 (landed first)
+.specify/memory/constitution.md            # 2.5.0 (landed first), then 2.6.0 and 2.6.1
 references/
 ├── voice-sources.md                         # mục 1 (brand browser source), 2 (brand pages), 4 split: 4a personal, 4b brand
 ├── brand-voice.md                           # mục 1 item 2 and links paragraph; mục 3 pages read through the browser

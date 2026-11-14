@@ -4,7 +4,7 @@
 
 ## Kiến trúc
 
-`SKILL.md` là nguồn chuẩn về điều phối và chốt; từng catalog sở hữu duy nhất nội dung pattern được core uỷ quyền. Đây là cấu trúc source 0.13.3:
+`SKILL.md` là nguồn chuẩn về điều phối và chốt; từng catalog sở hữu duy nhất nội dung pattern được core uỷ quyền. Đây là cấu trúc source 0.16.0:
 
 ```text
 SKILL.md                                      core gọn: phạm vi, chốt, tuyến đọc và trả kết quả
