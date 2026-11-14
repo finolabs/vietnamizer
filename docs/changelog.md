@@ -19,7 +19,8 @@ theo quy ước nền tảng, chưa đối chiếu trên trang thật. Substack,
 qua trang danh sách và đường bài riêng của từng nền tảng; Ghost bản host sẵn không mở. Fanpage của một
 người (nghệ sĩ, người nổi tiếng) không đọc như trang thương hiệu; Trang của chính người dùng học được thành
 hồ sơ cá nhân sau cảnh báo và xác nhận (mục 4c). Constitution lên 2.5.0 (MINOR): ràng buộc “Tuyến hồ
-sơ giọng” thêm nguồn trang thương hiệu, đảo lại quyết định triển khai của spec 030 FR-006. Thêm ca
+sơ giọng” thêm nguồn trang thương hiệu, đảo lại quyết định triển khai của spec 030 FR-006; rồi lên 2.6.0
+(MINOR): câu về đường đọc cố định nêu đường bài riêng của Substack, Blogspot và WordPress.com. Thêm ca
 BP01–BP27, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
 lượng.
 
@@ -105,7 +106,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
-- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Constitution lên 2.5.0. Chưa chạy agent trên các ca mới.
+- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Constitution lên 2.6.0. Chưa chạy agent trên các ca mới.
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt.
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in.
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn, gói phát hành bỏ `calibration/`, phân phối qua catalog `finolabs/plugins`; giữ 55 pattern, runtime Jev và năm chốt.

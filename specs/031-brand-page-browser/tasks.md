@@ -69,7 +69,7 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 - [x] T023 Shared platforms: Substack `/archive` → `/p/`, Medium account or publication path, Blogspot and WordPress.com yearly archive; hosted Ghost not opened (decision 12, FR-018, BP26)
 - [x] T024 Facebook host move keeps the query string; `profile.php?id=` to the page name is not a redirect; contract and data model follow the tightened URL shapes (BP27)
 - [x] T025 README to the standard's section order (install at a glance, supported platforms, install, privacy) with `.github/readme-standard.json` mapping; `readme_check.py` clean; product docs reviewed against 0.16.0
-- [x] T026 Release notes through Vietnamizer; archives rebuilt from the new head; SHA-256 table updated; checks rerun; both re-reviews posted; `merge_check.py`
+- [ ] T026 Release notes through Vietnamizer; archives rebuilt from the new head; SHA-256 table updated; checks rerun; both re-reviews posted; `merge_check.py` (left open: ticking it after the reviews would change the reviewed head)
 
 ## Dependencies
 
