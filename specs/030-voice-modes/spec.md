@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/030-voice-modes`
 **Created**: 2026-11-13
-**Status**: Draft (specify phase; clarify and plan pending)
+**Status**: Implemented, released in 0.15.0 (14/11/2026); amended by spec 031 (FR-006, FR-007 notes). Open: T035 manual quickstart walk-through in a live Claude Code session
 **Input**: Owner, 13/11/2026: support both brand voice and personal voice, chosen at use, personal by default; learn a user's voice from their LinkedIn or Facebook; after learning, let the user rate generated paragraphs so the profile can be upgraded; add a `help` skill and an onboarding flow. Router depth DEEP, trigger `privacy` (new data sources, a browser path to the user's logged-in accounts, stored ratings, new consent paths). Builds on spec 028 (voice-profile route) and PR #39 (`ranh giới`, `Điểm chưa quyết`).
 
 ## Settled decisions (owner, 2026-11-13)

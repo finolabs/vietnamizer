@@ -1,7 +1,7 @@
 {
   "name": "vietnamizer",
   "version": "0.16.0",
-  "description": "Biên tập bản nháp, bài viết, README và bản dịch tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết.",
+  "description": "Viết và biên tập tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết. Khi bạn yêu cầu, Vietnamizer học, lưu và áp dụng hồ sơ giọng cá nhân hoặc giọng thương hiệu; /vietnamizer:help giới thiệu tính năng và dẫn thiết lập giọng.",
   "author": {
     "name": "Fioenix",
     "url": "https://github.com/fioenix"
@@ -21,7 +21,7 @@
     "displayName": "Vietnamizer",
     "shortDescription": "Vietnamese editing, your voice",
     "developerName": "Fioenix",
-    "longDescription": "Edit Vietnamese drafts, workplace messages, articles, README prose, and literal translations. Designed for Vietnamese-speaking writers and professionals, Vietnamizer selects editing rules by genre and audience, checks explicit exceptions before changing text, and reviews each edit for meaning and voice preservation. Correct missing words, unnatural collocations, and awkward sentence structures while preserving facts, terminology, quotations, and code. By default, keep already-natural wording and source voice unchanged. When explicitly asked to follow supplied reference samples, adapt expression and existing structure while preserving meaning and protected text. No separate account or API key is required for core editing. This plugin does not detect AI-generated text. Provide only text you are authorized to share, without payment card data, protected health information, government identifiers, or authentication secrets.",
+    "longDescription": "Edit Vietnamese drafts, workplace messages, articles, README prose, and literal translations. Designed for Vietnamese-speaking writers and professionals, Vietnamizer selects editing rules by genre and audience, checks explicit exceptions before changing text, and reviews each edit for meaning and voice preservation. Correct missing words, unnatural collocations, and awkward sentence structures while preserving facts, terminology, quotations, and code. By default, keep already-natural wording and source voice unchanged. When explicitly asked to follow supplied reference samples, adapt expression and existing structure while preserving meaning and protected text. On request, Vietnamizer learns, saves and applies a named voice profile, personal or brand, from samples you paste, a platform export, or pages the host's browser tool reads after your consent; each use applies one profile. The help skill (/vietnamizer:help) explains what it does and walks you through voice setup. No separate account or API key is required for core editing. This plugin does not detect AI-generated text. Provide only text you are authorized to share, without payment card data, protected health information, government identifiers, or authentication secrets.",
     "category": "Productivity",
     "capabilities": [],
     "websiteURL": "https://github.com/finolabs/vietnamizer",
@@ -46,7 +46,7 @@
         "translations": {
           "vi-VN": {
             "subtitle": "Biên tập tiếng Việt, giữ giọng",
-            "description": "Giúp AI viết tiếng Việt giống con người hơn. Biên tập bản nháp, tin nhắn công việc, bài viết, README và bản dịch sát. Chọn quy tắc theo thể loại và người đọc, kiểm tra trường hợp không nên sửa, rồi đối chiếu từng thay đổi với ý và giọng gốc. Giữ nguyên dữ kiện, thuật ngữ, trích dẫn và code. Mặc định giữ giọng gốc; khi yêu cầu theo mẫu rõ, có thể đổi cấu trúc ý đã có mà giữ nghĩa. Không cần tài khoản riêng hay API key cho quy trình cốt lõi; không phải công cụ phát hiện AI. Chỉ cung cấp văn bản được phép chia sẻ, không chứa dữ liệu thẻ thanh toán, thông tin sức khỏe được bảo vệ, định danh chính phủ hoặc secret xác thực."
+            "description": "Giúp AI viết tiếng Việt giống con người hơn. Biên tập bản nháp, tin nhắn công việc, bài viết, README và bản dịch sát. Chọn quy tắc theo thể loại và người đọc, kiểm tra trường hợp không nên sửa, rồi đối chiếu từng thay đổi với ý và giọng gốc. Giữ nguyên dữ kiện, thuật ngữ, trích dẫn và code. Mặc định giữ giọng gốc; khi yêu cầu theo mẫu rõ, có thể đổi cấu trúc ý đã có mà giữ nghĩa. Khi bạn yêu cầu, Vietnamizer học, lưu và áp dụng hồ sơ giọng có tên, cá nhân hoặc thương hiệu, từ bài bạn dán, file export của nền tảng hoặc trang mà công cụ trình duyệt của host đọc sau khi bạn đồng ý; mỗi lần dùng một hồ sơ. Skill help (/vietnamizer:help) giới thiệu tính năng và dẫn thiết lập giọng. Không cần tài khoản riêng hay API key cho quy trình cốt lõi; không phải công cụ phát hiện AI. Chỉ cung cấp văn bản được phép chia sẻ, không chứa dữ liệu thẻ thanh toán, thông tin sức khỏe được bảo vệ, định danh chính phủ hoặc secret xác thực."
           }
         }
       }

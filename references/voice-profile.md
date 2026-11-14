@@ -47,8 +47,8 @@ Chỉ nhận mẫu là văn bản người dùng dán, file văn bản người 
 export LinkedIn hoặc Facebook họ tự tải), trang của chính người dùng đọc qua công cụ trình duyệt host
 sẵn có, hoặc với hồ sơ thương hiệu, trang công khai của thương hiệu từ URL người dùng đưa, theo
 `references/voice-sources.md`; câu đồng ý nêu rõ loại nguồn. Văn bản dán
-không cần lời xác nhận chủ tài khoản; áp quy tắc tác giả ở cuối mục này. Với file export hay trang, vẫn
-là đúng một câu đó: câu ấy gọi đúng tên file bài viết, hoặc với trình duyệt gọi đúng đường dẫn tài khoản
+không cần lời xác nhận chủ tài khoản; áp quy tắc tác giả ở cuối mục này. Tài khoản cá nhân (mục 4a):
+với file export hay trang, vẫn là đúng một câu đó; câu ấy gọi đúng tên file bài viết, hoặc với trình duyệt gọi đúng đường dẫn tài khoản
 của chính mình sẽ mở (`https://www.linkedin.com/in/me/recent-activity/all/` hoặc
 `https://www.facebook.com/me`, theo `references/voice-sources.md` mục 4a), không gọi URL người dùng đưa, và
 nhờ người dùng xác nhận luôn tài khoản là của chính họ. Trang thương hiệu qua trình duyệt
