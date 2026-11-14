@@ -1,5 +1,26 @@
 <!--
 Sync Impact Report
+- Version change: 2.6.1 -> 2.7.0 (MINOR: the voice-profile constraint gains a lookup path, a fixed
+  profile registry the skill reads when the user calls a saved profile; no principle's obligation is
+  removed).
+- Owner approval: 2026-11-14, Fio approved the exact replacement text (spec 032, "Constitution
+  amendment"), written in plain Vietnamese at his request, with the registry file named `registry.md`.
+- Modified constraint "Tuyến hồ sơ giọng": the sentence "Skill MUST NOT tự tìm hồ sơ hoặc mẫu trong
+  memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định." is replaced: the user may call a
+  saved profile by name, by `cá nhân` or by "theo giọng của tôi" in their own message; the skill may
+  then read `~/.agents/vietnamizer/registry.md` (names, kinds, stores, locations and the default
+  personal profile; no profile content); the call is the read consent for the registry and exactly
+  one matching profile; no other profile is read and no store is searched on no match; rows change
+  only with the user's yes; the registry never sits in a Git work tree or an agent instruction or
+  memory file or folder, and no instruction file points to it.
+- Reversal: the shipped rules "không tạo chỉ dẫn tự nạp hồ sơ ở phiên sau" (as a lookup ban) and "không
+  liệt kê, tìm kiếm, gộp hoặc chọn giữa các hồ sơ" in `references/voice-profile.md`, and "không tự liệt
+  kê, chọn hay nạp ở phiên sau" in `AGENTS.md`, are rewritten in the same pull request (spec 032
+  FR-015); calibration route case 5 is reversed by spec 032 decision 6.
+- Principle V unchanged: no network code; the registry is a local Markdown file.
+- No meaning-preservation chốt, protected span or pattern changed.
+- Previous amendment: 2.6.0 -> 2.6.1 (below).
+
 - Version change: 2.6.0 -> 2.6.1 (PATCH: names what does not count as a redirect on the brand page
   route; the same exceptions already stood in `references/voice-sources.md` mục 4b; no obligation
   added or removed).
@@ -146,9 +167,16 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   liệu của nhiều người viết sau khi người dùng khẳng định được nói thay thương hiệu; dữ liệu
   riêng vẫn phải được lược. Hồ sơ MAY lưu số lượt người dùng tự chấm, ghi rõ là đánh giá của
   người dùng; skill MUST NOT tự tính điểm giống giọng. Hồ sơ MUST chỉ được lưu khi người dùng
-  yêu cầu rõ, tại kho hoặc đường dẫn do họ chọn. Skill MUST NOT tự tìm hồ sơ hoặc mẫu trong
-  memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định. Ngoại lệ lưu này MUST giữ
-  nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm trong hồ sơ riêng
+  yêu cầu rõ, tại kho hoặc đường dẫn do họ chọn. Skill không được tự tìm hồ sơ hay mẫu trong bộ nhớ
+  của agent, lịch sử hội thoại hoặc kho lưu; chỉ đọc hồ sơ người dùng dán hoặc chỉ định. Người dùng
+  có thể chỉ định một hồ sơ đã lưu bằng tên, bằng chữ `cá nhân` hoặc bằng câu “theo giọng của tôi”
+  ngay trong tin nhắn của mình. Khi đó skill được đọc sổ hồ sơ `~/.agents/vietnamizer/registry.md`.
+  Sổ chỉ ghi tên, loại, kho và vị trí của từng hồ sơ, cùng hồ sơ cá nhân nào là mặc định; sổ không
+  chứa nội dung hồ sơ. Lời gọi của người dùng được tính là đồng ý cho skill đọc sổ và đọc đúng một
+  hồ sơ khớp tên. Skill không đọc hồ sơ nào khác và không dò kho khi không có hồ sơ khớp. Chỉ thêm
+  hoặc sửa dòng trong sổ khi người dùng đồng ý. Sổ không được nằm trong cây Git, trong file hay thư
+  mục chỉ dẫn hoặc bộ nhớ của agent, và không file chỉ dẫn nào được trỏ tới sổ. Ngoại lệ lưu này
+  MUST giữ nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm trong hồ sơ riêng
   của đúng người dùng, MUST NOT ghi vào `calibration/LOG.md`.
 - Production evaluator MUST chỉ gửi phần văn bản cần cho phán đoán. Raw prose MUST NOT xuất
   hiện trong telemetry hoặc báo cáo health. Lọc credential không thay thế cho phân loại dữ liệu
@@ -182,4 +210,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.6.1 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
+**Version**: 2.7.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
