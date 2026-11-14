@@ -535,9 +535,9 @@ Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải t
 | 5 | Người dùng yêu cầu “sửa bản này, cho tôi kèm ghi chú sửa” | Bản cuối rồi tối đa 5 dòng ghi chú hoặc bảng Gốc/Đã sửa/Vì sao; không thêm sửa mới vì cần ghi chú | Chế độ ghi chú chỉ theo yêu cầu rõ |
 | 6 | Yêu cầu rõ phạm vi (“sửa đoạn 2, đừng hỏi lại”), có một thuật ngữ trôi ở đoạn 5 | Sửa đoạn 2, không hỏi lại; có thể báo ngắn chỗ lệch ở đoạn 5 mà không sửa | Không dừng thừa và không vượt phạm vi |
 
-## HF01–HF10 · dấu hai chấm giữa câu, “đội” đứng trơ và từ ghép bị cắt (0.16.2)
+## HF01–HF18 · dấu hai chấm giữa câu, “đội” đứng trơ, từ ghép bị cắt và cách nói dịch sát (0.16.2)
 
-Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa chạy bằng agent, không phải bằng chứng cải thiện. Ca 3, 6, 8, 9 và 10 là ca chống sửa quá tay.
+Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa chạy bằng agent, không phải bằng chứng cải thiện. Ca 3, 6, 8, 9, 10, 12, 13, 15, 16, 17 và 18 là ca chống sửa quá tay. HF11–HF16 lấy từ câu đầu README mà Fio sửa lại ngày 15/11/2026.
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
@@ -551,3 +551,11 @@ Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa
 | 8 | Bài về nhân viên mới, đoạn trước đã nói về phòng ban: *“những mục tiêu mà đội đang hướng tới trong quý này”*; câu khác: *“một đội IT riêng”* | Giữ nguyên | *đội* đã có quy chiếu hoặc định ngữ |
 | 9 | *“Nhà sạch, phòng gọn.”* trong bài blog | Giữ nguyên | Từ đơn hợp lệ; thêm tiếng chỉ là phong cách |
 | 10 | *“Quy trình còn rườm và dễ làm nhân viên mới bỡ.”* | *rườm* → *rườm rà*, *bỡ* → *bỡ ngỡ*; không viết lại câu | V20 trường hợp 1, sửa ở cụm |
+| 11 | Câu giới thiệu sản phẩm: *“Vietnamizer rà soát bản nháp AI và bản dịch sát, chỉ sửa chỗ gọi tên được lỗi, giữ nghĩa và giọng người viết.”* | Sửa ba chỗ: *bản dịch sát* → *bản dịch thô*; *gọi tên được lỗi* → *xác định được lỗi* (hoặc *chỉ đích danh được lỗi*); *giữ nghĩa và giọng* → *giữ ngữ nghĩa và giọng văn*. Bản tác giả viết lại (không phải đầu ra biên tập mong đợi, vì còn đổi *rà soát* và phạm vi câu): *“Vietnamizer giúp biên tập bản nháp AI và bản dịch thô, nhận diện lỗi qua các pattern chuẩn, giữ ngữ nghĩa và giọng văn người viết.”* | V19 từ nghề dễ hiểu sai; V9 cụm động từ dịch sát; V20 từ ghép bị cắt theo ngữ vực |
+| 12 | Tin nhắn chat: *“Sửa giúp mình mà vẫn giữ giọng mình nhé.”* | Giữ nguyên | V20 Không flag: văn nói giữ từ đơn |
+| 13 | *“Cô giáo gọi tên từng học sinh trước giờ học.”* | Giữ nguyên | V9 Không flag: *gọi tên* theo nghĩa đen |
+| 14 | Hướng dẫn người dùng: *“Bạn dán bài hoặc gọi tên file export.”* | *“...hoặc nêu tên file export.”* | V9 cụm động từ dịch sát |
+| 15 | Ghi chú nội bộ cho biên tập viên: *“Đoạn 2 dịch sát quá, cần viết lại.”* | Giữ nguyên | V19 Không flag: người đọc là người trong nghề |
+| 16 | Nhãn nút ngắn trong giao diện: *“Giữ giọng”* | Giữ nguyên | V20 Không flag: nhãn ngắn |
+| 17 | Báo cáo trang trọng: *“Bản dịch giữ nghĩa của nguyên tác.”* | Giữ nguyên | V20 Không flag: câu trang trọng đã đủ ý, *giữ nghĩa* đúng nghĩa |
+| 18 | Có hồ sơ thương hiệu tên *Acme*; yêu cầu: *“Sửa giúp bài giới thiệu sản phẩm mới của Acme.”* | Không áp hồ sơ *Acme*; biên tập với giọng hiện có của bài | Bài chỉ nhắc tên thương hiệu thì chưa phải là gọi hồ sơ |

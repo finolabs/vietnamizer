@@ -3,7 +3,7 @@
 ## 1. Chọn đúng tuyến (FR-001, FR-020)
 
 Chỉ mở tuyến này khi người dùng yêu cầu học, xây dựng, cập nhật hoặc áp dụng hồ sơ giọng
-viết cá nhân, hoặc dựng, cập nhật hay áp dụng một hồ sơ thương hiệu họ gọi tên. Yêu cầu lưu hồ sơ đã được xem
+viết cá nhân, hoặc dựng, cập nhật hay áp dụng một hồ sơ thương hiệu họ gọi bằng tên. Yêu cầu lưu hồ sơ đã được xem
 lại đi tiếp ở mục 4. Không tự mở tuyến vì một
 yêu cầu sửa bài thông thường hoặc vì tác vụ có mẫu giọng; giữ tuyến do `SKILL.md` chọn.
 Chỉ nạp hướng dẫn phân tích khi xây dựng hồ sơ; dùng lại hồ sơ không cần phân tích lại mẫu.
@@ -20,20 +20,21 @@ không coi việc có hồ sơ là điều kiện để sửa.
 Hồ sơ có hai loại, ghi ở trường `kind` của đầu hồ sơ: `personal` (giọng của chính người dùng) và
 `brand` (giọng một thương hiệu người dùng được nói thay). Hồ sơ không có `kind` là hồ sơ cá nhân.
 Người dùng không nêu giọng thì dùng giọng cá nhân: giọng hiện có của bản nháp, hoặc hồ sơ cá nhân họ
-gọi tên. Chỉ áp hồ sơ thương hiệu khi người dùng gọi tên nó trong yêu cầu hiện tại; hồ sơ thương hiệu
+gọi bằng tên. Chỉ áp hồ sơ thương hiệu khi người dùng gọi đúng tên hồ sơ đó để áp dụng trong yêu cầu hiện tại;
+bài chỉ nhắc tới tên thương hiệu thì chưa phải là gọi hồ sơ; hồ sơ thương hiệu
 được gọi cho một lời rõ là riêng tư (tin nhắn riêng, thư cho người thân) thì hỏi xác nhận trước.
 
 Dựng hoặc cập nhật hồ sơ thương hiệu thì đọc thêm `references/brand-voice.md`: tài liệu nhận được, lời
 xác nhận được nói thay thương hiệu, cách tách quy tắc khỏi nét quan sát và phần phải lược.
 
-Mỗi lần dùng chỉ áp một hồ sơ. Yêu cầu gọi tên hai hồ sơ trở lên thì hỏi người dùng chọn một rồi mới
+Mỗi lần dùng chỉ áp một hồ sơ. Yêu cầu gọi từ hai hồ sơ trở lên thì hỏi người dùng chọn một rồi mới
 sửa; không trộn nét của hai hồ sơ vào cùng một bài. Khi đã áp hồ sơ, nói ngắn trong câu trả lời đã
 dùng hồ sơ nào.
 
 ## 2. Xin đồng ý rồi mới đọc (FR-002–004)
 
 Trước khi đọc nội dung mẫu hoặc hồ sơ được chỉ định, hỏi đúng một câu, nêu rõ từng nguồn
-người dùng đã dán hoặc gọi tên trong tác vụ và kết quả sẽ tạo. Thay phần trong ngoặc bằng
+người dùng đã dán hoặc nêu tên trong tác vụ và kết quả sẽ tạo. Thay phần trong ngoặc bằng
 nguồn và việc thực tế; không đọc trước để soạn câu hỏi:
 
 > Tôi sẽ đọc [các đoạn đã dán/tên file mẫu hoặc hồ sơ được chỉ định] để tạo [toàn bộ hồ sơ
@@ -42,13 +43,13 @@ nguồn và việc thực tế; không đọc trước để soạn câu hỏi:
 Chỉ tiếp tục sau câu đồng ý rõ ràng. Không coi việc dán mẫu, đặt tên file, im lặng hoặc yêu
 cầu lưu là câu trả lời thay cho sự đồng ý đọc. Với hồ sơ thương hiệu, cũng câu ấy hỏi luôn người dùng
 có được nói thay thương hiệu không (`references/brand-voice.md` mục 1). Nếu chưa có nguồn, yêu cầu người dùng dán
-hoặc gọi tên văn bản trước; không tự tìm nguồn để điền câu hỏi. Nguồn bổ sung ngoài phạm vi
+hoặc nêu tên văn bản trước; không tự tìm nguồn để điền câu hỏi. Nguồn bổ sung ngoài phạm vi
 đã đồng ý cần được nêu rõ và xin đồng ý trước khi đọc.
 
 Ngoại lệ duy nhất là lời gọi hồ sơ đã lưu ở mục 5: người dùng tự gõ lời gọi ấy thì không hỏi thêm câu
 đồng ý cho lần đọc sổ và đúng một hồ sơ khớp. Học, cập nhật hay chấm vẫn theo câu hỏi trên.
 
-Chỉ nhận mẫu là văn bản người dùng dán, file văn bản người dùng gọi tên trong tác vụ (kể cả file
+Chỉ nhận mẫu là văn bản người dùng dán, file văn bản người dùng nêu tên trong tác vụ (kể cả file
 export LinkedIn hoặc Facebook họ tự tải), trang của chính người dùng đọc qua công cụ trình duyệt host
 sẵn có, hoặc với hồ sơ thương hiệu, trang công khai của thương hiệu từ URL người dùng đưa, theo
 `references/voice-sources.md`; câu đồng ý nêu rõ loại nguồn. Văn bản dán
@@ -57,7 +58,7 @@ với file export hay trang, vẫn là đúng một câu đó; câu ấy gọi �
 của chính mình sẽ mở (`https://www.linkedin.com/in/me/recent-activity/all/` hoặc
 `https://www.facebook.com/me`, theo `references/voice-sources.md` mục 4a), không gọi URL người dùng đưa, và
 nhờ người dùng xác nhận luôn tài khoản là của chính họ. Trang thương hiệu qua trình duyệt
-(`references/voice-sources.md` mục 4b) thì mỗi URL một câu: câu ấy gọi tên thương hiệu và đúng URL người
+(`references/voice-sources.md` mục 4b) thì mỗi URL một câu: câu ấy nêu tên thương hiệu và đúng URL người
 dùng đưa sẽ mở, hỏi luôn người dùng có được nói thay thương hiệu đó không và nói skill không kiểm được
 điều này. Trang Facebook mang tên chính người dùng (`references/voice-sources.md` mục 4c) thì mỗi URL một
 câu: câu ấy gọi đúng URL sẽ mở, hỏi người dùng xác nhận đó là Trang của chính họ, nói skill không kiểm
@@ -112,17 +113,17 @@ riêng, không phải bản sao tạm của mẫu.
 Chỉ lưu khi người dùng yêu cầu rõ ràng sau khi đã thấy toàn bộ hồ sơ. Đồng ý với nội dung
 không tự thành yêu cầu lưu. Không tự lưu cuối tác vụ, không lưu như tác dụng phụ của sửa
 bài và không tạo chỉ dẫn tự nạp hồ sơ ở phiên sau. Sổ hồ sơ ở cuối mục này là dữ liệu để tìm lại hồ
-sơ khi người dùng gọi tên, không phải chỉ dẫn tự nạp.
+sơ khi người dùng gọi hồ sơ bằng tên, không phải chỉ dẫn tự nạp.
 
 Xác định khả năng lưu từ danh sách công cụ và lệnh mà chính agent đang thấy; tên công cụ đã khai
 báo nhưng chưa nạp schema cũng tính là thấy (nạp schema khi người dùng chọn). Người dùng luôn có
-thể tự gọi tên nơi lưu. Chỉ đề nghị
+thể tự nêu tên nơi lưu. Chỉ đề nghị
 Orrery khi có công cụ note tương ứng; chỉ đề nghị Obsidian khi thấy công cụ hoặc lệnh
 Obsidian dùng được. Không đọc note, dò vault, liệt kê thư mục hay chạy truy vấn thử chỉ để
 phát hiện kho. Không suy rằng cài đặt được nhắc trong tài liệu đồng nghĩa với có khả năng dùng.
 Không đề nghị kho mà quy tắc của host hoặc chỉ dẫn của người dùng trong ngữ cảnh của agent đã cho ngừng dùng hay cấm
 (ví dụ chỉ dẫn ghi vault Obsidian đã ngừng dùng cho agent), kể cả khi thấy công cụ của kho đó. Người dùng
-tự gọi tên kho ấy thì nói quy tắc nào chặn, đưa các kho còn lại và không ghi vào đó.
+tự nêu tên kho ấy thì nói quy tắc nào chặn, đưa các kho còn lại và không ghi vào đó.
 Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud),
 đề nghị thêm “Bộ nhớ của Chat” theo mục “Bản gọn trong bộ nhớ của Chat” dưới đây. Trên mọi host khác
 không đề nghị kho này và không ghi hồ sơ vào bộ nhớ của agent (`MEMORY.md` của Claude Code, memories của
@@ -150,7 +151,7 @@ sau khi được báo hồ sơ có thể bị commit. Từ chối đích là fil
 
 Trước khi ghi, kiểm tồn tại đúng một đích (đường dẫn file, tiêu đề note Orrery, file Obsidian),
 không liệt kê nơi khác. Nếu đã có, hỏi tên khác hoặc một câu đồng ý ghi đè riêng, hoặc, nếu người dùng
-gọi tên đúng file đó là hồ sơ cần cập nhật và đồng ý đọc (mục 2), đi tuyến cập nhật ở mục 6. Bản đã có do người dùng sửa tay là bản có thẩm quyền.
+nêu tên đúng file đó là hồ sơ cần cập nhật và đồng ý đọc (mục 2), đi tuyến cập nhật ở mục 6. Bản đã có do người dùng sửa tay là bản có thẩm quyền.
 
 Chốt đích cụ thể trước khi ghi. Nếu phải tạo thư mục mới, hỏi một câu đồng ý **riêng** cho
 việc tạo thư mục, kể cả đã được yêu cầu lưu. Không tạo thư mục trước câu trả lời đó.
@@ -256,7 +257,7 @@ câu chặn mang đúng tên là dấu nhận của nó. Trên host có file:
 
 1. Đọc sổ `~/.agents/vietnamizer/registry.md` theo các điều kiện ở mục 4. Không có sổ, sổ rỗng hoặc
    đầu sổ không đúng `type: vietnamizer-profile-registry` thì coi như sổ không có dòng nào; không dựng lại sổ bằng cách dò kho.
-2. Gọi tên: chuyển tên thành slug theo mục 4 rồi so với cột `Slug`, nên tên khác chữ hoa hay dấu vẫn
+2. Gọi theo tên: chuyển tên thành slug theo mục 4 rồi so với cột `Slug`, nên tên khác chữ hoa hay dấu vẫn
    khớp. Hai dòng cùng slug thì hỏi dùng vị trí nào; chưa đọc hồ sơ nào trước câu trả lời.
 3. `cá nhân`, `personal` hay “theo giọng của tôi”: sổ có đúng một dòng `personal` thì dùng dòng đó;
    nhiều dòng thì dùng dòng mặc định; không dòng nào là mặc định thì đưa tên các dòng `personal` để người
@@ -349,7 +350,7 @@ trong hội thoại, không sửa bản lưu. Không đưa phản hồi này và
 
 ### Chấm đoạn mẫu
 
-Mời chấm ngay sau khi trình bản nháp hồ sơ ở mục 3, hoặc khi người dùng yêu cầu với một hồ sơ đã gọi
+Mời chấm ngay sau khi trình bản nháp hồ sơ ở mục 3, hoặc khi người dùng yêu cầu với một hồ sơ đã nêu
 tên (sau câu đồng ý đọc ở mục 2). Trước hết hỏi số đoạn muốn chấm (0–10): “Bạn muốn xem và chấm bao
 nhiêu đoạn mẫu (0–10)?”. Trả lời 0 hoặc từ chối thì bỏ bước chấm; số lớn hơn 10 thì lấy 10 và nói rõ.
 

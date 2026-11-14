@@ -8,7 +8,7 @@
 <h1 align="center">Vietnamizer</h1>
 
 <p align="center"><strong>Giúp AI viết tiếng Việt “con người” nhất có thể.</strong><br>
-Skill cho Claude Code, Codex, Antigravity và các agent đọc được Agent Skills. Vietnamizer rà soát bản nháp AI và bản dịch sát, chỉ sửa chỗ gọi tên được lỗi, giữ nghĩa và giọng người viết. Gói chỉ có Markdown nên mọi quy tắc là hướng dẫn cho agent, không có mã nào ép buộc.</p>
+Skill cho Claude Code, Codex, Antigravity và các agent đọc được Agent Skills. Vietnamizer giúp biên tập bản nháp AI và bản dịch thô, nhận diện lỗi qua các pattern chuẩn, giữ ngữ nghĩa và giọng văn người viết. Gói chỉ có Markdown nên mọi quy tắc là hướng dẫn cho agent, không có mã nào ép buộc.</p>
 
 <p align="center">
   <a href="https://github.com/finolabs/vietnamizer/releases/latest"><img src="https://img.shields.io/github/v/release/finolabs/vietnamizer" alt="Bản phát hành mới nhất"></a>
@@ -39,7 +39,7 @@ gần với chính bạn, nhưng đó là niềm tin chứ chưa phải số đo
 
 | Khi cần | Skill hướng agent làm gì? |
 |---|---|
-| Rà bản nháp AI hoặc bản dịch sát | Tìm lỗi cụ thể về từ, bổ ngữ và cấu trúc câu |
+| Biên tập bản nháp AI hoặc bản dịch thô | Tìm lỗi cụ thể về từ, bổ ngữ và cấu trúc câu |
 | Biên tập blog, bài chuyên môn | Giữ ý định, mức khẳng định, câu rút gọn và nhịp dấu câu |
 | Rà README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
 | Viết theo giọng của bạn hoặc của thương hiệu | Học hồ sơ giọng từ bài bạn đưa, cho bạn chấm đoạn mẫu, chỉ lưu khi bạn yêu cầu; bắt đầu bằng `/vietnamizer:help` (Claude Code) hoặc câu “thiết lập giọng” |
@@ -247,7 +247,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Lịch sử phiên bản
 
-- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà cùng gạch ngang); luôn soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
+- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
 - **0.16.1** — Mô tả plugin ngắn lại để catalog `finolabs/plugins` pin được bản mới; nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt; gọi lại hồ sơ đã lưu bằng tên.
 

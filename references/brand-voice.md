@@ -10,21 +10,21 @@ Hồ sơ thương hiệu học từ ba loại tài liệu, đều do người d�
 
 1. **Bộ quy chuẩn thương hiệu** (brand guide, quy chuẩn giọng, sổ tay nội dung).
 2. **Bài thương hiệu đã đăng**: bài trên fanpage, trang công ty, blog, bản tin. Người dùng dán bài,
-   gọi tên file bài viết họ được phép tải (export của trang), hoặc, khi host có công cụ trình duyệt,
+   nêu tên file bài viết họ được phép tải (export của trang), hoặc, khi host có công cụ trình duyệt,
    đưa URL trang để skill đọc qua đường ở `references/voice-sources.md` mục 4b: fanpage Facebook, trang
    công ty LinkedIn, hoặc trang danh sách bài trên website hay blog riêng của thương hiệu.
 3. **Tài liệu nội bộ** người dùng chọn đưa: email mẫu, trang đích, đề xuất, kịch bản chăm sóc khách.
 
-Chỉ dùng tài liệu người dùng dán hoặc gọi tên trong tác vụ. Không tìm thêm tài liệu trong kho, ổ
+Chỉ dùng tài liệu người dùng dán hoặc nêu tên trong tác vụ. Không tìm thêm tài liệu trong kho, ổ
 chung, hộp thư hay connector, kể cả khi người dùng có quyền truy cập ở đó. Người dùng đưa link (fanpage,
 blog, trang đích) thì chỉ mở theo `references/voice-sources.md` mục 4b, sau câu đồng ý. Không có công cụ
 trình duyệt, hoặc link không thuộc nền tảng mục 4b nhận (ví dụ trang đích), thì nhờ họ dán nội dung hoặc
-gọi tên file export; không mở link bằng công cụ tải trang nào. Không đọc trang của thương hiệu người dùng
+nêu tên file export; không mở link bằng công cụ tải trang nào. Không đọc trang của thương hiệu người dùng
 không được nói thay: yêu cầu học giọng đối thủ, “bên X” hay một công ty khác thì từ chối trước khi mở gì,
 kể cả khi người dùng nói mình được nói thay (mục 4b).
 
 Trước khi đọc, cần người dùng xác nhận được nói thay thương hiệu. Lời xác nhận nằm trong chính câu xin
-đồng ý đọc (`references/voice-profile.md` mục 2): câu ấy gọi tên từng tài liệu sẽ đọc (với trang qua
+đồng ý đọc (`references/voice-profile.md` mục 2): câu ấy nêu tên từng tài liệu sẽ đọc (với trang qua
 trình duyệt: tên thương hiệu và đúng URL sẽ mở) và hỏi luôn người dùng có được nói thay thương hiệu này
 không. Skill không kiểm được thẩm quyền và dựa vào lời xác nhận đó.
 Chưa có lời xác nhận thì hỏi, chưa đọc gì. Người dùng nói không được phép thì không dựng hồ sơ thương

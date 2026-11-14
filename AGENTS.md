@@ -134,7 +134,7 @@ Trước khi sửa skill, phải xếp quan sát vào đúng nhóm:
 | Nhóm | Cách nhận biết | Nơi xử lý |
 |---|---|---|
 | Sở thích cá nhân | Cả hai cách viết đều tự nhiên; khác nhau ở nhịp câu, xưng hô, mức trang trọng hoặc cách dùng từ | Hồ sơ do đúng người dùng chủ động cung cấp cho tác vụ |
-| Pattern sửa nhầm hoặc bỏ sót | Quy tắc chung sửa một câu vốn đúng, hoặc bỏ qua một lỗi có thể gọi tên | `calibration/LOG.md`, rồi điều chỉnh **Không flag** hoặc phần phát hiện |
+| Pattern sửa nhầm hoặc bỏ sót | Quy tắc chung sửa một câu vốn đúng, hoặc bỏ qua một lỗi xác định được | `calibration/LOG.md`, rồi điều chỉnh **Không flag** hoặc phần phát hiện |
 | Hiện tượng mới | Một lỗi chưa có pattern nào mô tả và xuất hiện trong nhiều mẫu độc lập | `calibration/LOG.md`, rồi cân nhắc thêm pattern |
 
 ### Hồ sơ văn phong cá nhân
@@ -166,7 +166,7 @@ phải một bước của workflow Vietnamizer.
 
 `calibration/LOG.md` chỉ ghi bằng chứng có thể làm thay đổi quy tắc dùng chung. Mỗi mục cần có ngày, thể loại, đoạn trước khi sửa, bản đối chiếu, tên khác biệt, pattern liên quan, cách phân loại và quyết định.
 
-Ghi bằng chứng trước khi sửa quy tắc. Một trường hợp sửa nhầm có thể đủ để bổ sung trường hợp loại trừ nếu lỗi được gọi tên rõ và có thể kiểm tra lại. Pattern mới cần nhiều mẫu độc lập, trừ khi người bản ngữ nêu một quy tắc ngôn ngữ có thể kiểm chứng ngay bằng nguồn đáng tin cậy.
+Ghi bằng chứng trước khi sửa quy tắc. Một trường hợp sửa nhầm có thể đủ để bổ sung trường hợp loại trừ nếu lỗi được xác định rõ và có thể kiểm tra lại. Pattern mới cần nhiều mẫu độc lập, trừ khi người bản ngữ nêu một quy tắc ngôn ngữ có thể kiểm chứng ngay bằng nguồn đáng tin cậy.
 
 Không dùng quan sát của một cá nhân để âm thầm điều chỉnh skill theo giọng của họ hoặc của tổ chức họ. Nếu một bản fork cố ý phục vụ riêng một tổ chức, phải nói rõ phạm vi đó trong changelog và không trình bày nó như quy tắc chung của tiếng Việt.
 

@@ -14,6 +14,8 @@
 
 Agent decision, open to the owner at review: extend T2 and V20 instead of adding new patterns, so the inventory stays at 55 and no registry, count or doc table changes.
 
+5. **Calques, jargon and register, before the 0.16.2 tag** ("Sửa trước tag", after PR 59 merged). Fio rewrote the README header: "gọi tên được lỗi" is a calque of "named errors" ("người ta sẽ viết 'xác định được lỗi' hoặc 'chỉ đích danh được lỗi'"); "bản dịch sát" → "bản dịch thô"; "giữ nghĩa và giọng" → "giữ ngữ nghĩa và giọng văn".
+
 ## Requirements
 
 - **FR-001**: T2 covers a colon inside a prose sentence that joins a statement to its own explanation, consequence or example, and a colon that opens a list written inline in the sentence. The fix splits the sentence or joins the list with *như*/*gồm*; a connective is added only when the source already shows that relation.
@@ -23,6 +25,11 @@ Agent decision, open to the owner at review: extend T2 and V20 instead of adding
 - **FR-005**: V20 states, labelled as the maintainer's unmeasured observation (AGENTS.md forbids unsourced frequency claims), that a compound cut to one syllable is the most common AI error, and the core always checks V20 on prose.
 - **FR-006**: V20 case 3 covers bare *đội* as the subject of a sentence that does not say which team; *đội* with a modifier or an established referent is not flagged. The fix prefers *Đội ngũ*/*Đội nhóm*; *Cả đội* only when the source means the whole team (chốt 3 keeps scope).
 - **FR-007**: Calibration cases HF01–HF10 cover FR-001 to FR-006, half of them over-correction guards; a contract test guards the new phrases.
+- **FR-008**: V9 covers verb phrases calqued word by word from English (*gọi tên được lỗi*, *gọi tên file*), keeps the literal sense (*gọi tên học sinh*).
+- **FR-009**: V19 covers Vietnamese trade jargon that readers outside the trade misread (*bản dịch sát* in a product description), and keeps it for in-trade readers.
+- **FR-010**: V20 case 3 asks for the full compound in taglines and product introductions where the single syllable sits next to compounds of the same kind (*ngữ nghĩa*, *giọng văn*), only when that does not change the voice in edit mode; chat, short labels, casual text and complete formal sentences keep it (review round 1).
+- **FR-011**: No shipped file uses the calque *gọi tên* outside V9's own examples; a contract test guards it.
+- **FR-012**: Applying a brand profile needs the user to call that profile by name to apply it; a request that only mentions the brand name does not (security review round 1, HF18).
 
 ## Success criteria
 

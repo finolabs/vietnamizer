@@ -67,7 +67,7 @@ Bốn điều dưới đây giữ cho bản sửa không làm sai thể loại h
 
 **Dấu hiệu:** đoạn giải thích một lỗi, cơ chế hoặc khái niệm bằng nhiều danh từ trừu tượng nhưng không đưa ra trường hợp cụ thể. Thuật ngữ xuất hiện lần đầu mà không có ví dụ gần đó; câu định nghĩa dài và phần cần hiểu bị đẩy ra sau một chuỗi liệt kê; người đọc phải đọc lại mới hình dung được hiện tượng.
 **Vì sao:** trung tính là đặc điểm của giọng, còn cụ thể là đặc điểm của thông tin. Một đoạn có thể giữ giọng trung tính mà vẫn đưa ví dụ rõ ràng. Nếu hai khái niệm này bị đánh đồng, tài liệu sẽ đúng giọng nhưng khó dùng.
-**Sửa:** đưa một ví dụ đã có trong phạm vi người dùng giao xử lý lên gần phần giải thích. Ưu tiên ví dụ trong cùng tài liệu, bảng tra, test case hoặc phụ lục; không sáng tác dữ kiện mới. Có thể cho người đọc thấy trường hợp cụ thể trước rồi mới gọi tên hiện tượng.
+**Sửa:** đưa một ví dụ đã có trong phạm vi người dùng giao xử lý lên gần phần giải thích. Ưu tiên ví dụ trong cùng tài liệu, bảng tra, test case hoặc phụ lục; không sáng tác dữ kiện mới. Có thể cho người đọc thấy trường hợp cụ thể trước rồi mới nêu tên hiện tượng.
 **Không flag:** bảng tra, danh mục tham số, danh sách mã lỗi hoặc tài liệu mà ví dụ được dẫn rõ sang nơi khác; phần tóm tắt điều hành; trường hợp ví dụ nằm ngay ở đoạn tiếp theo.
 
 ### K5. Câu dẫn nhập rỗng sau đề mục

@@ -43,7 +43,7 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
 | Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/terminology-consistency.md` trên tuyến bài | Bài ngắn, sửa một cụm |
 | Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
-| Học, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”), kể cả gọi lại hồ sơ đã lưu (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”), kể cả học từ bài LinkedIn/Facebook của chính người dùng; dựng, cập nhật hoặc áp dụng hồ sơ thương hiệu người dùng gọi tên; chấm đoạn mẫu của một hồ sơ | `references/voice-profile.md`; học từ export, trang mạng xã hội hay trang thương hiệu qua trình duyệt thì thêm `references/voice-sources.md`; dựng giọng thương hiệu thì thêm `references/brand-voice.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
+| Học, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”), kể cả gọi lại hồ sơ đã lưu (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”), kể cả học từ bài LinkedIn/Facebook của chính người dùng; dựng, cập nhật hoặc áp dụng hồ sơ thương hiệu người dùng gọi bằng tên; chấm đoạn mẫu của một hồ sơ | `references/voice-profile.md`; học từ export, trang mạng xã hội hay trang thương hiệu qua trình duyệt thì thêm `references/voice-sources.md`; dựng giọng thương hiệu thì thêm `references/brand-voice.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
 | Hỏi Vietnamizer làm được gì, hỏi cách dùng Vietnamizer, “bắt đầu dùng Vietnamizer”, “thiết lập giọng” (“sửa giúp”, “viết hướng dẫn”, “bắt đầu sửa bài” vẫn là biên tập hay viết) | `references/help.md` | Mọi catalog, profile/card, file của người dùng |
 | Chỉ review/nhận xét, không sửa | Trước nhận xét đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
@@ -57,8 +57,8 @@ chưa có căn cứ thì giữ nguyên hoặc hỏi đúng điểm làm đổi n
 | Nghi vấn | Catalog canonical |
 |---|---|
 | Thiếu hư từ, bổ ngữ, loại từ, tiếng trong từ; dấu thời gian, câu hỏi | `references/missing-words.md` — V1–V8,V20 |
-| Câu dịch sát, trạng ngữ/quy chiếu, lặp khuôn, danh hóa/bị động, lượng tình thái hoặc quan hệ mờ | `references/sentence-structure.md` — V9–V18,V24–V25 |
-| Chêm tiếng Anh, lời trợ lý, phỏng đoán thiếu nguồn, phản biện không có đối tượng | `references/terms-and-lead-ins.md` — V19,V21–V23 |
+| Câu hoặc cụm động từ dịch sát, trạng ngữ/quy chiếu, lặp khuôn, danh hóa/bị động, lượng tình thái hoặc quan hệ mờ | `references/sentence-structure.md` — V9–V18,V24–V25 |
+| Chêm tiếng Anh hoặc từ nghề dễ hiểu sai, lời trợ lý, phỏng đoán thiếu nguồn, phản biện không có đối tượng | `references/terms-and-lead-ins.md` — V19,V21–V23 |
 | Dấu câu, viết hoa, nhãn trang trí, emoji | `references/typography.md` — T1–T6, theo cổng trên |
 | Sáo ngữ, nhịp, xưng hô hoặc ngữ vực ở blog/chat/marketing | `profiles/personal-blog/rules.md` — B1–B17 |
 | Diễn đạt/đề mục/viện dẫn hoặc siêu dữ liệu ở tài liệu kỹ thuật/doanh nghiệp/học thuật | `profiles/enterprise-technical/rules.md` — K1–K7 |
