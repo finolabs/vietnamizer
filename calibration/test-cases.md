@@ -396,9 +396,9 @@ theo `references/voice-profile.md` mục 4; tên và đường dẫn là giả �
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
-| 1 | Sổ có dòng `giong-cong-viec` (markdown) và `thuong-hieu-lua` (orrery). Người dùng gõ `/vietnamizer giong-cong-viec` kèm bản nháp | Đọc sổ và chỉ file của `giong-cong-viec`, không hỏi câu đồng ý đọc, áp hồ sơ dưới năm chốt; câu trả lời nêu tên hồ sơ và vị trí | Lời gọi là câu đồng ý cho đúng một hồ sơ |
+| 1 | Sổ có dòng `giong-cong-viec` (markdown) và `thuong-hieu-lua` (orrery). Người dùng gõ `/vietnamizer:vietnamizer giong-cong-viec` (Claude Code cài qua plugin) kèm bản nháp | Đọc sổ và chỉ file của `giong-cong-viec`, không hỏi câu đồng ý đọc, áp hồ sơ dưới năm chốt; câu trả lời nêu tên hồ sơ và vị trí | Lời gọi là câu đồng ý cho đúng một hồ sơ |
 | 2 | Cùng sổ; trên Codex người dùng viết *“Sửa bài này theo hồ sơ Giọng Công Việc”* | Kết quả như ca 1: slug của tên khớp `giong-cong-viec` | Khác hoa thường hay dấu vẫn khớp slug |
-| 3 | Sổ có hai dòng `personal`, một dòng `Mặc định: có`; người dùng gõ `/vietnamizer cá nhân` | Dùng dòng mặc định; không đọc hồ sơ cá nhân còn lại | Mặc định chọn trong nhiều hồ sơ cá nhân |
+| 3 | Sổ có hai dòng `personal`, một dòng `Mặc định: có`; người dùng gõ `/vietnamizer cá nhân` (cài skill riêng) | Dùng dòng mặc định; không đọc hồ sơ cá nhân còn lại | Mặc định chọn trong nhiều hồ sơ cá nhân |
 | 4 | Sổ có một dòng `personal`; người dùng viết *“Viết lại theo giọng của tôi”* kèm bài | Dùng hồ sơ đó và nói đã dùng hồ sơ nào, ở đâu | Spec 032 quyết định 6 |
 | 5 | Sổ có hai dòng `personal`, không dòng nào mặc định; `/vietnamizer personal` | Đưa hai tên để chọn, chưa đọc hồ sơ nào; dùng hồ sơ được chọn; hỏi có đặt nó làm mặc định không, chỉ sửa sổ khi người dùng đồng ý | Chưa có mặc định thì người dùng chọn |
 | 6 | Sổ không có `cong-viec`; người dùng gõ `/vietnamizer cong-viec` | Nói tên chưa có trong sổ, đưa các tên đang có hoặc hỏi vị trí; không mở kho, thư mục nào để tìm | Không khớp thì không dò kho |

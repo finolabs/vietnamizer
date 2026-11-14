@@ -407,6 +407,7 @@ class SkillContractTest(unittest.TestCase):
             "Đầu hồ sơ không đúng thì dừng, không dùng và không trích chữ nào từ file",
             "Chỉ hỏi câu này trên host ghi được file",
             "Claude Code cài qua plugin `/vietnamizer:vietnamizer <slug>`",
+            "`/vietnamizer:vietnamizer <tên>` (Claude Code cài qua plugin), cùng lệnh ấy với `cá nhân` hoặc `personal`",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, route)
@@ -417,6 +418,10 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(old=old):
                 self.assertNotIn(old, route)
         self.assertIn("Gọi lại hồ sơ đã lưu chỉ qua sổ hồ sơ ở `references/voice-profile.md` mục 5", read("SKILL.md"))
+        for relative in ("SKILL.md", "PRIVACY.md", "references/voice-profile.md"):
+            with self.subTest(plugin_call=relative):
+                self.assertIn("`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`", read(relative))
+        self.assertIn("Vị trí người dùng tự đưa ở bước 4 chưa có dòng nên không so slug", route)
         help_text = read("references/help.md")
         for phrase in (
             "`/vietnamizer:vietnamizer <tên>`",

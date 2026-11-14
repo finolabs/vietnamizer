@@ -28,7 +28,7 @@ sơ giọng” thêm nguồn trang thương hiệu, đảo lại quyết định
 BP01–BP29, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
 lượng.
 
-Spec 032, gọi lại hồ sơ đã lưu bằng tên: người dùng gõ `/vietnamizer <tên>`, `/vietnamizer cá nhân`
+Spec 032, gọi lại hồ sơ đã lưu bằng tên: người dùng gõ `/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, cùng lệnh ấy với `cá nhân`
 (`personal`), `$vietnamizer <tên>` trên Codex, câu “theo hồ sơ <tên>” hoặc “theo giọng của tôi”, và skill
 tìm đến chỗ lưu qua sổ hồ sơ `~/.agents/vietnamizer/registry.md`. Sổ chỉ ghi tên, loại, hồ sơ cá nhân mặc
 định, kho và vị trí, không chứa nội dung hồ sơ; mỗi dòng chỉ được ghi khi người dùng đồng ý sau lúc lưu.

@@ -89,7 +89,7 @@ dùng và không lưu gì. Bước thiết lập giọng mà hướng dẫn mờ
 đúng các cổng đồng ý đọc và lưu ở trên.
 
 Khi áp dụng, skill chỉ đọc hồ sơ người dùng dán, chỉ định hoặc gọi lại. Người dùng gọi lại hồ sơ đã lưu
-bằng tên (`/vietnamizer <tên>`, `$vietnamizer <tên>` trên Codex, “theo hồ sơ <tên>”), bằng `cá nhân` hoặc
+bằng tên (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `$vietnamizer <tên>` trên Codex, “theo hồ sơ <tên>”), bằng `cá nhân` hoặc
 bằng câu “theo giọng của tôi”. Lời gọi do chính người dùng gõ được tính là đồng ý cho skill đọc sổ hồ sơ
 và đúng một hồ sơ khớp tên; skill nói rõ đã đọc hồ sơ nào, ở đâu. Skill không đọc hồ sơ khác, và khi không
 có hồ sơ khớp thì không dò kho, thư mục, bộ nhớ hay lịch sử mà hỏi người dùng.
