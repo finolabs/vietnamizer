@@ -35,7 +35,7 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/voice-analysis.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết (hồ sơ cũ có thể thiếu), quy tắc thương hiệu (chỉ hồ sơ thương hiệu) và lịch sử chấm do người dùng lưu; không chứa dữ liệu cá nhân |
 | `calibration/LOG.md` | Nhật ký bằng chứng dùng để sửa quy tắc chung; không lưu hồ sơ văn phong cá nhân |
 | `calibration/test-cases.md` | Ca kiểm thử chạy tay cho từng pattern, gồm cả ca chống sửa quá tay |
-| `README.md` | Giới thiệu ngắn, ví dụ, biểu đồ bằng chứng, cài nhanh và điều hướng tài liệu |
+| `README.md` | Giới thiệu ngắn, ví dụ, sơ đồ thiết lập giọng, cài nhanh và điều hướng tài liệu |
 | `docs/installation.md`, `docs/usage.md` | Cài đặt theo nền tảng, cách dùng, phạm vi và dữ liệu |
 | `docs/style-and-voice.md`, `docs/architecture.md` | Giọng mẫu/phong cách và cấu trúc nguồn; trỏ về quy tắc canonical |
 | `docs/patterns.md`, `docs/changelog.md`, `docs/sources.md` | Danh mục đủ 55 pattern, lịch sử phiên bản và nguồn có mức độ tin cậy |

@@ -112,6 +112,32 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn("is never applied until the user confirms it",
                       read("specs/028-voice-profile/contracts/profile-format.md"))
 
+    def test_colon_and_missing_syllable_rules(self) -> None:
+        skill = read("SKILL.md")
+        self.assertIn("trừ T2 (gạch ngang hoặc dấu hai chấm giữa câu làm mờ quan hệ ý) luôn được rà", skill)
+        self.assertIn("luôn soát V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà T1–T6", skill)
+        typography = read("references/typography.md")
+        for phrase in (
+            "### T2. Gạch ngang hoặc dấu hai chấm làm sai hoặc mờ quan hệ ý",
+            "mở một danh sách viết liền trong câu",
+            "trong văn xuôi không đổi gạch ngang thành dấu hai chấm giữa câu",
+            "Chỉ thêm từ nối khi bản gốc đã cho thấy đúng quan hệ đó",
+            "Nếu sau vài tiếng không nhận được phản hồi, họ sẽ chuyển sang hỏi cửa hàng khác.",
+            "nhãn đầu heading hoặc bullet (xét theo T5, không theo T2)",
+            "không flag câu dẫn đứng trước danh sách xuống dòng hoặc bullet",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, typography)
+        missing = read("references/missing-words.md")
+        for phrase in (
+            "theo quan sát của người duy trì (chưa đo), đây là lỗi hay gặp nhất",
+            "chỉ chọn *\"Cả đội...\"* khi bản gốc nói toàn đội",
+            "Danh từ tập thể *đội* đứng trơ làm chủ ngữ của một câu chưa cho biết đội nào",
+            "Giữ *đội* khi có định ngữ hoặc ngữ cảnh đã cho biết đội nào",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, missing)
+
     def test_consistency_guide_does_not_override_consistent_variants(self) -> None:
         text = read("references/terminology-consistency.md")
         for phrase in (
