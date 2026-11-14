@@ -12,7 +12,7 @@ A `kind: brand` profile is being learned or updated, and the agent sees a browse
 |---|---|---|
 | Facebook fanpage | `facebook.com/<tên-trang>`, `facebook.com/profile.php?id=<số>` (only `id`); hosts `www.`, `m.`, `web.` | the page itself |
 | LinkedIn company page | `www.linkedin.com/company/<slug>/` | `/company/<slug>/posts/` |
-| Brand website or blog | a listing page of posts on the brand's own host, not the root, no query string | post pages linked from it, same host, under its path prefix |
+| Brand website or blog | a listing page of posts on the brand's own host, not the root, no query string | post pages linked from it, same host, under its path prefix (the listing path with a trailing `/`; `/` alone is the root); a post page that redirects off host or off prefix is dropped |
 
 Not accepted: `linkedin.com/in/`, `/showcase/`, `/school/`; a Facebook personal profile; a shared publishing platform outside the brand's own space; a news or information site the brand does not own; any tag, topic, category or search page.
 

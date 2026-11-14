@@ -58,8 +58,8 @@ Repository root of `finolabs/vietnamizer`. Run tests with `python3 -B -m unittes
 
 ## Phase 9: Checks and gates
 
-- [ ] T018 `uptime`, then `tests.test_skill_contract`, `tests.test_package_security`, `tests.test_distribution` (separate commands), `python3 -B scripts/validate-package.py`, `claude plugin validate .`
-- [ ] T019 `security-audit` on the change (new trust boundary: pages from URLs the user gives)
+- [x] T018 `uptime`, then `tests.test_skill_contract`, `tests.test_package_security`, `tests.test_distribution` (separate commands), `python3 -B scripts/validate-package.py`, `claude plugin validate .`
+- [x] T019 `security-audit` on the change (new trust boundary: pages from URLs the user gives)
 - [ ] T020 Open the PR with `<!-- fnl-router depth=DEEP trigger=privacy -->`; fresh-context `fnl-reviewer` and `fnl-security-reviewer`; post both with `review-gate`'s `post_review.py`; `merge_check.py --repo finolabs/vietnamizer <PR>`
 - [ ] T021 Build archives in `dist/` and list their SHA-256 in `.finolabs/release-0.16.0.md`; no merge, tag, release or catalog pin without Fio's go
 

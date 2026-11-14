@@ -114,8 +114,10 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
   đường mục 4a.
 - **Đường đọc cố định.** Facebook: chính fanpage đó. LinkedIn: trang công ty và mục bài đăng của nó, cùng
   đường `/company/<slug>/`. Website: trang danh sách và các trang bài có link từ trang danh sách đó, cùng
-  host, có đường dẫn bắt đầu bằng tiền tố của trang danh sách (phần đường dẫn tới dấu `/` cuối, ví dụ
-  `/blog/`). Không theo link nào khác, không mở host khác, không mở link nằm trong bài, không sang trang
+  host, có đường dẫn bắt đầu bằng tiền tố của trang danh sách. Tiền tố là toàn bộ đường dẫn của trang
+  danh sách, thêm `/` ở cuối nếu chưa có (`/blog` và `/blog/` đều thành `/blog/`); tiền tố chỉ còn `/` thì
+  coi như trang gốc và hỏi trang danh sách. Mỗi trang bài cũng kiểm như trang đầu: chuyển hướng sang host
+  khác hay ra ngoài tiền tố thì bỏ trang đó, không đọc gì từ nó. Không theo link nào khác, không mở host khác, không mở link nằm trong bài, không sang trang
   tiếp theo của danh sách.
 - **Giới hạn website.** Không mở trang đăng nhập, tài khoản, liên hệ, tìm kiếm, bình luận, file PDF hay
   URL có chuỗi truy vấn (`?`). Trên nền tảng đăng bài dùng chung (Medium, Substack, Blogspot, WordPress.com,

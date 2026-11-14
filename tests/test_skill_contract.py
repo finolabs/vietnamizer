@@ -309,6 +309,9 @@ class SkillContractTest(unittest.TestCase):
             "Trang thẻ, chủ đề, chuyên mục hay tìm kiếm về thương hiệu không bao giờ là không gian riêng của thương hiệu",
             "luôn dừng, trừ khi tên miền thuộc thương hiệu",
             "bài viết về thương hiệu do người khác viết thì bỏ",
+            "`/blog` và `/blog/` đều thành `/blog/`",
+            "tiền tố chỉ còn `/` thì coi như trang gốc",
+            "Mỗi trang bài cũng kiểm như trang đầu",
             # FR-007
             "muốn học cách một thương hiệu viết không phải là được nói thay thương hiệu đó",
             # FR-008
