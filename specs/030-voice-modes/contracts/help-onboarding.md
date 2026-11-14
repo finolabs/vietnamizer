@@ -19,4 +19,4 @@ Each choice through the host form where available, recommended option first; tex
 5. Rate: the rating session contract (count first; 0 skips).
 6. Save: spec 028 mục 4 (store choice, name, path); a no ends with the profile left in the conversation.
 
-Question budget before rating: at most 6 (kind, authority if brand, source, ownership or platform, consent, plus one follow-up).
+Question budget before rating: at most 6 (kind, source, platform when needed, consent, plus one follow-up).
