@@ -146,11 +146,11 @@ thoại hoặc file bởi host vẫn theo chính sách host.
 
 ## Issue, pull request và ca sửa sai
 
-Issue và pull request của repo công khai có thể được người khác đọc. Chỉ gửi nội dung mày có
+Issue và pull request của repo công khai có thể được người khác đọc. Chỉ gửi nội dung bạn có
 quyền công bố; thay tên, dữ kiện nội bộ và thông tin cá nhân bằng ví dụ giả lập. Không gửi API key
 hoặc credential qua issue. Hướng dẫn ca hiệu chuẩn nằm trong [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-Maintainer và người đọc GitHub có thể tiếp cận nội dung mày chủ động đăng để hỗ trợ hoặc xem
+Maintainer và người đọc GitHub có thể tiếp cận nội dung bạn chủ động đăng để hỗ trợ hoặc xem
 ca sửa sai. Nội dung công khai không có thời hạn tự xóa do Vietnamizer đặt; lịch sử Git, bản
 fork và bản sao có thể vẫn còn sau khi chỉnh sửa. Có thể sửa bài đăng hoặc liên hệ maintainer
 để yêu cầu gỡ nội dung trong phạm vi kiểm soát của repo; không bảo đảm xóa mọi bản sao trên

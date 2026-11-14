@@ -40,6 +40,9 @@ không thuộc payload hiện tại, nên chỉ sửa những file đó không c
 file được đóng gói, dùng quy trình trên rồi đối chiếu inventory, CRC, version và bytes với source.
 Đóng gói thành công không chứng minh quyền gửi hoặc Directory approval. Trạng thái intake OpenAI
 và điều kiện tiếp tục nằm trong [hướng dẫn phân phối plugin](docs/plugin-distribution.md).
+Bản audit trước khi public (Gitleaks quét toàn bộ lịch sử Git, 0 finding) và checklist gửi Directory
+cũ được giữ ở commit `87f4744`, gồm [audit OSS](https://github.com/finolabs/vietnamizer/blob/87f4744/docs/public-oss-audit-2026-10-02.md) và
+[checklist Claude](https://github.com/finolabs/vietnamizer/blob/87f4744/docs/claude-marketplace-checks.md).
 
 Gói không có runtime Python, nên đừng thêm lại evaluator ngoài, đường gọi mạng hay đọc API key vào payload
 (constitution, nguyên tắc V). Sau khi sửa pattern canonical, chạy `python3 scripts/validate-package.py`.
