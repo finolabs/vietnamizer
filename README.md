@@ -134,20 +134,27 @@ bạn hỏi bằng lời như trên. Các bước bạn sẽ gặp:
    bạn; học giọng của người khác là không được phép. Trước khi đọc Facebook hay LinkedIn qua trình duyệt,
    skill báo rằng điều khoản của hai nền tảng này cấm truy cập hay thu thập tự động khi chưa được phép, và
    tài khoản có thể bị hạn chế.
-4. **Xem hồ sơ nháp.** Skill trình toàn bộ hồ sơ: mỗi nét giọng có phạm vi, căn cứ và mức chắc chắn, kèm
-   những điểm còn chờ bạn chốt. Bạn sửa tới khi ưng.
+4. **Xem hồ sơ nháp.** Skill trình toàn bộ hồ sơ, trong đó mỗi nét giọng có phạm vi, căn cứ và mức chắc
+   chắn, kèm những điểm còn chờ bạn chốt. Bạn sửa tới khi ưng.
 5. **Chấm thử.** Chọn từ 0 đến 10 đoạn mẫu; mỗi đoạn bạn chấm Kém, Trung bình, Khá hoặc Tốt. Chọn 0 là bỏ
    qua. Đây là đánh giá của bạn; skill không tự tính điểm giống giọng.
-6. **Lưu hay không.** Chỉ lưu khi bạn bảo lưu. Bạn chọn nơi lưu: Orrery hay Obsidian nếu host có công cụ
-   tương ứng, không thì một thư mục Markdown (skill gợi ý `~/.agents/vietnamizer/profiles`), và đặt tên
-   hồ sơ. Không lưu thì hồ sơ chỉ nằm trong cuộc trò chuyện đó.
+6. **Lưu hay không.** Chỉ lưu khi bạn bảo lưu. Bạn chọn lưu vào Orrery hay Obsidian nếu host có công cụ
+   tương ứng, không thì vào một thư mục Markdown (skill gợi ý `~/.agents/vietnamizer/profiles`), rồi đặt
+   tên hồ sơ. Lưu xong, skill hỏi có ghi tên và vị trí hồ sơ vào sổ hồ sơ `~/.agents/vietnamizer/registry.md`
+   không (sổ không chứa nội dung hồ sơ), rồi in đúng câu bạn gõ lần sau. Trên Chat không đọc được file trên
+   máy (claude.ai, Desktop, Mobile), hồ sơ được lưu thành bản gọn khoảng 1.200 ký tự trong bộ nhớ của Chat,
+   sau khi bạn xem đúng văn bản sẽ ghi và đồng ý. Không lưu thì hồ sơ chỉ nằm trong cuộc trò chuyện đó.
 
 Trước bước chấm, skill hỏi không quá sáu câu, chưa kể câu đồng ý riêng cho trang thứ hai và thứ ba, cũng như hai câu hỏi thêm khi trang thương hiệu hóa ra là Trang của một cá nhân (hỏi đó có phải Trang của bạn không, rồi câu đồng ý cho Trang ấy). Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
 
-Lần sau, gọi hồ sơ bằng tên kèm chỗ lưu, ví dụ “Viết lại bài này theo hồ sơ `giong-cong-viec` trong
-`~/.agents/vietnamizer/profiles`.”
-Skill xin đồng ý đọc hồ sơ đó, mỗi lần chỉ áp một hồ sơ và không tự nạp hồ sơ nào ở phiên sau. Hồ sơ không
-được đổi nghĩa, mức chắc chắn hay điều kiện của bài.
+Lần sau, bạn gọi hồ sơ bằng tên. Trên Claude Code cài qua plugin, gõ `/vietnamizer:vietnamizer giong-cong-viec`;
+cài skill riêng thì `/vietnamizer giong-cong-viec`; trên Codex là `$vietnamizer giong-cong-viec`; host khác
+thì nói “Viết lại bài này theo hồ sơ giong-cong-viec”. Cùng lệnh ấy với `cá nhân` thay cho tên, hay câu
+“theo giọng của tôi”, sẽ gọi hồ sơ cá nhân mặc định. Lời gọi bạn tự gõ được tính là đồng ý cho skill đọc
+sổ hồ sơ và đúng một hồ sơ khớp tên. Skill không dò kho, mỗi lần chỉ áp một hồ sơ và không tự nạp hồ sơ
+nào khi bạn chưa gọi. Hồ sơ chưa ghi vào sổ thì bạn nói kèm chỗ lưu, ví dụ “Viết lại bài này theo hồ sơ ở
+`~/.agents/vietnamizer/profiles/giong-cong-viec.md`”, và skill xin đồng ý rồi mới đọc. Hồ sơ không được
+đổi nghĩa, mức chắc chắn hay điều kiện của bài.
 [Hai chế độ giữ giọng, ví dụ prompt và bảy style card](docs/style-and-voice.md).
 
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
@@ -326,7 +333,7 @@ bạn đừng dùng tuyến hồ sơ giọng, hoặc chọn dán bài. [Chi ti�
 
 ## Lịch sử phiên bản
 
-- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Constitution lên 2.6.1. Chưa chạy agent trên các ca mới. [Lịch sử đầy đủ](docs/changelog.md)
+- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` hay `/vietnamizer:vietnamizer cá nhân` qua sổ hồ sơ; trên Chat lưu bản gọn trong bộ nhớ; tạo hồ sơ không bắt buộc. Constitution lên 2.8.0. Chưa chạy agent trên các ca mới. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in. [Lịch sử đầy đủ](docs/changelog.md)
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn (chỉ lưu khi bạn yêu cầu rõ); gói phát hành bỏ `calibration/`; phân phối qua catalog `finolabs/plugins`. Giữ 55 pattern và runtime. [Lịch sử đầy đủ](docs/changelog.md)

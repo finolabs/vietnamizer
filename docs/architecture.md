@@ -47,7 +47,6 @@ docs/patterns.md, docs/changelog.md           danh mục đầy đủ và lịch
 docs/benchmarks.md, docs/figures/             bằng chứng, hình README và tooling vẽ tùy chọn
 docs/sources.md                              nguồn và mức độ tin cậy
 docs/plugin-distribution.md                   đường cài, kiểm thử và giới hạn publication
-docs/openai-marketplace-assessment-2026-10-23.md  bằng chứng intake OpenAI và đề xuất sản phẩm MCP
 scripts/scan-tells.sh                         tìm những chỗ có thể rà bằng biểu thức chính quy; kết quả chỉ để người biên tập xem lại
 .specify/                                     constitution, template và script của Spec Kit
 specs/                                        đặc tả, checklist, plan và task theo từng feature

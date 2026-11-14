@@ -56,7 +56,7 @@ run. The owner's earlier waived native/Claude/fallback tests were not reopened o
 Integrate this patch through the repository's PR/CI process and publish the updated privacy page.
 At the time of this snapshot, the privacy URL pointed to remote main, not the uncommitted local changes.
 These are historical release gates, not current permission to submit. See the
-[2026-10-23 intake assessment](../../docs/openai-marketplace-assessment-2026-10-23.md):
+[2026-10-23 intake assessment](https://github.com/finolabs/vietnamizer/blob/87f4744/docs/openai-marketplace-assessment-2026-10-23.md):
 the owner reported that the portal is not accepting more skills-only submissions at this time.
 Resume only with current intake evidence and owner authorization for the specific submission.
 Then use the matching versioned ZIP for review. Publisher verification, category confirmation,

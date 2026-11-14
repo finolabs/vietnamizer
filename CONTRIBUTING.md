@@ -2,7 +2,7 @@
 
 Người dùng có thể gửi ca sửa sai hoặc đề xuất sửa bằng issue và pull request. Một ca hữu ích gồm
 thể loại, người đọc, đoạn gốc, kết quả của skill, bản đối chiếu và lý do khác biệt. Chỉ gửi văn bản
-mày có quyền công bố; thay dữ kiện riêng bằng ví dụ giả lập trước khi gửi.
+bạn có quyền công bố; thay dữ kiện riêng bằng ví dụ giả lập trước khi gửi.
 
 [GitHub Issues](https://github.com/finolabs/vietnamizer/issues) dùng mẫu báo lỗi trong
 `.github/ISSUE_TEMPLATE/bug_report.yml`. Ghi phiên bản và nguồn cài, client/provider, các bước tái
@@ -39,9 +39,9 @@ Trước khi dựng lại, sao lưu archive hiện có cùng SHA-256 vào một 
 không thuộc payload hiện tại, nên chỉ sửa những file đó không cần dựng lại archive. Nếu sửa
 file được đóng gói, dùng quy trình trên rồi đối chiếu inventory, CRC, version và bytes với source.
 Đóng gói thành công không chứng minh quyền gửi hoặc Directory approval. Trạng thái intake OpenAI
-và điều kiện tiếp tục nằm trong [báo cáo ngày 23/10/2026](docs/openai-marketplace-assessment-2026-10-23.md).
+và điều kiện tiếp tục nằm trong [hướng dẫn phân phối plugin](docs/plugin-distribution.md).
 
-Gói không có runtime Python: không thêm lại evaluator ngoài, đường gọi mạng hay đọc API key vào payload
+Gói không có runtime Python, nên đừng thêm lại evaluator ngoài, đường gọi mạng hay đọc API key vào payload
 (constitution, nguyên tắc V). Sau khi sửa pattern canonical, chạy `python3 scripts/validate-package.py`.
 
 ## Tooling Spec Kit cho maintainer

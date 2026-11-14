@@ -59,7 +59,7 @@ chức năng và dùng nhiều đại từ theo vai trò; không thay toàn cụ
 cách, không rải câu cửa miệng hoặc tự thêm trải nghiệm. Một mẫu ngắn vẫn giúp
 giữ đặc tính hẹp; không đặt số bài tối thiểu chưa được kiểm chứng.
 
-Hình thức hợp lệ chưa tự là lựa chọn nên dùng: phần giới thiệu khái niệm có thể hợp câu hỏi,
+Hình thức hợp lệ chưa tự là lựa chọn nên dùng. Phần giới thiệu khái niệm có thể hợp câu hỏi,
 phần thao tác có thể hợp bạn, phần đối chiếu cần làm rõ những trạng thái đã có. Không cấm câu
 hỏi/bạn hoặc giữ cứng bố cục nguồn; khi đổi cấu trúc vẫn kiểm phạm vi đề mục, quan hệ và tình thái.
 
@@ -110,7 +110,7 @@ không chỉ thay đại từ hoặc chèn câu cửa miệng. Review cả câu,
 kiểm lại nghĩa phần bị ảnh hưởng. Quy trình đầy đủ do `SKILL.md` sở hữu.
 
 Mẫu cá nhân được chỉ định giúp theo giọng một người. Bộ bài báo/blog/chuyên môn nhiều tác giả
-là tham chiếu cách viết theo nhiệm vụ: chọn phần cùng thể loại, người đọc và chức năng, giữ
+là tham chiếu cách viết theo nhiệm vụ, nên chỉ chọn phần cùng thể loại, người đọc và chức năng, giữ
 xuất xứ và giới hạn bằng chứng. Không trộn thành giọng trung bình hoặc mặc định bắt chước giọng
 chủ. Không lấy dữ kiện, chuyện riêng hay quan điểm của mẫu sang bài. Guide mẫu mô tả cách dùng bằng chứng; danh mục nguồn ở `references/style-sources.md` chỉ đọc khi được giao tìm/chọn nguồn, gồm báo chí, blog công nghệ/nghiên cứu và giải thích phương pháp khoa học. Danh mục chỉ giữ metadata/link cùng giới hạn, không tải corpus hoặc chép toàn văn.
 
@@ -145,7 +145,7 @@ theo [`references/voice-profile.md`](../references/voice-profile.md) và [`refer
 - **Phân tích và bảo vệ dữ liệu:** phân tích các chiều tiếng Việt quan sát được (xưng hô theo quan hệ, hư từ/tiểu từ, chêm tiếng Anh, dấu câu và số, nhịp điệu, mở/kết) kèm trích đoạn minh họa ngắn hoặc ước lượng số lần xuất hiện. Agent được chỉ dẫn bỏ tên riêng, số điện thoại, email, thông tin tài chính và dữ liệu nhạy cảm khỏi hồ sơ; v1 không có bộ lọc bằng mã, nên bước bảo vệ thực sự là bạn đọc toàn bộ dự thảo trước khi lưu.
 - **Duyệt trước khi lưu:** luôn hiển thị trọn vẹn dự thảo hồ sơ cho người dùng xem và chỉnh sửa.
 - **Lưu theo yêu cầu tại nơi người dùng chọn:** chỉ lưu khi người dùng yêu cầu rõ ràng. Skill phát hiện công cụ Orrery hoặc Obsidian từ danh sách công cụ sẵn có của agent để gợi ý, trừ kho mà quy tắc của host hay chỉ dẫn của bạn đã cho ngừng dùng; nếu không có thì hỏi đường dẫn file Markdown và đề xuất `~/.agents/vietnamizer/profiles`. Tuyệt đối không tự tạo thư mục trước khi xác nhận. Người dùng có thể lưu nhiều hồ sơ với các tên khác nhau cho từng kênh viết.
-- **Tái sử dụng:** khi biên tập hoặc viết mới, gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` (Claude Code cài qua plugin; cài skill riêng thì `/vietnamizer <tên>`), `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”; cùng lệnh ấy với `cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Lưu xong, nếu bạn đồng ý, skill ghi một dòng (tên, loại, kho, vị trí; không có nội dung hồ sơ) vào sổ hồ sơ `~/.agents/vietnamizer/registry.md` và in đúng câu cần gõ lần sau. Lời gọi của bạn được tính là đồng ý cho skill đọc sổ và đúng một hồ sơ khớp tên; skill không dò kho, không đọc hồ sơ khác và nói rõ đã dùng hồ sơ nào. Trên Chat không có file (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud), hồ sơ lưu được dưới dạng bản gọn khoảng 1.200 ký tự trong bộ nhớ của Chat, có câu chặn để chỉ dùng khi bạn gọi tên, sau khi bạn xem đúng văn bản và đồng ý; skill báo trước rằng bộ nhớ ấy được nạp vào mọi cuộc trò chuyện và gợi ý lưu trong một Project. Tạo hồ sơ không bắt buộc: chưa có hồ sơ, skill vẫn sửa bài ngay và chỉ nhắc một dòng mỗi phiên sau khi đã trả bài, tắt được hẳn (trên Chat cũng vậy). Hồ sơ dán thẳng trong yêu cầu đi tuyến “Theo mẫu”. Yêu cầu trong lượt hiện tại luôn được ưu tiên hơn hồ sơ đã lưu; năm quy tắc chốt chặn trong `SKILL.md` luôn giữ nguyên giá trị.
+- **Tái sử dụng:** khi biên tập hoặc viết mới, gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` (Claude Code cài qua plugin; cài skill riêng thì `/vietnamizer <tên>`), `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”; cùng lệnh ấy với `cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Lưu xong, nếu bạn đồng ý, skill ghi một dòng (tên, loại, kho, vị trí; không có nội dung hồ sơ) vào sổ hồ sơ `~/.agents/vietnamizer/registry.md` và in đúng câu cần gõ lần sau. Lời gọi của bạn được tính là đồng ý cho skill đọc sổ và đúng một hồ sơ khớp tên; skill không dò kho, không đọc hồ sơ khác và nói rõ đã dùng hồ sơ nào. Trên Chat không có file (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud), hồ sơ lưu được dưới dạng bản gọn khoảng 1.200 ký tự trong bộ nhớ của Chat, có câu chặn để chỉ dùng khi bạn gọi tên, sau khi bạn xem đúng văn bản và đồng ý; skill báo trước rằng bộ nhớ ấy được nạp vào mọi cuộc trò chuyện và gợi ý lưu trong một Project. Tạo hồ sơ không bắt buộc. Chưa có hồ sơ thì skill vẫn sửa bài ngay và chỉ nhắc một dòng mỗi phiên sau khi đã trả bài, tắt được hẳn (trên Chat cũng vậy). Hồ sơ dán thẳng trong yêu cầu đi tuyến “Theo mẫu”. Yêu cầu trong lượt hiện tại luôn được ưu tiên hơn hồ sơ đã lưu; năm quy tắc chốt chặn trong `SKILL.md` luôn giữ nguyên giá trị.
 
 ### `calibration/LOG.md`
 
