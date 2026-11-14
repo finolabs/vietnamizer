@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/031-brand-page-browser`
 **Created**: 2026-11-14
-**Status**: Draft (specify phase; clarify and plan pending)
+**Status**: Planned 2026-11-14 (plan, research, data model, contract and quickstart written; implementation for 0.16.0)
 **Input**: Owner, 14/11/2026, review of the afk lease of 13–14/11/2026 (Orrery memory `01M7C2CK384NC5QK4ED7CM5ZQ3`): the implementation decision in spec 030 FR-006 that kept brand pages off the browser source is reversed; Fio wants the voice-profile route to read a brand's own page through a host browser tool when learning a `kind: brand` profile. Router depth DEEP, trigger `privacy` (network access through a host browser, pages the skill cannot tie to the user, a new consent path). Builds on spec 028 (voice-profile route) and spec 030 (personal and brand voice, social sources).
 
 ## Settled decisions (owner, 2026-11-14)
@@ -17,13 +17,14 @@
 8. **"See more" allowed** (open decision O1, settled 2026-11-14): the skill may click "See more" ("Xem thêm") only inside the body of a post the brand published, to expand that post in place; it makes no other click, and a click that does more than expand the post in place yields nothing (FR-010).
 9. **Shared publishing platforms** (open decision O3, settled 2026-11-14): Medium, Substack, Blogspot, WordPress.com and hosted Ghost; news and information sites, Vietnamese ones included (for example VnExpress, Tuổi Trẻ, CafeF, Kenh14); and forums and community sites (for example Spiderum, Viblo). On these hosts the skill reads only inside the brand's own space, meaning an official account, publication or channel the brand operates (for example `medium.com/@<brand>` or `<brand>.substack.com`), and stops outside it. A tag, topic, category or search page about the brand is never the brand's own space. News and information sites have no such space, so the skill always stops there unless the brand owns the domain. A brand's own domain served by such a platform counts as the brand's own site.
 
+10. **URL shapes and page signs** (open decision O2, settled 2026-11-14): Fio approved the plan author's proposal, checked against platform conventions and not on live pages: a Facebook fanpage is `facebook.com/<tên-trang>` or `facebook.com/profile.php?id=<số>` (only `id`) on `www.`, `m.` or `web.facebook.com`, its posts view being the page itself; a LinkedIn company page is `linkedin.com/company/<slug>/` with its posts view `/company/<slug>/posts/` (no `/in/`, `/showcase/` or `/school/`). A fanpage shows "Trang · <hạng mục>" and Like or Follow, with no Add friend button or friends count; a company page shows Follow, an industry and a follower count, with no Connect button. See `research.md` R1.
+
 The options Fio did not pick, kept for the record: start from a fixed "pages I manage" admin URL; read only the tab the user opened themselves; admin-only pages; one URL per run; dropping websites from 031; a short reminder about the site's terms.
+
 
 ## Open decisions
 
-| # | Decision | Owner | Agent proposal | Unblocks when |
-|---|---|---|---|---|
-| O2 | The URL shapes (`facebook.com/<page>`, `linkedin.com/company/<slug>/posts/`) and the page signs that tell a fanpage or company page from a personal profile | Plan author, Fio approves | Use platform conventions until confirmed | Checked on live pages during the plan, before any reference names them |
+None. O2 was settled on 2026-11-14 (decision 10).
 
 ## Clarifications
 
@@ -35,7 +36,7 @@ The options Fio did not pick, kept for the record: start from a fixed "pages I m
 - Q (review of PR #47): one URL or several per run? → A: at most three of the same brand, one consent question each (decision 5).
 - Q (review of PR #47): how is the website route bounded? → A: the strict limits of decision 6.
 - Q (review of PR #47): does the brand's own website carry a terms warning? → A: no (decision 7).
-- Unverified (2026-11-14): URL shapes and page signs, open decision O2.
+- Q (plan, 2026-11-14): which URL shapes and page signs? → A: the proposal from platform conventions, not checked on live pages (decision 10).
 - Q: May the skill click "See more" in a brand post? → A: Yes, only inside the body of a post the brand published (decision 8).
 - Q: Which sites count as shared publishing platforms? → A: The proposed list plus Vietnamese news and information sites and forums or community sites (decision 9).
 
