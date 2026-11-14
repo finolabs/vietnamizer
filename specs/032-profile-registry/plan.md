@@ -28,6 +28,7 @@ Add a fixed profile registry, `~/.agents/vietnamizer/registry.md`, that records 
 | IV. Labelled evidence | Profiles and the registry stay with the user; nothing enters `calibration/LOG.md`. Pass. |
 | V. Self-contained Markdown | No code or network; the registry is a local Markdown file the agent reads and writes with host file tools. Pass. |
 | Constraint "Tuyến hồ sơ giọng" | 2.6.1 forbade any lookup beyond what the user pasted or pointed to. **Gate met**: MINOR 2.6.1 → 2.7.0 applied verbatim from Fio's approved text (commit `9dc02a1`, before any reference change; FR-014). |
+| Constraint, second change | Chat memory and the reminder needed 2.7.0 → 2.8.0; applied verbatim from Fio's approved text (commit `b390f18`) before the reference change. |
 | Governance (`AGENTS.md` vs constitution) | `AGENTS.md` "không tự liệt kê, chọn hay nạp ở phiên sau" conflicts with 2.7.0 once applied; rewritten in this pull request (T006). |
 
 Post-design re-check: pass. Residual risks: a hand-edited registry could point at a file the user did not mean (mitigated by the mục 4 location checks and by the answer naming the location read); the "theo giọng của tôi" call reads a profile on a looser phrase (Fio's decision 6; the answer always names what was read).

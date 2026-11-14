@@ -24,6 +24,13 @@
 - [x] T009 `PRIVACY.md`, `docs/style-and-voice.md`, `docs/changelog.md` (0.16.0), `specs/028-voice-profile/contracts/route-contract.md` note. FR-015.
 - [x] T010 Hand-over note for `README.md`, `docs/usage.md`, `docs/installation.md` in the shared notes folder. FR-015.
 
+## Phase 4b — Chat memory and the first-use reminder (decisions 9–13)
+
+- [x] T013 Constitution 2.7.0 → 2.8.0 with Fio's approved text (commit `b390f18`). FR-016–FR-022.
+- [x] T014 `references/voice-profile.md` mục 4 (Chat memory store, compact form), mục 5 (call on Chat), mục 8 (reminder); `SKILL.md` reminder line; `references/help.md`. FR-016–FR-022.
+- [x] T015 `AGENTS.md`, `PRIVACY.md`, `docs/style-and-voice.md`, `docs/changelog.md`; spec decisions 9–14 and amendment 2.
+- [x] T016 Cases PR17–PR24; guard `test_chat_memory_and_reminder_rules` (written after the text in this round, so it was not seen red).
+
 ## Phase 5 — Checks and PR
 
 - [x] T011 `uptime` below 15, then `python3 -m unittest tests.test_skill_contract`, `python3 -m unittest tests.test_distribution`, `python3 scripts/validate-package.py` (one per command).
