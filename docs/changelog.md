@@ -9,10 +9,10 @@
 Spec 034, từ các lỗi Fio bắt trên bài viết thử ngày 15/11/2026. T2 đổi tên thành “Gạch ngang hoặc dấu hai
 chấm làm sai hoặc mờ quan hệ ý” và bắt dấu hai chấm giữa câu văn xuôi nối nhận định với vế giải thích, cùng
 dấu hai chấm mở một danh sách viết liền trong câu; cách sửa là tách câu hoặc nối bằng *như*, *gồm*, không
-thêm quan hệ mà bản gốc chưa nói. Cổng T của `SKILL.md` nay luôn rà T2, không chờ lỗi V1–V25. V20 nêu từ
+thêm quan hệ mà bản gốc chưa nói. Cổng T của `SKILL.md` nay luôn rà dấu hai chấm giữa câu của T2, không chờ lỗi V1–V25; gạch ngang vẫn chờ. V20 ghi theo quan sát (chưa đo) rằng từ
 ghép bị viết thành từ đơn là lỗi AI hay mắc nhất và core luôn soát V20 trên văn xuôi; *đội* đứng trơ làm chủ
 ngữ của câu chưa cho biết đội nào thuộc trường hợp 3, còn *đội IT* hay *đội* đã có quy chiếu thì giữ. Thêm ca
-HF01–HF10 và test hợp đồng. Banner README và `.github/social-preview.json` dùng tagline “Giúp AI viết tiếng
+HF01–HF10 và test contract của skill (`tests/test_skill_contract.py`). Banner README và `.github/social-preview.json` dùng tagline “Giúp AI viết tiếng
 Việt “con người” nhất có thể.”; README gọn lại, bỏ mục bằng chứng và thêm sơ đồ luồng thiết lập giọng. Vẫn 55 pattern; số nhóm và năm chốt không đổi. Ca mới chưa chạy bằng agent.
 
 ### 0.16.1 (14/11/2026)
@@ -142,7 +142,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
-- **0.16.2** — T2 bắt cả dấu hai chấm giữa câu văn xuôi và luôn được rà; V20 luôn được soát, gồm *đội* đứng trơ; banner README mới. Giữ 55 pattern. Chưa chạy agent trên các ca mới.
+- **0.16.2** — T2 bắt cả dấu hai chấm giữa câu văn xuôi, phần này luôn được rà; V20 luôn được soát, gồm *đội* đứng trơ; banner README mới. Giữ 55 pattern. Chưa chạy agent trên các ca mới.
 - **0.16.1** — Mô tả plugin ngắn lại còn 151 ký tự, giống nhau ở ba manifest và catalog `finolabs/plugins`, để catalog pin được bản mới. Nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` hay `/vietnamizer:vietnamizer cá nhân` qua sổ hồ sơ; trên Chat lưu bản gọn trong bộ nhớ; tạo hồ sơ không bắt buộc, lời nhắc tắt được hẳn cả trên Chat. Constitution lên 2.8.0. Chưa chạy agent trên các ca mới.
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt.

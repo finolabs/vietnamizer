@@ -1,6 +1,16 @@
 # Tái dựng hình trong README
 
-Hai hình dùng lại báo cáo đã có, không gọi model hoặc sửa dữ liệu nghiên cứu:
+README hiện dùng hai hình. `banner.png` dựng từ `.github/social-preview.json` bằng skill
+`finolabs-social-preview`. `voice-setup.svg` và `voice-setup-dark.svg` dựng bằng
+`python3 docs/figures/voice_setup.py docs/figures`, chỉ dùng thư viện chuẩn của Python; nội dung
+khớp mục “Thiết lập giọng của bạn” trong README.
+
+Hai hình bằng chứng bên dưới không còn nhúng trong README từ 0.16.2; dữ liệu và cách dựng lại được
+giữ để dùng ở [Benchmark](../benchmarks.md).
+
+## Hình bằng chứng
+
+Hai hình bằng chứng dùng lại báo cáo đã có, không gọi model hoặc sửa dữ liệu nghiên cứu:
 
 - `regression-cases.svg`: MR01–MR12, so 0.12.0 với 0.12.1 trên cùng Codex.
 - `reference-voice.svg`: lựa chọn cặp D–C của pilot 0.13.2; cùng Codex biên tập, Codex/Gemini là giám khảo.
@@ -31,7 +41,7 @@ uv pip install --python output/readme-figures-venv/bin/python --require-hashes -
 MPLCONFIGDIR=output/readme-figure-cache output/readme-figures-venv/bin/python docs/figures/render.py --export-dir output/readme-figure-exports
 ```
 
-Mỗi hình có bản ngang và bản `-mobile` cho màn hình hẹp; cả hai được nhúng bằng `picture` trong README.
+Mỗi hình có bản ngang và bản `-mobile` cho màn hình hẹp; cả hai từng được nhúng bằng `picture` trong README.
 Các SVG được ghi tại đây; PDF và PNG 300 DPI nằm trong thư mục xuất được chỉ định.
 Dùng cùng lockfile và môi trường để so bytes SVG; metadata thời gian được tắt, hash salt được cố định.
 Matplotlib dùng font DejaVu Sans có hỗ trợ tiếng Việt và chuyển glyph thành vector trong SVG.

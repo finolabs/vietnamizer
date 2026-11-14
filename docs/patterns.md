@@ -54,7 +54,7 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 | T6 | Emoji |
 
 Với văn xuôi thông thường, typography chỉ được sửa khi văn bản đồng thời có ít nhất một pattern
-V1–V25; riêng T2 luôn được rà. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
+V1–V25; riêng dấu hai chấm giữa câu văn xuôi của T2 luôn được rà. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
 
 ### Blog, bài cá nhân, nội dung công việc và marketing (B1–B17)
 
