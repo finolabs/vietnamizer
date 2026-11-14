@@ -100,6 +100,19 @@ thêm hoặc sửa dòng khi người dùng đồng ý, kể cả lần đầu t
 hay trong file chỉ dẫn của agent, và không host nào tự nạp nó. Người dùng có thể mở, sửa hoặc xóa sổ bất
 cứ lúc nào; xóa sổ không xóa hồ sơ.
 
+Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud),
+người dùng có thể lưu bản gọn của hồ sơ, khoảng 1.200 ký tự, vào bộ nhớ của chính Chat đó. Bản gọn mở
+đầu bằng câu nói chỉ dùng khi người dùng gọi tên hồ sơ, và không chứa trích đoạn bài viết. Trước khi ghi,
+skill trình đúng văn bản sẽ ghi, báo rằng bộ nhớ của Chat được nạp vào mọi cuộc trò chuyện, gợi ý lưu
+trong một Project để thu hẹp phạm vi, và chỉ ghi khi người dùng đồng ý. Bộ nhớ ấy do nhà cung cấp Chat
+lưu theo chính sách của họ; người dùng xem, sửa hoặc xóa bản gọn trong phần cài đặt bộ nhớ. Trên các host
+khác, skill không ghi hồ sơ vào bộ nhớ của agent.
+
+Tạo hồ sơ không bắt buộc. Khi chưa có hồ sơ, skill chỉ kiểm sổ hồ sơ có tồn tại hay không (không đọc
+nội dung), hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh, rồi nhắc một dòng, tối đa một lần mỗi phiên.
+Người dùng tắt hẳn lời nhắc thì skill, khi họ đồng ý, tạo một sổ trống chỉ có dòng `reminder: off`, hoặc
+ghi một dòng vào bộ nhớ của Chat.
+
 Hồ sơ có thể gồm tên do người dùng chọn, loại hồ sơ (cá nhân hay thương hiệu), ngày cập nhật, số mẫu
 theo kênh, quy tắc thương hiệu (chỉ hồ sơ thương hiệu), đặc tính giọng, cách viết theo kênh và người
 đọc, điều nên/không nên dùng, điểm chưa quyết, lịch sử chấm, cùng căn cứ ngắn đã loại dữ liệu cá nhân.

@@ -152,7 +152,10 @@ từ chối file chỉ dẫn của agent và chỉ ghi vào cây Git khi đượ
 ghi một dòng (tên, loại, mặc định, kho, vị trí; không có nội dung) vào sổ hồ sơ
 `~/.agents/vietnamizer/registry.md` và skill in câu gọi lần sau. Khi áp dụng, chỉ đọc hồ sơ người dùng
 dán, chỉ định hoặc gọi bằng tên, `cá nhân` hay “theo giọng của tôi”; lời gọi ấy cho đọc sổ và đúng một hồ
-sơ khớp, không dò kho và không nạp hồ sơ ở phiên sau khi người dùng chưa gọi.
+sơ khớp, không dò kho và không nạp hồ sơ ở phiên sau khi người dùng chưa gọi. Riêng Chat không có file
+(claude.ai, Desktop, Mobile, Cowork chạy trên cloud) lưu được bản gọn khoảng 1.200 ký tự trong bộ nhớ của
+Chat, có câu chặn phạm vi, sau khi người dùng xem đúng văn bản và đồng ý; host khác không ghi hồ sơ vào bộ
+nhớ của agent. Tạo hồ sơ không bắt buộc: chưa có hồ sơ thì vẫn sửa bài ngay và chỉ nhắc một dòng mỗi phiên.
 
 Mỗi đặc tính cần có phạm vi áp dụng và một ví dụ ngắn đã loại dữ liệu cá nhân. Không chép nguyên văn bản, không lưu dữ liệu cá nhân hoặc bí mật vào hồ sơ, không dùng hồ sơ của người này cho người khác. Yêu cầu trong lượt hiện tại luôn được ưu tiên hơn hồ sơ đã lưu; hồ sơ không thay đổi năm chốt trong `SKILL.md`.
 
