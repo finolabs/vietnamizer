@@ -142,7 +142,7 @@ bạn hỏi bằng lời như trên. Các bước bạn sẽ gặp:
    tương ứng, không thì một thư mục Markdown (skill gợi ý `~/.agents/vietnamizer/profiles`), và đặt tên
    hồ sơ. Không lưu thì hồ sơ chỉ nằm trong cuộc trò chuyện đó.
 
-Trước bước chấm, skill hỏi không quá sáu câu, chưa kể câu đồng ý riêng cho trang thứ hai và thứ ba. Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
+Trước bước chấm, skill hỏi không quá sáu câu, chưa kể câu đồng ý riêng cho trang thứ hai và thứ ba, và hai câu thêm khi trang thương hiệu hóa ra là Trang của một cá nhân (hỏi đó có phải Trang của bạn không, rồi câu đồng ý cho Trang ấy). Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
 
 Lần sau, gọi hồ sơ bằng tên kèm chỗ lưu, ví dụ “Viết lại bài này theo hồ sơ `giong-cong-viec` trong
 `~/.agents/vietnamizer/profiles`.”
