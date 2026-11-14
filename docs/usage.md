@@ -4,7 +4,7 @@
 
 ## Dùng ngay
 
-Gọi skill rồi dán đoạn cần sửa ngay bên dưới.
+Gọi skill rồi dán đoạn cần sửa ngay bên dưới. Cài qua plugin Claude Code thì lệnh là `/vietnamizer:vietnamizer`.
 
 ```text
 /vietnamizer
@@ -81,10 +81,17 @@ Vài điều nên biết trước khi bắt đầu:
   thay thương hiệu không. Nó dựa vào lời xác nhận của bạn, và học giọng của người khác là không được.
 - **Đồng ý trước khi đọc.** Mỗi nguồn có một câu xin đồng ý, gọi tên nguồn sẽ đọc. Đọc qua trình duyệt
   thì mỗi URL một câu. Chưa đồng ý thì skill chưa đọc gì.
-- **Bạn đọc kỹ bản nháp.** Skill được dặn bỏ tên người, liên hệ và chuyện riêng khỏi hồ sơ, nhưng
+- **Hãy tự đọc kỹ hồ sơ nháp.** Skill được dặn bỏ tên người, liên hệ và chuyện riêng khỏi hồ sơ, nhưng
   không có bộ lọc bằng mã. Bạn là người kiểm cuối cùng trước khi lưu.
 - **Chỉ lưu khi bạn bảo lưu.** Không lưu thì hồ sơ chỉ ở lại trong hội thoại. Để dùng lại, bạn gọi tên
-  hồ sơ và cho biết nó lưu ở đâu, hoặc dán hồ sơ vào yêu cầu; mỗi lần chỉ áp một hồ sơ.
+  hồ sơ (`/vietnamizer:vietnamizer <tên>` trên Claude Code cài qua plugin, `/vietnamizer <tên>` khi cài skill
+  riêng, `$vietnamizer <tên>` trên Codex,
+  hay câu “theo hồ sơ <tên>”), nói kèm chỗ lưu nếu hồ sơ chưa có trong sổ hồ sơ, hoặc dán hồ sơ vào yêu
+  cầu; mỗi lần chỉ áp một hồ sơ.
+- **Gọi tên là đồng ý đọc.** Lời gọi bạn tự gõ được tính là đồng ý cho skill đọc sổ hồ sơ và đúng một hồ
+  sơ khớp tên, nên skill không hỏi lại; riêng hồ sơ thương hiệu áp cho văn bản riêng tư thì skill vẫn hỏi
+  xác nhận trước. Yêu cầu của bạn trong lượt hiện tại luôn được ưu tiên hơn hồ sơ
+  ([Giọng và phong cách](style-and-voice.md)).
 
 ## Cách hoạt động, dữ liệu và hỗ trợ
 

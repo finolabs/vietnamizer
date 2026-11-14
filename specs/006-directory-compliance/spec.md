@@ -58,7 +58,7 @@ recommendation as pending owner acceptance. Verify only changed docs and traced 
 rebuild only if shipped payload changes, preserving superseded local artifacts first.
 
 Current evidence and the product decision are owned by
-[the dated assessment](../../docs/openai-marketplace-assessment-2026-10-23.md).
+[the dated assessment](https://github.com/finolabs/vietnamizer/blob/87f4744/docs/openai-marketplace-assessment-2026-10-23.md).
 
 ### Owner acceptance and integration authority — 2026-10-23
 

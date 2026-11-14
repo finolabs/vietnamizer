@@ -6,10 +6,7 @@ Owner báo portal hiển thị “We are not accepting more skills-only submissi
 Tạm dừng chuẩn bị gửi Vietnamizer theo đường skills-only; thông báo chưa được kiểm độc lập và
 không xác lập lệnh cấm toàn cầu hoặc vĩnh viễn. Hỗ trợ định dạng, cài từ catalog riêng, portal
 nhận hồ sơ và Directory approval là các trạng thái riêng. Xem
-[bằng chứng và điều kiện tiếp tục](openai-marketplace-assessment-2026-10-23.md).
-
-Bằng chứng kiểm tên mới: [rename-vietnamizer-2026-10-03.md](rename-vietnamizer-2026-10-03.md).
-Báo cáo [plugin-readiness-2026-10-03.md](plugin-readiness-2026-10-03.md) ghi snapshot tên cũ trước migration.
+[bằng chứng và điều kiện tiếp tục](https://github.com/finolabs/vietnamizer/blob/87f4744/docs/openai-marketplace-assessment-2026-10-23.md) (bản lưu tại commit `87f4744`).
 
 ## Một nội dung, nhiều đường cài
 
@@ -50,9 +47,9 @@ claude plugin validate .claude-plugin/plugin.json --strict
 npx --yes skills@1.5.20 add . --list
 ```
 
-`--check` không dựng archive. Chạy thêm `agy plugin validate .`: lệnh này còn một cảnh báo về
+`--check` không dựng archive. Chạy thêm `agy plugin validate .`; lệnh này còn một cảnh báo về
 `AGENTS.md` ở root, vì Antigravity chỉ nạp rules từ `rules/`; file đó dành cho người đóng góp và
-không đi vào gói. Cần kiểm thêm đường cài trên profile tạm: đăng ký `finolabs/plugins` (hoặc bản
+không đi vào gói. Cần kiểm thêm đường cài trên profile tạm bằng cách đăng ký `finolabs/plugins` (hoặc bản
 clone cục bộ của nó) và cài `vietnamizer@finolabs` trên Claude Code và Codex; trên Antigravity cài
 từ URL repository. Kiểm plugin cache có manifest đúng version và skill nạp đúng tên. Khi chuyển từ
 catalog `Finolabs` cũ (đăng ký từ `agybird`) hoặc `vietnamizer@vietnamizer`, gỡ plugin và
@@ -75,7 +72,7 @@ và [Submit plugins](https://developers.openai.com/plugins/deploy/submission).
 Base subtitle và description Codex dùng tiếng Anh theo hướng dẫn submission. Bản dịch tiếng
 Việt nằm trong `extensions.com.openai.publication.translations`; importer hiện giữ bản dịch
 nhưng chưa dùng chúng để đổi nội dung Directory hiển thị. Skill và listing Claude vẫn dùng
-tiếng Việt. Giữ category `Productivity`: mô tả rõ biên tập tài liệu, tin nhắn và bản dịch theo
+tiếng Việt. Giữ category `Productivity`, với mô tả nói rõ biên tập tài liệu, tin nhắn và bản dịch theo
 thể loại, không chỉ nêu một lời hứa “tự nhiên hơn”. Không bảo đảm category sẽ được chấp thuận.
 
 Gate riêng của repo yêu cầu đủ URL website, hỗ trợ, privacy và terms với HTTPS, không chứa
@@ -91,7 +88,7 @@ Icon là chữ `ă` vẽ bằng hình học SVG, không phụ thuộc font hoặ
 viewBox vuông 128×128; wordmark dùng cho README/giới thiệu, không thay icon listing vuông.
 Màu dùng các token FINOLABS đã duyệt: `fn-violet` (`#9750C4`), `fn-mint` (`#7FE2CE`),
 `ink-900` (`#0B0B17`), `ink-50` (`#F7F7FB`), `ink-300` (`#BCBCD0`) và `ink-500` (`#5B5B79`).
-Icon có nền trong suốt: bản sáng dùng violet, bản tối dùng mint. Metadata Codex dùng violet
+Icon có nền trong suốt; bản sáng dùng violet, bản tối dùng mint. Metadata Codex dùng violet
 cho `brandColor` và mint cho `brandColorDark`; skill UI dùng violet cho trường màu duy nhất. SVG/JSON/YAML
 chứa giá trị token được xuất cố định để gói cài không phụ thuộc CSS hoặc repo FINOLABS bên ngoài.
 Hai wordmark `assets/wordmark.svg` và `assets/wordmark-dark.svg` có nền trong suốt;
@@ -154,8 +151,7 @@ theo gói và chính sách của Claude; không cần chờ listing chính thứ
 Khi tiếp tục gửi Anthropic, dùng [developer portal](https://claude.ai/directory/manage) và chọn
 **Plugin bundle** từ repository GitHub; ZIP ở Releases chỉ phục vụ cài/review riêng.
 Directory đọc README ở root plugin làm mô tả listing. Chọn đúng tổ chức sở hữu trước khi tạo
-hồ sơ; không suy ra publisher từ tài khoản đang đăng nhập. Rà
-[checklist Claude](claude-marketplace-checks.md) để chuẩn bị dữ liệu, prompt và cổng xác nhận.
+hồ sơ; không suy ra publisher từ tài khoản đang đăng nhập.
 
 Nguồn định dạng:
 

@@ -7,7 +7,7 @@
 ## Settled decisions (owner, 2026-11-13)
 
 1. **Scope**: remove the whole `jev/` package (runner, transport, preparation, coverage, registry, `__main__`), `references/typesafe-advisor.md`, `scripts/build-jev-registry.py`, and the `register`/style-context handling that fed the evaluator. Nothing in the shipped skill runs Python or reads `TYPESAFE_API_KEY` afterwards.
-2. **Benchmarks**: remove `benchmarks/jev_*.py`, `benchmarks/public_*.py`, their tests and `eval/guard/`. Specs 001–028, `calibration/` and `docs/benchmarks.md` stay as dated history with a note that the evaluator no longer exists (same approach as `docs/typesafe-removal-2026-10-03.md`).
+2. **Benchmarks**: remove `benchmarks/jev_*.py`, `benchmarks/public_*.py`, their tests and `eval/guard/`. Specs 001–028, `calibration/` and `docs/benchmarks.md` stay as dated history with a note that the evaluator no longer exists (same approach as `docs/typesafe-removal-2026-10-03.md`, removed; see [blob at 87f4744](https://github.com/finolabs/vietnamizer/blob/87f4744/docs/typesafe-removal-2026-10-03.md)).
 3. **Docs**: constitution principle V is rewritten to "no external service, no key"; README and PRIVACY stop mentioning the evaluator except one line saying it was removed; `CHANGELOG`/`docs/changelog.md` record the removal and the consumer action.
 
 ## Requirements

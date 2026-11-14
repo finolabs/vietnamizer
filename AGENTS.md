@@ -53,7 +53,6 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `scripts/package-skill.sh` | Đóng gói `dist/vietnamizer.skill` và `dist/vietnamizer-claude-org.zip` |
 | `scripts/package-plugin.py` | Kiểm metadata/asset và tạo ZIP plugin ba nền tảng từ cùng public payload |
 | `docs/plugin-distribution.md` | Hướng dẫn kiểm cài đặt; plugin phân phối qua catalog chung `finolabs/plugins`, không có marketplace riêng |
-| `docs/openai-marketplace-assessment-2026-10-23.md` | Quyết định owner ngày 23/10/2026: giữ skills-only, chưa làm MCP, tạm dừng gửi OpenAI; bằng chứng và điều kiện xét lại |
 | `PRIVACY.md`, `TERMS.md` | Thông tin dữ liệu và điều kiện dùng gói mã nguồn mở |
 | `SECURITY.md` | Ranh giới bảo mật và kênh báo lỗi riêng, không dùng Issues công khai |
 | `.github/ISSUE_TEMPLATE/` | Mẫu báo lỗi tối thiểu đã ẩn dữ liệu và đường dẫn báo bảo mật riêng |
