@@ -172,7 +172,8 @@ các ý đã có, vẫn phải giữ mệnh đề, điều kiện, mức chắc 
 Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết; chỉ tuyến hồ sơ giọng tùy chọn mới lưu hồ sơ, khi bạn yêu cầu rõ.
 Hồ sơ có thể là giọng cá nhân (mặc định) hoặc giọng thương hiệu, mỗi lần dùng một hồ sơ; học từ bài bạn dán,
 file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt của host, còn giọng thương hiệu học
-từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ bạn đưa. Sau khi học, bạn có thể chấm vài đoạn mẫu theo
+từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ bạn đưa, hoặc đọc fanpage, trang công ty LinkedIn hay blog
+của thương hiệu qua trình duyệt từ URL bạn đưa (tối đa ba trang, mỗi trang một câu đồng ý). Sau khi học, bạn có thể chấm vài đoạn mẫu theo
 bốn mức Kém, Trung bình, Khá, Tốt; số lượt chấm chỉ vào hồ sơ khi bạn lưu, ghi là đánh giá của bạn. Skill
 không tự tính điểm giống giọng. Gõ `/vietnamizer:help` (plugin trên Claude Code) hoặc hỏi “Vietnamizer làm được gì?” để xem
 hướng dẫn và bắt đầu thiết lập giọng.

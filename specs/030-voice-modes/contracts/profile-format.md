@@ -12,7 +12,7 @@ language: vi
 updated: <YYYY-MM-DD>
 ---
 
-> Dựa trên khoảng <N> mẫu (<per-source counts: dán / export / trình duyệt>); số đếm xấp xỉ · cập nhật <date>.
+> Dựa trên khoảng <N> mẫu (<per-source counts: dán / export / trình duyệt; brand posts may also count trình duyệt since spec 031, 2026-11-14; never a URL>); số đếm xấp xỉ · cập nhật <date>.
 
 ## Quy tắc thương hiệu          <!-- brand profiles only -->
 - <rule> — nguồn: <neutral code such as "quy chuẩn-01", or "người dùng nêu"; never a file name or title> — phạm vi: <where it holds>
