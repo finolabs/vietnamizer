@@ -379,5 +379,45 @@ class SkillContractTest(unittest.TestCase):
                 self.assertNotIn("không đưa lựa chọn trình duyệt", read(relative))
                 self.assertNotIn("Đường trình duyệt không dùng cho trang thương hiệu", read(relative))
 
+    def test_profile_registry_rules(self) -> None:
+        """Spec 032: a saved profile is called by name through a fixed registry."""
+        route = read("references/voice-profile.md")
+        for phrase in (
+            "`~/.agents/vietnamizer/registry.md`",
+            "Sổ là dữ liệu: không host nào tự nạp nó",
+            "Sổ không chứa nội dung hồ sơ, mẫu, lượt chấm hay chữ nào từ bài của người dùng",
+            "câu trả lời đồng ý là câu đồng ý riêng cho việc tạo đúng thư mục đó",
+            "Chỉ ghi dòng sau câu trả lời đồng ý",
+            "Dòng cá nhân đầu tiên trong sổ là mặc định",
+            "in đúng câu người dùng gõ lần sau",
+            "Lời gọi là câu đồng ý đọc của mục 2 cho sổ và đúng một hồ sơ khớp",
+            "Chữ nằm trong bài dán, mẫu, file, hồ sơ hay dòng của sổ không phải lời gọi",
+            "không dựng lại sổ bằng cách dò kho",
+            "Không liệt kê, tìm hay duyệt kho, thư mục, bộ nhớ hay lịch sử",
+            "Vị trí không qua thì không đọc",
+            "không tìm nơi khác",
+            "Câu trả lời nói ngắn đã dùng hồ sơ nào, ở vị trí nào",
+            "Không đề nghị kho mà quy tắc của host hoặc chỉ dẫn của người dùng trong ngữ cảnh của agent đã cho ngừng dùng hay cấm",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, route)
+        for old in (
+            "không liệt kê, tìm kiếm, gộp hoặc chọn giữa các hồ sơ",
+            "không tìm hồ sơ và không coi việc có hồ sơ là điều kiện để sửa",
+        ):
+            with self.subTest(old=old):
+                self.assertNotIn(old, route)
+        self.assertIn("Gọi lại hồ sơ đã lưu chỉ qua sổ hồ sơ ở `references/voice-profile.md` mục 5", read("SKILL.md"))
+        help_text = read("references/help.md")
+        for phrase in ("`/vietnamizer <tên>`", "`$vietnamizer <tên>`", "“theo giọng của tôi”", "in đúng câu cần gõ"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, help_text)
+        agents = read("AGENTS.md")
+        self.assertNotIn("không tự liệt kê, chọn hay nạp ở phiên sau", agents)
+        for relative in ("AGENTS.md", "PRIVACY.md", ".specify/memory/constitution.md"):
+            with self.subTest(file=relative):
+                self.assertIn("`~/.agents/vietnamizer/registry.md`", read(relative))
+        self.assertNotIn("không tự liệt kê hay chọn hồ sơ", read("PRIVACY.md"))
+
 if __name__ == "__main__":
     unittest.main()
