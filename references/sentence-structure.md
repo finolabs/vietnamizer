@@ -4,12 +4,12 @@ Tra khi có nghi vấn đúng nhóm ở bảng của SKILL.md; đọc cả Khôn
 Khi cần phân biệt thuật ngữ với từ vòng vo mới tra `references/sino-vietnamese.md`.
 Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm khác chỉ vì có liên kết.
 
-### V9. Cụm giới từ dài do dịch sát
+### V9. Cụm giới từ dài hoặc cách nói dịch sát
 
-**Dấu hiệu:** các cụm như *trong quá trình, với sự, dưới hình thức, đối với, trong bối cảnh, trên cơ sở, nhằm mục đích, tại thời điểm, trong khuôn khổ* xuất hiện dày và có thể rút gọn mà không mất ý.
+**Dấu hiệu:** các cụm như *trong quá trình, với sự, dưới hình thức, đối với, trong bối cảnh, trên cơ sở, nhằm mục đích, tại thời điểm, trong khuôn khổ* xuất hiện dày và có thể rút gọn mà không mất ý. Cùng nhóm là cụm động từ dịch từng chữ một cách nói tiếng Anh mà người Việt không dùng, như *gọi tên được lỗi* (từ *name the error*), *gọi tên file* (từ *name the file*).
 **Vì sao:** khi dịch sát một giới từ tiếng Anh, câu tiếng Việt dễ nở thành cụm dài nhưng quan hệ nghĩa vẫn không rõ hơn. Nhiều trường hợp có thể dùng một từ ngắn hoặc một mệnh đề có động từ.
-**Sửa:** *"Trong quá trình kiểm tra, nhóm phát hiện hai bản ghi trùng"* → *"Khi kiểm tra, nhóm phát hiện hai bản ghi trùng"*. Có thể rút *tại thời điểm* thành *khi*, *trên cơ sở* thành *theo*, *nhằm mục đích* thành *để* nếu câu vẫn giữ nguyên nghĩa.
-**Không flag:** cụm giới từ mang nội dung thật hoặc là cách viết chuẩn của thể loại; pháp quy và hợp đồng; câu mục đích cụ thể như *"Nhằm nâng cao hiệu quả vận hành kho, team dev đã triển khai..."*. Nếu chuyển thành mệnh đề mà phải tự thêm chủ thể, hãy để nguyên hoặc hỏi người dùng.
+**Sửa:** *"Trong quá trình kiểm tra, nhóm phát hiện hai bản ghi trùng"* → *"Khi kiểm tra, nhóm phát hiện hai bản ghi trùng"*. Có thể rút *tại thời điểm* thành *khi*, *trên cơ sở* thành *theo*, *nhằm mục đích* thành *để* nếu câu vẫn giữ nguyên nghĩa. Với cụm động từ dịch sát, dùng cách nói tiếng Việt cùng nghĩa: *"chỉ sửa chỗ gọi tên được lỗi"* → *"chỉ sửa chỗ xác định được lỗi"* hoặc *"...chỉ đích danh được lỗi"*; *"người dùng gọi tên file"* → *"người dùng nêu tên file"*.
+**Không flag:** cụm giới từ mang nội dung thật hoặc là cách viết chuẩn của thể loại; pháp quy và hợp đồng; câu mục đích cụ thể như *"Nhằm nâng cao hiệu quả vận hành kho, team dev đã triển khai..."*. Nếu chuyển thành mệnh đề mà phải tự thêm chủ thể, hãy để nguyên hoặc hỏi người dùng. Giữ *gọi tên* theo nghĩa đen (*cô giáo gọi tên từng học sinh*) và cách nói đã thành quen như *gọi tên cảm xúc*.
 
 ### V10. Trạng ngữ đặt ở vị trí gây khó hiểu
 

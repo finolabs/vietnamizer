@@ -9,7 +9,7 @@ file này chỉ nói lấy mẫu từ đâu và giữ phần nào.
 Chưa có nguồn thì giới thiệu ba cách theo thứ tự này, chưa đọc gì:
 
 1. **Dán bài**: dán 10–20 bài do chính người dùng viết vào hội thoại. Nhanh nhất, không cần chờ.
-2. **File export**: người dùng tự tải dữ liệu từ nền tảng rồi gọi tên file (mục 3). Hợp khi muốn học
+2. **File export**: người dùng tự tải dữ liệu từ nền tảng rồi nêu tên file (mục 3). Hợp khi muốn học
    từ nhiều bài.
 3. **Đọc qua trình duyệt**: chỉ khi trong các công cụ agent đang thấy có công cụ trình duyệt. Hồ sơ cá
    nhân đọc tài khoản của chính người dùng, đã đăng nhập sẵn (mục 4a), hoặc Trang Facebook mang tên
@@ -103,7 +103,7 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
   - Trang công ty LinkedIn: `www.linkedin.com/company/<slug>/` và mục bài đăng `/company/<slug>/posts/`,
     chỉ hai đường này, không mở đường nào khác dưới `/company/<slug>/` (ví dụ `/people/`, `/jobs/`). Không
     nhận `/in/`, `/showcase/`, `/school/`. URL khác dạng (ví dụ `/reviews`, `?sk=`) thì không mở; nhờ
-    người dùng đưa URL đúng dạng, dán bài hoặc gọi tên file export.
+    người dùng đưa URL đúng dạng, dán bài hoặc nêu tên file export.
   - Website hay blog riêng của thương hiệu: một trang danh sách bài, không phải trang gốc.
   - Trang danh sách trên nền tảng đăng bài dùng chung, trong không gian riêng của thương hiệu: Substack
     `<thương-hiệu>.substack.com/archive`, bài ở `/p/<tên-bài>` cùng host; Medium `medium.com/@<thương-hiệu>`

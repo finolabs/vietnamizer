@@ -53,12 +53,12 @@ có thể do nhiều người viết; agent được chỉ dẫn không ghi tên
 điều khoản hợp đồng, giá đàm phán, số liệu hay sản phẩm chưa công bố, tên hệ thống nội bộ và tên hay tiêu
 đề tài liệu. Như mọi hồ sơ, không có bộ lọc bằng mã: người dùng đọc toàn bộ dự thảo trước khi lưu. Skill
 chỉ mở link trang thương hiệu qua đường dưới đây; không có công cụ trình duyệt thì người dùng dán nội dung
-hoặc gọi tên file export.
+hoặc nêu tên file export.
 
 Từ 0.16.0, hồ sơ thương hiệu có thể đọc trang công khai của thương hiệu qua công cụ trình duyệt host sẵn
 có: fanpage Facebook, trang công ty LinkedIn, hoặc trang danh sách bài trên website hay blog riêng của
 thương hiệu. Skill chỉ mở tối đa ba URL người dùng đưa trong một lượt, cùng một thương hiệu; mỗi URL có một
-câu đồng ý gọi tên thương hiệu và URL, kèm lời khẳng định được nói thay mà skill không kiểm được. Skill từ
+câu đồng ý nêu tên thương hiệu và URL, kèm lời khẳng định được nói thay mà skill không kiểm được. Skill từ
 chối trang của đối thủ hay thương hiệu người dùng không được nói thay. Đường đọc cố định: chính trang đó và
 mục bài đăng; với website, các trang bài cùng host dưới tiền tố đường dẫn của trang danh sách, không mở
 trang đăng nhập, liên hệ, tìm kiếm hay URL có chuỗi truy vấn. Skill chỉ đọc thân bài thương hiệu đã đăng;
@@ -102,7 +102,7 @@ cứ lúc nào; xóa sổ không xóa hồ sơ.
 
 Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud),
 người dùng có thể lưu bản gọn của hồ sơ, khoảng 1.200 ký tự, vào bộ nhớ của chính Chat đó. Bản gọn mở
-đầu bằng câu nói chỉ dùng khi người dùng gọi tên hồ sơ, và không chứa trích đoạn bài viết. Trước khi ghi,
+đầu bằng câu nói chỉ dùng khi người dùng nêu tên hồ sơ, và không chứa trích đoạn bài viết. Trước khi ghi,
 skill trình đúng văn bản sẽ ghi, báo rằng bộ nhớ của Chat được nạp vào mọi cuộc trò chuyện, gợi ý lưu
 trong một Project để thu hẹp phạm vi, và chỉ ghi khi người dùng đồng ý. Bộ nhớ ấy do nhà cung cấp Chat
 lưu theo chính sách của họ; người dùng xem, sửa hoặc xóa bản gọn trong phần cài đặt bộ nhớ. Chat có thể viết lại mục nhớ

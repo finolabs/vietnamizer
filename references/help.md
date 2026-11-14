@@ -12,7 +12,7 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
 
 1. **Biên tập và viết.** Sửa bản nháp, bản dịch hay bài AI còn gượng; giữ nghĩa và giọng hiện có. Viết
    mới từ ý hoặc dàn ý. Ví dụ: “Sửa giúp email này cho tự nhiên hơn.”
-2. **Chọn giọng.** Mặc định giữ giọng của chính người viết. Có thể gọi tên một hồ sơ giọng cá nhân
+2. **Chọn giọng.** Mặc định giữ giọng của chính người viết. Có thể nêu tên một hồ sơ giọng cá nhân
    hoặc một hồ sơ giọng thương hiệu; mỗi lần chỉ dùng một hồ sơ. Gọi lại hồ sơ đã lưu bằng
    `/vietnamizer:vietnamizer <tên>` (Claude Code cài qua plugin; cài skill riêng thì `/vietnamizer <tên>`),
    `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”; cùng lệnh ấy với `cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Sau mỗi lần lưu, skill
@@ -45,17 +45,17 @@ bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references
      Trang thì chỗ đó hỏi URL Trang và tên người dùng khi chưa có.
      File export thì nêu các bước của nền tảng theo mục 3 của file đó. Trình duyệt thì cảnh báo điều
      khoản đi cùng câu đồng ý ở bước 3, theo `references/voice-profile.md` mục 2; không nhắc lại ở đây.
-   - Thương hiệu: nhờ người dùng dán hoặc gọi tên bộ quy chuẩn và tài liệu nội bộ họ chọn đưa, theo
+   - Thương hiệu: nhờ người dùng dán hoặc nêu tên bộ quy chuẩn và tài liệu nội bộ họ chọn đưa, theo
      `references/brand-voice.md` mục 1. Bài thương hiệu đã đăng: Dán bài (đề xuất), File export (file bài
      viết trong export của trang), hoặc Đọc trang qua trình duyệt, với cùng điều kiện có công cụ trình
      duyệt; không nêu các bước export tài khoản cá nhân. Trình duyệt thì hỏi URL trang và tên thương hiệu
      khi chưa có, theo `references/voice-sources.md` mục 4b; câu này dùng chỗ “nền tảng khi cần” của ngân
      sách.
-3. **Đồng ý đọc:** đúng một câu theo `references/voice-profile.md` mục 2, gọi tên nguồn. Dán bài thì áp quy
+3. **Đồng ý đọc:** đúng một câu theo `references/voice-profile.md` mục 2, nêu tên nguồn. Dán bài thì áp quy
    tắc tác giả ở mục đó (chỉ bài người dùng tự viết), không hỏi chủ tài khoản. File export hay trang thì
    hỏi luôn tài khoản có phải của chính người dùng; Trang Facebook (mục 4c) thì hỏi luôn đó có phải Trang
    của chính người dùng, kèm cảnh báo của mục đó. Thương hiệu thì hỏi luôn người dùng có được nói thay
-   thương hiệu không, theo `references/brand-voice.md`; với trình duyệt, câu ấy gọi tên thương hiệu và
+   thương hiệu không, theo `references/brand-voice.md`; với trình duyệt, câu ấy nêu tên thương hiệu và
    URL, cảnh báo điều khoản chỉ cho Facebook và LinkedIn.
 4. **Học:** soạn và trình toàn bộ hồ sơ theo `references/voice-profile.md` mục 3.
 5. **Chấm:** mời chấm đoạn mẫu theo mục 7 của file đó; trả lời 0 là bỏ qua.
