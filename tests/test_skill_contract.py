@@ -419,5 +419,33 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn("`~/.agents/vietnamizer/registry.md`", read(relative))
         self.assertNotIn("không tự liệt kê hay chọn hồ sơ", read("PRIVACY.md"))
 
+    def test_chat_memory_and_reminder_rules(self) -> None:
+        """Spec 032 decisions 9-13: Chat memory store and the optional-profile reminder."""
+        route = read("references/voice-profile.md")
+        for phrase in (
+            "### Bản gọn trong bộ nhớ của Chat (spec 032)",
+            "Chỉ dùng khi người dùng gọi hồ sơ “<tên>” với Vietnamizer; không dùng cho yêu cầu khác.",
+            "nói rõ bộ nhớ của Chat được nạp vào mọi cuộc trò chuyện",
+            "Chỉ báo đã lưu khi host xác nhận đã ghi",
+            "không ghi hồ sơ vào bộ nhớ của agent",
+            "Bản gọn trong bộ nhớ chỉ được áp khi có lời gọi",
+            "Không dùng công cụ tìm lịch sử hay tìm bộ nhớ của host",
+            "## 8. Nhắc tạo hồ sơ khi chưa có (spec 032)",
+            "Tạo hồ sơ không bắt buộc",
+            "không đọc nội dung",
+            "tối đa một lần mỗi phiên",
+            "Lời nhắc không là câu hỏi và không chờ trả lời",
+            "`reminder: off`",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, route)
+        skill = read("SKILL.md")
+        self.assertIn("thì vẫn trả bài ngay", skill)
+        self.assertIn("Yêu cầu chỉ trả bản cuối thì không nhắc", skill)
+        self.assertIn("Không bắt buộc", read("references/help.md"))
+        constitution = read(".specify/memory/constitution.md")
+        self.assertIn("Trên các host khác, skill không ghi hồ sơ vào bộ nhớ của agent", constitution)
+        self.assertIn("skill không đọc nội dung sổ cho việc này", constitution)
+
 if __name__ == "__main__":
     unittest.main()

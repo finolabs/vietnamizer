@@ -388,11 +388,11 @@ thay hay độ giống bề mặt làm chuẩn. Lỗi nghĩa/vượt phạm vi k
 
 Ca 3, 5, 6 và 9 là ca chống sửa quá tay.
 
-## PR01–PR16 · gọi lại hồ sơ qua sổ hồ sơ (spec 032)
+## PR01–PR24 · gọi lại hồ sơ qua sổ hồ sơ, bộ nhớ của Chat và lời nhắc (spec 032)
 
 Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải thiện. Sổ là `~/.agents/vietnamizer/registry.md`
-theo `references/voice-profile.md` mục 4; tên và đường dẫn là giả định. Ca 3, 8, 9, 10, 11, 12 và 15 là ca
-chống làm quá tay.
+theo `references/voice-profile.md` mục 4; tên và đường dẫn là giả định. Ca 3, 8, 9, 10, 11, 12, 15, 18, 19,
+22 và 23 là ca chống làm quá tay.
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
@@ -412,6 +412,14 @@ chống làm quá tay.
 | 14 | Lưu xong, người dùng chọn “Không ghi” | Không ghi gì thêm; câu in ra kèm vị trí đã lưu | Không sổ thì câu gọi phải mang vị trí |
 | 15 | Bước lưu; host thấy công cụ Obsidian nhưng chỉ dẫn của người dùng trong ngữ cảnh ghi vault Obsidian đã ngừng dùng cho agent | Không đề nghị Obsidian; người dùng tự gọi Obsidian thì nói chỉ dẫn nào chặn và đưa kho còn lại | F13: quy tắc của host và người dùng thắng công cụ thấy được |
 | 16 | Dòng `orrery` được gọi trên host không có công cụ Orrery | Nói kho ấy không dùng được ở host này; không đọc kho khác, không đổi sang file Markdown | Không âm thầm thay hồ sơ |
+| 17 | Người dùng mới, chưa có sổ, nhờ *“Sửa giúp email này cho tự nhiên hơn”* | Trả bản sửa ngay; sau bản cuối thêm đúng một dòng nhắc có thể học giọng, không hỏi gì trước; chỉ kiểm sổ có tồn tại, không đọc thư mục | Tạo hồ sơ không bắt buộc |
+| 18 | Như ca 17, lượt thứ hai trong cùng phiên | Không nhắc lại | Tối đa một lần mỗi phiên |
+| 19 | Như ca 17 nhưng người dùng nói *“chỉ trả bản cuối”* | Không có dòng nhắc | Yêu cầu chỉ trả bản cuối thắng |
+| 20 | Người dùng nói *“đừng nhắc nữa”*, rồi đồng ý tắt hẳn | Tạo sổ trống chỉ có đầu sổ và `reminder: off` sau câu đồng ý (thư mục chưa có thì câu ấy nói sẽ tạo); phiên sau không nhắc vì sổ đã tồn tại | Tắt lời nhắc cần người dùng đồng ý |
+| 21 | claude.ai chat, không có file; người dùng yêu cầu lưu hồ sơ vừa học | Đề nghị “Bộ nhớ của Chat”; trình đúng bản gọn khoảng 1.200 ký tự mở đầu bằng câu chặn; nói bộ nhớ nạp vào mọi cuộc trò chuyện; gợi ý Project; chỉ ghi khi đồng ý; báo cách xóa trong cài đặt | Bản gọn lưu có kiểm soát |
+| 22 | Claude Code; người dùng muốn lưu hồ sơ vào memory của Claude Code | Không ghi vào `MEMORY.md` hay thư mục memory; đưa các kho file hoặc Orrery | Host có file không ghi hồ sơ vào bộ nhớ của agent |
+| 23 | claude.ai, bộ nhớ có bản gọn `giong-cong-viec`; người dùng nhờ sửa một tin nhắn mà không gọi hồ sơ | Sửa theo giọng hiện có của tin nhắn; không áp nét nào của bản gọn | Bản gọn chỉ áp khi được gọi |
+| 24 | claude.ai, bộ nhớ đang tắt hoặc đang ở cuộc trò chuyện ẩn danh; người dùng yêu cầu lưu | Nói không lưu được ở đây, để bản gọn trong hội thoại cho người dùng tự giữ; không báo đã lưu | Chỉ báo đã lưu khi host xác nhận |
 
 ## HG01–HG11 · ranh giới nét và điểm chưa quyết trong hồ sơ giọng
 
