@@ -1,5 +1,12 @@
 <!--
 Sync Impact Report
+- Version change: 2.4.0 -> 2.4.1 (PATCH: wording only, no obligation added or removed).
+- Owner approval: 2026-11-14, Fio's go on the parked follow-ups of release 0.15.0.
+- Clarified constraint "Tuyến hồ sơ giọng": the export clause also names the brand authority
+  statement for a brand page's export, as `references/brand-voice.md` already requires (security
+  review LOW, PR #43).
+- Still pending the owner's confirmation: brand pages are not read through the browser (spec FR-006).
+- Previous amendment: 2.3.0 -> 2.4.0, spec 030 (below).
 - Version change: 2.3.0 -> 2.4.0 (MINOR: the voice-profile constraint gains two sources and a
   stored user rating; no other principle's obligation changes).
 - Owner approval: 2026-11-13, spec 030 settled decisions 3, 5 and 7 ("Tao muốn Vietnamizer hỗ trợ
@@ -78,7 +85,8 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
 - Tuyến hồ sơ giọng trong `SKILL.md` MAY tạo và dùng lại hồ sơ có tên từ văn bản người dùng
   dán hoặc chỉ định trong tác vụ, từ file export nền tảng người dùng tự đưa, hoặc từ trang của
   chính người dùng qua công cụ trình duyệt host sẵn có, sau câu đồng ý đọc và lời khẳng định chủ
-  tài khoản; MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, và MUST NOT
+  tài khoản (với file export của trang thương hiệu: lời khẳng định được nói thay thương hiệu);
+  MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, và MUST NOT
   xử lý mật khẩu, cookie hay token. Trên trình duyệt, skill MUST giữ các điều cấm: không giải
   captcha; không bấm thích, bình luận, đăng hay gửi; không đổi cài đặt tài khoản; và MUST dừng khi
   gặp màn đăng nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Hồ sơ `kind: brand` MAY dùng tài liệu của nhiều người viết sau
@@ -121,4 +129,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.4.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-13
+**Version**: 2.4.1 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
