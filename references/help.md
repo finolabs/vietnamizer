@@ -13,8 +13,11 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
 1. **Biên tập và viết.** Sửa bản nháp, bản dịch hay bài AI còn gượng; giữ nghĩa và giọng hiện có. Viết
    mới từ ý hoặc dàn ý. Ví dụ: “Sửa giúp email này cho tự nhiên hơn.”
 2. **Chọn giọng.** Mặc định giữ giọng của chính người viết. Có thể gọi tên một hồ sơ giọng cá nhân
-   hoặc một hồ sơ giọng thương hiệu; mỗi lần chỉ dùng một hồ sơ. Ví dụ: “Viết lại bài này theo hồ sơ
-   `giong-cong-viec`.”
+   hoặc một hồ sơ giọng thương hiệu; mỗi lần chỉ dùng một hồ sơ. Gọi lại hồ sơ đã lưu bằng
+   `/vietnamizer:vietnamizer <tên>` (Claude Code cài qua plugin; cài skill riêng thì `/vietnamizer <tên>`),
+   `$vietnamizer <tên>` (Codex) hoặc câu “theo hồ sơ <tên>”; cùng lệnh ấy với `cá nhân` hay câu “theo giọng của tôi” dùng hồ sơ cá nhân mặc định. Sau mỗi lần lưu, skill
+   in đúng câu cần gõ. Trên Chat không có file (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud), hồ sơ lưu được dưới dạng bản gọn trong
+   bộ nhớ của Chat. Ví dụ: “Viết lại bài này theo hồ sơ `giong-cong-viec`.”
 3. **Học giọng.** Dán 10–20 bài tự viết, đưa file export LinkedIn hoặc Facebook, hoặc để Vietnamizer
    đọc trang của chính bạn qua trình duyệt nếu host có công cụ đó (có cảnh báo điều khoản của LinkedIn và Facebook).
    Giọng thương hiệu học từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ người dùng đưa, hoặc đọc fanpage,
@@ -23,7 +26,8 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
 4. **Kiểm giọng.** Chấm vài đoạn mẫu theo bốn mức Kém, Trung bình, Khá, Tốt để sửa hồ sơ; đó là đánh giá
    của người dùng, skill không tự tính điểm giống giọng. Ví dụ: “Cho tôi chấm 3 đoạn mẫu của hồ sơ này.”
 
-Kết bằng: “Muốn bắt đầu thiết lập giọng không?” Người dùng không muốn thì dừng ở đây.
+Kết bằng: “Muốn bắt đầu thiết lập giọng không? Không bắt buộc: không có hồ sơ, Vietnamizer vẫn sửa và viết
+theo giọng sẵn có của bài.” Người dùng không muốn thì dừng ở đây.
 
 ## 2. Thiết lập giọng từng bước
 
@@ -55,8 +59,8 @@ bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references
    URL, cảnh báo điều khoản chỉ cho Facebook và LinkedIn.
 4. **Học:** soạn và trình toàn bộ hồ sơ theo `references/voice-profile.md` mục 3.
 5. **Chấm:** mời chấm đoạn mẫu theo mục 7 của file đó; trả lời 0 là bỏ qua.
-6. **Lưu:** hỏi có lưu không, rồi theo mục 4 của file đó (nơi lưu, tên, đường dẫn). Không lưu thì hồ sơ
-   chỉ ở lại trong hội thoại.
+6. **Lưu:** hỏi có lưu không, rồi theo mục 4 của file đó (nơi lưu, tên, đường dẫn, câu hỏi ghi vào sổ hồ
+   sơ và câu gọi lần sau). Không lưu thì hồ sơ chỉ ở lại trong hội thoại.
 
 Ngân sách câu hỏi: tối đa 6 câu hỏi trước bước chấm, gồm loại giọng, nguồn, nền tảng khi cần, câu đồng ý
 đọc và tối đa một câu hỏi làm rõ. Trang thứ hai và thứ ba trong cùng lượt, của mục 4b hay 4c, có câu

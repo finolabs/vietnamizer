@@ -28,6 +28,21 @@ sơ giọng” thêm nguồn trang thương hiệu, đảo lại quyết định
 BP01–BP29, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
 lượng.
 
+Spec 032, gọi lại hồ sơ đã lưu bằng tên: người dùng gõ `/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, cùng lệnh ấy với `cá nhân`
+(`personal`), `$vietnamizer <tên>` trên Codex, câu “theo hồ sơ <tên>” hoặc “theo giọng của tôi”, và skill
+tìm đến chỗ lưu qua sổ hồ sơ `~/.agents/vietnamizer/registry.md`. Sổ chỉ ghi tên, loại, hồ sơ cá nhân mặc
+định, kho và vị trí, không chứa nội dung hồ sơ; mỗi dòng chỉ được ghi khi người dùng đồng ý sau lúc lưu.
+Lời gọi do người dùng tự gõ là câu đồng ý đọc sổ và đúng một hồ sơ khớp; không khớp thì skill đưa các tên
+trong sổ hoặc hỏi vị trí, không dò kho. Sau khi lưu, skill in đúng câu cần gõ lần sau; `/vietnamizer:help`
+nêu các dạng câu gọi. Bước lưu không còn đề nghị kho mà quy tắc của host hay chỉ dẫn của người dùng đã cho
+ngừng dùng (ví dụ Obsidian). “Theo giọng của tôi” giờ dùng hồ sơ cá nhân mặc định nếu sổ có (đảo ca 5 của
+route hồ sơ giọng). Constitution lên 2.7.0 (MINOR): ràng buộc “Tuyến hồ sơ giọng” thêm đường gọi lại qua
+sổ. Trên Chat không có file (claude.ai, Desktop, Mobile, Cowork chạy trên cloud), hồ sơ lưu được dưới
+dạng bản gọn khoảng 1.200 ký tự trong bộ nhớ của Chat, có câu chặn phạm vi, sau khi người dùng xem đúng
+văn bản và đồng ý; host khác không ghi hồ sơ vào bộ nhớ của agent. Tạo hồ sơ không bắt buộc: chưa có hồ
+sơ thì skill vẫn sửa bài ngay và nhắc một dòng, tối đa một lần mỗi phiên, tắt được hẳn. Constitution lên
+2.8.0 (MINOR) cho bộ nhớ của Chat và lời nhắc. Thêm ca PR01–PR26. Chưa chạy agent trên các ca mới.
+
 Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào:
 - Mục 7 của `references/voice-profile.md`: với hồ sơ đã lưu, dòng chấm nằm trong diff từ lý do; khi không
   có diff đó hoặc người dùng bác nó, dòng chấm thành một diff riêng.
@@ -110,7 +125,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
-- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Constitution lên 2.6.1. Chưa chạy agent trên các ca mới.
+- **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` hay `/vietnamizer:vietnamizer cá nhân` qua sổ hồ sơ; trên Chat lưu bản gọn trong bộ nhớ; tạo hồ sơ không bắt buộc, lời nhắc tắt được hẳn cả trên Chat. Constitution lên 2.8.0. Chưa chạy agent trên các ca mới.
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt.
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in.
 - **0.13.4** — Thêm tuyến hồ sơ giọng cá nhân tùy chọn, gói phát hành bỏ `calibration/`, phân phối qua catalog `finolabs/plugins`; giữ 55 pattern, runtime Jev và năm chốt.
