@@ -28,8 +28,8 @@ Agent decision, open to the owner at review: extend T2 and V20 instead of adding
 - **FR-008**: V9 covers verb phrases calqued word by word from English (*gọi tên được lỗi*, *gọi tên file*), keeps the literal sense (*gọi tên học sinh*).
 - **FR-009**: V19 covers Vietnamese trade jargon that readers outside the trade misread (*bản dịch sát* in a product description), and keeps it for in-trade readers.
 - **FR-010**: V20 case 3 asks for the full compound in taglines and product introductions where the single syllable sits next to compounds of the same kind (*ngữ nghĩa*, *giọng văn*), only when that does not change the voice in edit mode; chat, short labels, casual text and complete formal sentences keep it (review round 1).
-- **FR-012**: Applying a brand profile needs the user to call that profile by name to apply it; a request that only mentions the brand name does not (security review round 1, HF18).
 - **FR-011**: No shipped file uses the calque *gọi tên* outside V9's own examples; a contract test guards it.
+- **FR-012**: Applying a brand profile needs the user to call that profile by name to apply it; a request that only mentions the brand name does not (security review round 1, HF18).
 
 ## Success criteria
 
