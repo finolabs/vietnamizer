@@ -1,5 +1,22 @@
 <!--
 Sync Impact Report
+- Version change: 2.7.0 -> 2.8.0 (MINOR: the voice-profile constraint gains one store, the Chat's own
+  memory on Chat hosts without local files, and a first-use reminder; no principle's obligation is removed).
+- Owner approval: 2026-11-14, Fio approved the exact added text ("Duyệt") in the session of spec 032,
+  after the coordinator relayed his two requests of the same day (native memory for Chat-only users;
+  onboarding optional, remind once when no profile exists).
+- Modified constraint "Tuyến hồ sơ giọng": on Chat hosts without local files (claude.ai web, Desktop,
+  Mobile, cloud Cowork) a compact profile of about 1,200 characters may be saved in that Chat's memory,
+  opening with a scope sentence, without excerpts, after the user sees the exact text, is told memory
+  loads into every chat and is offered a Project; applied only when called; no other host writes a
+  profile into agent memory. With no profile, the skill edits at once and reminds in one line at most
+  once per session; it checks only whether the registry exists (or, on Chat, whether a compact profile
+  is in context) and never reads the registry for this; turning the reminder off creates an empty
+  registry with `reminder: off`, or one memory line on Chat, after the user's yes.
+- Principle V unchanged: no network code; memory is written through the Chat host itself.
+- No meaning-preservation chốt, protected span or pattern changed.
+- Previous amendment: 2.6.1 -> 2.7.0 (below).
+
 - Version change: 2.6.1 -> 2.7.0 (MINOR: the voice-profile constraint gains a lookup path, a fixed
   profile registry the skill reads when the user calls a saved profile; no principle's obligation is
   removed).
@@ -175,7 +192,19 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   chứa nội dung hồ sơ. Lời gọi của người dùng được tính là đồng ý cho skill đọc sổ và đọc đúng một
   hồ sơ khớp tên. Skill không đọc hồ sơ nào khác và không dò kho khi không có hồ sơ khớp. Chỉ thêm
   hoặc sửa dòng trong sổ khi người dùng đồng ý. Sổ không được nằm trong cây Git, trong file hay thư
-  mục chỉ dẫn hoặc bộ nhớ của agent, và không file chỉ dẫn nào được trỏ tới sổ. Ngoại lệ lưu này
+  mục chỉ dẫn hoặc bộ nhớ của agent, và không file chỉ dẫn nào được trỏ tới sổ. Trên Chat không đọc
+  được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud), người dùng có
+  thể lưu bản gọn của hồ sơ vào bộ nhớ của chính Chat đó. Bản gọn dài khoảng 1.200 ký tự, mở đầu
+  bằng câu nói rõ chỉ dùng khi người dùng gọi tên hồ sơ với Vietnamizer, và không chứa trích đoạn
+  bài viết. Trước khi ghi, người dùng xem đúng văn bản sẽ ghi, được báo bộ nhớ nạp vào mọi cuộc trò
+  chuyện và được gợi ý lưu trong một Project để thu hẹp phạm vi; chỉ ghi khi họ đồng ý. Người dùng
+  xoá được bản gọn trong phần cài đặt của Chat. Skill chỉ áp bản gọn ấy khi người dùng gọi tên nó.
+  Trên các host khác, skill không ghi hồ sơ vào bộ nhớ của agent. Khi người dùng chưa có hồ sơ,
+  skill vẫn sửa bài ngay theo giọng hiện có và chỉ nhắc một dòng, tối đa một lần mỗi phiên, rằng có
+  thể tạo hồ sơ; tạo hay không là do người dùng. Để biết đã có hồ sơ chưa, skill chỉ kiểm sổ hồ sơ
+  có tồn tại hay không, hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh có bản gọn nào không; skill
+  không đọc nội dung sổ cho việc này. Người dùng muốn tắt lời nhắc thì, khi họ đồng ý, skill tạo sổ
+  trống có dòng `reminder: off`, hoặc trên Chat ghi một dòng vào bộ nhớ. Ngoại lệ lưu này
   MUST giữ nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm trong hồ sơ riêng
   của đúng người dùng, MUST NOT ghi vào `calibration/LOG.md`.
 - Production evaluator MUST chỉ gửi phần văn bản cần cho phán đoán. Raw prose MUST NOT xuất
@@ -210,4 +239,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.7.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
+**Version**: 2.8.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
