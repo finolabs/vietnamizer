@@ -1,5 +1,15 @@
 <!--
 Sync Impact Report
+- Version change: 2.5.0 -> 2.6.0 (MINOR: the brand page route may read the fixed post paths of shared
+  publishing platforms, outside the listing page's path prefix; no principle's obligation is removed).
+- Owner approval: 2026-11-14, Fio approved the exact replacement sentence ("Duyệt") during the review
+  of PR #49 (spec 031 decision 12).
+- Modified constraint "Tuyến hồ sơ giọng": the fixed-route sentence now names the shared-platform
+  exception (Substack `/archive` with posts at `/p/`; Blogspot and WordPress.com yearly archives
+  `/<năm>/` with posts under them); every page stays on the same host and the listing page is never the
+  site root. The rest of the constraint is unchanged.
+- Principle V unchanged; no meaning-preservation chốt, protected span or pattern changed.
+- Previous amendment: 2.4.1 -> 2.5.0 (below).
 - Version change: 2.4.1 -> 2.5.0 (MINOR: the voice-profile constraint gains a source, public brand
   pages read through the host browser for `kind: brand`; no principle's obligation is removed).
 - Owner approval: 2026-11-14, Fio approved the "Constitution amendment" text of spec 031
@@ -107,22 +117,25 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   blog riêng của thương hiệu), từ tối đa ba URL người dùng đưa trong một lượt, mỗi URL sau một
   câu đồng ý đọc gọi tên thương hiệu và URL cùng lời khẳng định được nói thay thương hiệu đó;
   trang của thương hiệu người dùng được nói thay không phải trang của người khác. Đường đọc ấy
-  MUST cố định: chính trang đó và mục bài đăng của nó, với website thêm các trang bài cùng host,
-  dưới tiền tố đường dẫn của trang danh sách (trang danh sách không phải trang gốc); MUST NOT
-  theo link nào khác; chỉ đọc thân bài thương hiệu đã đăng; MUST NOT mở bình luận, tin nhắn,
-  đánh giá hay danh sách người theo dõi; MUST NOT ghi tên nhân viên; và MUST dừng khi trang
-  chuyển hướng sang trang hay host khác hoặc không mang tên thương hiệu người dùng nêu. Tuyến
-  MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người khác, kể cả trang thương
-  hiệu người dùng không được nói thay, và MUST NOT xử lý mật khẩu, cookie hay token. Trên trình duyệt, skill MUST giữ các điều cấm: không giải
-  captcha; không bấm thích, bình luận, đăng hay gửi; không đổi cài đặt tài khoản; và MUST dừng khi
-  gặp màn đăng nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Hồ sơ `kind: brand` MAY dùng tài liệu của nhiều người viết sau
-  khi người dùng khẳng định được nói thay thương hiệu; dữ liệu riêng vẫn phải được lược. Hồ sơ MAY
-  lưu số lượt người dùng tự chấm, ghi rõ là đánh giá của người dùng; skill MUST NOT tự tính điểm
-  giống giọng. Hồ sơ MUST chỉ được lưu
-  khi người dùng yêu cầu rõ, tại kho hoặc đường dẫn do họ chọn. Skill MUST NOT tự tìm hồ sơ
-  hoặc mẫu trong memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định. Ngoại lệ lưu
-  này MUST giữ nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm
-  trong hồ sơ riêng của đúng người dùng, MUST NOT ghi vào `calibration/LOG.md`.
+  MUST cố định: chính trang đó và mục bài đăng của nó; với website thêm các trang bài cùng host,
+  dưới tiền tố đường dẫn của trang danh sách, trừ nền tảng đăng bài dùng chung có đường bài cố
+  định riêng (Substack: trang danh sách `/archive`, bài ở `/p/`; Blogspot và WordPress.com:
+  trang lưu trữ theo năm `/<năm>/`, bài nằm dưới đó); mọi trang ở cùng host và trang danh sách
+  không bao giờ là trang gốc; MUST NOT theo link nào khác; chỉ đọc thân bài thương hiệu đã đăng;
+  MUST NOT mở bình luận, tin nhắn, đánh giá hay danh sách người theo dõi; MUST NOT ghi tên nhân
+  viên; và MUST dừng khi trang chuyển hướng sang trang hay host khác hoặc không mang tên thương
+  hiệu người dùng nêu. Tuyến MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người
+  khác, kể cả trang thương hiệu người dùng không được nói thay, và MUST NOT xử lý mật khẩu,
+  cookie hay token. Trên trình duyệt, skill MUST giữ các điều cấm: không giải captcha; không bấm
+  thích, bình luận, đăng hay gửi; không đổi cài đặt tài khoản; và MUST dừng khi gặp màn đăng
+  nhập, tài khoản khác, captcha hoặc trang giới hạn truy cập. Hồ sơ `kind: brand` MAY dùng tài
+  liệu của nhiều người viết sau khi người dùng khẳng định được nói thay thương hiệu; dữ liệu
+  riêng vẫn phải được lược. Hồ sơ MAY lưu số lượt người dùng tự chấm, ghi rõ là đánh giá của
+  người dùng; skill MUST NOT tự tính điểm giống giọng. Hồ sơ MUST chỉ được lưu khi người dùng
+  yêu cầu rõ, tại kho hoặc đường dẫn do họ chọn. Skill MUST NOT tự tìm hồ sơ hoặc mẫu trong
+  memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định. Ngoại lệ lưu này MUST giữ
+  nguyên năm chốt và vùng bảo toàn trong `SKILL.md`; sở thích cá nhân MUST nằm trong hồ sơ riêng
+  của đúng người dùng, MUST NOT ghi vào `calibration/LOG.md`.
 - Production evaluator MUST chỉ gửi phần văn bản cần cho phán đoán. Raw prose MUST NOT xuất
   hiện trong telemetry hoặc báo cáo health. Lọc credential không thay thế cho phân loại dữ liệu
   và tối thiểu hóa trường gửi đi.
@@ -155,4 +168,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.5.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
+**Version**: 2.6.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
