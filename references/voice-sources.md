@@ -178,7 +178,8 @@ hỏi xác nhận.
 - **URL và dạng.** Chỉ mở URL người dùng đưa, đúng dạng fanpage Facebook ở mục 4b, tối đa ba URL một lượt
   của cùng một người. Không mở trang cá nhân (tài khoản có nút Thêm bạn bè); tài khoản cá nhân đi mục 4a.
 - **Cảnh báo và xác nhận.** Trước câu đồng ý, nêu cảnh báo điều khoản của Facebook (Meta) ở mục 4a, đúng
-  một lần trong lượt, và nói rõ: skill không kiểm được Trang có phải của người dùng không, và học giọng của
+  một lần trong lượt; đã nêu ở mục 4b trong cùng lượt thì không nêu lại. Với mọi URL của mục này, kể cả khi
+  đến từ mục 4b, luôn nói rõ: skill không kiểm được Trang có phải của người dùng không, và học giọng của
   người khác là không được phép. Câu đồng ý theo `references/voice-profile.md` mục 2 gọi đúng URL sẽ mở và
   hỏi người dùng xác nhận đó là Trang của chính họ. Người dùng nói Trang là của người khác thì không đọc.
 - **Kiểm trang.** Như mục 4b: không chuyển hướng (trừ các trường hợp mục 4b không tính), có dấu hiệu Trang

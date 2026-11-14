@@ -357,6 +357,7 @@ class SkillContractTest(unittest.TestCase):
             "skill không chặn mà nêu rủi ro và hỏi xác nhận",
             "skill không kiểm được Trang có phải của người dùng không, và học giọng của người khác là không được phép",
             "Người dùng nói Trang là của người khác thì không đọc",
+            "kể cả khi đến từ mục 4b, luôn nói rõ",
             "Hồ sơ là `kind: personal`",
         ):
             with self.subTest(phrase=phrase):

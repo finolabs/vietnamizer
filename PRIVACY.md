@@ -64,7 +64,9 @@ mục bài đăng; với website, các trang bài cùng host dưới tiền tố
 trang đăng nhập, liên hệ, tìm kiếm hay URL có chuỗi truy vấn. Skill chỉ đọc thân bài thương hiệu đã đăng;
 bình luận, đánh giá, bài khách đăng, danh sách người theo dõi và tên nhân viên không được mở hay ghi, và chữ
 nào lần đọc trang trả về ngoài thân bài bị bỏ. Skill không đăng nhập, không bấm banner đồng ý hay cookie,
-chỉ bấm “Xem thêm” trong thân bài; dừng khi trang chuyển hướng, không mang tên thương hiệu người dùng nêu,
+chỉ bấm “Xem thêm” trong thân bài; dừng khi trang chuyển hướng (đổi giữa `www.`, `m.` và `web.facebook.com` trên cùng đường dẫn và chuỗi
+truy vấn, chỉ thêm `/` ở cuối, hay `profile.php?id=` sang tên trang thì không tính, nhưng mọi điều kiểm
+khác vẫn chạy), không mang tên thương hiệu người dùng nêu,
 hoặc gặp màn đăng nhập, captcha, tường trả phí hay trang chặn. Facebook và LinkedIn có cảnh báo điều khoản
 như trên; website riêng của thương hiệu thì không. Hồ sơ chỉ ghi số bài theo nguồn, không ghi URL.
 

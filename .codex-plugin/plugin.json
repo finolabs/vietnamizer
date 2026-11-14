@@ -1,7 +1,7 @@
 {
   "name": "vietnamizer",
   "version": "0.16.0",
-  "description": "Viết và biên tập tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết. Khi bạn yêu cầu, học, lưu và áp dụng hồ sơ giọng cá nhân hoặc giọng thương hiệu; /vietnamizer:help giới thiệu tính năng và dẫn thiết lập giọng.",
+  "description": "Viết và biên tập tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết. Khi bạn yêu cầu, Vietnamizer học, lưu và áp dụng hồ sơ giọng cá nhân hoặc giọng thương hiệu; /vietnamizer:help giới thiệu tính năng và dẫn thiết lập giọng.",
   "author": {
     "name": "Fioenix",
     "url": "https://github.com/fioenix"
@@ -46,7 +46,7 @@
         "translations": {
           "vi-VN": {
             "subtitle": "Biên tập tiếng Việt, giữ giọng",
-            "description": "Giúp AI viết tiếng Việt giống con người hơn. Biên tập bản nháp, tin nhắn công việc, bài viết, README và bản dịch sát. Chọn quy tắc theo thể loại và người đọc, kiểm tra trường hợp không nên sửa, rồi đối chiếu từng thay đổi với ý và giọng gốc. Giữ nguyên dữ kiện, thuật ngữ, trích dẫn và code. Mặc định giữ giọng gốc; khi yêu cầu theo mẫu rõ, có thể đổi cấu trúc ý đã có mà giữ nghĩa. Khi bạn yêu cầu, học, lưu và áp dụng hồ sơ giọng có tên, cá nhân hoặc thương hiệu, từ bài bạn dán, file export của nền tảng hoặc trang mà công cụ trình duyệt của host đọc sau khi bạn đồng ý; mỗi lần dùng một hồ sơ. Skill help (/vietnamizer:help) giới thiệu tính năng và dẫn thiết lập giọng. Không cần tài khoản riêng hay API key cho quy trình cốt lõi; không phải công cụ phát hiện AI. Chỉ cung cấp văn bản được phép chia sẻ, không chứa dữ liệu thẻ thanh toán, thông tin sức khỏe được bảo vệ, định danh chính phủ hoặc secret xác thực."
+            "description": "Giúp AI viết tiếng Việt giống con người hơn. Biên tập bản nháp, tin nhắn công việc, bài viết, README và bản dịch sát. Chọn quy tắc theo thể loại và người đọc, kiểm tra trường hợp không nên sửa, rồi đối chiếu từng thay đổi với ý và giọng gốc. Giữ nguyên dữ kiện, thuật ngữ, trích dẫn và code. Mặc định giữ giọng gốc; khi yêu cầu theo mẫu rõ, có thể đổi cấu trúc ý đã có mà giữ nghĩa. Khi bạn yêu cầu, Vietnamizer học, lưu và áp dụng hồ sơ giọng có tên, cá nhân hoặc thương hiệu, từ bài bạn dán, file export của nền tảng hoặc trang mà công cụ trình duyệt của host đọc sau khi bạn đồng ý; mỗi lần dùng một hồ sơ. Skill help (/vietnamizer:help) giới thiệu tính năng và dẫn thiết lập giọng. Không cần tài khoản riêng hay API key cho quy trình cốt lõi; không phải công cụ phát hiện AI. Chỉ cung cấp văn bản được phép chia sẻ, không chứa dữ liệu thẻ thanh toán, thông tin sức khỏe được bảo vệ, định danh chính phủ hoặc secret xác thực."
           }
         }
       }

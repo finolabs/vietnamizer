@@ -60,8 +60,8 @@ bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references
 
 Ngân sách câu hỏi: tối đa 6 câu hỏi trước bước chấm, gồm loại giọng, nguồn, nền tảng khi cần, câu đồng ý
 đọc và tối đa một câu hỏi làm rõ. Trang thứ hai và thứ ba trong cùng lượt, của mục 4b hay 4c, có câu
-đồng ý riêng, không tính vào 6 câu. Khi mục 4b gặp Trang của một cá nhân, câu hỏi đó có phải Trang của
-chính người dùng không và câu đồng ý mục 4c theo sau cũng không tính vào 6 câu. Không hỏi thêm để lấp đủ hồ sơ; thiếu thì ghi thiếu như hướng dẫn phân
+đồng ý riêng, không tính vào 6 câu. Khi mục 4b gặp Trang của một cá nhân, câu hỏi Trang ấy có phải của chính
+người dùng không và câu đồng ý mục 4c theo sau cũng không tính vào 6 câu. Không hỏi thêm để lấp đủ hồ sơ; thiếu thì ghi thiếu như hướng dẫn phân
 tích.
 
 Thiết lập chỉ chạy khi người dùng yêu cầu; skill không tự phát hiện lần dùng đầu và không tạo file đánh
