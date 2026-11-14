@@ -36,7 +36,8 @@ nháp hồ sơ và vài đoạn viết thử để cùng hiệu chỉnh. Tôi ti
 kỹ, AI viết càng gần với “người” và với chính bạn hơn. Đó là niềm tin của tôi, chưa phải số đo
 ([xem giới hạn](#hồ-sơ-giọng-chưa-có-số-đo)), nên bạn vẫn hãy đọc lại từng bản sửa.
 
-**Không cần API key, không gọi dịch vụ ngoài.**
+**Không cần API key; gói không có mã gọi mạng.** Văn bản vẫn đi qua host bạn dùng
+([Quyền riêng tư](#quyền-riêng-tư)).
 
 [Cài nhanh](#cài-nhanh) · [Dùng ngay](#dùng-ngay) · [Thiết lập giọng](#thiết-lập-giọng-của-bạn) · [Xem bằng chứng](#bằng-chứng-và-kiểm-thử) · [Tài liệu](#tài-liệu-chi-tiết)
 
@@ -127,10 +128,12 @@ bạn hỏi bằng lời như trên. Các bước bạn sẽ gặp:
    skill đọc trang của chính bạn qua trình duyệt, nếu host có công cụ trình duyệt. Với giọng thương hiệu,
    bạn đưa bộ quy chuẩn, tài liệu nội bộ và bài đã đăng; bài đã đăng cũng đọc được từ tối đa ba URL
    fanpage, trang công ty LinkedIn hay blog của thương hiệu.
-3. **Đồng ý đọc.** Skill hỏi đúng một câu, gọi tên nguồn sẽ đọc. Với file export hay trang, câu đó hỏi
-   luôn tài khoản có phải của bạn không; với thương hiệu, hỏi bạn có được nói thay không. Skill không kiểm
-   được những điều này và tin lời bạn. Trước khi đọc Facebook hay LinkedIn qua trình duyệt, skill báo rằng
-   điều khoản của hai nền tảng này có thể cấm thu thập tự động.
+3. **Đồng ý đọc.** Mỗi nguồn có một câu đồng ý, gọi tên nguồn sẽ đọc; đọc trang qua trình duyệt thì mỗi
+   URL một câu riêng. Với file export hay trang, câu đó hỏi luôn tài khoản hay Trang có phải của bạn
+   không; với thương hiệu, hỏi bạn có được nói thay không. Skill không kiểm được những điều này và tin lời
+   bạn; học giọng của người khác là không được phép. Trước khi đọc Facebook hay LinkedIn qua trình duyệt,
+   skill báo rằng điều khoản của hai nền tảng này cấm truy cập hay thu thập tự động khi chưa được phép, và
+   tài khoản có thể bị hạn chế.
 4. **Xem hồ sơ nháp.** Skill trình toàn bộ hồ sơ: mỗi nét giọng có phạm vi, căn cứ và mức chắc chắn, kèm
    những điểm còn chờ bạn chốt. Bạn sửa tới khi ưng.
 5. **Chấm thử.** Chọn từ 0 đến 10 đoạn mẫu; mỗi đoạn bạn chấm Kém, Trung bình, Khá hoặc Tốt. Chọn 0 là bỏ
@@ -139,7 +142,7 @@ bạn hỏi bằng lời như trên. Các bước bạn sẽ gặp:
    tương ứng, không thì một thư mục Markdown (skill gợi ý `~/.agents/vietnamizer/profiles`), và đặt tên
    hồ sơ. Không lưu thì hồ sơ chỉ nằm trong cuộc trò chuyện đó.
 
-Trước bước chấm, skill hỏi không quá sáu câu. Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
+Trước bước chấm, skill hỏi không quá sáu câu, chưa kể câu đồng ý riêng cho trang thứ hai và thứ ba. Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
 
 Lần sau, gọi hồ sơ bằng tên kèm chỗ lưu, ví dụ “Viết lại bài này theo hồ sơ `giong-cong-viec` trong
 `~/.agents/vietnamizer/profiles`.”
@@ -284,7 +287,7 @@ sách của host đó. Hồ sơ giọng chỉ được lưu khi bạn yêu cầu
 Đường đọc trang qua trình duyệt chỉ chạy khi host có công cụ trình duyệt và sau câu đồng ý của bạn. Gói
 không có mã mạng, nhưng công cụ trình duyệt của host thì mở trang bên ngoài: Facebook, LinkedIn hay
 website của thương hiệu. Trước khi đọc Facebook hay LinkedIn, skill cảnh báo rằng điều khoản của Meta và
-LinkedIn có thể cấm thu thập tự động. Skill không kiểm được tài khoản có phải của bạn, Trang Facebook có
+LinkedIn cấm truy cập hay thu thập tự động khi chưa được phép, và tài khoản có thể bị hạn chế. Skill không kiểm được tài khoản có phải của bạn, Trang Facebook có
 mang tên bạn hay bạn có quyền nói thay một thương hiệu hay không, nên nó tin lời bạn. Không muốn thì
 bạn đừng dùng tuyến hồ sơ giọng, hoặc chọn dán bài. [Chi tiết trong PRIVACY.md](PRIVACY.md).
 
