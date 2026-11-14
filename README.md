@@ -48,7 +48,7 @@ kỹ, AI viết càng gần với “người” và với chính bạn hơn. Đ
 | Rà bản nháp AI hoặc bản dịch sát | Tìm lỗi cụ thể về từ, bổ ngữ và cấu trúc câu |
 | Biên tập blog, bài chuyên môn | Giữ ý định, mức khẳng định, câu rút gọn và nhịp dấu câu |
 | Rà README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
-| Viết theo giọng của bạn hoặc của thương hiệu | Học hồ sơ giọng từ bài bạn đưa, cho bạn chấm đoạn mẫu, chỉ lưu khi bạn yêu cầu; bắt đầu bằng `/vietnamizer:help` hoặc câu “thiết lập giọng” |
+| Viết theo giọng của bạn hoặc của thương hiệu | Học hồ sơ giọng từ bài bạn đưa, cho bạn chấm đoạn mẫu, chỉ lưu khi bạn yêu cầu; bắt đầu bằng `/vietnamizer:help` (Claude Code) hoặc câu “thiết lập giọng” |
 
 Hãy coi Vietnamizer là một bước biên tập có kiểm soát trước khi gửi hay đăng bài, không phải người kiểm
 chứng. Skill không xác minh sự thật trong bài, nên bạn vẫn cần đọc lại những chỗ nó đổi xưng hô, cấu trúc
@@ -142,7 +142,7 @@ bạn hỏi bằng lời như trên. Các bước bạn sẽ gặp:
    tương ứng, không thì một thư mục Markdown (skill gợi ý `~/.agents/vietnamizer/profiles`), và đặt tên
    hồ sơ. Không lưu thì hồ sơ chỉ nằm trong cuộc trò chuyện đó.
 
-Trước bước chấm, skill hỏi không quá sáu câu, chưa kể câu đồng ý riêng cho trang thứ hai và thứ ba, và hai câu thêm khi trang thương hiệu hóa ra là Trang của một cá nhân (hỏi đó có phải Trang của bạn không, rồi câu đồng ý cho Trang ấy). Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
+Trước bước chấm, skill hỏi không quá sáu câu, chưa kể câu đồng ý riêng cho trang thứ hai và thứ ba, cũng như hai câu hỏi thêm khi trang thương hiệu hóa ra là Trang của một cá nhân (hỏi đó có phải Trang của bạn không, rồi câu đồng ý cho Trang ấy). Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
 
 Lần sau, gọi hồ sơ bằng tên kèm chỗ lưu, ví dụ “Viết lại bài này theo hồ sơ `giong-cong-viec` trong
 `~/.agents/vietnamizer/profiles`.”
