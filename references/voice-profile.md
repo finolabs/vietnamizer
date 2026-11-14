@@ -54,7 +54,9 @@ của chính mình sẽ mở (`https://www.linkedin.com/in/me/recent-activity/al
 nhờ người dùng xác nhận luôn tài khoản là của chính họ. Trang thương hiệu qua trình duyệt
 (`references/voice-sources.md` mục 4b) thì mỗi URL một câu: câu ấy gọi tên thương hiệu và đúng URL người
 dùng đưa sẽ mở, hỏi luôn người dùng có được nói thay thương hiệu đó không và nói skill không kiểm được
-điều này. Với đường trình duyệt, cảnh báo điều khoản nền tảng (lời cảnh báo ở
+điều này. Trang Facebook mang tên chính người dùng (`references/voice-sources.md` mục 4c) thì mỗi URL một
+câu: câu ấy gọi đúng URL sẽ mở, hỏi người dùng xác nhận đó là Trang của chính họ, nói skill không kiểm
+được điều này và học giọng người khác là không được phép. Với đường trình duyệt, cảnh báo điều khoản nền tảng (lời cảnh báo ở
 `references/voice-sources.md` mục 4a) đứng ngay trước câu hỏi; với trang thương hiệu, trước câu đồng ý
 đầu tiên của mỗi nền tảng Facebook hay LinkedIn trong lượt, và website riêng của thương hiệu không có
 cảnh báo; đây là chỗ duy nhất nêu cảnh báo trong luồng, kể cả khi đi từ bước thiết lập giọng. Câu trả lời đồng ý vì vậy là quyết định

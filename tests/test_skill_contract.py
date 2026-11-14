@@ -336,6 +336,30 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, section)
         self.assertIn("không mở bảng tin, thông báo hay tin nhắn cá nhân", section)
+        for phrase in (
+            # FR-017
+            "là trang của một người, không phải thương hiệu: dừng đường thương hiệu, chưa đọc bài",
+            # FR-018
+            "`<thương-hiệu>.substack.com/archive`, bài ở `/p/<tên-bài>` cùng host",
+            "không có trang danh sách giữ được đường bài: không mở",
+            # redirect exemptions
+            "nếu chuỗi truy vấn giữ nguyên",
+            "`profile.php?id=<số>` chuyển sang `facebook.com/<tên-trang>` một đoạn",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, section)
+        self.assertIn("### 4c. Trang Facebook của chính người dùng", text)
+        own_page = text[text.index("### 4c. Trang Facebook của chính người dùng"):text.index("## 5.")]
+        for phrase in (
+            "skill không chặn mà nêu rủi ro và hỏi xác nhận",
+            "skill không kiểm được Trang có phải của người dùng không, và học giọng của người khác là không được phép",
+            "Người dùng nói Trang là của người khác thì không đọc",
+            "Hồ sơ là `kind: personal`",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, own_page)
+        self.assertIn("Ngoại lệ duy nhất: người dùng nói URL là Trang Facebook (fanpage) của chính họ thì đi mục 4c", text)
+        self.assertIn("hỏi người dùng xác nhận đó là Trang của chính họ", read("references/voice-profile.md"))
         route = read("references/voice-profile.md")
         for phrase in (
             "câu ấy gọi tên thương hiệu và đúng URL người dùng đưa sẽ mở",

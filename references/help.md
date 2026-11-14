@@ -35,7 +35,8 @@ bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references
 1. **Loại giọng:** Cá nhân (đề xuất) hoặc Thương hiệu.
 2. **Nguồn mẫu:**
    - Cá nhân: Dán bài (đề xuất), File export, hoặc Đọc trang qua trình duyệt. Chỉ đưa lựa chọn trình duyệt
-     khi agent thấy có công cụ trình duyệt theo `references/voice-sources.md` mục 1; đường đọc ở mục 4a.
+     khi agent thấy có công cụ trình duyệt theo `references/voice-sources.md` mục 1; đường đọc ở mục 4a,
+     hoặc mục 4c khi người dùng muốn học từ Trang Facebook mang tên chính họ (trang người nổi tiếng).
      File export thì nêu các bước của nền tảng theo mục 3 của file đó. Trình duyệt thì cảnh báo điều
      khoản đi cùng câu đồng ý ở bước 3, theo `references/voice-profile.md` mục 2; không nhắc lại ở đây.
    - Thương hiệu: nhờ người dùng dán hoặc gọi tên bộ quy chuẩn và tài liệu nội bộ họ chọn đưa, theo

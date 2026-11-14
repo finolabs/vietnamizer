@@ -29,6 +29,7 @@ Each item: Decision, Rationale, Alternatives considered. Nothing here was checke
 
 - **Decision**: the URL must be a listing page of posts, not the site root (path `/` or empty). The "path prefix" is the listing page's whole path with a `/` appended when missing, so `https://brand.vn/blog` and `https://brand.vn/blog/` both give `/blog/`; a prefix of only `/` counts as the root (security audit 14/11/2026: cutting at the last `/` turned `/blog` into `/`, opening the whole host). Each post page is checked like the first page: a redirect to another host or outside the prefix drops that page. The skill opens only post pages linked from that listing page, on the same host (exact match, `www.` included), whose path starts with that prefix and is longer than it. It does not follow pagination ("Trang 2", "Xem thêm bài"), so a run reads at most the posts one listing page shows. It never opens login, account, contact, search or comment pages, PDFs or any URL with a query string, and never a link from inside a post.
 - **Rationale**: decision 6 and FR-005–FR-006; no pagination is the lower bound FR-011 allows and needs no counting rule of its own.
+- **Shared platforms (decision 12, 14/11/2026)**: the listing-prefix rule cannot reach Substack posts (`/p/`) from `/archive`, nor Blogspot or WordPress date permalinks from the root. Each platform therefore has its own listing and post paths (Substack `/archive` → `/p/<slug>`; Medium account or publication path; Blogspot and WordPress.com yearly archive `/<năm>/`); hosted Ghost puts posts at the root and is not opened. Checked against platform conventions, not live pages.
 - **Alternatives**: follow pagination up to the cap (more pages opened for little gain over 10–20 posts the route needs); same registrable domain instead of exact host (lets a subdomain the brand does not run in).
 
 ## R5. Shared publishing platforms and the brand's own space
@@ -45,6 +46,13 @@ Each item: Decision, Rationale, Alternatives considered. Nothing here was checke
 
 ## R7. Tests and evidence
 
-- **Decision**: red first: replace the two asserts that pin the old phrases (`tests/test_skill_contract.py:173` "không mở link bằng công cụ trình duyệt hay công cụ tải trang nào" and `:225` "không đưa lựa chọn trình duyệt") with guards for the new rules and run them red before the references change. Add phrase guards for FR-002–FR-010 in a new `test_brand_page_browser_rules`. Behaviour stays manual evidence: calibration block BP01–BP21, run by hand.
+- **Decision**: red first: replace the two asserts that pin the old phrases (`tests/test_skill_contract.py:173` "không mở link bằng công cụ trình duyệt hay công cụ tải trang nào" and `:225` "không đưa lựa chọn trình duyệt") with guards for the new rules and run them red before the references change. Add phrase guards for FR-002–FR-010 in a new `test_brand_page_browser_rules`. Behaviour stays manual evidence: calibration block BP01–BP27, run by hand.
 - **Rationale**: the repository guards rule text with phrase tests (spec 030 precedent); they prove the text ships, not that an agent follows it.
 - **Alternatives**: no new guard (the old asserts would simply be deleted, leaving the new rules unguarded).
+
+## R8. A person's fanpage (decision 11)
+
+- **Decision**: a Facebook Page whose category marks a person stops the brand route. The user's own one may be learned as a `kind: personal` profile through `references/voice-sources.md` mục 4c, after Meta's terms warning, a statement that the skill cannot verify ownership and that learning another person's voice is not allowed, and a consent question naming the URL with the ownership statement. The route, click, stops, discard rule and cap are those of 4b.
+- **Rationale**: Fio, 14/11/2026: the choice of source is the user's; the skill warns and asks rather than blocks. The constitution's "trang của chính người dùng" already covers it; only spec 030's fixed own-account URL rule gets an exception, recorded in spec 030 FR-007.
+- **Alternatives**: paste or export only (offered; Fio chose warning plus confirmation); block person Pages entirely (rejected: limits users who are themselves public figures).
+

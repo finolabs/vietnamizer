@@ -16,7 +16,7 @@ claude plugin validate .
 
 Expected: all pass; `test_brand_page_browser_rules` covers FR-002–FR-010 phrases.
 
-## Behaviour walk-through (manual, cases BP01–BP21 in `calibration/test-cases.md`)
+## Behaviour walk-through (manual, cases BP01–BP27 in `calibration/test-cases.md`)
 
 1. `/vietnamizer:help` → Thương hiệu on a host with a browser tool: the source step offers "Đọc trang qua trình duyệt" after paste and export (BP01); without a browser tool it does not (BP02).
 2. Give a fanpage URL and the brand name: one Meta terms warning, then one consent question naming the brand and the URL with the authority statement; nothing opens before yes (BP03–BP05).
