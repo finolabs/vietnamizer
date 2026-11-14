@@ -541,10 +541,10 @@ Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
-| 1 | *“Khách hàng ngày nay rất ít kiên nhẫn: nếu sau vài tiếng không nhận được phản hồi, họ sẽ chuyển sang hỏi cửa hàng khác.”*, đoạn không có lỗi V nào | Tách câu: *“Khách hàng ngày nay rất ít kiên nhẫn. Nếu sau vài tiếng không nhận được phản hồi, họ sẽ chuyển sang hỏi cửa hàng khác.”* dù không có lỗi V; giữ nguyên từng từ | Dấu hai chấm giữa câu luôn được rà, không chờ cổng V; T2 không cho đổi từ |
+| 1 | *“Khách hàng ngày nay rất ít kiên nhẫn: nếu sau vài tiếng không nhận được phản hồi, họ sẽ chuyển sang hỏi cửa hàng khác.”*, đoạn không có lỗi V nào | Tách câu: *“Khách hàng ngày nay rất ít kiên nhẫn. Nếu sau vài tiếng không nhận được phản hồi, họ sẽ chuyển sang hỏi cửa hàng khác.”* dù không có lỗi V; giữ nguyên từng từ | T2 luôn được rà, không chờ cổng V; T2 không cho đổi từ |
 | 2 | *“Lúc này, họ phát hiện ra rất nhiều điểm bất hợp lý: dữ liệu nhập hai lần, báo cáo trễ và các thao tác quá rườm.”* | Bỏ dấu hai chấm, nối bằng *như* hoặc tách câu; sửa *rườm* → *rườm rà* | T2 với danh sách liền câu; V20 trường hợp 1 |
 | 3 | Câu dẫn *“Quy trình gồm ba bước:”* rồi ba bullet xuống dòng; một biểu mẫu có *Trạng thái: đang xử lý*; *Chị Lan nói: “Mai nộp.”*; *họp lúc 9:30* | Giữ nguyên | Không flag của T2 |
-| 4 | *“Nhóm đã chốt phương án — việc triển khai bắt đầu tuần sau.”*, đoạn không có lỗi V, quy chuẩn không cấm `—` | Giữ nguyên | Gạch ngang vẫn chờ cổng V; khi có lỗi V cũng không đổi gạch ngang thành dấu hai chấm giữa câu |
+| 4 | *“Nhóm đã chốt phương án — việc triển khai bắt đầu tuần sau.”*, đoạn không có lỗi V, quy chuẩn không cấm `—`; lượt khác *“Tất cả – chỉ khác là…”* (như MR05) | Giữ nguyên cả hai | T2 luôn rà nhưng gạch ngang có chức năng ngắt rõ thì giữ; không đổi gạch ngang thành dấu hai chấm giữa câu |
 | 5 | *“Khách quay lại ít hẳn: cửa hàng giao chậm.”*, ngữ cảnh không nói giao chậm là nguyên nhân | Tách câu, không thêm *vì* hay *do* | Từ nối chỉ thêm khi bản gốc đã cho thấy quan hệ |
 | 6 | Hợp đồng: *“Bên B có các nghĩa vụ sau: ...”* | Giữ nguyên | Thể loại chỉ rà T; khuôn văn bản pháp quy không flag |
 | 7 | Bài đăng công việc, câu độc lập: *“Đội đã làm việc chăm chỉ để đạt được mục tiêu quý.”* | *“Đội ngũ đã làm việc chăm chỉ để đạt được mục tiêu quý.”*; chỉ nhận *“Cả đội…”* khi ngữ cảnh nói toàn đội | V20 trường hợp 3: *đội* đứng trơ chưa cho biết đội nào |

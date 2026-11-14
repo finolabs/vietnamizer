@@ -247,7 +247,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Lịch sử phiên bản
 
-- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà, không chờ lỗi khác); luôn soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
+- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà cùng gạch ngang); luôn soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
 - **0.16.1** — Mô tả plugin ngắn lại để catalog `finolabs/plugins` pin được bản mới; nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt; gọi lại hồ sơ đã lưu bằng tên.
 

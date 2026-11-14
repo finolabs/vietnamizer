@@ -2,7 +2,7 @@
 
 Tra khi có nghi vấn đúng nhóm ở bảng của SKILL.md; đọc cả Không flag trước khi sửa.
 Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm khác chỉ vì có liên kết.
-Cổng T do SKILL.md quyết định (dấu hai chấm giữa câu của T2 không chờ lỗi V, gạch ngang vẫn chờ); không áp typography vào vùng bảo toàn.
+Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà không có nghĩa là luôn sửa); không áp typography vào vùng bảo toàn.
 
 ### T1. Viết hoa theo kiểu tiêu đề tiếng Anh
 

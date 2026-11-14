@@ -30,8 +30,8 @@ văn thì bảo toàn. Thuật ngữ chỉ đặt trong ngoặc để nhấn kh�
 
 Pháp quy/hợp đồng/công văn/quy chế; cổ phong/nghi lễ/tang lễ/văn khấn; changelog/commit/error/UI;
 thơ/văn chương có nhịp chủ ý: chỉ rà T1–T6, không profile/card, không sáng tác trong nhánh này.
-Văn xuôi còn lại: T chỉ sửa khi có ít nhất một lỗi V1–V25 trong phần văn bản được giao, trừ dấu hai
-chấm giữa câu văn xuôi của T2 luôn được rà; lỗi
+Văn xuôi còn lại: T chỉ sửa khi có ít nhất một lỗi V1–V25 trong phần văn bản được giao, trừ T2 (gạch
+ngang hoặc dấu hai chấm giữa câu làm mờ quan hệ ý) luôn được rà; lỗi
 nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Không tự thống nhất biến thể chính tả
 đang dùng nhất quán; quy chuẩn được giao có thể quyết định cách viết, không đổi tên riêng.
 
