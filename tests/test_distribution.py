@@ -164,6 +164,15 @@ class DistributionTest(unittest.TestCase):
                 root = repo / manifest["skills"]
                 self.assertEqual(sorted(path.relative_to(root).as_posix() for path in root.rglob("SKILL.md")), ["help/SKILL.md", "vietnamizer/SKILL.md"])
 
+    def test_plugin_adapter_description_matches_canonical_skill(self) -> None:
+        def description(path: str) -> str:
+            text = (ROOT / path).read_text(encoding="utf-8")
+            match = re.search(r"(?m)^description: [^\n]*\n(?:  [^\n]*\n)*", text)
+            self.assertIsNotNone(match, path)
+            return match.group(0)
+
+        self.assertEqual(description(".plugin-skills/vietnamizer/SKILL.md"), description("SKILL.md"))
+
     def test_help_adapter_shipped(self) -> None:
         adapter = (ROOT / ".plugin-skills/help/SKILL.md").read_text(encoding="utf-8")
         self.assertRegex(adapter, r"(?m)^name: help$")
