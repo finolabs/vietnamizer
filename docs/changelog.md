@@ -4,6 +4,12 @@
 
 ## Lịch sử phiên bản
 
+### 0.16.1 (14/11/2026)
+
+Mô tả hiển thị của plugin ngắn lại còn một câu 151 ký tự, giống nhau ở `.claude-plugin`, `.codex-plugin`,
+`.antigravity-plugin` và catalog `finolabs/plugins`, vì catalog bắt mô tả dài 120–160 ký tự và trùng
+manifest của bản được pin. Nội dung skill, hồ sơ giọng và mọi cổng đồng ý không đổi so với 0.16.0.
+
 ### 0.16.0 (14/11/2026)
 
 Spec 031, đọc trang thương hiệu qua trình duyệt: hồ sơ `kind: brand` đọc được trang công khai của thương
@@ -125,6 +131,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.16.1** — Mô tả plugin ngắn lại còn 151 ký tự, giống nhau ở ba manifest và catalog `finolabs/plugins`, để catalog pin được bản mới. Nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` hay `/vietnamizer:vietnamizer cá nhân` qua sổ hồ sơ; trên Chat lưu bản gọn trong bộ nhớ; tạo hồ sơ không bắt buộc, lời nhắc tắt được hẳn cả trên Chat. Constitution lên 2.8.0. Chưa chạy agent trên các ca mới.
 - **0.15.0** — Hồ sơ giọng có hai loại, cá nhân (mặc định) và thương hiệu, mỗi lần chỉ áp một; học giọng từ bài dán, file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt (có cảnh báo điều khoản nền tảng); chấm đoạn mẫu bốn mức sau khi học; thêm skill `help` và bước thiết lập; hồ sơ giọng có `ranh giới` và `Điểm chưa quyết`; tên file trong gói đổi sang tiếng Anh (xem bảng trong changelog). Giữ 55 pattern và năm chốt.
 - **0.14.0** — Gỡ Jev (evaluator TypeSafe): skill không còn gọi dịch vụ ngoài hay đọc API key; gói chỉ gồm Markdown và script đóng gói. Giữ 55 pattern, năm chốt và tuyến hồ sơ giọng opt-in.

@@ -1,7 +1,7 @@
 {
   "name": "vietnamizer",
-  "version": "0.16.0",
-  "description": "Viết và biên tập tiếng Việt cho tự nhiên hơn, giữ nguyên ý, dữ kiện, thuật ngữ, code và giọng người viết. Khi bạn yêu cầu, Vietnamizer học, lưu và áp dụng hồ sơ giọng cá nhân hoặc giọng thương hiệu; hỏi “Vietnamizer làm được gì?” để xem tính năng và thiết lập giọng.",
+  "version": "0.16.1",
+  "description": "Viết và biên tập tiếng Việt tự nhiên hơn, giữ ý, dữ kiện, code và giọng người viết; hỏi “Vietnamizer làm được gì?” để xem tính năng và thiết lập giọng.",
   "author": {
     "name": "Fioenix",
     "url": "https://github.com/fioenix"
