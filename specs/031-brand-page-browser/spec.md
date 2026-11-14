@@ -16,11 +16,9 @@
 7. **No terms warning for the brand's own website** (after review of PR #47): the user speaks for the brand that owns the site, so its terms are the brand's; Facebook and LinkedIn keep the warning.
 8. **"See more" allowed** (open decision O1, settled 2026-11-14): the skill may click "See more" ("Xem thêm") only inside the body of a post the brand published, to expand that post in place; it makes no other click, and a click that does more than expand the post in place yields nothing (FR-010).
 9. **Shared publishing platforms** (open decision O3, settled 2026-11-14): Medium, Substack, Blogspot, WordPress.com and hosted Ghost; news and information sites, Vietnamese ones included (for example VnExpress, Tuổi Trẻ, CafeF, Kenh14); and forums and community sites (for example Spiderum, Viblo). On these hosts the skill reads only inside the brand's own space, meaning an official account, publication or channel the brand operates (for example `medium.com/@<brand>` or `<brand>.substack.com`), and stops outside it. A tag, topic, category or search page about the brand is never the brand's own space. News and information sites have no such space, so the skill always stops there unless the brand owns the domain. A brand's own domain served by such a platform counts as the brand's own site.
-
 10. **URL shapes and page signs** (open decision O2, settled 2026-11-14): Fio approved the plan author's proposal, checked against platform conventions and not on live pages: a Facebook fanpage is `facebook.com/<tên-trang>` or `facebook.com/profile.php?id=<số>` (only `id`) on `www.`, `m.` or `web.facebook.com`, its posts view being the page itself; a LinkedIn company page is `linkedin.com/company/<slug>/` with its posts view `/company/<slug>/posts/` (no `/in/`, `/showcase/` or `/school/`). A fanpage shows "Trang · <hạng mục>" and Like or Follow, with no Add friend button or friends count; a company page shows Follow, an industry and a follower count, with no Connect button. See `research.md` R1.
 
 The options Fio did not pick, kept for the record: start from a fixed "pages I manage" admin URL; read only the tab the user opened themselves; admin-only pages; one URL per run; dropping websites from 031; a short reminder about the site's terms.
-
 
 ## Open decisions
 
