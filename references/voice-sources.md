@@ -95,9 +95,12 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
   sơ này cho thương hiệu nào; mỗi hồ sơ một thương hiệu.
 - **Nền tảng nhận** (theo quy ước của nền tảng, chưa đối chiếu trên trang thật; giao diện có thể đổi):
   - Fanpage Facebook: `facebook.com/<tên-trang>` hoặc `facebook.com/profile.php?id=<số>` (chỉ tham số
-    `id`), trên `www.`, `m.` hoặc `web.facebook.com`; mục bài đăng là chính trang đó.
-  - Trang công ty LinkedIn: `www.linkedin.com/company/<slug>/` và mục bài đăng `/company/<slug>/posts/`.
-    Không nhận `/in/`, `/showcase/`, `/school/`.
+    `id`), trên `www.`, `m.` hoặc `web.facebook.com`; chỉ một đoạn đường dẫn, không tham số nào khác;
+    mục bài đăng là chính trang đó.
+  - Trang công ty LinkedIn: `www.linkedin.com/company/<slug>/` và mục bài đăng `/company/<slug>/posts/`,
+    chỉ hai đường này, không mở đường nào khác dưới `/company/<slug>/` (ví dụ `/people/`, `/jobs/`). Không
+    nhận `/in/`, `/showcase/`, `/school/`. URL khác dạng (ví dụ `/reviews`, `?sk=`) thì không mở; nhờ
+    người dùng đưa URL đúng dạng, dán bài hoặc gọi tên file export.
   - Website hay blog riêng của thương hiệu: một trang danh sách bài, không phải trang gốc.
 - **Từ chối trước khi mở.** Yêu cầu cho thấy trang thuộc thương hiệu người dùng không được nói thay (đối
   thủ, “bên X”, công ty khác, “xem bên X viết thế nào”) thì từ chối, không mở gì, kể cả khi người dùng nói
@@ -110,7 +113,8 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
   host khác; là trang thương hiệu chứ không phải trang cá nhân (fanpage có dòng “Trang · <hạng mục>” và
   nút Thích hoặc Theo dõi, không có nút Thêm bạn bè hay số bạn bè; trang công ty có nút Theo dõi, ngành và
   số người theo dõi, không có nút Kết nối); và mang tên thương hiệu người dùng nêu. Sai một điều thì dừng
-  và nói đã thấy gì. URL là trang cá nhân (ví dụ `linkedin.com/in/…`) thì dừng; tài khoản cá nhân đi
+  và nói đã thấy gì. Chuyển giữa `www.`, `m.` và `web.facebook.com` trên cùng đường dẫn, hay chỉ thêm `/`
+  ở cuối, không tính là chuyển hướng. URL là trang cá nhân (ví dụ `linkedin.com/in/…`) thì dừng; tài khoản cá nhân đi
   đường mục 4a.
 - **Đường đọc cố định.** Facebook: chính fanpage đó. LinkedIn: trang công ty và mục bài đăng của nó, cùng
   đường `/company/<slug>/`. Website: trang danh sách và các trang bài có link từ trang danh sách đó, cùng
@@ -140,7 +144,8 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
 - **Dừng.** Gặp màn đăng nhập, trang hay tài khoản khác, captcha, tường trả phí, banner đồng ý hoặc cookie
   che nội dung, trang báo giới hạn hay chặn truy cập thì dừng và đề nghị dán bài hoặc file export. Không
   hỏi, nhập hay đọc mật khẩu, cookie hoặc token; không giải captcha; không chấp nhận hay tắt banner đồng ý
-  hoặc cookie; không bấm thích, bình luận, theo dõi, đăng hay gửi; không đổi cài đặt nào.
+  hoặc cookie; không bấm thích, bình luận, theo dõi, đăng hay gửi; không đổi cài đặt nào; không chuyển
+  sang hồ sơ khác hay dùng quyền quản trị Trang.
 - **Trần.** Tối đa như mục 3 (80 bài gần nhất có lời tiếng Việt), tính chung cho mọi trang trong lượt;
   cuộn tới khi đủ trần hoặc cuộn thêm mà không có bài thương hiệu mới. Báo xấp xỉ số bài đã giữ, đã bỏ và
   lý do bỏ chính.

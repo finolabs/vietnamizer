@@ -13,7 +13,7 @@ Reverse the spec 030 FR-006 implementation decision: a `kind: brand` profile may
 **Language/Version**: Markdown instructions; package checks stay Python 3 standard library (`scripts/validate-package.py`, `scripts/package-plugin.py`, `unittest`).
 **Primary Dependencies**: none new. Optional host capability: a browser tool (Claude in Chrome, the in-app browser pane or an equivalent), as in spec 030.
 **Storage**: unchanged; the profile's sources line counts brand posts read through the browser as `trình duyệt`, never a URL.
-**Testing**: `tests/test_skill_contract.py` (the two asserts at `:173` and `:225` that pin the old no-browser phrases are replaced, and new phrase guards cover FR-002–FR-010); `tests/test_package_security.py`; `tests/test_distribution.py`; `scripts/validate-package.py`; `claude plugin validate .`; manual cases in `calibration/test-cases.md` (VM05, VM11, VM15 and VM31 rewritten; new block BP01–BP20).
+**Testing**: `tests/test_skill_contract.py` (the two asserts at `:173` and `:225` that pin the old no-browser phrases are replaced, and new phrase guards cover FR-002–FR-010); `tests/test_package_security.py`; `tests/test_distribution.py`; `scripts/validate-package.py`; `claude plugin validate .`; manual cases in `calibration/test-cases.md` (VM05, VM11, VM15 and VM31 rewritten; new block BP01–BP21).
 **Target Platform**: Claude Code, Codex, Antigravity, standalone skill installs.
 **Project Type**: agent skill (Markdown) with packaging scripts.
 **Performance Goals**: the default editing path reads nothing new; onboarding keeps at most 6 questions before rating (FR-013).
@@ -63,7 +63,7 @@ references/
 specs/030-voice-modes/spec.md                # FR-006 delivery note
 specs/030-voice-modes/contracts/{profile-format,help-onboarding}.md
 tests/test_skill_contract.py                 # replace :173 and :225, add 031 guards
-calibration/test-cases.md                    # VM05, VM11, VM15, VM31; BP01–BP20
+calibration/test-cases.md                    # VM05, VM11, VM15, VM31; BP01–BP21
 AGENTS.md, PRIVACY.md, README.md, docs/style-and-voice.md, docs/architecture.md
 docs/changelog.md, docs/installation.md, SKILL.md metadata, three plugin.json   # 0.16.0
 ```

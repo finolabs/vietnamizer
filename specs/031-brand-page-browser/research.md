@@ -9,6 +9,7 @@ Each item: Decision, Rationale, Alternatives considered. Nothing here was checke
   - **LinkedIn company page**: `linkedin.com/company/<slug>/` (host `www.linkedin.com`) and its posts view `linkedin.com/company/<slug>/posts/`. `/in/`, `/showcase/` and `/school/` paths are not accepted.
   - **Page signs**: a fanpage shows "Trang · <hạng mục>" ("Page · <category>") and a Like or Follow button, with no "Thêm bạn bè"/"Add friend" button and no friends count; a company page shows Follow, an industry and a follower count, with no Connect button.
   - Anything else stops before reading (FR-008), so a shape the platforms change later fails closed.
+  - Review of PR #49 (14/11/2026): Facebook takes one path segment and no parameter other than `id` on `profile.php`; LinkedIn opens only the two company paths, nothing else under `/company/<slug>/`; a move between the three Facebook hosts on the same path, or an added trailing `/`, is not a redirect; the agent never switches profile or acts as the Page.
 - **Rationale**: these are the public URL forms both platforms use for brand pages; the personal path of spec 030 already uses the same hosts. `profile.php?id=` is how Facebook addresses pages without a vanity name in the new Pages experience; allowing only `id` keeps the query-string surface to one known parameter.
 - **Alternatives**: verify on a live fanpage and company page Fio names first (offered; Fio chose to approve the conventions); drop `profile.php?id=` (offered; a page without a vanity name would then need paste or export).
 
@@ -44,6 +45,6 @@ Each item: Decision, Rationale, Alternatives considered. Nothing here was checke
 
 ## R7. Tests and evidence
 
-- **Decision**: red first: replace the two asserts that pin the old phrases (`tests/test_skill_contract.py:173` "không mở link bằng công cụ trình duyệt hay công cụ tải trang nào" and `:225` "không đưa lựa chọn trình duyệt") with guards for the new rules and run them red before the references change. Add phrase guards for FR-002–FR-010 in a new `test_brand_page_browser_rules`. Behaviour stays manual evidence: calibration block BP01–BP20, run by hand.
+- **Decision**: red first: replace the two asserts that pin the old phrases (`tests/test_skill_contract.py:173` "không mở link bằng công cụ trình duyệt hay công cụ tải trang nào" and `:225` "không đưa lựa chọn trình duyệt") with guards for the new rules and run them red before the references change. Add phrase guards for FR-002–FR-010 in a new `test_brand_page_browser_rules`. Behaviour stays manual evidence: calibration block BP01–BP21, run by hand.
 - **Rationale**: the repository guards rule text with phrase tests (spec 030 precedent); they prove the text ships, not that an agent follows it.
 - **Alternatives**: no new guard (the old asserts would simply be deleted, leaving the new rules unguarded).

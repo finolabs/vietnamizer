@@ -17,7 +17,7 @@ che nội dung hoặc trang chặn. Facebook và LinkedIn có cảnh báo điề
 nằm ở `references/voice-sources.md` mục 4b; mục 4a giữ đường tài khoản cá nhân. Dạng URL và dấu hiệu trang
 theo quy ước nền tảng, chưa đối chiếu trên trang thật. Constitution lên 2.5.0 (MINOR): ràng buộc “Tuyến hồ
 sơ giọng” thêm nguồn trang thương hiệu, đảo lại quyết định triển khai của spec 030 FR-006. Thêm ca
-BP01–BP20, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
+BP01–BP21, sửa VM05, VM11, VM15, VM31. Chưa chạy agent trên các ca mới; chưa có bằng chứng cải thiện chất
 lượng.
 
 Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào:

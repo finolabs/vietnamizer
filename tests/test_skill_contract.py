@@ -298,6 +298,9 @@ class SkillContractTest(unittest.TestCase):
             "`facebook.com/profile.php?id=<số>` (chỉ tham số `id`)",
             "`www.linkedin.com/company/<slug>/` và mục bài đăng `/company/<slug>/posts/`",
             "Không nhận `/in/`, `/showcase/`, `/school/`",
+            "chỉ hai đường này, không mở đường nào khác dưới `/company/<slug>/`",
+            "chỉ một đoạn đường dẫn, không tham số nào khác",
+            "không chuyển sang hồ sơ khác hay dùng quyền quản trị Trang",
             # FR-003, FR-004
             "Mỗi URL có một câu đồng ý riêng theo `references/voice-profile.md` mục 2",
             "nêu đúng một lần cho mỗi nền tảng trong lượt",

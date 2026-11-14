@@ -36,9 +36,9 @@ dùng dán, file người dùng chỉ định trong tác vụ (kể cả file ex
 trang của chính người dùng đọc qua công cụ trình duyệt host sẵn có khi họ đã đăng nhập, hoặc với hồ sơ
 thương hiệu, trang công khai của thương hiệu từ URL người dùng đưa; skill không tự tìm mẫu trong memory, lịch sử, email, connector khác hay kho lưu trữ.
 
-Với export và trang, skill hỏi người dùng xác nhận đó là tài khoản của chính họ và không đọc trang của
+Với export và trang của tài khoản cá nhân, skill hỏi người dùng xác nhận đó là tài khoản của chính họ và không đọc trang của
 người khác. Skill đề nghị chỉ xuất mục bài viết, chỉ mở file bài viết trong bản export (không mở hay
-liệt kê file nào khác), chỉ giữ bài họ tự viết và bỏ bình luận, tin nhắn, danh bạ. Trước khi đọc qua trình duyệt, skill báo điều khoản của
+liệt kê file nào khác), chỉ giữ bài họ tự viết và bỏ bình luận, tin nhắn, danh bạ. Trước khi đọc LinkedIn hay Facebook qua trình duyệt, skill báo điều khoản của
 LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập dữ liệu tự động khi chưa được phép, và tài
 khoản có thể bị hạn chế; người dùng tự quyết. Trên trình duyệt với tài khoản cá nhân, skill chỉ mở đường
 dẫn tài khoản của chính người dùng, chỉ đọc phần thân bài; không hỏi, nhập hay đọc mật khẩu, cookie hoặc token, không
