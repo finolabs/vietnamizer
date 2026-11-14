@@ -1,5 +1,16 @@
 <!--
 Sync Impact Report
+- Version change: 2.6.0 -> 2.6.1 (PATCH: names what does not count as a redirect on the brand page
+  route; the same exceptions already stood in `references/voice-sources.md` mục 4b; no obligation
+  added or removed).
+- Owner approval: 2026-11-14, Fio approved the exact added sentence ("Duyệt") during the 0.16.0
+  description review.
+- Modified constraint "Tuyến hồ sơ giọng": after the redirect stop, a move between `www.`, `m.` and
+  `web.facebook.com` on the same path and query string, an added trailing `/`, or `profile.php?id=<số>`
+  to a one-segment `facebook.com/<tên-trang>` on those hosts is not a redirect; every other check runs
+  on the page reached.
+- Previous amendment: 2.5.0 -> 2.6.0 (below).
+
 - Version change: 2.5.0 -> 2.6.0 (MINOR: the brand page route may read the fixed post paths of shared
   publishing platforms, outside the listing page's path prefix; no principle's obligation is removed).
 - Owner approval: 2026-11-14, Fio approved the exact replacement sentence ("Duyệt") during the review
@@ -124,7 +135,10 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   không bao giờ là trang gốc; MUST NOT theo link nào khác; chỉ đọc thân bài thương hiệu đã đăng;
   MUST NOT mở bình luận, tin nhắn, đánh giá hay danh sách người theo dõi; MUST NOT ghi tên nhân
   viên; và MUST dừng khi trang chuyển hướng sang trang hay host khác hoặc không mang tên thương
-  hiệu người dùng nêu. Tuyến MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người
+  hiệu người dùng nêu; không tính là chuyển hướng: chuyển giữa `www.`, `m.` và `web.facebook.com`
+  trên cùng đường dẫn và cùng chuỗi truy vấn, chỉ thêm `/` ở cuối, hoặc `profile.php?id=<số>` sang
+  `facebook.com/<tên-trang>` một đoạn trên một trong ba host đó; mọi điều kiểm khác vẫn chạy trên
+  trang tới. Tuyến MUST NOT lấy mẫu qua connector khác, MUST NOT đọc trang của người
   khác, kể cả trang thương hiệu người dùng không được nói thay, và MUST NOT xử lý mật khẩu,
   cookie hay token. Trên trình duyệt, skill MUST giữ các điều cấm: không giải captcha; không bấm
   thích, bình luận, đăng hay gửi; không đổi cài đặt tài khoản; và MUST dừng khi gặp màn đăng
@@ -168,4 +182,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.6.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
+**Version**: 2.6.1 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
