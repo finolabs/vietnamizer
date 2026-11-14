@@ -4,6 +4,14 @@
 
 ## Lịch sử phiên bản
 
+### Chưa phát hành
+
+Sửa câu chữ sau review 0.15.0, không đổi nghĩa vụ nào: mục 7 của `references/voice-profile.md` nói rõ
+dòng chấm của hồ sơ đã lưu nằm trong diff từ lý do, hoặc thành diff riêng khi không có diff đó; ca VM30
+trình lại toàn bộ bản sẽ lưu, có dòng chấm, cả khi người dùng bác diff; hợp đồng onboarding đưa câu hỏi
+chủ tài khoản và cảnh báo điều khoản LinkedIn và Facebook sang bước 3. Constitution lên 2.4.1: điều khoản
+file export nêu thêm lời khẳng định được nói thay thương hiệu cho export của trang thương hiệu.
+
 ### 0.15.0 (14/11/2026)
 
 Spec 030, phần MVP (giọng cá nhân và thương hiệu, nguồn mạng xã hội): hồ sơ có trường `kind`

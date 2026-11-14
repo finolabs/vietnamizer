@@ -243,7 +243,8 @@ hai câu bổ sung của mục 6 cho diff đó, dùng chung một trần, không
 
 Diff từ lý do chấm đi theo một trong hai đường. Hồ sơ còn là bản nháp chưa lưu (mục 3): người dùng đồng ý
 diff thì gộp vào bản nháp và trình lại toàn bộ bản sẽ lưu trước câu hỏi lưu; chưa đồng ý thì không gộp.
-Hồ sơ đã lưu: diff cần người dùng xác nhận riêng theo mục 6.
+Hồ sơ đã lưu: diff cần người dùng xác nhận riêng theo mục 6; dòng chấm nằm trong cùng diff đó, còn khi không
+có diff từ lý do thì dòng chấm là một diff riêng, trình ra và xác nhận theo mục 6.
 
 Lượt chấm chỉ được ghi vào hồ sơ khi người dùng lưu hồ sơ (mục 4) hoặc xác nhận diff (mục 6). Dòng chấm
 nằm sẵn trong bản toàn văn hoặc diff trình cho người dùng trước câu hỏi lưu; không thêm dòng nào người dùng
