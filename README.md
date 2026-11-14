@@ -8,7 +8,7 @@
 <h1 align="center">Vietnamizer</h1>
 
 <p align="center"><strong>Biên tập tiếng Việt rõ ý, giữ nghĩa và giọng người viết.</strong><br>
-Skill giúp Claude Code, Codex, Antigravity và các agent tương thích rà bản nháp AI, bản dịch sát và văn bản tiếng Việt đọc chưa thuận. Skill chọn quy tắc theo thể loại, chỉ sửa khi có căn cứ và kiểm lại nghĩa trước khi giữ thay đổi.</p>
+Skill cho Claude Code, Codex, Antigravity và các agent đọc được Agent Skills, dùng để rà bản nháp AI, bản dịch sát và văn bản tiếng Việt đọc chưa thuận. Gói chỉ có Markdown, nên mọi quy tắc là hướng dẫn cho agent chứ không có mã nào ép buộc. Agent chọn quy tắc theo thể loại, chỉ sửa khi gọi tên được lỗi và kiểm lại nghĩa trước khi giữ thay đổi.</p>
 
 <p align="center">
   <a href="https://github.com/finolabs/vietnamizer/releases/latest"><img src="https://img.shields.io/github/v/release/finolabs/vietnamizer" alt="Bản phát hành mới nhất"></a>
@@ -23,10 +23,22 @@ Skill giúp Claude Code, Codex, Antigravity và các agent tương thích rà b�
   <img src="docs/figures/banner.png" alt="Banner Vietnamizer: câu gốc “Đã tìm khắp nhà nhưng vẫn không tìm chìa khóa.” được sửa thành “… không tìm thấy chìa khóa.”, ca MR04 thiếu bổ ngữ, bản 0.12.1 trên Codex đạt." width="920">
 </p>
 
-**Không cần API key cho core Markdown.** Mặc định giữ giọng gốc; khi được yêu cầu rõ,
-có thể điều chỉnh theo mẫu người dùng cung cấp. Khả năng theo giọng mẫu vẫn đang được hiệu chỉnh.
+Tôi viết Vietnamizer riêng cho tiếng Việt chứ không phải dịch lại từ một skill tiếng Anh nào cả. Dù sao
+thì các LLM phần lớn được build với rất nhiều data tiếng Anh, ít tiếng Việt, còn những bên làm model cũng
+chưa thật sự tập trung vào tokenizer cho tiếng Việt, càng chưa hiểu ngữ nghĩa tiếng Việt. Do đó văn từ,
+câu cú AI viết ra thường thô cứng.
 
-[Cài nhanh](#cài-nhanh) · [Xem bằng chứng](#bằng-chứng-và-kiểm-thử) · [Dùng ngay](#dùng-ngay) · [Tài liệu](#tài-liệu-chi-tiết)
+Khó nhất là sửa sao cho giữ được trọn vẹn ý nghĩa, nhưng “con người” nhất có thể. Vì vậy, Vietnamizer
+mặc định giữ giọng của người viết và chỉ sửa chỗ nó nhận ra pattern lỗi. Khi bạn yêu cầu, nó học giọng văn
+của bạn, hoặc của thương hiệu bạn được nói thay, đóng gói thành hồ sơ giọng văn rồi viết theo hồ sơ đó
+(README này cũng đã qua tay nó, theo hồ sơ giọng của tôi). Khi học giọng văn của bạn, nó đưa bạn xem bản
+nháp hồ sơ và vài đoạn viết thử để cùng hiệu chỉnh. Tôi tin rằng càng kiên nhẫn làm bước này đủ sâu, đủ
+kỹ, AI viết càng gần với “người” và với chính bạn hơn. Đó là niềm tin của tôi, chưa phải số đo
+([xem giới hạn](#hồ-sơ-giọng-chưa-có-số-đo)), nên bạn vẫn hãy đọc lại từng bản sửa.
+
+**Không cần API key, không gọi dịch vụ ngoài.**
+
+[Cài nhanh](#cài-nhanh) · [Dùng ngay](#dùng-ngay) · [Thiết lập giọng](#thiết-lập-giọng-của-bạn) · [Xem bằng chứng](#bằng-chứng-và-kiểm-thử) · [Tài liệu](#tài-liệu-chi-tiết)
 
 ## Vietnamizer hữu ích ở đâu?
 
@@ -35,10 +47,11 @@ có thể điều chỉnh theo mẫu người dùng cung cấp. Khả năng theo
 | Rà bản nháp AI hoặc bản dịch sát | Tìm lỗi cụ thể về từ, bổ ngữ và cấu trúc câu |
 | Biên tập blog, bài chuyên môn | Giữ ý định, mức khẳng định, câu rút gọn và nhịp dấu câu |
 | Rà README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
-| Biên tập theo giọng mẫu | Dùng đặc tính có bằng chứng, kiểm riêng việc thêm/bỏ hoặc đổi ý |
+| Viết theo giọng của bạn hoặc của thương hiệu | Học hồ sơ giọng từ bài bạn đưa, cho bạn chấm đoạn mẫu, chỉ lưu khi bạn yêu cầu; bắt đầu bằng `/vietnamizer:help` hoặc câu “thiết lập giọng” |
 
-Dùng như một bước biên tập có kiểm soát trước khi gửi hoặc xuất bản. Đọc lại những chỗ
-đổi xưng hô, cấu trúc và dấu câu; skill không xác minh sự thật trong bài.
+Hãy coi Vietnamizer là một bước biên tập có kiểm soát trước khi gửi hay đăng bài, không phải người kiểm
+chứng. Skill không xác minh sự thật trong bài, nên bạn vẫn cần đọc lại những chỗ nó đổi xưng hô, cấu trúc
+và dấu câu.
 
 ## Cài nhanh
 
@@ -70,10 +83,71 @@ npx skills add finolabs/vietnamizer --skill vietnamizer
 
 Chỉ chọn một cách, plugin hoặc skill lẻ. Chi tiết từng host ở [Cài đặt theo nền tảng](#cài-đặt-theo-nền-tảng).
 
+## Dùng ngay
+
+1. Nhờ trợ lý AI của bạn cài Vietnamizer từ repo này, hoặc chạy lệnh ở mục [Cài nhanh](#cài-nhanh).
+2. Mở session mới. Trên Claude Code, gõ `/vietnamizer:help`; ở host khác, hỏi “Vietnamizer làm được gì?”.
+   Bạn sẽ thấy một màn hình giới thiệu bốn việc: biên tập và viết, chọn giọng, học giọng, kiểm giọng.
+3. Giao một bản nháp như ví dụ dưới. Bạn nhận lại bản đã biên tập mà dữ kiện và thuật ngữ vẫn nguyên,
+   tức là skill đã chạy.
+
+Nói rõ bản nháp dùng cho đâu, ai đọc và phần nào không được đổi. Ví dụ:
+
+```text
+Dùng Vietnamizer biên tập bài blog cá nhân dưới đây.
+Giữ nguyên ý, mức chắc chắn, thuật ngữ và giọng hiện có.
+Không sửa trích dẫn và code. Chỉ trả lại bài đã biên tập.
+
+<draft>Dán bản nháp vào đây.</draft>
+```
+
+Prompt tiếng Anh cũng được, ví dụ `Use Vietnamizer to copyedit the Vietnamese draft below for a personal
+blog.` Có thể xin thêm bảng trước/sau và lý do từng chỗ sửa.
+[Prompt theo tình huống và cách trả kết quả](docs/usage.md).
+
+## Thiết lập giọng của bạn
+
+Mặc định Vietnamizer giữ giọng sẵn có của bài. Gửi kèm mẫu cũng chưa đổi giọng, trừ khi bạn nói rõ là
+muốn viết theo mẫu. Còn muốn skill nhớ giọng qua nhiều lần dùng thì bạn dựng một hồ sơ giọng. Chỉ việc mở
+đầu bằng một trong các câu sau là được:
+
+- “Thiết lập giọng.”
+- “Học giọng của tôi từ mấy bài này.” (rồi dán bài)
+- “Học giọng viết LinkedIn của tôi.”
+
+`/vietnamizer:help` chỉ có trong plugin Claude Code. Trên Codex, Antigravity hay khi cài bằng Skills CLI,
+bạn hỏi bằng lời như trên. Các bước bạn sẽ gặp:
+
+1. **Loại giọng.** Cá nhân (giọng của chính bạn, là lựa chọn đề xuất) hoặc Thương hiệu (giọng một thương
+   hiệu bạn được nói thay).
+2. **Nguồn mẫu.** Dán 10–20 bài bạn tự viết; đưa file export LinkedIn hoặc Facebook bạn tự tải; hoặc để
+   skill đọc trang của chính bạn qua trình duyệt, nếu host có công cụ trình duyệt. Với giọng thương hiệu,
+   bạn đưa bộ quy chuẩn, tài liệu nội bộ và bài đã đăng; bài đã đăng cũng đọc được từ tối đa ba URL
+   fanpage, trang công ty LinkedIn hay blog của thương hiệu.
+3. **Đồng ý đọc.** Skill hỏi đúng một câu, gọi tên nguồn sẽ đọc. Với file export hay trang, câu đó hỏi
+   luôn tài khoản có phải của bạn không; với thương hiệu, hỏi bạn có được nói thay không. Skill không kiểm
+   được những điều này và tin lời bạn. Trước khi đọc Facebook hay LinkedIn qua trình duyệt, skill báo rằng
+   điều khoản của hai nền tảng này có thể cấm thu thập tự động.
+4. **Xem hồ sơ nháp.** Skill trình toàn bộ hồ sơ: mỗi nét giọng có phạm vi, căn cứ và mức chắc chắn, kèm
+   những điểm còn chờ bạn chốt. Bạn sửa tới khi ưng.
+5. **Chấm thử.** Chọn từ 0 đến 10 đoạn mẫu; mỗi đoạn bạn chấm Kém, Trung bình, Khá hoặc Tốt. Chọn 0 là bỏ
+   qua. Đây là đánh giá của bạn; skill không tự tính điểm giống giọng.
+6. **Lưu hay không.** Chỉ lưu khi bạn bảo lưu. Bạn chọn nơi lưu: Orrery hay Obsidian nếu host có công cụ
+   tương ứng, không thì một thư mục Markdown (skill gợi ý `~/.agents/vietnamizer/profiles`), và đặt tên
+   hồ sơ. Không lưu thì hồ sơ chỉ nằm trong cuộc trò chuyện đó.
+
+Trước bước chấm, skill hỏi không quá sáu câu. Dừng ở bước nào cũng được, và dừng thì không có gì được lưu.
+
+Lần sau, gọi hồ sơ bằng tên kèm chỗ lưu, ví dụ “Viết lại bài này theo hồ sơ `giong-cong-viec` trong
+`~/.agents/vietnamizer/profiles`.”
+Skill xin đồng ý đọc hồ sơ đó, mỗi lần chỉ áp một hồ sơ và không tự nạp hồ sơ nào ở phiên sau. Hồ sơ không
+được đổi nghĩa, mức chắc chắn hay điều kiện của bài.
+[Hai chế độ giữ giọng, ví dụ prompt và bảy style card](docs/style-and-voice.md).
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Trích đầu ra thật trên cùng Codex trong lượt hồi quy **0.12.0/0.12.1** ngày 27/10/2026.
-Bảng chỉ hiển thị phần liên quan; kết quả này không phải phép đo mới cho 0.13.2.
+Bảng chỉ hiển thị phần liên quan; các bản sau 0.12.1 chưa được đo lại trên những ca này.
 
 | Ca | Bản gốc | Sau biên tập với 0.12.1 |
 |---|---|---|
@@ -118,28 +192,16 @@ hiệu chỉnh skill; model chấm không thay thế tác giả hoặc người 
 Vietnamizer luôn tốt hơn prompt thông thường kèm mẫu.
 [Xem pilot 0.13.2](specs/025-section-voice-pilot/results.md) · [Phương pháp, dữ liệu và mọi đợt đánh giá](docs/benchmarks.md).
 
-**Kết luận thực dụng:** đáng thử khi cần một quy trình rà tiếng Việt có quy tắc rõ và
-kiểm soát sửa quá tay. Với yêu cầu theo giọng mẫu, cần đọc lại từng bản sửa.
-Không dùng mức đổi ký tự, độ dài hay token làm điểm chất lượng.
+### Hồ sơ giọng: chưa có số đo
 
-## Dùng ngay
+Tuyến hồ sơ giọng của 0.15.0 và 0.16.0 có ca kiểm thử viết tay (HG, VM và BP), nhưng agent
+chưa chạy các ca đó, nên chưa có bằng chứng hồ sơ giúp bản viết giống giọng hơn. Dạng URL và
+dấu hiệu nhận ra fanpage, trang công ty hay blog đi theo quy ước của nền tảng, chưa đối chiếu
+trên trang thật. [Xem changelog](docs/changelog.md).
 
-1. Nhờ trợ lý AI của bạn cài Vietnamizer từ repo này, hoặc chạy lệnh ở mục [Cài nhanh](#cài-nhanh).
-2. Mở session mới rồi gõ `/vietnamizer:help` (plugin trên Claude Code) hoặc hỏi “Vietnamizer làm được gì?”.
-3. Giao bản nháp như ví dụ dưới; skill đã chạy khi câu trả lời là bản đã biên tập, giữ nguyên dữ kiện và
-   thuật ngữ.
-
-Gọi `Vietnamizer` và giao bản nháp, thể loại, người đọc cùng phần cần bảo toàn. Ví dụ:
-
-```text
-Use Vietnamizer to copyedit the Vietnamese draft below for a personal blog.
-Preserve its meaning, level of certainty, terminology and existing voice.
-Keep quotations and code unchanged. Return only the edited article.
-
-<draft>Paste your draft here.</draft>
-```
-
-Có thể yêu cầu bảng trước/sau và lý do thay đổi. [Prompt theo tình huống và cách trả kết quả](docs/usage.md).
+💡 Tôi nghĩ rằng Vietnamizer đáng thử khi bạn cần một quy trình rà tiếng Việt có quy tắc rõ và biết
+dừng tay trước khi sửa quá tay. Còn với yêu cầu theo giọng mẫu hay theo hồ sơ, bạn vẫn nên đọc lại từng
+bản sửa. Đừng lấy mức đổi ký tự, độ dài hay token làm điểm chất lượng.
 
 ## Cho AI agent: cài và thiết lập
 
@@ -158,30 +220,14 @@ Người dùng đưa link repo này và nhờ bạn cài. Làm theo thứ tự:
    | Agent khác | `npx skills add finolabs/vietnamizer --skill vietnamizer` |
 
 5. **Kiểm tra** `claude plugin list`, `codex plugin list` hoặc `agy plugin list` đã liệt kê `vietnamizer`, rồi báo nguyên văn kết quả cho người dùng, kể cả khi lỗi.
-6. **Bàn giao**: nhắc người dùng mở session mới, rồi giao một bản nháp như ví dụ ở mục [Dùng ngay](#dùng-ngay).
+6. **Bàn giao**: nhắc người dùng mở session mới, rồi giao một bản nháp như ví dụ ở mục [Dùng ngay](#dùng-ngay), hoặc nói “thiết lập giọng” nếu muốn dựng hồ sơ giọng ([Thiết lập giọng của bạn](#thiết-lập-giọng-của-bạn)).
 
 Xong khi host liệt kê `vietnamizer` và người dùng biết phải mở session mới.
 
-## Giữ giọng khi có mẫu
-
-Chỉ gửi mẫu chưa tự bật chuyển giọng. Để điều chỉnh theo mẫu, yêu cầu rõ việc đó và
-cung cấp mẫu/hồ sơ ngay trong tác vụ. Skill có thể đổi cách diễn đạt hoặc cấu trúc từ
-các ý đã có, vẫn phải giữ mệnh đề, điều kiện, mức chắc chắn và vùng bảo toàn.
-
-Skill không tự tìm/lưu hồ sơ cá nhân hoặc tạo trải nghiệm thay người viết; chỉ tuyến hồ sơ giọng tùy chọn mới lưu hồ sơ, khi bạn yêu cầu rõ.
-Hồ sơ có thể là giọng cá nhân (mặc định) hoặc giọng thương hiệu, mỗi lần dùng một hồ sơ; học từ bài bạn dán,
-file export LinkedIn/Facebook hoặc trang của chính bạn qua trình duyệt của host, còn giọng thương hiệu học
-từ bộ quy chuẩn, bài đã đăng và tài liệu nội bộ bạn đưa, hoặc đọc fanpage, trang công ty LinkedIn hay blog
-của thương hiệu qua trình duyệt từ URL bạn đưa (tối đa ba trang, mỗi trang một câu đồng ý); Trang Facebook của chính bạn (nghệ sĩ, người nổi tiếng) học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Sau khi học, bạn có thể chấm vài đoạn mẫu theo
-bốn mức Kém, Trung bình, Khá, Tốt; số lượt chấm chỉ vào hồ sơ khi bạn lưu, ghi là đánh giá của bạn. Skill
-không tự tính điểm giống giọng. Gõ `/vietnamizer:help` (plugin trên Claude Code) hoặc hỏi “Vietnamizer làm được gì?” để xem
-hướng dẫn và bắt đầu thiết lập giọng.
-[Xem hai chế độ, ví dụ prompt và bảy style card](docs/style-and-voice.md).
-
 ## Nền tảng hỗ trợ
 
-Không phụ thuộc hệ điều hành: gói chỉ gồm Markdown, không có mã chạy riêng, nên chạy ở nơi host chạy
-(macOS, Linux hay Windows, tùy host). Script đóng gói trong repo cần Bash và Python 3.
+Gói không phụ thuộc hệ điều hành. Nó chỉ gồm Markdown, không có mã chạy riêng, nên host chạy ở đâu thì
+skill chạy ở đó (macOS, Linux hay Windows, tùy host). Script đóng gói trong repo cần Bash và Python 3.
 
 | Host | Cách cài | Ghi chú |
 | --- | --- | --- |
@@ -235,9 +281,9 @@ sách của host đó. Hồ sơ giọng chỉ được lưu khi bạn yêu cầu
 Đường đọc trang qua trình duyệt chỉ chạy khi host có công cụ trình duyệt và sau câu đồng ý của bạn. Gói
 không có mã mạng, nhưng công cụ trình duyệt của host thì mở trang bên ngoài: Facebook, LinkedIn hay
 website của thương hiệu. Trước khi đọc Facebook hay LinkedIn, skill cảnh báo rằng điều khoản của Meta và
-LinkedIn có thể cấm thu thập tự động. Tài khoản là của bạn, Trang Facebook mang tên bạn, hay quyền nói thay
-một thương hiệu: skill tin lời bạn và không kiểm được. Không muốn thì không dùng tuyến hồ sơ giọng, hoặc
-chọn dán bài. [Chi tiết trong PRIVACY.md](PRIVACY.md).
+LinkedIn có thể cấm thu thập tự động. Skill không kiểm được tài khoản có phải của bạn, Trang Facebook có
+mang tên bạn hay bạn có quyền nói thay một thương hiệu hay không, nên nó tin lời bạn. Không muốn thì
+bạn đừng dùng tuyến hồ sơ giọng, hoặc chọn dán bài. [Chi tiết trong PRIVACY.md](PRIVACY.md).
 
 ## Phạm vi
 
