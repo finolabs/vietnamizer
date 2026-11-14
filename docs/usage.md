@@ -67,27 +67,24 @@ WORKERS=3 ./run-worker.sh --dry-run
 ## Tùy chọn: hồ sơ giọng
 
 Phần này không bắt buộc. Khi muốn bài viết ra đúng giọng của mình, hoặc đúng giọng một thương hiệu
-bạn được nói thay, bạn có thể cho Vietnamizer học giọng đó và lưu lại thành một hồ sơ có tên.
-Trên Claude Code, gõ `/vietnamizer:help` để xem hướng dẫn một màn hình và bắt đầu từng bước; ở
-host khác, nói “thiết lập giọng” là được.
+bạn được nói thay, bạn có thể cho Vietnamizer học giọng đó và lưu thành một hồ sơ có tên. Các bước
+nằm ở [Thiết lập giọng của bạn](../README.md#thiết-lập-giọng-của-bạn) trong README. Trên Claude Code,
+gõ `/vietnamizer:help`; ở host khác, nói “thiết lập giọng”.
 
-- **Nguồn mẫu.** Bạn dán 10–20 bài tự viết, gọi tên file export LinkedIn hoặc Facebook tự tải về,
-  hoặc để agent đọc trang của chính bạn qua công cụ trình duyệt của host. Đường trình duyệt luôn có
-  cảnh báo điều khoản của LinkedIn và Facebook trước khi đọc. Giọng thương hiệu học từ bộ quy chuẩn,
-  bài đã đăng và tài liệu nội bộ bạn đưa, sau khi bạn xác nhận mình được nói thay thương hiệu đó.
-- **Đồng ý trước khi đọc.** Skill hỏi một câu nêu rõ nguồn sẽ đọc và kết quả sẽ tạo, rồi mới đọc.
-- **Xem toàn bộ hồ sơ nháp.** Hồ sơ ghi cách viết chứ không ghi tên người, liên hệ hay chuyện riêng.
-  Mỗi nét có phạm vi, căn cứ và mức chắc chắn. Kênh nào còn ít mẫu thì ghi là chưa đủ để kết luận.
-- **Chấm vài đoạn mẫu.** Bạn chọn từ 0 đến 10 đoạn và chấm mỗi đoạn theo bốn mức Kém, Trung bình,
-  Khá, Tốt. Đó là đánh giá của bạn; skill không tự tính điểm giống giọng. Lý do bạn đưa sẽ thành
-  đề xuất sửa hồ sơ để bạn duyệt.
-- **Chỉ lưu khi bạn bảo lưu.** Bạn chọn nơi lưu: Orrery hoặc Obsidian khi agent có công cụ tương
-  ứng, hoặc một file Markdown trong thư mục bạn chọn (skill gợi ý `~/.agents/vietnamizer/profiles`).
-  Không lưu thì hồ sơ chỉ ở lại trong hội thoại.
+Vài điều nên biết trước khi bắt đầu:
 
-Để dùng lại một hồ sơ đã lưu, bạn gọi tên hồ sơ và cho biết nó được lưu ở đâu, hoặc dán hồ sơ vào
-yêu cầu. Skill hỏi đồng ý rồi chỉ đọc đúng hồ sơ đó, mỗi lần một hồ sơ. Yêu cầu trong lượt hiện tại
-luôn được ưu tiên hơn hồ sơ.
+- **Nguồn mẫu.** Giọng cá nhân học từ bài bạn dán, file export LinkedIn hoặc Facebook bạn tự tải,
+  hoặc trang của chính bạn qua công cụ trình duyệt của host. Giọng thương hiệu học từ bộ quy chuẩn,
+  bài đã đăng và tài liệu nội bộ bạn đưa, hoặc từ tối đa ba URL fanpage, trang công ty LinkedIn hay
+  blog của thương hiệu. Đường trình duyệt qua Facebook và LinkedIn có cảnh báo điều khoản trước khi đọc.
+- **Skill tin lời bạn.** Skill không kiểm được tài khoản hay Trang có phải của bạn, hay bạn có được nói
+  thay thương hiệu không. Nó dựa vào lời xác nhận của bạn, và học giọng của người khác là không được.
+- **Đồng ý trước khi đọc.** Mỗi nguồn có một câu xin đồng ý, gọi tên nguồn sẽ đọc. Đọc qua trình duyệt
+  thì mỗi URL một câu. Chưa đồng ý thì skill chưa đọc gì.
+- **Bạn đọc kỹ bản nháp.** Skill được dặn bỏ tên người, liên hệ và chuyện riêng khỏi hồ sơ, nhưng
+  không có bộ lọc bằng mã. Bạn là người kiểm cuối cùng trước khi lưu.
+- **Chỉ lưu khi bạn bảo lưu.** Không lưu thì hồ sơ chỉ ở lại trong hội thoại. Để dùng lại, bạn gọi tên
+  hồ sơ và cho biết nó lưu ở đâu, hoặc dán hồ sơ vào yêu cầu; mỗi lần chỉ áp một hồ sơ.
 
 ## Cách hoạt động, dữ liệu và hỗ trợ
 
