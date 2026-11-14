@@ -4,25 +4,31 @@
 
 ## Dùng ngay
 
+Gọi skill rồi dán đoạn cần sửa ngay bên dưới.
+
 ```text
 /vietnamizer
 
 [văn bản cần biên tập]
 ```
 
-Khi cần sửa file, nêu rõ phạm vi:
+Muốn sửa thẳng trên file thì bạn nêu rõ phạm vi, để agent biết phần nào không được đụng tới:
 
 ```text
 Dùng vietnamizer để sửa phần văn xuôi trong docs/bai-viet.md.
 Giữ nguyên code, bảng tham số và các trích dẫn.
 ```
 
+Không cần hồ sơ giọng hay bước thiết lập nào. Mặc định, Vietnamizer giữ giọng sẵn có của bản bạn
+đưa và chỉ sửa chỗ có lỗi.
+
 ### Viết từ ý hoặc biên tập bản có sẵn
 
-Cả hai đi qua tách ý → chọn giọng → khai triển → rà nghĩa và cách viết. Biên tập lấy ý từ
-bản gốc đầy đủ; viết mới lấy từ brief/dữ kiện được giao. Outline không thay nguồn đối chiếu.
-Không cần đưa qua một nháp AI trung gian. Nêu rõ người đọc, mục đích và phạm vi khi chúng
-ảnh hưởng cách viết; thiếu mẫu không có nghĩa được tự tìm hồ sơ hay bịa trải nghiệm.
+Cả hai việc đều đi qua bốn bước: tách ý, chọn giọng, khai triển, rồi rà lại nghĩa và cách viết.
+Biên tập thì lấy ý từ bản gốc đầy đủ; viết mới thì lấy từ brief hoặc dữ kiện được giao. Outline
+không thay được nguồn đối chiếu, và bạn không cần đưa qua một nháp AI trung gian. Người đọc, mục
+đích và phạm vi ảnh hưởng tới cách viết thì nên nói rõ. Thiếu mẫu giọng không có nghĩa là skill
+được tự tìm hồ sơ hay bịa trải nghiệm.
 
 ```text
 Dùng Vietnamizer viết một thông báo cho nhóm phát triển từ các ý sau:
@@ -32,49 +38,9 @@ Giọng ngắn gọn cho công việc. Không tự thêm giờ, hạn chót ho�
 Chỉ trả thông báo cuối.
 ```
 
-Khi chỉ sửa một cụm/câu, quy trình áp dụng trong đúng phạm vi đó; đọc đoạn xung quanh để hiểu,
-không tự viết lại cả bài. Khi giao biên tập toàn bài, tách các ý và sắc thái trước khi chọn
-cách diễn đạt; không mặc định phải thay mọi câu. Bản tách ý không phải đầu ra bắt buộc.
-Source 0.13.3 đóng gói quy trình mới; chưa có pilot xác nhận nó tốt hơn
-payload 0.13.2 đã phát hành trước cập nhật này.
-
-### Tuyến hồ sơ giọng cá nhân (opt-in)
-
-Khi muốn tạo hồ sơ phong cách viết để tái sử dụng, người dùng yêu cầu rõ và cung cấp mẫu văn do chính mình viết:
-
-```text
-Dùng Vietnamizer phân tích các mẫu văn tôi tự viết dưới đây để tạo hồ sơ giọng cá nhân:
-- Kênh: bài chia sẻ chuyên môn trên LinkedIn.
-- Người đọc: đồng nghiệp và kỹ sư trong ngành.
-Sau khi phân tích xong, hãy hiển thị hồ sơ để tôi duyệt trước khi lưu.
-
-<writing_samples>
-[Dán các đoạn văn bạn tự viết vào đây]
-</writing_samples>
-```
-
-Skill sẽ hỏi xác nhận phạm vi đọc và nội dung dự kiến tạo trước khi phân tích mẫu, hiển thị trọn vẹn dự thảo hồ sơ và chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn (Orrery, Obsidian hoặc file Markdown tại `~/.agents/vietnamizer/profiles`). Để sử dụng hồ sơ đã lưu khi biên tập hoặc viết mới, chỉ cần nêu tên hồ sơ hoặc dán hồ sơ vào yêu cầu; skill chỉ đọc đúng hồ sơ đó và yêu cầu hiện tại luôn được ưu tiên.
-
-### Đọc ít theo đúng việc
-
-Chỉ review vẫn đọc năm chốt trước nhận xét; nếu review cả bài/giọng theo mẫu thì đọc đúng workflow/card/guide như tuyến tương ứng. Kết luận nghĩa và cách viết riêng, không tự sửa.
-
-| Khi cần | Bắt buộc đọc | Không nạp mặc định |
-|---|---|---|
-| Sửa một cụm/câu, rà cục bộ | Chỉ catalog đúng nghi vấn; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
-| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
-| Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
-| Học, tạo, cập nhật, lưu, chấm hoặc áp dụng hồ sơ giọng cá nhân hay thương hiệu theo yêu cầu rõ | `references/voice-profile.md`; nguồn mạng xã hội hay trang thương hiệu qua trình duyệt thêm `references/voice-sources.md`; giọng thương hiệu thêm `references/brand-voice.md`; khi áp dụng, đọc thêm `references/voice-from-samples.md` | Không nạp tuyến này cho yêu cầu biên tập thông thường |
-| Hỏi Vietnamizer làm được gì, “bắt đầu dùng Vietnamizer”, “thiết lập giọng” (“sửa giúp”, “viết hướng dẫn”, “bắt đầu sửa bài” vẫn là biên tập hay viết) | `references/help.md` | Không đọc file của người dùng |
-| Pha chức năng/mâu thuẫn | Mới đọc `references/style-resolution.md` | Giữ nguyên khi lựa chọn đã rõ |
-
-- Sửa cụm/câu: core và catalog đúng nghi vấn; không cần workflow bài, resolver/profile/card hoặc guide mẫu.
-- Biên tập bài/viết từ brief: thêm `references/writing-workflow.md` và một card được core chọn trực tiếp.
-- Theo mẫu: thêm `references/voice-from-samples.md`; không tự đọc danh mục nguồn khi mẫu đã đủ.
-- Hồ sơ giọng (opt-in): thêm `references/voice-profile.md` khi người dùng yêu cầu rõ việc học, tạo, cập nhật, lưu hoặc áp dụng hồ sơ giọng cá nhân (khi áp dụng nạp thêm `references/voice-from-samples.md`); không nạp cho yêu cầu biên tập thông thường.
-- Pha chức năng/mâu thuẫn: mới đọc `references/style-resolution.md`.
-
-Các catalog giữ đủ 55 pattern để tra; giảm phần bắt buộc đọc không phải bỏ ngoại lệ hay bảo toàn nghĩa.
+Chỉ sửa một cụm hay một câu thì skill chỉ làm trong đúng phạm vi đó. Nó đọc đoạn xung quanh để hiểu,
+không tự viết lại cả bài. Giao biên tập toàn bài thì skill tách ý và sắc thái trước khi chọn cách
+diễn đạt, và không mặc định phải thay mọi câu. Bản tách ý không phải đầu ra bắt buộc.
 
 ### Ba prompt dùng thử trên Claude
 
@@ -98,48 +64,67 @@ WORKERS=3 ./run-worker.sh --dry-run
 ```
 ````
 
-### Cách hoạt động, dữ liệu và hỗ trợ
+## Tùy chọn: hồ sơ giọng
 
-Plugin nạp hướng dẫn Markdown, profile và bảng tra đi kèm; không có MCP server, hook, bước
-cài dependency hoặc chương trình chạy nền. Chỉ phần văn bản người dùng giao để biên tập được
-xử lý; không tự tìm mẫu giọng trong memory hoặc lịch sử hội thoại. Agent có thể đọc hay sửa
-file được người dùng giao trong phạm vi cụ thể, theo quyền và cơ chế xác nhận của host.
-Đó không phải quyền quét các file khác để thu thập dữ liệu.
+Phần này không bắt buộc. Khi muốn bài viết ra đúng giọng của mình, hoặc đúng giọng một thương hiệu
+bạn được nói thay, bạn có thể cho Vietnamizer học giọng đó và lưu lại thành một hồ sơ có tên.
+Trên Claude Code, gõ `/vietnamizer:help` để xem hướng dẫn một màn hình và bắt đầu từng bước; ở
+host khác, nói “thiết lập giọng” là được.
 
-Maintainer không có máy chủ nhận văn bản hay telemetry của plugin. Claude vẫn xử lý và có thể
-lưu hội thoại theo chính sách của nền tảng; plugin không biến việc biên tập thành xử lý hoàn
-toàn trên máy. Không gửi credential, định danh chính phủ, dữ liệu thẻ thanh toán hoặc PHI.
+- **Nguồn mẫu.** Bạn dán 10–20 bài tự viết, gọi tên file export LinkedIn hoặc Facebook tự tải về,
+  hoặc để agent đọc trang của chính bạn qua công cụ trình duyệt của host. Đường trình duyệt luôn có
+  cảnh báo điều khoản của LinkedIn và Facebook trước khi đọc. Giọng thương hiệu học từ bộ quy chuẩn,
+  bài đã đăng và tài liệu nội bộ bạn đưa, sau khi bạn xác nhận mình được nói thay thương hiệu đó.
+- **Đồng ý trước khi đọc.** Skill hỏi một câu nêu rõ nguồn sẽ đọc và kết quả sẽ tạo, rồi mới đọc.
+- **Xem toàn bộ hồ sơ nháp.** Hồ sơ ghi cách viết chứ không ghi tên người, liên hệ hay chuyện riêng.
+  Mỗi nét có phạm vi, căn cứ và mức chắc chắn. Kênh nào còn ít mẫu thì ghi là chưa đủ để kết luận.
+- **Chấm vài đoạn mẫu.** Bạn chọn từ 0 đến 10 đoạn và chấm mỗi đoạn theo bốn mức Kém, Trung bình,
+  Khá, Tốt. Đó là đánh giá của bạn; skill không tự tính điểm giống giọng. Lý do bạn đưa sẽ thành
+  đề xuất sửa hồ sơ để bạn duyệt.
+- **Chỉ lưu khi bạn bảo lưu.** Bạn chọn nơi lưu: Orrery hoặc Obsidian khi agent có công cụ tương
+  ứng, hoặc một file Markdown trong thư mục bạn chọn (skill gợi ý `~/.agents/vietnamizer/profiles`).
+  Không lưu thì hồ sơ chỉ ở lại trong hội thoại.
+
+Để dùng lại một hồ sơ đã lưu, bạn gọi tên hồ sơ và cho biết nó được lưu ở đâu, hoặc dán hồ sơ vào
+yêu cầu. Skill hỏi đồng ý rồi chỉ đọc đúng hồ sơ đó, mỗi lần một hồ sơ. Yêu cầu trong lượt hiện tại
+luôn được ưu tiên hơn hồ sơ.
+
+## Cách hoạt động, dữ liệu và hỗ trợ
+
+Plugin nạp hướng dẫn Markdown, profile và bảng tra đi kèm. Không có MCP server, hook, bước cài
+dependency hay chương trình chạy nền. Skill chỉ xử lý phần văn bản bạn giao để biên tập, và không tự
+tìm mẫu giọng trong memory hay lịch sử hội thoại. Agent có thể đọc hay sửa file bạn giao trong phạm
+vi cụ thể, theo quyền và cơ chế xác nhận của host. Đó không phải quyền quét các file khác để thu
+thập dữ liệu.
+
+Maintainer không có máy chủ nhận văn bản hay telemetry của plugin. Claude vẫn xử lý và có thể lưu
+hội thoại theo chính sách của nền tảng, nên dùng plugin không biến việc biên tập thành xử lý hoàn
+toàn trên máy. Đừng gửi credential, định danh chính phủ, dữ liệu thẻ thanh toán hay PHI.
 Xem [quyền riêng tư](../PRIVACY.md) và [điều kiện sử dụng](../TERMS.md).
 
-- **Không thấy skill:** kiểm plugin đã bật, rồi mở phiên mới. Trong Claude Code kiểm đúng
+- **Không thấy skill:** kiểm plugin đã bật, rồi mở phiên mới. Trong Claude Code, kiểm đúng
   marketplace `finolabs` và lời gọi `/vietnamizer:vietnamizer`.
-- **Mô tả hoặc phiên bản chưa đổi:** cập nhật đúng plugin cùng tên từ nguồn đã cài; tránh cài
-  thêm bản review trùng tên. ZIP upload riêng không tự cập nhật từ GitHub.
-- **Icon mặc định:** manifest có icon, nhưng kết quả CLI validator không chứng minh client
-  hiển thị nó. Kiểm preview listing; không coi icon mặc định là lỗi của quy trình biên tập.
-- **Sửa sai hoặc sửa quá tay:** gửi ca giả lập/đã ẩn danh cùng kết quả mong đợi qua
+- **Mô tả hoặc phiên bản chưa đổi:** cập nhật đúng plugin cùng tên từ nguồn đã cài, tránh cài thêm
+  bản review trùng tên. ZIP upload riêng không tự cập nhật từ GitHub.
+- **Sửa sai hoặc sửa quá tay:** gửi ca giả lập hoặc đã ẩn danh, kèm kết quả mong đợi, qua
   [GitHub Issues](https://github.com/finolabs/vietnamizer/issues) theo mẫu báo lỗi. Đọc
-  [hướng dẫn đóng góp](../CONTRIBUTING.md) trước; không gửi toàn bộ prompt, log hay tài liệu.
+  [hướng dẫn đóng góp](../CONTRIBUTING.md) trước, và đừng gửi toàn bộ prompt, log hay tài liệu.
 - **Lỗi bảo mật:** dùng [kênh báo riêng](../SECURITY.md), không đăng lên Issues công khai.
-  Không gửi API key, token, dữ liệu cá nhân, tài liệu nội bộ hoặc nội dung nhạy cảm.
+  Đừng gửi API key, token, dữ liệu cá nhân, tài liệu nội bộ hay nội dung nhạy cảm.
 
 ## Phạm vi
 
 Skill xử lý ba lớp:
 
-- V1–V25 kiểm tra cách dùng từ và cấu trúc câu, chẳng hạn thiếu bổ ngữ kết quả, thiếu loại từ, dịch sát giới từ, đặt trạng ngữ gây mơ hồ hoặc để sót lời chào của trợ lý trong tài liệu.
-- B1–B17 và K1–K7 kiểm tra sự phù hợp với thể loại. Blog, tin nhắn, README và bài nghiên cứu không dùng cùng một giọng.
-- T1–T6 kiểm tra typography. Với văn xuôi thông thường, chỉ áp dụng khi đồng thời có ít nhất một lỗi
-  V1–V25; với thể loại được giới hạn ở typography-only thì không cần lỗi V đi kèm.
+- V1–V25 kiểm tra cách dùng từ và cấu trúc câu, chẳng hạn thiếu bổ ngữ kết quả, thiếu loại từ, dịch
+  sát giới từ, đặt trạng ngữ gây mơ hồ hoặc để sót lời chào của trợ lý trong tài liệu.
+- B1–B17 và K1–K7 kiểm tra sự phù hợp với thể loại. Blog, tin nhắn, README và bài nghiên cứu không
+  dùng cùng một giọng.
+- T1–T6 kiểm tra typography. Với văn xuôi thông thường, skill chỉ áp lớp này khi có ít nhất một lỗi
+  V1–V25; với thể loại chỉ rà typography thì không cần lỗi V đi kèm.
 
-Trước khi sửa, skill xác định thể loại/phạm vi; chỉ tra profile khi có nghi vấn phụ thuộc thể loại.
-Làm bài chọn một card; có mẫu/hồ sơ chủ động cung cấp mới đọc guide mẫu. Skill không tự truy xuất memory hay lịch sử hội thoại để tìm mẫu.
+Trước khi sửa, skill xác định thể loại và phạm vi, rồi mới tra profile khi có nghi vấn phụ thuộc thể
+loại. Thứ tự đọc chi tiết nằm trong [`SKILL.md`](../SKILL.md).
 
-Skill không dùng kết quả rà soát để xác định tác giả. Người viết song ngữ cũng có thể giữ cấu trúc tiếng Anh trong câu tiếng Việt; LLM cũng có thể tạo ra câu hoàn toàn tự nhiên.
-
-### Đã gỡ Jev
-
-Từ 0.14.0 Vietnamizer không còn runner đánh giá ngoài, không đọc `TYPESAFE_API_KEY` và không có
-bước gọi API. Ai đã đặt key cho skill có thể xóa nó; key không còn tác dụng. Agent không cần chạy
-`python3 -B -m jev`. Quy trình Markdown, năm chốt chặn và 55 pattern giữ nguyên. Các nghiên cứu cũ
-chỉ còn là lịch sử, không phải runtime hay bằng chứng hiệu quả.
+Skill không dùng kết quả rà soát để xác định tác giả. Người viết song ngữ cũng có thể giữ cấu trúc
+tiếng Anh trong câu tiếng Việt, và LLM cũng có thể tạo ra câu hoàn toàn tự nhiên.
