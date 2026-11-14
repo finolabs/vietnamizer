@@ -47,14 +47,14 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 | # | Pattern |
 |---|---|
 | T1 | Viết hoa theo kiểu tiêu đề tiếng Anh |
-| T2 | Gạch ngang làm sai hoặc mờ quan hệ ý |
+| T2 | Gạch ngang hoặc dấu hai chấm làm sai hoặc mờ quan hệ ý |
 | T3 | Ngoặc kép không nhất quán |
 | T4 | Dấu phẩy đứng trước "và" |
 | T5 | Định dạng thay cho cấu trúc câu |
 | T6 | Emoji |
 
 Với văn xuôi thông thường, typography chỉ được sửa khi văn bản đồng thời có ít nhất một pattern
-V1–V25. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
+V1–V25; riêng T2 luôn được rà. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
 
 ### Blog, bài cá nhân, nội dung công việc và marketing (B1–B17)
 

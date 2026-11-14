@@ -7,7 +7,7 @@ description: |
   biên tập và theo mẫu khi được yêu cầu rõ; học/lưu/áp dụng hồ sơ giọng khi được yêu cầu.
 license: MIT
 metadata:
-  version: "0.16.1"
+  version: "0.16.2"
 ---
 
 # Vietnamizer
@@ -30,7 +30,8 @@ văn thì bảo toàn. Thuật ngữ chỉ đặt trong ngoặc để nhấn kh�
 
 Pháp quy/hợp đồng/công văn/quy chế; cổ phong/nghi lễ/tang lễ/văn khấn; changelog/commit/error/UI;
 thơ/văn chương có nhịp chủ ý: chỉ rà T1–T6, không profile/card, không sáng tác trong nhánh này.
-Văn xuôi còn lại: T chỉ sửa khi có ít nhất một lỗi V1–V25 trong phần văn bản được giao; lỗi
+Văn xuôi còn lại: T chỉ sửa khi có ít nhất một lỗi V1–V25 trong phần văn bản được giao, trừ T2 (gạch
+ngang hoặc dấu hai chấm giữa câu làm mờ quan hệ ý) luôn được rà; lỗi
 nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Không tự thống nhất biến thể chính tả
 đang dùng nhất quán; quy chuẩn được giao có thể quyết định cách viết, không đổi tên riêng.
 
@@ -47,7 +48,8 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Chỉ review/nhận xét, không sửa | Trước nhận xét đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
 
-Rà văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn;
+Rà văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn soát
+V20 (từ ghép bị viết thành từ đơn) trên văn xuôi vì đây là lỗi AI hay mắc nhất;
 không biến rà soát thành vòng đọc đủ 55 pattern. Trước khi giữ một sửa lỗi phải đọc pattern
 liên quan và Không flag. Nếu một lỗi có thể thuộc nhiều nhóm, đọc phần cần phân biệt;
 chưa có căn cứ thì giữ nguyên hoặc hỏi đúng điểm làm đổi nghĩa/quan hệ.

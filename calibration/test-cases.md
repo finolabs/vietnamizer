@@ -534,3 +534,20 @@ Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải t
 | 4 | Hai thuật ngữ gần nghĩa (“khách hàng”, “người dùng”) ở hai phần khác đối tượng | Không gộp; nếu không chắc thì hỏi đúng chỗ | Hai thuật ngữ gần nghĩa chưa chắc là một |
 | 5 | Người dùng yêu cầu “sửa bản này, cho tôi kèm ghi chú sửa” | Bản cuối rồi tối đa 5 dòng ghi chú hoặc bảng Gốc/Đã sửa/Vì sao; không thêm sửa mới vì cần ghi chú | Chế độ ghi chú chỉ theo yêu cầu rõ |
 | 6 | Yêu cầu rõ phạm vi (“sửa đoạn 2, đừng hỏi lại”), có một thuật ngữ trôi ở đoạn 5 | Sửa đoạn 2, không hỏi lại; có thể báo ngắn chỗ lệch ở đoạn 5 mà không sửa | Không dừng thừa và không vượt phạm vi |
+
+## HF01–HF10 · dấu hai chấm giữa câu, “đội” đứng trơ và từ ghép bị cắt (0.16.2)
+
+Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa chạy bằng agent, không phải bằng chứng cải thiện. Ca 3, 6, 8, 9 và 10 là ca chống sửa quá tay.
+
+| # | Đầu vào | Mong đợi | Vì sao |
+|---|---|---|---|
+| 1 | *“Khách hàng ngày nay rất ít kiên nhẫn: nếu sau vài tiếng không nhận được phản hồi, họ sẽ chuyển sang hỏi cửa hàng khác.”*, đoạn không có lỗi V nào | Tách câu: *“Khách hàng ngày nay rất ít kiên nhẫn. Nếu vài tiếng không thấy phản hồi, họ sẽ chuyển sang hỏi cửa hàng khác.”* dù không có lỗi V | T2 luôn được rà, không chờ cổng V |
+| 2 | *“Lúc này, họ phát hiện ra rất nhiều điểm bất hợp lý: dữ liệu nhập hai lần, báo cáo trễ và các thao tác quá rườm.”* | Bỏ dấu hai chấm, nối bằng *như* hoặc tách câu; sửa *rườm* → *rườm rà* | T2 với danh sách liền câu; V20 trường hợp 1 |
+| 3 | Câu dẫn *“Quy trình gồm ba bước:”* rồi ba bullet xuống dòng; một biểu mẫu có *Trạng thái: đang xử lý*; *Chị Lan nói: “Mai nộp.”*; *họp lúc 9:30* | Giữ nguyên | Không flag của T2 |
+| 4 | *“Nhóm đã chốt phương án — việc triển khai bắt đầu tuần sau.”*, quy chuẩn không cấm `—` | Giữ, hoặc tách câu nếu gạch ngang làm mờ quan hệ; không đổi thành dấu hai chấm | T2 không đổi gạch ngang thành dấu hai chấm giữa câu |
+| 5 | *“Khách quay lại ít hẳn: cửa hàng giao chậm.”*, ngữ cảnh không nói giao chậm là nguyên nhân | Tách câu, không thêm *vì* hay *do* | Từ nối chỉ thêm khi bản gốc đã cho thấy quan hệ |
+| 6 | Hợp đồng: *“Bên B có các nghĩa vụ sau: ...”* | Giữ nguyên | Thể loại chỉ rà T; khuôn văn bản pháp quy không flag |
+| 7 | Bài đăng công việc, câu độc lập: *“Đội đã làm việc chăm chỉ để đạt được mục tiêu quý.”* | *“Cả đội đã làm việc chăm chỉ để đạt được mục tiêu quý.”* (hoặc *Đội ngũ*, *Đội nhóm* tùy ý) | V20 trường hợp 3: *đội* đứng trơ chưa cho biết đội nào |
+| 8 | Bài về nhân viên mới, đoạn trước đã nói về phòng ban: *“những mục tiêu mà đội đang hướng tới trong quý này”*; câu khác: *“một đội IT riêng”* | Giữ nguyên | *đội* đã có quy chiếu hoặc định ngữ |
+| 9 | *“Nhà sạch, phòng gọn.”* trong bài blog | Giữ nguyên | Từ đơn hợp lệ; thêm tiếng chỉ là phong cách |
+| 10 | *“Quy trình còn rườm và dễ làm nhân viên mới bỡ.”* | *rườm* → *rườm rà*, *bỡ* → *bỡ ngỡ*; không viết lại câu | V20 trường hợp 1, sửa ở cụm |
