@@ -88,7 +88,17 @@ Phần hướng dẫn (`/vietnamizer:help` hoặc câu hỏi “Vietnamizer làm
 dùng và không lưu gì. Bước thiết lập giọng mà hướng dẫn mời bắt đầu thì có đọc mẫu và có thể lưu, theo
 đúng các cổng đồng ý đọc và lưu ở trên.
 
-Khi áp dụng, skill chỉ đọc hồ sơ được người dùng dán hoặc chỉ định, không tự liệt kê hay chọn hồ sơ.
+Khi áp dụng, skill chỉ đọc hồ sơ người dùng dán, chỉ định hoặc gọi lại. Người dùng gọi lại hồ sơ đã lưu
+bằng tên (`/vietnamizer <tên>`, `$vietnamizer <tên>` trên Codex, “theo hồ sơ <tên>”), bằng `cá nhân` hoặc
+bằng câu “theo giọng của tôi”. Lời gọi do chính người dùng gõ được tính là đồng ý cho skill đọc sổ hồ sơ
+và đúng một hồ sơ khớp tên; skill nói rõ đã đọc hồ sơ nào, ở đâu. Skill không đọc hồ sơ khác, và khi không
+có hồ sơ khớp thì không dò kho, thư mục, bộ nhớ hay lịch sử mà hỏi người dùng.
+
+Sổ hồ sơ là file `~/.agents/vietnamizer/registry.md` trên máy người dùng. Mỗi dòng chỉ ghi tên, loại,
+hồ sơ cá nhân mặc định, kho và vị trí của một hồ sơ; sổ không chứa nội dung hồ sơ hay bài viết. Skill chỉ
+thêm hoặc sửa dòng khi người dùng đồng ý, kể cả lần đầu tạo thư mục chứa sổ. Sổ không nằm trong cây Git
+hay trong file chỉ dẫn của agent, và không host nào tự nạp nó. Người dùng có thể mở, sửa hoặc xóa sổ bất
+cứ lúc nào; xóa sổ không xóa hồ sơ.
 
 Hồ sơ có thể gồm tên do người dùng chọn, loại hồ sơ (cá nhân hay thương hiệu), ngày cập nhật, số mẫu
 theo kênh, quy tắc thương hiệu (chỉ hồ sơ thương hiệu), đặc tính giọng, cách viết theo kênh và người
@@ -99,13 +109,13 @@ khác. Agent được chỉ dẫn bỏ các dữ liệu này, nhưng v1 không c
 
 Skill hiển thị toàn bộ hồ sơ trước khi lưu; chỉ lưu hoặc cập nhật khi người dùng yêu cầu rõ.
 Người dùng đặt tên từng hồ sơ và chọn Orrery, Obsidian hoặc đường dẫn file Markdown. Skill chỉ
-đề nghị Orrery/Obsidian nếu thấy công cụ tương ứng trong danh sách công cụ của agent; nếu không
-có, skill hỏi đường dẫn và gợi ý `~/.agents/vietnamizer/profiles`. Tạo thư mục và ghi đè một hồ sơ đã có cũng cần người dùng
+đề nghị Orrery/Obsidian nếu thấy công cụ tương ứng trong danh sách công cụ của agent và không quy tắc
+nào của host hay chỉ dẫn của người dùng cho ngừng dùng kho đó; nếu không có, skill hỏi đường dẫn và gợi ý `~/.agents/vietnamizer/profiles`. Tạo thư mục và ghi đè một hồ sơ đã có cũng cần người dùng
 đồng ý riêng; đích là file chỉ dẫn của agent bị từ chối, và đích trong cây Git cần người dùng xác nhận rõ. Không ghi được thì báo lỗi, không tự lưu sang nơi khác.
 
 Người dùng có thể đọc, sửa hoặc xóa file/ghi chú hồ sơ tại nơi đã chọn; bản người dùng sửa là
-bản chuẩn. Skill không tự cập nhật từ phản hồi, tự nạp hồ sơ ở phiên sau hay ghi hồ sơ vào nhật
-ký hiệu chuẩn chung. Nếu cần bản mẫu tạm ngoài hội thoại, skill đặt ngoài cây thư mục Git và
+bản chuẩn. Skill không tự cập nhật từ phản hồi, không tự nạp hồ sơ ở phiên sau khi người dùng chưa gọi, và
+không ghi hồ sơ vào nhật ký hiệu chuẩn chung. Nếu cần bản mẫu tạm ngoài hội thoại, skill đặt ngoài cây thư mục Git và
 xóa khi quy trình kết thúc hoặc người dùng dừng.
 
 Skill không gửi hồ sơ hay mẫu giọng tới dịch vụ ngoài: chúng chỉ nằm trong ngữ cảnh hội thoại
