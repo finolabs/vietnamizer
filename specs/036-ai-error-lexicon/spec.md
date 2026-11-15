@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/036-ai-error-lexicon`
 **Created**: 2026-11-15
-**Status**: Draft, spec only (no plan, tasks or implementation). The constitution amendment text was approved by Fio on 15/11/2026 (decision 6, shared with spec 033); it is applied to the constitution with the implementation.
+**Status**: Planned ([plan.md](plan.md), 15/11/2026); no tasks or implementation yet. The constitution amendment text was approved by Fio on 15/11/2026 (decision 6, shared with spec 033); it is applied to the constitution with the implementation.
 **Input**: Fio, 15/11/2026, after marking errors in sample AI articles that 0.16.2 (PRs 59 and 60) fixed one by one: the next version should have the agent build an explicit structure of the source's words and phrases, flag the wrong ones, fix the AI errors, apply the user's voice profile, then reassemble; it must run on cloud Chat and Cowork (a native sandbox at most) and may run extra scripts on Claude Code, with both paths error-free. Scope agreed in the coordinator's discussion with Fio the same day (session `local_c94f3fc0-fa20-4142-8374-d4a879f60b8f`). Router depth DEEP, triggers `contract` and `security`: the package would ship executable code for the first time since 0.14.0 (spec 029 removed the Jev runner), which needs a Principle V amendment, and every whole-article edit gains a mandatory step.
 
 ## Background
@@ -11,7 +11,7 @@
 
 ## Settled scope (coordinator with Fio, 2026-11-15)
 
-1. **A curated lexicon of known AI errors ships as a data file.** Four kinds: clipped compounds (*rườm* → *rườm rà*, *nghĩa* → *ngữ nghĩa*), calques (*gọi tên được lỗi*), misread trade jargon (*bản dịch sát*) and bare collective nouns (*đội*). Seeded from calibration cases HF01–HF16 in `calibration/test-cases.md` (HF11–HF16 arrive with PR 60).
+1. **A curated lexicon of known AI errors ships as a data file.** Four kinds: clipped compounds (*rườm* → *rườm rà*, *nghĩa* → *ngữ nghĩa*), calques (*gọi tên được lỗi*), misread trade jargon (*bản dịch sát*) and bare collective nouns (*đội*). Seeded from calibration cases HF01–HF18 in `calibration/test-cases.md` (HF11–HF18 arrived with PR 60, released in 0.16.2).
 2. **A mandatory internal phrase inventory for long-form edits**, pure Markdown, working on Claude.ai Chat and Cowork: for each suspect phrase, the phrase, the suspected pattern, the evidence, the fix and the **Không flag** check.
 3. **An optional scanner** over the lexicon, Python standard library only, that returns candidates with positions. It runs on Claude Code and wherever a code sandbox exists and is never required: with no sandbox the agent scans the same lexicon by reading.
 4. **Order:** fix errors, then apply the voice profile, then a final rescan.
@@ -32,10 +32,14 @@ Out of scope (same discussion): a full Vietnamese grammar matrix; external NLP l
 | # | Decision | Owner | Unblocks when |
 |---|---|---|---|
 | O1 | Exact text of the constitution amendment (section "Constitution amendment" below), reconciled with spec 033's O1 into one Principle V text | Fio | Resolved 15/11/2026: Fio approved the revised text (decision 6) |
-| O2 | Size of the holdout (decision 3) and how Fio marks it (which errors count, guard spans) | Plan author, then Fio | The plan proposes a count and a marking sheet; Fio marks the articles before the release benchmark |
-| O3 | Which hosts the parity check (FR-018) covers: whether Claude.ai Chat with code execution and Cowork's sandbox can run a script shipped in a skill and read its files | Plan author | The plan's research checks each host's current behaviour; a host that cannot is covered by the reading path only |
+| O2 | Size of the holdout (decision 3) and how Fio marks it (which errors count, guard spans) | Plan author, then Fio | Size settled 15/11/2026: 20 articles (plan P1); marking sheet in `contracts/holdout-marking-sheet.md`; Fio marks the articles before the release benchmark |
+| O3 | Which hosts the parity check (FR-018) covers: whether Claude.ai Chat with code execution and Cowork's sandbox can run a script shipped in a skill and read its files | Plan author | Documentation checked 15/11/2026 (`research.md` R1); live probes per host remain before the parity run; a host that cannot is covered by the reading path only |
 | O4 | Spec 033 updated to drop "ngoại lệ duy nhất" and keep only its own clause on top of the shared sentence (decision 4) | Session of spec 033, then Fio | Spec 033's amendment section rewritten on 15/11/2026 to sit on top of the shared text; the exact words of its own clause stay spec 033's O1 |
 | O5 | PR 60 (`fix/035-calques`, HF11–HF16, V9/V19/V20 widening) merged into main | Fio | Resolved 15/11/2026: PR 60 merged (main `823ce7a`); the plan seeds the lexicon from merged text only |
+
+## Plan amendments (15/11/2026)
+
+Three LOW findings from the spec review, settled in the plan: HF17 joins the guard cases and calibration is HF01–HF18 (FR-003, FR-020, SC-004; plan P7); the lexicon file is `references/ai-error-lexicon.md` (plan P5); the scanner reads text only on standard input (FR-012; plan P6).
 
 ## Clarifications
 
@@ -43,7 +47,7 @@ Out of scope (same discussion): a full Vietnamese grammar matrix; external NLP l
 
 - Q: Does the scanner ship inside the skill package so a Chat or Cowork sandbox can run it, or stay in the source repo outside the package? → A: Inside the package (decision 1).
 - Q: Is the lexicon one Markdown table both the agent and the scanner read, or JSON plus a generated Markdown view? → A: One Markdown table (decision 2).
-- Q: Which set proves the lexicon helps, given HF01–HF16 built it? → A: A fresh holdout of AI articles Fio marks (decision 3).
+- Q: Which set proves the lexicon helps, given HF01–HF16 built it (HF01–HF18 since 0.16.2)? → A: A fresh holdout of AI articles Fio marks (decision 3).
 - Q: Do specs 033 and 036 share one Principle V sentence, or does each add its own exception? → A: One shared sentence; 033 adds a stricter clause on top (decision 4).
 - Q: Is this 0.17.0 and released before spec 033? → A: Yes (decision 5).
 
@@ -146,7 +150,7 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 
 - **FR-001**: The package MUST ship one lexicon file of known AI errors. Each entry MUST have: an id, the error form or forms, the kind (clipped compound, calque, misread jargon, bare collective noun), the existing pattern it belongs to (V9, V19, V20, or another existing V/T pattern), the fix or fixes, the register or genre where it is an error, its **Không flag** contexts (including completing and excluding neighbours), and the calibration case ids it came from.
 - **FR-002**: The lexicon MUST NOT create pattern numbers; it is data under existing patterns, and the pattern count stays 55. A lexicon hit MUST pass the owning pattern's **Không flag** and the five chốt before an edit is kept.
-- **FR-003**: The initial lexicon MUST cover every error form in HF01–HF16 that a lookup can find (HF02, HF07, HF10, HF11, HF14 and the forms they name), and every word-level guard case among them (HF08, HF09, HF12, HF13, HF15, HF16) MUST be representable as a **Không flag** context so a lookup does not produce an edit there. T2 (colon, dash; HF01, HF03–HF06) is punctuation and is not a lexicon entry.
+- **FR-003**: The initial lexicon MUST cover every error form in HF01–HF18 that a lookup can find (HF02, HF07, HF10, HF11, HF14 and the forms they name), and every word-level guard case among them (HF08, HF09, HF12, HF13, HF15, HF16, HF17) MUST be representable as a **Không flag** context so a lookup does not produce an edit there. T2 (colon, dash; HF01, HF03–HF06) is punctuation and is not a lexicon entry; HF18 (a brand name is not a profile call) has no lexicon form.
 - **FR-004**: Adding an entry MUST follow AGENTS.md "Học từ phản hồi thực tế": evidence in `calibration/LOG.md` first, a calibration case and at least one over-correction guard, then the entry. Personal preferences MUST NOT enter the lexicon.
 - **FR-005**: The lexicon MUST be one Markdown table in `references/` with fixed columns (decision 2), the single source for both paths; a test MUST check its structure (every column filled, ids unique and continuous, pattern ids existing). It MUST be readable by the agent with its ordinary file-reading tool and, where only inline context exists, from the skill's loaded references, so the reading path works on Chat and Cowork with no code execution.
 
@@ -161,7 +165,7 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 
 **Scanner**
 
-- **FR-012**: The scanner MUST ship inside the package (decision 1) and MUST use only the Python standard library, make no network call, read no secret or API key, write no file, and read only the text it is given (standard input or a file the user named in the task) and the lexicon file. It MUST NOT edit text; it prints candidates only.
+- **FR-012**: The scanner MUST ship inside the package (decision 1) and MUST use only the Python standard library, make no network call, read no secret or API key, write no file, and read only the text it is given on standard input (a file the user named reaches it through the shell's input redirection; the text is never a command-line argument) and the lexicon file. It MUST NOT edit text; it prints candidates only.
 - **FR-013**: For each candidate the scanner MUST report the entry id, the matched text as written and its position (line and column, and paragraph index). It MUST match on Vietnamese syllable boundaries after Unicode normalisation, treat case as the entry says, apply the entry's completing and excluding contexts, and report a protected-zone flag for matches inside code spans, code blocks, quotations, links and frontmatter.
 - **FR-014**: The scanner MUST be optional. The agent MUST use the reading path when the scanner cannot run for any reason, MUST NOT ask the user to enable code execution or install anything for it, and MUST NOT tell the user which path ran unless asked. A scanner error MUST NOT stop the edit.
 
@@ -175,7 +179,7 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 - **FR-017**: Each lexicon entry MUST have at least one positive fixture and one negative fixture (a guard). A deterministic test MUST show that the scanner returns exactly the expected candidate set on the fixtures.
 - **FR-018**: A parity check MUST run the reading path (scanner unavailable) on the same fixtures and compare its candidate set with the scanner's; every difference MUST be recorded with the fixture, the host and the model version. A release needs either no difference or Fio's written acceptance of each recorded one.
 - **FR-019**: A contract test MUST show that the skill text, the inventory step and the reading path never require the scanner: no instruction makes an edit wait on it, and the skill works with the scanner file absent.
-- **FR-020**: The version's effect MUST be measured in the 0.16.x benchmark rerun (Orrery backlog `01M7CRZNAF8MNN8Y1N1JW4A7FM`): the new version against 0.16.2 on the same model and corpus, reporting marked-error recall, over-correction on guard cases, time and tokens, and model and corpus versions (constitution, "Ràng buộc về gói và dữ liệu"). HF01–HF16 are development cases and MUST NOT be reported as proof of improvement; the proof set is a fresh holdout of AI articles Fio marks, never used to build or tune the lexicon (decision 3, size in O2).
+- **FR-020**: The version's effect MUST be measured in the 0.16.x benchmark rerun (Orrery backlog `01M7CRZNAF8MNN8Y1N1JW4A7FM`): the new version against 0.16.2 on the same model and corpus, reporting marked-error recall, over-correction on guard cases, time and tokens, and model and corpus versions (constitution, "Ràng buộc về gói và dữ liệu"). HF01–HF18 are development cases and MUST NOT be reported as proof of improvement; the proof set is a fresh holdout of AI articles Fio marks, never used to build or tune the lexicon (decision 3, size in O2).
 
 **Package and documents**
 
@@ -196,7 +200,7 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 - **SC-001**: On the fixture set, the scanner returns the expected candidate set exactly: 0 missed, 0 extra.
 - **SC-002**: On the same fixtures, the reading path on at least one Chat or Cowork host without code execution and on Claude Code with the scanner disabled flags the same set as the scanner, or every difference is recorded and accepted by Fio (FR-018).
 - **SC-003**: With the scanner file removed from the package, every whole-article fixture edit still completes on every supported host, with 0 requests to the user to enable or install anything.
-- **SC-004**: On HF01–HF16 run by an agent, every expected edit is made and every guard case is left unchanged; reported as a development result, not as measured improvement.
+- **SC-004**: On HF01–HF18 run by an agent, every expected edit is made and every guard case is left unchanged; reported as a development result, not as measured improvement.
 - **SC-005**: On Fio's marked holdout (decision 3), the new version finds more of the marked AI errors than 0.16.2 on the same model, without more over-corrections on guard cases; time and token cost per article are reported beside it.
 - **SC-006**: In every whole-article fixture edit, each edit in the output traces to a kept inventory row, and each kept-by-**Không flag** row leaves its phrase byte-identical.
 
