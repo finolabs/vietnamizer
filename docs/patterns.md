@@ -9,7 +9,7 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 [câu và quan hệ](../references/sentence-structure.md); V19,V21–V23 ở
 [từ và lời dẫn](../references/terms-and-lead-ins.md); T1–T6 ở
 [typography](../references/typography.md). B/K vẫn ở hai profile. Chỉ tra nhóm có nghi vấn;
-đọc Không flag trước sửa lỗi, không dùng danh mục này như checklist nạp mọi file.
+đọc Không flag trước khi sửa lỗi, không dùng danh mục này như checklist nạp mọi file.
 
 
 ### Cách dùng từ và cấu trúc câu (V1–V25)
@@ -54,7 +54,7 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 | T6 | Emoji |
 
 Với văn xuôi thông thường, typography chỉ được sửa khi văn bản đồng thời có ít nhất một pattern
-V1–V25; riêng T2 luôn được rà. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
+V1–V25; riêng T2 luôn được rà soát. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
 
 ### Blog, bài cá nhân, nội dung công việc và marketing (B1–B17)
 

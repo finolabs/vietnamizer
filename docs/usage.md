@@ -83,8 +83,8 @@ Vài điều nên biết trước khi bắt đầu:
   thì mỗi URL một câu. Chưa đồng ý thì skill chưa đọc gì.
 - **Hãy tự đọc kỹ hồ sơ nháp.** Skill được dặn bỏ tên người, liên hệ và chuyện riêng khỏi hồ sơ, nhưng
   không có bộ lọc bằng mã. Bạn là người kiểm cuối cùng trước khi lưu.
-- **Chỉ lưu khi bạn bảo lưu.** Không lưu thì hồ sơ chỉ ở lại trong hội thoại. Để dùng lại, bạn nêu tên
-  hồ sơ (`/vietnamizer:vietnamizer <tên>` trên Claude Code cài qua plugin, `/vietnamizer <tên>` khi cài skill
+- **Chỉ lưu khi bạn yêu cầu.** Không lưu thì hồ sơ chỉ ở lại trong hội thoại. Để dùng lại, bạn gọi hồ sơ
+  bằng tên (`/vietnamizer:vietnamizer <tên>` trên Claude Code cài qua plugin, `/vietnamizer <tên>` khi cài skill
   riêng, `$vietnamizer <tên>` trên Codex,
   hay câu “theo hồ sơ <tên>”), nói kèm chỗ lưu nếu hồ sơ chưa có trong sổ hồ sơ, hoặc dán hồ sơ vào yêu
   cầu; mỗi lần chỉ áp một hồ sơ.
@@ -106,7 +106,7 @@ hội thoại theo chính sách của nền tảng, nên dùng plugin không bi�
 toàn trên máy. Đừng gửi credential, định danh chính phủ, dữ liệu thẻ thanh toán hay PHI.
 Xem [quyền riêng tư](../PRIVACY.md) và [điều kiện sử dụng](../TERMS.md).
 
-- **Không thấy skill:** kiểm plugin đã bật, rồi mở phiên mới. Trong Claude Code, kiểm đúng
+- **Không thấy skill:** kiểm tra xem plugin đã bật chưa, rồi mở phiên mới. Trong Claude Code, kiểm tra đúng
   marketplace `finolabs` và lời gọi `/vietnamizer:vietnamizer`.
 - **Mô tả hoặc phiên bản chưa đổi:** cập nhật đúng plugin cùng tên từ nguồn đã cài, tránh cài thêm
   bản review trùng tên. ZIP upload riêng không tự cập nhật từ GitHub.
@@ -125,7 +125,7 @@ Skill xử lý ba lớp:
 - B1–B17 và K1–K7 kiểm tra sự phù hợp với thể loại. Blog, tin nhắn, README và bài nghiên cứu không
   dùng cùng một giọng.
 - T1–T6 kiểm tra typography. Với văn xuôi thông thường, skill chỉ áp lớp này khi có ít nhất một lỗi
-  V1–V25; với thể loại chỉ rà typography thì không cần lỗi V đi kèm.
+  V1–V25, riêng T2 luôn được rà soát; với thể loại chỉ rà soát typography thì không cần lỗi V đi kèm.
 
 Trước khi sửa, skill xác định thể loại và phạm vi, rồi mới tra profile khi có nghi vấn phụ thuộc thể
 loại. Thứ tự đọc chi tiết nằm trong [`SKILL.md`](../SKILL.md).

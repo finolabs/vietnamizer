@@ -114,8 +114,8 @@ class SkillContractTest(unittest.TestCase):
 
     def test_colon_and_missing_syllable_rules(self) -> None:
         skill = read("SKILL.md")
-        self.assertIn("trừ T2 (gạch ngang hoặc dấu hai chấm giữa câu làm mờ quan hệ ý) luôn được rà", skill)
-        self.assertIn("luôn soát V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà T1–T6", skill)
+        self.assertIn("trừ T2 (gạch ngang hoặc dấu hai chấm giữa câu làm mờ quan hệ ý) luôn được rà soát", skill)
+        self.assertIn("luôn rà soát V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà soát T1–T6", skill)
         typography = read("references/typography.md")
         for phrase in (
             "### T2. Gạch ngang hoặc dấu hai chấm làm sai hoặc mờ quan hệ ý",
@@ -313,7 +313,7 @@ class SkillContractTest(unittest.TestCase):
         route = read("references/voice-profile.md")
         for phrase in (
             "Văn bản dán không cần lời xác nhận chủ tài khoản",
-            "không gọi URL người dùng đưa",
+            "không nêu URL người dùng đưa",
             "đây là chỗ duy nhất nêu cảnh báo trong luồng",
         ):
             with self.subTest(phrase=phrase):

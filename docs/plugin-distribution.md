@@ -131,7 +131,7 @@ Tài liệu và template hỗ trợ không nằm trong payload do scripts đóng
 submit hoặc checksum từ nguồn được xác nhận mới kết luận được. Không suy ra thiếu đường hỗ trợ
 là nguyên nhân chậm duyệt.
 
-Repo này không giữ marketplace riêng: Codex gom mỗi marketplace thành một nhóm, nên một plugin có
+Repo này không giữ marketplace riêng. Codex gom mỗi marketplace thành một nhóm, nên một plugin có
 catalog riêng sẽ tách khỏi nhóm Finolabs. Plugin được liệt kê ở catalog chung
 [`finolabs/plugins`](https://github.com/finolabs/plugins), gồm `.claude-plugin/marketplace.json`
 và `.agents/plugins/marketplace.json` cùng tên `finolabs`. Catalog theo dõi nhánh mặc định của repo

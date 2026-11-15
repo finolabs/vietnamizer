@@ -41,7 +41,7 @@ gần với chính bạn, nhưng đó là niềm tin chứ chưa phải số đo
 |---|---|
 | Biên tập bản nháp AI hoặc bản dịch thô | Tìm lỗi cụ thể về từ, bổ ngữ và cấu trúc câu |
 | Biên tập blog, bài chuyên môn | Giữ ý định, mức khẳng định, câu rút gọn và nhịp dấu câu |
-| Rà README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
+| Rà soát README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
 | Viết theo giọng của bạn hoặc của thương hiệu | Học hồ sơ giọng từ bài bạn đưa, cho bạn chấm đoạn mẫu, chỉ lưu khi bạn yêu cầu; bắt đầu bằng `/vietnamizer:help` (Claude Code) hoặc câu “thiết lập giọng” |
 
 Vietnamizer là bước biên tập trước khi gửi hay đăng bài và không kiểm chứng dữ kiện trong bài.
@@ -101,7 +101,7 @@ nói “Thiết lập giọng” là được (trên Claude Code có thêm `/vie
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/figures/voice-setup-dark.svg">
-  <img src="docs/figures/voice-setup.svg" alt="Luồng thiết lập giọng: chọn loại giọng, đưa nguồn mẫu, đồng ý đọc từng nguồn, xem hồ sơ nháp, chấm thử đoạn mẫu, rồi chỉ lưu khi bạn bảo lưu; lần sau gọi hồ sơ bằng tên. Dừng ở bước nào thì không có gì được lưu.">
+  <img src="docs/figures/voice-setup.svg" alt="Luồng thiết lập giọng: chọn loại giọng, đưa nguồn mẫu, đồng ý đọc từng nguồn, xem hồ sơ nháp, chấm thử đoạn mẫu, rồi chỉ lưu khi bạn yêu cầu; lần sau gọi hồ sơ bằng tên. Dừng ở bước nào thì không có gì được lưu.">
 </picture>
 
 1. **Loại giọng.** Cá nhân (mặc định) hoặc Thương hiệu.
@@ -113,7 +113,7 @@ nói “Thiết lập giọng” là được (trên Claude Code có thêm `/vie
 4. **Hồ sơ nháp.** Mỗi nét giọng có phạm vi, căn cứ và mức chắc chắn. Bạn sửa tới khi ưng.
 5. **Chấm thử.** Từ 0 đến 10 đoạn mẫu, mỗi đoạn chấm Kém, Trung bình, Khá hoặc Tốt. Kết quả là đánh giá
    của riêng bạn, không phải điểm đo chất lượng.
-6. **Lưu.** Chỉ khi bạn bảo lưu, vào Orrery, Obsidian hoặc một thư mục Markdown (gợi ý
+6. **Lưu.** Chỉ lưu khi bạn yêu cầu, vào Orrery, Obsidian hoặc một thư mục Markdown (gợi ý
    `~/.agents/vietnamizer/profiles`), kèm tên trong sổ hồ sơ `~/.agents/vietnamizer/registry.md`. Trên Chat,
    hồ sơ thành bản gọn trong bộ nhớ của Chat sau khi bạn đồng ý ([PRIVACY.md](PRIVACY.md)).
 
@@ -133,6 +133,19 @@ Trích đầu ra thật trên Codex, lượt hồi quy 0.12.0/0.12.1 ngày 27/10
 | MR12 · đối tượng đã rõ | Tôi đang soạn hướng dẫn bàn giao. Soạn xong rồi dừng. | Giữ nguyên; 0.12.0 đã thêm “bản hướng dẫn” vào câu sau. |
 
 [Xem đủ ca và tiêu chí](specs/018-mr-version-comparison/results.md) · [Benchmark](docs/benchmarks.md).
+
+## Vietnamizer tự biên tập chính nó (0.16.2)
+
+Ba model dùng Vietnamizer 0.16.2 biên tập lại 42 file của chính gói skill, theo hồ sơ giọng của tác giả. Fable 5.2 so từng file với bản gốc và chọn bản tốt nhất.
+
+| | Bản gốc | Sonnet 5.5 | Gemini 3.8 Flash | Opus 5.5 | Bản phát hành |
+|---|---|---|---|---|---|
+| File được sửa | | 23 | 28 | 23 | 27 |
+| Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | 60 |
+| *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | 29 |
+| File giám khảo chọn | 16 | 6 | 2 | 18 | |
+
+[Phương pháp đếm và cách chạy lại](docs/benchmarks.md#vietnamizer-tự-biên-tập-chính-nó-0162).
 
 ## Cho AI agent: cài và thiết lập
 
@@ -214,7 +227,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Phạm vi
 
-- Tự chọn profile theo thể loại; công văn, hợp đồng, thơ và changelog chỉ rà typography.
+- Tự chọn profile theo thể loại; công văn, hợp đồng, thơ và changelog chỉ rà soát typography.
 - Bảo toàn dữ kiện, thuật ngữ, code và trích dẫn nguyên văn; không suy tác giả AI từ lỗi ngôn ngữ.
 - Không gọi dịch vụ ngoài và không đọc API key; Jev/TypeSafe đã gỡ từ 0.14.0.
 - Chỉ cung cấp văn bản được phép chia sẻ, không chứa credential hoặc dữ liệu bị hạn chế.
@@ -247,7 +260,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Lịch sử phiên bản
 
-- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
+- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà soát cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn rà soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới; Vietnamizer tự biên tập 42 file của chính gói.
 - **0.16.1** — Mô tả plugin ngắn lại để catalog `finolabs/plugins` pin được bản mới; nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt; gọi lại hồ sơ đã lưu bằng tên.
 

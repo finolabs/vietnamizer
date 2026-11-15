@@ -6,6 +6,43 @@
 > nhắc nhánh "Vietnamizer + Jev", runner và test của nó là bằng chứng lịch sử đã ngừng dùng; script
 > benchmark Jev/công khai và `eval/guard/` đã bị xóa khỏi repo, các file raw nằm trong lịch sử Git.
 
+## Vietnamizer tự biên tập chính nó (0.16.2)
+
+Ngày 15/11/2026, ba model dùng Vietnamizer 0.16.2 (commit `823ce7a`) biên tập lại văn bản của chính gói
+skill. Sonnet 5.5, Gemini 3.8 Flash và Opus 5.5 làm riêng, mỗi model trên một nhánh, theo hồ sơ giọng của
+tác giả. Fable 5.2 sau đó so từng file với bản gốc và chọn bản tốt nhất, hoặc giữ bản gốc khi không bản nào
+tốt hơn. Fable xét nghĩa và phạm vi của từng quy tắc trước, rồi mới tới lỗi được sửa và độ hợp giọng.
+
+| | Bản gốc | Sonnet 5.5 | Gemini 3.8 Flash | Opus 5.5 | Bản phát hành |
+|---|---|---|---|---|---|
+| File được sửa | | 23 | 28 | 23 | 27 |
+| Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | 60 |
+| *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | 29 |
+| File giám khảo chọn | 16 | 6 | 2 | 18 | |
+
+Phạm vi là 42 file Markdown phát hành cùng gói, gồm `SKILL.md`, `references/`, `profiles/`,
+`.plugin-skills/`, README, các file chính sách và `docs/`. Riêng `docs/changelog.md` chỉ tính mục 0.16.2.
+Bản phát hành gồm các bản Fable chọn, hai chỗ khôi phục từ bản gốc và mười chỗ sửa lấy từ các bản không
+được chọn.
+
+Script `benchmarks/self_edit_count.py` đếm bằng biểu thức chính quy, không dùng model. Có hai dấu hiệu.
+
+- Dấu hai chấm giữa câu được tính khi chữ ngay sau nó viết thường và phía trước nó, trong cùng câu, có
+  hơn ba từ.
+- Từ ghép bị cắt được tính khi `rà` không có `soát` hoặc `lại` theo sau, hoặc `soát` không có `rà` đứng
+  trước.
+
+Script bỏ qua code, dòng bảng, heading, HTML, frontmatter, dòng có URL và nhãn in đậm đầu dòng. Các ví
+dụ sai cố ý trong catalog pattern vẫn nằm trong số đếm, nên bản phát hành không về 0. Đây là dấu hiệu cơ
+học, không đo chất lượng văn bản, vì có những dấu hai chấm đúng chức năng mà script vẫn tính.
+
+Chạy lại từ thư mục gốc của repo. Ba nhánh biên tập viên chỉ có trên máy tác giả, nên người khác chỉ
+chạy lại được cột bản gốc và bản phát hành.
+
+```bash
+python3 benchmarks/self_edit_count.py Gốc=823ce7a Sonnet=edit/0162-sonnet Gemini=edit/0162-gemini Opus=edit/0162-opus "Bản phát hành=HEAD"
+```
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày
@@ -139,37 +176,37 @@ coi các nhận xét là mẫu độc lập. Hai model cùng nhà cung cấp; đ
 chuẩn. Xem [kết quả, CI, an toàn và dữ liệu](../specs/014-editorial-benchmark/quality-results.md),
 [protocol](../specs/014-editorial-benchmark/quality-protocol.md) và
 [bộ giao hai người chấm](../specs/014-editorial-benchmark/human-handoff.md).
-Bộ người đọc dùng [cách chấm trực tiếp](../specs/014-editorial-benchmark/human-simple-protocol.md):
-xem bản gốc cạnh bản sửa, trả lời ba câu cho mỗi đoạn; vẫn ẩn tên bốn chế độ.
+Bộ người đọc dùng [cách chấm trực tiếp](../specs/014-editorial-benchmark/human-simple-protocol.md),
+tức là xem bản gốc cạnh bản sửa, trả lời ba câu cho mỗi đoạn; vẫn ẩn tên bốn chế độ.
 Nhãn giữ đúng và độ dễ đọc được báo riêng, không suy thành precision/recall của từng lần sửa.
 
 </details>
 
-[Pilot tách mẫu và skill trên cùng Codex, nguồn0.12.1](../specs/019-voice-factorial-benchmark/results.md)
-có32đầu ra và15/16phiếu model hợp lệ. Trên bốn nháp AI trung tính, cả hai giám khảo đều chọn
-prompt+mẫu hơn Vietnamizer+cùng mẫu. Đây là dữ liệu phát triển dẫn tới hai chế độ của0.13.0,
+[Pilot tách mẫu và skill trên cùng Codex, nguồn 0.12.1](../specs/019-voice-factorial-benchmark/results.md)
+có 32 đầu ra và 15/16 phiếu model hợp lệ. Trên bốn nháp AI trung tính, cả hai giám khảo đều chọn
+prompt+mẫu hơn Vietnamizer+cùng mẫu. Đây là dữ liệu phát triển dẫn tới hai chế độ của 0.13.0,
 không phải bằng chứng bản mới đã tốt hơn. Giám khảo có thiên lệch về hình thức; chưa có chấm
 người hoặc tác giả xác nhận.
 
-[Pilot so0.13.0với0.12.1](../specs/021-voice-version-pilot/results.md) đã có **32 đầu ra** trên cùng
-Codex. So0.13.0với prompt+cùng mẫu, Codex chọn thắng/hòa/thua **1/1/6**, Gemini **2/0/6** trên
+[Pilot so 0.13.0 với 0.12.1](../specs/021-voice-version-pilot/results.md) đã có **32 đầu ra** trên cùng
+Codex. So 0.13.0 với prompt+cùng mẫu, Codex chọn thắng/hòa/thua **1/1/6**, Gemini **2/0/6** trên
 tám bản. V1 còn thêm chú giải số nhiều ngoài nguồn. Đây là dữ liệu phát triển, chưa chứng minh
-skill vượt prompt+mẫu. Bản0.13.1 sửa chỉ dẫn và ví dụ từ các lỗi đó.
+skill vượt prompt+mẫu. Bản 0.13.1 sửa chỉ dẫn và ví dụ từ các lỗi đó.
 
-[Pilot023cho0.13.1](../specs/023-voice-patch-pilot/results.md) có32đầu ra trên cùng Codex. So với
-prompt+cùng mẫu, Codex chọn thắng/hòa/thua4/2/2,Gemini5/0/3; hai giám khảo chỉ đồng ý lựa chọn
-ở3/8bản. Riêng N2cả hai thích0.13.0hơn, dù đều ghi nghĩa được giữ. Đây là tập phát triển đã dùng
-sửa skill, không chứng minh vượt trội. Bản0.13.2 làm rõ chọn nét giọng theo chức năng từ ca này;
-Kiểm offline/package không xác nhận hiệu quả biên tập.
+[Pilot 023 cho 0.13.1](../specs/023-voice-patch-pilot/results.md) có 32 đầu ra trên cùng Codex. So với
+prompt+cùng mẫu, Codex chọn thắng/hòa/thua 4/2/2, Gemini 5/0/3; hai giám khảo chỉ đồng ý lựa chọn
+ở 3/8 bản. Riêng N2 cả hai thích 0.13.0 hơn, dù đều ghi nghĩa được giữ. Đây là tập phát triển đã dùng
+sửa skill, không chứng minh vượt trội. Bản 0.13.2 làm rõ chọn nét giọng theo chức năng từ ca này;
+kiểm offline/package không xác nhận hiệu quả biên tập.
 
-[Pilot025cho0.13.2](../specs/025-section-voice-pilot/results.md) có32đầu ra và15/16phiếu chấm hợp lệ;
-V2–Gemini thiếu do quote sai, không hỏi lại. N2:Codex cho0.13.1/0.13.2hòa4→4,Gemini nâng4→5;
-cả hai ghi nghĩa được giữ và chọn0.13.2hơn prompt+cùng mẫu. Toàn bộ so phiên bản,Codex0/6/2
-thắng/hòa/thua trên8bản,Gemini4/0/3trên7bản có phiếu. N2có tín hiệu tích cực, chưa chứng minh
+[Pilot 025 cho 0.13.2](../specs/025-section-voice-pilot/results.md) có 32 đầu ra và 15/16 phiếu chấm hợp lệ;
+V2–Gemini thiếu do quote sai, không hỏi lại. N2: Codex cho 0.13.1/0.13.2 hòa 4→4, Gemini nâng 4→5;
+cả hai ghi nghĩa được giữ và chọn 0.13.2 hơn prompt+cùng mẫu. Toàn bộ so phiên bản, Codex 0/6/2
+thắng/hòa/thua trên 8 bản, Gemini 4/0/3 trên 7 bản có phiếu. N2 có tín hiệu tích cực, chưa chứng minh
 nâng cấp đồng đều. Đây vẫn là tập phát triển và model chấm, không phải xác nhận từ tác giả/người đọc.
 
 [Pilot Mindfio ngày 27/10/2026](../specs/016-sample-voice-preservation/mindfio-results.md)
-đã có **12/12 bản cuối** trên cùng Codex: bốn bài, ba chế độ, hồ sơ được chủ nhân
+đã có **12/12 bản cuối** trên cùng Codex, gồm bốn bài, ba chế độ, hồ sơ được chủ nhân
 duyệt và nguồn 0.12.0 đóng băng trước khi chạy. Có raw CLI, đối chiếu trước/sau và
 hai hình phân tích thay đổi/tài nguyên. Nhận xét chất lượng là thăm dò của agent;
 chưa chứng minh thêm hồ sơ giúp giữ giọng tốt hơn trên mọi bài. Bộ này giữ riêng,
@@ -183,8 +220,8 @@ AI theo xác nhận của chủ nhân; không có bản nháp trước AI để 
 
 [Hiệu chỉnh 0.12.1 từ Mindfio](../specs/017-preserve-meaning-rhythm/results.md) ưu tiên
 giữ ý muốn/khả năng/phạm vi, câu rút gọn có chức năng và quan hệ ý khi đổi dấu.
-Đã [chạy đối chiếu MR01–MR12 trên cùng Codex](../specs/018-mr-version-comparison/results.md):
-0.12.0 đạt 10/12 ca và 0.12.1 đạt 12/12 theo tiêu chí đã khóa, với MR05/MR12 chuyển
+Đã [chạy đối chiếu MR01–MR12 trên cùng Codex](../specs/018-mr-version-comparison/results.md),
+trong đó 0.12.0 đạt 10/12 ca và 0.12.1 đạt 12/12 theo tiêu chí đã khóa, với MR05/MR12 chuyển
 từ chưa đạt sang đạt. Mỗi tình huống chỉ sinh một bản cho mỗi phiên bản; nhãn do
 agent đối chiếu và reviewer kiểm tra, không phải chấm người độc lập. Những bài đã dùng để hiệu chỉnh là dữ liệu phát triển/hồi quy,
 không còn là holdout độc lập để chứng minh bản mới tốt hơn.

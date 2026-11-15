@@ -64,7 +64,7 @@ trong thư mục `styles/` của profile tương thích; `references/style-resol
 chọn card, thứ tự ưu tiên và registry đường dẫn.
 
 Trước khi chạy pattern, skill kiểm tra thể loại. Pháp quy, hợp đồng, thơ, văn cổ phong và nghi lễ chỉ
-được rà T1–T6. Code, schema, dữ liệu có cấu trúc, bảng tham số, trích dẫn nguyên văn, tên riêng và ví
+được rà soát T1–T6. Code, schema, dữ liệu có cấu trúc, bảng tham số, trích dẫn nguyên văn, tên riêng và ví
 dụ đang được bàn tới là vùng bảo toàn từng byte. Xem danh sách và ngoại lệ đầy đủ trong `SKILL.md`.
 
 
@@ -75,7 +75,7 @@ quy trình riêng. Không đổi 55 pattern; kiểm nghĩa với brief
 khi viết mới vẫn do host thực hiện. Ca EW01–EW16 là kỳ vọng thủ công, chưa phải pilot chất lượng.
 
 
-Tuyến mặc định không nạp catalog, hoặc resolver. Sửa nhỏ chỉ tra nghi vấn;
+Tuyến mặc định không nạp catalog hoặc resolver. Sửa nhỏ chỉ tra nghi vấn;
 làm bài thêm workflow và một card; có mẫu thêm guide; tuyến hồ sơ giọng chỉ nạp khi có yêu cầu rõ ràng.
-Resolver chỉ khi mâu thuẫn/pha chức năng, guide nguồn chỉ khi chọn nguồn. Tiết kiệm ký tự hướng dẫn chưa chứng minh giảm billing
+Resolver chỉ nạp khi mâu thuẫn hoặc pha chức năng, guide nguồn chỉ nạp khi chọn nguồn. Tiết kiệm ký tự hướng dẫn chưa chứng minh giảm billing
 token hoặc tăng chất lượng.

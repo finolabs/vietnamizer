@@ -2,7 +2,7 @@
 
 Tra khi có nghi vấn đúng nhóm ở bảng của SKILL.md; đọc cả Không flag trước khi sửa.
 Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm khác chỉ vì có liên kết.
-Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà không có nghĩa là luôn sửa); không áp typography vào vùng bảo toàn.
+Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà soát không có nghĩa là luôn sửa); không áp typography vào vùng bảo toàn.
 
 ### T1. Viết hoa theo kiểu tiêu đề tiếng Anh
 
@@ -22,7 +22,7 @@ Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà không 
 
 **Dấu hiệu:** trộn `“ ”` cong và `" "` thẳng trong cùng một tài liệu, chẳng hạn mở bằng `“` nhưng
 đóng bằng `"`. Ngoặc `«...»` hoặc `„..."` xuất hiện lẻ tẻ giữa văn bản Việt hiện đại.
-**Vì sao:** bản thân ngoặc cong không nói lên gì: Word, Google Docs và macOS đều tự bo cong, mà đây lại là công cụ soạn thảo mặc định ở Việt Nam. Thứ đáng ngờ là **sự trộn lẫn**, vì nó cho thấy các đoạn đến từ nguồn khác nhau.
+**Vì sao:** bản thân ngoặc cong không nói lên gì. Word, Google Docs và macOS đều tự bo cong, mà đây lại là công cụ soạn thảo mặc định ở Việt Nam. Thứ đáng ngờ là **sự trộn lẫn**, vì nó cho thấy các đoạn đến từ nguồn khác nhau.
 **Sửa:** thống nhất về một kiểu, giữ kiểu đang chiếm đa số trong văn bản. **Không ép về ngoặc thẳng**, đây là chỗ đảo hành vi so với bản tiếng Anh.
 **Không flag:** toàn văn bản nhất quán một kiểu, dù cong hay thẳng. `«...»` trong bản dịch từ tiếng Pháp hoặc Nga. Ngoặc lồng. Code, JSON, chuỗi kỹ thuật. Trích dẫn nguyên văn hoặc phần chưa rõ chức năng vẫn thuộc vùng bảo toàn, không đổi cả dấu; với thuật ngữ chỉ đặt trong ngoặc để nhấn mạnh, T3 chỉ cho thống nhất kiểu ngoặc, không tự đổi nội dung.
 
@@ -35,7 +35,7 @@ Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà không 
 
 ### T5. Định dạng thay cho cấu trúc câu
 
-**Dấu hiệu:** nhiều heading hoặc bullet liên tiếp cùng theo khuôn *cụm từ khóa: diễn giải hoặc slogan*, nhất là khi cụm từ khóa là một nhãn khái quát như *Hiệu quả, Đột phá, Linh hoạt, Tăng trưởng*. Thử bỏ phần trước dấu hai chấm: nếu phần sau vẫn đủ nghĩa và làm đúng chức năng của heading hoặc câu thì nhãn có thể là phần thừa. Các dấu hiệu đi kèm là nhãn được in đậm, nhãn lặp lại trong phần diễn giải và toàn bộ heading dùng những danh ngữ Hán-Việt ngắn, cân xứng.
+**Dấu hiệu:** nhiều heading hoặc bullet liên tiếp cùng theo khuôn *cụm từ khóa: diễn giải hoặc slogan*, nhất là khi cụm từ khóa là một nhãn khái quát như *Hiệu quả, Đột phá, Linh hoạt, Tăng trưởng*. Thử bỏ phần trước dấu hai chấm. Nếu phần sau vẫn đủ nghĩa và làm đúng chức năng của heading hoặc câu thì nhãn có thể là phần thừa. Các dấu hiệu đi kèm là nhãn được in đậm, nhãn lặp lại trong phần diễn giải và toàn bộ heading dùng những danh ngữ Hán-Việt ngắn, cân xứng.
 **Vì sao:** khuôn này tách một ý liền mạch thành hai phần dù nhãn không phân loại nội dung hay bổ sung ý nghĩa. Khi mục nào cũng viết như vậy, người đọc phải đi qua một nhãn chung chung trước khi đến thông tin chính. Dấu hai chấm không sai; chỗ cần sửa là nhãn không làm nhiệm vụ nào ngoài trang trí hoặc tạo vẻ cân xứng.
 **Sửa:** bỏ nhãn thừa và để phần mang thông tin làm heading hoặc câu. *"### Hiệu quả: Giảm thời gian xử lý đơn"* → *"### Giảm thời gian xử lý đơn"*. *"- **Hiệu quả vận hành:** Quy trình xử lý đơn được rút gọn"* → *"- Quy trình xử lý đơn được rút gọn"*. Nếu nhãn có nội dung cần giữ, viết lại thành một câu liền thay vì giữ hai nửa rời nhau. Không xoá dấu hai chấm hàng loạt; xét chức năng của từng mục.
 **Không flag:** nhãn–giá trị (*Trạng thái: đang xử lý*), thuật ngữ–định nghĩa, người nói–lời nói, tiêu đề có phụ đề thật, mục hỏi–đáp, biểu mẫu, bảng, slide, thẻ giao diện và bảng thuật ngữ. Trong README, changelog, đặc tả kỹ thuật, SOP hoặc tài liệu tham chiếu, giữ nhãn khi nó xác định trường dữ liệu, loại bước hoặc nhóm nội dung cần cho việc tra cứu. Thể loại kỹ thuật tự nó không phải lý do để miễn T5. Một heading có dấu hai chấm đứng riêng cũng chưa đủ để flag; cần thấy khuôn lặp lại hoặc nhãn rõ ràng không mang thông tin.

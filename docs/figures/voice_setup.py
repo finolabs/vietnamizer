@@ -13,7 +13,7 @@ def build(name):
     a=o.append
     a(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="{slug}-title {slug}-desc">')
     a(f'<title id="{slug}-title">Luồng thiết lập giọng của Vietnamizer</title>')
-    a(f'<desc id="{slug}-desc">Năm bước chọn loại giọng, đưa nguồn mẫu, đồng ý đọc, xem hồ sơ nháp và chấm thử dẫn tới câu hỏi bạn có bảo lưu không; có thì hồ sơ được lưu và lần sau gọi bằng tên, không thì hồ sơ chỉ nằm trong cuộc trò chuyện. Dừng ở bước nào cũng không có gì được lưu.</desc>')
+    a(f'<desc id="{slug}-desc">Năm bước chọn loại giọng, đưa nguồn mẫu, đồng ý đọc, xem hồ sơ nháp và chấm thử dẫn tới câu hỏi bạn có muốn lưu không; có thì hồ sơ được lưu và lần sau gọi bằng tên, không thì hồ sơ chỉ nằm trong cuộc trò chuyện. Dừng ở bước nào cũng không có gì được lưu.</desc>')
     a('<defs>')
     for mid,col in (("a",c["muted"]),("b",c["accent"])):
         a(f'<marker id="{slug}-{mid}" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="{col}"/></marker>')
@@ -49,7 +49,7 @@ def build(name):
            ("Đồng ý đọc",["mỗi nguồn, mỗi URL","một câu đồng ý"]),("Xem hồ sơ nháp",["sửa tới khi ưng"]),("Chấm thử",["0–10 đoạn,","từ Kém đến Tốt"])]
     for i,(x,(t,s)) in enumerate(zip(xs,steps)):
         box(x,40,160,104,f"BƯỚC {i+1}",t,s)
-    box(776,232,160,72,"","Bạn bảo lưu?",[],focal=True)
+    box(776,232,160,72,"","Bạn muốn lưu?",[],focal=True)
     box(520,232,200,72,"","Lưu hồ sơ",["nơi bạn chọn, kèm sổ hồ sơ"])
     box(264,232,200,72,"","Lần sau gọi bằng tên",["mỗi lần áp một hồ sơ"])
     box(520,344,200,72,"","Không lưu",["chỉ nằm trong cuộc trò chuyện"])
