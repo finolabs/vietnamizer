@@ -128,7 +128,7 @@ Each step ends in a reviewable commit with its own check output (development gat
 | # | Decision | Owner | Unblocks when |
 |---|---|---|---|
 | O2 | Fio marks the 20 holdout articles with the sheet in contracts/holdout-marking-sheet.md; sheet format confirmed at review of this PR | Fio | Articles generated (step 9 prep) and marked before any 0.17.0 run over them |
-| O3 | Live probes on Claude.ai Chat, Cowork, Codex and Antigravity (research R1 "Live probe") | Fio for Chat and Cowork; implementer for Codex (quota back 17/11/2026 10:16) and Antigravity | Each probe recorded with host, version and date; a failed host is covered by the reading path only |
+| O3 | Live probes on Codex and Antigravity (research R1 "Live probe"). Claude.ai Chat and Cowork: resolved 15/11/2026, the main coordinator's probe on Fio's go ran a bundled script with Vietnamese stdin and package data, no permission prompt (research R1) | Implementer for Codex (quota back 17/11/2026 10:16) and Antigravity | Each probe recorded with host, version and date; a failed host is covered by the reading path only. Every host repeats the probe with the 0.17.0 package |
 | O4 | Spec 033's own clause on top of the shared Principle V text | Spec 033 session, then Fio | Unchanged by this plan; note that spec 033's amendment section still says "2.6.1 → 2.7.0" while the constitution is at 2.8.0 and becomes 2.9.0 here |
 | O6 | Which P2 models a release cannot skip when a model has no quota at benchmark time | Fio | Proposal: Sonnet and Opus required, Argon, Flash and GPT run when quota allows and are reported as not run otherwise |
 | O7 | Release go for 0.17.0 (merge, tag, release, catalog pin) | Fio | After step 9 evidence; never on a relayed yes |
