@@ -2,7 +2,7 @@
 
 Source, skill và plugin `vietnamizer` được phân phối theo [MIT License](LICENSE), gồm quyền sử
 dụng, sửa và phân phối cùng nghĩa vụ giữ notice. Phần mềm được cung cấp không có bảo đảm theo
-nội dung licence. Tooling Spec Kit giữ notice upstream riêng tại [`.specify/LICENSE`](.specify/LICENSE).
+nội dung giấy phép. Tooling Spec Kit giữ notice upstream riêng tại [`.specify/LICENSE`](.specify/LICENSE).
 
 Người dùng chịu trách nhiệm về quyền sử dụng văn bản đầu vào và kiểm lại nội dung trước khi công
 bố. Skill hỗ trợ biên tập; không xác minh mọi dữ kiện, không thay thế review chuyên môn và không
