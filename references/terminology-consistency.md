@@ -33,8 +33,8 @@ không phải lỗi; quy chuẩn người dùng giao có thể quyết định c
 ## Quét lại trước khi trả
 
 Sau mọi vòng sửa, đối chiếu bài với bảng một lần, vì sửa nhiều vòng làm văn bản trôi mà không ai đọc
-lại cả bài: thuật ngữ đã khóa có còn đúng dạng, số và đơn vị cùng kiểu, xưng hô không đổi giữa phần.
-Mọi sửa do quét này phải qua chốt nghĩa của core: đổi cách viết thì không đổi lượng, phủ định hay quan hệ.
+lại cả bài. Kiểm thuật ngữ đã khóa có còn đúng dạng, số và đơn vị cùng kiểu, xưng hô không đổi giữa phần.
+Mọi sửa do quét này phải qua chốt nghĩa của core. Đổi cách viết thì không đổi lượng, phủ định hay quan hệ.
 
 Đếm số lần xuất hiện bằng mắt hoặc công cụ có sẵn thì nói là ước lượng. Repo nguồn có
 `scripts/check-consistency.py` (tùy chọn, ngoài gói) đếm các trục dấu thanh, i/y, dấu phân cách số và
