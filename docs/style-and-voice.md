@@ -104,7 +104,7 @@ Không tự truy xuất hoặc cập nhật hồ sơ trong HOME, memory hay ngu�
 ## Dùng giọng để khai triển từ ý
 
 Đọc/tách nội dung trước, chọn bằng chứng giọng phù hợp rồi mới khai triển. Giữ bản nguồn đầy đủ
-để rà mọi mệnh đề, quan hệ và sắc thái; đừng biến outline thành bản tóm tắt mất điều kiện rồi
+để rà soát mọi mệnh đề, quan hệ và sắc thái; đừng biến outline thành bản tóm tắt mất điều kiện rồi
 viết lại chỉ từ nó. Chọn điểm vào, chuyển ý và điểm dừng theo nội dung và giọng được giao,
 không chỉ thay đại từ hoặc chèn câu cửa miệng. Review cả câu, đoạn và toàn bài; sửa tiếp thì
 kiểm lại nghĩa phần bị ảnh hưởng. Quy trình đầy đủ do `SKILL.md` sở hữu.
