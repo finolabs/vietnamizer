@@ -125,7 +125,7 @@ Skill xử lý ba lớp:
 - B1–B17 và K1–K7 kiểm tra sự phù hợp với thể loại. Blog, tin nhắn, README và bài nghiên cứu không
   dùng cùng một giọng.
 - T1–T6 kiểm tra typography. Với văn xuôi thông thường, skill chỉ áp lớp này khi có ít nhất một lỗi
-  V1–V25; với thể loại chỉ rà soát typography thì không cần lỗi V đi kèm.
+  V1–V25, riêng T2 luôn được rà soát; với thể loại chỉ rà soát typography thì không cần lỗi V đi kèm.
 
 Trước khi sửa, skill xác định thể loại và phạm vi, rồi mới tra profile khi có nghi vấn phụ thuộc thể
 loại. Thứ tự đọc chi tiết nằm trong [`SKILL.md`](../SKILL.md).
