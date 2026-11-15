@@ -8,7 +8,7 @@
 <h1 align="center">Vietnamizer</h1>
 
 <p align="center"><strong>Giúp AI viết tiếng Việt “con người” nhất có thể.</strong><br>
-Skill cho Claude Code, Codex, Antigravity và các agent đọc được Agent Skills. Vietnamizer giúp biên tập bản nháp AI và bản dịch thô, nhận diện lỗi qua các pattern chuẩn, giữ ngữ nghĩa và giọng văn người viết. Gói chỉ có Markdown nên mọi quy tắc là hướng dẫn cho agent, không có mã nào ép buộc.</p>
+Skill cho Claude Code, Codex, Antigravity và các agent đọc được Agent Skills. Vietnamizer giúp biên tập bản nháp AI và bản dịch thô, nhận diện lỗi qua các pattern chuẩn, giữ ngữ nghĩa và giọng văn người viết.</p>
 
 <p align="center">
   <a href="https://github.com/finolabs/vietnamizer/releases/latest"><img src="https://img.shields.io/github/v/release/finolabs/vietnamizer" alt="Bản phát hành mới nhất"></a>
