@@ -138,17 +138,17 @@ Trích đầu ra thật trên Codex, lượt hồi quy 0.12.0/0.12.1 ngày 27/10
 
 Ba model dùng Vietnamizer 0.16.2 biên tập lại 42 file của chính gói skill, theo hồ sơ giọng của tác giả. Fable 5.2 so từng file với bản gốc và chọn bản tốt nhất.
 
-Khi dùng Vietnamizer, cả ba model đều phát hiện và sửa được lỗi dấu hai chấm giữa câu, nhưng chỉ Opus sửa được từ ghép bị cắt còn một tiếng như *rà*, *soát*. Bản phát hành ghép bản tốt nhất của từng file nên sửa được nhiều nhất.
+Khi dùng Vietnamizer, cả ba model đều phát hiện và sửa được lỗi dấu hai chấm giữa câu, nhưng chỉ Opus sửa được từ ghép bị cắt còn một tiếng như *rà*, *soát*. Fable 5.2 cũng dùng Vietnamizer để chọn bản tốt nhất cho từng file rồi ghép lại thành bản phát hành, nên sửa được nhiều nhất dù không tự viết câu nào.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/figures/self-edit-benchmark-dark.svg">
-  <img src="docs/figures/self-edit-benchmark.svg" alt="Ba model biên tập bằng Vietnamizer 0.16.2. Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), bản phát hành 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), Opus 17 (37%), bản phát hành 17 (37%). Giám khảo Fable 5.2 chọn trên 42 file, Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.">
+  <img src="docs/figures/self-edit-benchmark.svg" alt="Ba model biên tập bằng Vietnamizer 0.16.2. Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), Fable 5.2 chọn và ghép lại 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), Opus 17 (37%), Fable 5.2 chọn và ghép lại 17 (37%). Giám khảo Fable 5.2 chọn trên 42 file, Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.">
 </picture>
 
 <details>
 <summary>Bảng số liệu</summary>
 
-| | Bản gốc | Sonnet 5.5 + Vietnamizer | Gemini 3.8 Flash + Vietnamizer | Opus 5.5 + Vietnamizer | Bản phát hành |
+| | Bản gốc | Sonnet 5.5 + Vietnamizer | Gemini 3.8 Flash + Vietnamizer | Opus 5.5 + Vietnamizer | Fable 5.2 + Vietnamizer (bản phát hành) |
 |---|---|---|---|---|---|
 | File được sửa | | 23 | 28 | 23 | 27 |
 | Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | 60 |
