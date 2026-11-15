@@ -54,7 +54,7 @@ Selector cũ `vietnamizer@vietnamizer` không còn nguồn cập nhật.
 1. Mở **Customize → Plugins → Add → Add marketplace**.
 2. Chọn **Add from a repository**, nhập `finolabs/plugins` hoặc
    `https://github.com/finolabs/plugins`.
-3. Trong **Discover**, chọn **Vietnamizer → Add**, rồi kiểm plugin đã bật.
+3. Trong **Discover**, chọn **Vietnamizer → Add**, rồi kiểm tra xem plugin đã bật chưa.
 4. Trong cuộc trò chuyện, gõ `/` hoặc bấm `+`, chọn skill **Vietnamizer** và gửi đoạn cần sửa.
 
 Theo [hướng dẫn của Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude),

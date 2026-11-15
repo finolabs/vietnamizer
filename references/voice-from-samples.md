@@ -36,8 +36,8 @@ một cấu trúc không thành lệnh cấm; không nhập danh sách từ cấ
 khuôn rải khắp bài, văn bản ngắn không cần đủ mọi nét của mẫu dài. Hồ sơ dán thẳng có `ranh giới` thì
 coi đó là trần khi áp; có `Điểm chưa quyết` thì không áp đề xuất trong đó, như `references/voice-profile.md` mục 5.
 
-Theo workflow bài nếu làm bài; không đọc lại nếu đã nạp. Chọn hình thức vì tác dụng tại vị trí này:
-được phép, có căn cứ trong mẫu và nên chọn là ba điều khác nhau. Không flag không có nghĩa nên thêm.
+Theo workflow bài nếu làm bài; không đọc lại nếu đã nạp. Chọn hình thức vì tác dụng tại vị trí này.
+Được phép, có căn cứ trong mẫu và nên chọn là ba điều khác nhau. Không flag không có nghĩa nên thêm.
 Không đóng băng bố cục nguồn khi được phép đổi, nhưng cũng không bắt bullet thành đoạn hoặc thêm hook/CTA.
 
 - Đề mục hỏi phải dẫn đúng phần trả lời đã có và bao quát nội dung bên dưới. Phần vừa ghi phiên bản vừa
@@ -54,9 +54,9 @@ lượng, tình thái và điều kiện. Không tạo ví dụ, trải nghiệm
 ## Đọc bản ra cạnh nguồn và mẫu
 
 Kiểm nghĩa hai chiều theo core trước, rồi xét điểm vào/chuyển ý/kết, chức năng đại từ, thuật ngữ và nhịp
-câu/đoạn/toàn bài. Không đếm câu hỏi/chữ số/đề mục để chấm giống. Sai nghĩa thì thu hẹp/hoàn dù giống mẫu;
+câu/đoạn/toàn bài. Không đếm câu hỏi/chữ số/đề mục để chấm giống. Sai nghĩa thì thu hẹp/hoàn nguyên dù giống mẫu;
 sửa tiếp phải kiểm lại nghĩa phần ảnh hưởng. Được giao kiểm khả năng khớp và có mẫu riêng để chấm thì
-để mẫu đó ngoài bước rút nét. Không tự cho phần trăm khớp/kiểm định khoa học từ lượt rà của host.
+để mẫu đó ngoài bước rút nét. Không tự cho phần trăm khớp/kiểm định khoa học từ lượt rà soát của host.
 Nhận xét cần thiết về mẫu/giới hạn nằm ngoài bài. Cặp nháp/bản chủ sửa: tách đổi giọng khỏi đổi dữ kiện,
 quyết định/phạm vi, chỉ dùng nét cùng tình huống. Chỉ tạo bản tóm tắt hồ sơ khi được yêu cầu; không chép
 chuyện riêng hoặc đưa sở thích vào quy tắc chung. Calibration là ca phát triển, không phải file cần nạp mỗi bài.

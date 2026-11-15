@@ -29,9 +29,9 @@ nguyên văn, tên riêng và ví dụ đang được bàn tới; giữ địa c
 văn thì bảo toàn. Thuật ngữ chỉ đặt trong ngoặc để nhấn không tự là trích dẫn; giữ nội dung thuật ngữ.
 
 Pháp quy/hợp đồng/công văn/quy chế; cổ phong/nghi lễ/tang lễ/văn khấn; changelog/commit/error/UI;
-thơ/văn chương có nhịp chủ ý: chỉ rà T1–T6, không profile/card, không sáng tác trong nhánh này.
+thơ/văn chương có nhịp chủ ý: chỉ rà soát T1–T6, không profile/card, không sáng tác trong nhánh này.
 Văn xuôi còn lại: T chỉ sửa khi có ít nhất một lỗi V1–V25 trong phần văn bản được giao, trừ T2 (gạch
-ngang hoặc dấu hai chấm giữa câu làm mờ quan hệ ý) luôn được rà; lỗi
+ngang hoặc dấu hai chấm giữa câu làm mờ quan hệ ý) luôn được rà soát; lỗi
 nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Không tự thống nhất biến thể chính tả
 đang dùng nhất quán; quy chuẩn được giao có thể quyết định cách viết, không đổi tên riêng.
 
@@ -39,17 +39,17 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 
 | Việc được giao | Đọc thêm trước khi làm | Không đọc mặc định |
 |---|---|---|
-| Sửa một cụm/câu, rà cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
+| Sửa một cụm/câu, rà soát cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
 | Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
 | Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/terminology-consistency.md` trên tuyến bài | Bài ngắn, sửa một cụm |
 | Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
-| Học, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”), kể cả gọi lại hồ sơ đã lưu (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”), kể cả học từ bài LinkedIn/Facebook của chính người dùng; dựng, cập nhật hoặc áp dụng hồ sơ thương hiệu người dùng gọi tên; chấm đoạn mẫu của một hồ sơ | `references/voice-profile.md`; học từ export, trang mạng xã hội hay trang thương hiệu qua trình duyệt thì thêm `references/voice-sources.md`; dựng giọng thương hiệu thì thêm `references/brand-voice.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
+| Học, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”), kể cả gọi lại hồ sơ đã lưu (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”), kể cả học từ bài LinkedIn/Facebook của chính người dùng; dựng, cập nhật hoặc áp dụng hồ sơ thương hiệu người dùng gọi bằng tên; chấm đoạn mẫu của một hồ sơ | `references/voice-profile.md`; học từ export, trang mạng xã hội hay trang thương hiệu qua trình duyệt thì thêm `references/voice-sources.md`; dựng giọng thương hiệu thì thêm `references/brand-voice.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
 | Hỏi Vietnamizer làm được gì, hỏi cách dùng Vietnamizer, “bắt đầu dùng Vietnamizer”, “thiết lập giọng” (“sửa giúp”, “viết hướng dẫn”, “bắt đầu sửa bài” vẫn là biên tập hay viết) | `references/help.md` | Mọi catalog, profile/card, file của người dùng |
-| Chỉ review/nhận xét, không sửa | Trước nhận xét đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
+| Chỉ review/nhận xét, không sửa | Trước khi nhận xét, đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
 
-Rà văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn soát
-V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà T1–T6, vì theo quan sát (chưa đo) đây là lỗi AI hay mắc nhất;
+Rà soát văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn rà soát
+V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà soát T1–T6, vì theo quan sát (chưa đo) đây là lỗi AI hay mắc nhất;
 không biến rà soát thành vòng đọc đủ 55 pattern. Trước khi giữ một sửa lỗi phải đọc pattern
 liên quan và Không flag. Nếu một lỗi có thể thuộc nhiều nhóm, đọc phần cần phân biệt;
 chưa có căn cứ thì giữ nguyên hoặc hỏi đúng điểm làm đổi nghĩa/quan hệ.
@@ -57,8 +57,8 @@ chưa có căn cứ thì giữ nguyên hoặc hỏi đúng điểm làm đổi n
 | Nghi vấn | Catalog canonical |
 |---|---|
 | Thiếu hư từ, bổ ngữ, loại từ, tiếng trong từ; dấu thời gian, câu hỏi | `references/missing-words.md` — V1–V8,V20 |
-| Câu dịch sát, trạng ngữ/quy chiếu, lặp khuôn, danh hóa/bị động, lượng tình thái hoặc quan hệ mờ | `references/sentence-structure.md` — V9–V18,V24–V25 |
-| Chêm tiếng Anh, lời trợ lý, phỏng đoán thiếu nguồn, phản biện không có đối tượng | `references/terms-and-lead-ins.md` — V19,V21–V23 |
+| Câu hoặc cụm động từ dịch sát, trạng ngữ/quy chiếu, lặp khuôn, danh hóa/bị động, lượng tình thái hoặc quan hệ mờ | `references/sentence-structure.md` — V9–V18,V24–V25 |
+| Chêm tiếng Anh hoặc từ nghề dễ hiểu sai, lời trợ lý, phỏng đoán thiếu nguồn, phản biện không có đối tượng | `references/terms-and-lead-ins.md` — V19,V21–V23 |
 | Dấu câu, viết hoa, nhãn trang trí, emoji | `references/typography.md` — T1–T6, theo cổng trên |
 | Sáo ngữ, nhịp, xưng hô hoặc ngữ vực ở blog/chat/marketing | `profiles/personal-blog/rules.md` — B1–B17 |
 | Diễn đạt/đề mục/viện dẫn hoặc siêu dữ liệu ở tài liệu kỹ thuật/doanh nghiệp/học thuật | `profiles/enterprise-technical/rules.md` — K1–K7 |
@@ -114,7 +114,7 @@ README/SOP không thành blog chỉ vì mẫu thân mật. Card không cấp quy
 ## Làm và kiểm lại
 
 Sửa nhỏ: hiểu ý/phạm vi → tra nghi vấn → sửa vừa đủ → đối chiếu nguồn và đọc lại câu trong đoạn.
-Không cần outline thành file/bản nháp mới. Làm bài: theo workflow được chọn. Trước trả bản cuối,
+Không cần outline thành file/bản nháp mới. Làm bài: theo workflow được chọn. Trước khi trả bản cuối,
 khôi phục và so byte vùng bảo toàn; mọi sửa sau review phải kiểm lại nghĩa phần bị ảnh hưởng.
 Không thấy lỗi có căn cứ thì giữ nguyên. Phản hồi của người dùng áp dụng đúng tác vụ, không tự
 lưu hồ sơ hoặc viết calibration; chỉ bảo trì skill khi được giao rõ.
@@ -129,7 +129,7 @@ Chỉ nhận xét/đối chiếu khi được yêu cầu. Chỉ khi người dù
 ngắn phần đổi, không dán cả file. Không âm thầm đổi dữ kiện. Quy tắc có thể dựa trên tài liệu, quan sát
 có đối chiếu hoặc suy luận; không gọi suy luận hay ca phát triển là kiểm định chất lượng. Đánh giá xuất xứ
 chỉ khi được giao, dùng tài liệu nguồn được cung cấp, không tự nạp hồ sơ bảo trì cho mỗi bài.
-Chưa có hồ sơ giọng thì vẫn trả bài ngay. Chỉ kiểm sau khi đã trả bài: kiểm sổ `~/.agents/vietnamizer/registry.md`
+Chưa có hồ sơ giọng thì vẫn trả bài ngay. Chỉ kiểm sau khi đã trả bài. Kiểm sổ `~/.agents/vietnamizer/registry.md`
 có tồn tại, không đọc; trên Chat xem bộ nhớ trong ngữ cảnh không có bản gọn và không có dòng tắt nhắc của Vietnamizer;
 host không kiểm được mà không đọc hay không bật hộp hỏi quyền thì bỏ qua. Không có thì có thể thêm đúng một dòng
 riêng, tối đa một lần mỗi phiên, kể cả với bài dán thường: “Muốn Vietnamizer viết theo giọng của bạn, hãy nói ‘học

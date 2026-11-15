@@ -9,7 +9,7 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 [câu và quan hệ](../references/sentence-structure.md); V19,V21–V23 ở
 [từ và lời dẫn](../references/terms-and-lead-ins.md); T1–T6 ở
 [typography](../references/typography.md). B/K vẫn ở hai profile. Chỉ tra nhóm có nghi vấn;
-đọc Không flag trước sửa lỗi, không dùng danh mục này như checklist nạp mọi file.
+đọc Không flag trước khi sửa lỗi, không dùng danh mục này như checklist nạp mọi file.
 
 
 ### Cách dùng từ và cấu trúc câu (V1–V25)
@@ -24,7 +24,7 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 | V6 | Câu hỏi hoặc lời nhờ không đúng ý định giao tiếp | Phân biệt câu hỏi có hoặc không với câu hỏi cần nội dung cụ thể |
 | V7 | "của" thừa trong cụm danh từ | *hiệu suất của hệ thống* → *hiệu suất hệ thống* nếu không có quan hệ sở hữu |
 | V8 | "các" và "những" được thêm theo dấu số nhiều | Bỏ khi số nhiều đã rõ và phạm vi không đổi |
-| V9 | Cụm giới từ dài do dịch sát | *trong quá trình kiểm tra* → *khi kiểm tra* nếu nghĩa giữ nguyên |
+| V9 | Cụm giới từ dài hoặc cách nói dịch sát | *trong quá trình kiểm tra* → *khi kiểm tra* nếu nghĩa giữ nguyên |
 | V10 | Trạng ngữ đặt ở vị trí gây khó hiểu | Chuyển vị trí khi người đọc không biết trạng ngữ bổ nghĩa cho hành động nào |
 | V11 | Câu dẫn không mang thêm thông tin | Bỏ *Điều quan trọng cần lưu ý là* nếu phần sau tự đứng được |
 | V12 | Lặp từ nối ở đầu câu | Xem lại chuỗi câu cùng mở bằng *Ngoài ra, Tuy nhiên, Do đó* |
@@ -34,7 +34,7 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 | V16 | Câu bị động dịch sát "được / bị ... bởi" | *được hoàn thành bởi phòng kế toán* → *phòng kế toán hoàn thành* khi tác nhân là trọng tâm |
 | V17 | Dùng cụm dài thay cho "là" hoặc "có" | *đóng vai trò là trung tâm* → *là trung tâm* nếu không cần nhấn chức năng |
 | V18 | Câu lồng nhiều tầng, "mà" và "điều này" không rõ | Tách câu nhưng giữ nguyên chủ thể và quan hệ nhân quả |
-| V19 | Chêm tiếng Anh không hợp người đọc hoặc lĩnh vực | Giữ thuật ngữ theo cách dùng thật của cộng đồng, không tự thêm hoặc xoá đồng loạt |
+| V19 | Chêm tiếng Anh hoặc từ nghề không hợp người đọc hoặc lĩnh vực | Giữ thuật ngữ theo cách dùng thật của cộng đồng, không tự thêm hoặc xoá đồng loạt |
 | V20 | Từ hoặc cụm từ bị thiếu một tiếng | *đọc lên thấy hụt* → *đọc lên thấy **hụt hẫng*** khi đúng với ý câu |
 | V21 | Tàn dư lượt hội thoại của trợ lý | *Chắc chắn rồi! Dưới đây là ba bước...* → *Ba bước triển khai...* |
 | V22 | Rào trước về nguồn rồi đưa phỏng đoán | *Không có thông tin công bố. Nhiều khả năng công ty bắt đầu từ đầu những năm 2000.* → giữ điều nguồn nói, bỏ phần đoán |
@@ -54,7 +54,7 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 | T6 | Emoji |
 
 Với văn xuôi thông thường, typography chỉ được sửa khi văn bản đồng thời có ít nhất một pattern
-V1–V25; riêng T2 luôn được rà. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
+V1–V25; riêng T2 luôn được rà soát. Thể loại được cổng đầu vào giới hạn ở T1–T6 là ngoại lệ; vùng bảo toàn vẫn giữ nguyên từng byte.
 
 ### Blog, bài cá nhân, nội dung công việc và marketing (B1–B17)
 

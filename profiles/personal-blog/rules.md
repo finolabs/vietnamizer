@@ -23,7 +23,7 @@ Chỉ khi mục đích/người đọc mâu thuẫn hoặc pha chức năng mớ
 **Dấu hiệu:** *hành trình* (khi không ai đi đâu cả), *chìa khoá thành công, chìa khoá để, bức tranh toàn cảnh, cái nhìn toàn cảnh, ngọn hải đăng dẫn lối, đòn bẩy tăng trưởng, bệ phóng, cú hích, làn gió mới, mảnh ghép còn thiếu, kim chỉ nam, xương sống của, trái tim của hệ thống, mở ra cánh cửa, thắp lửa đam mê, chắp cánh ước mơ, đào sâu vấn đề, tạo ra cuộc cách mạng*. Nhóm dịch sát từ tiếng Anh gồm *vào cuối ngày* (at the end of the day), *mở khoá tiềm năng, thay đổi cuộc chơi, bắt kịp đường cong, câu chuyện thành công, nằm ở chỗ*.
 **Vì sao:** những ẩn dụ quen thuộc có thể che mất hành động hoặc kết quả cần nói thẳng. Càng đáng xem lại khi một đoạn trộn nhiều hình ảnh không cùng trường nghĩa, chẳng hạn vừa nói *hành trình*, vừa nói *bệ phóng*, rồi chuyển sang *bức tranh*.
 **Sửa:** nói thẳng các vai trò đã nêu: *"Đào tạo nội bộ hỗ trợ doanh nghiệp tăng trưởng và chuyển đổi số. Hai vai trò ấy được ví như chìa khóa và bệ phóng."* → *"Đào tạo nội bộ hỗ trợ doanh nghiệp tăng trưởng và chuyển đổi số."* Không tự đổi ẩn dụ thành điều kiện, dự đoán hoặc thời hạn ngoài nguồn; khi ẩn dụ mang mức nhấn mạnh riêng, giữ mức đó hoặc giữ cách viết.
-**Không flag:** ẩn dụ đã thành thuật ngữ ngành, *hành trình khách hàng* trong tài liệu UX, *xương sống* trong mô tả hạ tầng mạng. Ẩn dụ được triển khai nhất quán và có chi tiết riêng: đó là dấu hiệu người viết. Thành ngữ Việt thật trùng hình với tiếng Anh (*con dao hai lưỡi*, *giọt nước tràn ly*).
+**Không flag:** ẩn dụ đã thành thuật ngữ ngành, *hành trình khách hàng* trong tài liệu UX, *xương sống* trong mô tả hạ tầng mạng. Ẩn dụ được triển khai nhất quán và có chi tiết riêng là dấu hiệu người viết. Thành ngữ Việt thật trùng hình với tiếng Anh (*con dao hai lưỡi*, *giọt nước tràn ly*).
 
 ### B3. Mở bài dẫn dắt vòng vo
 
@@ -66,14 +66,14 @@ B5 chỉ xử lý khuôn song hành nâng giọng hoặc lặp ý. Nếu câu đ
 
 **Dấu hiệu:** nội dung giới thiệu hoặc thuyết phục dùng danh xưng và tuyên bố như *hàng đầu Việt Nam, top đầu, số 1 thị trường, uy tín nhất, tiên phong trong lĩnh vực, giải pháp toàn diện, đáp ứng mọi nhu cầu*; hoặc mượn một nhóm không được định danh như *được nhiều chuyên gia đánh giá cao, được giới chuyên môn tin dùng* để nâng vị thế sản phẩm.
 **Vì sao:** danh xưng và sự tán thành vô danh đang làm lý do thuyết phục nhưng người đọc không biết tiêu chí, người đánh giá hoặc nguồn nào đứng sau.
-**Sửa:** thay bằng số liệu, khách hàng, giải thưởng hoặc nguồn bên thứ ba **có trong bản gốc** và nêu đúng phạm vi của dẫn chứng. Thiếu dẫn chứng thì giữ nguyên nội dung đang được rà và nêu phần cần tác giả xác nhận ngoài bài khi được giao nhận xét; chỉ cắt tuyên bố riêng nếu người dùng đã giao sửa nội dung đó. Không tự đặt tên chuyên gia hay tổ chức.
+**Sửa:** thay bằng số liệu, khách hàng, giải thưởng hoặc nguồn bên thứ ba **có trong bản gốc** và nêu đúng phạm vi của dẫn chứng. Thiếu dẫn chứng thì giữ nguyên nội dung đang được rà soát và nêu phần cần tác giả xác nhận ngoài bài khi được giao nhận xét; chỉ cắt tuyên bố riêng nếu người dùng đã giao sửa nội dung đó. Không tự đặt tên chuyên gia hay tổ chức.
 **Không flag:** tuyên bố kèm dẫn chứng, xếp hạng, giải thưởng hoặc đánh giá từ bên thứ ba được nêu tên và có trong tài liệu người dùng giao. Trích slogan chính thức trong bài phân tích về slogan đó. Trong tài liệu kỹ thuật, doanh nghiệp hoặc học thuật, lời viện dẫn vô danh dùng thay bằng chứng thuộc K7, không thuộc B8.
 
 ### B9. Hán-Việt hoá tên gọi đời thường
 
 **Dấu hiệu:** chọn từ Hán-Việt trang trọng ở chỗ thuần Việt tự nhiên hơn: *phương tiện di chuyển* thay *xe*, *thực phẩm* thay *đồ ăn*, *trang phục* thay *quần áo*, *nơi cư trú* thay *chỗ ở*, *thân nhân* thay *người nhà*, *sở hữu* thay *có*, *tiến hành* thay *làm*.
 **Vì sao:** LLM dễ nghiêng về vốn từ hành chính và báo chí. Trong bài viết cá nhân, lựa chọn trang trọng liên tiếp có thể khiến lời văn xa cách hơn giọng thật của người viết.
-**Sửa:** tra `references/sino-vietnamese.md`. Đọc cột thứ ba trước khi thay vì cột này nêu điều kiện phải giữ nguyên từ Hán-Việt. Không dùng hai cột đầu như danh sách tìm và thay.
+**Sửa:** tra `references/sino-vietnamese.md`. Đọc cột thứ ba trước khi thay, vì cột này nêu điều kiện phải giữ nguyên từ Hán-Việt. Không dùng hai cột đầu như danh sách tìm và thay.
 **Không flag:** năm phép thử trong file tham chiếu; chỉ cần một phép cho kết quả “giữ” là dừng. Người viết có thể dùng nhiều từ Hán-Việt một cách tự nhiên và nhất quán, nhất là trong môi trường nhà nước hoặc học thuật. Mục tiêu là giữ đúng thể loại và giọng tác giả, không phải loại bỏ từ Hán-Việt.
 
 ### B10. Thành ngữ dùng lệch và mật độ thành ngữ bất thường
@@ -87,7 +87,7 @@ B5 chỉ xử lý khuôn song hành nâng giọng hoặc lặp ý. Nếu câu đ
 
 ### B11. Nhịp ba cân âm tiết và biền ngẫu giả
 
-**Dấu hiệu:** liệt kê ba thành phần *A, B và C* trong đó cả ba **cùng số âm tiết** và cùng cấu trúc ngữ pháp: *"nhanh chóng, chính xác và hiệu quả"*, *"tối ưu chi phí, nâng cao chất lượng và mở rộng thị trường"*. Biền ngẫu giả là dạng nặng hơn: từ ba cặp vế song song đều tăm tắp trở lên.
+**Dấu hiệu:** liệt kê ba thành phần *A, B và C* trong đó cả ba **cùng số âm tiết** và cùng cấu trúc ngữ pháp: *"nhanh chóng, chính xác và hiệu quả"*, *"tối ưu chi phí, nâng cao chất lượng và mở rộng thị trường"*. Biền ngẫu giả là dạng nặng hơn, gồm từ ba cặp vế song song đều tăm tắp trở lên.
 **Vì sao:** ba vế có cùng cấu trúc và độ dài dễ tạo nhịp khẩu hiệu. Nhịp đó không sai, nhưng nếu nội dung của từng vế mơ hồ thì sự cân đối đang thay thế cho thông tin.
 **Sửa:** chỉ đổi nhịp nếu không mất ý riêng. Ví dụ có phần lặp: *"Giải pháp giúp tối ưu chi phí, nâng cao chất lượng và mở rộng thị trường. Nó giúp doanh nghiệp mở rộng thị trường."* → *"Giải pháp giúp tối ưu chi phí và nâng cao chất lượng. Nó còn giúp doanh nghiệp mở rộng thị trường."* Không bỏ một lợi ích, đảo phủ định hoặc tự thêm số liệu để phá nhịp; câu chung nhưng có ba ý khác nhau có thể giữ nguyên.
 **Không flag:** ba thành phần là danh sách dữ kiện thật (ba chi nhánh, ba giai đoạn, ba điều khoản). Nhịp ba mang thông tin hoặc sắc thái có chủ ý thì giữ; nhạc điệu tự nó không đủ để xóa một thành phần.
