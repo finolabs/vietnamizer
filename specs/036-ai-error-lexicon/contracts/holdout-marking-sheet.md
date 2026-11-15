@@ -30,7 +30,9 @@ Spans that look like an error but are correct in context. A change to any byte o
 
 ## What counts
 
-- A marked error is **fixed** when the output no longer contains the marked span as written and contains one accepted fix in the same paragraph, or Fio accepts the output's fix when the cell was empty.
-- A guard is **broken** when its span is not byte-identical in the output.
+Before any comparison, the sheet, the article and every output are normalised to Unicode NFC, so a generator's NFD text never counts as a change. Each source sentence holding a marked span is aligned to one output sentence (`difflib` on the paragraph); the rules below look only inside that aligned sentence.
+
+- A marked error is **fixed** when the aligned output sentence no longer contains the marked span and contains one accepted fix, or Fio accepts the output's fix when the cell was empty. A sentence deleted or rewritten so far that no sentence aligns goes to Fio's out-of-span list and is never counted as fixed.
+- A guard is **broken** when its span (after NFC) is not identical in the aligned output sentence.
 - Edits outside both tables are listed for Fio, blind to which version made them, as `đúng`, `không cần` or `sai`; `sai` counts as an over-correction, `không cần` is reported separately.
 - Time and tokens come from the run log, not from Fio.

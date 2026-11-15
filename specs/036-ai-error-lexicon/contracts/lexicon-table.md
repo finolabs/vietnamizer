@@ -9,22 +9,23 @@ Consumers: the agent (reading path, inventory), `scripts/scan-lexicon.py`, `scri
 3. Exactly one Markdown table under the heading `## Bảng`, with this header row, in this order:
 
 ```text
-| ID | Dạng | Loại | Pattern | Sửa | Sau không là | Trước không là | Chữ hoa | Không flag | Ca |
+| ID | Dạng | Loại | Pattern | Sửa | Ngữ vực lỗi | Sau không là | Trước không là | Chữ hoa | Không flag | Ca |
 ```
 
 4. A section `## Thêm mục` restating FR-004 in one paragraph (LOG first, a calibration case and a guard, then the row; no personal preference).
 
-Field rules are in [data-model.md](../data-model.md) "Lexicon entry". No other table may appear in the file, so the scanner finds the table by its header row without heuristics.
+Field rules are in [data-model.md](../data-model.md) "Lexicon entry". The register where a form is an error (FR-001) has its own column, `Ngữ vực lỗi`, always within the table's global scope (prose outside the T1–T6-only genres); exceptions sit in `Không flag`. No other table may appear in the file, so the scanner finds the table by its header row without heuristics.
 
 ## Validation (`validate-package.py` and `tests/test_scan_lexicon.py`)
 
 - Header row equals the one above, byte for byte.
-- Every row has 10 cells; no cell is empty; `—` only in the neighbour columns.
+- Every row has 11 cells; no cell is empty; `—` only in the neighbour columns.
 - IDs unique and continuous from `L01`.
 - `Loại` in the four allowed values; `Chữ hoa` in `mọi`, `đầu câu`.
 - `Pattern` exists in the V/T catalogs.
 - Every `Ca` id exists in `calibration/test-cases.md` (source checkout only; the payload has no calibration).
-- Every form is NFC and 1–4 syllables.
+- Every form is NFC, lower case and 1–4 syllables; one form per row.
+- Every fix in `Sửa` differs from the form (a fix equal to the form is a no-op row).
 - Every entry has at least one positive and one guard fixture in `tests/fixtures/lexicon/fixtures.json`.
 
 A failure stops the package build, as the other validator checks do.

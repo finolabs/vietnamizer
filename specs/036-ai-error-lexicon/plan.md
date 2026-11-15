@@ -18,7 +18,7 @@ Ship a curated lexicon of known AI errors as one Markdown table, `references/ai-
 **Project Type**: agent skill package (Markdown) with one optional offline helper script.
 **Performance Goals**: the scanner finishes a 1 MB input in under 2 s on a laptop; the lexicon adds at most about 2,500 tokens on the long-form route (P4).
 **Constraints**: `SKILL.md` ≤ 550 lines (137 today); pattern count stays 55; Principle V as amended (no network, no secret, no file write, reads only stdin and package data); the scanner input cap is 1,000,000 bytes (R4).
-**Scale/Scope**: seed lexicon of 7 entries (data-model.md "Seed entries"), growing only through FR-004; 20 holdout articles (P1); up to five model families in the release benchmark (P2).
+**Scale/Scope**: seed lexicon of 8 entries (data-model.md "Seed entries"), growing only through FR-004; 20 holdout articles (P1); up to five model families in the release benchmark (P2).
 
 ## Plan decisions (Fio, 2026-11-15, native question tool)
 
@@ -52,7 +52,7 @@ Decided by the plan author within the spec (reviewable in this PR, changeable by
 | Eval constraint (model and corpus version) | The holdout run records model id, corpus hash, lexicon hash and package version per output (R6). Pass. |
 | Governance (`AGENTS.md` vs constitution) | `AGENTS.md` "Không có evaluator ngoài" says the package is Markdown only; it conflicts with 2.9.0 once applied and is rewritten in the same pull request (FR-021). |
 
-Post-design re-check: pass. Residual risks: (1) a host shell may prompt for permission to run Python, which interrupts the user although the skill itself asks nothing; mitigated by falling back to the reading path on any refusal (FR-014) and by never suggesting the user enable anything. (2) Pasted text passed to the scanner through a shell here-document could break out of it; mitigated by a quoted, random 32-hex delimiter, checked absent from the text before use (contracts/scanner-cli.md "Invocation"). (3) A model may skip the inventory on a long article as Sonnet skipped V20 on 0.16.2; measured on the holdout (SC-005), not assumed away.
+Post-design re-check: pass. Residual risks: (1) a host shell may prompt for permission to run Python, which interrupts the user although the skill itself asks nothing; mitigated by falling back to the reading path on any refusal (FR-014) and by never suggesting the user enable anything. (2) Untrusted text or a user-named path reaching a shell; mitigated by single-quoted paths, by writing pasted text with the host's file tool instead of the shell, and, only without such a tool, a single-quoted here-document with a fixed delimiter refused when any line equals it, bounded at 100,000 bytes under `ARG_MAX` (contracts/scanner-cli.md "Invocation by the agent"). (3) A model may skip the inventory on a long article as Sonnet skipped V20 on 0.16.2; measured on the holdout (SC-005), not assumed away.
 
 ## Project Structure
 
@@ -87,7 +87,8 @@ references/missing-words.md, references/sentence-structure.md, references/terms-
                                       # V20, V9, V19: one line each pointing to the lexicon rows
 SKILL.md                              # routing row for the long-form route; scanner optional line
 .plugin-skills/vietnamizer/SKILL.md   # resolve scripts/ from the plugin root too
-scripts/validate-package.py           # payload scripts/ = exactly {scan-lexicon.py}; lexicon in REFERENCE_FILES; table check
+scripts/validate-package.py           # payload scripts/ = exactly {scan-lexicon.py}; lexicon in REFERENCE_FILES; table check;
+                                      # its package-skill.sh copy check (`copied_payload != PACKAGE_COPY_SOURCES`) learns the file-level source scripts/scan-lexicon.py
 scripts/package-skill.sh              # stage scripts/scan-lexicon.py only
 tests/test_scan_lexicon.py            # NEW
 tests/fixtures/lexicon/fixtures.json  # NEW, positive and guard fixtures with expected candidates
