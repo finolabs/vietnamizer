@@ -1,6 +1,6 @@
 # Giải lựa chọn phong cách khi chưa rõ hoặc pha chức năng
 
-Chỉ đọc khi bảng mục đích của core chưa đủ: ngữ cảnh thiếu/mâu thuẫn hoặc tài liệu pha chức năng.
+Chỉ đọc khi bảng mục đích của core chưa đủ, tức là khi ngữ cảnh thiếu/mâu thuẫn hoặc tài liệu pha chức năng.
 Không đọc file này như điều kiện bắt buộc trước mọi câu sửa. Core sở hữu quyền sửa, dữ liệu,
 vùng bảo toàn và năm chốt; resolver chỉ chọn cách viết giữa các lựa chọn còn hợp lệ.
 
@@ -26,7 +26,7 @@ Blog công nghệ có tác giả vẫn thuộc blog; README/SOP/tra cứu giữ 
 Typography-only không có card. Đọc thêm rules B/K chỉ khi có nghi vấn phụ thuộc thể loại, không
 vì đã chọn một card mà tự nạp toàn profile. Không cần cài đủ nét của card vào bài.
 
-Giữ tóm tắt ngắn trong quá trình làm: phần, mục đích/người đọc, giọng đích/chế độ, card, nét có
+Giữ tóm tắt ngắn trong quá trình làm, gồm phần, mục đích/người đọc, giọng đích/chế độ, card, nét có
 bằng chứng và điều phải giữ. Không in phân tích định tuyến vào bài. Đủ căn cứ thì làm; thiếu chỉ
 ảnh hưởng lựa chọn nhỏ thì giữ cách phù hợp đang có; thiếu làm đổi quan hệ/giọng đáng kể mới hỏi
 đúng một điểm và dừng phần phụ thuộc. Đại từ đã nhất quán không cần hỏi lại để đổi.
@@ -54,4 +54,4 @@ Mẫu khác kênh không được trộn thành giọng trung bình; hồ sơ kh
 Đọc đúng card được chọn, không đọc các card khác chỉ để so. Card chỉ hỗ trợ nhịp, xưng hô,
 thuật ngữ và cách kết trong phạm vi hợp lệ, không sở hữu pattern hoặc thêm quyền sửa. Metadata
 card giữ tám mục Dùng khi/Thanh ngữ vực/Xưng hô/Nhịp/Thuật ngữ/Cách kết/Không tự thêm/Ca kiểm thử;
-đó là hợp đồng bảo trì, không checklist bắt mỗi bài mang đủ tám nét. Không tạo card cá nhân/công ty.
+đó là hợp đồng bảo trì, không phải checklist bắt mỗi bài mang đủ tám nét. Không tạo card cá nhân/công ty.
