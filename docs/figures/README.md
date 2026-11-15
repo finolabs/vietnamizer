@@ -1,9 +1,12 @@
 # Tái dựng hình trong README
 
-README hiện dùng hai hình. `banner.png` dựng từ `.github/social-preview.json` bằng skill
+README hiện dùng ba hình. `banner.png` dựng từ `.github/social-preview.json` bằng skill
 `finolabs-social-preview`. `voice-setup.svg` và `voice-setup-dark.svg` dựng bằng
 `python3 docs/figures/voice_setup.py docs/figures`, chỉ dùng thư viện chuẩn của Python; nội dung
-khớp mục “Thiết lập giọng của bạn” trong README.
+khớp mục “Thiết lập giọng của bạn” trong README. `self-edit-benchmark.svg` và
+`self-edit-benchmark-dark.svg` dựng bằng `python3 docs/figures/self_edit_benchmark.py`; số đếm lỗi lấy
+từ `benchmarks/self_edit_count.py`, số file giám khảo chọn lấy từ bảng chọn của Fable 5.2, khớp mục
+“Vietnamizer tự biên tập chính nó (0.16.2)” trong README.
 
 Hai hình bằng chứng bên dưới không còn nhúng trong README từ 0.16.2; dữ liệu và cách dựng lại được
 giữ để dùng ở [Benchmark](../benchmarks.md).

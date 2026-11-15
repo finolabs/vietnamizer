@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 764" width="960" height="764" role="img" aria-labelledby="self-edit-benchmark-dark-title self-edit-benchmark-dark-desc">
+<title id="self-edit-benchmark-dark-title">Kết quả Vietnamizer tự biên tập chính nó, bản 0.16.2</title>
+<desc id="self-edit-benchmark-dark-desc">Ba model biên tập bằng Vietnamizer 0.16.2. Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), Fable 5.2 chọn và ghép lại 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), Opus 17 (37%), Fable 5.2 chọn và ghép lại 17 (37%). Trong 42 file của bản phát hành, 18 file lấy bản của Opus, 6 của Sonnet, 2 của Gemini, 16 giữ bản gốc.</desc>
+<rect width="100%" height="100%" fill="#1A0A2E"/>
+<text x="32" y="34" fill="#BCBCD0" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Ba model biên tập bằng Vietnamizer 0.16.2. Thanh tô màu là Fable 5.2 dùng Vietnamizer chọn bản tốt nhất</text>
+<text x="32" y="52" fill="#BCBCD0" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">cho từng file rồi ghép lại, chính là bản phát hành 0.16.2. Fable không tự viết câu nào.</text>
+<text x="32" y="92" fill="#F4F1FA" font-size="17" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Lỗi dấu hai chấm giữa câu mà Vietnamizer giúp từng model phát hiện và sửa</text>
+<text x="32" y="114" fill="#BCBCD0" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Bản gốc có 109 chỗ dùng dấu hai chấm nối hai ý trong một câu, kiểu “Khách ít kiên nhẫn: họ sẽ hỏi nơi khác”.</text>
+<line x1="272" y1="132" x2="272" y2="268" stroke="#BCBCD0" stroke-width="1"/>
+<line x1="372.0" y1="132" x2="372.0" y2="268" stroke="#3A2A52" stroke-width="1"/>
+<line x1="472.0" y1="132" x2="472.0" y2="268" stroke="#3A2A52" stroke-width="1"/>
+<line x1="572.0" y1="132" x2="572.0" y2="268" stroke="#3A2A52" stroke-width="1"/>
+<line x1="672.0" y1="132" x2="672.0" y2="268" stroke="#3A2A52" stroke-width="1"/>
+<line x1="772.0" y1="132" x2="772.0" y2="268" stroke="#3A2A52" stroke-width="1"/>
+<text x="258" y="150.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Sonnet 5.5 + Vietnamizer</text>
+<path d="M273 138H549.0Q553.0 138 553.0 142V150Q553.0 154 549.0 154H273Z" fill="#8A86A6"/>
+<text x="563.0" y="150.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 31/109 chỗ (28%)</text>
+<text x="258" y="184.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Gemini 3.8 Flash + Vietnamizer</text>
+<path d="M273 172H499.0Q503.0 172 503.0 176V184Q503.0 188 499.0 188H273Z" fill="#8A86A6"/>
+<text x="513.0" y="184.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 25/109 chỗ (23%)</text>
+<text x="258" y="218.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Opus 5.5 + Vietnamizer</text>
+<path d="M273 206H699.0Q703.0 206 703.0 210V218Q703.0 222 699.0 222H273Z" fill="#8A86A6"/>
+<text x="713.0" y="218.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 47/109 chỗ (43%)</text>
+<text x="258" y="252.5" fill="#F4F1FA" font-size="14" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Fable 5.2 + Vietnamizer</text>
+<path d="M273 240H719.0Q723.0 240 723.0 244V252Q723.0 256 719.0 256H273Z" fill="#7FE2CE"/>
+<text x="733.0" y="252.5" fill="#F4F1FA" font-size="13" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 49/109 chỗ (45%)</text>
+<text x="32" y="320" fill="#F4F1FA" font-size="17" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Từ ghép bị cắt còn một tiếng mà Vietnamizer giúp từng model phát hiện và sửa</text>
+<text x="32" y="342" fill="#BCBCD0" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Bản gốc có 46 chỗ viết “rà” hoặc “soát” trong khi đúng ra phải là “rà soát”.</text>
+<line x1="272" y1="360" x2="272" y2="496" stroke="#BCBCD0" stroke-width="1"/>
+<line x1="372.0" y1="360" x2="372.0" y2="496" stroke="#3A2A52" stroke-width="1"/>
+<line x1="472.0" y1="360" x2="472.0" y2="496" stroke="#3A2A52" stroke-width="1"/>
+<line x1="572.0" y1="360" x2="572.0" y2="496" stroke="#3A2A52" stroke-width="1"/>
+<line x1="672.0" y1="360" x2="672.0" y2="496" stroke="#3A2A52" stroke-width="1"/>
+<line x1="772.0" y1="360" x2="772.0" y2="496" stroke="#3A2A52" stroke-width="1"/>
+<text x="258" y="378.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Sonnet 5.5 + Vietnamizer</text>
+<text x="283.0" y="378.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 0/46 chỗ (0%)</text>
+<text x="258" y="412.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Gemini 3.8 Flash + Vietnamizer</text>
+<path d="M273 400H289.0Q293.0 400 293.0 404V412Q293.0 416 289.0 416H273Z" fill="#8A86A6"/>
+<text x="303.0" y="412.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 1/46 chỗ (2%)</text>
+<text x="258" y="446.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Opus 5.5 + Vietnamizer</text>
+<path d="M273 434H639.0Q643.0 434 643.0 438V446Q643.0 450 639.0 450H273Z" fill="#8A86A6"/>
+<text x="653.0" y="446.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 17/46 chỗ (37%)</text>
+<text x="258" y="480.5" fill="#F4F1FA" font-size="14" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Fable 5.2 + Vietnamizer</text>
+<path d="M273 468H639.0Q643.0 468 643.0 472V480Q643.0 484 639.0 484H273Z" fill="#7FE2CE"/>
+<text x="653.0" y="480.5" fill="#F4F1FA" font-size="13" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sửa 17/46 chỗ (37%)</text>
+<text x="32" y="548" fill="#F4F1FA" font-size="17" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Bản phát hành lấy bản sửa của model nào</text>
+<text x="32" y="570" fill="#BCBCD0" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Với mỗi file trong 42 file, Fable 5.2 so bản gốc với ba bản đã sửa và giữ lại bản tốt nhất.</text>
+<text x="32" y="588" fill="#BCBCD0" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16 file giữ bản gốc vì không bản sửa nào tốt hơn, trong đó 13 file không model nào sửa.</text>
+<line x1="272" y1="606" x2="272" y2="742" stroke="#BCBCD0" stroke-width="1"/>
+<line x1="397.0" y1="606" x2="397.0" y2="742" stroke="#3A2A52" stroke-width="1"/>
+<line x1="522.0" y1="606" x2="522.0" y2="742" stroke="#3A2A52" stroke-width="1"/>
+<line x1="647.0" y1="606" x2="647.0" y2="742" stroke="#3A2A52" stroke-width="1"/>
+<line x1="772.0" y1="606" x2="772.0" y2="742" stroke="#3A2A52" stroke-width="1"/>
+<text x="258" y="624.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Opus 5.5 + Vietnamizer</text>
+<path d="M273 612H719.0Q723.0 612 723.0 616V624Q723.0 628 719.0 628H273Z" fill="#8A86A6"/>
+<text x="733.0" y="624.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">18 file</text>
+<text x="258" y="658.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Giữ bản gốc</text>
+<path d="M273 646H669.0Q673.0 646 673.0 650V658Q673.0 662 669.0 662H273Z" fill="#8A86A6"/>
+<text x="683.0" y="658.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16 file</text>
+<text x="258" y="692.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Sonnet 5.5 + Vietnamizer</text>
+<path d="M273 680H419.0Q423.0 680 423.0 684V692Q423.0 696 419.0 696H273Z" fill="#8A86A6"/>
+<text x="433.0" y="692.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">6 file</text>
+<text x="258" y="726.5" fill="#F4F1FA" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Gemini 3.8 Flash + Vietnamizer</text>
+<path d="M273 714H319.0Q323.0 714 323.0 718V726Q323.0 730 319.0 730H273Z" fill="#8A86A6"/>
+<text x="333.0" y="726.5" fill="#F4F1FA" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2 file</text>
+</svg>
