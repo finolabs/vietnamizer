@@ -41,7 +41,7 @@ gần với chính bạn, nhưng đó là niềm tin chứ chưa phải số đo
 |---|---|
 | Biên tập bản nháp AI hoặc bản dịch thô | Tìm lỗi cụ thể về từ, bổ ngữ và cấu trúc câu |
 | Biên tập blog, bài chuyên môn | Giữ ý định, mức khẳng định, câu rút gọn và nhịp dấu câu |
-| Rà README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
+| Rà soát README, báo cáo, tài liệu công việc | Giữ thuật ngữ và giọng theo thể loại |
 | Viết theo giọng của bạn hoặc của thương hiệu | Học hồ sơ giọng từ bài bạn đưa, cho bạn chấm đoạn mẫu, chỉ lưu khi bạn yêu cầu; bắt đầu bằng `/vietnamizer:help` (Claude Code) hoặc câu “thiết lập giọng” |
 
 Vietnamizer là bước biên tập trước khi gửi hay đăng bài và không kiểm chứng dữ kiện trong bài.
@@ -214,7 +214,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Phạm vi
 
-- Tự chọn profile theo thể loại; công văn, hợp đồng, thơ và changelog chỉ rà typography.
+- Tự chọn profile theo thể loại; công văn, hợp đồng, thơ và changelog chỉ rà soát typography.
 - Bảo toàn dữ kiện, thuật ngữ, code và trích dẫn nguyên văn; không suy tác giả AI từ lỗi ngôn ngữ.
 - Không gọi dịch vụ ngoài và không đọc API key; Jev/TypeSafe đã gỡ từ 0.14.0.
 - Chỉ cung cấp văn bản được phép chia sẻ, không chứa credential hoặc dữ liệu bị hạn chế.
@@ -247,7 +247,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Lịch sử phiên bản
 
-- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
+- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà soát cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn rà soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
 - **0.16.1** — Mô tả plugin ngắn lại để catalog `finolabs/plugins` pin được bản mới; nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt; gọi lại hồ sơ đã lưu bằng tên.
 
