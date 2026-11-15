@@ -2,7 +2,7 @@
 
 Tra khi có nghi vấn đúng nhóm ở bảng của SKILL.md; đọc cả Không flag trước khi sửa.
 Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm khác chỉ vì có liên kết.
-Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà không có nghĩa là luôn sửa); không áp typography vào vùng bảo toàn.
+Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà soát không có nghĩa là luôn sửa); không áp typography vào vùng bảo toàn.
 
 ### T1. Viết hoa theo kiểu tiêu đề tiếng Anh
 
@@ -22,7 +22,7 @@ Cổng T do SKILL.md quyết định (T2 không chờ lỗi V; luôn rà không 
 
 **Dấu hiệu:** trộn `“ ”` cong và `" "` thẳng trong cùng một tài liệu, chẳng hạn mở bằng `“` nhưng
 đóng bằng `"`. Ngoặc `«...»` hoặc `„..."` xuất hiện lẻ tẻ giữa văn bản Việt hiện đại.
-**Vì sao:** bản thân ngoặc cong không nói lên gì: Word, Google Docs và macOS đều tự bo cong, mà đây lại là công cụ soạn thảo mặc định ở Việt Nam. Thứ đáng ngờ là **sự trộn lẫn**, vì nó cho thấy các đoạn đến từ nguồn khác nhau.
+**Vì sao:** bản thân ngoặc cong không nói lên gì. Word, Google Docs và macOS đều tự bo cong, mà đây lại là công cụ soạn thảo mặc định ở Việt Nam. Thứ đáng ngờ là **sự trộn lẫn**, vì nó cho thấy các đoạn đến từ nguồn khác nhau.
 **Sửa:** thống nhất về một kiểu, giữ kiểu đang chiếm đa số trong văn bản. **Không ép về ngoặc thẳng**, đây là chỗ đảo hành vi so với bản tiếng Anh.
 **Không flag:** toàn văn bản nhất quán một kiểu, dù cong hay thẳng. `«...»` trong bản dịch từ tiếng Pháp hoặc Nga. Ngoặc lồng. Code, JSON, chuỗi kỹ thuật. Trích dẫn nguyên văn hoặc phần chưa rõ chức năng vẫn thuộc vùng bảo toàn, không đổi cả dấu; với thuật ngữ chỉ đặt trong ngoặc để nhấn mạnh, T3 chỉ cho thống nhất kiểu ngoặc, không tự đổi nội dung.
 
