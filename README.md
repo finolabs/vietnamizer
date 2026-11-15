@@ -138,12 +138,24 @@ Trích đầu ra thật trên Codex, lượt hồi quy 0.12.0/0.12.1 ngày 27/10
 
 Ba model dùng Vietnamizer 0.16.2 biên tập lại 42 file của chính gói skill, theo hồ sơ giọng của tác giả. Fable 5.2 so từng file với bản gốc và chọn bản tốt nhất.
 
+Cả ba model đều sửa được dấu hai chấm giữa câu, nhưng chỉ Opus sửa được từ ghép bị cắt còn một tiếng như *rà*, *soát*. Bản phát hành ghép bản tốt nhất của từng file nên sửa được nhiều nhất.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/self-edit-benchmark-dark.svg">
+  <img src="docs/figures/self-edit-benchmark.svg" alt="Dấu hai chấm giữa câu đã sửa: Sonnet 28%, Gemini 23%, Opus 43%, bản phát hành 45%. Chữ rà, soát đứng một mình đã sửa: Sonnet 0%, Gemini 2%, Opus 37%, bản phát hành 37%. Số file giám khảo chọn trên 42: Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.">
+</picture>
+
+<details>
+<summary>Bảng số liệu</summary>
+
 | | Bản gốc | Sonnet 5.5 | Gemini 3.8 Flash | Opus 5.5 | Bản phát hành |
 |---|---|---|---|---|---|
 | File được sửa | | 23 | 28 | 23 | 27 |
 | Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | 60 |
 | *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | 29 |
 | File giám khảo chọn | 16 | 6 | 2 | 18 | |
+
+</details>
 
 [Phương pháp đếm và cách chạy lại](docs/benchmarks.md#vietnamizer-tự-biên-tập-chính-nó-0162).
 

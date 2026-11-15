@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 696" width="960" height="696" role="img" aria-labelledby="self-edit-benchmark-title self-edit-benchmark-desc">
+<title id="self-edit-benchmark-title">Kết quả Vietnamizer tự biên tập chính nó, bản 0.16.2</title>
+<desc id="self-edit-benchmark-desc">Dấu hai chấm giữa câu đã sửa: Sonnet 28%, Gemini 23%, Opus 43%, bản phát hành 45%. Chữ rà, soát đứng một mình đã sửa: Sonnet 0%, Gemini 2%, Opus 37%, bản phát hành 37%. Số file giám khảo chọn trên 42: Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.</desc>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="32" y="42" fill="#0B0B17" font-size="17" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Dấu hai chấm giữa câu đã được sửa</text>
+<text x="32" y="64" fill="#5B5B79" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Tỷ lệ trên 109 chỗ ở bản gốc</text>
+<line x1="208" y1="82" x2="208" y2="218" stroke="#5B5B79" stroke-width="1"/>
+<line x1="320.0" y1="82" x2="320.0" y2="218" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="432.0" y1="82" x2="432.0" y2="218" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="544.0" y1="82" x2="544.0" y2="218" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="656.0" y1="82" x2="656.0" y2="218" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="768.0" y1="82" x2="768.0" y2="218" stroke="#E4E4EE" stroke-width="1"/>
+<text x="194" y="100.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Sonnet 5.5</text>
+<path d="M209 88H518.6Q522.6 88 522.6 92V100Q522.6 104 518.6 104H209Z" fill="#8E8EA8"/>
+<text x="532.6" y="100.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">28% · 31/109</text>
+<text x="194" y="134.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Gemini 3.8 Flash</text>
+<path d="M209 122H462.6Q466.6 122 466.6 126V134Q466.6 138 462.6 138H209Z" fill="#8E8EA8"/>
+<text x="476.6" y="134.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">23% · 25/109</text>
+<text x="194" y="168.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Opus 5.5</text>
+<path d="M209 156H686.6Q690.6 156 690.6 160V168Q690.6 172 686.6 172H209Z" fill="#8E8EA8"/>
+<text x="700.6" y="168.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">43% · 47/109</text>
+<text x="194" y="202.5" fill="#0B0B17" font-size="14" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Bản phát hành</text>
+<path d="M209 190H709.0Q713.0 190 713.0 194V202Q713.0 206 709.0 206H209Z" fill="#9750C4"/>
+<text x="723.0" y="202.5" fill="#0B0B17" font-size="13" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">45% · 49/109</text>
+<text x="32" y="270" fill="#0B0B17" font-size="17" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Chữ “rà”, “soát” đứng một mình đã được sửa</text>
+<text x="32" y="292" fill="#5B5B79" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Tỷ lệ trên 46 chỗ ở bản gốc</text>
+<line x1="208" y1="310" x2="208" y2="446" stroke="#5B5B79" stroke-width="1"/>
+<line x1="320.0" y1="310" x2="320.0" y2="446" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="432.0" y1="310" x2="432.0" y2="446" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="544.0" y1="310" x2="544.0" y2="446" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="656.0" y1="310" x2="656.0" y2="446" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="768.0" y1="310" x2="768.0" y2="446" stroke="#E4E4EE" stroke-width="1"/>
+<text x="194" y="328.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Sonnet 5.5</text>
+<text x="219.0" y="328.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">0% · 0/46</text>
+<text x="194" y="362.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Gemini 3.8 Flash</text>
+<path d="M209 350H227.4Q231.4 350 231.4 354V362Q231.4 366 227.4 366H209Z" fill="#8E8EA8"/>
+<text x="241.4" y="362.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2% · 1/46</text>
+<text x="194" y="396.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Opus 5.5</text>
+<path d="M209 384H619.4Q623.4 384 623.4 388V396Q623.4 400 619.4 400H209Z" fill="#8E8EA8"/>
+<text x="633.4" y="396.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">37% · 17/46</text>
+<text x="194" y="430.5" fill="#0B0B17" font-size="14" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Bản phát hành</text>
+<path d="M209 418H619.4Q623.4 418 623.4 422V430Q623.4 434 619.4 434H209Z" fill="#9750C4"/>
+<text x="633.4" y="430.5" fill="#0B0B17" font-size="13" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">37% · 17/46</text>
+<text x="32" y="498" fill="#0B0B17" font-size="17" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Số file giám khảo Fable 5.2 chọn</text>
+<text x="32" y="520" fill="#5B5B79" font-size="13" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Trên 42 file; giữ bản gốc gồm 13 file không model nào sửa</text>
+<line x1="208" y1="538" x2="208" y2="674" stroke="#5B5B79" stroke-width="1"/>
+<line x1="348.0" y1="538" x2="348.0" y2="674" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="488.0" y1="538" x2="488.0" y2="674" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="628.0" y1="538" x2="628.0" y2="674" stroke="#E4E4EE" stroke-width="1"/>
+<line x1="768.0" y1="538" x2="768.0" y2="674" stroke="#E4E4EE" stroke-width="1"/>
+<text x="194" y="556.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Opus 5.5</text>
+<path d="M209 544H709.0Q713.0 544 713.0 548V556Q713.0 560 709.0 560H209Z" fill="#8E8EA8"/>
+<text x="723.0" y="556.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">18 file</text>
+<text x="194" y="590.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Giữ bản gốc</text>
+<path d="M209 578H653.0Q657.0 578 657.0 582V590Q657.0 594 653.0 594H209Z" fill="#8E8EA8"/>
+<text x="667.0" y="590.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16 file</text>
+<text x="194" y="624.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Sonnet 5.5</text>
+<path d="M209 612H373.0Q377.0 612 377.0 616V624Q377.0 628 373.0 628H209Z" fill="#8E8EA8"/>
+<text x="387.0" y="624.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">6 file</text>
+<text x="194" y="658.5" fill="#0B0B17" font-size="14" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="end">Gemini 3.8 Flash</text>
+<path d="M209 646H261.0Q265.0 646 265.0 650V658Q265.0 662 261.0 662H209Z" fill="#8E8EA8"/>
+<text x="275.0" y="658.5" fill="#0B0B17" font-size="13" font-weight="400" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2 file</text>
+</svg>
