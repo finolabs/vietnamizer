@@ -34,7 +34,7 @@ Out of scope (same discussion): a full Vietnamese grammar matrix; external NLP l
 | O2 | Size of the holdout (decision 3) and how Fio marks it (which errors count, guard spans) | Plan author, then Fio | The plan proposes a count and a marking sheet; Fio marks the articles before the release benchmark |
 | O3 | Which hosts the parity check (FR-018) covers: whether Claude.ai Chat with code execution and Cowork's sandbox can run a script shipped in a skill and read its files | Plan author | The plan's research checks each host's current behaviour; a host that cannot is covered by the reading path only |
 | O4 | Spec 033 updated to drop "ngoại lệ duy nhất" and keep only its own clause on top of the shared sentence (decision 4) | Session of spec 033, then Fio | Spec 033's amendment section rewritten before its plan |
-| O5 | PR 60 (`fix/035-calques`, HF11–HF16, V9/V19/V20 widening) merged into main | Fio | Merge of PR 60; the plan seeds the lexicon from merged text only |
+| O5 | PR 60 (`fix/035-calques`, HF11–HF16, V9/V19/V20 widening) merged into main | Fio | Resolved 15/11/2026: PR 60 merged (main `823ce7a`); the plan seeds the lexicon from merged text only |
 
 ## Clarifications
 
