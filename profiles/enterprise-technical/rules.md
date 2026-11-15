@@ -79,7 +79,7 @@ Bốn điều dưới đây giữ cho bản sửa không làm sai thể loại h
 
 ### K6. Siêu dữ liệu về quá trình tạo ra văn bản
 
-Skill này là biên tập viên, không phải tác giả, nên K6 chỉ bắt và chuyển những câu đã bị viết ra. Việc ngăn lỗi từ gốc thuộc về instruction của agent viết tài liệu: ghi chú quá trình thuộc lượt trả lời trong hội thoại, không thuộc deliverable. Đừng mở rộng K6 sang phần đó.
+Skill này là biên tập viên, không phải tác giả, nên K6 chỉ bắt và chuyển những câu đã bị viết ra. Việc ngăn lỗi từ gốc thuộc về instruction của agent viết tài liệu. Ghi chú quá trình thuộc lượt trả lời trong hội thoại, không thuộc deliverable. Đừng mở rộng K6 sang phần đó.
 
 **Dấu hiệu:** trong tài liệu có câu nói về việc tài liệu này được tạo ra thế nào, thay vì nói về chủ đề của nó. Bảy dạng hay gặp:
 
@@ -91,7 +91,7 @@ Skill này là biên tập viên, không phải tác giả, nên K6 chỉ bắt 
 6. *Tự bảo vệ lựa chọn trình bày.* Giải thích vì sao chọn cách trình bày này, thay vì trình bày nội dung: *“Chọn flowchart chứ không phải process, vì mục đó nói rõ không có trình tự cố định.”*
 7. *Tường thuật việc kiểm chứng.* *“Đã kiểm từng dòng trong bảng bằng `grep` và `lsof` trước khi xoá.”*
 
-Hai phép thử, áp lần lượt. Câu nào trượt cả hai thì là siêu dữ liệu quá trình. Thứ nhất, câu này viết cho ai: viết cho người đặt việc để chứng minh đã làm gì, xin một quyết định hoặc bảo vệ một lựa chọn thì nó thuộc lượt trả lời; viết cho người sẽ đọc tài liệu thì nó ở đúng chỗ. Thứ hai, một năm sau, người không có mặt trong phiên làm việc đó đọc có hiểu không.
+Hai phép thử, áp lần lượt. Câu nào trượt cả hai thì là siêu dữ liệu quá trình. Thứ nhất, câu này viết cho ai? Viết cho người đặt việc để chứng minh đã làm gì, xin một quyết định hoặc bảo vệ một lựa chọn thì nó thuộc lượt trả lời; viết cho người sẽ đọc tài liệu thì nó ở đúng chỗ. Thứ hai, một năm sau, người không có mặt trong phiên làm việc đó đọc có hiểu không.
 
 **Vì sao:** tường thuật quá trình suy luận hoặc các vòng soạn thảo làm tài liệu lẫn siêu dữ liệu của
 phiên làm việc. Những câu này không thêm dữ kiện của chủ đề, nên quy tắc chốt chặn *Không thêm dữ
@@ -103,9 +103,9 @@ kiện* không chặn được chúng.
 2. *Đổi nhãn.* Nếu nội dung thật sự thuộc tài liệu, tách thành một mục có tiêu đề rõ, chẳng hạn *Lịch sử phiên bản*, để người đọc biết chỗ nào bỏ qua được.
 3. *Cắt.* Chỉ khi không thuộc hai hướng trên.
 
-**Không flag:** changelog, release note và tài liệu hướng dẫn nâng cấp, vì K1 đã xác định tường thuật thay đổi là nội dung của thể loại đó. Quyết định kiến trúc và decision record, nơi lý do chọn phương án là nội dung chính. File quy trình, workflow và framework trong knowledge base: ghi lại vì sao một bước bị cắt là ký ức tổ chức, thiếu nó người sau dựng lại đúng cái đã bỏ. Frontmatter và các trường metadata có cấu trúc như `created`, `source-url`, `status`. Tài liệu theo quy ước sẵn có của repo hoặc vault, chẳng hạn khi mọi file cùng loại đều mở đầu bằng một dòng ghi phiên bản; kiểm các file lân cận trước khi kết luận. Biên bản họp và báo cáo tiến độ, nơi quá trình là chủ đề. Trích dẫn nguyên văn.
+**Không flag:** changelog, release note và tài liệu hướng dẫn nâng cấp, vì K1 đã xác định tường thuật thay đổi là nội dung của thể loại đó. Quyết định kiến trúc và decision record, nơi lý do chọn phương án là nội dung chính. File quy trình, workflow và framework trong knowledge base, nơi việc ghi lại vì sao một bước bị cắt là ký ức tổ chức, thiếu nó người sau dựng lại đúng cái đã bỏ. Frontmatter và các trường metadata có cấu trúc như `created`, `source-url`, `status`. Tài liệu theo quy ước sẵn có của repo hoặc vault, chẳng hạn khi mọi file cùng loại đều mở đầu bằng một dòng ghi phiên bản; kiểm các file lân cận trước khi kết luận. Biên bản họp và báo cáo tiến độ, nơi quá trình là chủ đề. Trích dẫn nguyên văn.
 
-Ranh giới giữa dạng 3, dạng 6 và ký ức tổ chức hợp lệ nằm ở chỗ câu đó nói về ai: ký ức tổ chức nói về quyết định và hệ quả của nó, còn siêu dữ liệu quá trình nói về người viết. *“Bước này bị cắt vì trùng với cổng phía sau”* là ký ức tổ chức. *“Bản đầu tôi viết 15 bước rồi rút còn 8”* là nói về người viết.
+Ranh giới giữa dạng 3, dạng 6 và ký ức tổ chức hợp lệ nằm ở chỗ câu đó nói về ai. Ký ức tổ chức nói về quyết định và hệ quả của nó, còn siêu dữ liệu quá trình nói về người viết. *“Bước này bị cắt vì trùng với cổng phía sau”* là ký ức tổ chức. *“Bản đầu tôi viết 15 bước rồi rút còn 8”* là nói về người viết.
 
 ### K7. Dẫn uy tín vô danh thay cho bằng chứng
 
