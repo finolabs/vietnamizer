@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/036-ai-error-lexicon`
 **Created**: 2026-11-15
-**Status**: Draft, spec only (no plan, tasks or implementation). Needs a constitution amendment (exact text pending Fio's approval, open decision O1, shared with spec 033) before any implementation.
+**Status**: Draft, spec only (no plan, tasks or implementation). The constitution amendment text was approved by Fio on 15/11/2026 (decision 6, shared with spec 033); it is applied to the constitution with the implementation.
 **Input**: Fio, 15/11/2026, after marking errors in sample AI articles that 0.16.2 (PRs 59 and 60) fixed one by one: the next version should have the agent build an explicit structure of the source's words and phrases, flag the wrong ones, fix the AI errors, apply the user's voice profile, then reassemble; it must run on cloud Chat and Cowork (a native sandbox at most) and may run extra scripts on Claude Code, with both paths error-free. Scope agreed in the coordinator's discussion with Fio the same day (session `local_c94f3fc0-fa20-4142-8374-d4a879f60b8f`). Router depth DEEP, triggers `contract` and `security`: the package would ship executable code for the first time since 0.14.0 (spec 029 removed the Jev runner), which needs a Principle V amendment, and every whole-article edit gains a mandatory step.
 
 ## Background
@@ -25,15 +25,16 @@ Out of scope (same discussion): a full Vietnamese grammar matrix; external NLP l
 3. **Proof comes from a fresh holdout of AI articles Fio marks** before release, never used to build or tune the lexicon; 0.17.0 and 0.16.2 run on the same model over it. The number of articles is set in the plan. Not taken: development set only; re-marking the 20 public sources of 0.11.0.
 4. **One shared Principle V sentence with spec 033.** Principle V allows optional offline scripts under fixed conditions; a script that must read other files on the user's machine (spec 033's history reader) needs its own, stricter clause on top. Whichever spec lands first applies the shared sentence. Not taken: a named exception per script.
 5. **Version 0.17.0, released before spec 033.** This spec applies the shared Principle V sentence; spec 033 later adds only its own clause and drops "ngoại lệ duy nhất". Not taken: 033 first.
+6. **Principle V text (Fio, 15/11/2026: "Bản mày sửa").** The approved text is the one in section "Constitution amendment". It also rewrites the first sentence of Principle V in plain Vietnamese without MUST/MUST NOT, so the whole principle reads one way. Not taken: the first draft, which kept MUST in the first sentence and packed every script condition into one sentence.
 
 ## Open decisions
 
 | # | Decision | Owner | Unblocks when |
 |---|---|---|---|
-| O1 | Exact text of the constitution amendment (section "Constitution amendment" below), reconciled with spec 033's O1 into one Principle V text | Fio | Approval of the exact text at review of this PR or of the plan; no implementation before it |
+| O1 | Exact text of the constitution amendment (section "Constitution amendment" below), reconciled with spec 033's O1 into one Principle V text | Fio | Resolved 15/11/2026: Fio approved the revised text (decision 6) |
 | O2 | Size of the holdout (decision 3) and how Fio marks it (which errors count, guard spans) | Plan author, then Fio | The plan proposes a count and a marking sheet; Fio marks the articles before the release benchmark |
 | O3 | Which hosts the parity check (FR-018) covers: whether Claude.ai Chat with code execution and Cowork's sandbox can run a script shipped in a skill and read its files | Plan author | The plan's research checks each host's current behaviour; a host that cannot is covered by the reading path only |
-| O4 | Spec 033 updated to drop "ngoại lệ duy nhất" and keep only its own clause on top of the shared sentence (decision 4) | Session of spec 033, then Fio | Spec 033's amendment section rewritten before its plan |
+| O4 | Spec 033 updated to drop "ngoại lệ duy nhất" and keep only its own clause on top of the shared sentence (decision 4) | Session of spec 033, then Fio | Spec 033's amendment section rewritten on 15/11/2026 to sit on top of the shared text; the exact words of its own clause stay spec 033's O1 |
 | O5 | PR 60 (`fix/035-calques`, HF11–HF16, V9/V19/V20 widening) merged into main | Fio | Resolved 15/11/2026: PR 60 merged (main `823ce7a`); the plan seeds the lexicon from merged text only |
 
 ## Clarifications
@@ -199,15 +200,17 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 - **SC-005**: On Fio's marked holdout (decision 3), the new version finds more of the marked AI errors than 0.16.2 on the same model, without more over-corrections on guard cases; time and token cost per article are reported beside it.
 - **SC-006**: In every whole-article fixture edit, each edit in the output traces to a kept inventory row, and each kept-by-**Không flag** row leaves its phrase byte-identical.
 
-## Constitution amendment (proposed, exact text pending Fio's approval — O1)
+## Constitution amendment (approved by Fio, 15/11/2026, decision 6)
 
-Version 2.8.0 → 2.9.0 (MINOR: Principle V allows optional offline scripts in the package; no obligation removed). Spec 033's O1 proposes "Ngoại lệ duy nhất" for a prompt-history reader; both specs need one Principle V text, so this draft gives the general rule and leaves 033's stricter conditions as an addition to it.
+Version 2.8.0 → 2.9.0 (MINOR: Principle V allows optional offline scripts in the package; no obligation removed). Spec 033's history reader adds its own clause on top of this text (O4).
 
-**Principle V**, replace "Gói phát hành MUST NOT chứa mã gọi dịch vụ ngoài hay đọc API key, và MUST NOT phụ thuộc một repo local khác." with:
+**Principle V**, replace the paragraph from "`SKILL.md` và các profile MUST dùng được" to "MUST NOT phụ thuộc một repo local khác." with:
 
-> Gói phát hành không được chứa mã gọi dịch vụ ngoài hay đọc API key, và không được phụ thuộc một repo local khác. Gói được kèm script chạy tại chỗ khi skill vẫn làm đủ việc mà không cần chạy script đó. Script chỉ dùng thư viện chuẩn của Python, không gọi mạng, không đọc secret hay API key, không ghi file, chỉ đọc văn bản người dùng giao trong tác vụ và file dữ liệu trong gói, và chỉ in ứng viên để agent xét; agent vẫn quyết định sửa hay giữ theo pattern và mục Không flag. Script nào cần đọc file khác trên máy người dùng phải có điều khoản riêng trong constitution này.
+> `SKILL.md` và các profile phải dùng được mà không cần build, dịch vụ mạng, secret hoặc runner. Gói phát hành không được chứa mã gọi dịch vụ ngoài hay đọc API key, và không được phụ thuộc một repo local khác.
+>
+> Gói có thể kèm script chạy tại chỗ, với điều kiện skill vẫn làm đủ việc khi không chạy script đó. Script chỉ dùng thư viện chuẩn của Python. Script không gọi mạng, không đọc secret hay API key và không ghi file. Script chỉ đọc văn bản người dùng giao trong tác vụ cùng các file dữ liệu trong gói, và chỉ in ra các ứng viên để agent xét. Sửa hay giữ vẫn do agent quyết định theo pattern và mục Không flag. Script nào cần đọc file khác trên máy người dùng phải có điều khoản riêng trong constitution này.
 
-Approach settled (decision 4); the exact words stay O1. This spec lands first (decision 5) and applies the shared sentence; spec 033's history reader, if approved, becomes that "điều khoản riêng" instead of "ngoại lệ duy nhất" (O4).
+The sentence on Jev/TypeSafe that follows in Principle V stays unchanged. This spec lands first (decision 5) and applies the text; spec 033's history reader, if approved, becomes that "điều khoản riêng" instead of "ngoại lệ duy nhất" (O4).
 
 ## Assumptions
 
