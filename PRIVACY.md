@@ -51,12 +51,12 @@ và tài liệu nội bộ người dùng chọn đưa, sau khi người dùng x
 không kiểm được thẩm quyền đó. Tài liệu thương hiệu
 có thể do nhiều người viết; agent được chỉ dẫn không ghi tên người viết, nhân viên, khách hàng hay đối tác,
 điều khoản hợp đồng, giá đàm phán, số liệu hay sản phẩm chưa công bố, tên hệ thống nội bộ và tên hay tiêu
-đề tài liệu. Như mọi hồ sơ, không có bộ lọc bằng mã: người dùng đọc toàn bộ dự thảo trước khi lưu. Skill
+đề tài liệu. Như mọi hồ sơ, không có bộ lọc bằng mã. Người dùng đọc toàn bộ dự thảo trước khi lưu. Skill
 chỉ mở link trang thương hiệu qua đường dưới đây; không có công cụ trình duyệt thì người dùng dán nội dung
 hoặc nêu tên file export.
 
 Từ 0.16.0, hồ sơ thương hiệu có thể đọc trang công khai của thương hiệu qua công cụ trình duyệt host sẵn
-có: fanpage Facebook, trang công ty LinkedIn, hoặc trang danh sách bài trên website hay blog riêng của
+có, gồm fanpage Facebook, trang công ty LinkedIn, hoặc trang danh sách bài trên website hay blog riêng của
 thương hiệu. Skill chỉ mở tối đa ba URL người dùng đưa trong một lượt, cùng một thương hiệu; mỗi URL có một
 câu đồng ý nêu tên thương hiệu và URL, kèm lời khẳng định được nói thay mà skill không kiểm được. Skill từ
 chối trang của đối thủ hay thương hiệu người dùng không được nói thay. Đường đọc cố định: chính trang đó và
@@ -75,12 +75,12 @@ thương hiệu. Nếu người dùng nói đó là Trang của chính họ, ski
 rằng nó không kiểm được Trang có phải của người dùng và học giọng người khác là không được phép, rồi hỏi
 xác nhận; chỉ khi người dùng xác nhận mới đọc Trang đó, với cùng đường đọc và giới hạn như trang thương
 hiệu, để dựng hồ sơ cá nhân. Người dùng học hồ sơ cá nhân cũng có thể đưa thẳng URL Trang Facebook mang tên
-chính họ (mục 4c của `references/voice-sources.md`), không qua đường thương hiệu: tối đa ba URL một lượt,
+chính họ (mục 4c của `references/voice-sources.md`), không qua đường thương hiệu, với tối đa ba URL một lượt,
 cùng cảnh báo, câu xác nhận cho từng URL và cùng giới hạn như trên.
 
 Sau khi học, người dùng có thể chấm vài đoạn mẫu do skill viết theo bốn mức Kém, Trung bình, Khá, Tốt.
 Chỉ khi người dùng lưu hồ sơ hoặc xác nhận cập nhật, hồ sơ mới thêm một dòng `Lịch sử chấm` (dòng này nằm
-trong bản người dùng xem trước khi lưu): ngày, số
+trong bản người dùng xem trước khi lưu), gồm ngày, số
 đoạn và số đoạn theo từng mức, ghi là đánh giá của người dùng; dòng đó không chứa nội dung đoạn, chủ đề
 hay lý do. Skill không tự tính điểm giống giọng và không đưa lượt chấm vào nhật ký hiệu chuẩn.
 
@@ -119,9 +119,9 @@ ghi một dòng vào bộ nhớ của Chat.
 Hồ sơ có thể gồm tên do người dùng chọn, loại hồ sơ (cá nhân hay thương hiệu), ngày cập nhật, số mẫu
 theo kênh, quy tắc thương hiệu (chỉ hồ sơ thương hiệu), đặc tính giọng, cách viết theo kênh và người
 đọc, điều nên/không nên dùng, điểm chưa quyết, lịch sử chấm, cùng căn cứ ngắn đã loại dữ liệu cá nhân.
-Hồ sơ không được chứa dữ liệu cá nhân hoặc bí mật: tên người, thông tin liên hệ, mã định danh,
+Hồ sơ không được chứa dữ liệu cá nhân hoặc bí mật, gồm tên người, thông tin liên hệ, mã định danh,
 chi tiết sức khỏe/tài chính, điều khoản giao dịch, công việc chưa công bố hay nhận xét về người
-khác. Agent được chỉ dẫn bỏ các dữ liệu này, nhưng v1 không có bộ lọc bằng mã: người dùng đọc toàn bộ dự thảo trước khi lưu là bước kiểm chính. Hồ sơ chỉ giữ trích đoạn ngắn đã lược chi tiết riêng, không chép nguyên mẫu.
+khác. Agent được chỉ dẫn bỏ các dữ liệu này, nhưng v1 không có bộ lọc bằng mã. Người dùng đọc toàn bộ dự thảo trước khi lưu là bước kiểm chính. Hồ sơ chỉ giữ trích đoạn ngắn đã lược chi tiết riêng, không chép nguyên mẫu.
 
 Skill hiển thị toàn bộ hồ sơ trước khi lưu; chỉ lưu hoặc cập nhật khi người dùng yêu cầu rõ.
 Người dùng đặt tên từng hồ sơ và chọn Orrery, Obsidian hoặc đường dẫn file Markdown. Skill chỉ
