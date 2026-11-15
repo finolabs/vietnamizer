@@ -33,7 +33,7 @@ không bịa lỗi để hợp thức hóa chuyển giọng. Lượng sửa/tỉ
 Không biến khuyến nghị thành lệnh, tập hợp thành quy trình, điều kiện thành nguyên nhân đã xác nhận.
 Kiến thức đúng nhưng ngoài nguồn không tự thuộc nhiệm vụ biên tập hoặc khai triển brief.
 
-## Rà soát câu, đoạn và toàn bài
+## Rà câu, đoạn và toàn bài
 
 Đọc câu trong đoạn: từ lặp có đúng đối tượng/nghĩa không, điểm ngắt làm việc gì? Đọc đoạn trong bài:
 ý có nối tiếp, phần riêng nào mất khi gộp, đề mục có bao quát nội dung? Đọc toàn bài: mở/kết đúng mục đích,

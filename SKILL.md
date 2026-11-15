@@ -124,7 +124,7 @@ lưu hồ sơ hoặc viết calibration; chỉ bảo trì skill khi được gia
 Review đúng candidate hiện tại (nội dung/file được giao), không thay bằng HEAD cũ hay tóm tắt agent.
 Khi chỉ review, kết luận riêng **nghĩa** (chốt 2–4) và **cách viết** (giọng/nhịp/người đọc); không lấy cách viết bù sai ý.
 
-Dán văn bản/chỉ yêu cầu viết lại hoặc skill là một bước khác. Trả bản cuối, không lời dẫn/phân tích.
+Dán văn bản/chỉ yêu cầu viết lại hoặc skill là một bước khác: trả bản cuối, không lời dẫn/phân tích.
 Chỉ nhận xét/đối chiếu khi được yêu cầu. Chỉ khi người dùng yêu cầu rõ mới kèm tối đa 5 dòng ghi chú sửa hoặc bảng Gốc/Đã sửa/Vì sao sau bản cuối; mặc định không có, và yêu cầu chỉ trả bản cuối thì không kèm. Giao file: sửa đúng phần, giữ code/frontmatter/link và báo
 ngắn phần đổi, không dán cả file. Không âm thầm đổi dữ kiện. Quy tắc có thể dựa trên tài liệu, quan sát
 có đối chiếu hoặc suy luận; không gọi suy luận hay ca phát triển là kiểm định chất lượng. Đánh giá xuất xứ
