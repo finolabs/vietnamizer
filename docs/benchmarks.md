@@ -6,6 +6,43 @@
 > nhắc nhánh "Vietnamizer + Jev", runner và test của nó là bằng chứng lịch sử đã ngừng dùng; script
 > benchmark Jev/công khai và `eval/guard/` đã bị xóa khỏi repo, các file raw nằm trong lịch sử Git.
 
+## Vietnamizer tự biên tập chính nó (0.16.2)
+
+Ngày 15/11/2026, ba model dùng Vietnamizer 0.16.2 (commit `823ce7a`) biên tập lại văn bản của chính gói
+skill. Sonnet 5.5, Gemini 3.8 Flash và Opus 5.5 làm riêng, mỗi model trên một nhánh, theo hồ sơ giọng của
+tác giả. Fable 5.2 sau đó so từng file với bản gốc và chọn bản tốt nhất, hoặc giữ bản gốc khi không bản nào
+tốt hơn. Fable xét nghĩa và phạm vi của từng quy tắc trước, rồi mới tới lỗi được sửa và độ hợp giọng.
+
+| | Bản gốc | Sonnet 5.5 | Gemini 3.8 Flash | Opus 5.5 | Bản phát hành |
+|---|---|---|---|---|---|
+| File được sửa | | 23 | 28 | 23 | @F@ |
+| Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | @C@ |
+| *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | @R@ |
+| File giám khảo chọn | 16 | 6 | 2 | 18 | |
+
+Phạm vi là 42 file Markdown phát hành cùng gói, gồm `SKILL.md`, `references/`, `profiles/`,
+`.plugin-skills/`, README, các file chính sách và `docs/`. Riêng `docs/changelog.md` chỉ tính mục 0.16.2.
+Bản phát hành gồm các bản Fable chọn, hai chỗ khôi phục từ bản gốc và mười chỗ sửa lấy từ các bản không
+được chọn.
+
+Script `benchmarks/self_edit_count.py` đếm bằng biểu thức chính quy, không dùng model. Có hai dấu hiệu.
+
+- Dấu hai chấm giữa câu được tính khi chữ ngay sau nó viết thường và phía trước nó, trong cùng câu, có
+  hơn ba từ.
+- Từ ghép bị cắt được tính khi `rà` không có `soát` hoặc `lại` theo sau, hoặc `soát` không có `rà` đứng
+  trước.
+
+Script bỏ qua code, dòng bảng, heading, HTML, frontmatter, dòng có URL và nhãn in đậm đầu dòng. Các ví
+dụ sai cố ý trong catalog pattern vẫn nằm trong số đếm, nên bản phát hành không về 0. Đây là dấu hiệu cơ
+học, không đo chất lượng văn bản, vì có những dấu hai chấm đúng chức năng mà script vẫn tính.
+
+Chạy lại từ thư mục gốc của repo. Ba nhánh biên tập viên chỉ có trên máy tác giả, nên người khác chỉ
+chạy lại được cột bản gốc và bản phát hành.
+
+```bash
+python3 benchmarks/self_edit_count.py Gốc=823ce7a Sonnet=edit/0162-sonnet Gemini=edit/0162-gemini Opus=edit/0162-opus "Bản phát hành=HEAD"
+```
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày

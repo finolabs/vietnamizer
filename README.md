@@ -134,6 +134,19 @@ Trích đầu ra thật trên Codex, lượt hồi quy 0.12.0/0.12.1 ngày 27/10
 
 [Xem đủ ca và tiêu chí](specs/018-mr-version-comparison/results.md) · [Benchmark](docs/benchmarks.md).
 
+## Vietnamizer tự biên tập chính nó (0.16.2)
+
+Ba model dùng Vietnamizer 0.16.2 biên tập lại 42 file của chính gói skill, theo hồ sơ giọng của tác giả. Fable 5.2 so từng file với bản gốc và chọn bản tốt nhất.
+
+| | Bản gốc | Sonnet 5.5 | Gemini 3.8 Flash | Opus 5.5 | Bản phát hành |
+|---|---|---|---|---|---|
+| File được sửa | | 23 | 28 | 23 | @F@ |
+| Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | @C@ |
+| *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | @R@ |
+| File giám khảo chọn | 16 | 6 | 2 | 18 | |
+
+[Phương pháp đếm và cách chạy lại](docs/benchmarks.md#vietnamizer-tự-biên-tập-chính-nó-0162).
+
 ## Cho AI agent: cài và thiết lập
 
 Người dùng đưa link repo này và nhờ bạn cài. Làm theo thứ tự:
@@ -247,7 +260,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Lịch sử phiên bản
 
-- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà soát cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn rà soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới.
+- **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà soát cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn rà soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới; Vietnamizer tự biên tập 42 file của chính gói.
 - **0.16.1** — Mô tả plugin ngắn lại để catalog `finolabs/plugins` pin được bản mới; nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt; gọi lại hồ sơ đã lưu bằng tên.
 
