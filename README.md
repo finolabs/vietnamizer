@@ -138,7 +138,7 @@ Trích đầu ra thật trên Codex, lượt hồi quy 0.12.0/0.12.1 ngày 27/10
 
 Ba model dùng Vietnamizer 0.16.2 biên tập lại 42 file của chính gói skill, theo hồ sơ giọng của tác giả. Fable 5.2 so từng file với bản gốc và chọn bản tốt nhất.
 
-Khi dùng Vietnamizer, cả ba model đều phát hiện và sửa được lỗi dấu hai chấm giữa câu, nhưng chỉ Opus sửa được từ ghép bị cắt còn một tiếng như *rà*, *soát*. Fable 5.2 cũng dùng Vietnamizer để chọn bản tốt nhất cho từng file rồi ghép lại thành bản phát hành, nên sửa được nhiều nhất dù không tự viết câu nào.
+Khi dùng Vietnamizer, cả ba model đều phát hiện và sửa được lỗi dấu hai chấm giữa câu. Với từ ghép bị cắt còn một tiếng như *rà*, *soát* thì Opus sửa được 17 trên 46 chỗ, Gemini 1 chỗ, còn Sonnet không sửa được chỗ nào. Fable 5.2 cũng dùng Vietnamizer để chọn bản tốt nhất cho từng file rồi ghép lại thành bản phát hành, nên sửa được nhiều nhất dù không tự viết câu nào.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/figures/self-edit-benchmark-dark.svg">
