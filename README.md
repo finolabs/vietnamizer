@@ -142,7 +142,7 @@ Cả ba model đều sửa được dấu hai chấm giữa câu, nhưng chỉ O
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/figures/self-edit-benchmark-dark.svg">
-  <img src="docs/figures/self-edit-benchmark.svg" alt="Dấu hai chấm giữa câu đã sửa: Sonnet 28%, Gemini 23%, Opus 43%, bản phát hành 45%. Chữ rà, soát đứng một mình đã sửa: Sonnet 0%, Gemini 2%, Opus 37%, bản phát hành 37%. Số file giám khảo chọn trên 42: Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.">
+  <img src="docs/figures/self-edit-benchmark.svg" alt="Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), bản phát hành 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), Opus 17 (37%), bản phát hành 17 (37%). Giám khảo Fable 5.2 chọn trên 42 file, Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.">
 </picture>
 
 <details>

@@ -14,14 +14,14 @@ THEMES = {
 }
 MODELS = ["Sonnet 5.5", "Gemini 3.8 Flash", "Opus 5.5", "Bản phát hành"]
 PANELS = [
-    dict(title="Dấu hai chấm giữa câu đã được sửa",
-         sub="Tỷ lệ trên 109 chỗ ở bản gốc",
+    dict(title="Mỗi model sửa được bao nhiêu lỗi dấu hai chấm giữa câu",
+         sub="Bản gốc có 109 chỗ dùng dấu hai chấm nối hai ý trong một câu, kiểu “Khách ít kiên nhẫn: họ sẽ hỏi nơi khác”.",
          base=109, fixed=[31, 25, 47, 49], scale=50, unit="%"),
-    dict(title="Chữ “rà”, “soát” đứng một mình đã được sửa",
-         sub="Tỷ lệ trên 46 chỗ ở bản gốc",
+    dict(title="Mỗi model sửa được bao nhiêu từ ghép bị cắt còn một tiếng",
+         sub="Bản gốc có 46 chỗ viết “rà” hoặc “soát” trong khi đúng ra phải là “rà soát”.",
          base=46, fixed=[0, 1, 17, 17], scale=50, unit="%"),
-    dict(title="Số file giám khảo Fable 5.2 chọn",
-         sub="Trên 42 file; giữ bản gốc gồm 13 file không model nào sửa",
+    dict(title="Giám khảo chọn bản của model nào nhiều nhất",
+         sub="Fable 5.2 so 42 file và chọn bản tốt nhất cho từng file. “Giữ bản gốc” là khi không bản sửa nào hơn bản gốc.",
          rows=["Opus 5.5", "Giữ bản gốc", "Sonnet 5.5", "Gemini 3.8 Flash"],
          values=[18, 16, 6, 2], scale=20, unit="file"),
 ]
@@ -42,17 +42,18 @@ def bar_path(x, y, w, h, r=4):
 def build(name):
     c = THEMES[name]
     slug = "self-edit-benchmark" + ("" if name == "light" else "-dark")
-    height = 24 + sum(PANEL_HEAD + 4 * ROW_H for _ in PANELS) + PANEL_GAP * (len(PANELS) - 1) + 16
+    height = 56 + sum(PANEL_HEAD + 4 * ROW_H for _ in PANELS) + PANEL_GAP * (len(PANELS) - 1) + 16
     o = []
     a = o.append
     a(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {height}" width="{W}" height="{height}" '
       f'role="img" aria-labelledby="{slug}-title {slug}-desc">')
     a(f'<title id="{slug}-title">Kết quả Vietnamizer tự biên tập chính nó, bản 0.16.2</title>')
-    a(f'<desc id="{slug}-desc">Dấu hai chấm giữa câu đã sửa: Sonnet 28%, Gemini 23%, Opus 43%, bản phát hành 45%. '
-      f'Chữ rà, soát đứng một mình đã sửa: Sonnet 0%, Gemini 2%, Opus 37%, bản phát hành 37%. '
-      f'Số file giám khảo chọn trên 42: Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.</desc>')
+    a(f'<desc id="{slug}-desc">Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), '
+      f'bản phát hành 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), '
+      f'Opus 17 (37%), bản phát hành 17 (37%). Giám khảo Fable 5.2 chọn trên 42 file, Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.</desc>')
     a(f'<rect width="100%" height="100%" fill="{c["paper"]}"/>')
-    y = 24
+    a(f'<text x="{LABEL_X}" y="34" fill="{c["muted"]}" font-size="13" font-family="{SANS}">Thanh tô màu là bản phát hành 0.16.2, ghép bản tốt nhất của từng file.</text>')
+    y = 56
     for p in PANELS:
         a(f'<text x="{LABEL_X}" y="{y + 18}" fill="{c["ink"]}" font-size="17" font-weight="600" font-family="{SANS}">{escape(p["title"])}</text>')
         a(f'<text x="{LABEL_X}" y="{y + 40}" fill="{c["muted"]}" font-size="13" font-family="{SANS}">{escape(p["sub"])}</text>')
@@ -68,11 +69,11 @@ def build(name):
             if p["unit"] == "%":
                 n = p["fixed"][i]
                 pct = round(100 * n / p["base"])
-                value, text = pct, f'{pct}% · {n}/{p["base"]}'
+                value, text = pct, f'sửa {n}/{p["base"]} chỗ ({pct}%)'
                 emph = label == "Bản phát hành"
             else:
                 value = p["values"][i]
-                text, emph = f"{value} file", False
+                text, emph = f"{value}/42 file", False
             fill = c["accent"] if emph else c["bar"]
             weight = "600" if emph else "400"
             a(f'<text x="{BAR_X - 14}" y="{ry + 12.5}" fill="{c["ink"]}" font-size="14" font-weight="{weight}" '
