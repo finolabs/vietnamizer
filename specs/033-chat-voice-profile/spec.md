@@ -134,9 +134,9 @@ A user in Claude.ai Chat or Cowork asks to learn from their chats.
 
 Version 2.6.1 → 2.7.0 (MINOR: the voice-profile constraint gains a source; Principle V is clarified for local reads; no obligation removed).
 
-**Principle V**, append after "MUST NOT phụ thuộc một repo local khác.":
+**Principle V** takes the shared text Fio approved on 15/11/2026 in spec 036 (section "Constitution amendment", decision 6), which ends "Script nào cần đọc file khác trên máy người dùng phải có điều khoản riêng trong constitution này." This spec then appends its own clause (proposed, exact text still pending Fio's approval, O1):
 
-> Ngoại lệ duy nhất: script đọc lịch sử prompt của tuyến hồ sơ giọng MAY đọc file trên máy người dùng, chỉ sau câu đồng ý đọc, chỉ đúng các file được nêu trong câu đó, chỉ bằng thư viện chuẩn, không gọi mạng, không đọc biến môi trường chứa secret và không ghi file.
+> Điều khoản riêng cho script đọc lịch sử prompt của tuyến hồ sơ giọng: script này được đọc file trên máy người dùng, chỉ sau câu đồng ý đọc, chỉ đúng các file được nêu trong câu đó, chỉ bằng thư viện chuẩn, không gọi mạng, không đọc biến môi trường chứa secret và không ghi file.
 
 **Ràng buộc "Tuyến hồ sơ giọng"**, replace "Skill MUST NOT tự tìm hồ sơ hoặc mẫu trong memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định." with:
 
