@@ -106,7 +106,7 @@ hội thoại theo chính sách của nền tảng, nên dùng plugin không bi�
 toàn trên máy. Đừng gửi credential, định danh chính phủ, dữ liệu thẻ thanh toán hay PHI.
 Xem [quyền riêng tư](../PRIVACY.md) và [điều kiện sử dụng](../TERMS.md).
 
-- **Không thấy skill:** kiểm plugin đã bật, rồi mở phiên mới. Trong Claude Code, kiểm đúng
+- **Không thấy skill:** kiểm tra xem plugin đã bật chưa, rồi mở phiên mới. Trong Claude Code, kiểm tra đúng
   marketplace `finolabs` và lời gọi `/vietnamizer:vietnamizer`.
 - **Mô tả hoặc phiên bản chưa đổi:** cập nhật đúng plugin cùng tên từ nguồn đã cài, tránh cài thêm
   bản review trùng tên. ZIP upload riêng không tự cập nhật từ GitHub.

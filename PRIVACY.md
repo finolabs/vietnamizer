@@ -17,7 +17,7 @@ dữ liệu khác chỉ để dự phòng. Mục đích sử dụng là biên t�
 Không cung cấp dữ liệu thẻ thanh toán thuộc PCI DSS, thông tin sức khỏe cá nhân được bảo vệ
 (PHI), định danh do chính phủ cấp, mật khẩu, API key, mã MFA/OTP hoặc secret xác thực khác.
 Nếu nhận thấy các dữ liệu này, skill dừng biên tập đầu vào đó và yêu cầu bản đã che hoặc ví dụ
-giả lập; không trích lại hay lưu thành ca hiệu chuẩn. Consent không gỡ bỏ
+giả lập; không trích lại hay lưu thành ca hiệu chuẩn. Việc đồng ý không gỡ bỏ
 giới hạn này. Ví dụ giả lập hoặc nội dung nói chung về sức khỏe và giấy tờ không bị cấm chỉ vì
 chủ đề. Việc biên tập không cần thu thập thêm dữ liệu cá nhân nhạy cảm; ưu tiên bản đã ẩn danh.
 

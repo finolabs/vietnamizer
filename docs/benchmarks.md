@@ -169,7 +169,7 @@ thắng/hòa/thua trên 8 bản, Gemini 4/0/3 trên 7 bản có phiếu. N2 có 
 nâng cấp đồng đều. Đây vẫn là tập phát triển và model chấm, không phải xác nhận từ tác giả/người đọc.
 
 [Pilot Mindfio ngày 27/10/2026](../specs/016-sample-voice-preservation/mindfio-results.md)
-đã có **12/12 bản cuối** trên cùng Codex: bốn bài, ba chế độ, hồ sơ được chủ nhân
+đã có **12/12 bản cuối** trên cùng Codex, gồm bốn bài, ba chế độ, hồ sơ được chủ nhân
 duyệt và nguồn 0.12.0 đóng băng trước khi chạy. Có raw CLI, đối chiếu trước/sau và
 hai hình phân tích thay đổi/tài nguyên. Nhận xét chất lượng là thăm dò của agent;
 chưa chứng minh thêm hồ sơ giúp giữ giọng tốt hơn trên mọi bài. Bộ này giữ riêng,
@@ -183,8 +183,8 @@ AI theo xác nhận của chủ nhân; không có bản nháp trước AI để 
 
 [Hiệu chỉnh 0.12.1 từ Mindfio](../specs/017-preserve-meaning-rhythm/results.md) ưu tiên
 giữ ý muốn/khả năng/phạm vi, câu rút gọn có chức năng và quan hệ ý khi đổi dấu.
-Đã [chạy đối chiếu MR01–MR12 trên cùng Codex](../specs/018-mr-version-comparison/results.md):
-0.12.0 đạt 10/12 ca và 0.12.1 đạt 12/12 theo tiêu chí đã khóa, với MR05/MR12 chuyển
+Đã [chạy đối chiếu MR01–MR12 trên cùng Codex](../specs/018-mr-version-comparison/results.md),
+trong đó 0.12.0 đạt 10/12 ca và 0.12.1 đạt 12/12 theo tiêu chí đã khóa, với MR05/MR12 chuyển
 từ chưa đạt sang đạt. Mỗi tình huống chỉ sinh một bản cho mỗi phiên bản; nhãn do
 agent đối chiếu và reviewer kiểm tra, không phải chấm người độc lập. Những bài đã dùng để hiệu chỉnh là dữ liệu phát triển/hồi quy,
 không còn là holdout độc lập để chứng minh bản mới tốt hơn.

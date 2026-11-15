@@ -17,7 +17,7 @@ Dùng một card từ core khi mục đích/người đọc đã rõ; chưa rõ/
 đọc guide mẫu; không mẫu thì biên tập giữ giọng hiện có, viết mới theo brief/thể loại. Không tạo nháp AI
 trung gian rồi coi đó là giọng cá nhân cần giữ. Card không là khuôn hoặc quyền sửa mọi câu; giữ câu/đoạn
 đã làm đúng việc trong phạm vi giao. Nguồn sơ sài không cho phép bịa chi tiết/quan điểm hay chuyện riêng.
-Trước khai triển, nhận ra khái niệm người đọc cần hiểu hoặc ví dụ còn thiếu; chỉ hỏi phần thật sự cần,
+Trước khi khai triển, nhận ra khái niệm người đọc cần hiểu hoặc ví dụ còn thiếu; chỉ hỏi phần thật sự cần,
 hoặc giữ mức khái quát, không giả trải nghiệm để lấp outline hay buộc duyệt từng đoạn.
 
 Chọn điểm vào, ý tiếp theo, nhịp giải thích và điểm dừng từ nội dung cùng giọng. Không ép mỗi bullet

@@ -114,7 +114,7 @@ README/SOP không thành blog chỉ vì mẫu thân mật. Card không cấp quy
 ## Làm và kiểm lại
 
 Sửa nhỏ: hiểu ý/phạm vi → tra nghi vấn → sửa vừa đủ → đối chiếu nguồn và đọc lại câu trong đoạn.
-Không cần outline thành file/bản nháp mới. Làm bài: theo workflow được chọn. Trước trả bản cuối,
+Không cần outline thành file/bản nháp mới. Làm bài: theo workflow được chọn. Trước khi trả bản cuối,
 khôi phục và so byte vùng bảo toàn; mọi sửa sau review phải kiểm lại nghĩa phần bị ảnh hưởng.
 Không thấy lỗi có căn cứ thì giữ nguyên. Phản hồi của người dùng áp dụng đúng tác vụ, không tự
 lưu hồ sơ hoặc viết calibration; chỉ bảo trì skill khi được giao rõ.

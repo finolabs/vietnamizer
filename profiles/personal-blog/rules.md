@@ -66,7 +66,7 @@ B5 chỉ xử lý khuôn song hành nâng giọng hoặc lặp ý. Nếu câu đ
 
 **Dấu hiệu:** nội dung giới thiệu hoặc thuyết phục dùng danh xưng và tuyên bố như *hàng đầu Việt Nam, top đầu, số 1 thị trường, uy tín nhất, tiên phong trong lĩnh vực, giải pháp toàn diện, đáp ứng mọi nhu cầu*; hoặc mượn một nhóm không được định danh như *được nhiều chuyên gia đánh giá cao, được giới chuyên môn tin dùng* để nâng vị thế sản phẩm.
 **Vì sao:** danh xưng và sự tán thành vô danh đang làm lý do thuyết phục nhưng người đọc không biết tiêu chí, người đánh giá hoặc nguồn nào đứng sau.
-**Sửa:** thay bằng số liệu, khách hàng, giải thưởng hoặc nguồn bên thứ ba **có trong bản gốc** và nêu đúng phạm vi của dẫn chứng. Thiếu dẫn chứng thì giữ nguyên nội dung đang được rà và nêu phần cần tác giả xác nhận ngoài bài khi được giao nhận xét; chỉ cắt tuyên bố riêng nếu người dùng đã giao sửa nội dung đó. Không tự đặt tên chuyên gia hay tổ chức.
+**Sửa:** thay bằng số liệu, khách hàng, giải thưởng hoặc nguồn bên thứ ba **có trong bản gốc** và nêu đúng phạm vi của dẫn chứng. Thiếu dẫn chứng thì giữ nguyên nội dung đang được rà soát và nêu phần cần tác giả xác nhận ngoài bài khi được giao nhận xét; chỉ cắt tuyên bố riêng nếu người dùng đã giao sửa nội dung đó. Không tự đặt tên chuyên gia hay tổ chức.
 **Không flag:** tuyên bố kèm dẫn chứng, xếp hạng, giải thưởng hoặc đánh giá từ bên thứ ba được nêu tên và có trong tài liệu người dùng giao. Trích slogan chính thức trong bài phân tích về slogan đó. Trong tài liệu kỹ thuật, doanh nghiệp hoặc học thuật, lời viện dẫn vô danh dùng thay bằng chứng thuộc K7, không thuộc B8.
 
 ### B9. Hán-Việt hoá tên gọi đời thường
