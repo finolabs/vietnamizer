@@ -27,7 +27,7 @@ bài chỉ nhắc tới tên thương hiệu thì chưa phải là gọi hồ s�
 Dựng hoặc cập nhật hồ sơ thương hiệu thì đọc thêm `references/brand-voice.md`, gồm tài liệu nhận được, lời
 xác nhận được nói thay thương hiệu, cách tách quy tắc khỏi nét quan sát và phần phải lược.
 
-Mỗi lần dùng chỉ áp một hồ sơ. Yêu cầu gọi từ hai hồ sơ trở lên thì hỏi người dùng chọn một rồi mới
+Mỗi lần dùng chỉ áp một hồ sơ. Yêu cầu gọi hai hồ sơ trở lên thì hỏi người dùng chọn một rồi mới
 sửa; không trộn nét của hai hồ sơ vào cùng một bài. Khi đã áp hồ sơ, nói ngắn trong câu trả lời đã
 dùng hồ sơ nào.
 
