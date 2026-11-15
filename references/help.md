@@ -26,15 +26,15 @@ Trình bốn ý, mỗi ý kèm một câu yêu cầu mẫu, rồi mời bắt đ
 4. **Kiểm giọng.** Chấm vài đoạn mẫu theo bốn mức Kém, Trung bình, Khá, Tốt để sửa hồ sơ; đó là đánh giá
    của người dùng, skill không tự tính điểm giống giọng. Ví dụ: “Cho tôi chấm 3 đoạn mẫu của hồ sơ này.”
 
-Kết bằng: “Muốn bắt đầu thiết lập giọng không? Không bắt buộc: không có hồ sơ, Vietnamizer vẫn sửa và viết
+Kết bằng: “Muốn bắt đầu thiết lập giọng không? Không bắt buộc. Không có hồ sơ thì Vietnamizer vẫn sửa và viết
 theo giọng sẵn có của bài.” Người dùng không muốn thì dừng ở đây.
 
 ## 2. Thiết lập giọng từng bước
 
 Chạy khi người dùng nhận lời mời trên, hoặc nói “bắt đầu dùng Vietnamizer”, “thiết lập giọng”. Mỗi lựa chọn hỏi qua
 công cụ câu hỏi của host khi có, lựa chọn đề xuất đứng đầu; không có thì hỏi bằng chữ. Riêng câu chấm ở
-bước 5 không có lựa chọn đề xuất: quy tắc chấm ở `references/voice-profile.md` mục 7 thắng. Người dùng có thể dừng
-ở bất kỳ bước nào: không lưu gì nếu người dùng dừng, và không đọc gì ngoài phần họ đã đồng ý cho đọc.
+bước 5 không có lựa chọn đề xuất. Quy tắc chấm ở `references/voice-profile.md` mục 7 thắng. Người dùng có thể dừng
+ở bất kỳ bước nào; không lưu gì nếu người dùng dừng, và không đọc gì ngoài phần họ đã đồng ý cho đọc.
 
 1. **Loại giọng:** Cá nhân (đề xuất) hoặc Thương hiệu.
 2. **Nguồn mẫu:**
