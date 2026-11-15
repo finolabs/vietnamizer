@@ -20,8 +20,9 @@ PANELS = [
     dict(title="Từ ghép bị cắt còn một tiếng mà Vietnamizer giúp từng model phát hiện và sửa",
          sub="Bản gốc có 46 chỗ viết “rà” hoặc “soát” trong khi đúng ra phải là “rà soát”.",
          base=46, fixed=[0, 1, 17, 17], scale=50, unit="%"),
-    dict(title="Giám khảo chọn bản biên tập của model nào nhiều nhất",
-         sub="Fable 5.2 so 42 file và chọn bản tốt nhất cho từng file. “Giữ bản gốc” là khi không bản sửa nào hơn bản gốc.",
+    dict(title="Bản phát hành lấy bản sửa của model nào",
+         sub="Với mỗi file trong 42 file, Fable 5.2 so bản gốc với ba bản đã sửa và giữ lại bản tốt nhất.",
+         sub2="16 file giữ bản gốc vì không bản sửa nào tốt hơn, trong đó 13 file không model nào sửa.",
          rows=["Opus 5.5 + Vietnamizer", "Giữ bản gốc", "Sonnet 5.5 + Vietnamizer", "Gemini 3.8 Flash + Vietnamizer"],
          values=[18, 16, 6, 2], scale=20, unit="file"),
 ]
@@ -42,7 +43,7 @@ def bar_path(x, y, w, h, r=4):
 def build(name):
     c = THEMES[name]
     slug = "self-edit-benchmark" + ("" if name == "light" else "-dark")
-    height = 74 + sum(PANEL_HEAD + 4 * ROW_H for _ in PANELS) + PANEL_GAP * (len(PANELS) - 1) + 16
+    height = 74 + sum(PANEL_HEAD + 4 * ROW_H + (18 if "sub2" in p else 0) for p in PANELS) + PANEL_GAP * (len(PANELS) - 1) + 16
     o = []
     a = o.append
     a(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {height}" width="{W}" height="{height}" '
@@ -50,7 +51,7 @@ def build(name):
     a(f'<title id="{slug}-title">Kết quả Vietnamizer tự biên tập chính nó, bản 0.16.2</title>')
     a(f'<desc id="{slug}-desc">Ba model biên tập bằng Vietnamizer 0.16.2. Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), '
       f'Fable 5.2 chọn và ghép lại 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), '
-      f'Opus 17 (37%), Fable 5.2 chọn và ghép lại 17 (37%). Giám khảo Fable 5.2 chọn trên 42 file, Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.</desc>')
+      f'Opus 17 (37%), Fable 5.2 chọn và ghép lại 17 (37%). Trong 42 file của bản phát hành, 18 file lấy bản của Opus, 6 của Sonnet, 2 của Gemini, 16 giữ bản gốc.</desc>')
     a(f'<rect width="100%" height="100%" fill="{c["paper"]}"/>')
     a(f'<text x="{LABEL_X}" y="34" fill="{c["muted"]}" font-size="13" font-family="{SANS}">Ba model biên tập bằng Vietnamizer 0.16.2. Thanh tô màu là Fable 5.2 dùng Vietnamizer chọn bản tốt nhất</text>')
     a(f'<text x="{LABEL_X}" y="52" fill="{c["muted"]}" font-size="13" font-family="{SANS}">cho từng file rồi ghép lại, chính là bản phát hành 0.16.2. Fable không tự viết câu nào.</text>')
@@ -58,7 +59,11 @@ def build(name):
     for p in PANELS:
         a(f'<text x="{LABEL_X}" y="{y + 18}" fill="{c["ink"]}" font-size="17" font-weight="600" font-family="{SANS}">{escape(p["title"])}</text>')
         a(f'<text x="{LABEL_X}" y="{y + 40}" fill="{c["muted"]}" font-size="13" font-family="{SANS}">{escape(p["sub"])}</text>')
-        top = y + PANEL_HEAD
+        extra = 0
+        if "sub2" in p:
+            extra = 18
+            a(f'<text x="{LABEL_X}" y="{y + 58}" fill="{c["muted"]}" font-size="13" font-family="{SANS}">{escape(p["sub2"])}</text>')
+        top = y + PANEL_HEAD + extra
         a(f'<line x1="{BAR_X}" y1="{top - 6}" x2="{BAR_X}" y2="{top + 4 * ROW_H - 6}" stroke="{c["muted"]}" stroke-width="1"/>')
         for tick in range(0, p["scale"] + 1, 10 if p["unit"] == "%" else 5):
             tx = BAR_X + BAR_W * tick / p["scale"]
@@ -74,7 +79,7 @@ def build(name):
                 emph = label.startswith("Fable")
             else:
                 value = p["values"][i]
-                text, emph = f"{value}/42 file", False
+                text, emph = f"{value} file", False
             fill = c["accent"] if emph else c["bar"]
             weight = "600" if emph else "400"
             a(f'<text x="{BAR_X - 14}" y="{ry + 12.5}" fill="{c["ink"]}" font-size="14" font-weight="{weight}" '

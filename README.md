@@ -142,7 +142,7 @@ Khi dùng Vietnamizer, cả ba model đều phát hiện và sửa được lỗ
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/figures/self-edit-benchmark-dark.svg">
-  <img src="docs/figures/self-edit-benchmark.svg" alt="Ba model biên tập bằng Vietnamizer 0.16.2. Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), Fable 5.2 chọn và ghép lại 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), Opus 17 (37%), Fable 5.2 chọn và ghép lại 17 (37%). Giám khảo Fable 5.2 chọn trên 42 file, Opus 18, giữ bản gốc 16, Sonnet 6, Gemini 2.">
+  <img src="docs/figures/self-edit-benchmark.svg" alt="Ba model biên tập bằng Vietnamizer 0.16.2. Lỗi dấu hai chấm giữa câu, bản gốc có 109 chỗ. Sonnet sửa 31 (28%), Gemini 25 (23%), Opus 47 (43%), Fable 5.2 chọn và ghép lại 49 (45%). Từ ghép bị cắt còn một tiếng như rà, soát, bản gốc có 46 chỗ. Sonnet sửa 0, Gemini 1 (2%), Opus 17 (37%), Fable 5.2 chọn và ghép lại 17 (37%). Trong 42 file của bản phát hành, 18 file lấy bản của Opus, 6 của Sonnet, 2 của Gemini, 16 giữ bản gốc.">
 </picture>
 
 <details>
@@ -153,7 +153,7 @@ Khi dùng Vietnamizer, cả ba model đều phát hiện và sửa được lỗ
 | File được sửa | | 23 | 28 | 23 | 27 |
 | Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | 60 |
 | *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | 29 |
-| File giám khảo chọn | 16 | 6 | 2 | 18 | |
+| File bản phát hành lấy bản này | 16 | 6 | 2 | 18 | |
 
 </details>
 
