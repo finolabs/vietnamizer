@@ -15,9 +15,9 @@ tốt hơn. Fable xét nghĩa và phạm vi của từng quy tắc trước, r�
 
 | | Bản gốc | Sonnet 5.5 | Gemini 3.8 Flash | Opus 5.5 | Bản phát hành |
 |---|---|---|---|---|---|
-| File được sửa | | 23 | 28 | 23 | @F@ |
-| Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | @C@ |
-| *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | @R@ |
+| File được sửa | | 23 | 28 | 23 | 27 |
+| Dấu hai chấm giữa câu | 109 | 78 | 84 | 62 | 60 |
+| *rà*, *soát* đứng một mình | 46 | 46 | 45 | 29 | 29 |
 | File giám khảo chọn | 16 | 6 | 2 | 18 | |
 
 Phạm vi là 42 file Markdown phát hành cùng gói, gồm `SKILL.md`, `references/`, `profiles/`,
