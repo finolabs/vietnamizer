@@ -83,8 +83,8 @@ Vài điều nên biết trước khi bắt đầu:
   thì mỗi URL một câu. Chưa đồng ý thì skill chưa đọc gì.
 - **Hãy tự đọc kỹ hồ sơ nháp.** Skill được dặn bỏ tên người, liên hệ và chuyện riêng khỏi hồ sơ, nhưng
   không có bộ lọc bằng mã. Bạn là người kiểm cuối cùng trước khi lưu.
-- **Chỉ lưu khi bạn bảo lưu.** Không lưu thì hồ sơ chỉ ở lại trong hội thoại. Để dùng lại, bạn nêu tên
-  hồ sơ (`/vietnamizer:vietnamizer <tên>` trên Claude Code cài qua plugin, `/vietnamizer <tên>` khi cài skill
+- **Chỉ lưu khi bạn yêu cầu.** Không lưu thì hồ sơ chỉ ở lại trong hội thoại. Để dùng lại, bạn gọi hồ sơ
+  bằng tên (`/vietnamizer:vietnamizer <tên>` trên Claude Code cài qua plugin, `/vietnamizer <tên>` khi cài skill
   riêng, `$vietnamizer <tên>` trên Codex,
   hay câu “theo hồ sơ <tên>”), nói kèm chỗ lưu nếu hồ sơ chưa có trong sổ hồ sơ, hoặc dán hồ sơ vào yêu
   cầu; mỗi lần chỉ áp một hồ sơ.

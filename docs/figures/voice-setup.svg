@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 488" width="960" height="488" role="img" aria-labelledby="voice-setup-title voice-setup-desc">
 <title id="voice-setup-title">Luồng thiết lập giọng của Vietnamizer</title>
-<desc id="voice-setup-desc">Năm bước chọn loại giọng, đưa nguồn mẫu, đồng ý đọc, xem hồ sơ nháp và chấm thử dẫn tới câu hỏi bạn có bảo lưu không; có thì hồ sơ được lưu và lần sau gọi bằng tên, không thì hồ sơ chỉ nằm trong cuộc trò chuyện. Dừng ở bước nào cũng không có gì được lưu.</desc>
+<desc id="voice-setup-desc">Năm bước chọn loại giọng, đưa nguồn mẫu, đồng ý đọc, xem hồ sơ nháp và chấm thử dẫn tới câu hỏi bạn có muốn lưu không; có thì hồ sơ được lưu và lần sau gọi bằng tên, không thì hồ sơ chỉ nằm trong cuộc trò chuyện. Dừng ở bước nào cũng không có gì được lưu.</desc>
 <defs>
 <marker id="voice-setup-a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#5B5B79"/></marker>
 <marker id="voice-setup-b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9750C4"/></marker>
@@ -49,7 +49,7 @@
 <text x="856.0" y="128" fill="#5B5B79" font-size="12" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">từ Kém đến Tốt</text>
 <rect x="776" y="232" width="160" height="72" rx="6" fill="#FFFFFF"/>
 <rect x="776" y="232" width="160" height="72" rx="6" fill="#F5EDFA" stroke="#9750C4" stroke-width="1"/>
-<text x="856.0" y="268" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Bạn bảo lưu?</text>
+<text x="856.0" y="268" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Bạn muốn lưu?</text>
 <rect x="520" y="232" width="200" height="72" rx="6" fill="#FFFFFF"/>
 <rect x="520" y="232" width="200" height="72" rx="6" fill="#FFFFFF" stroke="#0B0B17" stroke-width="1"/>
 <text x="620.0" y="268" fill="#0B0B17" font-size="16" font-weight="600" font-family="'Space Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">Lưu hồ sơ</text>

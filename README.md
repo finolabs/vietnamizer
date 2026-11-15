@@ -101,7 +101,7 @@ nói “Thiết lập giọng” là được (trên Claude Code có thêm `/vie
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/figures/voice-setup-dark.svg">
-  <img src="docs/figures/voice-setup.svg" alt="Luồng thiết lập giọng: chọn loại giọng, đưa nguồn mẫu, đồng ý đọc từng nguồn, xem hồ sơ nháp, chấm thử đoạn mẫu, rồi chỉ lưu khi bạn bảo lưu; lần sau gọi hồ sơ bằng tên. Dừng ở bước nào thì không có gì được lưu.">
+  <img src="docs/figures/voice-setup.svg" alt="Luồng thiết lập giọng: chọn loại giọng, đưa nguồn mẫu, đồng ý đọc từng nguồn, xem hồ sơ nháp, chấm thử đoạn mẫu, rồi chỉ lưu khi bạn yêu cầu; lần sau gọi hồ sơ bằng tên. Dừng ở bước nào thì không có gì được lưu.">
 </picture>
 
 1. **Loại giọng.** Cá nhân (mặc định) hoặc Thương hiệu.
@@ -113,7 +113,7 @@ nói “Thiết lập giọng” là được (trên Claude Code có thêm `/vie
 4. **Hồ sơ nháp.** Mỗi nét giọng có phạm vi, căn cứ và mức chắc chắn. Bạn sửa tới khi ưng.
 5. **Chấm thử.** Từ 0 đến 10 đoạn mẫu, mỗi đoạn chấm Kém, Trung bình, Khá hoặc Tốt. Kết quả là đánh giá
    của riêng bạn, không phải điểm đo chất lượng.
-6. **Lưu.** Chỉ khi bạn bảo lưu, vào Orrery, Obsidian hoặc một thư mục Markdown (gợi ý
+6. **Lưu.** Chỉ lưu khi bạn yêu cầu, vào Orrery, Obsidian hoặc một thư mục Markdown (gợi ý
    `~/.agents/vietnamizer/profiles`), kèm tên trong sổ hồ sơ `~/.agents/vietnamizer/registry.md`. Trên Chat,
    hồ sơ thành bản gọn trong bộ nhớ của Chat sau khi bạn đồng ý ([PRIVACY.md](PRIVACY.md)).
 
