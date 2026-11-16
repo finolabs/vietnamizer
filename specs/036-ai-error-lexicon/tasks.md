@@ -33,10 +33,10 @@ Agent skill package at the repository root: `SKILL.md`, `references/`, `scripts/
 
 **⚠️ CRITICAL**: no package change before T003 is committed (plan Constitution Check V).
 
-- [ ] T003 Apply the constitution amendment as its own commit in `.specify/memory/constitution.md`: replace the Principle V span with the two paragraphs of spec.md "Constitution amendment" verbatim, keep the Jev/TypeSafe sentence unchanged, set the version line to 2.9.0 with Last Amended set to the date this commit lands, and add a Sync Impact Report entry "2.8.0 -> 2.9.0 (MINOR: Principle V allows optional offline scripts in the package; no obligation removed)" with owner approval "Fio, 15/11/2026, 'Bản mày sửa' (spec 036 decision 6)"
+- [ ] T003 Apply the constitution amendment as its own commit in `.specify/memory/constitution.md`: replace the Principle V span with the two paragraphs of spec.md "Constitution amendment" verbatim, keep the Jev/TypeSafe sentence unchanged, set the version line to 2.9.0 with Last Amended set to the date this commit lands, and add a Sync Impact Report entry "2.8.0 -> 2.9.0 (MINOR: Principle V allows optional offline scripts in the package; no obligation removed)" with owner approval "Fio, 15/11/2026, 'Bản mày sửa' (spec 036 decision 6)"; before committing, check that the two new paragraphs in the constitution equal the blockquote of spec.md "Constitution amendment" after stripping the `> ` prefixes (a short Python comparison, output pasted in the PR notes)
 - [ ] T004 Write the red table-structure test in `tests/test_scan_lexicon.py` (class `LexiconTableTest`) that fails while `references/ai-error-lexicon.md` is absent. It checks every rule of contracts/lexicon-table.md "Validation": header row byte-identical to `| ID | Dạng | Loại | Pattern | Sửa | Ngữ vực lỗi | Sau không là | Trước không là | Chữ hoa | Không flag | Ca |`; 11 non-empty cells per row with `—` only in `Sau không là` and `Trước không là`; IDs "Unique, continuous from `L01` in table order"; `Loại` in {`từ ghép bị cắt`, `dịch sát`, `từ nghề hiểu sai`, `danh từ tập thể đứng trơ`}; `Chữ hoa` in {`mọi`, `đầu câu`}; `Pattern` exists in the V/T catalogs; `Dạng` "1–4 syllables, written in NFC, lower case. One form per row"; every fix in `Sửa` (split on ` / `) differs from the form; every `Ca` id exists in `calibration/test-cases.md`; exactly one table in the file
-- [ ] T005 Create `references/ai-error-lexicon.md` per contracts/lexicon-table.md "Layout": front matter `type: vietnamizer-ai-error-lexicon`, `schema: 1`; a Vietnamese introduction of at most 12 lines (a hit is a candidate, never an edit by itself; the row's and the owning pattern's **Không flag** both apply; the table runs only on prose outside the T1–T6-only genres; how to read the neighbour columns); `## Bảng` with entries L01–L08 from data-model.md "Seed entries", final Vietnamese wording written here; `## Thêm mục` restating FR-004 in one paragraph. Edit the Vietnamese with Vietnamizer's own review (AGENTS.md "Khi sửa nội dung"). T004 turns green
-- [ ] T006 Create `tests/fixtures/lexicon/fixtures.json` with fixtures `LXF01`… holding `id` (`LXF` + two digits), `text`, `expected` (list of `entry`, `text`, `line`, `column`, `zone`; empty for a lexical guard), `agent` (`sửa` with expected output, or `giữ`) and `cases`. Cover data-model.md "Fixture": one positive and one guard per entry (FR-017); lexical guards *rườm rà*, *bỡ ngỡ*, *Đội ngũ*, *giữ nghĩa vụ*, *dịch sát nghĩa*; register guards HF08, HF12, HF13, HF15, HF16, HF17; NFD input, a soft hyphen inside *rườm­rà*, a line break between *giữ* and *nghĩa*, sentence-initial *Đội* in a paragraph, after `- `, `1. `, `> ` and `: `, inner *đội*, the L03/L05 overlap of HF11, and one match in each zone `frontmatter`, `code`, `link-url`, `quote`, `blockquote`
+- [ ] T005 Create `references/ai-error-lexicon.md` per contracts/lexicon-table.md "Layout": front matter `type: vietnamizer-ai-error-lexicon`, `schema: 1`; a Vietnamese introduction of at most 12 lines (a hit is a candidate, never an edit by itself; the row's and the owning pattern's **Không flag** both apply; the table runs only on prose outside the T1–T6-only genres; how to read the neighbour columns); `## Bảng` with entries L01–L08 from data-model.md "Seed entries", final Vietnamese wording written here; `## Thêm mục` restating FR-004 in one paragraph (FR-001, FR-002: no new pattern number, FR-003: every lookup-findable form of HF01–HF18, FR-005). Edit the Vietnamese with Vietnamizer's own review (AGENTS.md "Khi sửa nội dung"). T004 turns green
+- [ ] T006 Create `tests/fixtures/lexicon/fixtures.json` with fixtures `LXF01`… holding `id` (`LXF` + two digits), `text`, `expected` (list of `entry`, `text`, `line`, `column`, `zone`; empty for a lexical guard), `agent` (`sửa` with expected output, or `giữ`) and `cases`. Cover data-model.md "Fixture" (FR-003 guards, FR-017): one positive and one guard per entry (FR-017); lexical guards *rườm rà*, *bỡ ngỡ*, *Đội ngũ*, *giữ nghĩa vụ*, *dịch sát nghĩa*; register guards HF08, HF12, HF13, HF15, HF16, HF17; NFD input, a soft hyphen inside *rườm­rà*, a line break between *giữ* and *nghĩa*, sentence-initial *Đội* in a paragraph, after `- `, `1. `, `> ` and `: `, inner *đội*, the L03/L05 overlap of HF11, and one match in each zone `frontmatter`, `code`, `link-url`, `quote`, `blockquote`
 - [ ] T007 Extend `LexiconTableTest` in `tests/test_scan_lexicon.py` to fail when an entry lacks a positive or a guard fixture in `tests/fixtures/lexicon/fixtures.json`; run `python3 -m unittest tests.test_scan_lexicon` green
 
 **Checkpoint**: constitution 2.9.0 committed; the table and fixtures exist and pass their structure test.
@@ -98,7 +98,7 @@ Agent skill package at the repository root: `SKILL.md`, `references/`, `scripts/
 
 ### Implementation for User Story 3
 
-- [ ] T020 [US3] Implement `scripts/scan-lexicon.py` (Python 3.9+, standard library only): read `sys.stdin.buffer.read(1_000_001)`, strip BOM, refuse per R4; read the lexicon only from `../references/ai-error-lexicon.md` relative to the script file and parse the table by its exact header row; normalise to NFC, drop U+00AD and zero-width characters, fold whitespace runs inside a paragraph to one space with an offset map back to the original (R2); tokenise syllables with `[^\W\d_]+`; match 1–4 syllable forms with `casefold()` equality unless `Chữ hoa` is `đầu câu` (data-model "Sentence start": line start after one Markdown marker `-`, `*`, `+`, `1.`/`1)`, `>`, `#`–`######`, or after `.`, `!`, `?`, `…`, `:`, `;`, `—` with optional closing quotes); apply `Sau không là` and `Trước không là`; set `zone` per R5 and drop nothing; print the JSON of contracts/scanner-cli.md. T017–T019 turn green
+- [ ] T020 [US3] Implement `scripts/scan-lexicon.py` (Python 3.9+, standard library only): read `sys.stdin.buffer.read(1_000_001)`, strip BOM, refuse per R4; read the lexicon only from `../references/ai-error-lexicon.md` relative to the script file and parse the table by its exact header row; normalise to NFC, drop U+00AD and zero-width characters, fold whitespace runs inside a paragraph to one space with an offset map back to the original (R2); tokenise syllables with `[^\W\d_]+`; match 1–4 syllable forms with `casefold()` equality unless `Chữ hoa` is `đầu câu` (data-model "Sentence start": line start after one Markdown marker `-`, `*`, `+`, `1.`/`1)`, `>`, `#`–`######`, or after `.`, `!`, `?`, `…`, `:`, `;`, `—` with optional closing quotes); apply `Sau không là` and `Trước không là`; set `zone` per R5 and drop nothing; print the JSON of contracts/scanner-cli.md (FR-012, FR-013). T017–T019 turn green
 - [ ] T021 [US3] Teach `scripts/validate-package.py` the payload `scripts/` root: `EXACT_DIRECTORY_FILES["scripts"] = {"scripts/scan-lexicon.py"}` for staged payloads and archives only; in a source checkout require only that `scripts/scan-lexicon.py` exists; make the `copied_payload != PACKAGE_COPY_SOURCES` check accept the file-level source `scripts/scan-lexicon.py` so a copy of the whole `scripts/` folder still fails (research R3)
 - [ ] T022 [US3] Stage only `scripts/scan-lexicon.py` into the payload in `scripts/package-skill.sh`; leave `scripts/package-plugin.py` unchanged (plan "Source code")
 - [ ] T023 [US3] Update `tests/test_package_security.py`: the payload accepts exactly `scripts/scan-lexicon.py` and `references/ai-error-lexicon.md` as new files and still rejects any other code file, any other file under `scripts/`, and a whole-folder copy; run `python3 -m unittest tests.test_package_security` green
@@ -162,6 +162,39 @@ Agent skill package at the repository root: `SKILL.md`, `references/`, `scripts/
 - [ ] T044 After Fio marks the articles, run 0.16.2 and 0.17.0 on every available P2 model; Sonnet 5.5 and Opus 5.5 on Claude Cowork are required (O6), Argon, Flash and GPT run when quota allows and are reported as not run otherwise; write the report to `docs/benchmarks.md` (SC-005); release only on Fio's go (O7)
 
 ---
+
+## Requirements coverage
+
+| Requirement | Tasks |
+|---|---|
+| FR-001 entry fields | T004, T005 |
+| FR-002 no new pattern, Không flag and chốt gate | T005, T008, T016 |
+| FR-003 seed covers HF01–HF18 forms and guards | T005, T006 |
+| FR-004 growth from evidence | T005, T031, T032 |
+| FR-005 one table, structure test, readable inline | T004, T005, T013, T014 |
+| FR-006 inventory on long-form route only | T015, T016 |
+| FR-007 row fields, every paragraph | T015, T016 |
+| FR-008 every candidate and catalog suspect is a row | T015, T016 |
+| FR-009 edit in place | T015, T016 |
+| FR-010 inventory internal | T015, T016 |
+| FR-011 pure Markdown inventory | T016 |
+| FR-012 scanner in package, stdlib, stdin only, no write | T019, T020, T021, T022, T023 |
+| FR-013 candidate fields, syllables, case, neighbours, zones | T017, T020 |
+| FR-014 scanner optional, silent fallback | T009, T025 |
+| FR-015 order and rescan | T027, T028, T029, T030 |
+| FR-016 error fix wins over voice | T027, T028 |
+| FR-017 fixtures per entry, deterministic test | T006, T007, T017 |
+| FR-018 parity check | T041 |
+| FR-019 nothing waits on the scanner | T008, T025 |
+| FR-020 holdout proof, HF as development only | T033, T042, T043, T044 |
+| FR-021 Markdown-only consumers in the same PR | T003, T013, T021, T023, T034, T035 |
+| FR-022 0.17.0 | T036 |
+| SC-001 scanner exact on fixtures | T017, T020 |
+| SC-002 reading path parity | T041 |
+| SC-003 package without scripts/ still edits | T039, T041 |
+| SC-004 HF01–HF18 development result | T039 |
+| SC-005 holdout improvement | T044 |
+| SC-006 edits trace to kept rows | T016, T039 |
 
 ## Dependencies & execution order
 
