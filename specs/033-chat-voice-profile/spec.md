@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/033-chat-voice-profile`
 **Created**: 2026-11-14
-**Status**: Draft, spec only (no plan, tasks or implementation). Planned for the version after 0.16.0. Needs a constitution amendment (exact text pending Fio's approval, open decision O1) before any implementation.
+**Status**: Draft, spec only (no plan, tasks or implementation). Planned for the version after 0.16.0. Needs a constitution amendment before any implementation; its exact text was approved on 16/11/2026 (O1).
 **Input**: Fio, 14/11/2026: "nếu user không muốn mất thời gian build lại writing profile, thì họ có thể lựa chọn cho vietnamizer học hỏi từ chính cách họ viết qua các session chat. Lúc này vietnamizer có thể có một script hoặc agent nào đó thu thập lại các session chat trong vòng 30 ngày gần nhất của users để từ đó đóng gói thành writing profiles cho họ." Orrery memory `01M7CHWABQ4FDAQFJNHVE9R4E9` holds the idea and the open issues the coordinator raised. Router depth DEEP, trigger `privacy`: the skill would read the user's local agent history, which may hold secrets, file paths, client work and other people's text, and the shipped constitution forbids searching memory or history. Builds on spec 028 (voice-profile route), spec 030 (personal and brand voice, social sources) and the 14/11/2026 decision that building a profile is optional and the first use only reminds the user.
 
 ## Settled decisions (owner, 2026-11-14)
@@ -28,7 +28,7 @@
 
 | # | Decision | Owner | Unblocks it |
 |---|---|---|---|
-| O1 | Exact text of the constitution amendment (section "Constitution amendment" below) | Fio | Approval of the exact text at review of this PR or of the plan; no implementation before it |
+| O1 | Exact text of the constitution amendment (section "Constitution amendment" below) | Fio | Resolved 16/11/2026: Fio approved both texts ("Duyệt"). They are applied when this spec is implemented, after spec 036 |
 | O2 | Calibration of the sample floor of decision 6 | Plan author, then Fio | A labelled development set and a separate holdout set of chat samples, consented and kept out of the repo |
 | O3 | Field name and lookup behaviour shared with spec 032 (source marker, how listing finds profiles) | Session of spec 032, then Fio | Spec 032 settled; this spec's FR-015 and FR-016 aligned with it |
 | O4 | Per-host format and retention: fields, timestamp units, whether history can be turned off or is pruned (Claude Code prunes local history after a retention period; Codex history persistence can be turned off) | Plan author | Checking each host's current version and docs in the plan's research; a host whose format is not confirmed is not supported |
@@ -130,19 +130,21 @@ A user in Claude.ai Chat or Cowork asks to learn from their chats.
 - **Filtered sample**: the script's output for one run: kept entries with masks, per-reason counts; it lives only in the conversation.
 - **Chat-learned profile**: a `kind: personal` profile with source marker, hosts, window and counts; otherwise the spec 028 template.
 
-## Constitution amendment (proposed, exact text pending Fio's approval — O1)
+## Constitution amendment (exact text approved by Fio on 16/11/2026 — O1)
 
-Version 2.6.1 → 2.7.0 (MINOR: the voice-profile constraint gains a source; Principle V is clarified for local reads; no obligation removed).
+Version 2.9.0 → 2.10.0, after spec 036 takes the constitution from 2.8.0 to 2.9.0 (MINOR: the voice-profile constraint gains a source; Principle V is clarified for local reads; no obligation removed).
 
-**Principle V** takes the shared text Fio approved on 15/11/2026 in spec 036 (section "Constitution amendment", decision 6), which ends "Script nào cần đọc file khác trên máy người dùng phải có điều khoản riêng trong constitution này." This spec then appends its own clause (proposed, exact text still pending Fio's approval, O1):
+**Principle V** takes the shared text Fio approved on 15/11/2026 in spec 036 (section "Constitution amendment", decision 6), which ends "Script nào cần đọc file khác trên máy người dùng phải có điều khoản riêng trong constitution này." This spec then appends its own clause (approved by Fio on 16/11/2026, "Duyệt", after one rewrite for plain wording):
 
-> Điều khoản riêng cho script đọc lịch sử prompt của tuyến hồ sơ giọng: script này được đọc file trên máy người dùng, chỉ sau câu đồng ý đọc, chỉ đúng các file được nêu trong câu đó, chỉ bằng thư viện chuẩn, không gọi mạng, không đọc biến môi trường chứa secret và không ghi file.
+> Riêng script đọc lịch sử prompt của tuyến hồ sơ giọng được đọc file trên máy người dùng. Script chỉ đọc sau khi người dùng đồng ý, và chỉ đọc đúng những file đã nêu khi hỏi ý họ. Script chỉ dùng thư viện chuẩn của Python, không gọi mạng, không đọc biến môi trường chứa secret và không ghi file.
 
-**Ràng buộc "Tuyến hồ sơ giọng"**, replace "Skill MUST NOT tự tìm hồ sơ hoặc mẫu trong memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định." with:
+**Ràng buộc "Tuyến hồ sơ giọng"** (approved by Fio on 16/11/2026, "Duyệt"), replace the sentence "Skill không được tự tìm hồ sơ hay mẫu trong bộ nhớ của agent, lịch sử hội thoại hoặc kho lưu; chỉ đọc hồ sơ người dùng dán hoặc chỉ định." in the body of that constraint in constitution 2.8.0 with the text below. The older sentence "Skill MUST NOT tự tìm hồ sơ hoặc mẫu trong memory hay lịch sử…" is no longer in force; it survives only in the Sync Impact Report, which records that spec 032 replaced it.
 
-> Với hồ sơ cá nhân, tuyến MAY đọc file lịch sử prompt của chính người dùng trên host local (Claude Code, Codex CLI hoặc app local, Antigravity CLI) trong tối đa 30 ngày gần nhất, sau một câu đồng ý nêu từng file và khoảng ngày; việc đọc và lọc MUST do script trong gói làm, agent MUST NOT tự mở file lịch sử; script MUST chỉ giữ lời người dùng gõ, bỏ đoạn dán, lệnh và mục có dấu hiệu secret, che đường dẫn, URL, email, số điện thoại và mã định danh trước khi agent đọc; MUST NOT đọc transcript đầy đủ, câu trả lời của agent hay tool output; MUST NOT ghi mẫu đã lọc ra bất kỳ đâu. Ngoài nguồn này, skill MUST NOT tự tìm hồ sơ hoặc mẫu trong memory hay lịch sử; chỉ đọc hồ sơ người dùng dán hoặc chỉ định.
+Replacement:
 
-The second replacement keeps the existing ban for every other source. Spec 032 may amend the same sentence for lookup by name; the two amendments MUST be reconciled into one text before either is applied (O3).
+> Với hồ sơ cá nhân, skill được đọc file lịch sử prompt của chính người dùng trên host chạy tại máy (Claude Code, Codex CLI hoặc app Codex trên máy, Antigravity CLI), trong tối đa 30 ngày gần nhất. Trước khi đọc, skill hỏi ý người dùng và nêu rõ từng file cùng khoảng ngày. Việc đọc và lọc do script trong gói làm, agent không tự mở file lịch sử. Trước khi agent đọc, script chỉ giữ lời người dùng gõ, bỏ các đoạn dán, các lệnh và mục có dấu hiệu chứa secret, rồi che đường dẫn, URL, email, số điện thoại và mã định danh. Script không đọc toàn bộ transcript, câu trả lời của agent hay kết quả của tool, và không ghi mẫu đã lọc ra bất kỳ đâu. Ngoài nguồn này, skill không được tự tìm hồ sơ hay mẫu trong bộ nhớ của agent, lịch sử hội thoại hoặc kho lưu; chỉ đọc hồ sơ người dùng dán hoặc chỉ định.
+
+The second replacement keeps the existing ban for every other source. It starts from the sentence as spec 032 left it in constitution 2.8.0, so the two amendments are already reconciled (O3).
 
 ## Success Criteria *(mandatory)*
 
