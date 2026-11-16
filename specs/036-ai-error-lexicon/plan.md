@@ -71,7 +71,7 @@ specs/036-ai-error-lexicon/
 │   ├── skill-text.md       # inventory, reading path, order and rescan wording contract
 │   └── holdout-marking-sheet.md  # Fio's marking sheet (O2)
 ├── checklists/requirements.md
-└── tasks.md                # next: speckit-tasks (not created here)
+└── tasks.md                # task list (speckit-tasks, 16/11/2026)
 ```
 
 ### Source code (repository root)

@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/036-ai-error-lexicon`
 **Created**: 2026-11-15
-**Status**: Planned ([plan.md](plan.md), 15/11/2026); no tasks or implementation yet. The constitution amendment text was approved by Fio on 15/11/2026 (decision 6, shared with spec 033); it is applied to the constitution with the implementation.
+**Status**: Planned ([plan.md](plan.md), 15/11/2026); tasks in [tasks.md](tasks.md) (16/11/2026); no implementation yet. The constitution amendment text was approved by Fio on 15/11/2026 (decision 6, shared with spec 033); it is applied to the constitution with the implementation.
 **Input**: Fio, 15/11/2026, after marking errors in sample AI articles that 0.16.2 (PRs 59 and 60) fixed one by one: the next version should have the agent build an explicit structure of the source's words and phrases, flag the wrong ones, fix the AI errors, apply the user's voice profile, then reassemble; it must run on cloud Chat and Cowork (a native sandbox at most) and may run extra scripts on Claude Code, with both paths error-free. Scope agreed in the coordinator's discussion with Fio the same day (session `local_c94f3fc0-fa20-4142-8374-d4a879f60b8f`). Router depth DEEP, triggers `contract` and `security`: the package would ship executable code for the first time since 0.14.0 (spec 029 removed the Jev runner), which needs a Principle V amendment, and every whole-article edit gains a mandatory step.
 
 ## Background
