@@ -138,7 +138,9 @@ Version 2.9.0 → 2.10.0, after spec 036 takes the constitution from 2.8.0 to 2.
 
 > Riêng script đọc lịch sử prompt của tuyến hồ sơ giọng được đọc file trên máy người dùng. Script chỉ đọc sau khi người dùng đồng ý, và chỉ đọc đúng những file đã nêu khi hỏi ý họ. Script chỉ dùng thư viện chuẩn của Python, không gọi mạng, không đọc biến môi trường chứa secret và không ghi file.
 
-**Ràng buộc "Tuyến hồ sơ giọng"** (approved by Fio on 16/11/2026, "Duyệt"), replace the sentence "Skill không được tự tìm hồ sơ hay mẫu trong bộ nhớ của agent, lịch sử hội thoại hoặc kho lưu; chỉ đọc hồ sơ người dùng dán hoặc chỉ định." of constitution 2.8.0 with:
+**Ràng buộc "Tuyến hồ sơ giọng"** (approved by Fio on 16/11/2026, "Duyệt"), replace the sentence "Skill không được tự tìm hồ sơ hay mẫu trong bộ nhớ của agent, lịch sử hội thoại hoặc kho lưu; chỉ đọc hồ sơ người dùng dán hoặc chỉ định." in the body of that constraint in constitution 2.8.0 with the text below. The older sentence "Skill MUST NOT tự tìm hồ sơ hoặc mẫu trong memory hay lịch sử…" is no longer in force; it survives only in the Sync Impact Report, which records that spec 032 replaced it.
+
+Replacement:
 
 > Với hồ sơ cá nhân, skill được đọc file lịch sử prompt của chính người dùng trên host chạy tại máy (Claude Code, Codex CLI hoặc app Codex trên máy, Antigravity CLI), trong tối đa 30 ngày gần nhất. Trước khi đọc, skill hỏi ý người dùng và nêu rõ từng file cùng khoảng ngày. Việc đọc và lọc do script trong gói làm, agent không tự mở file lịch sử. Trước khi agent đọc, script chỉ giữ lời người dùng gõ, bỏ các đoạn dán, các lệnh và mục có dấu hiệu chứa secret, rồi che đường dẫn, URL, email, số điện thoại và mã định danh. Script không đọc toàn bộ transcript, câu trả lời của agent hay kết quả của tool, và không ghi mẫu đã lọc ra bất kỳ đâu. Ngoài nguồn này, skill không được tự tìm hồ sơ hay mẫu trong bộ nhớ của agent, lịch sử hội thoại hoặc kho lưu; chỉ đọc hồ sơ người dùng dán hoặc chỉ định.
 
