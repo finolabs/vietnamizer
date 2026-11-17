@@ -204,6 +204,18 @@ class ScannerTest(unittest.TestCase):
         got = self.scanner.scan(text, self.entries)
         self.assertEqual([(c["line"], c["text"]) for c in got], [(13, "rườm")])
 
+    def test_inline_code_across_one_line_break_is_dropped(self) -> None:
+        got = self.scanner.scan("Có `lệnh\nrườm` ở đây. Còn rườm.", self.entries)
+        self.assertEqual([(c["line"], c["column"]) for c in got], [(2, 18)])
+
+    def test_inline_code_does_not_cross_a_blank_line(self) -> None:
+        got = self.scanner.scan("Mở `chưa đóng rườm.\n\nĐoạn sau rườm `x`.", self.entries)
+        self.assertEqual([c["line"] for c in got], [1, 3])
+
+    def test_unclosed_leading_rule_is_not_frontmatter(self) -> None:
+        got = self.scanner.scan("---\nQuy trình còn rườm.", self.entries)
+        self.assertEqual([c["line"] for c in got], [2])
+
     def test_blank_line_breaks_a_multi_syllable_form(self) -> None:
         self.assertEqual(self.scanner.scan("Cần giữ\n\nnghĩa.", self.entries), [])
 

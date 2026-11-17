@@ -187,7 +187,8 @@ def zone_spans(text: str, lines: list[str], starts: list[int]) -> list[tuple[int
             fence = None
     if fence is not None:
         spans.append((fence[1], len(text), "code"))
-    for match in re.finditer(r"(`+)[^\n]+?\1", text):
+    # Code span vắt được qua một lần xuống dòng trong cùng đoạn, không qua dòng trống (CommonMark).
+    for match in re.finditer(r"(`+)((?:(?!\n[ \t]*\n)[\s\S])+?)\1", text):
         spans.append((match.start(), match.end(), "code"))
     for match in re.finditer(r"\]\(([^)\n]*)\)", text):
         spans.append((match.start(1), match.end(1), "link-url"))
