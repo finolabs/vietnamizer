@@ -4,6 +4,20 @@
 
 ## Lịch sử phiên bản
 
+### 0.17.0 (chưa phát hành)
+
+Spec 036. Constitution lên 2.9.0: Principle V cho gói kèm script chạy tại chỗ khi skill vẫn làm đủ việc mà
+không cần nó, script chỉ dùng thư viện chuẩn của Python, không gọi mạng, không đọc secret, không ghi file và
+chỉ in ứng viên. Thêm `references/ai-error-lexicon.md`, bảng L01–L08 lấy từ HF01–HF18: *rườm*, *bỡ*,
+*giữ nghĩa*, *giữ giọng*, *nghĩa và giọng* (V20), *gọi tên* (V9), *dịch sát* (V19) và *Đội* đứng trơ đầu
+câu (V20); mỗi dòng có cách sửa, ngữ vực lỗi, tiếng láng giềng loại trừ và Không flag. Tuyến biên tập cả bài
+và viết từ brief đọc bảng, đi qua từng đoạn để lập bảng kê cụm nội bộ, sửa tại chỗ và giữ nguyên từng byte ở
+chỗ Không flag cho giữ; sửa lỗi trước, áp giọng sau, rồi dò lại. V20, V9 và V19 trỏ tới mã dòng của mình.
+Thêm script tùy chọn `scripts/scan-lexicon.py`, script duy nhất trong gói. Script đọc văn bản qua stdin và in JSON các
+ứng viên; host không chạy được thì agent tự đọc bảng. Thêm fixture LXF01–LXF29, ca LX01–LX29 và
+`tests/test_scan_lexicon.py`; validator kiểm bảng và chỉ nhận đúng script này dưới `scripts/` của gói.
+Vẫn 55 pattern. HF01–HF18 và LX01–LX29 là ca phát triển; chưa chạy holdout 20 bài.
+
 ### 0.16.2 (15/11/2026)
 
 Spec 034, từ các lỗi Fio bắt trên bài viết thử ngày 15/11/2026. T2 đổi tên thành “Gạch ngang hoặc dấu hai
@@ -142,6 +156,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.17.0** — Bảng dạng lỗi AI L01–L08, bảng kê cụm trên tuyến bài, thứ tự sửa lỗi rồi áp giọng rồi dò lại, script tùy chọn `scripts/scan-lexicon.py`; constitution 2.9.0. Giữ 55 pattern. Chưa có kết quả holdout.
 - **0.16.2** — T2 bắt cả dấu hai chấm giữa câu văn xuôi và luôn được rà; V9, V19 bắt cách nói dịch sát và từ nghề dễ hiểu sai; V20 luôn được soát, gồm *đội* đứng trơ; banner README mới. Giữ 55 pattern. Chưa chạy agent trên các ca mới.
 - **0.16.1** — Mô tả plugin ngắn lại còn 151 ký tự, giống nhau ở ba manifest và catalog `finolabs/plugins`, để catalog pin được bản mới. Nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` hay `/vietnamizer:vietnamizer cá nhân` qua sổ hồ sơ; trên Chat lưu bản gọn trong bộ nhớ; tạo hồ sơ không bắt buộc, lời nhắc tắt được hẳn cả trên Chat. Constitution lên 2.8.0. Chưa chạy agent trên các ca mới.

@@ -31,6 +31,9 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/voice-profile.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên, cá nhân (mặc định) hoặc thương hiệu, mỗi lần một hồ sơ; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn; gọi lại hồ sơ đã lưu qua sổ hồ sơ `~/.agents/vietnamizer/registry.md` |
 | `references/voice-sources.md` | Ba nguồn mẫu: dán bài, file export LinkedIn/Facebook, trang qua công cụ trình duyệt host sẵn có (mục 4a tài khoản của chính người dùng; mục 4b trang công khai của thương hiệu từ tối đa ba URL người dùng đưa, đường đọc cố định, từ chối trang đối thủ; mục 4c Trang Facebook mang tên chính người dùng cho hồ sơ cá nhân, sau cảnh báo và xác nhận); xác nhận chủ tài khoản, chỉ giữ bài tự viết, cảnh báo điều khoản LinkedIn và Facebook, không xử lý mật khẩu hay cookie |
 | `references/brand-voice.md` | Dựng hồ sơ `kind: brand` từ bộ quy chuẩn, bài đã đăng (dán, export của trang, hoặc trang đọc qua trình duyệt theo `references/voice-sources.md` mục 4b) và tài liệu nội bộ người dùng đưa, sau lời xác nhận được nói thay thương hiệu; quy tắc thương hiệu tách khỏi nét quan sát, mâu thuẫn vào điểm chưa quyết, lược tên nhân viên và khách hàng |
+| `references/ai-error-lexicon.md` | Bảng dạng lỗi AI đã gặp (L01–L08), mỗi dòng một dạng kèm pattern V sở hữu, cách sửa, ngữ vực lỗi, tiếng láng giềng loại trừ, Không flag và ca nguồn; chỉ đọc trên tuyến bài; thêm dòng theo mục Thêm mục |
+| `scripts/scan-lexicon.py` | Script tùy chọn trong gói: đọc văn bản qua stdin, in JSON các ứng viên theo bảng dạng lỗi; không sửa văn bản, không ghi file, không gọi mạng |
+| `scripts/lexicon_check.py`, `tests/test_scan_lexicon.py`, `tests/fixtures/lexicon/` | Kiểm cấu trúc bảng dạng lỗi, fixture LXF cho scanner và quy tắc thêm mục; ngoài gói |
 | `references/help.md` | Hướng dẫn một màn hình và bước thiết lập giọng (loại giọng, nguồn, đồng ý, học, chấm, lưu); không đọc file của người dùng, không lưu nếu người dùng dừng |
 | `references/voice-analysis.md` | Hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ; đặc tính có phạm vi, căn cứ, mức độ chắc chắn và ranh giới tùy chọn; mục điểm chưa quyết (hồ sơ cũ có thể thiếu), quy tắc thương hiệu (chỉ hồ sơ thương hiệu) và lịch sử chấm do người dùng lưu; không chứa dữ liệu cá nhân |
 | `calibration/LOG.md` | Nhật ký bằng chứng dùng để sửa quy tắc chung; không lưu hồ sơ văn phong cá nhân |
@@ -78,8 +81,13 @@ template, scripts, workflows, specs và evidence đã duyệt vẫn là source p
 
 ## Không có evaluator ngoài
 
-Từ 0.14.0 Vietnamizer không chứa runner Python, registry hay đường gọi dịch vụ ngoài (Jev/TypeSafe đã gỡ,
-spec `specs/029-remove-jev/`). Gói chỉ gồm Markdown, profile, asset và manifest; không đọc `TYPESAFE_API_KEY`.
+Từ 0.14.0 Vietnamizer không chứa runner, registry hay đường gọi dịch vụ ngoài (Jev/TypeSafe đã gỡ,
+spec `specs/029-remove-jev/`); không đọc `TYPESAFE_API_KEY`. Từ 0.17.0, theo Principle V của constitution
+2.9.0, gói gồm Markdown, profile, asset, manifest, một bảng dữ liệu `references/ai-error-lexicon.md` và đúng
+một script tùy chọn chạy tại chỗ, `scripts/scan-lexicon.py`. Script chỉ dùng thư viện chuẩn của Python, đọc
+văn bản qua stdin và đọc bảng trong gói, không ghi file, không gọi mạng, không đọc biến môi trường, và chỉ in
+ứng viên; skill vẫn làm đủ việc khi không chạy nó. Thêm script khác vào gói cần đúng các điều kiện đó và cập
+nhật kiểm trong `scripts/validate-package.py`.
 
 Các feature nghiên cứu 001, 002, 005, 007–014 và `calibration/` là hồ sơ lịch sử đã ngừng triển khai.
 Chúng không phải hướng dẫn chạy, không chứng minh hiệu quả cho workflow hiện hành và không

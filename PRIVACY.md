@@ -4,6 +4,11 @@
 cốt lõi không có máy chủ riêng, telemetry hoặc bước gửi văn bản đến dịch vụ của maintainer.
 Plugin không khai báo MCP server, hook hay quyền đăng nhập vào dịch vụ bên ngoài.
 
+Gói có một script tùy chọn, `scripts/scan-lexicon.py`. Khi host chạy được code, agent có thể đưa bài cần
+biên tập vào script qua stdin để tìm các dạng lỗi AI đã gặp. Script chạy trên máy hay sandbox của host,
+chỉ đọc bài và bảng đi kèm, không ghi file, không gọi mạng và không đọc biến môi trường. Bài dán vào có thể
+được agent ghi tạm vào thư mục tạm của host để đưa vào script, rồi xóa ngay sau đó.
+
 Văn bản đưa vào Claude hoặc Codex vẫn được xử lý theo cấu hình, quyền truy cập và chính sách dữ
 liệu của nền tảng đó. Cài skill không làm văn bản trở thành dữ liệu chỉ xử lý trên máy.
 
