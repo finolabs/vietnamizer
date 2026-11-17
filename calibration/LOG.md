@@ -778,4 +778,4 @@ giữ 55 pattern.
 **Quyết định:** thêm `references/ai-error-lexicon.md` với L01–L08 lấy từ HF02, HF07, HF10, HF11 và HF14,
 mỗi dòng có Không flag và ca giữ (HF08, HF09, HF12, HF13, HF15, HF16, HF17); bảng kê cụm khi biên tập
 toàn bài; script `scripts/scan-lexicon.py` tùy chọn theo Principle V 2.9.0. HF01–HF18 và LX01–LX29 là ca
-phát triển, không phải bằng chứng cải thiện; bằng chứng là bộ holdout 20 bài Fio chấm (spec 036 O2).
+phát triển, không phải bằng chứng cải thiện; bằng chứng là bộ holdout Fio chấm (spec 036 O2; 14 bài cho 0.17.0, sửa ngày 17/11/2026).

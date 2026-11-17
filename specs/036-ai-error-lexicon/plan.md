@@ -18,14 +18,14 @@ Ship a curated lexicon of known AI errors as one Markdown table, `references/ai-
 **Project Type**: agent skill package (Markdown) with one optional offline helper script.
 **Performance Goals**: the scanner finishes a 1 MB input in under 2 s on a laptop; the lexicon adds at most about 2,500 tokens on the long-form route (P4).
 **Constraints**: `SKILL.md` ≤ 550 lines (137 today); pattern count stays 55; Principle V as amended (no network, no secret, no file write, reads only stdin and package data); the scanner input cap is 1,000,000 bytes (R4).
-**Scale/Scope**: seed lexicon of 8 entries (data-model.md "Seed entries"), growing only through FR-004; 20 holdout articles (P1); up to five model families in the release benchmark (P2).
+**Scale/Scope**: seed lexicon of 8 entries (data-model.md "Seed entries"), growing only through FR-004; 20 holdout articles (P1), 14 of them for 0.17.0 (research.md R6, amended 17/11/2026); up to five model families in the release benchmark (P2).
 
 ## Plan decisions (Fio, 2026-11-15, native question tool)
 
 | # | Question | Answer | Recorded effect |
 |---|---|---|---|
 | P1 | Holdout size (O2) | **20 articles** (proposal was 12) | 20 fresh AI articles, 800–1,500 words each; split in research.md R6 |
-| P2 | Models for the 0.17.0 vs 0.16.2 comparison | **"Opus, Sonet, Argon, Gemini, các model GPT nếu có quota..."** | Each available model runs both versions on all 20 articles: Claude Opus, Claude Sonnet, Gemini Argon (`gemini-4-argon-high`), Gemini Flash (`gemini-3.8-flash-high`), GPT through Codex when quota allows. Which ones a release cannot skip stays open (O6) |
+| P2 | Models for the 0.17.0 vs 0.16.2 comparison | **"Opus, Sonet, Argon, Gemini, các model GPT nếu có quota..."** | Each available model runs both versions on every holdout article of the version (14 for 0.17.0): Claude Opus, Claude Sonnet, Gemini Argon (`gemini-4-argon-high`), Gemini Flash (`gemini-3.8-flash-high`), GPT through Codex when quota allows. Which ones a release cannot skip stays open (O6) |
 | P3 | Where the scanner sits in the package | **"Làm sao thì chuẩn theo agent skills và plugin packing"** | The Agent Skills layout and `plugin-packaging` both put executables in `scripts/` beside the skill: payload path `scripts/scan-lexicon.py`; the packager copies only that file from the source `scripts/` (R3) |
 | P4 | Which routes read the lexicon | **Only the whole-article and writing routes** (recommended) | Small edits keep today's "luôn rà soát V20" line and do not load the table |
 
@@ -127,7 +127,7 @@ Each step ends in a reviewable commit with its own check output (development gat
 
 | # | Decision | Owner | Unblocks when |
 |---|---|---|---|
-| O2 | Fio marks the 20 holdout articles with the sheet in contracts/holdout-marking-sheet.md; sheet format confirmed at review of this PR | Fio | Articles generated (step 9 prep) and marked before any 0.17.0 run over them |
+| O2 | Fio marks the holdout articles (14 for 0.17.0) with the sheet in contracts/holdout-marking-sheet.md; sheet format confirmed at review of this PR | Fio | Articles generated (step 9 prep) and marked before any 0.17.0 run over them |
 | O3 | Live probes on Codex and Antigravity (research R1 "Live probe"). Claude.ai Chat and Cowork: resolved 15/11/2026, the main coordinator's probe on Fio's go ran a bundled script with Vietnamese stdin and package data, no permission prompt (research R1) | Implementer for Codex (quota back 17/11/2026 10:16) and Antigravity | Each probe recorded with host, version and date; a failed host is covered by the reading path only. Every host repeats the probe with the 0.17.0 package |
 | O4 | Spec 033's own clause on top of the shared Principle V text | Spec 033 session, then Fio | Unchanged by this plan; note that spec 033's amendment section still says "2.6.1 → 2.7.0" while the constitution is at 2.8.0 and becomes 2.9.0 here |
 | O6 | Which P2 models a release cannot skip when a model has no quota at benchmark time | Fio | Resolved 16/11/2026, Fio: "Sonnet và Opus của ClaudeWork". Sonnet 5.5 and Opus 5.5, run on Claude Cowork, are required before a release; Argon, Flash and GPT run when quota allows and are reported as not run otherwise |

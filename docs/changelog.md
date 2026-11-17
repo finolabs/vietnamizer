@@ -16,7 +16,7 @@ chỗ Không flag cho giữ; sửa lỗi trước, áp giọng sau, rồi dò l�
 Thêm script tùy chọn `scripts/scan-lexicon.py`, script duy nhất trong gói. Script đọc văn bản qua stdin, bỏ qua chỗ khớp trong front matter, code,
 địa chỉ link, ngoặc kép và blockquote, rồi in JSON các ứng viên; host không chạy được thì agent tự đọc bảng. Thêm fixture LXF01–LXF29, ca LX01–LX29 và
 `tests/test_scan_lexicon.py`; validator kiểm bảng và chỉ nhận đúng script này dưới `scripts/` của gói.
-Vẫn 55 pattern. HF01–HF18 và LX01–LX29 là ca phát triển; chưa chạy holdout 20 bài.
+Vẫn 55 pattern. HF01–HF18 và LX01–LX29 là ca phát triển; chưa chạy holdout 14 bài.
 
 ### 0.16.2 (15/11/2026)
 
