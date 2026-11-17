@@ -55,30 +55,10 @@ khai triển theo các bước ở trên, rồi lập bảng kê trên bản v�
 Người dùng yêu cầu rõ thì trình nó trong giới hạn 5 dòng ghi chú của mục Trả kết quả trong `SKILL.md`; cũng có
 thể dùng một dòng của nó để hỏi đúng một điểm.
 
-### Tìm ứng viên bằng script
-
-Host chạy được code thì có thể chạy `scripts/scan-lexicon.py` của skill để lấy ứng viên; ngoài front matter,
-code, địa chỉ link, ngoặc kép và blockquote, kết quả phải giống như tự đọc bảng và dò bài. Script bỏ qua mọi
-chỗ khớp trong năm vùng ấy, nên cụm đặt trong ngoặc để nhấn và blockquote làm ghi chú vẫn phải tự đọc và xét
-như ở trên. Mọi đường dẫn trong lệnh đặt trong dấu nháy đơn, dấu `'` trong đường dẫn viết
-thành `'\''`. Không dùng nháy kép cho đường dẫn hay văn bản.
-
-- Bài nằm trong file người dùng chỉ: `python3 -I '<thư-mục-skill>/scripts/scan-lexicon.py' < '<đường-dẫn>'`.
-- Bài được dán và host có công cụ ghi file: ghi nguyên văn bài bằng công cụ đó, không qua shell, vào một file
-  mới trong thư mục tạm của host, chạy lệnh trên với file ấy rồi xóa file.
-- Bài được dán, host không có công cụ ghi file và bài không quá 100.000 byte: dùng here-document nháy đơn
-  `<<'VNZ_END_OF_TEXT_036'` với dấu kết cố định `VNZ_END_OF_TEXT_036`, chỉ khi không dòng nào của bài đúng
-  bằng dấu kết đó. Có dòng như vậy, hoặc bài dài hơn, thì tự đọc bảng.
-
-Không đưa văn bản vào tham số lệnh, `echo`, chuỗi nháy kép hay here-document không có nháy. Script lỗi theo
-bất kỳ cách nào (không có Python hay công cụ shell, bị từ chối quyền, mã thoát khác 0, JSON không đọc được,
-chạy quá 20 giây) thì tự đọc bảng. Chỉ thử lại tối đa một lần, không nhờ người dùng bật hay cài gì, và không
-nhắc tới chuyện này trừ khi được hỏi. Script chỉ trả ứng viên; sửa hay giữ vẫn theo bảng kê ở trên.
-
 ## Thứ tự: sửa lỗi, áp giọng, rồi dò lại
 
 Trên tuyến bài, sửa lỗi theo bảng kê trước, rồi mới áp giọng (mẫu, hồ sơ hay card), sau đó dò lại. Lượt dò
-lại xem lại bảng dạng lỗi (hoặc chạy lại script), các đoạn vừa sửa và năm chốt. Không có hồ sơ giọng vẫn dò
+lại xem lại bảng dạng lỗi, các đoạn vừa sửa và năm chốt. Không có hồ sơ giọng vẫn dò
 lại, sau lượt sửa lỗi và sau mỗi lần sửa thêm do review.
 
 Khi nét giọng va với sửa lỗi thì sửa lỗi thắng. Hồ sơ hay mẫu chỉ làm một dạng trong bảng thành chấp nhận

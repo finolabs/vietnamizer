@@ -1,7 +1,8 @@
 """Kiểm bảng references/ai-error-lexicon.md cho maintainer (không vào gói phát hành).
 
 validate-package.py và tests/test_scan_lexicon.py cùng dùng hàm check_lexicon.
-Cấu trúc bảng do parse_table của scripts/scan-lexicon.py kiểm, để hai bên đọc một bảng như nhau.
+Cấu trúc bảng do parse_table của scripts/scan-lexicon.py kiểm. Từ spec 037, scanner là công cụ của
+maintainer, chỉ nằm trong repo nguồn và không vào gói phát hành.
 """
 
 from __future__ import annotations

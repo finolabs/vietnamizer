@@ -79,9 +79,11 @@ EXPECTED_PROFILE_DIRECTORIES = {
     for relative in EXPECTED_PROFILE_FILES
     if PurePosixPath(relative).parent.name == "styles"
 }
-PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "assets", "scripts"}
-# Trong gói, scripts/ chỉ chứa scanner tùy chọn; ở repo nguồn, scripts/ là thư mục của maintainer.
+PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "assets"}
+# Scanner là công cụ của maintainer: repo nguồn phải có nó (check_lexicon dùng bộ đọc bảng của nó),
+# payload đã stage và archive không được có scripts/.
 SCANNER_FILE = "scripts/scan-lexicon.py"
+STAGED_FORBIDDEN_DIRECTORIES = {"scripts"}
 # Nguồn của maintainer: được kiểm inventory và quét bí mật trong repo nhưng không vào gói phát hành.
 SOURCE_ONLY_DIRECTORIES = {"calibration"}
 REFERENCE_FILES = {
@@ -110,7 +112,6 @@ EXACT_DIRECTORY_FILES = {
     "calibration": CALIBRATION_FILES,
     "agents": {"agents/openai.yaml"},
     "assets": {f"assets/{name}" for name in ASSETS},
-    "scripts": {SCANNER_FILE},
 }
 FORBIDDEN_PAYLOAD_PATTERNS = (
     (
@@ -134,8 +135,8 @@ FORBIDDEN_PAYLOAD_PATTERNS = (
         re.compile(rb"\b[A-Za-z]:\\Users\\[^\\\s]+\\", re.IGNORECASE),
     ),
 )
-# package-skill.sh chép scripts/ theo từng file: chép cả thư mục scripts/ sẽ không khớp tập này.
-PACKAGE_COPY_SOURCES = (PACKAGE_PAYLOAD - {"scripts"}) | {SCANNER_FILE}
+# package-skill.sh chỉ chép đúng các payload root; chép thêm scripts/ hay một file trong đó sẽ không khớp tập này.
+PACKAGE_COPY_SOURCES = set(PACKAGE_PAYLOAD)
 
 errors: list[str] = []
 
@@ -156,8 +157,11 @@ def validate_payload_tree(root: Path, source_checkout: bool = False) -> None:
     """
     checked_names = set(PACKAGE_PAYLOAD) | (set(SOURCE_ONLY_DIRECTORIES) if source_checkout else set())
     if source_checkout:
-        checked_names = (checked_names - {"scripts"}) | {SCANNER_FILE}
+        checked_names |= {SCANNER_FILE}
     if not source_checkout:
+        for name in sorted(STAGED_FORBIDDEN_DIRECTORIES):
+            if (root / name).exists() or (root / name).is_symlink():
+                fail(f"Payload phát hành không được chứa script: {name}/")
         for name in sorted(SOURCE_ONLY_DIRECTORIES):
             if (root / name).exists() or (root / name).is_symlink():
                 fail(f"Payload phát hành không được chứa thư mục nguồn: {name}")
