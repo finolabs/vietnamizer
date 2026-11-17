@@ -55,4 +55,4 @@ Expected: the guards of contracts/skill-text.md pass.
 
 ## 5. Holdout (SC-005)
 
-After Fio marks the 20 articles (contracts/holdout-marking-sheet.md), run `benchmarks/holdout_036.py` for each model under plan P2 and O6, both versions, then review the out-of-span list. The report goes to `docs/benchmarks.md` with model ids, corpus manifest hash, lexicon hash and package versions.
+After Fio marks the holdout articles (14 for 0.17.0) (contracts/holdout-marking-sheet.md), run `benchmarks/holdout_036.py` for each model under plan P2 and O6, both versions, then review the out-of-span list. The report goes to `docs/benchmarks.md` with model ids, corpus manifest hash, lexicon hash and package versions.
