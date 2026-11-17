@@ -80,7 +80,9 @@ function drawList() {
 
 async function open(id) {
   if (busy) return;
-  cur = await api("article/" + id); hidePop(); drawList(); draw(); $("section").scrollTop = 0;
+  busy = true;
+  try { cur = await api("article/" + id); } catch (e) { flash("Chưa mở được bài: " + e.message, true); return; } finally { busy = false; }
+  hidePop(); drawList(); draw(); $("section").scrollTop = 0;
 }
 
 function rowsOf(p) {
@@ -131,8 +133,11 @@ function drawSide() {
 function next() { const i = arts.findIndex(a => a.id === cur.id); const n = arts.slice(i + 1).find(a => !a.done) || arts.find(a => !a.done); if (n) open(n.id); else { draw(); flash("Đã chấm xong mọi bài"); } }
 
 async function save() {
-  try { await api("sheet/" + cur.id, { meta: cur.meta, errors: cur.errors, guards: cur.guards }); flash("Đã lưu"); await loadList(); return true; }
+  try { await api("sheet/" + cur.id, { meta: cur.meta, errors: cur.errors, guards: cur.guards }); }
   catch (e) { flash("Chưa lưu: " + e.message, true); return false; }
+  flash("Đã lưu");
+  loadList().catch(e => flash("Đã lưu, nhưng chưa tải lại được danh sách bài: " + e.message, true));
+  return true;
 }
 
 function offsetIn(box, node, off) { const r = document.createRange(); r.setStart(box, 0); r.setEnd(node, off); return r.toString().length; }
@@ -212,7 +217,7 @@ function showPop(rect, st) {
   pop.append(body); render();
   async function commit() {
     if (busy) return;
-    const backup = [cur.errors.slice(), cur.guards.slice()];
+    const backup = [cur, cur.errors.slice(), cur.guards.slice()];
     const r = st.t === "e" ? { paragraph: st.r.paragraph, span: st.r.span, kind: st.r.kind, fixes: (st.r.fixes || "").split("/").map(s => s.trim()).filter(Boolean).join(" / "), note: st.r.note || "" }
       : { paragraph: st.r.paragraph, span: st.r.span, reason: st.r.reason || "" };
     if (st.mode === "edit" && !drop()) return;
@@ -222,7 +227,7 @@ function showPop(rect, st) {
   }
   async function remove() {
     if (busy) return;
-    const backup = [cur.errors.slice(), cur.guards.slice()];
+    const backup = [cur, cur.errors.slice(), cur.guards.slice()];
     if (!drop()) return;
     await finish(backup);
   }
@@ -234,7 +239,7 @@ function showPop(rect, st) {
   async function finish(backup) {
     busy = true; pop.querySelectorAll("button,input").forEach(x => x.disabled = true);
     const ok = await save(); busy = false;
-    if (ok) { hidePop(); draw(); } else { [cur.errors, cur.guards] = backup; pop.querySelectorAll("button,input").forEach(x => x.disabled = false); }
+    if (ok) { hidePop(); draw(); } else { [backup[0].errors, backup[0].guards] = backup.slice(1); pop.querySelectorAll("button,input").forEach(x => x.disabled = false); }
   }
   pop.style.display = "block";
   const h = pop.offsetHeight, left = Math.min(rect.left, innerWidth - 400);
