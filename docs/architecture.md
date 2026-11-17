@@ -29,7 +29,6 @@ references/voice-sources.md             nguồn mẫu: dán bài, file export, t
 references/brand-voice.md               dựng hồ sơ giọng thương hiệu từ tài liệu người dùng đưa
 references/help.md                      hướng dẫn một màn hình và bước thiết lập giọng
 references/ai-error-lexicon.md          bảng dạng lỗi AI đã gặp L01–L08, chỉ đọc trên tuyến bài
-scripts/scan-lexicon.py                 script tùy chọn trong gói: tìm ứng viên theo bảng, chỉ đọc stdin và bảng
 calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung (chỉ trong repo, không vào gói)
 calibration/test-cases.md                    ca kiểm thử chạy tay cho từng pattern (chỉ trong repo, không vào gói)
 agents/openai.yaml                            tên hiển thị và lời gọi mặc định
@@ -59,7 +58,8 @@ benchmarks/                                   corpus, runner pilot giọng và p
 
 Ngoài các file từ `.specify/` trở xuống, `docs/`, manifest source và adapter discovery
 cũng phục vụ source hoặc phát triển, không nằm trong gói `vietnamizer.skill`.
-Trong `scripts/`, gói chỉ chứa `scripts/scan-lexicon.py`; các script còn lại phục vụ maintainer.
+Thư mục `scripts/` chỉ có trong repo nguồn và phục vụ maintainer, kể cả `scripts/scan-lexicon.py` (tìm ứng viên theo
+bảng dạng lỗi, dùng cho test cấu trúc bảng); gói không chứa thư mục này.
 
 Generated agent skills, Spec Kit integration state, raw run và scratch output được giữ local.
 Xem [hướng dẫn đóng góp](../CONTRIBUTING.md) để cài tooling maintainer và chạy kiểm tra offline.
