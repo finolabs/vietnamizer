@@ -94,6 +94,15 @@ class SheetTest(unittest.TestCase):
                 with self.subTest(article=article), self.assertRaises(ValueError):
                     m.article_path(root, article, ".md")
 
+    def test_listing_ignores_a_sheet_linked_outside_the_folder(self):
+        with Corpus() as root:
+            outside = root.parent / "elsewhere.sheet.md"
+            outside.write_text(m.build_sheet("H01", "a" * 64, h.paragraphs(ARTICLE), META, ERRORS, GUARDS),
+                               encoding="utf-8")
+            (root / "H01.sheet.md").symlink_to(outside)
+            listed = {entry["id"]: entry for entry in m.Marker(root).articles()}
+        self.assertNotIn("H01", listed)
+
     def test_rejects_ids_outside_the_folder(self):
         with Corpus() as root:
             for article in ("../H01", "H1", "H01/x"):

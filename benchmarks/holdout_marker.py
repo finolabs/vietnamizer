@@ -155,7 +155,12 @@ class Marker:
     def articles(self) -> list:
         found = []
         for path in sorted(p for p in self.root.glob("*.md") if ARTICLE_ID.fullmatch(p.stem)):
-            sheet = read_sheet(path.with_name(f"{path.stem}.sheet.md"))
+            try:
+                sheet_path = h.inside(self.root, path.with_name(f"{path.stem}.sheet.md"))
+                h.inside(self.root, path)
+            except ValueError:
+                continue
+            sheet = read_sheet(sheet_path)
             entry = self.plan.get(path.stem, {})
             found.append({"id": path.stem, "genre": entry.get("genre", ""), "errors": len(sheet["errors"]),
                           "guards": len(sheet["guards"]), "done": bool(sheet["meta"].get("done"))})

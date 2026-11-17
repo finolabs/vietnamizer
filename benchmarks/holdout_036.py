@@ -106,7 +106,9 @@ def table_rows(text: str, heading: str, width: int) -> list[list[str]]:
 
 def parse_sheet(text: str) -> dict:
     text = nfc(text)
-    article = re.search(rf"Bài:\s*({ARTICLE_ID})\b", text)
+    article = re.search(r"Bài:\s*(\S+)", text)
+    if article and not re.fullmatch(ARTICLE_ID, article[1]):
+        raise ValueError("mã bài trong phiếu phải có dạng Hnn hoặc Dnn")
     digest = re.search(r"SHA-256 bài:\s*([0-9a-f]{64})", text)
     if not article or not digest:
         raise ValueError("phiếu thiếu mã bài hoặc SHA-256 bài")

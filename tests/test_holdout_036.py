@@ -86,6 +86,12 @@ class SheetTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             h.parse_sheet(bad)
 
+    def test_rejects_malformed_article_id_in_header(self) -> None:
+        for bad_id in ("D01/x", "D01.sheet.md", "H01/x", "X01", "D1"):
+            with self.subTest(bad_id=bad_id), self.assertRaises(ValueError):
+                h.parse_sheet(sheet(ARTICLE).replace("Bài: H01", f"Bài: {bad_id}", 1))
+        self.assertEqual(h.parse_sheet(sheet(ARTICLE).replace("Bài: H01", "Bài: D01", 1))["article"], "D01")
+
     def test_rejects_span_missing_from_paragraph(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             fixture = HoldoutFixture(Path(temp))
