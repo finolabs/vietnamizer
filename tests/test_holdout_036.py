@@ -210,19 +210,22 @@ class AlignmentTest(unittest.TestCase):
     def test_same_paragraph_wins_over_a_closer_neighbour(self) -> None:
         source = ["Quy trình còn rườm.", "Quy trình còn rườm lắm."]
         output = ["Quy trình còn rườm rà.", "Quy trình còn rườm lắm."]
-        row = {"paragraph": 1, "span": "còn rườm", "fixes": ["còn rườm rà"]}
-        self.assertEqual(h.align(source, output, row), "Quy trình còn rườm rà.")
+        row = {"id": "H01#1", "paragraph": 1, "span": "còn rườm", "fixes": ["còn rườm rà"]}
+        self.assertEqual(h.alignments(source, output, [row])["H01#1"], "Quy trình còn rườm rà.")
 
     def test_neighbour_used_when_paragraph_moved(self) -> None:
         source = ["Mở bài ngắn.", "Quy trình còn rườm."]
         output = ["Quy trình còn rườm rà."]
-        row = {"paragraph": 2, "span": "còn rườm", "fixes": ["còn rườm rà"]}
-        self.assertEqual(h.align(source, output, row), "Quy trình còn rườm rà.")
+        row = {"id": "H01#1", "paragraph": 2, "span": "còn rườm", "fixes": ["còn rườm rà"]}
+        self.assertEqual(h.alignments(source, output, [row])["H01#1"], "Quy trình còn rườm rà.")
 
-    def test_word_offsets_survive_extra_whitespace(self) -> None:
+    def test_spans_keep_extra_whitespace(self) -> None:
         source = h.paragraphs("Quy  trình\tcòn   rườm.\n\nĐội đã  chốt.")
-        ranges = h.spans_in_source(source, [{"paragraph": 1, "span": "còn   rườm"}, {"paragraph": 2, "span": "đã  chốt"}])
-        self.assertEqual(ranges, [(2, 4), (5, 7)])
+        rows = [{"id": "H01#1", "paragraph": 1, "span": "còn   rườm", "fixes": ["còn rườm rà"]},
+                {"id": "H01#2", "paragraph": 2, "span": "đã  chốt", "fixes": ["đã chốt"]}]
+        result = h.compare("H01", source, h.paragraphs("Quy  trình\tcòn rườm rà.\n\nĐội đã chốt."), rows)
+        self.assertEqual([result["rows"][r]["fixed"] for r in ("H01#1", "H01#2")], [True, True])
+        self.assertEqual(result["edits"], [])
 
     def test_rows_after_a_later_heading_are_not_read(self) -> None:
         text = sheet(ARTICLE).replace("## Bảng cần giữ", "### Ghi chú\n\n| 9 | 1 | x | khác | | |\n\n## Bảng cần giữ")
@@ -243,8 +246,8 @@ class ReviewRegressionTest(unittest.TestCase):
         source = ["Quy trình còn rườm."]
         output = ["Quy trình vẫn rườm rà."]
         rows = [{"id": "H01#1", "paragraph": 1, "span": "rườm", "fixes": ["rườm rà"]}]
-        edits = h.raw_edits(source, output, rows)
-        self.assertEqual([(e["source"], e["output"]) for e in edits], [("còn rườm.", "vẫn rườm rà.")])
+        edits = h.compare("H01", source, output, rows)["edits"]
+        self.assertEqual([(e["source"], e["output"]) for e in edits], [("còn", "vẫn")])
 
     def test_whitespace_change_breaks_a_guard(self) -> None:
         source = ["Bản dịch giữ nghĩa của nguyên tác."]
@@ -278,6 +281,103 @@ class ReviewRegressionTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 h.manifest(corpus)
             self.assertTrue(fixture.manifest["manifest_sha256"])
+
+
+def custom_sheet(article_id: str, article: str, errors: list[tuple], guards: list[tuple]) -> str:
+    digest = hashlib.sha256(article.encode("utf-8")).hexdigest()
+    error_lines = "\n".join(f"| {n} | {p} | {span} | {kind} | {fixes} | |"
+                            for n, (p, span, kind, fixes) in enumerate(errors, 1))
+    guard_lines = "\n".join(f"| {n} | {p} | {span} | lý do |" for n, (p, span) in enumerate(guards, 1))
+    return f"""Bài: {article_id}   SHA-256 bài: {digest}
+
+## Bảng lỗi
+
+| # | Đoạn | Cụm như trong bài | Nhóm | Sửa chấp nhận | Ghi chú |
+|---|---|---|---|---|---|
+{error_lines}
+
+## Bảng cần giữ
+
+| # | Đoạn | Cụm phải giữ nguyên | Vì sao |
+|---|---|---|---|
+{guard_lines}
+"""
+
+
+def corpus(root: Path, articles: dict[str, tuple[str, list, list]], runs: list[tuple[str, str, str]]) -> Path:
+    """articles: id -> (bài, dòng lỗi, dòng cần giữ); runs: (mã bài, version, văn bản đầu ra)."""
+    for article_id, (text, errors, guards) in articles.items():
+        (root / f"{article_id}.md").write_text(text, encoding="utf-8")
+        (root / f"{article_id}.sheet.md").write_text(custom_sheet(article_id, text, errors, guards), encoding="utf-8")
+    entries = []
+    for n, (article_id, version, text) in enumerate(runs):
+        (root / f"out{n}.md").write_text(text, encoding="utf-8")
+        entries.append({"article": article_id, "model": "m", "host": "h", "version": version,
+                        "label": f"L{n}", "output": f"out{n}.md"})
+    path = root / "runs.json"
+    path.write_text(json.dumps({"schema": 1, "corpus_manifest_sha256": h.manifest(root)["manifest_sha256"],
+                                "runs": entries}, ensure_ascii=False), encoding="utf-8")
+    return path
+
+
+class Round4RegressionTest(unittest.TestCase):
+    def by_version(self, report: dict) -> dict:
+        return {r["version"]: r for r in report["results"]}
+
+    def test_deleted_marked_sentence_is_not_aligned_to_an_unmarked_neighbour(self) -> None:
+        article = "Quy trình A còn rườm. Quy trình B còn rườm rà.\n"
+        with tempfile.TemporaryDirectory() as temp:
+            runs = corpus(Path(temp), {"H01": (article, [(1, "A còn rườm", "từ ghép bị cắt", "còn rườm rà")], [])},
+                          [("H01", "v1", "Quy trình B còn rườm rà.\n")])
+            report, edits = h.score(runs), h.blind_edits(runs)
+        self.assertEqual(self.by_version(report)["v1"]["lexicon_kind"], {"fixed": 0, "total": 1})
+        self.assertEqual([e["source"] for e in edits["edits"]], ["Quy trình A còn rườm."])
+
+    def test_unchanged_span_containing_its_fix_is_not_fixed(self) -> None:
+        article = "Nhóm tiến hành thực hiện kế hoạch.\n"
+        with tempfile.TemporaryDirectory() as temp:
+            runs = corpus(Path(temp), {"H01": (article, [(1, "tiến hành thực hiện", "dịch sát", "thực hiện")], [])},
+                          [("H01", "same", article), ("H01", "fixed", "Nhóm thực hiện kế hoạch.\n"),
+                           ("H01", "suffix", "Nhóm tiến hành thực hiện ngay kế hoạch.\n")])
+            results = self.by_version(h.score(runs))
+        self.assertEqual(results["same"]["lexicon_kind"]["fixed"], 0)
+        self.assertEqual(results["fixed"]["lexicon_kind"]["fixed"], 1)
+        self.assertEqual(results["suffix"]["lexicon_kind"]["fixed"], 0)
+
+    def test_deletion_just_before_an_unchanged_span_is_not_a_fix(self) -> None:
+        source = ["Nhóm rất,tiến hành thực hiện kế hoạch."]
+        output = ["Nhóm tiến hành thực hiện kế hoạch."]
+        rows = [{"id": "H01#1", "paragraph": 1, "span": "tiến hành thực hiện", "fixes": ["thực hiện"]}]
+        result = h.compare("H01", source, output, rows)
+        self.assertFalse(result["rows"]["H01#1"]["fixed"])
+        self.assertEqual([(e["source"], e["output"]) for e in result["edits"]], [("rất,", "")])
+
+    def test_punctuation_and_whitespace_edits_next_to_a_span_are_listed(self) -> None:
+        article = "Quy trình còn rườm.\n"
+        with tempfile.TemporaryDirectory() as temp:
+            runs = corpus(Path(temp), {"H01": (article, [(1, "rườm", "từ ghép bị cắt", "rườm rà")], [])},
+                          [("H01", "bang", "Quy trình còn rườm rà!\n"), ("H01", "space", "Quy trình  còn rườm rà.\n")])
+            edits = h.blind_edits(runs)
+            results = self.by_version(h.score(runs))
+        self.assertEqual(sorted((e["source"], e["output"]) for e in edits["edits"]), [(" ", "  "), (".", "!")])
+        self.assertEqual(results["bang"]["lexicon_kind"]["fixed"], 1)
+
+    def test_table_line_without_outer_pipes_is_refused(self) -> None:
+        text = sheet(ARTICLE).replace("| 2 | 1 | hay bỡ | từ ghép bị cắt | hay bỡ ngỡ | |",
+                                      "2 | 1 | hay bỡ | từ ghép bị cắt | hay bỡ ngỡ |")
+        with self.assertRaises(ValueError):
+            h.parse_sheet(text)
+
+    def test_edit_ids_keep_articles_apart_and_dedupe_versions(self) -> None:
+        article = "Quy trình còn rườm. Kết thúc.\n"
+        output = "Quá trình còn rườm rà. Kết thúc.\n"
+        row = ([(1, "còn rườm", "từ ghép bị cắt", "còn rườm rà")], [])
+        with tempfile.TemporaryDirectory() as temp:
+            runs = corpus(Path(temp), {"H01": (article, *row), "H02": (article, *row)},
+                          [("H01", "v1", output), ("H01", "v2", output), ("H02", "v1", output)])
+            edits = h.blind_edits(runs)["edits"]
+        self.assertEqual([e["article"] for e in edits], ["H01", "H02"])
+        self.assertNotEqual(edits[0]["id"], edits[1]["id"])
 
 
 class ManifestTest(unittest.TestCase):

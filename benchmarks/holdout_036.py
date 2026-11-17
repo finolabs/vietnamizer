@@ -29,7 +29,7 @@ from pathlib import Path
 LEXICON_KINDS = {"từ ghép bị cắt", "dịch sát", "từ nghề hiểu sai", "danh từ tập thể đứng trơ"}
 OTHER_KIND = re.compile(r"^khác(?:: [VT]\d+)?$")
 SENTENCE_END = re.compile(r"(?<=[.!?…])\s+")
-WORD = re.compile(r"\S+")
+TOKEN = re.compile(r"\w+|\s+|[^\w\s]")
 VERDICTS = ("đúng", "không cần", "sai")
 ALIGN_MIN = 0.5
 
@@ -54,18 +54,35 @@ def inside(root: Path, path: Path) -> Path:
     return resolved
 
 
-def sentences(paragraph: str) -> list[str]:
-    return [s for s in SENTENCE_END.split(paragraph) if s]
+def split_sentences(paragraph: str) -> list[tuple[int, str]]:
+    """Câu của một đoạn kèm vị trí ký tự đầu câu; khoảng trắng giữa hai câu không thuộc câu nào."""
+    found, start = [], 0
+    for gap in SENTENCE_END.finditer(paragraph):
+        found.append((start, paragraph[start:gap.start()]))
+        start = gap.end()
+    found.append((start, paragraph[start:]))
+    return [(offset, text) for offset, text in found if text]
+
+
+def article_sentences(source: list[str]) -> list[tuple[int, str]]:
+    """Mọi câu của bài theo thứ tự, mỗi câu kèm số thứ tự đoạn (từ 0)."""
+    return [(p, text) for p, paragraph in enumerate(source) for _, text in split_sentences(paragraph)]
 
 
 def table_rows(text: str, heading: str, width: int) -> list[list[str]]:
+    """Dòng dữ liệu của một bảng. Trong mục của bảng, dòng nào có dấu | phải là dòng bảng đủ hai dấu |
+    ngoài cùng và đủ số ô; dòng không có | là ghi chú và được bỏ qua."""
     if heading not in text:
         raise ValueError(f"phiếu thiếu mục {heading}")
     block = re.split(r"\n#{1,6} ", text.split(heading, 1)[1], maxsplit=1)[0]
     rows = []
     for line in block.splitlines():
         line = line.strip()
-        if not line.startswith("|") or re.match(r"^\|[\s:|-]+\|$", line):
+        if "|" not in line:
+            continue
+        if not (line.startswith("|") and line.endswith("|") and len(line) > 1):
+            raise ValueError(f"dòng bảng phải mở và đóng bằng |: {line[:40]}")
+        if re.match(r"^\|[\s:|-]+\|$", line):
             continue
         cells = [c.strip() for c in line[1:-1].split("|")]
         if cells[0] == "#":
@@ -148,123 +165,193 @@ def load_corpus(runs_path: Path) -> tuple[dict, dict, dict]:
                 raise ValueError(f"{row['id']}: cụm không có trong đoạn {row['paragraph']}")
             if source[row["paragraph"] - 1].count(row["span"]) > 1:
                 raise ValueError(f"{row['id']}: cụm xuất hiện nhiều lần trong đoạn; chép dài hơn cho duy nhất")
+            if not any(row["span"] in text for _, text in split_sentences(source[row["paragraph"] - 1])):
+                raise ValueError(f"{row['id']}: cụm vắt qua hai câu; chỉ đánh dấu trong một câu")
         sheets[article] = (sheet, source)
     return data, sheets, found
 
 
-def source_sentence(source: list[str], row: dict) -> str:
-    paragraph = source[row["paragraph"] - 1]
-    return next(s for s in sentences(paragraph) if row["span"] in s) if any(
-        row["span"] in s for s in sentences(paragraph)) else paragraph
+def ratio(a: str, b: str) -> float:
+    return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()
 
 
-def best_match(source: list[str], output: list[str], row: dict) -> tuple[float, tuple[int, int], str] | None:
-    """Câu đầu ra khớp nhất với câu nguồn chứa cụm: trước hết trong đoạn cùng số, chỉ khi đoạn đó
-    không có câu nào đạt ngưỡng mới xét hai đoạn kề (bản sửa có thể tách hay gộp đoạn)."""
-    target = source_sentence(source, row)
-    index = row["paragraph"] - 1
+def align_sentences(src: list[str], out: list[str]) -> list[int | None]:
+    """Căn một-một, giữ thứ tự, mọi câu nguồn với câu đầu ra. Câu giống hệt làm mốc (difflib trên danh sách
+    câu); trong mỗi khoảng giữa hai mốc, quy hoạch động chọn các cặp giữ thứ tự có tổng ratio lớn nhất,
+    chỉ nhận cặp có ratio >= ALIGN_MIN. Câu nguồn không có cặp nhận None."""
+    pairs: list[int | None] = [None] * len(src)
+    matcher = difflib.SequenceMatcher(None, src, out, autojunk=False)
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag == "equal":
+            for k in range(i2 - i1):
+                pairs[i1 + k] = j1 + k
+            continue
+        n, m = i2 - i1, j2 - j1
+        if not n or not m:
+            continue
+        score = [[ratio(src[i1 + a], out[j1 + b]) for b in range(m)] for a in range(n)]
+        best = [[0.0] * (m + 1) for _ in range(n + 1)]
+        for a in range(1, n + 1):
+            for b in range(1, m + 1):
+                take = best[a - 1][b - 1] + score[a - 1][b - 1] if score[a - 1][b - 1] >= ALIGN_MIN else -1.0
+                best[a][b] = max(best[a - 1][b], best[a][b - 1], take)
+        a, b = n, m
+        while a and b:
+            r = score[a - 1][b - 1]
+            if r >= ALIGN_MIN and best[a][b] == best[a - 1][b - 1] + r:
+                pairs[i1 + a - 1] = j1 + b - 1
+                a, b = a - 1, b - 1
+            elif best[a][b] == best[a - 1][b]:
+                a -= 1
+            else:
+                b -= 1
+    return pairs
 
-    def best_in(indexes: list[int]) -> tuple[float, tuple[int, int], str] | None:
-        best = None
-        for p in indexes:
-            if not 0 <= p < len(output):
+
+def char_opcodes(a: str, b: str) -> list[tuple[str, int, int, int, int]]:
+    """Diff một cặp câu theo token (cụm chữ, một dãy khoảng trắng, từng dấu câu), trả vị trí ký tự.
+    Khoảng trắng và dấu câu là token riêng nên mọi thay đổi của chúng đều hiện ra."""
+    spans_a = [m.span() for m in TOKEN.finditer(a)]
+    spans_b = [m.span() for m in TOKEN.finditer(b)]
+    starts_a = [s for s, _ in spans_a] + [len(a)]
+    starts_b = [s for s, _ in spans_b] + [len(b)]
+    matcher = difflib.SequenceMatcher(None, [a[s:e] for s, e in spans_a], [b[s:e] for s, e in spans_b],
+                                      autojunk=False)
+    return [(tag, starts_a[i1], starts_a[i2], starts_b[j1], starts_b[j2])
+            for tag, i1, i2, j1, j2 in matcher.get_opcodes()]
+
+
+def touches(op: tuple, start: int, end: int) -> bool:
+    """Khối diff chạm cụm [start, end): đè lên cụm hoặc sát mép cụm (cách sửa có thể nối dài cụm)."""
+    _, i1, i2, _, _ = op
+    return i1 <= end and i2 >= start
+
+
+def fix_found(output: str, ops: list[tuple], start: int, end: int, fixes: list[str]) -> tuple[int, int] | None:
+    """Vị trí trong đầu ra của cách sửa chấp nhận làm dòng lỗi thành đã sửa, hoặc None.
+
+    Phải có khối diff chạm cụm, và cách sửa phải nằm trong vùng đầu ra của cụm đồng thời gồm phần đầu ra
+    vừa đổi (khi cụm bị xoá bớt chữ, chỉ cần nằm trong vùng). Cách sửa có sẵn trong cụm mà cụm không đổi,
+    hay chỉ có chữ chèn thêm cạnh nó, không tính là đã sửa."""
+    changed = [op for op in ops if op[0] != "equal" and touches(op, start, end)]
+    if not changed:
+        return None
+    low = min([j1 + start - i1 for tag, i1, i2, j1, _ in ops if tag == "equal" and i1 <= start < i2]
+              + [op[3] for op in changed])
+    high = max([j1 + end - i1 for tag, i1, i2, j1, _ in ops if tag == "equal" and i1 < end <= i2]
+               + [op[4] for op in changed])
+    deleted = any(j1 == j2 and i1 < end and i2 > start for _, i1, i2, j1, j2 in changed)
+    for fix in fixes:
+        for found in re.finditer(re.escape(fix), output, re.IGNORECASE):
+            o1, o2 = found.span()
+            if not (o1 < high and o2 > low):
                 continue
-            for s, sentence in enumerate(sentences(output[p])):
-                ratio = difflib.SequenceMatcher(None, target, sentence, autojunk=False).ratio()
-                if ratio >= ALIGN_MIN and (best is None or ratio >= best[0]):
-                    best = (ratio, (p, s), sentence)
-        return best
-
-    return best_in([index]) or best_in([index - 1, index + 1])
+            if deleted or any(j1 < j2 and o1 < j2 and o2 > j1 for _, _, _, j1, j2 in changed):
+                return o1, o2
+    return None
 
 
-def align(source: list[str], output: list[str], row: dict) -> str | None:
-    match = best_match(source, output, row)
-    return match[2] if match else None
+def trim(begin: int, finish: int, covered: list[tuple[int, int]]) -> tuple[int, int]:
+    """Bỏ phần đầu và phần cuối của [begin, finish) đã thuộc một khoảng trong covered."""
+    moved = True
+    while moved and begin < finish:
+        moved = False
+        for s, e in covered:
+            if s <= begin < e:
+                begin, moved = min(e, finish), True
+            if s < finish <= e:
+                finish, moved = max(s, begin), True
+    return begin, finish
+
+
+def is_broken(ops: list[tuple], start: int, end: int) -> bool:
+    """Cụm cần giữ hỏng khi bất kỳ ký tự nào trong cụm đổi, hoặc có chữ chèn vào giữa cụm."""
+    return any(tag != "equal" and ((i1 < end and i2 > start) or (i1 == i2 and start < i1 < end))
+               for tag, i1, i2, _, _ in ops)
+
+
+def inside_spans(op: tuple, errors: list[tuple[int, int]], guards: list[tuple[int, int]]) -> bool:
+    """Khối diff nằm trọn trong hợp các cụm của câu. Chỗ chèn sát mép cụm lỗi thuộc cụm (đó là cách sửa
+    nối dài cụm); chỗ chèn sát mép cụm cần giữ không thuộc cụm vì cụm cần giữ không đổi byte nào."""
+    _, i1, i2, _, _ = op
+    if i1 == i2:
+        return any(s <= i1 <= e for s, e in errors) or any(s < i1 < e for s, e in guards)
+    merged: list[list[int]] = []
+    for s, e in sorted(errors + guards):
+        if merged and s <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], e)
+        else:
+            merged.append([s, e])
+    return any(s <= i1 and i2 <= e for s, e in merged)
+
+
+def edit_id(*key: object) -> str:
+    return hashlib.sha256(json.dumps(key, ensure_ascii=False).encode("utf-8")).hexdigest()[:12]
+
+
+def compare(article: str, source: list[str], output: list[str], rows: list[dict]) -> dict:
+    """So một đầu ra với bài nguồn. Trả kết quả từng dòng phiếu (câu đầu ra đã căn, fixed, broken) và
+    danh sách sửa ngoài cụm cho Fio: khối diff không nằm trọn trong cụm, câu nguồn không còn câu đầu ra
+    tương ứng, câu đầu ra mới. ID sửa = mã bài + số câu nguồn + vị trí ký tự + cũ/mới, nên cùng một sửa
+    ở nhiều version/model gộp làm một, còn hai bài khác nhau không bao giờ chung ID."""
+    src, out = article_sentences(source), article_sentences(output)
+    pairs = align_sentences([t for _, t in src], [t for _, t in out])
+    marked: dict[int, list[tuple[dict, int, int]]] = {}
+    for row in rows:
+        p = row["paragraph"] - 1
+        k, text = next((k, t) for k, (q, t) in enumerate(src) if q == p and row["span"] in t)
+        start = text.index(row["span"])
+        marked.setdefault(k, []).append((row, start, start + len(row["span"])))
+    results: dict[str, dict] = {}
+    edits: list[dict] = []
+    for k, (_, text) in enumerate(src):
+        j = pairs[k]
+        if j is None:
+            for row, _, _ in marked.get(k, []):
+                results[row["id"]] = {"sentence": None, "fixed": False, "broken": True}
+            edits.append({"id": edit_id(article, k, "deleted", text), "sentence": text, "offset": 0,
+                          "source": text, "output": ""})
+            continue
+        ops = char_opcodes(text, out[j][1])
+        error_spans = [(s, e) for row, s, e in marked.get(k, []) if "fixes" in row]
+        guard_spans = [(s, e) for row, s, e in marked.get(k, []) if "fixes" not in row]
+        fixes_at: list[tuple[int, int]] = []
+        for row, s, e in marked.get(k, []):
+            found = fix_found(out[j][1], ops, s, e, row["fixes"]) if row.get("fixes") else None
+            if found:
+                fixes_at.append(found)
+            results[row["id"]] = {
+                "sentence": out[j][1],
+                "fixed": (found is not None) if row.get("fixes") else None,
+                "broken": is_broken(ops, s, e),
+            }
+        for op in ops:
+            if op[0] == "equal" or inside_spans(op, error_spans, guard_spans):
+                continue
+            # Đầu/cuối khối thuộc cụm lỗi (phía nguồn) hay thuộc cách sửa đã nhận (phía đầu ra) là phần
+            # của dòng lỗi; phần còn lại là sửa ngoài cụm, vd. "rườm." -> "rườm rà!" chỉ còn "." -> "!".
+            i1, i2 = trim(op[1], op[2], error_spans)
+            j1, j2 = trim(op[3], op[4], fixes_at)
+            if i1 == i2 and j1 == j2:
+                continue
+            old, new = text[i1:i2], out[j][1][j1:j2]
+            edits.append({"id": edit_id(article, k, i1, old, new), "sentence": text, "offset": i1,
+                          "source": old, "output": new})
+    owner = {j: k for k, j in enumerate(pairs) if j is not None}
+    previous = -1
+    for j, (_, text) in enumerate(out):
+        if j in owner:
+            previous = owner[j]
+            continue
+        context = src[previous][1] if previous >= 0 else ""
+        edits.append({"id": edit_id(article, previous, "inserted", text), "sentence": context, "offset": 0,
+                      "source": "", "output": text})
+    return {"rows": results, "edits": edits}
 
 
 def alignments(source: list[str], output: list[str], rows: list[dict]) -> dict[str, str | None]:
-    """Mỗi câu đầu ra chỉ ứng với một câu nguồn. Hai câu nguồn khác nhau cùng khớp một câu đầu ra thì câu
-    giống hơn giữ chỗ, câu kia coi như không còn câu khớp (vào danh sách cho Fio, không tính là đã sửa)."""
-    matches = {row["id"]: best_match(source, output, row) for row in rows}
-    owner: dict[tuple[int, int], tuple[float, str]] = {}
-    for row in rows:
-        match = matches[row["id"]]
-        if match is None:
-            continue
-        key = (row["paragraph"], source_sentence(source, row))
-        held = owner.get(match[1])
-        if held is None or match[0] > held[0]:
-            owner[match[1]] = (match[0], key)
-    result = {}
-    for row in rows:
-        match = matches[row["id"]]
-        key = (row["paragraph"], source_sentence(source, row))
-        result[row["id"]] = match[2] if match and owner[match[1]][1] == key else None
-    return result
-
-
-def is_fixed(sentence: str, row: dict) -> bool | None:
-    if not row["fixes"]:
-        return None
-    folded = sentence.casefold()
-    present = [fix for fix in row["fixes"] if fix.casefold() in folded]
-    if not present:
-        return False
-    for fix in present:
-        folded = folded.replace(fix.casefold(), "\u241f")
-    return row["span"].casefold() not in folded
-
-
-def spans_in_source(source: list[str], rows: list[dict]) -> list[tuple[int, int]]:
-    """Vị trí từ (theo WORD) của mọi cụm đã đánh dấu trong bài nối các đoạn bằng khoảng trắng."""
-    joined = " ".join(source)
-    starts = [m.start() for m in WORD.finditer(joined)]
-    offsets, position = [], 0
-    for paragraph in source:
-        offsets.append(position)
-        position += len(paragraph) + 1
-    ranges = []
-    for row in rows:
-        begin = offsets[row["paragraph"] - 1] + source[row["paragraph"] - 1].index(row["span"])
-        end = begin + len(row["span"])
-        words = [i for i, start in enumerate(starts) if begin <= start < end]
-        ranges.append((words[0], words[-1] + 1))
-    return ranges
-
-
-def raw_edits(source: list[str], output: list[str], rows: list[dict]) -> list[dict]:
-    """Phần sửa ngoài mọi cụm đã đánh dấu, cùng câu nguồn của các dòng không còn câu đầu ra khớp.
-    Khối diff chạm một cụm nhưng còn lan ra ngoài cụm thì cả khối vào danh sách cho Fio xét."""
-    aligned_to = alignments(source, output, rows)
-    aligned = [row for row in rows if aligned_to[row["id"]] is not None]
-    edits = []
-    for row in rows:
-        if row in aligned:
-            continue
-        sentence = source_sentence(source, row)
-        key = json.dumps(["unaligned", sentence], ensure_ascii=False).encode("utf-8")
-        edits.append({"id": hashlib.sha256(key).hexdigest()[:10], "context": "", "source": sentence,
-                      "output": "(không còn câu khớp)"})
-    missing = [{"paragraph": row["paragraph"], "span": source_sentence(source, row)}
-               for row in rows if aligned_to[row["id"]] is None]
-    rows = aligned
-    source_words = WORD.findall(" ".join(source))
-    output_words = WORD.findall(" ".join(output))
-    ranges = spans_in_source(source, rows) + spans_in_source(source, missing)
-    matcher = difflib.SequenceMatcher(None, source_words, output_words, autojunk=False)
-    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
-        if tag == "equal":
-            continue
-        touched = [(start, end) for start, end in ranges
-                   if (i1 < end and i2 > start) or (i1 == i2 and start <= i1 <= end)]
-        if touched and min(s for s, _ in touched) <= i1 and i2 <= max(e for _, e in touched):
-            continue
-        before = " ".join(source_words[max(0, i1 - 4):i1])
-        old, new = " ".join(source_words[i1:i2]), " ".join(output_words[j1:j2])
-        key = json.dumps([before, old, new], ensure_ascii=False).encode("utf-8")
-        edits.append({"id": hashlib.sha256(key).hexdigest()[:10], "context": before, "source": old, "output": new})
-    return edits
+    """Câu đầu ra đã căn cho từng dòng phiếu; None khi câu nguồn của dòng không còn câu tương ứng."""
+    return {key: value["sentence"] for key, value in compare("", source, output, rows)["rows"].items()}
 
 
 def output_text(runs_path: Path, run: dict) -> list[str]:
@@ -281,7 +368,7 @@ def blind_edits(runs_path: Path) -> dict:
     for run in data["runs"]:
         sheet, source = sheets[run["article"]]
         output = output_text(runs_path, run)
-        for edit in raw_edits(source, output, sheet["errors"] + sheet["guards"]):
+        for edit in compare(run["article"], source, output, sheet["errors"] + sheet["guards"])["edits"]:
             seen.setdefault(edit["id"], {"article": run["article"], **edit})
     return {"schema": 1, "edits": sorted(seen.values(), key=lambda e: (e["article"], e["id"]))}
 
@@ -295,7 +382,7 @@ def score(runs_path: Path, judgments_path: Path | None = None) -> dict:
     for run in data["runs"]:
         sheet, source = sheets[run["article"]]
         output = output_text(runs_path, run)
-        aligned_to = alignments(source, output, sheet["errors"] + sheet["guards"])
+        compared = compare(run["article"], source, output, sheet["errors"] + sheet["guards"])
         key = (run["model"], run["host"], run["version"])
         group = groups.setdefault(key, {
             "model": run["model"], "host": run["host"], "version": run["version"],
@@ -310,8 +397,7 @@ def score(runs_path: Path, judgments_path: Path | None = None) -> dict:
         for row in sheet["errors"]:
             bucket = group["lexicon_kind"] if row["lexicon_kind"] else group["other"]
             bucket["total"] += 1
-            sentence = aligned_to[row["id"]]
-            fixed = False if sentence is None else is_fixed(sentence, row)
+            fixed = compared["rows"][row["id"]]["fixed"]
             if fixed is None:
                 verdict = row_verdicts.get(row["id"], {}).get(run["label"])
                 if verdict is None:
@@ -321,9 +407,8 @@ def score(runs_path: Path, judgments_path: Path | None = None) -> dict:
             bucket["fixed"] += int(bool(fixed))
         for row in sheet["guards"]:
             group["guards"]["total"] += 1
-            sentence = aligned_to[row["id"]]
-            group["guards"]["broken"] += int(sentence is None or row["span"] not in sentence)
-        for edit in raw_edits(source, output, sheet["errors"] + sheet["guards"]):
+            group["guards"]["broken"] += int(compared["rows"][row["id"]]["broken"])
+        for edit in compared["edits"]:
             verdict = edit_verdicts.get(edit["id"])
             group["out_of_span"][verdict if verdict in VERDICTS else "pending"] += 1
     results = []
