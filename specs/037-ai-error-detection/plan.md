@@ -16,7 +16,7 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 **Testing**: `tests/test_skill_contract.py` (phrase guards for the tests, the pass, the scanner sentence removed); `tests/test_package_security.py` (payload `scripts/` rejected again); `scripts/validate-package.py`; `tests/test_scan_lexicon.py` stays green unchanged (maintainer tool); development runs scored by `benchmarks/holdout_036.py`; calibration cases run by hand. One test module per command, `uptime` first (owner rule).
 **Target Platform**: Claude Code, Codex, Antigravity, Claude.ai Chat and Org upload, Cowork; the proof host is Cowork.
 **Project Type**: agent skill package (Markdown only after this change).
-**Performance Goals**: none capped; time and tokens per article reported against 0.16.2 (spec SC-005).
+**Performance Goals**: none capped; time per article (tokens where shown; Cowork shows none) reported against 0.16.2 (spec SC-005).
 **Constraints**: `SKILL.md` ≤ 550 lines (139 today); pattern count 55; constitution 2.9.0 unchanged; holdout isolation (spec FR-011); at most two holdout runs (FR-012).
 **Scale/Scope**: three recognition tests; one detection pass; 10 development articles; 56 holdout outputs on H01–H14 and 24 on H15–H20 per batch.
 
@@ -46,7 +46,7 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 | Development gate 5 | Release runs `validate-package.py`, `npx skills add . --list`, `claude plugin validate .`, reinstall and byte comparison. Pass. |
 | Eval constraint (model and corpus version) | Reports carry model ids, corpus and development manifest hashes and package commits (spec FR-016). Pass. |
 
-Post-design re-check: pass. Residual risks: (1) the pass may raise over-correction on single syllables and English-shaped phrases; measured by guards and Fio's blind judgment (SC-003), not assumed away. (2) Sonnet may skip the pass as it skipped V20 on 0.16.2; the transcript check (FR-017) tells a skip from a miss. (3) Token cost per article rises; reported (SC-005). (4) The bar may not be reachable by skill text alone; then the report says so and Fio decides the next step (O1), with no third holdout run.
+Post-design re-check: pass. Residual risks: (1) the pass may raise over-correction on single syllables and English-shaped phrases; measured by guards and Fio's blind judgment (SC-003), not assumed away. (2) Sonnet may skip the pass as it skipped V20 on 0.16.2; the transcript check (FR-017) tells a skip from a miss. (3) Cost per article rises; time is reported (SC-005), tokens only where the host shows them. (4) The bar may not be reachable by skill text alone; then the report says so and Fio decides the next step (O1), with no third holdout run. (5) Reluctance to edit may cap the gain even when detection works; FR-017's detected-but-unfixed count shows it, and a fix for it would be a separate change.
 
 ## Project Structure
 

@@ -1,6 +1,6 @@
 # Research: Detect AI errors in fresh Vietnamese text
 
-**Date**: 2026-11-17. Inputs: spec 036 (spec, plan, research R6, tasks T039–T044, contracts), `references/ai-error-lexicon.md`, `scripts/scan-lexicon.py`, `references/writing-workflow.md`, `SKILL.md`, the V9/V20 catalog text, `calibration/test-cases.md` (HF01–HF18, LX01–LX29), `benchmarks/holdout_036.py`, `benchmarks/holdout_marker.py`, Orrery memory "Vietnamizer 0.17.0 holdout: lexicon does not generalize" (17/11/2026) and the `typesafe-ai` skill. The author of this file read no holdout article or sheet; the holdout facts below are the counts the coordinator relayed.
+**Date**: 2026-11-17. Inputs: `docs/benchmarks.md` "Holdout 036" (main `ccfe199`), spec 036 (spec, plan, research R6, tasks T039–T044, contracts), `references/ai-error-lexicon.md`, `scripts/scan-lexicon.py`, `references/writing-workflow.md`, `SKILL.md`, the V9/V20 catalog text, `calibration/test-cases.md` (HF01–HF18, LX01–LX29), `benchmarks/holdout_036.py`, `benchmarks/holdout_marker.py`, Orrery memory "Vietnamizer 0.17.0 holdout: lexicon does not generalize" (17/11/2026) and the `typesafe-ai` skill. The author of this file read no holdout article or sheet; the holdout facts below are the counts the coordinator relayed.
 
 ## R1. Why fixed-form lookup did not reach the holdout errors
 
@@ -8,7 +8,7 @@
 
 **Consequence**: a known-form list is exhaustive only for forms already seen. Calques (an English collocation rendered word for word) and clipped compounds (a two-syllable word cut to one) are open classes: each article brings new members. Detection must work from the shape of the error, which is what a recognition test states.
 
-**Not a voice problem**: the follow-up prompt "sửa lỗi tiếng Việt, không viết lại" removed any licence to restyle and still left 16–17 of 18 lexicon-kind errors untouched on Opus. The model did not decline to fix; it did not see.
+**Detection first, reluctance not ruled out**: the follow-up prompt "sửa lỗi tiếng Việt, không viết lại" removed any licence to restyle and still left 16–17 of 18 lexicon-kind errors untouched on Opus, and edited even less. Both models changed very few characters per article (`docs/benchmarks.md` "Holdout 036"). Not seeing the error certainly fails; reluctance to edit may add to it, and T044 cannot separate the two. The detection pass makes detection visible in the transcript, so the next batch counts detected-but-unfixed errors apart from undetected ones (spec FR-017).
 
 ## R2. Recognition tests, one per kind
 

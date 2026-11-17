@@ -9,20 +9,22 @@
 
 Spec 036 (merged on main, unreleased as 0.17.0) added an 8-row lexicon of known AI error forms, a phrase inventory step on the whole-article route and an optional scanner. Its release proof ran on 17/11/2026 on claude.ai Cowork: 56 runs over 14 fresh holdout articles H01–H14 (H01–H07 by `claude-opus-5-5`, H08–H14 by `gpt-6`), which Fio marked with 48 errors, 33 of them of the lexicon kinds (23 calques, 9 clipped compounds, 1 bare collective noun), and 38 guards.
 
-| Model | 0.16.2 fixed (of 33) | 0.17.0 fixed (of 33) |
-|---|---|---|
-| Opus 5.5 | 3 | 2 |
-| Sonnet 5.5 | 0 | 0 |
+| Model | Version | Lexicon-kind fixed | Other errors fixed | Guards broken | Mean time per article |
+|---|---|---|---|---|---|
+| Opus 5.5 | 0.16.2 | 3/33 | 2/15 | 0/38 | 57 s |
+| Opus 5.5 | 0.17.0 | 2/33 | 2/15 | 1/38 | 76 s |
+| Sonnet 5.5 | 0.16.2 | 0/33 | 1/15 | 0/38 | 43 s |
+| Sonnet 5.5 | 0.17.0 | 0/33 | 1/15 | 0/38 | 39 s |
 
-Guards stayed intact except one. The mechanism ran: every run loaded the skill, 0.17.0 read the lexicon in 24 of 28 runs and ran the scanner in 6 (exit 0, no candidate). But the table's fixed surface forms match 0 of the 33 marked errors; the 11 forms it does find in the corpus are not errors Fio marked. A follow-up prompt "sửa lỗi tiếng Việt, không viết lại" on 4 articles with Opus still left 16–17 of the 18 lexicon-kind errors there untouched.
+Source: `docs/benchmarks.md` "Holdout 036" (main `ccfe199`). Out-of-span edits (95–97 per Opus set, 31–37 per Sonnet set) are not yet judged; Cowork shows no token counts. The mechanism ran: every run loaded the skill, 0.17.0 read the lexicon in 24 of 28 runs and ran the scanner in 6 (exit 0, no candidate). But the table's fixed surface forms match 0 of the 33 marked errors; the 11 forms it does find in the corpus are not errors Fio marked. A follow-up prompt "sửa lỗi tiếng Việt, không viết lại" on 4 articles with Opus still left 16–17 of the 18 lexicon-kind errors there untouched.
 
-**The bottleneck is detection, not voice restraint.** The editing model reads the calque as fluent, as the generating model did. A list of fixed forms does not reach new errors of the same kind, because calques and clipped compounds are open classes. This spec changes how the agent looks at each sentence, not which strings it looks for.
+**Detection is the part that certainly fails.** The editing model reads the calque as fluent, as the generating model did. Both models also edit very little (Opus about 50–60 characters per article, Sonnet about 9), and the T044 record notes that reluctance to edit may contribute; that run could not separate the two causes. This spec targets detection and measures both (FR-017). A list of fixed forms does not reach new errors of the same kind, because calques and clipped compounds are open classes. This spec changes how the agent looks at each sentence, not which strings it looks for.
 
 ## Settled decisions (Fio, 17/11/2026, native question tool)
 
 1. **Recognition tests plus a per-sentence pass.** The skill teaches, for each of the three kinds, a short recognition test the agent applies to phrases (for a calque: does a word-for-word back-translation give one English collocation, and would a Vietnamese writer in this genre say it another way?), and the whole-article route adds one detection pass that visits every sentence for these three kinds before any fix. Pure Markdown; runs on Cowork and every host. Examples come only from sources outside the holdout. Not taken: a larger example table on top; asking Jev/TypeSafe per sentence (needs network code in the package, against Principle V; Jev was removed in 0.14.0 and is not validated on Vietnamese); Jev at maintainer time only.
 2. **Keep the lexicon and the inventory, drop the scanner from the package.** The phrase inventory stays as the place where recognition-test hits are recorded; the 8 lexicon rows stay as known examples, no longer described as the way errors are found. `scripts/scan-lexicon.py` leaves the package (it matched 0 of 33, ran in 6 of 28 runs, and adds a shell command and a code surface to every long edit). Constitution 2.9.0 stays: it allows a script, it does not require one. Not taken: keep all three; drop the lexicon and the scanner and return to the 0.16.2 base.
-3. **Release bar on the same 14-article holdout**: Opus 5.5 fixes at least 17 of the 33 lexicon-kind errors and Sonnet 5.5 at least 11, on Cowork; per model, guard breaks and edits Fio judges `sai` are no more than 0.16.2's in the same batch. Not taken: only "clearly better than 0.16.2" (+8 errors); a higher bar (25 and 17).
+3. **Release bar on the same 14-article holdout**: Opus 5.5 fixes at least 17 of the 33 lexicon-kind errors and Sonnet 5.5 at least 11, on Cowork; per model, guard breaks and edits Fio judges `sai` are no more than 0.16.2's in the same batch (0.16.2 broke 0 of 38 guards in T044, so in practice this asks for no guard break). Not taken: only "clearly better than 0.16.2" (+8 errors); a higher bar (25 and 17).
 4. **Plan and tasks in the same pull request as this spec.**
 5. **Development labels: an agent proposes, Fio reviews.** A fresh agent that edits no skill text proposes error and guard rows for the new development articles, as for the holdout; Fio reviews each sheet in `benchmarks/holdout_marker.py`. Not taken: agent-only labels (they share the model's blind spot); Fio marking alone.
 6. **0.16.2 is rerun in the same batch** as the candidate, same models and settings, outputs labelled at random. Not taken: reusing the T044 scores as the baseline.
@@ -155,10 +157,10 @@ A user on any host runs a whole-article edit. The package holds no executable fi
 **Measurement**
 
 - **FR-013**: The proof reruns H01–H14 with `benchmarks/holdout_036.py`: 0.16.2 and the candidate in the same batch, same prompt and settings, outputs labelled at random (decision 6). Opus 5.5 and Sonnet 5.5 on Claude Cowork are required; other models run when quota allows and are reported as not run otherwise.
-- **FR-014**: The bar is decision 3: Opus at least 17 of 33 lexicon-kind errors fixed, Sonnet at least 11; per model, guard breaks and `sai` out-of-span edits no more than 0.16.2's in the same batch. Other marked errors (15), `không cần` edits, time and tokens per article are reported beside it.
+- **FR-014**: The bar is decision 3: Opus at least 17 of 33 lexicon-kind errors fixed, Sonnet at least 11; per model, guard breaks and `sai` out-of-span edits no more than 0.16.2's in the same batch. Other marked errors (15), `không cần` edits, and time per article (tokens where the host shows them; Cowork does not) are reported beside it.
 - **FR-015**: H15–H20 are generated after the freeze, marked by Fio, run in the same batch and reported separately as a fresh holdout (decision 7); they do not count toward FR-014.
 - **FR-016**: Results go to `docs/benchmarks.md` as counts only, with model ids, host, date, corpus manifest hash, development manifest hash and the package commit of each version; no sentence or span from the holdout.
-- **FR-017**: Each run records which skill files it read and whether its transcript shows a detection pass, so a miss can be told apart from a skipped step, as T044 did.
+- **FR-017**: Each run records which skill files it read and whether its transcript shows a detection pass, so a miss can be told apart from a skipped step, as T044 did. Where the transcript shows inventory rows, the runner also counts, per model and version, marked lexicon-kind errors that were detected but left unfixed against those never detected (counts only), so detection and reluctance to edit are measured apart.
 
 **Release**
 
@@ -179,7 +181,7 @@ A user on any host runs a whole-article edit. The package holds no executable fi
 - **SC-002**: On H01–H14, Sonnet 5.5 on Cowork fixes at least 11 of the 33 (0.16.2 in T044: 0).
 - **SC-003**: Per model, guards broken and edits Fio judges `sai` are no more than 0.16.2's in the same batch.
 - **SC-004**: H15–H20 results are reported beside SC-001–SC-003 with the same measures; a large gap between the two holdouts is named in the report.
-- **SC-005**: Time and tokens per article for each version and model are reported; the report states the ratio to 0.16.2.
+- **SC-005**: Time per article (and tokens where the host shows them) for each version and model is reported, with the ratio to 0.16.2.
 - **SC-006**: The built packages contain no script, and every whole-article edit in the runs completes with no shell command for detection.
 - **SC-007**: Every example in the skill text and in new calibration cases traces to a development source; the holdout report states the runner edited no skill file.
 
