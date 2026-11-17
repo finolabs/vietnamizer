@@ -6,15 +6,15 @@ The runner (plan P7) is a session that edits no skill text, rule, lexicon, calib
 
 ```text
 Batch: <date>   Host: Claude Cowork   Runner session: <id>   Runner edited no skill file: yes
-Corpus manifest SHA-256: <hex> (H01–H14) / <hex> (H15–H20)
+Corpus manifest SHA-256: <hex> (H01–H14) / <hex> (H15–H20)   Development manifest SHA-256: <hex>
 Prompt: T044 prompt, unchanged   Outputs per article, version and model: 1   Labels: random
 Version A: 0.16.2 (tag v0.16.2)   Version B: candidate <commit>
 ```
 
 ## Table (one row per holdout, model and version)
 
-| Holdout | Model id | Version | Lexicon-kind fixed / 33 (H01–H14) or / n | of which calques / clipped / collective | Other errors fixed / n | Guards broken | Out-of-span `sai` | Out-of-span `không cần` | Runs with detection pass seen | Lexicon-kind detected but unfixed | Median seconds | Median tokens (if shown) |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Holdout | Model id | Version | Lexicon-kind fixed / 33 (H01–H14) or / n | of which calques / clipped / collective | Other errors fixed / n | Guards broken | Out-of-span `sai` | Out-of-span `không cần` | Runs with detection pass seen | Lexicon-kind detected but unfixed | Median seconds | Time ratio to 0.16.2 | Median tokens (if shown) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 
 ## Verdict lines
 

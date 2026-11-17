@@ -145,7 +145,7 @@ A user on any host runs a whole-article edit. The package holds no executable fi
 
 **What happens to 0.17.0**
 
-- **FR-008**: The lexicon file and the inventory step MUST stay. The lexicon's description MUST say its rows are known examples, not the way errors are found, and an article with no row hit is not clean. The scanner MUST leave the package, and in the same pull request every consumer that describes it as shipped MUST change: `SKILL.md`, `references/writing-workflow.md`, `AGENTS.md`, `README.md`, `docs/architecture.md`, `docs/usage.md`, `docs/plugin-distribution.md`, `PRIVACY.md`, `SECURITY.md`, `docs/changelog.md`, `scripts/validate-package.py`, `scripts/package-skill.sh` and their tests, so the validator again rejects every file under the payload `scripts/`. The constitution stays at 2.9.0.
+- **FR-008**: The lexicon file and the inventory step MUST stay. The lexicon's description MUST say its rows are known examples, not the way errors are found, and an article with no row hit is not clean. The scanner MUST leave the package, and in the same pull request every consumer that describes it as shipped MUST change: `SKILL.md`, `references/writing-workflow.md`, `.plugin-skills/vietnamizer/SKILL.md`, `AGENTS.md`, `README.md`, `docs/architecture.md`, `docs/usage.md`, `docs/plugin-distribution.md`, `PRIVACY.md`, `SECURITY.md`, `docs/changelog.md`, `scripts/validate-package.py`, `scripts/package-skill.sh` and their tests, so the validator again rejects every file under the payload `scripts/`; the source checkout keeps the scanner as a maintainer tool. The constitution stays at 2.9.0.
 
 **Development set and isolation**
 

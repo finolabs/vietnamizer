@@ -73,7 +73,8 @@ references/missing-words.md          # V20: clipped-compound and bare-collective
 references/writing-workflow.md       # detection pass; scanner section removed
 references/ai-error-lexicon.md       # intro: rows are known examples, not the detector
 SKILL.md                             # long-form row names both catalogs; scanner sentence removed
-scripts/validate-package.py          # payload roots without scripts/
+.plugin-skills/vietnamizer/SKILL.md  # no packaged scripts/ path
+scripts/validate-package.py          # payload roots without scripts/; staged scripts/ rejected; source keeps the scanner
 scripts/package-skill.sh             # no scripts/ in the stage
 scripts/lexicon_check.py             # docstring: scanner is a maintainer tool
 tests/test_skill_contract.py, tests/test_package_security.py
