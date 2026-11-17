@@ -7,7 +7,10 @@ One sheet per article, filled before any 0.16.2 or 0.17.0 run over that article.
 ```text
 Bài: H01            Thể loại: blog cá nhân        Model sinh bài: <family / id>
 Ngày đánh dấu: dd/mm/yyyy   Người đánh dấu: Fio   SHA-256 bài: <hex>
+Trạng thái: đang chấm | xong
 ```
+
+The status line is optional; the marking page (`benchmarks/holdout_marker.py`) writes it, the scorer ignores it.
 
 ## Bảng lỗi
 

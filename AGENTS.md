@@ -66,6 +66,7 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `.agents/skills/` | Generated Codex tooling local, bị gitignore; bootstrap theo `CONTRIBUTING.md` |
 | `benchmarks/` | Corpus giả lập và runner pilot biên tập; kết quả raw giữ local trong `artifacts/`, không phải tập holdout hoặc bằng chứng chất lượng đã chấm độc lập |
 | `benchmarks/holdout_036.py` | Chấm tất định bộ holdout của spec 036 (14 bài cho 0.17.0) theo phiếu Fio đánh dấu: lỗi đã sửa, cụm cần giữ bị đổi, sửa ngoài cụm cho Fio xét ẩn phiên bản; bài, phiếu và đầu ra nằm ngoài Git, repo chỉ giữ manifest SHA-256 |
+| `benchmarks/holdout_marker.py`, `benchmarks/holdout_marker.html` | Trang chấm phiếu holdout chạy trên máy người chấm (chỉ nghe 127.0.0.1): bôi chọn cụm lỗi hoặc cụm cần giữ, phiếu `Hnn.sheet.md` tự ghi cạnh bài sau mỗi thay đổi và được kiểm bằng chính bộ đọc của `holdout_036.py`; agent chỉ kiểm trang bằng bài giả |
 | `benchmarks/mr_compare.py` | Đối chiếu đóng băng MR01–MR12 giữa 0.12.0/0.12.1 trên cùng Codex: 14 tình huống × 2 phiên bản, raw riêng, không chạy lại mẫu; nhãn agent là kiểm tra hồi quy trên tập phát triển |
 | `benchmarks/gemini_text_only.py`, `benchmarks/gemini_text_guard.mjs`, `benchmarks/gemini-text-only-agent.md` | Đợt Gemini dùng agent riêng, guard đối soát registry theo capability proof và chặn tool call thực tế; raw ngoài workspace, live smoke 1/80 |
 | `benchmarks/gemini_manual.py` | Script để owner tự chạy 80 đầu ra Gemini qua Agybird trong terminal; prepare/test offline, giữ raw và trần lượt, không thay Forms |

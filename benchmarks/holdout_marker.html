@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chấm holdout</title>
+<style>
+:root{--bg:#faf9f7;--panel:#fff;--ink:#1d1b20;--muted:#6b6670;--line:#e4e0e8;--err:#c4314b;--errbg:#fbe3e8;--keep:#1f7a4d;--keepbg:#ddf3e6;--accent:#5b3fa8;--sel:#efe9fb}
+@media (prefers-color-scheme:dark){:root{--bg:#17151a;--panel:#211e25;--ink:#ece8f1;--muted:#a49dab;--line:#363140;--err:#ff7d93;--errbg:#4a2430;--keep:#6fd8a2;--keepbg:#1e3d2e;--accent:#b9a3ff;--sel:#2d2638}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;display:grid;grid-template-columns:220px 1fr 320px;height:100vh}
+aside,section{overflow:auto;padding:16px}
+#list{border-right:1px solid var(--line)}
+#side{border-left:1px solid var(--line);background:var(--panel)}
+h1{font-size:15px;margin:0 0 12px}
+.art{display:flex;justify-content:space-between;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;margin-bottom:2px}
+.art:hover{background:var(--sel)}.art.on{background:var(--accent);color:#fff}
+.art small{opacity:.75}
+.art .tick{font-weight:700}
+#doc{max-width:760px;margin:0 auto;padding-bottom:40vh}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;font-size:13px;color:var(--muted)}
+.meta input{font:inherit;padding:3px 6px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
+.para{display:grid;grid-template-columns:32px 1fr;gap:8px;margin:0 0 14px}
+.num{color:var(--muted);font-size:12px;text-align:right;padding-top:3px;user-select:none}
+.text{white-space:pre-wrap;font-size:17px;line-height:1.75}
+mark{border-radius:3px;cursor:pointer;color:inherit}
+mark.e{background:var(--errbg);box-shadow:inset 0 -2px 0 var(--err)}
+mark.g{background:var(--keepbg);box-shadow:inset 0 -2px 0 var(--keep)}
+#pop{position:fixed;display:none;z-index:9;width:380px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px #0003;padding:12px}
+#pop .span{font-weight:600;margin-bottom:8px;word-break:break-word}
+.tabs,.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+button{font:inherit;font-size:13px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+button.del{color:var(--err)}
+#pop input{width:100%;font:inherit;padding:6px 8px;margin-bottom:6px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+#pop .row{display:flex;justify-content:space-between;gap:8px;margin-top:4px}
+.hint{font-size:12px;color:var(--muted)}
+.warn{color:var(--err);font-size:13px;margin:4px 0}
+.item{padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;cursor:pointer;font-size:13px}
+.item b{display:block;font-size:14px}
+.item.e{border-left:4px solid var(--err)}.item.g{border-left:4px solid var(--keep)}
+#status{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:13px;opacity:0;transition:opacity .2s}
+#status.show{opacity:1}#status.bad{background:var(--err);color:#fff}
+.done{margin:12px 0;width:100%;padding:10px;border-radius:10px}
+kbd{font:12px ui-monospace,monospace;border:1px solid var(--line);border-radius:4px;padding:0 4px}
+</style>
+</head>
+<body>
+<aside id="list"><h1>Bài</h1><div id="arts"></div>
+<p class="hint">Bôi chọn chữ để đánh dấu. Chọn dính nửa chữ thì trang tự nới ra cả chữ; cụm lặp trong đoạn thì tự nới thêm cho duy nhất. Bấm vào chỗ đã đánh dấu để sửa hoặc xoá. Phiếu tự lưu sau mỗi thay đổi.</p></aside>
+<section><div id="doc"><p class="hint">Chọn một bài bên trái.</p></div></section>
+<aside id="side"></aside>
+<div id="pop"></div>
+<div id="status"></div>
+<script>
+const BASE = location.pathname.replace(/\/$/, "");
+const KINDS = ["từ ghép bị cắt", "dịch sát", "từ nghề hiểu sai", "danh từ tập thể đứng trơ"];
+const LETTER = /[\p{L}\p{M}\p{N}]/u;
+let arts = [], cur = null, lastKind = KINDS[0];
+
+const $ = s => document.querySelector(s);
+const el = (tag, attrs = {}, ...kids) => { const n = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) { if (k === "on") for (const [e, f] of Object.entries(v)) n.addEventListener(e, f); else if (k === "class") n.className = v; else n.setAttribute(k, v); } for (const c of kids) n.append(c); return n; };
+
+function flash(msg, bad) { const s = $("#status"); s.textContent = msg; s.className = "show" + (bad ? " bad" : ""); clearTimeout(flash.t); flash.t = setTimeout(() => s.className = bad ? "bad" : "", bad ? 6000 : 1500); }
+
+async function api(path, body) {
+  const r = await fetch(BASE + "/api/" + path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || r.status);
+  return data;
+}
+
+async function loadList() { arts = await api("articles"); drawList(); }
+function drawList() {
+  const box = $("#arts"); box.replaceChildren();
+  for (const a of arts) box.append(el("div", { class: "art" + (cur && cur.id === a.id ? " on" : ""), on: { click: () => open(a.id) } },
+    el("span", {}, a.id, " ", el("small", {}, a.genre.split(" ").slice(0, 3).join(" "))),
+    el("span", { class: "tick" }, a.done ? "✓" : (a.errors + a.guards ? `${a.errors}·${a.guards}` : ""))));
+}
+
+async function open(id) {
+  cur = await api("article/" + id); hidePop(); drawList(); draw(); $("section").scrollTop = 0;
+}
+
+function rowsOf(p) {
+  const out = [];
+  cur.errors.forEach((r, i) => r.paragraph === p && out.push({ t: "e", i, r }));
+  cur.guards.forEach((r, i) => r.paragraph === p && out.push({ t: "g", i, r }));
+  const text = cur.paragraphs[p - 1];
+  for (const o of out) { o.start = text.indexOf(o.r.span); o.end = o.start + o.r.span.length; }
+  out.sort((a, b) => a.start - b.start);
+  let edge = 0; return out.filter(o => o.start >= edge && (edge = o.end, true));
+}
+
+function draw() {
+  const doc = $("#doc"); doc.replaceChildren();
+  const m = cur.meta, meta = el("div", { class: "meta" });
+  for (const [k, label, w] of [["genre", "Thể loại", 220], ["model", "Model", 200], ["date", "Ngày", 90], ["marker", "Người chấm", 70]]) {
+    const inp = el("input", { value: m[k] || "", style: `width:${w}px` , on: { change: e => { m[k] = e.target.value; save(); } } });
+    meta.append(el("label", {}, label + " ", inp));
+  }
+  doc.append(el("h1", {}, cur.id), meta);
+  cur.paragraphs.forEach((text, n) => {
+    const p = n + 1, box = el("div", { class: "text", "data-p": p });
+    let at = 0;
+    for (const o of rowsOf(p)) {
+      box.append(text.slice(at, o.start));
+      box.append(el("mark", { class: o.t, title: o.t === "e" ? `${o.r.kind} → ${o.r.fixes || "(sửa tự nhiên)"}` : "cần giữ", on: { click: ev => { ev.stopPropagation(); editRow(o.t, o.i, ev.target); } } }, text.slice(o.start, o.end)));
+      at = o.end;
+    }
+    box.append(text.slice(at));
+    doc.append(el("div", { class: "para" }, el("div", { class: "num" }, p), box));
+  });
+  drawSide();
+}
+
+function drawSide() {
+  const side = $("#side"); side.replaceChildren();
+  side.append(el("h1", {}, `${cur.errors.length} lỗi · ${cur.guards.length} cần giữ`));
+  if (cur.guards.length < 2) side.append(el("p", { class: "hint" }, "Nên có ít nhất 2 cụm cần giữ nếu bài cho phép."));
+  const list = (t, rows) => rows.map((r, i) => ({ t, i, r })).sort((a, b) => a.r.paragraph - b.r.paragraph);
+  for (const o of [...list("e", cur.errors), ...list("g", cur.guards)].sort((a, b) => a.r.paragraph - b.r.paragraph || cur.paragraphs[a.r.paragraph - 1].indexOf(a.r.span) - cur.paragraphs[b.r.paragraph - 1].indexOf(b.r.span)))
+    side.append(el("div", { class: "item " + o.t, on: { click: () => { const mk = [...document.querySelectorAll(`.text[data-p="${o.r.paragraph}"] mark`)].find(x => x.textContent === o.r.span); if (mk) { mk.scrollIntoView({ block: "center" }); editRow(o.t, o.i, mk); } } } },
+      el("b", {}, o.r.span), `Đoạn ${o.r.paragraph} · ` + (o.t === "e" ? `${o.r.kind}${o.r.fixes ? " → " + o.r.fixes : ""}` : `giữ${o.r.reason ? ": " + o.r.reason : ""}`)));
+  const done = el("button", { class: "done" + (cur.meta.done ? " on" : ""), on: { click: () => { cur.meta.done = !cur.meta.done; save().then(() => { if (cur.meta.done) next(); else draw(); }); } } }, cur.meta.done ? "✓ Đã xong bài này (bấm để mở lại)" : "Xong bài này, sang bài sau");
+  side.append(done);
+  side.append(el("p", { class: "hint" }, "Phím: ", el("kbd", {}, "Enter"), " lưu, ", el("kbd", {}, "Esc"), " huỷ, ", el("kbd", {}, "Tab"), " giữa các ô."));
+}
+
+function next() { const i = arts.findIndex(a => a.id === cur.id); const n = arts.slice(i + 1).find(a => !a.done) || arts.find(a => !a.done); if (n) open(n.id); else { draw(); flash("Đã chấm xong mọi bài"); } }
+
+async function save() {
+  try { await api("sheet/" + cur.id, { meta: cur.meta, errors: cur.errors, guards: cur.guards }); flash("Đã lưu"); await loadList(); return true; }
+  catch (e) { flash("Chưa lưu: " + e.message, true); return false; }
+}
+
+function offsetIn(box, node, off) { const r = document.createRange(); r.setStart(box, 0); r.setEnd(node, off); return r.toString().length; }
+
+function pickSpan(text, sentences, s, e) {
+  while (s < e && /\s/.test(text[s])) s++;
+  while (e > s && /\s/.test(text[e - 1])) e--;
+  if (s === e) return null;
+  while (s > 0 && LETTER.test(text[s - 1]) && LETTER.test(text[s])) s--;
+  while (e < text.length && LETTER.test(text[e]) && LETTER.test(text[e - 1])) e++;
+  const sent = sentences.find(([a, b]) => s >= a && e <= b);
+  if (!sent) return { error: "Cụm vắt qua hai câu; chỉ bôi trong một câu." };
+  const count = t => text.split(t).length - 1;
+  let grow = 0;
+  while (count(text.slice(s, e)) > 1) {
+    let ne = e; while (ne < sent[1] && !LETTER.test(text[ne])) ne++; while (ne < sent[1] && LETTER.test(text[ne])) ne++;
+    if (ne > e) { e = ne; grow++; continue; }
+    let ns = s; while (ns > sent[0] && !LETTER.test(text[ns - 1])) ns--; while (ns > sent[0] && LETTER.test(text[ns - 1])) ns--;
+    if (ns < s) { s = ns; grow++; continue; }
+    return { error: "Cụm lặp lại trong đoạn và không nới được cho duy nhất." };
+  }
+  return { start: s, end: e, span: text.slice(s, e), grew: grow > 0 };
+}
+
+function overlaps(p, start, end, skip) {
+  return rowsOf(p).some(o => !(skip && skip.t === o.t && skip.i === o.i) && o.start < end && start < o.end);
+}
+
+document.addEventListener("mouseup", ev => {
+  if (!cur || $("#pop").contains(ev.target)) return;
+  const sel = getSelection(); if (!sel.rangeCount || sel.isCollapsed) return;
+  const a = sel.anchorNode && sel.anchorNode.parentElement.closest(".text"), f = sel.focusNode && sel.focusNode.parentElement.closest(".text");
+  if (!a || a !== f) { if (a || f) flash("Chỉ bôi trong một đoạn.", true); return; }
+  const p = +a.dataset.p, text = cur.paragraphs[p - 1];
+  const x = offsetIn(a, sel.anchorNode, sel.anchorOffset), y = offsetIn(a, sel.focusNode, sel.focusOffset);
+  const got = pickSpan(text, cur.sentences[p - 1], Math.min(x, y), Math.max(x, y));
+  if (!got) return;
+  if (got.error) { flash(got.error, true); return; }
+  if (overlaps(p, got.start, got.end)) { flash("Cụm này chồng lên chỗ đã đánh dấu; bấm vào chỗ đó để sửa.", true); return; }
+  showPop(sel.getRangeAt(0).getBoundingClientRect(), { mode: "new", t: "e", r: { paragraph: p, span: got.span, kind: lastKind, fixes: "", note: "", reason: "" }, grew: got.grew });
+});
+
+function editRow(t, i, target) {
+  const r = { ...(t === "e" ? cur.errors[i] : cur.guards[i]) };
+  showPop(target.getBoundingClientRect(), { mode: "edit", t, i, r });
+}
+
+function showPop(rect, st) {
+  const pop = $("#pop"), origT = st.t; pop.replaceChildren();
+  const body = el("div"), render = () => {
+    body.replaceChildren();
+    body.append(el("div", { class: "tabs" },
+      el("button", { class: st.t === "e" ? "on" : "", on: { click: () => { st.t = "e"; render(); } } }, "Lỗi"),
+      el("button", { class: st.t === "g" ? "on" : "", on: { click: () => { st.t = "g"; render(); } } }, "Cần giữ")));
+    let first;
+    if (st.t === "e") {
+      const chips = el("div", { class: "chips" });
+      const isOther = !KINDS.includes(st.r.kind);
+      for (const k of KINDS) chips.append(el("button", { class: st.r.kind === k ? "on" : "", on: { click: () => { st.r.kind = k; render(); } } }, k));
+      chips.append(el("button", { class: isOther ? "on" : "", on: { click: () => { if (!isOther) st.r.kind = "khác"; render(); } } }, "khác"));
+      body.append(chips);
+      if (isOther) body.append(el("input", { value: st.r.kind.replace(/^khác:?\s*/, ""), placeholder: "Mã pattern nếu có, ví dụ V12 hoặc T3 (bỏ trống được)", on: { input: e => { const v = e.target.value.trim().toUpperCase(); st.r.kind = v ? "khác: " + v : "khác"; } } }));
+      first = el("input", { value: st.r.fixes || "", placeholder: "Cách sửa chấp nhận; nhiều cách thì ngăn bằng /", on: { input: e => st.r.fixes = e.target.value } });
+      body.append(first, el("input", { value: st.r.note || "", placeholder: "Ghi chú (bỏ trống được)", on: { input: e => st.r.note = e.target.value } }));
+      body.append(el("div", { class: "hint" }, "Bỏ trống ô sửa khi cách sửa tự nhiên nào cũng được; khi đó mày tự xét đầu ra."));
+    } else {
+      first = el("input", { value: st.r.reason || "", placeholder: "Vì sao phải giữ (bỏ trống được)", on: { input: e => st.r.reason = e.target.value } });
+      body.append(first);
+    }
+    const row = el("div", { class: "row" }, el("button", { class: "on", on: { click: commit } }, "Lưu"));
+    if (st.mode === "edit") row.prepend(el("button", { class: "del", on: { click: remove } }, "Xoá"));
+    body.append(row);
+    setTimeout(() => first && first.focus(), 0);
+  };
+  pop.append(el("div", { class: "span" }, `Đoạn ${st.r.paragraph}: “${st.r.span}”`));
+  if (st.grew) pop.append(el("div", { class: "warn" }, "Đã nới cụm cho duy nhất trong đoạn."));
+  pop.append(body); render();
+  async function commit() {
+    const backup = [cur.errors.slice(), cur.guards.slice()];
+    const r = st.t === "e" ? { paragraph: st.r.paragraph, span: st.r.span, kind: st.r.kind, fixes: (st.r.fixes || "").split("/").map(s => s.trim()).filter(Boolean).join(" / "), note: st.r.note || "" }
+      : { paragraph: st.r.paragraph, span: st.r.span, reason: st.r.reason || "" };
+    if (st.mode === "edit") { (origT === "e" ? cur.errors : cur.guards).splice(st.i, 1); }
+    (st.t === "e" ? cur.errors : cur.guards).push(r);
+    if (st.t === "e") lastKind = r.kind;
+    if (await save()) { hidePop(); draw(); } else { [cur.errors, cur.guards] = backup; }
+  }
+  async function remove() {
+    const backup = [cur.errors.slice(), cur.guards.slice()];
+    (origT === "e" ? cur.errors : cur.guards).splice(st.i, 1);
+    if (await save()) { hidePop(); draw(); } else { [cur.errors, cur.guards] = backup; }
+  }
+  pop.style.display = "block";
+  const h = pop.offsetHeight, left = Math.min(rect.left, innerWidth - 400);
+  const top = rect.bottom + 8 + h < innerHeight ? rect.bottom + 8 : Math.max(8, rect.top - h - 8);
+  pop.style.left = Math.max(8, left) + "px"; pop.style.top = top + "px";
+  pop.onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); commit(); } else if (e.key === "Escape") hidePop(); };
+}
+
+function hidePop() { $("#pop").style.display = "none"; }
+document.addEventListener("mousedown", e => { if (!$("#pop").contains(e.target) && e.target.tagName !== "MARK") hidePop(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") hidePop(); });
+
+loadList().then(() => { const first = arts.find(a => !a.done) || arts[0]; if (first) open(first.id); }).catch(e => flash(e.message, true));
+</script>
+</body>
+</html>
