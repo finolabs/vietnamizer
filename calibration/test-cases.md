@@ -537,7 +537,7 @@ Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải t
 
 ## HF01–HF18 · dấu hai chấm giữa câu, “đội” đứng trơ, từ ghép bị cắt và cách nói dịch sát (0.16.2)
 
-Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa chạy bằng agent, không phải bằng chứng cải thiện. Ca 3, 6, 8, 9, 10, 12, 13, 15, 16, 17 và 18 là ca chống sửa quá tay. HF11–HF16 lấy từ câu đầu README mà Fio sửa lại ngày 15/11/2026.
+Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa chạy bằng agent, không phải bằng chứng cải thiện. Ca 3, 6, 8, 9, 10, 12, 13, 15, 16, 17 và 18 là ca chống sửa quá tay. HF11–HF16 lấy từ câu đầu README mà Fio sửa lại ngày 15/11/2026. HF01–HF18 là ca phát triển đã dùng để dựng bảng `references/ai-error-lexicon.md`, không bao giờ là bằng chứng bảng có ích; bằng chứng là bộ holdout của spec 036.
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
@@ -559,3 +559,39 @@ Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa
 | 16 | Nhãn nút ngắn trong giao diện: *“Giữ giọng”* | Giữ nguyên | V20 Không flag: nhãn ngắn |
 | 17 | Báo cáo trang trọng: *“Bản dịch giữ nghĩa của nguyên tác.”* | Giữ nguyên | V20 Không flag: câu trang trọng đã đủ ý, *giữ nghĩa* đúng nghĩa |
 | 18 | Có hồ sơ thương hiệu tên *Acme*; yêu cầu: *“Sửa giúp bài giới thiệu sản phẩm mới của Acme.”* | Không áp hồ sơ *Acme*; biên tập với giọng hiện có của bài | Bài chỉ nhắc tên thương hiệu thì chưa phải là gọi hồ sơ |
+
+## LX01–LX29 · bảng dạng lỗi AI, ca agent tự xét (spec 036)
+
+Mỗi ca ứng với một fixture cùng số trong `tests/fixtures/lexicon/fixtures.json`. Scanner được kiểm tất định bằng test; các ca dưới đây kiểm phần agent quyết định sửa hay giữ, chạy bằng tay. Dấu ↵ là chỗ xuống dòng.
+
+| # | Đầu vào | Mong đợi | Vì sao |
+|---|---|---|---|
+| 1 | `LXF01`: *“Quy trình còn rườm và dễ làm nhân viên mới bỡ.”* | *“Quy trình còn rườm rà và dễ làm nhân viên mới bỡ ngỡ.”* | L01, L02: từ ghép bị cắt trong văn viết; sửa ở cụm |
+| 2 | `LXF02`: *“Thủ tục rườm rà khiến khách mới bỡ ngỡ.”* | Giữ nguyên | Dạng đầy đủ; scanner không trả ứng viên |
+| 3 | `LXF03`: *“Ừ, thủ tục rườm thật, mới vào ai cũng bỡ mà.”* | Giữ nguyên | Chat: Không flag của L01, L02 và V20 giữ từ đơn |
+| 4 | `LXF04`: *“Vietnamizer sửa câu chữ nhưng vẫn giữ nghĩa khi đổi giọng.”* | *“Vietnamizer sửa câu chữ nhưng vẫn giữ nguyên nghĩa khi đổi giọng.”* | L03 trong câu giới thiệu sản phẩm |
+| 5 | `LXF05`: *“Bản dịch giữ nghĩa của nguyên tác.”* | Giữ nguyên | Không flag của L03: câu trang trọng đã đủ ý |
+| 6 | `LXF06`: *“Người lính luôn giữ nghĩa vụ với đất nước.”* | Giữ nguyên | *giữ nghĩa vụ* là từ khác; cột Sau không là loại *vụ* |
+| 7 | `LXF07`: *“Công cụ sửa câu nhưng vẫn giữ ↵ nghĩa của bài.”* | *“Công cụ sửa câu nhưng vẫn giữ ↵ nguyên nghĩa của bài.”* | Xuống dòng giữa hai tiếng vẫn là một dạng; chỉ thêm tiếng, giữ chỗ xuống dòng |
+| 8 | `LXF08`: *“Bật chế độ này để giữ giọng khi sửa bài.”* | *“Bật chế độ này để giữ giọng văn khi sửa bài.”* | L04 trong hướng dẫn |
+| 9 | `LXF09`: *“Giữ giọng”* | Giữ nguyên | Không flag của L04: nhãn giao diện ngắn |
+| 10 | `LXF10`: *“Sửa giúp mình mà vẫn giữ giọng mình nhé.”* | Giữ nguyên | Không flag của L04: chat |
+| 11 | `LXF11`: *“Vietnamizer rà soát bản nháp AI và bản dịch sát, chỉ sửa chỗ gọi tên được lỗi, giữ nghĩa và giọng người viết.”* | *“Vietnamizer rà soát bản nháp AI và bản dịch thô, chỉ sửa chỗ xác định được lỗi, giữ ngữ nghĩa và giọng văn người viết.”* | L07, L06, L03 và L05 cùng câu; L03 và L05 chồng nhau nên gộp một dòng kê, sửa một lần |
+| 12 | `LXF12`: *“Công cụ giữ ngữ nghĩa và giọng văn của tác giả.”* | Giữ nguyên | Dạng đầy đủ; cột Trước và Sau không là loại cả hai dạng |
+| 13 | `LXF13`: *“Mình cần giữ cả nghĩa và giọng nha.”* | Giữ nguyên | Không flag của L05: chat |
+| 14 | `LXF14`: *“Bạn dán bài hoặc gọi tên file export.”* | *“Bạn dán bài hoặc nêu tên file export.”* | L06: cụm động từ dịch sát |
+| 15 | `LXF15`: *“Cô giáo gọi tên từng học sinh trước giờ học.”* | Giữ nguyên | Không flag của L06: nghĩa đen |
+| 16 | `LXF16`: *“Công cụ biên tập bản nháp AI và bản dịch sát.”* | *“Công cụ biên tập bản nháp AI và bản dịch thô.”* | L07: người đọc ngoài nghề |
+| 17 | `LXF17`: *“Đoạn 2 dịch sát quá, cần viết lại.”* | Giữ nguyên | Không flag của L07: ghi chú cho người trong nghề |
+| 18 | `LXF18`: *“Bản này dịch sát nghĩa từng câu.”* | Giữ nguyên | *dịch sát nghĩa* là cách nói khác; cột Sau không là loại *nghĩa* |
+| 19 | `LXF19`: *“Đội đã làm việc chăm chỉ để đạt được mục tiêu quý.”* | *“Đội ngũ đã làm việc chăm chỉ để đạt được mục tiêu quý.”* | L08: *Đội* đứng trơ đầu câu |
+| 20 | `LXF20`: *“Đội ngũ đã hoàn thành kế hoạch quý.”* | Giữ nguyên | *Đội ngũ* đầy đủ; cột Sau không là loại *ngũ* |
+| 21 | `LXF21`: *“Đội IT đã sẵn sàng. Những mục tiêu mà đội đang hướng tới trong quý này rất rõ.”* | Giữ nguyên | Không flag của L08: có định ngữ; *đội* viết thường giữa câu không thành ứng viên |
+| 22 | `LXF22`: *“Bài này tổng kết quý ba. Đội đã chốt kế hoạch.”* | *“Bài này tổng kết quý ba. Đội ngũ đã chốt kế hoạch.”* | Đầu câu sau dấu chấm vẫn là đầu câu |
+| 23 | `LXF23`: *“- Đội đã xong việc. ↵ 1. Đội đã xong việc. ↵ > Đội đã xong việc. ↵ Kết quả: Đội đã xong việc.”* | *“- Đội ngũ đã xong việc. ↵ 1. Đội ngũ đã xong việc. ↵ > Đội ngũ đã xong việc. ↵ Kết quả: Đội ngũ đã xong việc.”* | Đầu dòng sau `- `, `1. `, `> ` và sau dấu hai chấm đều là đầu câu |
+| 24 | `LXF24`: *“Hôm qua đội đã xong việc.”* | Giữ nguyên | *đội* viết thường giữa câu do đường đọc xét, không do bảng |
+| 25 | `LXF25`: *“Quy trình còn rườm.”* | *“Quy trình còn rườm rà.”* (giữ dạng NFD của phần không sửa) | Đầu vào NFD vẫn khớp; giữ cách viết gốc của phần không sửa |
+| 26 | `LXF26`: *“Thủ tục rườm[gạch nối mềm]rà.”* | Giữ nguyên | Dấu gạch nối mềm nằm giữa *rườm* và *rà*; không có ứng viên |
+| 27 | `LXF27`: *“--- ↵ title: rườm ↵ --- ↵  ↵ Đoạn có `rườm` và [link](https://x.test/rườm) ở đây.”* | Giữ nguyên | Front matter, code và địa chỉ link là vùng bảo toàn |
+| 28 | `LXF28`: *“Chị Lan nói: “Thủ tục rườm quá.””* | Giữ nguyên | Trích nguyên văn lời người khác là vùng bảo toàn |
+| 29 | `LXF29`: *“> Lưu ý: quy trình còn rườm.”* | *“> Lưu ý: quy trình còn rườm rà.”* | Blockquote làm ghi chú được xét như văn xuôi |
