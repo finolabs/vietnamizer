@@ -11,6 +11,7 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 from distribution_assets import ASSETS, validate_svg
+from lexicon_check import case_index, check_lexicon, pattern_ids
 import xml.etree.ElementTree as ET
 
 
@@ -78,7 +79,9 @@ EXPECTED_PROFILE_DIRECTORIES = {
     for relative in EXPECTED_PROFILE_FILES
     if PurePosixPath(relative).parent.name == "styles"
 }
-PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "assets"}
+PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "assets", "scripts"}
+# Trong gói, scripts/ chỉ chứa scanner tùy chọn; ở repo nguồn, scripts/ là thư mục của maintainer.
+SCANNER_FILE = "scripts/scan-lexicon.py"
 # Nguồn của maintainer: được kiểm inventory và quét bí mật trong repo nhưng không vào gói phát hành.
 SOURCE_ONLY_DIRECTORIES = {"calibration"}
 REFERENCE_FILES = {
@@ -95,6 +98,7 @@ REFERENCE_FILES = {
     "references/voice-sources.md",
     "references/brand-voice.md",
     "references/help.md",
+    "references/ai-error-lexicon.md",
 }
 CALIBRATION_FILES = {
     "calibration/LOG.md",
@@ -106,6 +110,7 @@ EXACT_DIRECTORY_FILES = {
     "calibration": CALIBRATION_FILES,
     "agents": {"agents/openai.yaml"},
     "assets": {f"assets/{name}" for name in ASSETS},
+    "scripts": {SCANNER_FILE},
 }
 FORBIDDEN_PAYLOAD_PATTERNS = (
     (
@@ -129,7 +134,8 @@ FORBIDDEN_PAYLOAD_PATTERNS = (
         re.compile(rb"\b[A-Za-z]:\\Users\\[^\\\s]+\\", re.IGNORECASE),
     ),
 )
-PACKAGE_COPY_SOURCES = PACKAGE_PAYLOAD
+# package-skill.sh chép scripts/ theo từng file: chép cả thư mục scripts/ sẽ không khớp tập này.
+PACKAGE_COPY_SOURCES = (PACKAGE_PAYLOAD - {"scripts"}) | {SCANNER_FILE}
 
 errors: list[str] = []
 
@@ -149,6 +155,8 @@ def validate_payload_tree(root: Path, source_checkout: bool = False) -> None:
     Ở payload đã stage, các thư mục đó MUST NOT xuất hiện.
     """
     checked_names = set(PACKAGE_PAYLOAD) | (set(SOURCE_ONLY_DIRECTORIES) if source_checkout else set())
+    if source_checkout:
+        checked_names = (checked_names - {"scripts"}) | {SCANNER_FILE}
     if not source_checkout:
         for name in sorted(SOURCE_ONLY_DIRECTORIES):
             if (root / name).exists() or (root / name).is_symlink():
@@ -201,7 +209,7 @@ def validate_payload_tree(root: Path, source_checkout: bool = False) -> None:
         if not path.exists() and not path.is_symlink():
             fail(f"Thiếu payload bắt buộc: {relative}")
             continue
-        expected_kind = "file" if relative in {"LICENSE", "SKILL.md"} else "directory"
+        expected_kind = "file" if relative in {"LICENSE", "SKILL.md", SCANNER_FILE} else "directory"
         validate_entry(path, expected_kind)
 
     for directory_name, expected_files in EXACT_DIRECTORY_FILES.items():
@@ -589,6 +597,15 @@ for profile_path in STYLE_PROFILE_CARDS:
     profile = read(profile_path)
     if f"`{STYLE_REGISTRY}`" not in profile:
         fail(f"{profile_path} chưa trỏ tới `{STYLE_REGISTRY}`")
+
+# --- Bảng dạng lỗi AI ---------------------------------------------------
+
+lexicon_text = read("references/ai-error-lexicon.md")
+if lexicon_text:
+    for message in check_lexicon(
+        lexicon_text, pattern_ids(ROOT), case_index(read("calibration/test-cases.md"))
+    ):
+        fail(message)
 
 # --- Package payload ----------------------------------------------------
 

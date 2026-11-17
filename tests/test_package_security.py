@@ -548,11 +548,74 @@ class PackageSecurityTest(unittest.TestCase):
                 package_result.stdout + package_result.stderr,
             )
             archive = repo / "dist" / "vietnamizer.skill"
-            shutil.rmtree(repo / "calibration")
+            payload = Path(temporary_directory) / "payload"
+            with zipfile.ZipFile(archive) as package:
+                package.extractall(payload)
 
-            result = self.run_archive_validator(repo, archive, repo)
+            result = self.run_archive_validator(repo, archive, payload / "vietnamizer")
 
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_payload_scripts_hold_only_the_scanner(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            repo = self.copy_package_fixture(Path(temporary_directory))
+
+            result = self.run_packager(repo)
+
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            for archive_name, prefix in (
+                ("vietnamizer.skill", "vietnamizer/"),
+                ("vietnamizer-claude-org.zip", ""),
+            ):
+                with zipfile.ZipFile(repo / "dist" / archive_name) as package:
+                    names = set(package.namelist())
+                scripts = {name for name in names if name.startswith(prefix + "scripts/") and not name.endswith("/")}
+                self.assertEqual(scripts, {prefix + "scripts/scan-lexicon.py"})
+                self.assertIn(prefix + "references/ai-error-lexicon.md", names)
+                code = {name for name in names if name.endswith((".py", ".sh", ".js", ".mjs", ".ts"))}
+                self.assertEqual(code, {prefix + "scripts/scan-lexicon.py"})
+
+    def test_validator_rejects_extra_payload_script(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            repo = self.copy_package_fixture(Path(temporary_directory))
+            result = self.run_packager(repo)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            payload = Path(temporary_directory) / "payload"
+            with zipfile.ZipFile(repo / "dist" / "vietnamizer.skill") as package:
+                package.extractall(payload)
+            (payload / "vietnamizer" / "scripts" / "helper.py").write_text("print(1)\n", encoding="utf-8")
+
+            result = self.run_payload_validator(repo, payload / "vietnamizer")
+
+            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("scripts/helper.py", result.stderr)
+
+    def test_validator_rejects_whole_scripts_folder_copy(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            repo = self.copy_package_fixture(Path(temporary_directory))
+            script_path = repo / "scripts" / "package-skill.sh"
+            script = script_path.read_text(encoding="utf-8")
+            script = script.replace(
+                'cp -P "$ROOT/scripts/scan-lexicon.py" "$STAGE/scripts/"',
+                'cp -RP "$ROOT/scripts" "$STAGE/"',
+                1,
+            )
+            script_path.write_text(script, encoding="utf-8")
+
+            result = self.run_package_validator(repo)
+
+            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("package-skill.sh phải chỉ chép public payload", result.stderr)
+
+    def test_source_checkout_requires_the_scanner(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            repo = self.copy_package_fixture(Path(temporary_directory))
+            (repo / "scripts" / "scan-lexicon.py").unlink()
+
+            result = self.run_package_validator(repo)
+
+            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("scripts/scan-lexicon.py", result.stderr)
 
 
 if __name__ == "__main__":
