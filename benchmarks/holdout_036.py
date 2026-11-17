@@ -32,6 +32,7 @@ SENTENCE_END = re.compile(r"(?<=[.!?…])\s+")
 TOKEN = re.compile(r"\w+|\s+|[^\w\s]")
 VERDICTS = ("đúng", "không cần", "sai")
 ALIGN_MIN = 0.5
+PLAIN_GAPS = (" ", "\n\n")
 
 
 def nfc(text: str) -> str:
@@ -324,9 +325,6 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
                           "source": text, "output": "",
                           "guarded": any("fixes" not in row for row, _, _ in marked.get(k, []))})
             continue
-        if k + 1 < len(src) and pairs[k + 1] == j + 1 and out[j][2] != gap:
-            edits.append({"id": edit_id(article, k, "gap", gap, out[j][2]), "sentence": text,
-                          "offset": len(text), "source": gap, "output": out[j][2]})
         ops = char_opcodes(text, out[j][1])
         error_spans = [(s, e) for row, s, e in marked.get(k, []) if "fixes" in row]
         judged_spans = [(s, e) for row, s, e in marked.get(k, []) if "fixes" in row and not row["fixes"]]
@@ -353,6 +351,25 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
             old, new = text[i1:i2], out[j][1][j1:j2]
             edits.append({"id": edit_id(article, k, i1, old, new), "sentence": text, "offset": i1,
                           "source": old, "output": new})
+    # Khoảng ngăn giữa hai câu mốc đã căn liền nhau: nguồn có khoảng sau câu mốc và sau từng câu bị xoá,
+    # đầu ra có khoảng sau câu mốc và sau từng câu chèn. Diff hai danh sách: khoảng bị thay là sửa ngoài
+    # cụm; khoảng mất đi theo câu bị xoá; khoảng thêm theo câu chèn chỉ được miễn khi là khoảng thường
+    # (một dấu cách hay một chỗ sang đoạn), vd. "Câu một.  Câu mới." liệt kê khoảng hai dấu cách.
+    anchors = [(k, j) for k, j in enumerate(pairs) if j is not None]
+    for (k, j), (k2, j2) in zip(anchors, anchors[1:]):
+        source_gaps = [src[n][2] for n in range(k, k2)]
+        output_gaps = [out[n][2] for n in range(j, j2)]
+        changed: list[tuple[int, str, str]] = []
+        matcher = difflib.SequenceMatcher(None, source_gaps, output_gaps, autojunk=False)
+        for tag, i1, i2, j1, j2_ in matcher.get_opcodes():
+            olds, news = source_gaps[i1:i2], output_gaps[j1:j2_]
+            paired = min(len(olds), len(news)) if tag == "replace" else 0
+            changed += [(i1 + n, olds[n], news[n]) for n in range(paired)]
+            changed += [(i1, "", g) for g in news[paired:] if tag != "equal" and g not in PLAIN_GAPS]
+        for n, old, new in changed:
+            index = k + min(n, len(source_gaps) - 1)
+            edits.append({"id": edit_id(article, index, "gap", old, new), "sentence": src[index][1],
+                          "offset": len(src[index][1]), "source": old, "output": new})
     owner = {j: k for k, j in enumerate(pairs) if j is not None}
     previous = -1
     for j, (_, text, _) in enumerate(out):

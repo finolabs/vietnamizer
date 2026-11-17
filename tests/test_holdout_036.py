@@ -419,6 +419,25 @@ class Round5RegressionTest(unittest.TestCase):
                 h.parse_sheet(text)
 
 
+class Round6RegressionTest(unittest.TestCase):
+    def pieces(self, source: list[str], output: list[str]) -> list[tuple[str, str]]:
+        return sorted((e["source"], e["output"]) for e in h.compare("H01", source, output, [])["edits"])
+
+    def test_gap_before_an_inserted_sentence_is_compared(self) -> None:
+        self.assertEqual(self.pieces(["Câu một. Câu hai."], ["Câu một.  Câu mới. Câu hai."]),
+                         [("", "  "), ("", "Câu mới.")])
+
+    def test_clean_insertion_lists_only_the_sentence(self) -> None:
+        self.assertEqual(self.pieces(["Câu một. Câu hai."], ["Câu một. Câu mới. Câu hai."]), [("", "Câu mới.")])
+
+    def test_deleted_sentence_takes_its_gap_with_it(self) -> None:
+        self.assertEqual(self.pieces(["Câu một. Câu xoá.", "Câu hai."], ["Câu một.", "Câu hai."]), [("Câu xoá.", "")])
+
+    def test_replaced_gap_around_a_deleted_sentence_is_listed(self) -> None:
+        self.assertEqual(self.pieces(["Câu một. Câu xoá. Câu hai."], ["Câu một.\tCâu hai."]),
+                         [(" ", "\t"), ("Câu xoá.", "")])
+
+
 class ManifestTest(unittest.TestCase):
     def test_manifest_lists_hashes_not_text(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
