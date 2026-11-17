@@ -364,26 +364,28 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
             continue
         source_gaps = [src[n][2] for n in range(k, k2)]
         output_gaps = [out[n][2] for n in range(j, j2)]
-        changed: list[tuple[int, str, str]] = []
+        changed: list[tuple[int, int, str, str]] = []
         matcher = difflib.SequenceMatcher(None, source_gaps, output_gaps, autojunk=False)
         for tag, i1, i2, j1, j2_ in matcher.get_opcodes():
             olds, news = source_gaps[i1:i2], output_gaps[j1:j2_]
             paired = min(len(olds), len(news)) if tag == "replace" else 0
-            changed += [(i1 + n, olds[n], news[n]) for n in range(paired)]
-            changed += [(i1, "", g) for g in news[paired:] if tag != "equal" and g not in PLAIN_GAPS]
-        for n, old, new in changed:
+            changed += [(i1 + n, j1 + n, olds[n], news[n]) for n in range(paired)]
+            changed += [(i1, j1 + n, "", g) for n, g in enumerate(news) if n >= paired
+                        and tag != "equal" and g not in PLAIN_GAPS]
+        for n, m, old, new in changed:
             index = k + min(n, len(source_gaps) - 1) if source_gaps else k - 1
             sentence = src[index][1] if index >= 0 else ""
-            edits.append({"id": edit_id(article, index, "gap", old, new), "sentence": sentence,
+            edits.append({"id": edit_id(article, index, "gap", n, m, old, new), "sentence": sentence,
                           "offset": len(sentence), "source": old, "output": new})
     owner = {j: k for k, j in enumerate(pairs) if j is not None}
-    previous = -1
+    previous, order = -1, 0
     for j, (_, text, _) in enumerate(out):
         if j in owner:
-            previous = owner[j]
+            previous, order = owner[j], 0
             continue
         context = src[previous][1] if previous >= 0 else ""
-        edits.append({"id": edit_id(article, previous, "inserted", text), "sentence": context, "offset": 0,
+        order += 1  # hai câu chèn giống nhau sau cùng một mốc vẫn là hai sửa riêng
+        edits.append({"id": edit_id(article, previous, "inserted", order, text), "sentence": context, "offset": 0,
                       "source": "", "output": text})
     return {"rows": results, "edits": edits}
 

@@ -453,6 +453,25 @@ class Round7RegressionTest(unittest.TestCase):
                          [("", "Câu cuối."), ("", "Câu mới.")])
 
 
+class Round8RegressionTest(unittest.TestCase):
+    def test_repeated_inserted_sentences_keep_separate_ids(self) -> None:
+        article = "Câu một.\n"
+        with tempfile.TemporaryDirectory() as temp:
+            runs = corpus(Path(temp), {"H01": (article, [], [])},
+                          [("H01", "v1", "Câu một. Mới. Mới.\n"), ("H01", "v2", "Câu một. Mới. Mới.\n")])
+            edits = h.blind_edits(runs)["edits"]
+            pending = h.score(runs)["results"][0]["out_of_span"]["pending"]
+        self.assertEqual([e["output"] for e in edits], ["Mới.", "Mới."])
+        self.assertEqual(len({e["id"] for e in edits}), 2)
+        self.assertEqual(pending, 2)
+
+    def test_repeated_inserted_gaps_keep_separate_ids(self) -> None:
+        edits = h.compare("H01", ["Câu một. Câu hai."], ["Câu một.  Mới.  Mới. Câu hai."], [])["edits"]
+        gaps = [e for e in edits if e["output"] == "  "]
+        self.assertEqual(len(gaps), 2)
+        self.assertEqual(len({e["id"] for e in edits}), len(edits))
+
+
 class ManifestTest(unittest.TestCase):
     def test_manifest_lists_hashes_not_text(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
