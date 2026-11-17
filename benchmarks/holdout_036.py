@@ -355,8 +355,13 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
     # đầu ra có khoảng sau câu mốc và sau từng câu chèn. Diff hai danh sách: khoảng bị thay là sửa ngoài
     # cụm; khoảng mất đi theo câu bị xoá; khoảng thêm theo câu chèn chỉ được miễn khi là khoảng thường
     # (một dấu cách hay một chỗ sang đoạn), vd. "Câu một.  Câu mới." liệt kê khoảng hai dấu cách.
+    # Đầu và cuối bài cũng là mốc, nên câu chèn hay xoá ở hai đầu bài cũng được so khoảng ngăn.
     anchors = [(k, j) for k, j in enumerate(pairs) if j is not None]
-    for (k, j), (k2, j2) in zip(anchors, anchors[1:]):
+    for before, after in zip([None] + anchors, anchors + [None]):
+        k, j = before if before else (0, 0)
+        k2, j2 = after if after else (len(src), len(out))
+        if k == k2 and j == j2:
+            continue
         source_gaps = [src[n][2] for n in range(k, k2)]
         output_gaps = [out[n][2] for n in range(j, j2)]
         changed: list[tuple[int, str, str]] = []
@@ -367,9 +372,10 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
             changed += [(i1 + n, olds[n], news[n]) for n in range(paired)]
             changed += [(i1, "", g) for g in news[paired:] if tag != "equal" and g not in PLAIN_GAPS]
         for n, old, new in changed:
-            index = k + min(n, len(source_gaps) - 1)
-            edits.append({"id": edit_id(article, index, "gap", old, new), "sentence": src[index][1],
-                          "offset": len(src[index][1]), "source": old, "output": new})
+            index = k + min(n, len(source_gaps) - 1) if source_gaps else k - 1
+            sentence = src[index][1] if index >= 0 else ""
+            edits.append({"id": edit_id(article, index, "gap", old, new), "sentence": sentence,
+                          "offset": len(sentence), "source": old, "output": new})
     owner = {j: k for k, j in enumerate(pairs) if j is not None}
     previous = -1
     for j, (_, text, _) in enumerate(out):

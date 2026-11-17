@@ -438,6 +438,21 @@ class Round6RegressionTest(unittest.TestCase):
                          [(" ", "\t"), ("Câu xoá.", "")])
 
 
+class Round7RegressionTest(unittest.TestCase):
+    def pieces(self, source: list[str], output: list[str]) -> list[tuple[str, str]]:
+        return sorted((e["source"], e["output"]) for e in h.compare("H01", source, output, [])["edits"])
+
+    def test_gap_of_a_sentence_added_at_the_end_is_compared(self) -> None:
+        self.assertEqual(self.pieces(["Câu một."], ["Câu một.  Câu mới."]), [("", "  "), ("", "Câu mới.")])
+
+    def test_gap_of_a_sentence_added_at_the_start_is_compared(self) -> None:
+        self.assertEqual(self.pieces(["Câu một."], ["Câu mới.  Câu một."]), [("", "  "), ("", "Câu mới.")])
+
+    def test_plain_gaps_at_the_article_edges_are_not_listed(self) -> None:
+        self.assertEqual(self.pieces(["Câu một."], ["Câu mới. Câu một.", "Câu cuối."]),
+                         [("", "Câu cuối."), ("", "Câu mới.")])
+
+
 class ManifestTest(unittest.TestCase):
     def test_manifest_lists_hashes_not_text(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
