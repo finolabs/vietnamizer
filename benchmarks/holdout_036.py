@@ -238,26 +238,33 @@ def touches(op: tuple, start: int, end: int) -> bool:
 def fix_found(output: str, ops: list[tuple], start: int, end: int, fixes: list[str]) -> tuple[int, int] | None:
     """Vị trí trong đầu ra của cách sửa chấp nhận làm dòng lỗi thành đã sửa, hoặc None.
 
-    Phải có khối diff chạm cụm, và cách sửa phải nằm trong vùng đầu ra của cụm đồng thời gồm phần đầu ra
-    vừa đổi (khi cụm bị xoá bớt chữ, chỉ cần nằm trong vùng). Cách sửa có sẵn trong cụm mà cụm không đổi,
-    hay chỉ có chữ chèn thêm cạnh nó, không tính là đã sửa."""
+    Phải có khối diff chạm cụm. Cách sửa (khớp trọn từ) phải phủ phần đầu ra vừa đổi (khi cụm bị xoá bớt
+    chữ thì không cần) và phủ cả phần đầu ra đến từ chính cụm: ký tự của cụm được giữ, đầu ra của khối đè lên cụm, chữ chèn nằm hẳn trong cụm,
+    hoặc chỗ của phần bị xoá trong cụm. Chữ chèn sát mép một mình không bao giờ là cách sửa, nên cụm còn
+    nguyên kèm cách sửa chèn bên cạnh, hay cách sửa có sẵn trong cụm không đổi, không tính là đã sửa."""
     changed = [op for op in ops if op[0] != "equal" and touches(op, start, end)]
     if not changed:
         return None
-    low = min([j1 + start - i1 for tag, i1, i2, j1, _ in ops if tag == "equal" and i1 <= start < i2]
-              + [op[3] for op in changed])
-    high = max([j1 + end - i1 for tag, i1, i2, j1, _ in ops if tag == "equal" and i1 < end <= i2]
-               + [op[4] for op in changed])
-    deleted = any(j1 == j2 and i1 < end and i2 > start for _, i1, i2, j1, j2 in changed)
+    own: list[tuple[int, int]] = []
+    removed: list[int] = []
+    for tag, i1, i2, j1, j2 in ops:
+        if tag == "equal":
+            low, high = max(i1, start), min(i2, end)
+            if low < high:
+                own.append((j1 + low - i1, j1 + high - i1))
+        elif i1 < end and i2 > start:
+            own.append((j1, j2)) if j1 < j2 else removed.append(j1)
+        elif i1 == i2 and start < i1 < end:
+            own.append((j1, j2))
     for fix in fixes:
         # Cách sửa phải khớp trọn từ: "thực hiện" không khớp phần đầu của "thực hiệnx".
         pattern = (r"(?<!\w)" if re.match(r"\w", fix) else "") + re.escape(fix)
         pattern += r"(?!\w)" if re.search(r"\w$", fix) else ""
         for found in re.finditer(pattern, output, re.IGNORECASE):
             o1, o2 = found.span()
-            if not (o1 < high and o2 > low):
-                continue
-            if deleted or any(j1 < j2 and o1 < j2 and o2 > j1 for _, _, _, j1, j2 in changed):
+            from_span = any(o1 < e and o2 > s for s, e in own) or any(o1 <= j <= o2 for j in removed)
+            covers_change = bool(removed) or any(j1 < j2 and o1 < j2 and o2 > j1 for _, _, _, j1, j2 in changed)
+            if from_span and covers_change:
                 return o1, o2
     return None
 

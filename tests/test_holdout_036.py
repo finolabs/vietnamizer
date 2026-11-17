@@ -472,6 +472,25 @@ class Round8RegressionTest(unittest.TestCase):
         self.assertEqual(len({e["id"] for e in edits}), len(edits))
 
 
+class Round9RegressionTest(unittest.TestCase):
+    def fixed(self, source: str, output: str, span: str, fixes: list[str]) -> bool:
+        row = {"id": "H01#1", "paragraph": 1, "span": span, "fixes": fixes}
+        return h.compare("H01", [source], [output], [row])["rows"]["H01#1"]["fixed"]
+
+    def test_fix_inserted_next_to_an_intact_span_is_not_fixed(self) -> None:
+        self.assertFalse(self.fixed("Nhóm tiến hành thực hiện kế hoạch.", "Nhóm tiến hành thực hiện, thực hiện kế hoạch.",
+                                    "tiến hành thực hiện", ["thực hiện"]))
+
+    def test_true_fixes_stay_fixed(self) -> None:
+        cases = [("Quy trình còn rườm.", "Quy trình còn rườm rà.", "rườm", ["rườm rà"]),
+                 ("Đội đã chốt kế hoạch.", "Đội ngũ đã chốt kế hoạch.", "Đội đã chốt", ["Đội ngũ đã chốt"]),
+                 ("Nhóm tiến hành thực hiện kế hoạch.", "Nhóm thực hiện kế hoạch.", "tiến hành thực hiện", ["thực hiện"]),
+                 ("Nhóm tiến hành thực hiện kế hoạch.", "Nhóm triển khai kế hoạch.", "tiến hành thực hiện", ["triển khai"])]
+        for case in cases:
+            with self.subTest(output=case[1]):
+                self.assertTrue(self.fixed(*case))
+
+
 class ManifestTest(unittest.TestCase):
     def test_manifest_lists_hashes_not_text(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
