@@ -43,6 +43,44 @@ chạy lại được cột bản gốc và bản phát hành.
 python3 benchmarks/self_edit_count.py Gốc=823ce7a Sonnet=edit/0162-sonnet Gemini=edit/0162-gemini Opus=edit/0162-opus "Bản phát hành=HEAD"
 ```
 
+## Holdout 036: 0.17.0 chưa tốt hơn 0.16.2 (17/11/2026)
+
+Spec 036 thêm vào 0.17.0 một bảng từ vựng lỗi hay gặp trong văn bản AI và một script quét các dạng đó. Để
+kiểm tra có hiệu quả thật không, hai model sinh 14 bài mới (H01–H07 bằng `claude-opus-5-5`, H08–H14 bằng
+`gpt-6`). Tác giả đánh dấu 48 lỗi và 38 cụm đúng phải giữ nguyên; trong 48 lỗi có 33 lỗi thuộc bốn nhóm
+của bảng từ vựng. Không agent nào tham gia sửa bảng từ vựng được đọc các bài này. Bài và bảng đánh dấu nằm
+ngoài Git; repo chỉ giữ mã băm trong `benchmarks/holdout-036-manifest.json`.
+
+Mỗi bài được chạy với cả hai phiên bản trên Sonnet 5.5 và Opus 5.5 (mức Medium) trong Claude Cowork, tổng
+cộng 56 lượt. Yêu cầu gửi kèm bài là "Dùng skill Vietnamizer biên tập bài sau, giữ nội dung và giọng của tác giả.
+Chỉ trả bài đã sửa, không giải thích." Argon, Flash và GPT chưa được chạy thử. `benchmarks/holdout_036.py`
+chấm theo `specs/036-ai-error-lexicon/contracts/holdout-marking-sheet.md`.
+
+| Model | Phiên bản | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm đúng bị đổi | Thời gian trung bình mỗi bài |
+|---|---|---|---|---|---|
+| Opus 5.5 | 0.16.2 | 3/33 | 2/15 | 0/38 | 57 giây |
+| Opus 5.5 | 0.17.0 | 2/33 | 2/15 | 1/38 | 76 giây |
+| Sonnet 5.5 | 0.16.2 | 0/33 | 1/15 | 0/38 | 43 giây |
+| Sonnet 5.5 | 0.17.0 | 0/33 | 1/15 | 0/38 | 39 giây |
+
+0.17.0 không sửa được nhiều lỗi hơn 0.16.2 trên model nào, nên chưa đạt tiêu chí SC-005 và chưa được phát
+hành. Các chỗ sửa nằm ngoài vùng đánh dấu (95–97 chỗ mỗi bộ lượt Opus, 31–37 chỗ mỗi bộ lượt Sonnet) chưa
+được tác giả chấm, nên bảng chưa tính chúng vào số chỗ sửa thừa.
+
+Lý do nằm ở khâu phát hiện lỗi, không phải ở việc model ngại sửa.
+
+- Cả 56 lượt đều nạp skill. Với 0.17.0, model đọc bảng từ vựng trong 24/28 lượt và chạy script quét trong
+  6 lượt, cả 6 lần đều không ra ứng viên nào.
+- Chạy script quét trên máy với 14 bài thì không trúng lỗi nào trong 33 lỗi nhóm từ vựng (23 lỗi dịch sát,
+  9 từ ghép bị cắt, 1 danh từ tập thể đứng trơ). 11 ứng viên script đưa ra đều không trùng chỗ tác giả
+  đánh dấu.
+- Model sửa rất ít. Opus đổi khoảng 50–60 ký tự mỗi bài, Sonnet khoảng 9 ký tự.
+- Khi đổi yêu cầu thành "Dùng skill Vietnamizer sửa lỗi tiếng Việt trong bài sau, không viết lại. Chỉ trả
+  bài đã sửa." trên bốn bài có 18 lỗi nhóm từ vựng, Opus vẫn để nguyên 16 đến 17 lỗi và sửa còn ít hơn.
+
+Bảng từ vựng cố định 8 dòng không bao quát được lỗi trong bài mới. Spec 037 sẽ làm lại khâu phát hiện và đo
+lại trên đúng 14 bài này.
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày
