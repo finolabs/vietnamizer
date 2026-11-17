@@ -7,7 +7,7 @@ description: |
   biên tập và theo mẫu khi được yêu cầu rõ; học/lưu/áp dụng hồ sơ giọng khi được yêu cầu.
 license: MIT
 metadata:
-  version: "0.16.2"
+  version: "0.17.0"
 ---
 
 # Vietnamizer
@@ -40,13 +40,15 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Việc được giao | Đọc thêm trước khi làm | Không đọc mặc định |
 |---|---|---|
 | Sửa một cụm/câu, rà soát cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
-| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
+| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md`, `references/ai-error-lexicon.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
 | Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/terminology-consistency.md` trên tuyến bài | Bài ngắn, sửa một cụm |
 | Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
 | Học, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”), kể cả gọi lại hồ sơ đã lưu (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”), kể cả học từ bài LinkedIn/Facebook của chính người dùng; dựng, cập nhật hoặc áp dụng hồ sơ thương hiệu người dùng gọi bằng tên; chấm đoạn mẫu của một hồ sơ | `references/voice-profile.md`; học từ export, trang mạng xã hội hay trang thương hiệu qua trình duyệt thì thêm `references/voice-sources.md`; dựng giọng thương hiệu thì thêm `references/brand-voice.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
 | Hỏi Vietnamizer làm được gì, hỏi cách dùng Vietnamizer, “bắt đầu dùng Vietnamizer”, “thiết lập giọng” (“sửa giúp”, “viết hướng dẫn”, “bắt đầu sửa bài” vẫn là biên tập hay viết) | `references/help.md` | Mọi catalog, profile/card, file của người dùng |
 | Chỉ review/nhận xét, không sửa | Trước khi nhận xét, đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
+
+Trên tuyến bài, host chạy được code thì có thể dùng `scripts/scan-lexicon.py` để tìm ứng viên theo bảng; không chạy được thì tự đọc bảng và dò bài, vì không bước sửa nào phải chờ script. Skill được cấp inline mà không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào.
 
 Rà soát văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn rà soát
 V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà soát T1–T6, vì theo quan sát (chưa đo) đây là lỗi AI hay mắc nhất;

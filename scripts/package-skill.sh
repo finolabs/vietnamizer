@@ -2,7 +2,8 @@
 # Đóng gói vietnamizer thành hai artifact từ cùng một public payload:
 # - dist/vietnamizer.skill cho Skills CLI và cài đặt skill thông thường;
 # - dist/vietnamizer-claude-org.zip để upload skill vào Claude Org.
-# Cả hai chứa LICENSE, SKILL.md cùng các thư mục mà skill cần khi chạy.
+# Cả hai chứa LICENSE, SKILL.md cùng các thư mục mà skill cần khi chạy; scripts/ chỉ có
+# scanner tùy chọn scan-lexicon.py.
 #
 # Dùng: ./scripts/package-skill.sh
 # Cần: python3, zip và unzip.
@@ -35,6 +36,8 @@ RELEASE_ORG_ARCHIVE="$DIST/vietnamizer-claude-org.zip"
 cp -P "$ROOT/SKILL.md" "$ROOT/LICENSE" "$STAGE/"
 cp -RP "$ROOT/profiles" "$ROOT/references" "$STAGE/"
 cp -RP "$ROOT/agents" "$ROOT/assets" "$STAGE/"
+mkdir -p "$STAGE/scripts"
+cp -P "$ROOT/scripts/scan-lexicon.py" "$STAGE/scripts/"
 python3 "$ROOT/scripts/validate-package.py" --payload-root "$STAGE"
 
 # Cấu trúc gói: vietnamizer/SKILL.md cùng các thư mục con.

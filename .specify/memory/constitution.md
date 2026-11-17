@@ -1,5 +1,18 @@
 <!--
 Sync Impact Report
+- Version change: 2.8.0 -> 2.9.0 (MINOR: Principle V allows optional offline scripts in the package; no
+  obligation removed).
+- Owner approval: Fio, 15/11/2026, "Bản mày sửa" (spec 036 decision 6).
+- Modified principle V: its first paragraph is rewritten in plain Vietnamese without MUST/MUST NOT, same
+  obligations; a second paragraph lets the package ship a script that runs locally when the skill still
+  does the whole job without it, uses only the Python standard library, calls no network, reads no
+  secret or API key, writes no file, reads only the task text and package data files, and prints only
+  candidates for the agent; any script that reads other files on the user's machine needs its own
+  clause in this constitution. The Jev/TypeSafe sentence is unchanged.
+- First user: `scripts/scan-lexicon.py` (spec 036).
+- No meaning-preservation chốt, protected span or pattern changed.
+- Previous amendment: 2.7.0 -> 2.8.0 (below).
+
 - Version change: 2.7.0 -> 2.8.0 (MINOR: the voice-profile constraint gains one store, the Chat's own
   memory on Chat hosts without local files, and a first-use reminder; no principle's obligation is removed).
 - Owner approval: 2026-11-14, Fio approved the exact added text ("Duyệt") in the session of spec 032,
@@ -145,8 +158,15 @@ biệt; cùng một ca MUST NOT vừa dùng để chỉnh ngưỡng vừa dùng 
 
 ### V. Giữ skill Markdown tự đứng được
 
-`SKILL.md` và các profile MUST dùng được mà không cần build, dịch vụ mạng, secret hoặc runner. Gói
-phát hành MUST NOT chứa mã gọi dịch vụ ngoài hay đọc API key, và MUST NOT phụ thuộc một repo local khác.
+`SKILL.md` và các profile phải dùng được mà không cần build, dịch vụ mạng, secret hoặc runner. Gói phát
+hành không được chứa mã gọi dịch vụ ngoài hay đọc API key, và không được phụ thuộc một repo local khác.
+
+Gói có thể kèm script chạy tại chỗ, với điều kiện skill vẫn làm đủ việc khi không chạy script đó. Script
+chỉ dùng thư viện chuẩn của Python. Script không gọi mạng, không đọc secret hay API key và không ghi
+file. Script chỉ đọc văn bản người dùng giao trong tác vụ cùng các file dữ liệu trong gói, và chỉ in ra
+các ứng viên để agent xét. Sửa hay giữ vẫn do agent quyết định theo pattern và mục Không flag. Script
+nào cần đọc file khác trên máy người dùng phải có điều khoản riêng trong constitution này.
+
 Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 13/11/2026; thêm lại cần amendment.
 
 ## Ràng buộc về gói và dữ liệu
@@ -239,4 +259,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.8.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-14
+**Version**: 2.9.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-17

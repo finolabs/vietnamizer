@@ -1,0 +1,554 @@
+{
+  "schema": 1,
+  "fixtures": [
+    {
+      "id": "LXF01",
+      "text": "Quy trình còn rườm và dễ làm nhân viên mới bỡ.",
+      "expected": [
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 1,
+          "column": 15,
+          "zone": null
+        },
+        {
+          "entry": "L02",
+          "text": "bỡ",
+          "line": 1,
+          "column": 44,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Quy trình còn rườm rà và dễ làm nhân viên mới bỡ ngỡ.",
+      "cases": [
+        "HF10",
+        "LX01"
+      ]
+    },
+    {
+      "id": "LXF02",
+      "text": "Thủ tục rườm rà khiến khách mới bỡ ngỡ.",
+      "expected": [],
+      "agent": "giữ",
+      "cases": [
+        "HF10",
+        "LX02"
+      ]
+    },
+    {
+      "id": "LXF03",
+      "text": "Ừ, thủ tục rườm thật, mới vào ai cũng bỡ mà.",
+      "expected": [
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 1,
+          "column": 12,
+          "zone": null
+        },
+        {
+          "entry": "L02",
+          "text": "bỡ",
+          "line": 1,
+          "column": 39,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF09",
+        "HF12",
+        "LX03"
+      ]
+    },
+    {
+      "id": "LXF04",
+      "text": "Vietnamizer sửa câu chữ nhưng vẫn giữ nghĩa khi đổi giọng.",
+      "expected": [
+        {
+          "entry": "L03",
+          "text": "giữ nghĩa",
+          "line": 1,
+          "column": 35,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Vietnamizer sửa câu chữ nhưng vẫn giữ nguyên nghĩa khi đổi giọng.",
+      "cases": [
+        "HF11",
+        "LX04"
+      ]
+    },
+    {
+      "id": "LXF05",
+      "text": "Bản dịch giữ nghĩa của nguyên tác.",
+      "expected": [
+        {
+          "entry": "L03",
+          "text": "giữ nghĩa",
+          "line": 1,
+          "column": 10,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF17",
+        "LX05"
+      ]
+    },
+    {
+      "id": "LXF06",
+      "text": "Người lính luôn giữ nghĩa vụ với đất nước.",
+      "expected": [],
+      "agent": "giữ",
+      "cases": [
+        "HF17",
+        "LX06"
+      ]
+    },
+    {
+      "id": "LXF07",
+      "text": "Công cụ sửa câu nhưng vẫn giữ\nnghĩa của bài.",
+      "expected": [
+        {
+          "entry": "L03",
+          "text": "giữ\nnghĩa",
+          "line": 1,
+          "column": 27,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Công cụ sửa câu nhưng vẫn giữ\nnguyên nghĩa của bài.",
+      "cases": [
+        "HF11",
+        "LX07"
+      ]
+    },
+    {
+      "id": "LXF08",
+      "text": "Bật chế độ này để giữ giọng khi sửa bài.",
+      "expected": [
+        {
+          "entry": "L04",
+          "text": "giữ giọng",
+          "line": 1,
+          "column": 19,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Bật chế độ này để giữ giọng văn khi sửa bài.",
+      "cases": [
+        "HF11",
+        "LX08"
+      ]
+    },
+    {
+      "id": "LXF09",
+      "text": "Giữ giọng",
+      "expected": [
+        {
+          "entry": "L04",
+          "text": "Giữ giọng",
+          "line": 1,
+          "column": 1,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF16",
+        "LX09"
+      ]
+    },
+    {
+      "id": "LXF10",
+      "text": "Sửa giúp mình mà vẫn giữ giọng mình nhé.",
+      "expected": [
+        {
+          "entry": "L04",
+          "text": "giữ giọng",
+          "line": 1,
+          "column": 22,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF12",
+        "LX10"
+      ]
+    },
+    {
+      "id": "LXF11",
+      "text": "Vietnamizer rà soát bản nháp AI và bản dịch sát, chỉ sửa chỗ gọi tên được lỗi, giữ nghĩa và giọng người viết.",
+      "expected": [
+        {
+          "entry": "L07",
+          "text": "dịch sát",
+          "line": 1,
+          "column": 40,
+          "zone": null
+        },
+        {
+          "entry": "L06",
+          "text": "gọi tên",
+          "line": 1,
+          "column": 62,
+          "zone": null
+        },
+        {
+          "entry": "L03",
+          "text": "giữ nghĩa",
+          "line": 1,
+          "column": 80,
+          "zone": null
+        },
+        {
+          "entry": "L05",
+          "text": "nghĩa và giọng",
+          "line": 1,
+          "column": 84,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Vietnamizer rà soát bản nháp AI và bản dịch thô, chỉ sửa chỗ xác định được lỗi, giữ ngữ nghĩa và giọng văn người viết.",
+      "cases": [
+        "HF11",
+        "LX11"
+      ]
+    },
+    {
+      "id": "LXF12",
+      "text": "Công cụ giữ ngữ nghĩa và giọng văn của tác giả.",
+      "expected": [],
+      "agent": "giữ",
+      "cases": [
+        "HF11",
+        "LX12"
+      ]
+    },
+    {
+      "id": "LXF13",
+      "text": "Mình cần giữ cả nghĩa và giọng nha.",
+      "expected": [
+        {
+          "entry": "L05",
+          "text": "nghĩa và giọng",
+          "line": 1,
+          "column": 17,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF12",
+        "LX13"
+      ]
+    },
+    {
+      "id": "LXF14",
+      "text": "Bạn dán bài hoặc gọi tên file export.",
+      "expected": [
+        {
+          "entry": "L06",
+          "text": "gọi tên",
+          "line": 1,
+          "column": 18,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Bạn dán bài hoặc nêu tên file export.",
+      "cases": [
+        "HF14",
+        "LX14"
+      ]
+    },
+    {
+      "id": "LXF15",
+      "text": "Cô giáo gọi tên từng học sinh trước giờ học.",
+      "expected": [
+        {
+          "entry": "L06",
+          "text": "gọi tên",
+          "line": 1,
+          "column": 9,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF13",
+        "LX15"
+      ]
+    },
+    {
+      "id": "LXF16",
+      "text": "Công cụ biên tập bản nháp AI và bản dịch sát.",
+      "expected": [
+        {
+          "entry": "L07",
+          "text": "dịch sát",
+          "line": 1,
+          "column": 37,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Công cụ biên tập bản nháp AI và bản dịch thô.",
+      "cases": [
+        "HF11",
+        "LX16"
+      ]
+    },
+    {
+      "id": "LXF17",
+      "text": "Đoạn 2 dịch sát quá, cần viết lại.",
+      "expected": [
+        {
+          "entry": "L07",
+          "text": "dịch sát",
+          "line": 1,
+          "column": 8,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF15",
+        "LX17"
+      ]
+    },
+    {
+      "id": "LXF18",
+      "text": "Bản này dịch sát nghĩa từng câu.",
+      "expected": [],
+      "agent": "giữ",
+      "cases": [
+        "HF15",
+        "LX18"
+      ]
+    },
+    {
+      "id": "LXF19",
+      "text": "Đội đã làm việc chăm chỉ để đạt được mục tiêu quý.",
+      "expected": [
+        {
+          "entry": "L08",
+          "text": "Đội",
+          "line": 1,
+          "column": 1,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Đội ngũ đã làm việc chăm chỉ để đạt được mục tiêu quý.",
+      "cases": [
+        "HF07",
+        "LX19"
+      ]
+    },
+    {
+      "id": "LXF20",
+      "text": "Đội ngũ đã hoàn thành kế hoạch quý.",
+      "expected": [],
+      "agent": "giữ",
+      "cases": [
+        "HF07",
+        "LX20"
+      ]
+    },
+    {
+      "id": "LXF21",
+      "text": "Đội IT đã sẵn sàng. Những mục tiêu mà đội đang hướng tới trong quý này rất rõ.",
+      "expected": [
+        {
+          "entry": "L08",
+          "text": "Đội",
+          "line": 1,
+          "column": 1,
+          "zone": null
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF08",
+        "LX21"
+      ]
+    },
+    {
+      "id": "LXF22",
+      "text": "Bài này tổng kết quý ba. Đội đã chốt kế hoạch.",
+      "expected": [
+        {
+          "entry": "L08",
+          "text": "Đội",
+          "line": 1,
+          "column": 26,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Bài này tổng kết quý ba. Đội ngũ đã chốt kế hoạch.",
+      "cases": [
+        "HF07",
+        "LX22"
+      ]
+    },
+    {
+      "id": "LXF23",
+      "text": "- Đội đã xong việc.\n1. Đội đã xong việc.\n> Đội đã xong việc.\nKết quả: Đội đã xong việc.",
+      "expected": [
+        {
+          "entry": "L08",
+          "text": "Đội",
+          "line": 1,
+          "column": 3,
+          "zone": null
+        },
+        {
+          "entry": "L08",
+          "text": "Đội",
+          "line": 2,
+          "column": 4,
+          "zone": null
+        },
+        {
+          "entry": "L08",
+          "text": "Đội",
+          "line": 3,
+          "column": 3,
+          "zone": "blockquote"
+        },
+        {
+          "entry": "L08",
+          "text": "Đội",
+          "line": 4,
+          "column": 10,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "- Đội ngũ đã xong việc.\n1. Đội ngũ đã xong việc.\n> Đội ngũ đã xong việc.\nKết quả: Đội ngũ đã xong việc.",
+      "cases": [
+        "HF07",
+        "LX23"
+      ]
+    },
+    {
+      "id": "LXF24",
+      "text": "Hôm qua đội đã xong việc.",
+      "expected": [],
+      "agent": "giữ",
+      "cases": [
+        "HF08",
+        "LX24"
+      ]
+    },
+    {
+      "id": "LXF25",
+      "text": "Quy trình còn rườm.",
+      "expected": [
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 1,
+          "column": 17,
+          "zone": null
+        }
+      ],
+      "agent": "sửa",
+      "output": "Quy trình còn rườm rà.",
+      "cases": [
+        "HF02",
+        "LX25"
+      ]
+    },
+    {
+      "id": "LXF26",
+      "text": "Thủ tục rườm­rà.",
+      "expected": [],
+      "agent": "giữ",
+      "cases": [
+        "HF10",
+        "LX26"
+      ]
+    },
+    {
+      "id": "LXF27",
+      "text": "---\ntitle: rườm\n---\n\nĐoạn có `rườm` và [link](https://x.test/rườm) ở đây.",
+      "expected": [
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 2,
+          "column": 8,
+          "zone": "frontmatter"
+        },
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 5,
+          "column": 10,
+          "zone": "code"
+        },
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 5,
+          "column": 41,
+          "zone": "link-url"
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF02",
+        "LX27"
+      ]
+    },
+    {
+      "id": "LXF28",
+      "text": "Chị Lan nói: “Thủ tục rườm quá.”",
+      "expected": [
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 1,
+          "column": 23,
+          "zone": "quote"
+        }
+      ],
+      "agent": "giữ",
+      "cases": [
+        "HF02",
+        "LX28"
+      ]
+    },
+    {
+      "id": "LXF29",
+      "text": "> Lưu ý: quy trình còn rườm.",
+      "expected": [
+        {
+          "entry": "L01",
+          "text": "rườm",
+          "line": 1,
+          "column": 24,
+          "zone": "blockquote"
+        }
+      ],
+      "agent": "sửa",
+      "output": "> Lưu ý: quy trình còn rườm rà.",
+      "cases": [
+        "HF02",
+        "LX29"
+      ]
+    }
+  ]
+}

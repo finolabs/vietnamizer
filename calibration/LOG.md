@@ -763,3 +763,19 @@ resolver/nguồn/evaluator có trigger riêng. Giữ nguyên 55 body pattern; re
 Core mới 131 dòng/9.189 ký tự. Ca câu có tra nhóm thiếu từ là 20.784 ký tự; nghĩa/giọng thực nghiệm
 chưa được chấm. Chốt bảo toàn và ý trước câu không bỏ; review phát hiện và đã khôi phục diagnostic
 câu ngắn, giới hạn văn kỹ thuật, cấm xin key/setup và ownership adapter. Xem spec027/verification.
+
+## 2026-11-17 · bảng dạng lỗi AI (spec 036, 0.17.0)
+
+**Nguồn:** các lỗi Fio bắt trong bài viết thử và câu đầu README ngày 15/11/2026, đã thành HF01–HF18
+(`calibration/test-cases.md`, 0.16.2). Thêm một quan sát cùng ngày: khi chạy 0.16.2 bằng Sonnet 5.5,
+model bỏ sót V20 (*Đội* đứng trơ đầu câu) vì không mở `references/missing-words.md`
+(memory Orrery `01M7EZ2JW53X6TRFSA515G4RVK`).
+
+**Khác biệt:** cùng một nhóm dạng lỗi (từ ghép bị cắt, cụm dịch sát, từ nghề dễ hiểu sai, *Đội* đứng trơ)
+lặp lại giữa các bài, nhưng agent chỉ bắt được khi tình cờ đọc đúng catalog.
+**Phân loại:** khoảng trống tìm ứng viên, không phải pattern mới. Các dạng thuộc V9, V19 và V20 đã có;
+giữ 55 pattern.
+**Quyết định:** thêm `references/ai-error-lexicon.md` với L01–L08 lấy từ HF02, HF07, HF10, HF11 và HF14,
+mỗi dòng có Không flag và ca giữ (HF08, HF09, HF12, HF13, HF15, HF16, HF17); bảng kê cụm khi biên tập
+toàn bài; script `scripts/scan-lexicon.py` tùy chọn theo Principle V 2.9.0. HF01–HF18 và LX01–LX29 là ca
+phát triển, không phải bằng chứng cải thiện; bằng chứng là bộ holdout 20 bài Fio chấm (spec 036 O2).

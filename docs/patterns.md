@@ -11,6 +11,10 @@ Core chỉ điều phối, không chứa lại 55 định nghĩa. V1–V8,V20 �
 [typography](../references/typography.md). B/K vẫn ở hai profile. Chỉ tra nhóm có nghi vấn;
 đọc Không flag trước khi sửa lỗi, không dùng danh mục này như checklist nạp mọi file.
 
+Bảng [dạng lỗi AI](../references/ai-error-lexicon.md) ghi những dạng cụ thể đã gặp nhiều lần của V9,
+V19 và V20, như *rườm* thay cho *rườm rà* hay *Đội* đứng trơ đầu câu. Bảng không thêm pattern mới; mỗi dòng
+thuộc một pattern có sẵn và có Không flag riêng. Agent chỉ đọc bảng khi biên tập cả bài hoặc viết từ brief.
+
 
 ### Cách dùng từ và cấu trúc câu (V1–V25)
 

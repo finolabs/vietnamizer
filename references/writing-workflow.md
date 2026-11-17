@@ -33,6 +33,57 @@ không bịa lỗi để hợp thức hóa chuyển giọng. Lượng sửa/tỉ
 Không biến khuyến nghị thành lệnh, tập hợp thành quy trình, điều kiện thành nguyên nhân đã xác nhận.
 Kiến thức đúng nhưng ngoài nguồn không tự thuộc nhiệm vụ biên tập hoặc khai triển brief.
 
+## Kê cụm khi biên tập toàn bài
+
+Chỉ làm trên tuyến bài (biên tập toàn bài hoặc viết từ brief/outline); sửa nhỏ không lập bảng kê. Trước khi
+sửa, đi qua từng đoạn trong phạm vi được giao và lập bảng kê cụm cho riêng mình, không ghi ra file và không
+dùng công cụ nào ngoài việc đọc. Đoạn không có nghi vấn vẫn ghi là đã xem.
+
+Mỗi dòng của bảng kê có: cụm như đang viết, đoạn chứa nó, pattern hoặc mục của bảng
+`references/ai-error-lexicon.md` bị nghi, căn cứ (ngữ vực, quy chiếu, tiếng đứng cạnh), cách sửa ở đơn vị
+nhỏ nhất (chốt 4) và kết quả xét Không flag: `sửa`, hoặc `giữ` kèm lý do. Mọi ứng viên của bảng dạng lỗi đều
+thành một dòng, kể cả khi Không flag cho giữ. Nghi vấn tìm được khi đọc catalog cũng là một dòng. Các ứng viên
+chồng lên nhau gộp thành một dòng, lấy phần hợp của chúng và sửa một lần: *giữ nghĩa và giọng* →
+*giữ ngữ nghĩa và giọng văn*. Dòng `giữ` để nguyên cụm, không đổi byte nào.
+
+Ứng viên ở front matter, code hay địa chỉ link thì ghi `giữ: vùng bảo toàn`. Ứng viên trong ngoặc kép chỉ giữ
+khi đó là trích nguyên văn; thuật ngữ đặt trong ngoặc để nhấn được xét như mọi dòng khác. Blockquote làm ghi
+chú hay tóm tắt được xét như văn xuôi, trừ khi chính nó là trích dẫn.
+
+Khi biên tập, sửa tại chỗ theo các dòng `sửa`, không dựng lại câu hay đoạn từ bảng kê. Viết từ brief vẫn
+khai triển theo các bước ở trên, rồi lập bảng kê trên bản vừa viết. Bảng kê là việc nội bộ, không trả cùng bài.
+Người dùng yêu cầu rõ thì trình nó trong giới hạn 5 dòng ghi chú của mục Trả kết quả trong `SKILL.md`; cũng có
+thể dùng một dòng của nó để hỏi đúng một điểm.
+
+### Tìm ứng viên bằng script
+
+Host chạy được code thì có thể chạy `scripts/scan-lexicon.py` của skill để lấy ứng viên; kết quả phải giống
+như tự đọc bảng và dò bài. Mọi đường dẫn trong lệnh đặt trong dấu nháy đơn, dấu `'` trong đường dẫn viết
+thành `'\''`. Không dùng nháy kép cho đường dẫn hay văn bản.
+
+- Bài nằm trong file người dùng chỉ: `python3 -I '<thư-mục-skill>/scripts/scan-lexicon.py' < '<đường-dẫn>'`.
+- Bài được dán và host có công cụ ghi file: ghi nguyên văn bài bằng công cụ đó, không qua shell, vào một file
+  mới trong thư mục tạm của host, chạy lệnh trên với file ấy rồi xóa file.
+- Bài được dán, host không có công cụ ghi file và bài không quá 100.000 byte: dùng here-document nháy đơn
+  `<<'VNZ_END_OF_TEXT_036'` với dấu kết cố định `VNZ_END_OF_TEXT_036`, chỉ khi không dòng nào của bài đúng
+  bằng dấu kết đó. Có dòng như vậy, hoặc bài dài hơn, thì tự đọc bảng.
+
+Không đưa văn bản vào tham số lệnh, `echo`, chuỗi nháy kép hay here-document không có nháy. Script lỗi theo
+bất kỳ cách nào (không có Python hay công cụ shell, bị từ chối quyền, mã thoát khác 0, JSON không đọc được,
+chạy quá 20 giây) thì tự đọc bảng. Chỉ thử lại tối đa một lần, không nhờ người dùng bật hay cài gì, và không
+nhắc tới chuyện này trừ khi được hỏi. Script chỉ trả ứng viên; sửa hay giữ vẫn theo bảng kê ở trên.
+
+## Thứ tự: sửa lỗi, áp giọng, rồi dò lại
+
+Trên tuyến bài, sửa lỗi theo bảng kê trước, rồi mới áp giọng (mẫu, hồ sơ hay card), sau đó dò lại. Lượt dò
+lại xem lại bảng dạng lỗi (hoặc chạy lại script), các đoạn vừa sửa và năm chốt. Không có hồ sơ giọng vẫn dò
+lại, sau lượt sửa lỗi và sau mỗi lần sửa thêm do review.
+
+Khi nét giọng va với sửa lỗi thì sửa lỗi thắng. Hồ sơ hay mẫu chỉ làm một dạng trong bảng thành chấp nhận
+được khi cột Không flag của dòng đó bao gồm ngữ vực ấy. Lượt áp giọng mà tạo lại một dạng trong bảng ngoài
+Không flag thì dòng đó quay về `sửa` và bỏ phần áp giọng ở chỗ ấy. Phần sửa lỗi và phần chỉnh giọng vẫn phải
+tách được khi nhìn lại.
+
 ## Rà câu, đoạn và toàn bài
 
 Đọc câu trong đoạn: từ lặp có đúng đối tượng/nghĩa không, điểm ngắt làm việc gì? Đọc đoạn trong bài:
