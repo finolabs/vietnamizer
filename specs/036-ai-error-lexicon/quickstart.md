@@ -55,4 +55,6 @@ Expected: the guards of contracts/skill-text.md pass.
 
 ## 5. Holdout (SC-005)
 
+Fio marks with `python3 benchmarks/holdout_marker.py <corpus folder>`: a local page (127.0.0.1 only) where selecting text adds an error or guard row; it writes `Hnn.sheet.md` next to each article after every change, in the format below, and refuses rows the scorer would refuse. Agents test it on fake articles only.
+
 After Fio marks the holdout articles (14 for 0.17.0) (contracts/holdout-marking-sheet.md), run `benchmarks/holdout_036.py` for each model under plan P2 and O6, both versions, then review the out-of-span list. The report goes to `docs/benchmarks.md` with model ids, corpus manifest hash, lexicon hash and package versions.
