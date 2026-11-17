@@ -56,7 +56,7 @@ kbd{font:12px ui-monospace,monospace;border:1px solid var(--line);border-radius:
 const BASE = location.pathname.replace(/\/$/, "");
 const KINDS = ["từ ghép bị cắt", "dịch sát", "từ nghề hiểu sai", "danh từ tập thể đứng trơ"];
 const LETTER = /[\p{L}\p{M}\p{N}]/u;
-let arts = [], cur = null, lastKind = KINDS[0];
+let arts = [], cur = null, lastKind = KINDS[0], busy = false;
 
 const $ = s => document.querySelector(s);
 const el = (tag, attrs = {}, ...kids) => { const n = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) { if (k === "on") for (const [e, f] of Object.entries(v)) n.addEventListener(e, f); else if (k === "class") n.className = v; else n.setAttribute(k, v); } for (const c of kids) n.append(c); return n; };
@@ -79,6 +79,7 @@ function drawList() {
 }
 
 async function open(id) {
+  if (busy) return;
   cur = await api("article/" + id); hidePop(); drawList(); draw(); $("section").scrollTop = 0;
 }
 
@@ -96,7 +97,7 @@ function draw() {
   const doc = $("#doc"); doc.replaceChildren();
   const m = cur.meta, meta = el("div", { class: "meta" });
   for (const [k, label, w] of [["genre", "Thể loại", 220], ["model", "Model", 200], ["date", "Ngày", 90], ["marker", "Người chấm", 70]]) {
-    const inp = el("input", { value: m[k] || "", style: `width:${w}px` , on: { change: e => { m[k] = e.target.value; save(); } } });
+    const inp = el("input", { value: m[k] || "", style: `width:${w}px` , on: { change: async e => { if (busy) { e.target.value = m[k] || ""; return; } const old = m[k]; m[k] = e.target.value; busy = true; const ok = await save(); busy = false; if (!ok) { m[k] = old; e.target.value = old || ""; } } } });
     meta.append(el("label", {}, label + " ", inp));
   }
   doc.append(el("h1", {}, cur.id), meta);
@@ -122,7 +123,7 @@ function drawSide() {
   for (const o of [...list("e", cur.errors), ...list("g", cur.guards)].sort((a, b) => a.r.paragraph - b.r.paragraph || cur.paragraphs[a.r.paragraph - 1].indexOf(a.r.span) - cur.paragraphs[b.r.paragraph - 1].indexOf(b.r.span)))
     side.append(el("div", { class: "item " + o.t, on: { click: () => { const mk = [...document.querySelectorAll(`.text[data-p="${o.r.paragraph}"] mark`)].find(x => x.textContent === o.r.span); if (mk) { mk.scrollIntoView({ block: "center" }); editRow(o.t, o.i, mk); } } } },
       el("b", {}, o.r.span), `Đoạn ${o.r.paragraph} · ` + (o.t === "e" ? `${o.r.kind}${o.r.fixes ? " → " + o.r.fixes : ""}` : `giữ${o.r.reason ? ": " + o.r.reason : ""}`)));
-  const done = el("button", { class: "done" + (cur.meta.done ? " on" : ""), on: { click: () => { cur.meta.done = !cur.meta.done; save().then(() => { if (cur.meta.done) next(); else draw(); }); } } }, cur.meta.done ? "✓ Đã xong bài này (bấm để mở lại)" : "Xong bài này, sang bài sau");
+  const done = el("button", { class: "done" + (cur.meta.done ? " on" : ""), on: { click: async () => { if (busy) return; busy = true; cur.meta.done = !cur.meta.done; const ok = await save(); busy = false; if (!ok) { cur.meta.done = !cur.meta.done; draw(); } else if (cur.meta.done) next(); else draw(); } } }, cur.meta.done ? "✓ Đã xong bài này (bấm để mở lại)" : "Xong bài này, sang bài sau");
   side.append(done);
   side.append(el("p", { class: "hint" }, "Phím: ", el("kbd", {}, "Enter"), " lưu, ", el("kbd", {}, "Esc"), " huỷ, ", el("kbd", {}, "Tab"), " giữa các ô."));
 }
@@ -175,8 +176,8 @@ document.addEventListener("mouseup", ev => {
 });
 
 function editRow(t, i, target) {
-  const r = { ...(t === "e" ? cur.errors[i] : cur.guards[i]) };
-  showPop(target.getBoundingClientRect(), { mode: "edit", t, i, r });
+  const orig = (t === "e" ? cur.errors : cur.guards)[i];
+  showPop(target.getBoundingClientRect(), { mode: "edit", t, orig, r: { ...orig } });
 }
 
 function showPop(rect, st) {
@@ -210,18 +211,30 @@ function showPop(rect, st) {
   if (st.grew) pop.append(el("div", { class: "warn" }, "Đã nới cụm cho duy nhất trong đoạn."));
   pop.append(body); render();
   async function commit() {
+    if (busy) return;
     const backup = [cur.errors.slice(), cur.guards.slice()];
     const r = st.t === "e" ? { paragraph: st.r.paragraph, span: st.r.span, kind: st.r.kind, fixes: (st.r.fixes || "").split("/").map(s => s.trim()).filter(Boolean).join(" / "), note: st.r.note || "" }
       : { paragraph: st.r.paragraph, span: st.r.span, reason: st.r.reason || "" };
-    if (st.mode === "edit") { (origT === "e" ? cur.errors : cur.guards).splice(st.i, 1); }
+    if (st.mode === "edit" && !drop()) return;
     (st.t === "e" ? cur.errors : cur.guards).push(r);
     if (st.t === "e") lastKind = r.kind;
-    if (await save()) { hidePop(); draw(); } else { [cur.errors, cur.guards] = backup; }
+    await finish(backup);
   }
   async function remove() {
+    if (busy) return;
     const backup = [cur.errors.slice(), cur.guards.slice()];
-    (origT === "e" ? cur.errors : cur.guards).splice(st.i, 1);
-    if (await save()) { hidePop(); draw(); } else { [cur.errors, cur.guards] = backup; }
+    if (!drop()) return;
+    await finish(backup);
+  }
+  function drop() {
+    const list = origT === "e" ? cur.errors : cur.guards, at = list.indexOf(st.orig);
+    if (at < 0) { hidePop(); draw(); return false; }
+    list.splice(at, 1); return true;
+  }
+  async function finish(backup) {
+    busy = true; pop.querySelectorAll("button,input").forEach(x => x.disabled = true);
+    const ok = await save(); busy = false;
+    if (ok) { hidePop(); draw(); } else { [cur.errors, cur.guards] = backup; pop.querySelectorAll("button,input").forEach(x => x.disabled = false); }
   }
   pop.style.display = "block";
   const h = pop.offsetHeight, left = Math.min(rect.left, innerWidth - 400);

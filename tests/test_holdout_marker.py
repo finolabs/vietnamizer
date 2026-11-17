@@ -74,6 +74,17 @@ class SheetTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "xuất hiện 2 lần"):
             m.build_sheet("H01", "a" * 64, paras, META, [], [{"paragraph": 1, "span": "Đội"}])
 
+    def test_metadata_cannot_hide_rows_or_the_digest(self):
+        for key, value in (("genre", "## Bảng lỗi"), ("model", "x SHA-256 bài: " + "b" * 64), ("marker", "Bài: H02")):
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                m.build_sheet("H01", "a" * 64, self.paras(), {**META, key: value}, ERRORS, GUARDS)
+
+    def test_sentence_offsets_are_utf16_units_like_the_browser(self):
+        with Corpus() as root:
+            (root / "H01.md").write_text("\U0001F600. Lỗi ở đây.\n", encoding="utf-8")
+            data = m.Marker(root).article("H01")
+        self.assertEqual(data["sentences"][0], [[0, 3], [4, 14]])
+
     def test_rejects_ids_outside_the_folder(self):
         with Corpus() as root:
             for article in ("../H01", "H1", "H01/x"):

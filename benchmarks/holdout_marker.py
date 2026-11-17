@@ -53,6 +53,21 @@ def clean(value: object, field: str, limit: int = 300) -> str:
     return text
 
 
+META_FORBIDDEN = re.compile(r"#|SHA-256|Bài:|Trạng thái:|Thể loại:|Model sinh bài:|Ngày đánh dấu:|Người đánh dấu:")
+
+
+def clean_meta(meta: dict, key: str, field: str) -> str:
+    value = clean(meta.get(key), field)
+    if META_FORBIDDEN.search(value):
+        raise ValueError(f"{field}: không được chứa #, SHA-256 hay nhãn của đầu phiếu")
+    return value
+
+
+def utf16(text: str, offset: int) -> int:
+    """Vị trí theo đơn vị UTF-16 như chuỗi trong trình duyệt."""
+    return len(text[:offset].encode("utf-16-le")) // 2
+
+
 def check_span(paragraphs: list[str], number: int, span: str, label: str) -> None:
     if not span:
         raise ValueError(f"{label}: cụm trống")
@@ -71,9 +86,9 @@ def check_span(paragraphs: list[str], number: int, span: str, label: str) -> Non
 def build_sheet(article: str, digest: str, paragraphs: list[str], meta: dict, errors: list, guards: list) -> str:
     """Phiếu đúng mẫu contract; từ chối dòng mà holdout_036.py sẽ từ chối."""
     lines = [
-        f"Bài: {article}            Thể loại: {clean(meta.get('genre'), 'Thể loại')}        "
-        f"Model sinh bài: {clean(meta.get('model'), 'Model sinh bài')}",
-        f"Ngày đánh dấu: {clean(meta.get('date'), 'Ngày')}   Người đánh dấu: {clean(meta.get('marker'), 'Người đánh dấu')}"
+        f"Bài: {article}            Thể loại: {clean_meta(meta, 'genre', 'Thể loại')}        "
+        f"Model sinh bài: {clean_meta(meta, 'model', 'Model sinh bài')}",
+        f"Ngày đánh dấu: {clean_meta(meta, 'date', 'Ngày')}   Người đánh dấu: {clean_meta(meta, 'marker', 'Người đánh dấu')}"
         f"   SHA-256 bài: {digest}",
         f"Trạng thái: {'xong' if meta.get('done') else 'đang chấm'}",
         "",
@@ -100,7 +115,11 @@ def build_sheet(article: str, digest: str, paragraphs: list[str], meta: dict, er
         check_span(paragraphs, number, span, label)
         lines.append(f"| {n} | {number} | {span} | {clean(row.get('reason'), label)} |")
     text = "\n".join(lines) + "\n"
-    h.parse_sheet(text)  # cùng bộ đọc với bộ chấm
+    parsed = h.parse_sheet(text)  # cùng bộ đọc với bộ chấm; phải đọc lại đúng những gì vừa ghi
+    if (parsed["article"], parsed["article_sha256"]) != (article, digest) or \
+            [r["span"] for r in parsed["errors"]] != [r.get("span") and h.nfc(r["span"]).strip() for r in errors] or \
+            [r["span"] for r in parsed["guards"]] != [r.get("span") and h.nfc(r["span"]).strip() for r in guards]:
+        raise ValueError("phiếu ghi ra không đọc lại đúng; kiểm tra các ô đầu phiếu")
     return text
 
 
@@ -147,7 +166,7 @@ class Marker:
         sheet = read_sheet(article_path(self.root, article, ".sheet.md"))
         meta = {**default_meta(self.plan.get(article, {})), **sheet["meta"]}
         paras = h.paragraphs(path.read_text(encoding="utf-8"))
-        sentences = [[[o, o + len(s)] for o, s in h.split_sentences(p)] for p in paras]
+        sentences = [[[utf16(p, o), utf16(p, o + len(s))] for o, s in h.split_sentences(p)] for p in paras]
         return {"id": article, "paragraphs": paras, "sentences": sentences, "meta": meta,
                 "errors": sheet["errors"], "guards": sheet["guards"]}
 
