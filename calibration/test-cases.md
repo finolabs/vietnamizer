@@ -588,10 +588,10 @@ Mỗi ca ứng với một fixture cùng số trong `tests/fixtures/lexicon/fixt
 | 20 | `LXF20`: *“Đội ngũ đã hoàn thành kế hoạch quý.”* | Giữ nguyên | *Đội ngũ* đầy đủ; cột Sau không là loại *ngũ* |
 | 21 | `LXF21`: *“Đội IT đã sẵn sàng. Những mục tiêu mà đội đang hướng tới trong quý này rất rõ.”* | Giữ nguyên | Không flag của L08: có định ngữ; *đội* viết thường giữa câu không thành ứng viên |
 | 22 | `LXF22`: *“Bài này tổng kết quý ba. Đội đã chốt kế hoạch.”* | *“Bài này tổng kết quý ba. Đội ngũ đã chốt kế hoạch.”* | Đầu câu sau dấu chấm vẫn là đầu câu |
-| 23 | `LXF23`: *“- Đội đã xong việc. ↵ 1. Đội đã xong việc. ↵ > Đội đã xong việc. ↵ Kết quả: Đội đã xong việc.”* | *“- Đội ngũ đã xong việc. ↵ 1. Đội ngũ đã xong việc. ↵ > Đội ngũ đã xong việc. ↵ Kết quả: Đội ngũ đã xong việc.”* | Đầu dòng sau `- `, `1. `, `> ` và sau dấu hai chấm đều là đầu câu |
+| 23 | `LXF23`: *“- Đội đã xong việc. ↵ 1. Đội đã xong việc. ↵ > Đội đã xong việc. ↵ Kết quả: Đội đã xong việc.”* | *“- Đội ngũ đã xong việc. ↵ 1. Đội ngũ đã xong việc. ↵ > Đội ngũ đã xong việc. ↵ Kết quả: Đội ngũ đã xong việc.”* | Đầu dòng sau `- `, `1. `, `> ` và sau dấu hai chấm đều là đầu câu; script bỏ qua dòng `> ` nên agent tự sửa dòng đó |
 | 24 | `LXF24`: *“Hôm qua đội đã xong việc.”* | Giữ nguyên | *đội* viết thường giữa câu do đường đọc xét, không do bảng |
 | 25 | `LXF25`: *“Quy trình còn rườm.”* | *“Quy trình còn rườm rà.”* (giữ dạng NFD của phần không sửa) | Đầu vào NFD vẫn khớp; giữ cách viết gốc của phần không sửa |
 | 26 | `LXF26`: *“Thủ tục rườm[gạch nối mềm]rà.”* | Giữ nguyên | Dấu gạch nối mềm nằm giữa *rườm* và *rà*; không có ứng viên |
-| 27 | `LXF27`: *“--- ↵ title: rườm ↵ --- ↵  ↵ Đoạn có `rườm` và [link](https://x.test/rườm) ở đây.”* | Giữ nguyên | Front matter, code và địa chỉ link là vùng bảo toàn |
-| 28 | `LXF28`: *“Chị Lan nói: “Thủ tục rườm quá.””* | Giữ nguyên | Trích nguyên văn lời người khác là vùng bảo toàn |
-| 29 | `LXF29`: *“> Lưu ý: quy trình còn rườm.”* | *“> Lưu ý: quy trình còn rườm rà.”* | Blockquote làm ghi chú được xét như văn xuôi |
+| 27 | `LXF27`: *“--- ↵ title: rườm ↵ --- ↵  ↵ Đoạn có `rườm` và [link](https://x.test/rườm) ở đây.”* | Giữ nguyên | Front matter, code và địa chỉ link là vùng bảo toàn; script không trả ứng viên nào |
+| 28 | `LXF28`: *“Chị Lan nói: “Thủ tục rườm quá.””* | Giữ nguyên | Trích nguyên văn lời người khác là vùng bảo toàn; script bỏ qua chỗ khớp trong ngoặc kép |
+| 29 | `LXF29`: *“> Lưu ý: quy trình còn rườm.”* | *“> Lưu ý: quy trình còn rườm rà.”* | Blockquote làm ghi chú được xét như văn xuôi; script bỏ qua blockquote nên agent tự đọc và sửa |

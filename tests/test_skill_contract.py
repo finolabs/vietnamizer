@@ -628,6 +628,8 @@ class SkillContractTest(unittest.TestCase):
             "Chỉ thử lại tối đa một lần, không nhờ người dùng bật hay cài gì",
             "không nhắc tới chuyện này trừ khi được hỏi",
             "Script chỉ trả ứng viên",
+            "Script bỏ qua mọi chỗ khớp trong năm vùng ấy",
+            "blockquote làm ghi chú vẫn phải tự đọc và xét",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)

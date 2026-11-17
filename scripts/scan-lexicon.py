@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Tìm ứng viên lỗi AI theo bảng references/ai-error-lexicon.md.
 
-Đọc văn bản từ stdin, in một đối tượng JSON gồm các ứng viên. Script không sửa
+Đọc văn bản từ stdin, in một đối tượng JSON gồm các ứng viên. Chỗ khớp nằm trong front
+matter, code, địa chỉ link, ngoặc kép hay blockquote bị bỏ qua. Script không sửa
 văn bản, không ghi file, không gọi mạng và không đọc biến môi trường; sửa hay giữ
 là việc của agent theo pattern và cột Không flag.
 
@@ -230,7 +231,8 @@ def scan(text: str, entries: list[dict]) -> list[dict]:
     starts = line_starts(text)
     paragraphs = paragraph_numbers(lines)
     spans = zone_spans(text, lines, starts)
-    candidates = []
+    candidates: list[dict] = []
+    offsets: list[int] = []
     for index in range(len(tokens)):
         for entry in entries:
             size = len(entry["syllables"])
@@ -251,6 +253,8 @@ def scan(text: str, entries: list[dict]) -> list[dict]:
                 continue
             begin = starts_of[tokens[index][0]]
             finish = ends_of[tokens[last][1] - 1]
+            if zone_at(spans, begin) is not None:
+                continue
             line = locate(starts, begin)
             if entry["sentence_start"] and not (
                 tokens[index][2][0].isupper() and at_sentence_start(text, starts[line], begin)
@@ -263,14 +267,11 @@ def scan(text: str, entries: list[dict]) -> list[dict]:
                     "line": line + 1,
                     "column": begin - starts[line] + 1,
                     "paragraph": paragraphs[line],
-                    "zone": zone_at(spans, begin),
-                    "_offset": begin,
                 }
             )
-    candidates.sort(key=lambda c: (c["_offset"], c["entry"]))
-    for candidate in candidates:
-        del candidate["_offset"]
-    return candidates
+            offsets.append(begin)
+    order = sorted(range(len(candidates)), key=lambda i: (offsets[i], candidates[i]["entry"]))
+    return [candidates[i] for i in order]
 
 
 def refuse(code: int, message: str) -> int:

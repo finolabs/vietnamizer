@@ -27,6 +27,8 @@ Out of scope (same discussion): a full Vietnamese grammar matrix; external NLP l
 5. **Version 0.17.0, released before spec 033.** This spec applies the shared Principle V sentence; spec 033 later adds only its own clause and drops "ngoại lệ duy nhất". Not taken: 033 first.
 6. **Principle V text (Fio, 15/11/2026: "Bản mày sửa").** The approved text is the one in section "Constitution amendment". It also rewrites the first sentence of Principle V in plain Vietnamese without MUST/MUST NOT, so the whole principle reads one way. Not taken: the first draft, which kept MUST in the first sentence and packed every script condition into one sentence.
 
+7. **Scanner drops zoned matches (Fio, 17/11/2026: "Bỏ mọi zone").** After the PR 68 code review, the scanner drops every match inside frontmatter, code, link targets, quotation marks and blockquotes, and the candidate no longer carries `zone`. Reading-path parity (FR-018) is measured outside those zones; the agent still judges quoted emphasis and blockquote notes by reading. Not taken: reporting every match with a zone hint (the 15/11 design), or dropping only frontmatter, code and link targets.
+
 ## Open decisions
 
 | # | Decision | Owner | Unblocks when |
@@ -133,7 +135,7 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 
 ### Edge Cases
 
-- A lexicon form inside a protected zone (code, quotation, proper name, link, frontmatter, the example being discussed): never flagged, never edited; the scanner may report it but the inventory marks it protected.
+- A lexicon form inside a protected zone (code, quotation, proper name, link, frontmatter, the example being discussed): never flagged, never edited; the scanner drops it (amended 17/11/2026, decision 7); the agent still reads quoted emphasis and blockquote notes itself, since those are not always protected.
 - A form that is also the first syllable of a correct compound (*rườm* inside *rườm rà*, *nghĩa* inside *ngữ nghĩa*, *ý nghĩa*, *nghĩa là*, *nghĩa vụ*): not a candidate; entries state their completing and excluding contexts.
 - Unicode: text in NFD, mixed NFC/NFD, or with combining marks typed separately; capitalised sentence starts (*Đội* vs *đội*); a line break or soft hyphen inside a phrase.
 - Registers where the short form is correct: chat, short UI labels, casual text, in-trade notes (HF12, HF15, HF16); genres that only get T1–T6 (contracts, legal, ceremonial, changelog/commit/UI, poetry): lexicon entries tied to V patterns do not run there.
@@ -166,7 +168,7 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 **Scanner**
 
 - **FR-012**: The scanner MUST ship inside the package (decision 1) and MUST use only the Python standard library, make no network call, read no secret or API key, write no file, and read only the text it is given on standard input (a file the user named reaches it through the shell's input redirection; the text is never a command-line argument) and the lexicon file. It MUST NOT edit text; it prints candidates only.
-- **FR-013**: For each candidate the scanner MUST report the entry id, the matched text as written and its position (line and column, and paragraph index). It MUST match on Vietnamese syllable boundaries after Unicode normalisation, treat case as the entry says, apply the entry's completing and excluding contexts, and report a protected-zone flag for matches inside code spans, code blocks, quotations, links and frontmatter.
+- **FR-013**: For each candidate the scanner MUST report the entry id, the matched text as written and its position (line and column, and paragraph index). It MUST match on Vietnamese syllable boundaries after Unicode normalisation, treat case as the entry says, apply the entry's completing and excluding contexts, and drop matches inside frontmatter, code spans, code blocks, link targets, quotations and blockquotes (decision 7).
 - **FR-014**: The scanner MUST be optional. The agent MUST use the reading path when the scanner cannot run for any reason, MUST NOT ask the user to enable code execution or install anything for it, and MUST NOT tell the user which path ran unless asked. A scanner error MUST NOT stop the edit.
 
 **Order and rescan**
@@ -189,7 +191,7 @@ A maintainer receives a new marked AI error. They log it in `calibration/LOG.md`
 ### Key Entities
 
 - **Lexicon entry**: one known AI error form tied to one existing pattern; holds forms, kind, fix, register, **Không flag** contexts and source cases.
-- **Candidate**: a match of an entry in the text, with position and protected-zone flag; not yet an error.
+- **Candidate**: a match of an entry in the text outside the zones the scanner drops, with its position; not yet an error.
 - **Inventory row**: one suspect phrase with pattern, evidence, fix and the **Không flag** result; the only route by which an edit is kept on the long-form path.
 - **Fixture**: a short text with its expected candidate set, positive or guard, used by both the scanner test and the parity check.
 

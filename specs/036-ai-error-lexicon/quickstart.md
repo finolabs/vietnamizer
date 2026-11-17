@@ -14,7 +14,7 @@ Expected: every fixture returns exactly its expected candidates; table structure
 printf 'Quy trình còn rườm và dễ làm nhân viên mới bỡ.\n' | python3 -I scripts/scan-lexicon.py
 ```
 
-Expected: two candidates, `L01` *rườm* and `L02` *bỡ*, both `zone: null`.
+Expected: two candidates, `L01` *rườm* and `L02` *bỡ*.
 
 ```bash
 printf 'Quy trình rườm rà làm nhân viên bỡ ngỡ.\n' | python3 -I scripts/scan-lexicon.py

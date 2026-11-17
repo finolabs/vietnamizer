@@ -57,8 +57,10 @@ thể dùng một dòng của nó để hỏi đúng một điểm.
 
 ### Tìm ứng viên bằng script
 
-Host chạy được code thì có thể chạy `scripts/scan-lexicon.py` của skill để lấy ứng viên; kết quả phải giống
-như tự đọc bảng và dò bài. Mọi đường dẫn trong lệnh đặt trong dấu nháy đơn, dấu `'` trong đường dẫn viết
+Host chạy được code thì có thể chạy `scripts/scan-lexicon.py` của skill để lấy ứng viên; ngoài front matter,
+code, địa chỉ link, ngoặc kép và blockquote, kết quả phải giống như tự đọc bảng và dò bài. Script bỏ qua mọi
+chỗ khớp trong năm vùng ấy, nên cụm đặt trong ngoặc để nhấn và blockquote làm ghi chú vẫn phải tự đọc và xét
+như ở trên. Mọi đường dẫn trong lệnh đặt trong dấu nháy đơn, dấu `'` trong đường dẫn viết
 thành `'\''`. Không dùng nháy kép cho đường dẫn hay văn bản.
 
 - Bài nằm trong file người dùng chỉ: `python3 -I '<thư-mục-skill>/scripts/scan-lexicon.py' < '<đường-dẫn>'`.
