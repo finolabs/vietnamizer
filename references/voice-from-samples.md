@@ -36,7 +36,7 @@ một cấu trúc không thành lệnh cấm; không nhập danh sách từ cấ
 khuôn rải khắp bài, văn bản ngắn không cần đủ mọi nét của mẫu dài. Hồ sơ dán thẳng có `ranh giới` thì
 coi đó là trần khi áp; có `Điểm chưa quyết` thì không áp đề xuất trong đó, như `references/voice-profile.md` mục 5.
 
-Theo workflow bài nếu làm bài; không đọc lại nếu đã nạp. Chọn hình thức vì tác dụng tại vị trí này.
+Theo workflow bài nếu làm bài; không đọc lại nếu đã nạp. Trên tuyến bài, áp giọng sau lượt sửa lỗi và trước lượt dò lại, theo mục Thứ tự trong `references/writing-workflow.md`. Chọn hình thức vì tác dụng tại vị trí này.
 Được phép, có căn cứ trong mẫu và nên chọn là ba điều khác nhau. Không flag không có nghĩa nên thêm.
 Không đóng băng bố cục nguồn khi được phép đổi, nhưng cũng không bắt bullet thành đoạn hoặc thêm hook/CTA.
 

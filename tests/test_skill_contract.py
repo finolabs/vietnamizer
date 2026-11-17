@@ -156,7 +156,8 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn("*\"Bản dịch giữ nghĩa của nguyên tác.\"*", missing)
         shipped = ["SKILL.md", "README.md", "PRIVACY.md", "docs/usage.md", "docs/style-and-voice.md", "docs/patterns.md"]
         shipped += [p.relative_to(ROOT).as_posix() for d in ("references", "profiles", ".plugin-skills")
-                    for p in (ROOT / d).rglob("*.md") if p.name != "sentence-structure.md"]
+                    for p in (ROOT / d).rglob("*.md")
+                    if p.name not in {"sentence-structure.md", "ai-error-lexicon.md"}]
         for relative in shipped:
             with self.subTest(file=relative):
                 self.assertNotRegex(read(relative), r"[Gg]ọi tên")
@@ -546,6 +547,120 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn("không có bản gọn và không có dòng tắt nhắc của Vietnamizer", constitution)
         cases = read("calibration/test-cases.md")
         self.assertIn("PR01–PR26", cases)
+
+    def test_lexicon_reading_path_in_skill_routing(self) -> None:
+        raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        long_row = next(line for line in raw.splitlines() if line.startswith("| Biên tập toàn bài hoặc viết từ brief/outline |"))
+        small_row = next(line for line in raw.splitlines() if line.startswith("| Sửa một cụm/câu, rà soát cục bộ |"))
+        self.assertIn("`references/ai-error-lexicon.md`", long_row)
+        self.assertNotIn("ai-error-lexicon", small_row)
+        text = read("SKILL.md")
+        for phrase in (
+            "host chạy được code thì có thể dùng `scripts/scan-lexicon.py`",
+            "không chạy được thì tự đọc bảng và dò bài",
+            "không bước sửa nào phải chờ script",
+            "không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào",
+            "luôn rà soát V20",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        for phrase in ("hãy cài", "hãy bật", "vui lòng cài", "vui lòng bật", "cài Python", "bật code execution"):
+            with self.subTest(forbidden=phrase):
+                self.assertNotIn(phrase, text.lower() if phrase.islower() else text)
+
+    def test_catalogs_point_to_lexicon_ids(self) -> None:
+        for relative, pattern_id, ids in (
+            ("references/missing-words.md", "V20", "L01–L05 và L08"),
+            ("references/sentence-structure.md", "V9", "L06"),
+            ("references/terms-and-lead-ins.md", "V19", "L07"),
+        ):
+            raw = (ROOT / relative).read_text(encoding="utf-8")
+            block = raw.split(f"### {pattern_id}. ", 1)[1].split("**Vì sao:**", 1)[0]
+            pointer = [line for line in block.splitlines() if "references/ai-error-lexicon.md" in line]
+            with self.subTest(pattern=pattern_id):
+                self.assertEqual(len(pointer), 1)
+                self.assertIn(ids, pointer[0])
+        declared = []
+        for relative in ("references/missing-words.md", "references/sentence-structure.md",
+                         "references/terms-and-lead-ins.md", "references/typography.md",
+                         "profiles/personal-blog/rules.md", "profiles/enterprise-technical/rules.md"):
+            declared += re.findall(r"(?m)^### ([VTBK]\d+)\.", (ROOT / relative).read_text(encoding="utf-8"))
+        self.assertEqual(len(declared), 55)
+
+    def test_inventory_section_on_long_form_route(self) -> None:
+        raw = (ROOT / "references/writing-workflow.md").read_text(encoding="utf-8")
+        self.assertLess(raw.index("## Kê cụm khi biên tập toàn bài"), raw.index("## Rà câu, đoạn và toàn bài"))
+        text = read("references/writing-workflow.md")
+        for phrase in (
+            "Chỉ làm trên tuyến bài (biên tập toàn bài hoặc viết từ brief/outline); sửa nhỏ không lập bảng kê",
+            "đi qua từng đoạn trong phạm vi được giao",
+            "Đoạn không có nghi vấn vẫn ghi là đã xem",
+            "cụm như đang viết, đoạn chứa nó, pattern hoặc mục của bảng",
+            "căn cứ (ngữ vực, quy chiếu, tiếng đứng cạnh), cách sửa ở đơn vị nhỏ nhất (chốt 4) và kết quả xét Không flag",
+            "Mọi ứng viên của bảng dạng lỗi đều thành một dòng, kể cả khi Không flag cho giữ",
+            "Nghi vấn tìm được khi đọc catalog cũng là một dòng",
+            "gộp thành một dòng, lấy phần hợp của chúng và sửa một lần",
+            "Dòng `giữ` để nguyên cụm, không đổi byte nào",
+            "`giữ: vùng bảo toàn`",
+            "sửa tại chỗ theo các dòng `sửa`, không dựng lại câu hay đoạn từ bảng kê",
+            "Viết từ brief vẫn khai triển theo các bước ở trên",
+            "Bảng kê là việc nội bộ, không trả cùng bài",
+            "trong giới hạn 5 dòng ghi chú của mục Trả kết quả",
+            "để hỏi đúng một điểm",
+            "không ghi ra file và không dùng công cụ nào ngoài việc đọc",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+
+    def test_scanner_invocation_rules(self) -> None:
+        text = read("references/writing-workflow.md")
+        for phrase in (
+            "Mọi đường dẫn trong lệnh đặt trong dấu nháy đơn",
+            "viết thành `'\\''`",
+            "Không dùng nháy kép cho đường dẫn hay văn bản",
+            "`python3 -I '<thư-mục-skill>/scripts/scan-lexicon.py' < '<đường-dẫn>'`",
+            "ghi nguyên văn bài bằng công cụ đó, không qua shell",
+            "chạy lệnh trên với file ấy rồi xóa file",
+            "không quá 100.000 byte",
+            "`VNZ_END_OF_TEXT_036`, chỉ khi không dòng nào của bài đúng bằng dấu kết đó",
+            "Không đưa văn bản vào tham số lệnh, `echo`, chuỗi nháy kép hay here-document không có nháy",
+            "chạy quá 20 giây) thì tự đọc bảng",
+            "Chỉ thử lại tối đa một lần, không nhờ người dùng bật hay cài gì",
+            "không nhắc tới chuyện này trừ khi được hỏi",
+            "Script chỉ trả ứng viên",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+
+    def test_skill_text_works_without_scanner(self) -> None:
+        for relative in ("SKILL.md", "references/writing-workflow.md"):
+            text = read(relative)
+            with self.subTest(file=relative):
+                self.assertNotIn("chờ script chạy xong", text)
+                self.assertNotIn("bắt buộc chạy `scripts/scan-lexicon.py`", text)
+
+    def test_order_errors_then_voice_then_rescan(self) -> None:
+        text = read("references/writing-workflow.md")
+        self.assertEqual(text.count("## Thứ tự: sửa lỗi, áp giọng, rồi dò lại"), 1)
+        for phrase in (
+            "sửa lỗi theo bảng kê trước, rồi mới áp giọng (mẫu, hồ sơ hay card), sau đó dò lại",
+            "xem lại bảng dạng lỗi (hoặc chạy lại script), các đoạn vừa sửa và năm chốt",
+            "Không có hồ sơ giọng vẫn dò lại, sau lượt sửa lỗi và sau mỗi lần sửa thêm do review",
+            "Khi nét giọng va với sửa lỗi thì sửa lỗi thắng",
+            "chỉ làm một dạng trong bảng thành chấp nhận được khi cột Không flag của dòng đó bao gồm ngữ vực ấy",
+            "dòng đó quay về `sửa` và bỏ phần áp giọng ở chỗ ấy",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        for relative in ("references/voice-from-samples.md", "references/voice-profile.md"):
+            with self.subTest(file=relative):
+                self.assertIn("theo mục Thứ tự trong `references/writing-workflow.md`", read(relative))
+
+    def test_lexicon_in_validator_inventory(self) -> None:
+        validator = (ROOT / "scripts/validate-package.py").read_text(encoding="utf-8")
+        self.assertIn('"references/ai-error-lexicon.md"', validator)
+        adapter = read(".plugin-skills/vietnamizer/SKILL.md")
+        self.assertIn("`profiles/`, `references/` and `scripts/` paths from that plugin root", adapter)
 
 if __name__ == "__main__":
     unittest.main()
