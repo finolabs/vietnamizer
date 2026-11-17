@@ -79,10 +79,13 @@ def parse_sheet(text: str) -> dict:
         number, paragraph, span, kind, fixes = cells[:5]
         if kind not in LEXICON_KINDS and not OTHER_KIND.match(kind):
             raise ValueError(f"Nhóm không hợp lệ ở dòng lỗi {number}: {kind}")
+        fix_list = [f.strip() for f in fixes.split(" / ") if f.strip()]
+        if span in fix_list:
+            raise ValueError(f"dòng lỗi {number}: cách sửa trùng cụm lỗi")
         errors.append({
             "id": f"{article[1]}#{number}", "paragraph": int(paragraph), "span": span, "kind": kind,
             "lexicon_kind": kind in LEXICON_KINDS,
-            "fixes": [f.strip() for f in fixes.split(" / ") if f.strip()],
+            "fixes": fix_list,
         })
     guards = [
         {"id": f"{article[1]}#g{cells[0]}", "paragraph": int(cells[1]), "span": cells[2]}
@@ -122,6 +125,8 @@ def load_corpus(runs_path: Path) -> tuple[dict, dict, dict]:
         for row in sheet["errors"] + sheet["guards"]:
             if not 1 <= row["paragraph"] <= len(source) or row["span"] not in source[row["paragraph"] - 1]:
                 raise ValueError(f"{row['id']}: cụm không có trong đoạn {row['paragraph']}")
+            if source[row["paragraph"] - 1].count(row["span"]) > 1:
+                raise ValueError(f"{row['id']}: cụm xuất hiện nhiều lần trong đoạn; chép dài hơn cho duy nhất")
         sheets[article] = (sheet, source)
     return data, sheets, found
 
@@ -204,7 +209,11 @@ def raw_edits(source: list[str], output: list[str], rows: list[dict]) -> list[di
 
 
 def output_text(runs_path: Path, run: dict) -> list[str]:
-    return paragraphs((runs_path.parent / run["output"]).read_text(encoding="utf-8"))
+    root = runs_path.parent.resolve()
+    path = (root / run["output"]).resolve()
+    if root not in path.parents:
+        raise ValueError(f"đầu ra {run['label']} phải nằm trong thư mục của runs.json")
+    return paragraphs(path.read_text(encoding="utf-8"))
 
 
 def blind_edits(runs_path: Path) -> dict:

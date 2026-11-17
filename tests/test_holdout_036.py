@@ -94,6 +94,30 @@ class SheetTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 h.score(fixture.runs(corpus_manifest_sha256=h.manifest(Path(temp))["manifest_sha256"]))
 
+    def test_rejects_fix_equal_to_span(self) -> None:
+        with self.assertRaises(ValueError):
+            h.parse_sheet(sheet(ARTICLE).replace("| còn rườm | từ ghép bị cắt | còn rườm rà |", "| còn rườm | từ ghép bị cắt | còn rườm |"))
+
+    def test_rejects_span_repeated_in_paragraph(self) -> None:
+        article = ARTICLE.replace("Nhân viên mới hay bỡ.", "Nhân viên mới hay bỡ. Khách cũng hay bỡ.")
+        with tempfile.TemporaryDirectory() as temp:
+            fixture = HoldoutFixture(Path(temp), article)
+            with self.assertRaises(ValueError):
+                h.score(fixture.runs())
+
+    def test_rejects_output_outside_runs_folder(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            corpus = Path(temp) / "corpus"
+            corpus.mkdir()
+            fixture = HoldoutFixture(corpus)
+            (Path(temp) / "outside.md").write_text(GOOD, encoding="utf-8")
+            runs = fixture.runs()
+            data = json.loads(runs.read_text(encoding="utf-8"))
+            data["runs"][0]["output"] = "../outside.md"
+            runs.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                h.score(runs)
+
     def test_rejects_sheet_hash_mismatch(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             fixture = HoldoutFixture(Path(temp))
