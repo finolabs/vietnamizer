@@ -56,6 +56,10 @@ cộng 56 lượt. Yêu cầu gửi kèm bài là "Dùng skill Vietnamizer biên
 Chỉ trả bài đã sửa, không giải thích." Argon, Flash và GPT chưa được chạy thử. `benchmarks/holdout_036.py`
 chấm theo `specs/036-ai-error-lexicon/contracts/holdout-marking-sheet.md`.
 
+Model được dùng là `claude-sonnet-5-5` và `claude-opus-5-5`. Mã băm của bộ bài là `832539ad281833df23b7c817f9461901b39d14ae727ec9dfd0f5cfb91521a69a`,
+của bảng từ vựng là `b846635e5b30c04f876a2935da95d55e10ae2318e02e2748f1e06cb0f5807a4e`. Cowork không cho
+xem số token của từng lượt nên bảng không có cột token, chỉ có thời gian đo từ lúc gửi đến khi trả xong.
+
 | Model | Phiên bản | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm đúng bị đổi | Thời gian trung bình mỗi bài |
 |---|---|---|---|---|---|
 | Opus 5.5 | 0.16.2 | 3/33 | 2/15 | 0/38 | 57 giây |
@@ -67,7 +71,7 @@ chấm theo `specs/036-ai-error-lexicon/contracts/holdout-marking-sheet.md`.
 hành. Các chỗ sửa nằm ngoài vùng đánh dấu (95–97 chỗ mỗi bộ lượt Opus, 31–37 chỗ mỗi bộ lượt Sonnet) chưa
 được tác giả chấm, nên bảng chưa tính chúng vào số chỗ sửa thừa.
 
-Lý do nằm ở khâu phát hiện lỗi, không phải ở việc model ngại sửa.
+Số liệu cho thấy khâu phát hiện lỗi là chỗ hỏng chắc chắn. Việc model ngại sửa có thể góp phần, nhưng phép đo này chưa tách được hai nguyên nhân.
 
 - Cả 56 lượt đều nạp skill. Với 0.17.0, model đọc bảng từ vựng trong 24/28 lượt và chạy script quét trong
   6 lượt, cả 6 lần đều không ra ứng viên nào.
@@ -78,7 +82,7 @@ Lý do nằm ở khâu phát hiện lỗi, không phải ở việc model ngại
 - Khi đổi yêu cầu thành "Dùng skill Vietnamizer sửa lỗi tiếng Việt trong bài sau, không viết lại. Chỉ trả
   bài đã sửa." trên bốn bài có 18 lỗi nhóm từ vựng, Opus vẫn để nguyên 16 đến 17 lỗi và sửa còn ít hơn.
 
-Bảng từ vựng cố định 8 dòng không bao quát được lỗi trong bài mới. Spec 037 sẽ làm lại khâu phát hiện và đo
+Trên 14 bài này, bảng từ vựng cố định 8 dòng không bao quát được lỗi. Spec 037 sẽ làm lại khâu phát hiện và đo
 lại trên đúng 14 bài này.
 
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
