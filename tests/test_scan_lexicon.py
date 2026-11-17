@@ -175,7 +175,7 @@ class ScannerTest(unittest.TestCase):
         for item in fixtures():
             with self.subTest(item["id"]):
                 got = [
-                    {key: c[key] for key in ("entry", "text", "line", "column", "zone")}
+                    {key: c[key] for key in ("entry", "text", "line", "column")}
                     for c in self.scanner.scan(item["text"], self.entries)
                 ]
                 self.assertEqual(got, item["expected"])
@@ -191,6 +191,31 @@ class ScannerTest(unittest.TestCase):
     def test_inner_lowercase_doi_and_verb_are_not_candidates(self) -> None:
         self.assertEqual(self.scanner.scan("Anh ấy đội mũ. Đội mũ vào.", self.entries), [])
 
+    def test_trailing_newline_adds_no_paragraph(self) -> None:
+        got = self.scanner.scan("Đoạn một rườm.\n\nĐoạn hai rườm.\n", self.entries)
+        self.assertEqual([c["paragraph"] for c in got], [1, 2])
+
+    def test_matches_inside_every_zone_are_dropped(self) -> None:
+        text = (
+            "---\ntitle: rườm\n---\n\n"
+            "Có `rườm`, [link](https://x.test/rườm), <https://x.test/rườm>, “rườm” và \"rườm\".\n\n"
+            "```\nrườm\n```\n\n> Ghi chú: rườm.\n\nCòn rườm."
+        )
+        got = self.scanner.scan(text, self.entries)
+        self.assertEqual([(c["line"], c["text"]) for c in got], [(13, "rườm")])
+
+    def test_inline_code_across_one_line_break_is_dropped(self) -> None:
+        got = self.scanner.scan("Có `lệnh\nrườm` ở đây. Còn rườm.", self.entries)
+        self.assertEqual([(c["line"], c["column"]) for c in got], [(2, 18)])
+
+    def test_inline_code_does_not_cross_a_blank_line(self) -> None:
+        got = self.scanner.scan("Mở `chưa đóng rườm.\n\nĐoạn sau rườm `x`.", self.entries)
+        self.assertEqual([c["line"] for c in got], [1, 3])
+
+    def test_unclosed_leading_rule_is_not_frontmatter(self) -> None:
+        got = self.scanner.scan("---\nQuy trình còn rườm.", self.entries)
+        self.assertEqual([c["line"] for c in got], [2])
+
     def test_blank_line_breaks_a_multi_syllable_form(self) -> None:
         self.assertEqual(self.scanner.scan("Cần giữ\n\nnghĩa.", self.entries), [])
 
@@ -205,7 +230,7 @@ class ScannerCliTest(unittest.TestCase):
         self.assertEqual(payload["lexicon_sha256"], hashlib.sha256(LEXICON.read_bytes()).hexdigest()[:12])
         self.assertEqual(
             payload["candidates"],
-            [{"entry": "L01", "text": "rườm", "line": 1, "column": 15, "paragraph": 1, "zone": None}],
+            [{"entry": "L01", "text": "rườm", "line": 1, "column": 15, "paragraph": 1}],
         )
         self.assertIn("rườm".encode("utf-8"), result.stdout)
 
@@ -319,7 +344,7 @@ class ScannerPrincipleVTest(unittest.TestCase):
         result = run_cli(data="Quy trình còn rườm.".encode("utf-8"))
         payload = json.loads(result.stdout)
         for candidate in payload["candidates"]:
-            self.assertEqual(set(candidate), {"entry", "text", "line", "column", "paragraph", "zone"})
+            self.assertEqual(set(candidate), {"entry", "text", "line", "column", "paragraph"})
 
 
 if __name__ == "__main__":

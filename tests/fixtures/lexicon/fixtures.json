@@ -9,15 +9,13 @@
           "entry": "L01",
           "text": "rườm",
           "line": 1,
-          "column": 15,
-          "zone": null
+          "column": 15
         },
         {
           "entry": "L02",
           "text": "bỡ",
           "line": 1,
-          "column": 44,
-          "zone": null
+          "column": 44
         }
       ],
       "agent": "sửa",
@@ -45,15 +43,13 @@
           "entry": "L01",
           "text": "rườm",
           "line": 1,
-          "column": 12,
-          "zone": null
+          "column": 12
         },
         {
           "entry": "L02",
           "text": "bỡ",
           "line": 1,
-          "column": 39,
-          "zone": null
+          "column": 39
         }
       ],
       "agent": "giữ",
@@ -71,8 +67,7 @@
           "entry": "L03",
           "text": "giữ nghĩa",
           "line": 1,
-          "column": 35,
-          "zone": null
+          "column": 35
         }
       ],
       "agent": "sửa",
@@ -90,8 +85,7 @@
           "entry": "L03",
           "text": "giữ nghĩa",
           "line": 1,
-          "column": 10,
-          "zone": null
+          "column": 10
         }
       ],
       "agent": "giữ",
@@ -118,8 +112,7 @@
           "entry": "L03",
           "text": "giữ\nnghĩa",
           "line": 1,
-          "column": 27,
-          "zone": null
+          "column": 27
         }
       ],
       "agent": "sửa",
@@ -137,8 +130,7 @@
           "entry": "L04",
           "text": "giữ giọng",
           "line": 1,
-          "column": 19,
-          "zone": null
+          "column": 19
         }
       ],
       "agent": "sửa",
@@ -156,8 +148,7 @@
           "entry": "L04",
           "text": "Giữ giọng",
           "line": 1,
-          "column": 1,
-          "zone": null
+          "column": 1
         }
       ],
       "agent": "giữ",
@@ -174,8 +165,7 @@
           "entry": "L04",
           "text": "giữ giọng",
           "line": 1,
-          "column": 22,
-          "zone": null
+          "column": 22
         }
       ],
       "agent": "giữ",
@@ -192,29 +182,25 @@
           "entry": "L07",
           "text": "dịch sát",
           "line": 1,
-          "column": 40,
-          "zone": null
+          "column": 40
         },
         {
           "entry": "L06",
           "text": "gọi tên",
           "line": 1,
-          "column": 62,
-          "zone": null
+          "column": 62
         },
         {
           "entry": "L03",
           "text": "giữ nghĩa",
           "line": 1,
-          "column": 80,
-          "zone": null
+          "column": 80
         },
         {
           "entry": "L05",
           "text": "nghĩa và giọng",
           "line": 1,
-          "column": 84,
-          "zone": null
+          "column": 84
         }
       ],
       "agent": "sửa",
@@ -242,8 +228,7 @@
           "entry": "L05",
           "text": "nghĩa và giọng",
           "line": 1,
-          "column": 17,
-          "zone": null
+          "column": 17
         }
       ],
       "agent": "giữ",
@@ -260,8 +245,7 @@
           "entry": "L06",
           "text": "gọi tên",
           "line": 1,
-          "column": 18,
-          "zone": null
+          "column": 18
         }
       ],
       "agent": "sửa",
@@ -279,8 +263,7 @@
           "entry": "L06",
           "text": "gọi tên",
           "line": 1,
-          "column": 9,
-          "zone": null
+          "column": 9
         }
       ],
       "agent": "giữ",
@@ -297,8 +280,7 @@
           "entry": "L07",
           "text": "dịch sát",
           "line": 1,
-          "column": 37,
-          "zone": null
+          "column": 37
         }
       ],
       "agent": "sửa",
@@ -316,8 +298,7 @@
           "entry": "L07",
           "text": "dịch sát",
           "line": 1,
-          "column": 8,
-          "zone": null
+          "column": 8
         }
       ],
       "agent": "giữ",
@@ -344,8 +325,7 @@
           "entry": "L08",
           "text": "Đội",
           "line": 1,
-          "column": 1,
-          "zone": null
+          "column": 1
         }
       ],
       "agent": "sửa",
@@ -373,8 +353,7 @@
           "entry": "L08",
           "text": "Đội",
           "line": 1,
-          "column": 1,
-          "zone": null
+          "column": 1
         }
       ],
       "agent": "giữ",
@@ -391,8 +370,7 @@
           "entry": "L08",
           "text": "Đội",
           "line": 1,
-          "column": 26,
-          "zone": null
+          "column": 26
         }
       ],
       "agent": "sửa",
@@ -410,29 +388,19 @@
           "entry": "L08",
           "text": "Đội",
           "line": 1,
-          "column": 3,
-          "zone": null
+          "column": 3
         },
         {
           "entry": "L08",
           "text": "Đội",
           "line": 2,
-          "column": 4,
-          "zone": null
-        },
-        {
-          "entry": "L08",
-          "text": "Đội",
-          "line": 3,
-          "column": 3,
-          "zone": "blockquote"
+          "column": 4
         },
         {
           "entry": "L08",
           "text": "Đội",
           "line": 4,
-          "column": 10,
-          "zone": null
+          "column": 10
         }
       ],
       "agent": "sửa",
@@ -460,8 +428,7 @@
           "entry": "L01",
           "text": "rườm",
           "line": 1,
-          "column": 17,
-          "zone": null
+          "column": 17
         }
       ],
       "agent": "sửa",
@@ -484,29 +451,7 @@
     {
       "id": "LXF27",
       "text": "---\ntitle: rườm\n---\n\nĐoạn có `rườm` và [link](https://x.test/rườm) ở đây.",
-      "expected": [
-        {
-          "entry": "L01",
-          "text": "rườm",
-          "line": 2,
-          "column": 8,
-          "zone": "frontmatter"
-        },
-        {
-          "entry": "L01",
-          "text": "rườm",
-          "line": 5,
-          "column": 10,
-          "zone": "code"
-        },
-        {
-          "entry": "L01",
-          "text": "rườm",
-          "line": 5,
-          "column": 41,
-          "zone": "link-url"
-        }
-      ],
+      "expected": [],
       "agent": "giữ",
       "cases": [
         "HF02",
@@ -516,15 +461,7 @@
     {
       "id": "LXF28",
       "text": "Chị Lan nói: “Thủ tục rườm quá.”",
-      "expected": [
-        {
-          "entry": "L01",
-          "text": "rườm",
-          "line": 1,
-          "column": 23,
-          "zone": "quote"
-        }
-      ],
+      "expected": [],
       "agent": "giữ",
       "cases": [
         "HF02",
@@ -534,15 +471,7 @@
     {
       "id": "LXF29",
       "text": "> Lưu ý: quy trình còn rườm.",
-      "expected": [
-        {
-          "entry": "L01",
-          "text": "rườm",
-          "line": 1,
-          "column": 24,
-          "zone": "blockquote"
-        }
-      ],
+      "expected": [],
       "agent": "sửa",
       "output": "> Lưu ý: quy trình còn rườm rà.",
       "cases": [

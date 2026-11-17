@@ -54,7 +54,7 @@ Sources: [Using Skills in Claude](https://support.claude.com/en/articles/1251218
 
 ## R5. Protected zones
 
-**Decision**: the scanner reports every match and sets `zone` to `frontmatter` (a leading `---` block), `code` (fenced block or inline backticks), `link-url` (the target of `[text](url)` or an autolink), `quote` (inside “…” or "…" on one paragraph) or `blockquote` (a `>` line); `null` otherwise. It drops nothing.
+**Decision** (amended 17/11/2026, spec decision 7): the scanner drops every match inside `frontmatter` (a leading `---` block), `code` (fenced block or inline backticks), `link-url` (the target of `[text](url)` or an autolink), `quote` (inside “…” or "…" on one paragraph) or `blockquote` (a `>` line), and reports the rest without a zone field. The 15/11 decision reported every match with a `zone` hint and dropped nothing; the rationale below explains why the agent still reads quoted emphasis and blockquotes itself.
 
 **Rationale**: SKILL.md freezes code, frontmatter, link addresses and verbatim quotations, but also says a term put in quotes for emphasis is not a quotation, which only the agent can tell. Reporting the zone keeps the scanner deterministic and leaves the judgment where Principle II puts it. `zone` is a hint, not a verdict: only `frontmatter`, `code` and `link-url` are always frozen; `quote` is frozen when verbatim, and `blockquote` marks structure (callouts, notes) and is judged like ordinary prose unless it is a quotation (data-model "Zone semantics"). This reads the spec's edge case "quotation" as verbatim quotation, not every quote mark or `>` line.
 

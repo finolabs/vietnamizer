@@ -53,11 +53,12 @@ Notes:
 | `text` | string | The matched text exactly as written in the input (original code points, original case) |
 | `line`, `column` | int, 1-based | Position of the first character in the original input; column counts Unicode code points |
 | `paragraph` | int, 1-based | Paragraphs are separated by one or more blank lines |
-| `zone` | `null` or `frontmatter`, `code`, `link-url`, `quote`, `blockquote` | research.md R5 |
 
 A candidate is not an error. It becomes an edit only through an inventory row.
 
 ### Zone semantics for the agent
+
+The scanner drops matches in all five zones (research.md R5, amended 17/11/2026); these rules apply when the agent reads the text itself.
 
 - `frontmatter`, `code`, `link-url`: frozen. The row is recorded as `giữ: vùng bảo toàn`; never edited.
 - `quote`: frozen when it is a verbatim quotation (SKILL.md "Trước khi làm"); a term put in quotes for emphasis is judged like any other row.
@@ -85,7 +86,7 @@ Stored in `tests/fixtures/lexicon/fixtures.json` (scanner, deterministic) and mi
 |---|---|
 | `id` | `LXF` + two digits |
 | `text` | Short Vietnamese text, NFC unless the fixture tests normalisation |
-| `expected` | List of candidates (`entry`, `text`, `line`, `column`, `zone`); empty for a lexical guard |
+| `expected` | List of candidates (`entry`, `text`, `line`, `column`); empty for a lexical guard or a match inside a zone the scanner drops |
 | `agent` | `sửa` with the expected output, or `giữ` (register guard: candidate expected, no edit) |
 | `cases` | HF or LX ids it comes from |
 

@@ -15,7 +15,7 @@ python3 -I <skill-dir>/scripts/scan-lexicon.py [--help]  < text
   "schema": 1,
   "lexicon_sha256": "<first 12 hex of the lexicon file's SHA-256>",
   "candidates": [
-    {"entry": "L01", "text": "rườm", "line": 3, "column": 41, "paragraph": 2, "zone": null}
+    {"entry": "L01", "text": "rườm", "line": 3, "column": 41, "paragraph": 2}
   ]
 }
 ```
