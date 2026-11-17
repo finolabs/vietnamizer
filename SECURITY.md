@@ -29,11 +29,9 @@ bản. Ghi đúng bản bị ảnh hưởng, kể cả bản cũ; bản mới nh
 ## Phạm vi và ranh giới
 
 Vietnamizer là skill Markdown và plugin phân phối hướng dẫn cho agent. Quy trình cốt lõi không
-có backend, telemetry, MCP server, hook, SDK hoặc runner đánh giá ngoài. Gói có một script tùy chọn,
-`scripts/scan-lexicon.py`. Script chỉ đọc văn bản qua stdin và bảng `references/ai-error-lexicon.md`
-trong gói, chỉ dùng thư viện chuẩn của Python, không ghi file, không gọi mạng, không đọc biến môi trường
-và chỉ in ứng viên. Phạm vi báo lỗi gồm source, manifest, đường dẫn discovery, script trong gói, scripts
-đóng gói và gói phân phối của repo.
+có backend, telemetry, MCP server, hook, SDK hoặc runner đánh giá ngoài. Gói không
+chứa script nào. Phạm vi báo lỗi gồm source, manifest, đường dẫn discovery, các script đóng gói và kiểm tra
+trong repo, và gói phân phối của repo.
 
 Các thuộc tính cần bảo toàn khi đánh giá lỗi:
 

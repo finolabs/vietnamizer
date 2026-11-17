@@ -5,7 +5,7 @@ schema: 1
 
 # Bảng dạng lỗi AI đã gặp
 
-Bảng này ghi những dạng lỗi AI đã gặp nhiều lần, mỗi dòng một dạng, kèm pattern sở hữu, cách sửa và trường hợp giữ nguyên. Thấy một dạng trong bài chỉ có nghĩa là có một ứng viên cần xét, chưa phải chỗ phải sửa.
+Bảng này ghi những dạng lỗi AI đã gặp nhiều lần, mỗi dòng một dạng, kèm pattern sở hữu, cách sửa và trường hợp giữ nguyên. Thấy một dạng trong bài chỉ có nghĩa là có một ứng viên cần xét, chưa phải chỗ phải sửa. Bảng không phải cách tìm lỗi. Lỗi cùng loại trong một bài mới thường mang dạng khác, nên bài không khớp dòng nào vẫn chưa chắc đã sạch và vẫn phải rà catalog như thường.
 
 Trước khi sửa một ứng viên, đọc cột Không flag của dòng đó và mục Không flag của pattern sở hữu. Chỉ sửa khi cả hai đều không cho giữ.
 

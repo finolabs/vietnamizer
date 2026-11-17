@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Tìm ứng viên lỗi AI theo bảng references/ai-error-lexicon.md.
 
+Công cụ của maintainer trong repo nguồn, không vào gói phát hành (spec 037).
+
 Đọc văn bản từ stdin, in một đối tượng JSON gồm các ứng viên. Chỗ khớp nằm trong front
 matter, code, địa chỉ link, ngoặc kép hay blockquote bị bỏ qua. Script không sửa
 văn bản, không ghi file, không gọi mạng và không đọc biến môi trường; sửa hay giữ

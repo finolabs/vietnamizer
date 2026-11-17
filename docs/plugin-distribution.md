@@ -30,7 +30,7 @@ Trước khi chạy script, sao lưu các archive hiện có và SHA-256 vào m�
 README và `docs/` không nằm trong payload. Chỉ sửa tài liệu ngoài payload thì giữ archive hiện có;
 sửa tài liệu trong payload phải dựng lại rồi đối chiếu inventory, CRC, version và bytes với source.
 
-Từ 0.14.0 các archive không có runner, registry hay đường gọi dịch vụ ngoài. Từ 0.17.0 cả ba archive chứa Markdown, profile, asset, manifest và đúng một script tùy chọn, `scripts/scan-lexicon.py`, chỉ đọc văn bản qua stdin cùng bảng `references/ai-error-lexicon.md` và không ghi file.
+Từ 0.14.0 các archive không có runner, registry hay đường gọi dịch vụ ngoài. Cả ba archive chỉ chứa Markdown, profile, asset và manifest, không có script nào; `scripts/scan-lexicon.py` là công cụ của maintainer trong repo.
 
 Catalog chung `finolabs/plugins` trỏ tới repo này, vốn vẫn gồm tooling maintainer và hồ sơ lịch sử. Validator local
 và inventory ZIP không thay thế portal Validate cho commit GitHub thực tế; không suy ra directory

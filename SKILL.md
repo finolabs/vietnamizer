@@ -48,7 +48,7 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Chỉ review/nhận xét, không sửa | Trước khi nhận xét, đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
 
-Trên tuyến bài, host chạy được code thì có thể dùng `scripts/scan-lexicon.py` để tìm ứng viên theo bảng; không chạy được thì tự đọc bảng và dò bài, vì không bước sửa nào phải chờ script. Skill được cấp inline mà không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào.
+Trên tuyến bài, tự đọc bảng và dò bài. Skill được cấp inline mà không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào.
 
 Rà soát văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn rà soát
 V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà soát T1–T6, vì theo quan sát (chưa đo) đây là lỗi AI hay mắc nhất;
