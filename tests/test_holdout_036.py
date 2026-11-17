@@ -206,6 +206,29 @@ class ScoreTest(unittest.TestCase):
                 h.score(fixture.runs(corpus_manifest_sha256="0" * 64))
 
 
+class AlignmentTest(unittest.TestCase):
+    def test_same_paragraph_wins_over_a_closer_neighbour(self) -> None:
+        source = ["Quy trình còn rườm.", "Quy trình còn rườm lắm."]
+        output = ["Quy trình còn rườm rà.", "Quy trình còn rườm lắm."]
+        row = {"paragraph": 1, "span": "còn rườm", "fixes": ["còn rườm rà"]}
+        self.assertEqual(h.align(source, output, row), "Quy trình còn rườm rà.")
+
+    def test_neighbour_used_when_paragraph_moved(self) -> None:
+        source = ["Mở bài ngắn.", "Quy trình còn rườm."]
+        output = ["Quy trình còn rườm rà."]
+        row = {"paragraph": 2, "span": "còn rườm", "fixes": ["còn rườm rà"]}
+        self.assertEqual(h.align(source, output, row), "Quy trình còn rườm rà.")
+
+    def test_word_offsets_survive_extra_whitespace(self) -> None:
+        source = h.paragraphs("Quy  trình\tcòn   rườm.\n\nĐội đã  chốt.")
+        ranges = h.spans_in_source(source, [{"paragraph": 1, "span": "còn rườm"}, {"paragraph": 2, "span": "đã chốt"}])
+        self.assertEqual(ranges, [(2, 4), (5, 7)])
+
+    def test_rows_after_a_later_heading_are_not_read(self) -> None:
+        text = sheet(ARTICLE).replace("## Bảng cần giữ", "### Ghi chú\n\n| 9 | 1 | x | khác | | |\n\n## Bảng cần giữ")
+        self.assertEqual(len(h.parse_sheet(text)["errors"]), 4)
+
+
 class ManifestTest(unittest.TestCase):
     def test_manifest_lists_hashes_not_text(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

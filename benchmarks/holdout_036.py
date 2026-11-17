@@ -53,7 +53,7 @@ def sentences(paragraph: str) -> list[str]:
 def table_rows(text: str, heading: str, width: int) -> list[list[str]]:
     if heading not in text:
         raise ValueError(f"phiếu thiếu mục {heading}")
-    block = text.split(heading, 1)[1].split("\n## ", 1)[0]
+    block = re.split(r"\n#{1,6} ", text.split(heading, 1)[1], maxsplit=1)[0]
     rows = []
     for line in block.splitlines():
         line = line.strip()
@@ -138,16 +138,22 @@ def source_sentence(source: list[str], row: dict) -> str:
 
 
 def align(source: list[str], output: list[str], row: dict) -> str | None:
-    """Câu đầu ra khớp nhất với câu nguồn chứa cụm, trong đoạn tương ứng và hai đoạn kề."""
+    """Câu đầu ra khớp nhất với câu nguồn chứa cụm: trước hết trong đoạn cùng số, chỉ khi đoạn đó
+    không có câu nào đạt ngưỡng mới xét hai đoạn kề (bản sửa có thể tách hay gộp đoạn)."""
     target = source_sentence(source, row)
     index = row["paragraph"] - 1
-    best, best_ratio = None, ALIGN_MIN
-    for paragraph in output[max(0, index - 1): index + 2]:
-        for sentence in sentences(paragraph):
-            ratio = difflib.SequenceMatcher(None, target, sentence, autojunk=False).ratio()
-            if ratio >= best_ratio:
-                best, best_ratio = sentence, ratio
-    return best
+
+    def best_in(candidates: list[str]) -> str | None:
+        best, best_ratio = None, ALIGN_MIN
+        for paragraph in candidates:
+            for sentence in sentences(paragraph):
+                ratio = difflib.SequenceMatcher(None, target, sentence, autojunk=False).ratio()
+                if ratio >= best_ratio:
+                    best, best_ratio = sentence, ratio
+        return best
+
+    same = best_in(output[index:index + 1])
+    return same if same is not None else best_in(output[max(0, index - 1):index] + output[index + 1:index + 2])
 
 
 def is_fixed(sentence: str, row: dict) -> bool | None:
