@@ -168,7 +168,7 @@ class ScoreTest(unittest.TestCase):
         self.assertEqual(good["other"], {"fixed": 1, "total": 1, "pending": 0})
         self.assertEqual(bad["other"], {"fixed": 0, "total": 1, "pending": 0})
         self.assertEqual(bad["out_of_span"]["sai"], 1)
-        self.assertEqual(bad["over_corrections"], 1)
+        self.assertEqual(bad["over_corrections"], 2)  # một sửa ngoài cụm "sai" và một cụm cần giữ bị phá
 
     def test_report_records_versions_and_hashes(self) -> None:
         report = self.report()
@@ -378,6 +378,45 @@ class Round4RegressionTest(unittest.TestCase):
             edits = h.blind_edits(runs)["edits"]
         self.assertEqual([e["article"] for e in edits], ["H01", "H02"])
         self.assertNotEqual(edits[0]["id"], edits[1]["id"])
+
+
+class Round5RegressionTest(unittest.TestCase):
+    def one(self, source: str, output: str, span: str, fixes: list[str] | None) -> dict:
+        row = {"id": "H01#1", "paragraph": 1, "span": span}
+        if fixes is not None:
+            row["fixes"] = fixes
+        result = h.compare("H01", [source], [output], [row])
+        return {"row": result["rows"]["H01#1"], "edits": [(e["source"], e["output"]) for e in result["edits"]]}
+
+    def test_fix_must_match_whole_words(self) -> None:
+        result = self.one("Nhóm tiến hành thực hiện kế hoạch.", "Nhóm tiến hành thực hiệnx kế hoạch.",
+                          "tiến hành thực hiện", ["thực hiện"])
+        self.assertFalse(result["row"]["fixed"])
+
+    def test_extra_text_inserted_at_a_span_edge_is_listed(self) -> None:
+        result = self.one("Quy trình còn rườm.", "Quy trình còn rườm rà vô lý.", "rườm", ["rườm rà"])
+        self.assertTrue(result["row"]["fixed"])
+        self.assertEqual(result["edits"], [("", " vô lý")])
+
+    def test_whitespace_between_sentences_is_listed(self) -> None:
+        result = h.compare("H01", ["Quy trình tốt. Kết thúc."], ["Quy trình tốt.  Kết thúc."], [])
+        self.assertEqual([(e["source"], e["output"]) for e in result["edits"]], [(" ", "  ")])
+
+    def test_broken_guard_counts_as_an_over_correction(self) -> None:
+        article = "Bản dịch giữ nghĩa của nguyên tác.\n"
+        with tempfile.TemporaryDirectory() as temp:
+            runs = corpus(Path(temp), {"H01": (article, [], [(1, "giữ nghĩa")])},
+                          [("H01", "v1", "Bản dịch giữ nguyên nghĩa của nguyên tác.\n")])
+            result = h.score(runs)["results"][0]
+        self.assertEqual(result["guards"]["broken"], 1)
+        self.assertEqual(result["over_corrections"], 1)
+
+    def test_header_and_separator_need_the_table_width(self) -> None:
+        for bad in ("| # | sai |", "|---|"):
+            text = sheet(ARTICLE).replace("| # | Đoạn | Cụm như trong bài | Nhóm | Sửa chấp nhận | Ghi chú |"
+                                          if bad.startswith("| #") else "|---|---|---|---|---|---|", bad, 1)
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                h.parse_sheet(text)
 
 
 class ManifestTest(unittest.TestCase):

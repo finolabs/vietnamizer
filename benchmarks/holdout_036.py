@@ -64,9 +64,18 @@ def split_sentences(paragraph: str) -> list[tuple[int, str]]:
     return [(offset, text) for offset, text in found if text]
 
 
-def article_sentences(source: list[str]) -> list[tuple[int, str]]:
-    """Mọi câu của bài theo thứ tự, mỗi câu kèm số thứ tự đoạn (từ 0)."""
-    return [(p, text) for p, paragraph in enumerate(source) for _, text in split_sentences(paragraph)]
+def article_sentences(source: list[str]) -> list[tuple[int, str, str]]:
+    """Mọi câu của bài theo thứ tự: số thứ tự đoạn (từ 0), câu, và khoảng ngăn với câu sau (khoảng trắng
+    trong đoạn, hai dấu xuống dòng khi câu sau sang đoạn mới, rỗng ở câu cuối)."""
+    found = []
+    for p, paragraph in enumerate(source):
+        parts = split_sentences(paragraph)
+        for n, (offset, text) in enumerate(parts):
+            gap = paragraph[offset + len(text):parts[n + 1][0]] if n + 1 < len(parts) else "\n\n"
+            found.append((p, text, gap))
+    if found:
+        found[-1] = (found[-1][0], found[-1][1], "")
+    return found
 
 
 def table_rows(text: str, heading: str, width: int) -> list[list[str]]:
@@ -82,13 +91,11 @@ def table_rows(text: str, heading: str, width: int) -> list[list[str]]:
             continue
         if not (line.startswith("|") and line.endswith("|") and len(line) > 1):
             raise ValueError(f"dòng bảng phải mở và đóng bằng |: {line[:40]}")
-        if re.match(r"^\|[\s:|-]+\|$", line):
-            continue
         cells = [c.strip() for c in line[1:-1].split("|")]
-        if cells[0] == "#":
-            continue
         if len(cells) != width:
             raise ValueError(f"dòng phiếu phải có {width} ô: {line[:40]}")
+        if cells[0] == "#" or re.match(r"^\|[\s:|-]+\|$", line):
+            continue
         rows.append(cells)
     return rows
 
@@ -242,7 +249,10 @@ def fix_found(output: str, ops: list[tuple], start: int, end: int, fixes: list[s
                + [op[4] for op in changed])
     deleted = any(j1 == j2 and i1 < end and i2 > start for _, i1, i2, j1, j2 in changed)
     for fix in fixes:
-        for found in re.finditer(re.escape(fix), output, re.IGNORECASE):
+        # Cách sửa phải khớp trọn từ: "thực hiện" không khớp phần đầu của "thực hiệnx".
+        pattern = (r"(?<!\w)" if re.match(r"\w", fix) else "") + re.escape(fix)
+        pattern += r"(?!\w)" if re.search(r"\w$", fix) else ""
+        for found in re.finditer(pattern, output, re.IGNORECASE):
             o1, o2 = found.span()
             if not (o1 < high and o2 > low):
                 continue
@@ -270,14 +280,15 @@ def is_broken(ops: list[tuple], start: int, end: int) -> bool:
                for tag, i1, i2, _, _ in ops)
 
 
-def inside_spans(op: tuple, errors: list[tuple[int, int]], guards: list[tuple[int, int]]) -> bool:
-    """Khối diff nằm trọn trong hợp các cụm của câu. Chỗ chèn sát mép cụm lỗi thuộc cụm (đó là cách sửa
-    nối dài cụm); chỗ chèn sát mép cụm cần giữ không thuộc cụm vì cụm cần giữ không đổi byte nào."""
+def inside_spans(op: tuple, judged: list[tuple[int, int]], others: list[tuple[int, int]]) -> bool:
+    """Khối diff nằm trọn trong hợp các cụm của câu. Chỗ chèn nằm trong cụm thuộc cụm. Chỗ chèn sát mép chỉ
+    thuộc cụm lỗi bỏ trống cách sửa (Fio tự xét cả câu); với cụm lỗi có cách sửa, phần do cách sửa giải
+    thích được cắt ở bước sau, còn cụm cần giữ không nhận chữ chèn nào."""
     _, i1, i2, _, _ = op
     if i1 == i2:
-        return any(s <= i1 <= e for s, e in errors) or any(s < i1 < e for s, e in guards)
+        return any(s <= i1 <= e for s, e in judged) or any(s < i1 < e for s, e in others)
     merged: list[list[int]] = []
-    for s, e in sorted(errors + guards):
+    for s, e in sorted(judged + others):
         if merged and s <= merged[-1][1]:
             merged[-1][1] = max(merged[-1][1], e)
         else:
@@ -295,26 +306,31 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
     tương ứng, câu đầu ra mới. ID sửa = mã bài + số câu nguồn + vị trí ký tự + cũ/mới, nên cùng một sửa
     ở nhiều version/model gộp làm một, còn hai bài khác nhau không bao giờ chung ID."""
     src, out = article_sentences(source), article_sentences(output)
-    pairs = align_sentences([t for _, t in src], [t for _, t in out])
+    pairs = align_sentences([t for _, t, _ in src], [t for _, t, _ in out])
     marked: dict[int, list[tuple[dict, int, int]]] = {}
     for row in rows:
         p = row["paragraph"] - 1
-        k, text = next((k, t) for k, (q, t) in enumerate(src) if q == p and row["span"] in t)
+        k, text = next((k, t) for k, (q, t, _) in enumerate(src) if q == p and row["span"] in t)
         start = text.index(row["span"])
         marked.setdefault(k, []).append((row, start, start + len(row["span"])))
     results: dict[str, dict] = {}
     edits: list[dict] = []
-    for k, (_, text) in enumerate(src):
+    for k, (_, text, gap) in enumerate(src):
         j = pairs[k]
         if j is None:
             for row, _, _ in marked.get(k, []):
                 results[row["id"]] = {"sentence": None, "fixed": False, "broken": True}
             edits.append({"id": edit_id(article, k, "deleted", text), "sentence": text, "offset": 0,
-                          "source": text, "output": ""})
+                          "source": text, "output": "",
+                          "guarded": any("fixes" not in row for row, _, _ in marked.get(k, []))})
             continue
+        if k + 1 < len(src) and pairs[k + 1] == j + 1 and out[j][2] != gap:
+            edits.append({"id": edit_id(article, k, "gap", gap, out[j][2]), "sentence": text,
+                          "offset": len(text), "source": gap, "output": out[j][2]})
         ops = char_opcodes(text, out[j][1])
         error_spans = [(s, e) for row, s, e in marked.get(k, []) if "fixes" in row]
-        guard_spans = [(s, e) for row, s, e in marked.get(k, []) if "fixes" not in row]
+        judged_spans = [(s, e) for row, s, e in marked.get(k, []) if "fixes" in row and not row["fixes"]]
+        other_spans = [(s, e) for row, s, e in marked.get(k, []) if row.get("fixes") or "fixes" not in row]
         fixes_at: list[tuple[int, int]] = []
         for row, s, e in marked.get(k, []):
             found = fix_found(out[j][1], ops, s, e, row["fixes"]) if row.get("fixes") else None
@@ -326,7 +342,7 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
                 "broken": is_broken(ops, s, e),
             }
         for op in ops:
-            if op[0] == "equal" or inside_spans(op, error_spans, guard_spans):
+            if op[0] == "equal" or inside_spans(op, judged_spans, other_spans):
                 continue
             # Đầu/cuối khối thuộc cụm lỗi (phía nguồn) hay thuộc cách sửa đã nhận (phía đầu ra) là phần
             # của dòng lỗi; phần còn lại là sửa ngoài cụm, vd. "rườm." -> "rườm rà!" chỉ còn "." -> "!".
@@ -339,7 +355,7 @@ def compare(article: str, source: list[str], output: list[str], rows: list[dict]
                           "source": old, "output": new})
     owner = {j: k for k, j in enumerate(pairs) if j is not None}
     previous = -1
-    for j, (_, text) in enumerate(out):
+    for j, (_, text, _) in enumerate(out):
         if j in owner:
             previous = owner[j]
             continue
@@ -369,6 +385,7 @@ def blind_edits(runs_path: Path) -> dict:
         sheet, source = sheets[run["article"]]
         output = output_text(runs_path, run)
         for edit in compare(run["article"], source, output, sheet["errors"] + sheet["guards"])["edits"]:
+            edit.pop("guarded", None)
             seen.setdefault(edit["id"], {"article": run["article"], **edit})
     return {"schema": 1, "edits": sorted(seen.values(), key=lambda e: (e["article"], e["id"]))}
 
@@ -407,13 +424,16 @@ def score(runs_path: Path, judgments_path: Path | None = None) -> dict:
             bucket["fixed"] += int(bool(fixed))
         for row in sheet["guards"]:
             group["guards"]["total"] += 1
-            group["guards"]["broken"] += int(compared["rows"][row["id"]]["broken"])
+            broken = int(compared["rows"][row["id"]]["broken"])
+            group["guards"]["broken"] += broken
+            group["over_corrections"] += broken
         for edit in compared["edits"]:
             verdict = edit_verdicts.get(edit["id"])
             group["out_of_span"][verdict if verdict in VERDICTS else "pending"] += 1
+            # Câu bị xoá có cụm cần giữ đã được tính một lần ở guards; không đếm lại khi Fio chấm "sai".
+            group["over_corrections"] += int(verdict == "sai" and not edit.get("guarded"))
     results = []
     for group in groups.values():
-        group["over_corrections"] = group["out_of_span"]["sai"]
         group["seconds"] = round(group["seconds"], 3)
         results.append(group)
     results.sort(key=lambda g: (g["model"], g["host"], g["version"]))
