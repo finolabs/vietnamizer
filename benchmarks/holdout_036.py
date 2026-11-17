@@ -8,7 +8,8 @@ SHA-256. Script không gọi model, không gọi mạng; chỉ đọc file ngư�
   python3 benchmarks/holdout_036.py edits <runs.json>
   python3 benchmarks/holdout_036.py score <runs.json> [<judgments.json>]
 
-Thư mục bài chứa H01.md và H01.sheet.md, H02.md và H02.sheet.md, ... runs.json ghi từng đầu ra:
+Thư mục bài chứa H01.md và H01.sheet.md, H02.md và H02.sheet.md, ... (bộ phát triển của spec 037 dùng
+D01, D02, ... và được chấm cùng một cách). runs.json ghi từng đầu ra:
 {"schema": 1, "corpus_manifest_sha256": "...", "lexicon_sha256": "...", "runs": [{"article": "H01",
 "model": "...", "host": "...", "version": "0.17.0", "label": "K2", "output": "out/K2.md",
 "seconds": 30.5, "tokens": 1200}]}. Đường dẫn tính từ thư mục của runs.json; bài và phiếu nằm cùng
@@ -31,6 +32,8 @@ OTHER_KIND = re.compile(r"^khác(?:: [VT]\d+)?$")
 SENTENCE_END = re.compile(r"(?<=[.!?…])\s+")
 TOKEN = re.compile(r"\w+|\s+|[^\w\s]")
 VERDICTS = ("đúng", "không cần", "sai")
+# Hnn: bài holdout; Dnn: bài của bộ phát triển (spec 037), chấm cùng một cách.
+ARTICLE_ID = r"[HD][0-9]{2}"
 ALIGN_MIN = 0.5
 PLAIN_GAPS = (" ", "\n\n")
 
@@ -103,7 +106,7 @@ def table_rows(text: str, heading: str, width: int) -> list[list[str]]:
 
 def parse_sheet(text: str) -> dict:
     text = nfc(text)
-    article = re.search(r"Bài:\s*(H\d{2})\b", text)
+    article = re.search(rf"Bài:\s*({ARTICLE_ID})\b", text)
     digest = re.search(r"SHA-256 bài:\s*([0-9a-f]{64})", text)
     if not article or not digest:
         raise ValueError("phiếu thiếu mã bài hoặc SHA-256 bài")
@@ -137,7 +140,7 @@ def parse_sheet(text: str) -> dict:
 
 def manifest(directory: Path) -> dict:
     articles = []
-    for path in sorted(directory.glob("H[0-9][0-9].md")):
+    for path in sorted(p for p in directory.glob("*.md") if re.fullmatch(ARTICLE_ID, p.stem)):
         inside(directory, path)
         sheet = path.with_name(f"{path.stem}.sheet.md")
         if sheet.exists():
@@ -161,8 +164,8 @@ def load_corpus(runs_path: Path) -> tuple[dict, dict, dict]:
         raise ValueError("manifest của bộ bài khác giá trị ghi trong runs.json")
     sheets = {}
     for article in {run["article"] for run in data["runs"]}:
-        if not isinstance(article, str) or not re.fullmatch(r"H[0-9]{2}", article):
-            raise ValueError("mã bài trong runs.json phải có dạng Hnn")
+        if not isinstance(article, str) or not re.fullmatch(ARTICLE_ID, article):
+            raise ValueError("mã bài trong runs.json phải có dạng Hnn hoặc Dnn")
         path = inside(root, root / f"{article}.md")
         sheet = parse_sheet(inside(root, root / f"{article}.sheet.md").read_text(encoding="utf-8"))
         if sheet["article"] != article or sheet["article_sha256"] != sha256(path):

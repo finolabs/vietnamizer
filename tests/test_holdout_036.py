@@ -260,6 +260,27 @@ class ReviewRegressionTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             h.parse_sheet(text)
 
+    def test_development_ids_score_like_holdout_ids(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "D01.md").write_text(ARTICLE, encoding="utf-8")
+            (root / "D01.sheet.md").write_text(sheet(ARTICLE).replace("Bài: H01", "Bài: D01", 1), encoding="utf-8")
+            (root / "good.md").write_text(GOOD, encoding="utf-8")
+            found = h.manifest(root)
+            self.assertEqual([a["id"] for a in found["articles"]], ["D01"])
+            runs = root / "runs.json"
+            runs.write_text(json.dumps({
+                "schema": 1, "corpus_manifest_sha256": found["manifest_sha256"], "lexicon_sha256": "b846635e5b30",
+                "runs": [{"article": "D01", "model": "claude-opus-5-5", "host": "claude-code", "version": "candidate",
+                          "label": "K2", "output": "good.md", "seconds": 10.0, "tokens": 100}],
+            }, ensure_ascii=False), encoding="utf-8")
+            self.assertTrue(h.score(runs))
+            data = json.loads(runs.read_text(encoding="utf-8"))
+            data["runs"][0]["article"] = "X01"
+            runs.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                h.score(runs)
+
     def test_article_id_outside_pattern_is_refused(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             fixture = HoldoutFixture(Path(temp))

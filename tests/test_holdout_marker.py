@@ -85,6 +85,15 @@ class SheetTest(unittest.TestCase):
             data = m.Marker(root).article("H01")
         self.assertEqual(data["sentences"][0], [[0, 3], [4, 14]])
 
+    def test_accepts_development_ids(self):
+        with Corpus() as root:
+            (root / "D01.md").write_text(ARTICLE, encoding="utf-8")
+            self.assertEqual(m.article_path(root, "D01", ".md"), (root / "D01.md").resolve())
+            self.assertIn("D01", [entry["id"] for entry in m.Marker(root).articles()])
+            for article in ("X01", "D1", "HD01"):
+                with self.subTest(article=article), self.assertRaises(ValueError):
+                    m.article_path(root, article, ".md")
+
     def test_rejects_ids_outside_the_folder(self):
         with Corpus() as root:
             for article in ("../H01", "H1", "H01/x"):

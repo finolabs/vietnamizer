@@ -4,17 +4,17 @@ Everything here runs one heavy job at a time, `uptime` first; no command reads `
 
 ## 1. Development pool (once)
 
-1. A fresh agent that edits no skill file generates D01–D10 per research.md R5 into `artifacts/dev-037/` and writes `Dnn.sheet.md` proposals per spec 036 `contracts/holdout-marking-sheet.md`, each row noted "AI đề xuất".
+1. A fresh agent that edits no skill file generates D01–D10 per research.md R5 into `artifacts/dev-037/articles/` and writes `Dnn.sheet.md` proposals per spec 036 `contracts/holdout-marking-sheet.md`, each row noted "AI đề xuất".
 2. Fio reviews each sheet:
 
    ```bash
-   python3 benchmarks/holdout_marker.py artifacts/dev-037
+   python3 benchmarks/holdout_marker.py artifacts/dev-037/articles
    ```
 
 3. Commit the manifest:
 
    ```bash
-   python3 benchmarks/holdout_036.py manifest artifacts/dev-037 > benchmarks/dev-037-manifest.json
+   python3 benchmarks/holdout_036.py manifest artifacts/dev-037/articles > benchmarks/dev-037-manifest.json
    ```
 
 ## 2. Iterate on the tuning articles
@@ -22,7 +22,7 @@ Everything here runs one heavy job at a time, `uptime` first; no command reads `
 Edit D01–D03 and D06–D08 with the plugin installed from the worktree on Claude Code (Opus 5.5, Sonnet 5.5), write their `runs.json` and score:
 
 ```bash
-python3 benchmarks/holdout_036.py score artifacts/dev-037/runs.json
+python3 benchmarks/holdout_036.py score artifacts/dev-037/articles/runs.json
 ```
 
 Read the outputs and sheets of the tuning articles only. Never open D04–D05 or D09–D10 while writing tests.
