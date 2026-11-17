@@ -591,6 +591,24 @@ class PackageSecurityTest(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("scripts", result.stderr)
 
+    def test_validator_rejects_nested_scripts_in_staged_payload(self) -> None:
+        for nested in ("extra/scripts/helper.py", "references/__pycache__/scripts/helper.py", "profiles/helper.py"):
+            with self.subTest(nested=nested), tempfile.TemporaryDirectory() as temporary_directory:
+                repo = self.copy_package_fixture(Path(temporary_directory))
+                result = self.run_packager(repo)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                payload = Path(temporary_directory) / "payload"
+                with zipfile.ZipFile(repo / "dist" / "vietnamizer.skill") as package:
+                    package.extractall(payload)
+                target = payload / "vietnamizer" / nested
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text("print(1)\n", encoding="utf-8")
+
+                result = self.run_payload_validator(repo, payload / "vietnamizer")
+
+                self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn(nested, result.stderr)
+
     def test_validator_rejects_scanner_copy_in_packager(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))

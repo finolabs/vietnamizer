@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import stat
 import sys
@@ -84,6 +85,8 @@ PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "a
 # payload đã stage và archive không được có scripts/.
 SCANNER_FILE = "scripts/scan-lexicon.py"
 STAGED_FORBIDDEN_DIRECTORIES = {"scripts"}
+# Payload đã stage không được chứa mã ở bất kỳ đâu, kể cả trong thư mục bị bỏ qua như __pycache__.
+STAGED_FORBIDDEN_SUFFIXES = (".py", ".sh", ".js", ".mjs", ".ts")
 # Nguồn của maintainer: được kiểm inventory và quét bí mật trong repo nhưng không vào gói phát hành.
 SOURCE_ONLY_DIRECTORIES = {"calibration"}
 REFERENCE_FILES = {
@@ -159,9 +162,14 @@ def validate_payload_tree(root: Path, source_checkout: bool = False) -> None:
     if source_checkout:
         checked_names |= {SCANNER_FILE}
     if not source_checkout:
-        for name in sorted(STAGED_FORBIDDEN_DIRECTORIES):
-            if (root / name).exists() or (root / name).is_symlink():
-                fail(f"Payload phát hành không được chứa script: {name}/")
+        for current, directories, files in os.walk(root, followlinks=False):
+            base = Path(current)
+            for name in sorted(directories):
+                if name in STAGED_FORBIDDEN_DIRECTORIES:
+                    fail(f"Payload phát hành không được chứa script: {(base / name).relative_to(root).as_posix()}/")
+            for name in sorted(files):
+                if name in STAGED_FORBIDDEN_DIRECTORIES or name.endswith(STAGED_FORBIDDEN_SUFFIXES):
+                    fail(f"Payload phát hành không được chứa script: {(base / name).relative_to(root).as_posix()}")
         for name in sorted(SOURCE_ONLY_DIRECTORIES):
             if (root / name).exists() or (root / name).is_symlink():
                 fail(f"Payload phát hành không được chứa thư mục nguồn: {name}")
