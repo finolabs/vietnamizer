@@ -13,9 +13,9 @@ chỉ in ứng viên. Thêm `references/ai-error-lexicon.md`, bảng L01–L08 l
 câu (V20); mỗi dòng có cách sửa, ngữ vực lỗi, tiếng láng giềng loại trừ và Không flag. Tuyến biên tập cả bài
 và viết từ brief đọc bảng, đi qua từng đoạn để lập bảng kê cụm nội bộ, sửa tại chỗ và giữ nguyên từng byte ở
 chỗ Không flag cho giữ; sửa lỗi trước, áp giọng sau, rồi dò lại. V20, V9 và V19 trỏ tới mã dòng của mình.
-Thêm script tùy chọn `scripts/scan-lexicon.py`, script duy nhất trong gói. Script đọc văn bản qua stdin, bỏ qua chỗ khớp trong front matter, code,
+Spec 036 thêm script tùy chọn `scripts/scan-lexicon.py` vào gói (spec 037 bên dưới đã đưa nó ra khỏi gói). Script đọc văn bản qua stdin, bỏ qua chỗ khớp trong front matter, code,
 địa chỉ link, ngoặc kép và blockquote, rồi in JSON các ứng viên; host không chạy được thì agent tự đọc bảng. Thêm fixture LXF01–LXF29, ca LX01–LX29 và
-`tests/test_scan_lexicon.py`; validator kiểm bảng và chỉ nhận đúng script này dưới `scripts/` của gói.
+`tests/test_scan_lexicon.py`; validator kiểm bảng và khi đó chỉ nhận đúng script này dưới `scripts/` của gói.
 Vẫn 55 pattern. HF01–HF18 và LX01–LX29 là ca phát triển. Trên holdout 14 bài, bản này chưa sửa được nhiều
 lỗi hơn 0.16.2 (`docs/benchmarks.md`), nên chưa phát hành.
 
