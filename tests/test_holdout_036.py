@@ -221,12 +221,63 @@ class AlignmentTest(unittest.TestCase):
 
     def test_word_offsets_survive_extra_whitespace(self) -> None:
         source = h.paragraphs("Quy  trình\tcòn   rườm.\n\nĐội đã  chốt.")
-        ranges = h.spans_in_source(source, [{"paragraph": 1, "span": "còn rườm"}, {"paragraph": 2, "span": "đã chốt"}])
+        ranges = h.spans_in_source(source, [{"paragraph": 1, "span": "còn   rườm"}, {"paragraph": 2, "span": "đã  chốt"}])
         self.assertEqual(ranges, [(2, 4), (5, 7)])
 
     def test_rows_after_a_later_heading_are_not_read(self) -> None:
         text = sheet(ARTICLE).replace("## Bảng cần giữ", "### Ghi chú\n\n| 9 | 1 | x | khác | | |\n\n## Bảng cần giữ")
         self.assertEqual(len(h.parse_sheet(text)["errors"]), 4)
+
+
+class ReviewRegressionTest(unittest.TestCase):
+    def test_one_output_sentence_cannot_serve_two_source_sentences(self) -> None:
+        source = ["Quy trình A còn rườm. Quy trình B còn rườm."]
+        output = ["Quy trình B còn rườm rà."]
+        rows = [{"id": "H01#1", "paragraph": 1, "span": "A còn rườm", "fixes": ["còn rườm rà"]},
+                {"id": "H01#2", "paragraph": 1, "span": "B còn rườm", "fixes": ["còn rườm rà"]}]
+        aligned = h.alignments(source, output, rows)
+        self.assertIsNone(aligned["H01#1"])
+        self.assertEqual(aligned["H01#2"], "Quy trình B còn rườm rà.")
+
+    def test_edit_spilling_outside_a_span_is_listed(self) -> None:
+        source = ["Quy trình còn rườm."]
+        output = ["Quy trình vẫn rườm rà."]
+        rows = [{"id": "H01#1", "paragraph": 1, "span": "rườm", "fixes": ["rườm rà"]}]
+        edits = h.raw_edits(source, output, rows)
+        self.assertEqual([(e["source"], e["output"]) for e in edits], [("còn rườm.", "vẫn rườm rà.")])
+
+    def test_whitespace_change_breaks_a_guard(self) -> None:
+        source = ["Bản dịch giữ nghĩa của nguyên tác."]
+        output = ["Bản dịch giữ  nghĩa của nguyên tác."]
+        rows = [{"id": "H01#g1", "paragraph": 1, "span": "giữ nghĩa của nguyên tác"}]
+        self.assertNotIn("giữ nghĩa của nguyên tác", h.alignments(source, output, rows)["H01#g1"])
+
+    def test_duplicate_row_numbers_are_refused(self) -> None:
+        text = sheet(ARTICLE).replace("| 2 | 1 | hay bỡ |", "| 1 | 1 | hay bỡ |")
+        with self.assertRaises(ValueError):
+            h.parse_sheet(text)
+
+    def test_article_id_outside_pattern_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            fixture = HoldoutFixture(Path(temp))
+            runs = fixture.runs()
+            data = json.loads(runs.read_text(encoding="utf-8"))
+            data["runs"][0]["article"] = "../outside/H01"
+            runs.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                h.score(runs)
+
+    def test_article_symlink_outside_folder_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            corpus = Path(temp) / "corpus"
+            corpus.mkdir()
+            fixture = HoldoutFixture(corpus)
+            outside = Path(temp) / "H02.md"
+            outside.write_text(ARTICLE, encoding="utf-8")
+            (corpus / "H02.md").symlink_to(outside)
+            with self.assertRaises(ValueError):
+                h.manifest(corpus)
+            self.assertTrue(fixture.manifest["manifest_sha256"])
 
 
 class ManifestTest(unittest.TestCase):

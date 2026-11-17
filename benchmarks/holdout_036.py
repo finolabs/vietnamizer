@@ -43,7 +43,15 @@ def sha256(path: Path) -> str:
 
 
 def paragraphs(text: str) -> list[str]:
-    return [" ".join(p.split()) for p in re.split(r"\n[ \t]*\n", nfc(text)) if p.strip()]
+    """Đoạn sau NFC; chỉ chỗ xuống dòng trong đoạn thành một dấu cách, mọi khoảng trắng khác giữ nguyên."""
+    return [re.sub(r"[ \t]*\n[ \t]*", " ", p.strip()) for p in re.split(r"\n[ \t]*\n", nfc(text)) if p.strip()]
+
+
+def inside(root: Path, path: Path) -> Path:
+    resolved = path.resolve()
+    if root.resolve() not in resolved.parents:
+        raise ValueError(f"{path.name} phải nằm trong thư mục của bộ bài")
+    return resolved
 
 
 def sentences(paragraph: str) -> list[str]:
@@ -75,7 +83,11 @@ def parse_sheet(text: str) -> dict:
     if not article or not digest:
         raise ValueError("phiếu thiếu mã bài hoặc SHA-256 bài")
     errors = []
+    seen_numbers: set[str] = set()
     for cells in table_rows(text, "## Bảng lỗi", 6):
+        if not cells[0].isdigit() or cells[0] in seen_numbers:
+            raise ValueError(f"số dòng lỗi phải là số và không trùng: {cells[0]}")
+        seen_numbers.add(cells[0])
         number, paragraph, span, kind, fixes = cells[:5]
         if kind not in LEXICON_KINDS and not OTHER_KIND.match(kind):
             raise ValueError(f"Nhóm không hợp lệ ở dòng lỗi {number}: {kind}")
@@ -87,9 +99,13 @@ def parse_sheet(text: str) -> dict:
             "lexicon_kind": kind in LEXICON_KINDS,
             "fixes": fix_list,
         })
+    guard_rows = table_rows(text, "## Bảng cần giữ", 4)
+    numbers = [cells[0] for cells in guard_rows]
+    if not all(n.isdigit() for n in numbers) or len(set(numbers)) != len(numbers):
+        raise ValueError("số dòng cần giữ phải là số và không trùng")
     guards = [
         {"id": f"{article[1]}#g{cells[0]}", "paragraph": int(cells[1]), "span": cells[2]}
-        for cells in table_rows(text, "## Bảng cần giữ", 4)
+        for cells in guard_rows
     ]
     return {"article": article[1], "article_sha256": digest[1], "errors": errors, "guards": guards}
 
@@ -97,7 +113,10 @@ def parse_sheet(text: str) -> dict:
 def manifest(directory: Path) -> dict:
     articles = []
     for path in sorted(directory.glob("H[0-9][0-9].md")):
+        inside(directory, path)
         sheet = path.with_name(f"{path.stem}.sheet.md")
+        if sheet.exists():
+            inside(directory, sheet)
         articles.append({
             "id": path.stem,
             "article_sha256": sha256(path),
@@ -117,8 +136,10 @@ def load_corpus(runs_path: Path) -> tuple[dict, dict, dict]:
         raise ValueError("manifest của bộ bài khác giá trị ghi trong runs.json")
     sheets = {}
     for article in {run["article"] for run in data["runs"]}:
-        path = root / f"{article}.md"
-        sheet = parse_sheet((root / f"{article}.sheet.md").read_text(encoding="utf-8"))
+        if not isinstance(article, str) or not re.fullmatch(r"H[0-9]{2}", article):
+            raise ValueError("mã bài trong runs.json phải có dạng Hnn")
+        path = inside(root, root / f"{article}.md")
+        sheet = parse_sheet(inside(root, root / f"{article}.sheet.md").read_text(encoding="utf-8"))
         if sheet["article"] != article or sheet["article_sha256"] != sha256(path):
             raise ValueError(f"phiếu {article} không khớp SHA-256 của bài")
         source = paragraphs(path.read_text(encoding="utf-8"))
@@ -137,23 +158,50 @@ def source_sentence(source: list[str], row: dict) -> str:
         row["span"] in s for s in sentences(paragraph)) else paragraph
 
 
-def align(source: list[str], output: list[str], row: dict) -> str | None:
+def best_match(source: list[str], output: list[str], row: dict) -> tuple[float, tuple[int, int], str] | None:
     """Câu đầu ra khớp nhất với câu nguồn chứa cụm: trước hết trong đoạn cùng số, chỉ khi đoạn đó
     không có câu nào đạt ngưỡng mới xét hai đoạn kề (bản sửa có thể tách hay gộp đoạn)."""
     target = source_sentence(source, row)
     index = row["paragraph"] - 1
 
-    def best_in(candidates: list[str]) -> str | None:
-        best, best_ratio = None, ALIGN_MIN
-        for paragraph in candidates:
-            for sentence in sentences(paragraph):
+    def best_in(indexes: list[int]) -> tuple[float, tuple[int, int], str] | None:
+        best = None
+        for p in indexes:
+            if not 0 <= p < len(output):
+                continue
+            for s, sentence in enumerate(sentences(output[p])):
                 ratio = difflib.SequenceMatcher(None, target, sentence, autojunk=False).ratio()
-                if ratio >= best_ratio:
-                    best, best_ratio = sentence, ratio
+                if ratio >= ALIGN_MIN and (best is None or ratio >= best[0]):
+                    best = (ratio, (p, s), sentence)
         return best
 
-    same = best_in(output[index:index + 1])
-    return same if same is not None else best_in(output[max(0, index - 1):index] + output[index + 1:index + 2])
+    return best_in([index]) or best_in([index - 1, index + 1])
+
+
+def align(source: list[str], output: list[str], row: dict) -> str | None:
+    match = best_match(source, output, row)
+    return match[2] if match else None
+
+
+def alignments(source: list[str], output: list[str], rows: list[dict]) -> dict[str, str | None]:
+    """Mỗi câu đầu ra chỉ ứng với một câu nguồn. Hai câu nguồn khác nhau cùng khớp một câu đầu ra thì câu
+    giống hơn giữ chỗ, câu kia coi như không còn câu khớp (vào danh sách cho Fio, không tính là đã sửa)."""
+    matches = {row["id"]: best_match(source, output, row) for row in rows}
+    owner: dict[tuple[int, int], tuple[float, str]] = {}
+    for row in rows:
+        match = matches[row["id"]]
+        if match is None:
+            continue
+        key = (row["paragraph"], source_sentence(source, row))
+        held = owner.get(match[1])
+        if held is None or match[0] > held[0]:
+            owner[match[1]] = (match[0], key)
+    result = {}
+    for row in rows:
+        match = matches[row["id"]]
+        key = (row["paragraph"], source_sentence(source, row))
+        result[row["id"]] = match[2] if match and owner[match[1]][1] == key else None
+    return result
 
 
 def is_fixed(sentence: str, row: dict) -> bool | None:
@@ -186,8 +234,10 @@ def spans_in_source(source: list[str], rows: list[dict]) -> list[tuple[int, int]
 
 
 def raw_edits(source: list[str], output: list[str], rows: list[dict]) -> list[dict]:
-    """Phần sửa ngoài mọi cụm đã đánh dấu, cùng câu nguồn của các dòng không còn câu đầu ra khớp."""
-    aligned = [row for row in rows if align(source, output, row) is not None]
+    """Phần sửa ngoài mọi cụm đã đánh dấu, cùng câu nguồn của các dòng không còn câu đầu ra khớp.
+    Khối diff chạm một cụm nhưng còn lan ra ngoài cụm thì cả khối vào danh sách cho Fio xét."""
+    aligned_to = alignments(source, output, rows)
+    aligned = [row for row in rows if aligned_to[row["id"]] is not None]
     edits = []
     for row in rows:
         if row in aligned:
@@ -196,16 +246,19 @@ def raw_edits(source: list[str], output: list[str], rows: list[dict]) -> list[di
         key = json.dumps(["unaligned", sentence], ensure_ascii=False).encode("utf-8")
         edits.append({"id": hashlib.sha256(key).hexdigest()[:10], "context": "", "source": sentence,
                       "output": "(không còn câu khớp)"})
+    missing = [{"paragraph": row["paragraph"], "span": source_sentence(source, row)}
+               for row in rows if aligned_to[row["id"]] is None]
     rows = aligned
     source_words = WORD.findall(" ".join(source))
     output_words = WORD.findall(" ".join(output))
-    ranges = spans_in_source(source, rows)
+    ranges = spans_in_source(source, rows) + spans_in_source(source, missing)
     matcher = difflib.SequenceMatcher(None, source_words, output_words, autojunk=False)
     for tag, i1, i2, j1, j2 in matcher.get_opcodes():
         if tag == "equal":
             continue
-        touches = any((i1 < end and i2 > start) or (i1 == i2 and start <= i1 <= end) for start, end in ranges)
-        if touches:
+        touched = [(start, end) for start, end in ranges
+                   if (i1 < end and i2 > start) or (i1 == i2 and start <= i1 <= end)]
+        if touched and min(s for s, _ in touched) <= i1 and i2 <= max(e for _, e in touched):
             continue
         before = " ".join(source_words[max(0, i1 - 4):i1])
         old, new = " ".join(source_words[i1:i2]), " ".join(output_words[j1:j2])
@@ -242,6 +295,7 @@ def score(runs_path: Path, judgments_path: Path | None = None) -> dict:
     for run in data["runs"]:
         sheet, source = sheets[run["article"]]
         output = output_text(runs_path, run)
+        aligned_to = alignments(source, output, sheet["errors"] + sheet["guards"])
         key = (run["model"], run["host"], run["version"])
         group = groups.setdefault(key, {
             "model": run["model"], "host": run["host"], "version": run["version"],
@@ -256,7 +310,7 @@ def score(runs_path: Path, judgments_path: Path | None = None) -> dict:
         for row in sheet["errors"]:
             bucket = group["lexicon_kind"] if row["lexicon_kind"] else group["other"]
             bucket["total"] += 1
-            sentence = align(source, output, row)
+            sentence = aligned_to[row["id"]]
             fixed = False if sentence is None else is_fixed(sentence, row)
             if fixed is None:
                 verdict = row_verdicts.get(row["id"], {}).get(run["label"])
@@ -267,7 +321,7 @@ def score(runs_path: Path, judgments_path: Path | None = None) -> dict:
             bucket["fixed"] += int(bool(fixed))
         for row in sheet["guards"]:
             group["guards"]["total"] += 1
-            sentence = align(source, output, row)
+            sentence = aligned_to[row["id"]]
             group["guards"]["broken"] += int(sentence is None or row["span"] not in sentence)
         for edit in raw_edits(source, output, sheet["errors"] + sheet["guards"]):
             verdict = edit_verdicts.get(edit["id"])
