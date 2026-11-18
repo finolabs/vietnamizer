@@ -24,7 +24,7 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 
 | # | Decision | Why |
 |---|---|---|
-| P1 | Development pool D01–D10 as research.md R5: two articles per holdout genre, D01–D05 by `claude-opus-5-5`, D06–D10 by `gpt-6.1-sol` (research R5), pre-marked by a fresh agent, reviewed by Fio | Mirrors the holdout's public shape without its content; keeps Gemini unseen for H15–H20 |
+| P1 | Development pool D01–D10 as research.md R5: two articles per holdout genre, D01–D05 by `claude-opus-5-5`, D06–D10 by `gpt-6.1-sol` (research R5), pre-marked by a fresh agent, reviewed by Fio or a marker Fio names (decision 5) | Mirrors the holdout's public shape without its content; keeps Gemini unseen for H15–H20 |
 | P2 | Split the pool: D01–D03 and D06–D08 (6 articles) are for writing and tuning the tests; D04–D05 and D09–D10 (4 articles) are the development gate, never read by the person writing tests | Principle IV inside the development set: a threshold is not proven on the cases that tuned it, and the holdout should not be the first unseen text |
 | P3 | Development gate before the holdout run: on the 4 gate articles, scored with `holdout_036.py`, Opus fixes at least half and Sonnet at least a third of the lexicon-kind errors, and neither breaks more guards than 0.16.2 on the same articles | The same ratios as the release bar; failing them on development text means the holdout run would be wasted |
 | P4 | Tests live in the pattern catalogs: a **Phép thử nhận diện** paragraph in V9 (`references/sentence-structure.md`) and in V20 (`references/missing-words.md`, covering clipped compounds and bare collectives); the long-form routing row of `SKILL.md` names both catalogs so the pass always has them | Principle III (V patterns own general errors); the pass needs the tests loaded, and loading on suspicion is the 0.16.2 behaviour that missed |
@@ -37,7 +37,7 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 
 | Gate | Result |
 |---|---|
-| I. Vietnamese evidence first | Each test states the error, why, the fix and **Không flag**, with examples from development sources marked by Fio's review. Pass. |
+| I. Vietnamese evidence first | Each test states the error, why, the fix and **Không flag**, with examples from development sources reviewed by a human marker (decision 5). Pass. |
 | II. Meaning and voice | A hit is a candidate; edits pass **Không flag** and the five chốt; guard breaks and judged wrong edits are part of the bar. Pass. |
 | III. General rules vs profiles | Tests sit under V9 and V20; register-bound exceptions stay in **Không flag**. Pass. |
 | IV. Labelled evidence | Tests are tuned on D01–D03/D06–D08, gated on D04–D05/D09–D10, proven on H01–H14 and checked on H15–H20; no case tunes and proves. Pass. |
@@ -95,7 +95,7 @@ DEEP, several seams (catalogs, workflow, packaging, evidence) with ordering betw
 ## Delivery order
 
 1. Scanner out of the package with its consumer documents and tests (one pull request; red first: the payload test that rejects `scripts/` fails before the validator change).
-2. Development pool: generate D01–D10, pre-mark, Fio's review, commit the manifest.
+2. Development pool: generate D01–D10, pre-mark, human review (decision 5), commit the manifest.
 3. Recognition tests and the detection pass, written from D01–D03/D06–D08; calibration block DT; phrase guards (red first).
 4. Development iteration on Claude Code; then the gate run on Cowork (P3).
 5. Freeze: record the candidate commit; generate H15–H20; Fio marks them.
