@@ -4,7 +4,7 @@
   python3 benchmarks/holdout_marker.py <thư-mục-bài>
 
 Script mở một máy chủ chỉ nghe ở 127.0.0.1, mở trình duyệt vào trang chấm và ghi phiếu Hnn.sheet.md cạnh
-từng bài Hnn.md mỗi khi người chấm thêm, sửa hoặc xoá một dòng. Thể loại và model sinh bài lấy từ
+từng bài Hnn.md (hoặc Dnn của bộ phát triển spec 037) mỗi khi người chấm thêm, sửa hoặc xoá một dòng. Thể loại và model sinh bài lấy từ
 plan.json ở thư mục cha nếu có. Chỉ dùng thư viện chuẩn, không gọi mạng ra ngoài, không đọc file nào ngoài
 thư mục bài và plan.json. Agent chỉ viết và kiểm script này bằng bài giả; bài thật chỉ người chấm đọc.
 """
@@ -26,13 +26,13 @@ try:
 except ImportError:  # chạy trực tiếp bằng python3 benchmarks/holdout_marker.py
     import holdout_036 as h
 
-ARTICLE_ID = re.compile(r"H[0-9]{2}")
+ARTICLE_ID = re.compile(h.ARTICLE_ID)
 MAX_BODY = 1_000_000
 
 
 def article_path(root: Path, article: str, suffix: str) -> Path:
     if not ARTICLE_ID.fullmatch(article):
-        raise ValueError("mã bài phải có dạng Hnn")
+        raise ValueError("mã bài phải có dạng Hnn hoặc Dnn")
     return h.inside(root, root / f"{article}{suffix}")
 
 
@@ -154,8 +154,13 @@ class Marker:
 
     def articles(self) -> list:
         found = []
-        for path in sorted(self.root.glob("H[0-9][0-9].md")):
-            sheet = read_sheet(path.with_name(f"{path.stem}.sheet.md"))
+        for path in sorted(p for p in self.root.glob("*.md") if ARTICLE_ID.fullmatch(p.stem)):
+            try:
+                sheet_path = h.inside(self.root, path.with_name(f"{path.stem}.sheet.md"))
+                h.inside(self.root, path)
+            except ValueError:
+                continue
+            sheet = read_sheet(sheet_path)
             entry = self.plan.get(path.stem, {})
             found.append({"id": path.stem, "genre": entry.get("genre", ""), "errors": len(sheet["errors"]),
                           "guards": len(sheet["guards"]), "done": bool(sheet["meta"].get("done"))})
