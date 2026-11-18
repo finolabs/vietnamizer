@@ -5,11 +5,13 @@ Everything here runs one heavy job at a time, `uptime` first; no command reads `
 ## 1. Development pool (once)
 
 1. A fresh agent that edits no skill file generates D01–D10 per research.md R5 into `artifacts/dev-037/articles/` and writes `Dnn.sheet.md` proposals per spec 036 `contracts/holdout-marking-sheet.md`, each row noted "AI đề xuất".
-2. Fio reviews each sheet:
+2. Fio, or a marker Fio shares the marking page with, reviews each sheet (decision 5). Locally:
 
    ```bash
    python3 benchmarks/holdout_marker.py artifacts/dev-037/articles
    ```
+
+   On the shared claude.ai marking page, every row is saved to the page's store; read the store back and write the sheets through `holdout_marker.build_sheet` before the manifest. The page and its export script stay outside Git with the articles.
 
 3. Commit the manifest:
 

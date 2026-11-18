@@ -23,7 +23,7 @@
 
 - [x] T009 Red then green: `benchmarks/holdout_036.py` and `benchmarks/holdout_marker.py` accept article ids `D` + two digits beside `H` + two digits (plan); tests in `tests/test_holdout_036.py` and `tests/test_holdout_marker.py`
 - [x] T010 A fresh agent that edits no skill file generates D01–D10 per research.md R5 into `artifacts/dev-037/articles/` and pre-marks each sheet ("AI đề xuất"); prompts recorded beside the files
-- [ ] T011 Fio reviews D01–D10 sheets in `benchmarks/holdout_marker.py` and sets each to `xong` (decision 5); record O2 disagreements
+- [ ] T011 Fio or a marker Fio names reviews D01–D10 sheets, in `benchmarks/holdout_marker.py` or on the shared marking page, and sets each to `xong` with the marker's name (decision 5); export shared sheets through `holdout_marker.build_sheet`; record O2 disagreements
 - [ ] T012 Commit `benchmarks/dev-037-manifest.json` (`holdout_036.py manifest artifacts/dev-037/articles`) and a `calibration/LOG.md` row for the T044 finding and the pool
 
 ## Phase 4: Recognition tests and detection pass (US1, US2, US3; one pull request)
