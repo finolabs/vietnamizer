@@ -604,7 +604,7 @@ Ca lấy từ sáu bài phát triển dùng để chỉnh (D01–D03, D06–D08)
 |---|---|---|---|
 | 1 | Blog cá nhân: *“Tôi không gửi nhiều hơn một tin mỗi ngày, vì chính tôi cũng ghét mấy nhóm nhắn suốt.”* | *“Mỗi ngày tôi chỉ gửi một tin, vì...”* | V9: phủ định so sánh dịch từ *no more than* |
 | 2 | Blog cá nhân: *“Còn một chuyện nữa: tôi đã ôm hết mọi việc.”* | *“Còn một chuyện nữa là tôi đã ôm hết mọi việc.”*; giữ *ôm hết mọi việc* | V9 câu dẫn *one more thing:*, chạm T2; sửa một lần |
-| 3 | Blog cá nhân: *“Tôi nói trước: tôi không thành công rực rỡ gì đâu.”* | *“Nói thật, tôi không thành công rực rỡ gì đâu.”* | V9 câu dẫn dịch sát cùng dấu hai chấm |
+| 3 | Blog cá nhân: *“Tôi nói trước: tôi không thành công rực rỡ gì đâu.”* | *“Nói trước là tôi không thành công rực rỡ gì đâu.”*; không đổi ý báo trước thành *nói thật* | V9 câu dẫn dịch sát cùng dấu hai chấm |
 | 4 | Bài chuyên môn SaaS: *“...chưa chắc còn sử dụng có giá trị.”* | *“...chưa chắc còn dùng sản phẩm thực sự.”* (hoặc *dùng sản phẩm hiệu quả*) | V9 danh từ trừu tượng dịch từ *meaningful usage* |
 | 5 | Giới thiệu phần mềm: *“Bạn đặt vài quy tắc cơ bản: mỗi ca cần ít nhất một bạn pha chế chính...”* | *“Bạn thiết lập vài quy tắc cơ bản...”*; dấu hai chấm trước danh sách quy tắc giữ hay tách theo T2 | V9 động từ dịch từ *set some rules* |
 | 6 | Bài chuyên môn: *“Hàng trả về từ điểm bán nằm trong kho nhưng không ai cập nhật trạng thái.”* | *“...nhưng không được cập nhật trạng thái.”* | V9 chủ ngữ *không ai* theo khung tiếng Anh thay cho bị động |

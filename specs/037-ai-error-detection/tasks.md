@@ -36,7 +36,7 @@ Writers read D01–D03 and D06–D08 only (plan P2).
 - [x] T016 [US2] Write both tests in V20 of `references/missing-words.md`, examples from development sources only; T015 green
 - [x] T017 [US1] Red then green: `SKILL.md` long-form routing row names `references/missing-words.md` and `references/sentence-structure.md`; the small-edit row does not
 - [x] T018 [US1] Red then green: the detection pass at the head of "Kê cụm khi biên tập toàn bài" in `references/writing-workflow.md` (contracts/skill-text.md row 6); check `SKILL.md` stays ≤ 550 lines and the pattern count stays 55 with `python3 scripts/validate-package.py`
-- [x] T019 [P] [US3] `calibration/test-cases.md` block DT: positive and guard cases for each test from the tuning articles; agent runs of DT, HF01–HF18 and LX01–LX29 recorded as a development result
+- [ ] T019 [P] [US3] `calibration/test-cases.md` block DT: positive and guard cases for each test from the tuning articles; agent runs of DT, HF01–HF18 and LX01–LX29 recorded as a development result (DT block written; agent runs of DT, HF01–HF18 and LX01–LX29 not yet run or recorded)
 - [x] T020 [US1] Development iteration (plan P8): run Opus 5.5 and Sonnet 5.5 on Claude Code over the tuning articles, score with `holdout_036.py`, adjust the tests from those articles only; stop when the tuning articles clear the P3 ratios
 - [ ] T021 Pull request for Phase 4 with `review-gate` reviews posted; Vietnamese text through Vietnamizer's own review; merge only on Fio's go
 

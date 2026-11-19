@@ -22,7 +22,9 @@ Khi việc được giao là biên tập toàn bài hoặc viết từ brief/out
 để mở bốn file sau, đường dẫn tính từ thư mục của skill: `references/writing-workflow.md`,
 `references/missing-words.md`, `references/sentence-structure.md` và `references/ai-error-lexicon.md`.
 Chưa đọc xong bốn file này thì chưa trả bài, kể cả khi bài đọc trôi chảy. Yêu cầu “chỉ trả bài đã sửa” hay
-“không giải thích” quy định dạng đầu ra, không miễn bước đọc. Sau đó làm theo tuyến bài ở bảng dưới.
+“không giải thích” quy định dạng đầu ra, không miễn bước đọc. File đã nạp và còn nguyên trong context thì
+không cần đọc lại; host không có công cụ đọc file thì dùng phần được cấp và nói một lần phần nào chưa có.
+Sau đó làm theo tuyến bài ở bảng dưới.
 
 ## Trước khi làm
 

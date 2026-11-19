@@ -667,9 +667,16 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn(path, gate)
         flat = " ".join(gate.split())
         for phrase in ("Chưa đọc xong bốn file này thì chưa trả bài",
-                       "quy định dạng đầu ra, không miễn bước đọc"):
+                       "quy định dạng đầu ra, không miễn bước đọc",
+                       "File đã nạp và còn nguyên trong context thì không cần đọc lại",
+                       "host không có công cụ đọc file thì dùng phần được cấp"):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, flat)
+
+    def test_recognition_examples_keep_meaning_and_exceptions(self) -> None:
+        self.assertIn("Nói trước là tôi không thành công", read("references/sentence-structure.md"))
+        self.assertNotIn("Nói thật, tôi không thành công", read("references/sentence-structure.md"))
+        self.assertIn("Định ngữ chỉ người sở hữu như *của bạn*", read("references/missing-words.md"))
 
     def test_first_safeguard_defines_an_error_against_the_author(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
