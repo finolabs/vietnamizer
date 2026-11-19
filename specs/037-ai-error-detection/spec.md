@@ -37,6 +37,16 @@ Source: `docs/benchmarks.md` "Holdout 036" (main `ccfe199`). Out-of-span edits (
 | O1 | Release go for the next version (merge, tag, release, catalog pin) | Fio | After the holdout report (FR-016); never on a relayed yes |
 | O2 | Fio's written acceptance of any recognition-test example or **Không flag** he disagrees with in the development review | Fio | Development sheets reviewed (FR-010) |
 
+O2 record (Fio, 19/11/2026, relayed by the coordinator from the PR 81 Codex review, rounds 1–2):
+
+- Kept despite Codex's objection: V20 example *"Phần nào khó nhất với đội của bạn?"* → *"...đội ngũ của bạn"* (D02 sheet #5, DT08). Codex read *của bạn* as a determiner that V20's **Không flag** keeps. Fio: keep the example as the sheet labels it. The **Không flag** now states the narrow exception: a possessive says whose team, not which group, so when the sentence speaks of a person's whole staff and of no group doing a task, *đội* falls under test question (2).
+- Changed: V9 example and DT01 *"Tôi không gửi nhiều hơn một tin mỗi ngày"* now become *"Mỗi ngày tôi gửi tối đa một tin"*; *"chỉ gửi một tin"* can read as one message every day and loses the zero-message case. The D01 sheet (#4) accepts only *"Mỗi ngày tôi chỉ gửi một tin"*; adding the new wording to that sheet is Fio's call.
+- Changed in round 1: V9 example and DT03 *"Tôi nói trước:"* become *"Nói trước là ..."*, keeping the advance warning. The D01 sheet (#2) still accepts only *"Nói thật,"*; no tuning run fixed D01#2, so no score changed.
+- Kept, with the defect each one shows (safeguard 1: the author's wording is wrong, clipped or misleading):
+  - V20 *"quy trình nào bị dừng"* → *"bị dừng lại"* (D07 sheet #6, DT07): marked as a clipped compound with no note; agent's reading: in a list of process events *dừng* alone reads cut off beside the two-syllable verbs around it.
+  - V9 *"Bạn đặt vài quy tắc cơ bản"* → *"thiết lập vài quy tắc"* (D03, DT05): not a sheet row; taken from D03 as a word-for-word *set some rules*; Fio keeps it.
+  - V9 *"...nhưng không ai cập nhật trạng thái"* → *"...không được cập nhật trạng thái"* (D02 sheet #4, DT06): marked as a calque with no note; agent's reading: *không ai* copies the English *no one updated* subject where Vietnamese writing of this kind uses the passive.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Calques are caught in a fresh AI article (Priority: P1)

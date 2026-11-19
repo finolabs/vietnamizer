@@ -676,7 +676,9 @@ class SkillContractTest(unittest.TestCase):
     def test_recognition_examples_keep_meaning_and_exceptions(self) -> None:
         self.assertIn("Nói trước là tôi không thành công", read("references/sentence-structure.md"))
         self.assertNotIn("Nói thật, tôi không thành công", read("references/sentence-structure.md"))
-        self.assertIn("Định ngữ chỉ người sở hữu như *của bạn*", read("references/missing-words.md"))
+        self.assertIn("Ngoại lệ hẹp của quy tắc giữ này", read("references/missing-words.md"))
+        self.assertIn("Mỗi ngày tôi gửi tối đa một tin", read("references/sentence-structure.md"))
+        self.assertNotIn("Mỗi ngày tôi chỉ gửi một tin\"", read("references/sentence-structure.md"))
 
     def test_first_safeguard_defines_an_error_against_the_author(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
