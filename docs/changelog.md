@@ -21,7 +21,10 @@ lỗi hơn 0.16.2 (`docs/benchmarks.md`), nên chưa phát hành.
 
 Spec 037 (phần đã làm). `scripts/scan-lexicon.py` ra khỏi gói và chỉ còn là công cụ của maintainer trong repo;
 gói lại chỉ gồm Markdown, profile, asset và manifest, và validator từ chối mọi `scripts/` trong payload. Bảng
-dạng lỗi và bảng kê cụm vẫn giữ; bảng chỉ ghi những dạng đã gặp, không khớp dòng nào chưa có nghĩa là bài sạch.
+dạng lỗi và bảng kê cụm vẫn giữ; bảng chỉ ghi những dạng đã gặp, không khớp dòng nào chưa có nghĩa là bài sạch. V9 có phép thử nhận diện cách
+nói dịch sát (dịch ngược từng chữ, hỏi người Việt có nói khác không), V20 có phép thử cho tiếng đơn bị cắt và
+danh từ tập thể đứng trơ; tuyến bài đọc cả hai catalog và chạy một lượt dò từng câu trước khi sửa. Thêm ca
+DT01–DT14 lấy từ sáu bài phát triển; chưa chạy cổng trên bốn bài chặn và chưa đo lại holdout.
 
 ### 0.16.2 (15/11/2026)
 

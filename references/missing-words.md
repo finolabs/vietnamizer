@@ -70,6 +70,18 @@ Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm kh�
 
 Các dạng đã gặp của pattern này có trong bảng `references/ai-error-lexicon.md`: L01–L05 và L08.
 
+**Phép thử nhận diện, tiếng đơn:** bảng chỉ ghi vài dạng đã gặp, còn bài mới thường cắt những từ khác. Trong văn viết, với mỗi tiếng đơn làm thực từ (động từ, tính từ, danh từ), hỏi hai câu. (1) Ở vai và nghĩa này, văn viết cùng ngữ vực có thường dùng một từ hai tiếng chứa nó không? (2) Bên cạnh nó có những từ hai tiếng cùng loại làm nó đọc cụt không? Câu (1) đúng thì tiếng ấy là ứng viên; câu (2) cũng đúng thì càng chắc. Ví dụ:
+- *"quy trình nào bị dừng"* → *"quy trình nào bị dừng lại"*.
+- *"Quy trình còn rườm"* → *"Quy trình còn rườm rà"*.
+- *"dễ làm nhân viên mới bỡ"* → *"dễ làm nhân viên mới bỡ ngỡ"*.
+
+Sau đó đọc Không flag của V20 bên dưới; từ đơn hợp lệ đúng nghĩa, văn nói, chat, nhãn ngắn và câu trang trọng đã đủ ý thì giữ.
+
+**Phép thử nhận diện, danh từ tập thể:** với *đội*, *nhóm*, *bên*, *phía*, *ban*, *team* làm chủ ngữ hay bổ ngữ, hỏi hai câu. (1) Đã có định ngữ, tên riêng hay một lần nhắc trước cho biết nhóm nào chưa? (2) *Đội* đang chỉ cả đội ngũ của một tổ chức, hay một nhóm làm một việc cụ thể? Chưa rõ nhóm nào thì là ứng viên; *đội* chỉ cả đội ngũ thì văn viết dùng *đội ngũ*. Ví dụ:
+- *"Phần nào khó nhất với đội của bạn?"* (hỏi về cả đội ngũ của người đọc) → *"...với đội ngũ của bạn?"*.
+- *"Đội đã làm việc chăm chỉ để đạt được mục tiêu quý."* (chưa biết đội nào) → *"Đội ngũ đã làm việc chăm chỉ..."*.
+- Giữ *"không cần đội IT"*, *"trong nhóm Zalo"*, *"Phòng kinh doanh phản đối"* (đã có tên) và *"Đội của chúng tôi sẽ giúp bạn nhập danh sách nhân viên"* (một nhóm làm một việc cụ thể); giữ *"hai bên cần thống nhất"* khi đoạn trước đã nói hai bên là ai.
+
 **Vì sao:** theo quan sát của người duy trì (chưa đo), đây là lỗi hay gặp nhất ở văn bản tiếng Việt do AI viết. Một từ ghép bị viết thành từ đơn nên cụt nghĩa. Câu có thể vẫn đúng cấu trúc dù thiếu một tiếng, nên lỗi này dễ lọt qua kiểm tra chính tả. Một tiếng có thể là từ độc lập trong cấu trúc này nhưng không dùng được với cùng nghĩa hoặc cùng vai trò trong cấu trúc khác. Vì vậy, việc từ đó có tồn tại khi đứng riêng chưa đủ để kết luận cách dùng hiện tại là đúng.
 
 **Sửa:** *"Câu này đúng ngữ pháp nhưng đọc lên thấy hụt"* → *"...thấy **hụt hẫng**"*. *"Quy trình còn rườm"* → *"...còn **rườm rà**"*. Trước khi thêm tiếng, kiểm tra lần lượt: tiếng hiện tại có dùng độc lập với cùng nghĩa và cùng vai trò trong câu không; nó có kết hợp tự nhiên với những từ đứng cạnh không; thêm tiếng có hoàn chỉnh đúng ý hay chỉ đổi phong cách; văn bản có đang cố ý viết rút gọn không. Không chắc thì để nguyên.

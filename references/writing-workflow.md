@@ -36,8 +36,12 @@ Kiến thức đúng nhưng ngoài nguồn không tự thuộc nhiệm vụ biê
 ## Kê cụm khi biên tập toàn bài
 
 Chỉ làm trên tuyến bài (biên tập toàn bài hoặc viết từ brief/outline); sửa nhỏ không lập bảng kê. Trước khi
-sửa, đi qua từng đoạn trong phạm vi được giao và lập bảng kê cụm cho riêng mình, không ghi ra file và không
-dùng công cụ nào ngoài việc đọc. Đoạn không có nghi vấn vẫn ghi là đã xem.
+sửa, chạy một lượt dò từng câu và lập bảng kê cụm cho riêng mình, không ghi ra file và không dùng công cụ nào
+ngoài việc đọc. Lượt này đi qua mọi câu trong phạm vi được giao và áp cho từng câu ba phép thử nhận diện, gồm
+phép thử dịch sát của V9 trong `references/sentence-structure.md`, cùng hai phép thử tiếng đơn bị cắt và danh
+từ tập thể đứng trơ của V20 trong `references/missing-words.md`. Đừng chỉ dò các dạng đã có trong bảng dạng lỗi,
+vì bài mới thường mang dạng khác. Mỗi ứng viên thành một dòng của bảng kê. Câu không có ứng viên vẫn ghi là đã
+xem. Chỉ bắt đầu sửa sau khi đã dò hết phạm vi được giao, để việc tìm lỗi không bị lẫn với việc sửa.
 
 Mỗi dòng của bảng kê có: cụm như đang viết, đoạn chứa nó, pattern hoặc mục của bảng
 `references/ai-error-lexicon.md` bị nghi, căn cứ (ngữ vực, quy chiếu, tiếng đứng cạnh), cách sửa ở đơn vị
