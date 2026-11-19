@@ -25,7 +25,8 @@ dạng lỗi và bảng kê cụm vẫn giữ; bảng chỉ ghi những dạng �
 nói dịch sát (dịch ngược từng chữ, hỏi người Việt có nói khác không), V20 có phép thử cho tiếng đơn bị cắt và
 danh từ tập thể đứng trơ; tuyến bài đọc cả hai catalog và chạy một lượt dò từng câu trước khi sửa. Mục đầu
 tiên của `SKILL.md` là cổng đọc: biên tập hay viết cả bài thì mở workflow, hai catalog và bảng dạng lỗi trước
-khi trả bài, và yêu cầu chỉ trả bài đã sửa không miễn bước đọc này. Thêm ca
+khi trả bài, và yêu cầu chỉ trả bài đã sửa không miễn bước đọc này. Chốt 1 nói rõ thế nào là lỗi: cách viết
+của tác giả sai, cụt hoặc làm hiểu nhầm; có một cách viết khác cũng đúng thì giữ nguyên từng chữ. Thêm ca
 DT01–DT14 lấy từ sáu bài phát triển; chưa chạy cổng trên bốn bài chặn và chưa đo lại holdout.
 
 ### 0.16.2 (15/11/2026)

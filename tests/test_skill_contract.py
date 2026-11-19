@@ -671,6 +671,16 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, flat)
 
+    def test_first_safeguard_defines_an_error_against_the_author(self) -> None:
+        raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        first = raw.split("1. **Đúng quyền sửa.**", 1)[1].split("2. **Nghĩa hai chiều.**", 1)[0]
+        flat = " ".join(first.split())
+        for phrase in ("cách viết của tác giả sai, cụt hoặc làm người đọc hiểu nhầm",
+                       "chưa phải lỗi, nên giữ nguyên từng chữ",
+                       "đều là đổi giọng"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, flat)
+
     def test_detection_pass_before_fixing(self) -> None:
         raw = (ROOT / "references/writing-workflow.md").read_text(encoding="utf-8")
         section = raw.split("## Kê cụm khi biên tập toàn bài", 1)[1].split("\n## ", 1)[0]

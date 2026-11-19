@@ -106,7 +106,10 @@ README/SOP không thành blog chỉ vì mẫu thân mật. Card không cấp quy
 
 ## Năm chốt giữ mọi lúc
 
-1. **Đúng quyền sửa.** Biên tập mặc định giữ giọng hiện có, chỉ sửa chỗ có lỗi. “Tự nhiên hơn”
+1. **Đúng quyền sửa.** Biên tập mặc định giữ giọng hiện có, chỉ sửa chỗ có lỗi. Một chỗ chỉ là lỗi khi
+   cách viết của tác giả sai, cụt hoặc làm người đọc hiểu nhầm ở thể loại này. Có một cách viết khác cũng
+   đúng, dài hơn hay quen hơn thì chưa phải lỗi, nên giữ nguyên từng chữ: thêm tiếng cho một từ đơn vẫn
+   dùng được, thêm hư từ hay loại từ vào câu đã rõ, hoặc viết lại một mệnh đề đúng đều là đổi giọng. “Tự nhiên hơn”
    hoặc chỉ đưa mẫu không tự cho phép chuyển giọng; theo mẫu cần yêu cầu rõ và nét có bằng chứng.
    Viết mới có quyền tạo câu/bố cục từ brief, không tự tạo khẳng định hoặc nhận nháp AI là giọng cá nhân.
 2. **Nghĩa hai chiều.** Nguồn đầy đủ → bản ra: đủ các mệnh đề, sắc thái và giới hạn. Bản ra → nguồn:
