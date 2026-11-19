@@ -779,3 +779,18 @@ giữ 55 pattern.
 mỗi dòng có Không flag và ca giữ (HF08, HF09, HF12, HF13, HF15, HF16, HF17); bảng kê cụm khi biên tập
 toàn bài; script `scripts/scan-lexicon.py` tùy chọn theo Principle V 2.9.0. HF01–HF18 và LX01–LX29 là ca
 phát triển, không phải bằng chứng cải thiện; bằng chứng là bộ holdout Fio chấm (spec 036 O2; 14 bài cho 0.17.0, sửa ngày 17/11/2026).
+
+## 2026-11-19 · bộ bài phát triển D01–D10 (spec 037)
+
+**Nguồn:** T044 của spec 036 (`docs/benchmarks.md`, mục "Holdout 036"). Trên 14 bài holdout, 0.17.0 không
+sửa được nhiều lỗi hơn 0.16.2 trên cả Opus 5.5 và Sonnet 5.5. Script quét không trúng lỗi nào trong 33 lỗi
+thuộc nhóm từ vựng. Fio hoãn phát hành 0.17.0 ngày 17/11/2026 và mở spec 037.
+**Khác biệt:** bảng từ vựng 8 dòng chỉ khớp chuỗi đã biết, nên không nhận ra lỗi cùng dạng trong bài mới.
+**Phân loại:** khoảng trống ở khâu phát hiện, không phải pattern mới.
+**Quyết định:** spec 037 dạy phép thử theo hình dạng lỗi, viết từ một bộ bài phát triển riêng.
+Bộ D01–D10 gồm 10 bài mới, hai bài cho mỗi thể loại của holdout. D01–D05 do `claude-opus-5-5` sinh,
+D06–D10 do `gpt-6.1-sol` sinh. Dùng để chỉnh: D01–D03 và D06–D08; dùng làm cổng: D04, D05, D09 và D10.
+Một agent không sửa skill đề xuất 16 lỗi và 40 cụm cần giữ. Người chấm do Fio giao duyệt từng phiếu
+(quyết định 5, sửa ngày 18/11/2026) và giữ cả 16 lỗi đề xuất. Phiếu chốt có 36 lỗi, trong đó 15 lỗi
+thuộc bốn nhóm của bảng từ vựng, và 36 cụm cần giữ. Bài và phiếu nằm ngoài Git; mã băm ở
+`benchmarks/dev-037-manifest.json`. O2 vẫn mở cho đến khi có phép thử viết từ các phiếu này.

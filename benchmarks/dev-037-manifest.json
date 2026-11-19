@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "articles": [
+    {
+      "id": "D01",
+      "article_sha256": "92ff82e0b08864dbe4c9cb53f7d2340c16fa0eb6bc02a6cf9b7469d714cc8a4a",
+      "sheet_sha256": "fd862d98bf9c8c32aa756d29410dcb3640d70a06ade7d671983b3c018797feeb"
+    },
+    {
+      "id": "D02",
+      "article_sha256": "03ea2d4dd2e9d63d8a6f8a6cf2bc57b742327386bfb6e1d3be0ebf44db4a7393",
+      "sheet_sha256": "400698a62a2de02198a12c785364b8670e8f4dfa162e74e5be9c628ffaf06869"
+    },
+    {
+      "id": "D03",
+      "article_sha256": "91a834d24af5407c4050f891279b64243cdc85612c4605c731d7ea479725d2b0",
+      "sheet_sha256": "d976e0edb7a6b90b982dce44a64fc93c4273527d57512586ac6d5a281024fb87"
+    },
+    {
+      "id": "D04",
+      "article_sha256": "2e5f2913fc10bb9bfb1c43d4ea71f437ed8df3b65c2cfc5130c5f7ff33727ae8",
+      "sheet_sha256": "82bca2b91b509044ad91d712dcdb280ee26dba5d0c1adc88e4ce8685bdfad9a2"
+    },
+    {
+      "id": "D05",
+      "article_sha256": "8f9ea57e4789d3e05069b2fe1ceed060edd3332cecd3f881e95f2943903b9e46",
+      "sheet_sha256": "49d8c7e8d7248be6af89d13648afc4b8e2fb62adcb70f3e79da2610eef4fb0cf"
+    },
+    {
+      "id": "D06",
+      "article_sha256": "4039ba9303fc10ab013645f651590713081545d9f6320b08ce1bf959f48e770b",
+      "sheet_sha256": "b891f9920fd9a8d36a4ccbef48c246f3edd9102bb02ec87a5fdb45660f102af2"
+    },
+    {
+      "id": "D07",
+      "article_sha256": "5ac2d87836fc2eaca17f6e4e32367dbad22e6b7d1677c9336ab3ca99a2b56478",
+      "sheet_sha256": "793b5101169c5772fc4dfe0283598acb2b87d3949a8a73f6726ae7a472522591"
+    },
+    {
+      "id": "D08",
+      "article_sha256": "63f3a5f872cc961a026f90c15de6a7238dfc3be45ca676a4a8d40ce073d83c0d",
+      "sheet_sha256": "e4bd9863596909d694be844a14d7b2498e37af7d1ef2c7bbb2b40b715dee2350"
+    },
+    {
+      "id": "D09",
+      "article_sha256": "3e21beb455dc032fe190f3d1f11cefa309240477cfe5410d64c7d01e1649f519",
+      "sheet_sha256": "0df31e9bacd09d504dc6c207743fa0d0ca1d17fd0f7cd92986d4d199c5ad9165"
+    },
+    {
+      "id": "D10",
+      "article_sha256": "162aeb8bc713ce614fa21035fc2e3be9ceabff0a8e6aa503dfee4c94bfe80ec7",
+      "sheet_sha256": "3323db66ddf64667629a619c36ed27cb7dd56ec1aa9f63a38916b7dc4829f5ec"
+    }
+  ],
+  "manifest_sha256": "f2cd5400cdb68ea58eea52c87674243bf33549f669318765c3f947eca8007f99"
+}
