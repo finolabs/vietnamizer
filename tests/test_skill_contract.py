@@ -657,6 +657,20 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn(phrase, text)
         self.assertIn("ngoài hai catalog đã mở cho lượt dò", read("references/writing-workflow.md"))
 
+    def test_long_form_read_gate_comes_first(self) -> None:
+        raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        body = raw.split("\n---\n", 1)[1]
+        gate = body.split("## Trước khi làm", 1)[0]
+        for path in ("`references/writing-workflow.md`", "`references/missing-words.md`",
+                     "`references/sentence-structure.md`", "`references/ai-error-lexicon.md`"):
+            with self.subTest(path=path):
+                self.assertIn(path, gate)
+        flat = " ".join(gate.split())
+        for phrase in ("Chưa đọc xong bốn file này thì chưa trả bài",
+                       "quy định dạng đầu ra, không miễn bước đọc"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, flat)
+
     def test_detection_pass_before_fixing(self) -> None:
         raw = (ROOT / "references/writing-workflow.md").read_text(encoding="utf-8")
         section = raw.split("## Kê cụm khi biên tập toàn bài", 1)[1].split("\n## ", 1)[0]
