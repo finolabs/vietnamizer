@@ -556,7 +556,7 @@ class SkillContractTest(unittest.TestCase):
         self.assertNotIn("ai-error-lexicon", small_row)
         text = read("SKILL.md")
         for phrase in (
-            "Trên tuyến bài, tự đọc bảng và dò bài",
+            "Tự đọc bảng dạng lỗi và dò bài, nhưng không coi bảng là đủ",
             "không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào",
             "luôn rà soát V20",
         ):
@@ -632,6 +632,18 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(catalog=catalog):
                 self.assertIn(catalog, long_row)
                 self.assertNotIn(catalog, small_row)
+
+    def test_core_carries_the_three_questions(self) -> None:
+        text = read("SKILL.md")
+        for phrase in (
+            "hỏi ba câu cho từng câu văn, kể cả khi chưa mở catalog",
+            "dịch ngược từng chữ",
+            "có cần một từ hai tiếng chứa nó không",
+            "đã cho biết nhóm nào chưa",
+            "mở đúng catalog để đọc phép thử đầy đủ và Không flag trước khi sửa",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
 
     def test_detection_pass_before_fixing(self) -> None:
         raw = (ROOT / "references/writing-workflow.md").read_text(encoding="utf-8")
