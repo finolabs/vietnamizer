@@ -48,7 +48,10 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Chỉ review/nhận xét, không sửa | Trước khi nhận xét, đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
 
-Trên tuyến bài, trước khi sửa, hỏi ba câu cho từng câu văn, kể cả khi chưa mở catalog.
+Trên tuyến bài, mở cả `references/sentence-structure.md` và `references/missing-words.md` trước khi sửa câu nào,
+kể cả khi bài đọc trôi chảy và chưa thấy nghi vấn nào. Phép thử nhận diện của V9 và V20 nằm ở đó, và lỗi AI
+thường đọc rất trôi. Hai catalog này là ngoại lệ của các câu tiết kiệm đọc bên dưới. Sau đó, trước khi sửa,
+hỏi ba câu cho từng câu văn.
 (1) Một cụm động từ, khung câu hay từ nối khi dịch ngược từng chữ có ra ngay một cách nói quen của tiếng Anh,
 mà người Việt viết thể loại này thường nói khác không (V9)? (2) Một tiếng đơn làm thực từ, ở vai và nghĩa đang
 dùng, có cần một từ hai tiếng chứa nó không (V20)? (3) Một danh từ tập thể như *đội*, *nhóm*, *bên* đã cho biết
@@ -71,7 +74,7 @@ chưa có căn cứ thì giữ nguyên hoặc hỏi đúng điểm làm đổi n
 | Diễn đạt/đề mục/viện dẫn hoặc siêu dữ liệu ở tài liệu kỹ thuật/doanh nghiệp/học thuật | `profiles/enterprise-technical/rules.md` — K1–K7 |
 
 V/T là lỗi ngôn ngữ/typography; B/K phụ thuộc thể loại. Không đem một lỗi của blog sang hợp đồng.
-Catalog là bảng tra, không phải lệnh đọc mọi nhóm hay mẫu để cài vào bài. Tra từng mục hoặc
+Ngoài hai catalog bắt buộc của tuyến bài, catalog là bảng tra, không phải lệnh đọc mọi nhóm hay mẫu để cài vào bài. Tra từng mục hoặc
 khoảng heading khi công cụ hỗ trợ; nếu chỉ đọc được cả file, dừng ở file cần dùng. File đã nạp
 và còn nguyên trong context không cần đọc lại. Được cấp inline hết thì chỉ áp đúng phần, không
 nói đã gỡ context. Không có công cụ thì dùng phần được cấp, nêu giới hạn cần thiết.

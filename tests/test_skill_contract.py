@@ -636,7 +636,7 @@ class SkillContractTest(unittest.TestCase):
     def test_core_carries_the_three_questions(self) -> None:
         text = read("SKILL.md")
         for phrase in (
-            "hỏi ba câu cho từng câu văn, kể cả khi chưa mở catalog",
+            "hỏi ba câu cho từng câu văn",
             "dịch ngược từng chữ",
             "có cần một từ hai tiếng chứa nó không",
             "đã cho biết nhóm nào chưa",
@@ -644,6 +644,18 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
+
+    def test_long_form_route_must_open_both_catalogs(self) -> None:
+        text = read("SKILL.md")
+        for phrase in (
+            "Trên tuyến bài, mở cả `references/sentence-structure.md` và `references/missing-words.md` trước khi sửa câu nào",
+            "kể cả khi bài đọc trôi chảy và chưa thấy nghi vấn nào",
+            "Hai catalog này là ngoại lệ của các câu tiết kiệm đọc bên dưới",
+            "Ngoài hai catalog bắt buộc của tuyến bài, catalog là bảng tra",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        self.assertIn("ngoài hai catalog đã mở cho lượt dò", read("references/writing-workflow.md"))
 
     def test_detection_pass_before_fixing(self) -> None:
         raw = (ROOT / "references/writing-workflow.md").read_text(encoding="utf-8")
