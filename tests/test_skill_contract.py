@@ -556,7 +556,7 @@ class SkillContractTest(unittest.TestCase):
         self.assertNotIn("ai-error-lexicon", small_row)
         text = read("SKILL.md")
         for phrase in (
-            "Trên tuyến bài, tự đọc bảng và dò bài",
+            "Tự đọc bảng dạng lỗi và dò bài, nhưng không coi bảng là đủ",
             "không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào",
             "luôn rà soát V20",
         ):
@@ -585,15 +585,133 @@ class SkillContractTest(unittest.TestCase):
             declared += re.findall(r"(?m)^### ([VTBK]\d+)\.", (ROOT / relative).read_text(encoding="utf-8"))
         self.assertEqual(len(declared), 55)
 
+    def recognition_block(self, relative: str, pattern_id: str) -> str:
+        raw = (ROOT / relative).read_text(encoding="utf-8")
+        block = raw.split(f"### {pattern_id}. ", 1)[1].split("\n### ", 1)[0]
+        self.assertEqual(block.count("**Phép thử nhận diện"), 1 if pattern_id == "V9" else 2)
+        return " ".join(block.split())
+
+    def test_v9_calque_recognition_test(self) -> None:
+        block = self.recognition_block("references/sentence-structure.md", "V9")
+        test = block.split("**Phép thử nhận diện:**", 1)[1].split("**Vì sao:**", 1)[0]
+        for phrase in (
+            "Dịch ngược từng chữ sang tiếng Anh",
+            "người Việt viết bài thuộc thể loại này có thường nói khác không",
+            "Người đọc không biết tiếng Anh",
+            "Câu đọc trôi chảy chưa phải là bằng chứng",
+            "Không flag của phép thử",
+            "đã thành cách nói thường của tiếng Việt",
+            "người trong nghề",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, test)
+        self.assertGreaterEqual(test.count("→"), 3)
+
+    def test_v20_clipped_and_collective_recognition_tests(self) -> None:
+        block = self.recognition_block("references/missing-words.md", "V20")
+        clipped = block.split("**Phép thử nhận diện, tiếng đơn:**", 1)[1].split("**Phép thử nhận diện, danh từ tập thể:**", 1)[0]
+        collective = block.split("**Phép thử nhận diện, danh từ tập thể:**", 1)[1].split("**Vì sao:**", 1)[0]
+        for phrase in (
+            "tiếng đơn làm thực từ",
+            "văn viết cùng ngữ vực có thường dùng một từ hai tiếng chứa nó không",
+            "đọc Không flag của V20",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, clipped)
+        self.assertGreaterEqual(clipped.count("→"), 3)
+        for phrase in ("*nhóm*", "*bên*", "*phía*", "định ngữ, tên riêng hay một lần nhắc trước"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, collective)
+        self.assertGreaterEqual(collective.count("→") + collective.count("giữ"), 3)
+
+    def test_long_form_route_loads_both_test_catalogs(self) -> None:
+        raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        long_row = next(line for line in raw.splitlines() if line.startswith("| Biên tập toàn bài hoặc viết từ brief/outline |"))
+        small_row = next(line for line in raw.splitlines() if line.startswith("| Sửa một cụm/câu, rà soát cục bộ |"))
+        for catalog in ("`references/missing-words.md`", "`references/sentence-structure.md`"):
+            with self.subTest(catalog=catalog):
+                self.assertIn(catalog, long_row)
+                self.assertNotIn(catalog, small_row)
+
+    def test_core_carries_the_three_questions(self) -> None:
+        text = read("SKILL.md")
+        for phrase in (
+            "hỏi ba câu cho từng câu văn",
+            "dịch ngược từng chữ",
+            "có cần một từ hai tiếng chứa nó không",
+            "đã cho biết nhóm nào chưa",
+            "mở đúng catalog để đọc phép thử đầy đủ và Không flag trước khi sửa",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+
+    def test_long_form_route_must_open_both_catalogs(self) -> None:
+        text = read("SKILL.md")
+        for phrase in (
+            "Trên tuyến bài, mở cả `references/sentence-structure.md` và `references/missing-words.md` trước khi sửa câu nào",
+            "kể cả khi bài đọc trôi chảy và chưa thấy nghi vấn nào",
+            "Hai catalog này là ngoại lệ của các câu tiết kiệm đọc bên dưới",
+            "Ngoài hai catalog bắt buộc của tuyến bài, catalog là bảng tra",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+        self.assertIn("ngoài hai catalog đã mở cho lượt dò", read("references/writing-workflow.md"))
+
+    def test_long_form_read_gate_comes_first(self) -> None:
+        raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        body = raw.split("\n---\n", 1)[1]
+        gate = body.split("## Trước khi làm", 1)[0]
+        for path in ("`references/writing-workflow.md`", "`references/missing-words.md`",
+                     "`references/sentence-structure.md`", "`references/ai-error-lexicon.md`"):
+            with self.subTest(path=path):
+                self.assertIn(path, gate)
+        flat = " ".join(gate.split())
+        for phrase in ("Chưa đọc xong bốn file này thì chưa trả bài",
+                       "quy định dạng đầu ra, không miễn bước đọc",
+                       "File đã nạp và còn nguyên trong context thì không cần đọc lại",
+                       "host không có công cụ đọc file thì dùng phần được cấp"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, flat)
+
+    def test_recognition_examples_keep_meaning_and_exceptions(self) -> None:
+        self.assertIn("Nói trước là tôi không thành công", read("references/sentence-structure.md"))
+        self.assertNotIn("Nói thật, tôi không thành công", read("references/sentence-structure.md"))
+        self.assertIn("Ngoại lệ hẹp của quy tắc giữ này", read("references/missing-words.md"))
+        self.assertIn("Mỗi ngày tôi gửi tối đa một tin", read("references/sentence-structure.md"))
+        self.assertNotIn("Mỗi ngày tôi chỉ gửi một tin\"", read("references/sentence-structure.md"))
+
+    def test_first_safeguard_defines_an_error_against_the_author(self) -> None:
+        raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        first = raw.split("1. **Đúng quyền sửa.**", 1)[1].split("2. **Nghĩa hai chiều.**", 1)[0]
+        flat = " ".join(first.split())
+        for phrase in ("cách viết của tác giả sai, cụt hoặc làm người đọc hiểu nhầm",
+                       "chưa phải lỗi, nên giữ nguyên từng chữ",
+                       "đều là đổi giọng"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, flat)
+
+    def test_detection_pass_before_fixing(self) -> None:
+        raw = (ROOT / "references/writing-workflow.md").read_text(encoding="utf-8")
+        section = raw.split("## Kê cụm khi biên tập toàn bài", 1)[1].split("\n## ", 1)[0]
+        head = " ".join(section.split("Mỗi dòng của bảng kê", 1)[0].split())
+        for phrase in (
+            "lượt dò từng câu",
+            "đi qua mọi câu trong phạm vi được giao",
+            "ba phép thử nhận diện",
+            "Câu không có ứng viên vẫn ghi là đã xem",
+            "Chỉ bắt đầu sửa sau khi đã dò hết",
+            "sửa nhỏ không lập bảng kê",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, head)
+
     def test_inventory_section_on_long_form_route(self) -> None:
         raw = (ROOT / "references/writing-workflow.md").read_text(encoding="utf-8")
         self.assertLess(raw.index("## Kê cụm khi biên tập toàn bài"), raw.index("## Rà câu, đoạn và toàn bài"))
         text = read("references/writing-workflow.md")
         for phrase in (
             "Chỉ làm trên tuyến bài (biên tập toàn bài hoặc viết từ brief/outline); sửa nhỏ không lập bảng kê",
-            "đi qua từng đoạn trong phạm vi được giao",
-            "Đoạn không có nghi vấn vẫn ghi là đã xem",
-            "cụm như đang viết, đoạn chứa nó, pattern hoặc mục của bảng",
+                        "cụm như đang viết, đoạn chứa nó, pattern hoặc mục của bảng",
             "căn cứ (ngữ vực, quy chiếu, tiếng đứng cạnh), cách sửa ở đơn vị nhỏ nhất (chốt 4) và kết quả xét Không flag",
             "Mọi ứng viên của bảng dạng lỗi đều thành một dòng, kể cả khi Không flag cho giữ",
             "Nghi vấn tìm được khi đọc catalog cũng là một dòng",

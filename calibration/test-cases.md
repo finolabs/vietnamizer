@@ -595,3 +595,24 @@ Mỗi ca ứng với một fixture cùng số trong `tests/fixtures/lexicon/fixt
 | 27 | `LXF27`: *“--- ↵ title: rườm ↵ --- ↵  ↵ Đoạn có `rườm` và [link](https://x.test/rườm) ở đây.”* | Giữ nguyên | Front matter, code và địa chỉ link là vùng bảo toàn; script không trả ứng viên nào |
 | 28 | `LXF28`: *“Chị Lan nói: “Thủ tục rườm quá.””* | Giữ nguyên | Trích nguyên văn lời người khác là vùng bảo toàn; script bỏ qua chỗ khớp trong ngoặc kép |
 | 29 | `LXF29`: *“> Lưu ý: quy trình còn rườm.”* | *“> Lưu ý: quy trình còn rườm rà.”* | Blockquote làm ghi chú được xét như văn xuôi; script bỏ qua blockquote nên agent tự đọc và sửa |
+
+## DT01–DT14 · phép thử nhận diện dịch sát, tiếng đơn bị cắt và danh từ tập thể (spec 037)
+
+Ca lấy từ sáu bài phát triển dùng để chỉnh (D01–D03, D06–D08) của spec 037, phiếu do người đánh dấu được Fio chỉ định duyệt ngày 19/11/2026. Đây là ca phát triển đã dùng để viết phép thử nhận diện trong V9 và V20, không phải bằng chứng phép thử có ích; bằng chứng là bốn bài chặn D04, D05, D09, D10 rồi holdout của spec 037. Ca 9 đến 14 là ca chống sửa quá tay.
+
+| # | Đầu vào | Mong đợi | Vì sao |
+|---|---|---|---|
+| 1 | Blog cá nhân: *“Tôi không gửi nhiều hơn một tin mỗi ngày, vì chính tôi cũng ghét mấy nhóm nhắn suốt.”* | *“Mỗi ngày tôi gửi tối đa một tin, vì...”*; không dùng *chỉ gửi một tin*, vì có thể đọc thành ngày nào cũng gửi | V9: phủ định so sánh dịch từ *no more than* |
+| 2 | Blog cá nhân: *“Còn một chuyện nữa: tôi đã ôm hết mọi việc.”* | *“Còn một chuyện nữa là tôi đã ôm hết mọi việc.”*; giữ *ôm hết mọi việc* | V9 câu dẫn *one more thing:*, chạm T2; sửa một lần |
+| 3 | Blog cá nhân: *“Tôi nói trước: tôi không thành công rực rỡ gì đâu.”* | *“Nói trước là tôi không thành công rực rỡ gì đâu.”*; không đổi ý báo trước thành *nói thật* | V9 câu dẫn dịch sát cùng dấu hai chấm |
+| 4 | Bài chuyên môn SaaS: *“...chưa chắc còn sử dụng có giá trị.”* | *“...chưa chắc còn dùng sản phẩm thực sự.”* (hoặc *dùng sản phẩm hiệu quả*) | V9 danh từ trừu tượng dịch từ *meaningful usage* |
+| 5 | Giới thiệu phần mềm: *“Bạn đặt vài quy tắc cơ bản: mỗi ca cần ít nhất một bạn pha chế chính...”* | *“Bạn thiết lập vài quy tắc cơ bản...”*; dấu hai chấm trước danh sách quy tắc giữ hay tách theo T2 | V9 động từ dịch từ *set some rules* |
+| 6 | Bài chuyên môn: *“Hàng trả về từ điểm bán nằm trong kho nhưng không ai cập nhật trạng thái.”* | *“...nhưng không được cập nhật trạng thái.”* | V9 chủ ngữ *không ai* theo khung tiếng Anh thay cho bị động |
+| 7 | Bài chuyên môn SaaS: *“...nên lưu thêm sự kiện cụ thể: quy trình nào bị dừng, ai quyết định...”* | *“...quy trình nào bị dừng lại...”* | V20 tiếng đơn bị cắt; dấu hai chấm theo T2 |
+| 8 | Bài chuyên môn, câu hỏi cuối bài: *“Phần nào khó nhất với đội của bạn?”* | *“Phần nào khó nhất với đội ngũ của bạn?”* | V20 *đội* chỉ cả đội ngũ của người đọc |
+| 9 | Blog cá nhân bán hàng: *“...miễn phí ship...”* | Giữ nguyên | Không flag của phép thử V9: cách nói đã quen trong lời bán hàng thân mật |
+| 10 | Bài chuyên môn SaaS: *“...chỉ số churn đẹp lên.”* | Giữ nguyên | Không flag của phép thử V9: thuật ngữ người trong nghề dùng, V19 quyết |
+| 11 | Giới thiệu phần mềm: *“...không cần đội IT.”*; *“Đội của chúng tôi sẽ giúp bạn nhập danh sách nhân viên.”* | Giữ nguyên | V20: *đội* đã có định ngữ, hoặc là một nhóm làm việc cụ thể |
+| 12 | Blog và bài chuyên môn: *“...trong nhóm Zalo.”*; *“Phòng kinh doanh phản đối.”* | Giữ nguyên | V20: danh từ tập thể đã có tên |
+| 13 | Giới thiệu dịch vụ kho, đoạn trước đã nói doanh nghiệp và đơn vị kho: *“...hai bên cần thống nhất...”* | Giữ nguyên | V20: *bên* đã có quy chiếu |
+| 14 | Bài chuyên môn bán lẻ: *“...đang chạy khuyến mãi.”* | Giữ nguyên | Không flag của phép thử V9: cách nói quen trong ngành bán lẻ |
