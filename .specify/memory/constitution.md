@@ -1,5 +1,25 @@
 <!--
 Sync Impact Report
+- Version change: 2.9.0 -> 2.10.0 (MINOR: the version-sync set and the pre-release check list are
+  widened to match `AGENTS.md`; no principle's obligation is removed).
+- Owner approval: Fio, 21/11/2026, "Theo AGENTS.md đi vậy cần update constitution luôn", after four
+  conflicts between `AGENTS.md` and this constitution were reported.
+- Principle I: external sources are recorded in `docs/sources.md`, with a link kept from `README.md`
+  (was `README.md`).
+- Principle III and "Ràng buộc về gói": V-series and T-series content lives in the four catalogs in
+  `references/`; `SKILL.md` stays canonical for the workflow, gates, the five chốt and output (was
+  "`SKILL.md` là nguồn chuẩn cho workflow, V-series và T-series"). Pattern inventory changes update
+  `docs/patterns.md` and the README count and summary together (was the README inventory only).
+- "Ràng buộc về gói": version must match in `SKILL.md` `metadata.version`, the latest
+  `docs/changelog.md` entry, the README version summary and all three plugin manifests (was
+  `SKILL.md`, the README history entry and `.claude-plugin/plugin.json`).
+- Gate 5: the pre-release list adds `python3 scripts/package-plugin.py`, the strict Claude manifest
+  check and `agy plugin validate .`; the reinstall and byte check is kept.
+- Templates: `.specify/templates/` carry no copy of these rules; no change needed. `AGENTS.md` already
+  states the new text; no change needed.
+- No meaning-preservation chốt, protected span or pattern changed.
+- Previous amendment: 2.8.0 -> 2.9.0 (below).
+
 - Version change: 2.8.0 -> 2.9.0 (MINOR: Principle V allows optional offline scripts in the package; no
   obligation removed).
 - Owner approval: Fio, 15/11/2026, "Bản mày sửa" (spec 036 decision 6).
@@ -129,7 +149,8 @@ Sync Impact Report
 Mỗi quy tắc MUST mô tả một lỗi tiếng Việt cụ thể, giải thích vì sao đó là lỗi, nêu cách sửa
 và chỉ rõ khi nào MUST NOT flag. Quy tắc từ humanizer tiếng Anh, nhận định chung về model và
 lựa chọn phong cách không tự trở thành bằng chứng. Nguồn bên ngoài MUST được ghi trong
-`README.md` đúng với mức độ tin cậy; suy luận MUST được gọi đúng là suy luận.
+`docs/sources.md` đúng với mức độ tin cậy, và `README.md` MUST giữ đường dẫn tới trang đó; suy
+luận MUST được gọi đúng là suy luận.
 
 ### II. Giữ nghĩa và giọng trước khi làm câu hay hơn
 
@@ -143,10 +164,12 @@ căn cứ tương ứng MUST bị bỏ hoặc chuyển cho người xem. Bản t
 
 ### III. Tách quy tắc chung khỏi profile thể loại
 
-V-series và T-series trong `SKILL.md` MUST chỉ chứa những lỗi áp dụng được trên mọi thể loại
-mà cổng đầu vào cho phép. Phán đoán phụ thuộc thể loại, người đọc hoặc thanh ngữ vực MUST nằm
+V-series và T-series, do `SKILL.md` điều phối và nằm trong bốn catalog ở `references/`
+(`missing-words.md`, `sentence-structure.md`, `terms-and-lead-ins.md`, `typography.md`), MUST
+chỉ chứa những lỗi áp dụng được trên mọi thể loại mà cổng đầu vào cho phép. Phán đoán phụ thuộc thể loại, người đọc hoặc thanh ngữ vực MUST nằm
 trong profile tương ứng. Chỉ được chuyển pattern qua ranh giới này khi có bằng chứng gắn nhãn,
-các ca chống sửa quá tay và thay đổi đồng bộ trong inventory của `README.md`.
+các ca chống sửa quá tay và thay đổi đồng bộ trong bảng của `docs/patterns.md` cùng số lượng và
+tóm tắt trong `README.md`.
 
 ### IV. Hiệu chỉnh từ bằng chứng có nhãn
 
@@ -171,11 +194,15 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
 
 ## Ràng buộc về gói và dữ liệu
 
-- `SKILL.md` là nguồn chuẩn cho workflow, V-series và T-series.
-- Số hiệu V, T, B và K MUST liên tục. Khi thêm, bỏ hoặc đổi số pattern, `README.md` MUST đổi
-  trong cùng commit.
-- `metadata.version` trong `SKILL.md`, mục lịch sử mới nhất của `README.md` và
-  `.claude-plugin/plugin.json` MUST giống nhau.
+- `SKILL.md` là nguồn chuẩn cho workflow: thứ tự đọc, cổng dữ liệu và thể loại, năm chốt và
+  cách trả kết quả. Nội dung V-series nằm ở `references/missing-words.md`,
+  `references/sentence-structure.md` và `references/terms-and-lead-ins.md`; nội dung T-series nằm
+  ở `references/typography.md`. Mỗi pattern chỉ có một nguồn canonical.
+- Số hiệu V, T, B và K MUST liên tục. Khi thêm, bỏ hoặc đổi số pattern, bảng trong
+  `docs/patterns.md` và số lượng cùng tóm tắt trong `README.md` MUST đổi trong cùng commit.
+- `metadata.version` trong `SKILL.md`, mục mới nhất của `docs/changelog.md`, bản tóm tắt phiên
+  bản trong `README.md` và `version` trong ba manifest `.claude-plugin/plugin.json`,
+  `.codex-plugin/plugin.json`, `.antigravity-plugin/plugin.json` MUST giống nhau.
 - Giới hạn dòng giữ nguyên: `SKILL.md` 550, profile blog 320, profile kỹ thuật 220.
 - Tuyến hồ sơ giọng trong `SKILL.md` MAY tạo và dùng lại hồ sơ có tên từ văn bản người dùng dán
   hoặc chỉ định trong tác vụ, từ file export nền tảng người dùng tự đưa, hoặc từ trang của chính
@@ -247,8 +274,10 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
    policy số tự động quyết định edit. Quyết định owner ngày 16/10/2026 trong spec 007 (nhánh có key
    tự động thử Jev) bị thay thế bởi quyết định ngày 13/11/2026 và chỉ còn là lịch sử.
 5. Trước khi phát hành, MUST chạy và đọc output của `python3 scripts/validate-package.py`,
-   `npx skills add . --list` và `claude plugin validate .`. Sau đó cài lại gói cho mọi runtime
-   đang dùng bản chép và đối chiếu bytes đã cài.
+   `python3 scripts/package-plugin.py`, `npx skills add . --list`, `claude plugin validate .`,
+   `claude plugin validate .claude-plugin/plugin.json --strict` và `agy plugin validate .`, theo
+   danh sách trong `AGENTS.md`. Sau đó cài lại gói cho mọi runtime đang dùng bản chép và đối chiếu
+   bytes đã cài.
 
 ## Governance
 
@@ -259,4 +288,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.9.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-17
+**Version**: 2.10.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-21
