@@ -85,6 +85,45 @@ Số liệu cho thấy khâu phát hiện lỗi là chỗ hỏng chắc chắn. 
 Trên 14 bài này, bảng từ vựng cố định 8 dòng không bao quát được lỗi. Spec 037 sẽ làm lại khâu phát hiện và đo
 lại trên đúng 14 bài này.
 
+## Spec 037: ca phát triển và cổng chặn (21/11/2026)
+
+Đây là kết quả phát triển, không phải holdout. Ngày 21/11/2026, Fio quyết định không chạy cổng trên Cowork như
+plan P8. Cổng chạy trên Claude Code (`claude -p`, plugin cài từ file ZIP qua `--plugin-dir`, giống các vòng
+chỉnh T020), với `claude-opus-5-5` và `claude-sonnet-5-5`. Bản ứng viên là commit `1c3e9b7` trên main. File
+`~/.claude/CLAUDE.md` của người chạy vẫn được nạp trong mọi lượt, nên kết quả có thêm biến nhiễu này.
+
+**Cổng chặn T022.** Bốn bài chặn D04, D05, D09 và D10 có 4 lỗi nhóm từ vựng, 7 lỗi khác và 12 cụm cần giữ. Mỗi
+bài chạy một lượt cho mỗi model và mỗi phiên bản, tổng cộng 16 lượt, chấm bằng `benchmarks/holdout_036.py`.
+
+| Model | Phiên bản | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi |
+|---|---|---|---|---|
+| Opus 5.5 | 0.16.2 | 0/4 | 0/7 | 1/12 |
+| Opus 5.5 | ứng viên | 1/4 | 1/7 | 1/12 |
+| Sonnet 5.5 | 0.16.2 | 0/4 | 0/7 | 1/12 |
+| Sonnet 5.5 | ứng viên | 0/4 | 0/7 | 0/12 |
+
+Mức P3 đòi Opus sửa ít nhất một nửa và Sonnet ít nhất một phần ba số lỗi nhóm từ vựng, tức 2/4 cho mỗi model.
+Cả hai model đều không đạt, nên cổng trượt. Bản ứng viên không làm vỡ thêm cụm cần giữ nào so với 0.16.2. Trên
+sáu bài chỉnh, cũng bản này sửa được 6–7 trên 11 lỗi, nên các phép thử V9 và V20 hiện mới khớp với bài chỉnh,
+chưa áp dụng được cho bài mới.
+
+**Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
+Ca DT dùng nguyên đoạn văn trong bài chỉnh chứa câu của ca. Ca LX dùng đúng văn bản của fixture và được so khớp
+từng ký tự với cột Mong đợi. Ca HF và DT do agent chạy so với cột Mong đợi, chưa có người chấm lại.
+
+| Khối | Opus 5.5 | Sonnet 5.5 |
+|---|---|---|
+| HF01–HF17 | 15 đạt, 1 đạt một phần (HF02), 1 trượt (HF11) | 7 đạt, 3 đạt một phần (HF02, HF07, HF10), 3 trượt (HF01, HF04, HF11), 4 hiểu nhầm đầu vào |
+| DT01–DT08, ca cần sửa | 5/8 (sót DT04, DT05, DT06) | 5/8 (sót DT04, DT06, DT08) |
+| DT09–DT14, ca cần giữ | giữ đủ 8 đoạn | giữ đủ 8 đoạn |
+| LX01–LX29 | 14 khớp, 4 hiểu nhầm đầu vào, 11 lệch | 15 khớp, 6 hiểu nhầm đầu vào, 8 lệch |
+
+HF18 chưa chạy, vì ca này cần một hồ sơ thương hiệu đã lưu. Hiểu nhầm đầu vào nghĩa là model coi một đoạn rất
+ngắn (lời nhắn chat, nhãn nút, ghi chú) là lời nhờ của người dùng và hỏi lại bài cần sửa. Đây là lỗi của cách
+dựng ca, không phải của pattern. Trong các ca LX lệch, cả hai model đều chưa sửa hoặc sửa chưa đủ LX04, LX07, LX11, LX16 và LX23
+(*giữ nghĩa*, *bản dịch sát*, *Đội* đầu dòng danh sách), đều làm vỡ LX06 (*giữ nghĩa vụ*) và đều đổi dấu gạch
+nối mềm của LX26. Riêng Opus còn sửa *đội* viết thường giữa câu (LX24) và sửa trong lời trích (LX28).
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày

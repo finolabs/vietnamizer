@@ -36,13 +36,13 @@ Writers read D01–D03 and D06–D08 only (plan P2).
 - [x] T016 [US2] Write both tests in V20 of `references/missing-words.md`, examples from development sources only; T015 green
 - [x] T017 [US1] Red then green: `SKILL.md` long-form routing row names `references/missing-words.md` and `references/sentence-structure.md`; the small-edit row does not
 - [x] T018 [US1] Red then green: the detection pass at the head of "Kê cụm khi biên tập toàn bài" in `references/writing-workflow.md` (contracts/skill-text.md row 6); check `SKILL.md` stays ≤ 550 lines and the pattern count stays 55 with `python3 scripts/validate-package.py`
-- [ ] T019 [P] [US3] `calibration/test-cases.md` block DT: positive and guard cases for each test from the tuning articles; agent runs of DT, HF01–HF18 and LX01–LX29 recorded as a development result (DT block written; agent runs of DT, HF01–HF18 and LX01–LX29 not yet run or recorded)
+- [x] T019 [P] [US3] `calibration/test-cases.md` block DT: positive and guard cases for each test from the tuning articles; agent runs of DT, HF01–HF18 and LX01–LX29 recorded as a development result (DT block written; agent runs of DT, HF01–HF17 and LX01–LX29 on candidate 1c3e9b7 recorded 21/11/2026 in `docs/benchmarks.md` "Spec 037"; HF18 not run, it needs a saved brand profile)
 - [x] T020 [US1] Development iteration (plan P8): run Opus 5.5 and Sonnet 5.5 on Claude Code over the tuning articles, score with `holdout_036.py`, adjust the tests from those articles only; stop when the tuning articles clear the P3 ratios
 - [ ] T021 Pull request for Phase 4 with `review-gate` reviews posted; Vietnamese text through Vietnamizer's own review; merge only on Fio's go
 
 ## Phase 5: Gate and freeze (FR-012)
 
-- [ ] T022 Gate run on Cowork (plan P3): 0.16.2 and the candidate on D04–D05 and D09–D10, Opus 5.5 and Sonnet 5.5; record counts in the PR or `docs/benchmarks.md` development section. Fail: back to T020 (the gate articles then become tuning articles and the next gate needs new development articles)
+- [ ] T022 Gate run on Cowork (plan P3): 0.16.2 and the candidate on D04–D05 and D09–D10, Opus 5.5 and Sonnet 5.5; record counts in the PR or `docs/benchmarks.md` development section. Fail: back to T020 (the gate articles then become tuning articles and the next gate needs new development articles). **Run 21/11/2026 on Claude Code `-p`** (Fio: no Cowork): candidate 1c3e9b7 Opus 1/4, Sonnet 0/4 lexicon-kind, guards 1/12 and 0/12 (0.16.2: 0/4, 0/4, guards 1/12 each); **failed**, counts in `docs/benchmarks.md` "Spec 037"
 - [ ] T023 Freeze: record the candidate commit; build the test skill from it
 
 ## Phase 6: Holdout batch (runner only; FR-013–FR-017)
