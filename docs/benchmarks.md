@@ -107,6 +107,22 @@ Cả hai model đều không đạt, nên cổng trượt. Bản ứng viên kh�
 sáu bài chỉnh, các bản ở lượt chỉnh c9 và c10 (spec 037, mục O2) sửa được 6–7 trên 11 lỗi nhóm từ vựng, nên
 các phép thử V9 và V20 hiện mới khớp với bài chỉnh, chưa áp dụng được cho bài mới.
 
+**Chẩn đoán T030** (spec 037, quyết định 8; ngày 23/11/2026). Bản ứng viên `1c3e9b7` chạy trên cả mười bài D01–D10,
+mỗi bài một lượt cho mỗi model, trên Claude Code `-p`. Opus được yêu cầu trả kèm bảng kê cụm của skill. Sonnet bị
+bộ lọc an toàn của API chặn ở 9 trên 10 lượt có yêu cầu này, nên Sonnet chỉ chạy biên tập bài, không kèm bảng kê.
+Số liệu chấm theo phiếu đã thêm hai cách sửa ngày 23/11/2026 (spec 037, mục O2).
+
+| Model | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi |
+|---|---|---|---|
+| Opus 5.5 | 10/15 | 1/21 | 6/36 |
+| Sonnet 5.5 | 6/15 | 1/21 | 0/36 |
+
+Với Opus, bảng kê cho biết lỗi bị sót ở bước nào. Trong 5 lỗi nhóm từ vựng chưa sửa, 4 lỗi không có dòng nào
+trong bảng kê (D01#3, D02#4, D03#2 và D05#1, lỗi từ nghề hiểu sai *xếp hàng*), còn 1 lỗi có trong bảng kê nhưng
+được giữ (D09#3, *tồn*). Như vậy chỗ hỏng chính là bước dò, chưa phải luật giữ. Bốn trong sáu cụm cần giữ bị
+đổi nằm ở D10, nơi bộ lọc an toàn cắt câu trả lời của Opus giữa bài, nên bản chấm D10 thiếu hai mục cuối. Sonnet
+sửa được ba lỗi của D01, một lỗi của D02, D03 và D07, và không sửa lỗi nào trong bốn bài chặn cũ.
+
 **Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
 Ca DT dùng nguyên đoạn văn trong bài chỉnh chứa câu của ca. Ca LX dùng đúng văn bản của fixture và được so khớp
 từng ký tự với cột Mong đợi. Ca HF và DT do agent chạy so với cột Mong đợi, chưa có người chấm lại.

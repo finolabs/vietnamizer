@@ -58,6 +58,11 @@ O2 record (Fio, 19/11/2026, relayed by the coordinator from the PR 81 Codex revi
   - V9 *"Bạn đặt vài quy tắc cơ bản"* → *"thiết lập vài quy tắc"* (D03, DT05): not a sheet row; taken from D03 as a word-for-word *set some rules*; Fio keeps it.
   - V9 *"...nhưng không ai cập nhật trạng thái"* → *"...không được cập nhật trạng thái"* (D02 sheet #4, DT06): marked as a calque with no note; agent's reading: *không ai* copies the English *no one updated* subject where Vietnamese writing of this kind uses the passive.
 
+O2 record (Fio, 23/11/2026, native question tool, after the T030 diagnostic):
+
+- Changed: the D01 sheet (#2) also accepts *"Nói trước là"*, and the D05 sheet (#4) also accepts *"Do TTPP Thuận An đã hoạt động đủ sáu cửa xuất hàng"*; Opus 5.5 wrote both in T030 and the sheets had counted them as unfixed. `benchmarks/dev-037-manifest.json` records the two new sheet hashes.
+- Accepted risk: Fio marks the D11–D22 sheets himself and also approves examples under O2. The isolation rule binds agent sessions only, so gate content could reach skill text through the person who marks it; Fio accepts that risk rather than naming another marker.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Calques are caught in a fresh AI article (Priority: P1)
