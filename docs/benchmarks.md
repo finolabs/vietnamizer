@@ -127,6 +127,26 @@ cần giữ của D10 cho Opus. D10 không có dòng lỗi nào, nên hai cột 
 D04#g1 và D09#g1. Sonnet
 sửa được ba lỗi của D01, một lỗi của D02, D03 và D07, và không sửa lỗi nào trong bốn bài chặn cũ.
 
+**Vòng phát triển T034 (23–24/11/2026).** Mọi lượt dùng cùng một lời nhờ biên tập thường, không đòi bảng kê, mỗi
+model chạy một lượt cho mỗi bài D01–D10 trên Claude Code `-p`. T034a và T034b chạy bản `c114d3f` (phép thử viết
+lại ở T031). T034c chạy bản `0da20a7`: đưa `references/terms-and-lead-ins.md` (phép thử V19) vào bước đọc của
+tuyến bài, vì ở T034a/b không model nào mở file này, và thêm vào `SKILL.md` danh sách dạng hay lọt khi bài đọc
+trôi, viết theo luật chứ không chép từ bài nào. Dòng bản cũ là `1c3e9b7`, chạy cùng lời nhờ.
+
+| Lượt | Bản | Opus, nhóm từ vựng | Opus, cụm giữ bị vỡ | Sonnet, nhóm từ vựng | Sonnet, cụm giữ bị vỡ |
+|---|---|---|---|---|---|
+| T030o / T030s | `1c3e9b7` (bản cũ) | 9/15 | 1/36 | 6/15 | 0/36 |
+| T034a | `c114d3f` | 6/15 | 3/36 | 1/15 | 0/36 |
+| T034b | `c114d3f` | 5/15 | 0/36 | 2/15 | 0/36 |
+| T034c | `0da20a7` | 8/15 | 0/36 | 2/15 | 0/36 |
+
+Ở T034c, Opus sửa được cả hai lỗi từ nghề hiểu sai (D02#1, D05#1), là hai lỗi chưa model nào sửa ở T034a/b.
+Sonnet chỉ sửa D05#4 và D09#3. Ở hầu hết câu có lỗi, bài Sonnet trả về giữ nguyên từng chữ, dù nó đã mở các
+catalog chứa phép thử. Ở D01#4, cả T034a lẫn T034c, Sonnet đều viết *"Tôi chỉ gửi một tin mỗi ngày"*, là một
+cách sửa đúng ý nhưng chưa có trong cột Sửa chấp nhận của phiếu, nên chưa được tính. Ngoài các cụm đã đánh dấu,
+Opus sửa 55 chỗ và Sonnet sửa 16 chỗ, chưa ai chấm. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên chênh
+lệch một hai lỗi giữa các lượt chưa đủ để kết luận.
+
 **Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
 Ca DT dùng nguyên đoạn văn trong bài chỉnh chứa câu của ca. Ca LX dùng đúng văn bản của fixture và được so khớp
 từng ký tự với cột Mong đợi. Ca HF và DT do agent chạy so với cột Mong đợi, chưa có người chấm lại.
