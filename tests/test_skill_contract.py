@@ -721,10 +721,10 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, flat)
         self.assertNotIn("; họ cần", flat)
-        for phrase in ("phần sau nêu nguyên nhân", "*đứng*, *sập*", "*ăn hàng*"):
+        for phrase in ("chưa nói rõ quan hệ", "tách câu", "Động từ tự đủ nghĩa", "*ăn hàng*"):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, flat)
-        for phrase in ("nhất là sau *tính*", "*xả hàng*", "*đẩy hàng*"):
+        for phrase in ("nhất là sau *tính*", "*xả hàng*", "*đẩy hàng*", "*đứng*"):
             with self.subTest(absent=phrase):
                 self.assertNotIn(phrase, flat)
 
