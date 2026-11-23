@@ -717,7 +717,7 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn(tag, block)
         flat = " ".join(block.split())
         for phrase in ("Mỗi dạng chỉ là chỗ để hỏi", "không phải lệnh sửa", "phép thử và Không flag trong catalog vẫn quyết định",
-                       "*Lưu ý:*", "bài quảng cáo dùng quen thì giữ"):
+                       "*Lưu ý:*", "lời dẫn trước lời trích thì giữ", "bài quảng cáo dùng quen thì giữ"):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, flat)
         self.assertNotIn("; họ cần", flat)
