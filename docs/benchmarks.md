@@ -131,7 +131,9 @@ sửa được ba lỗi của D01, một lỗi của D02, D03 và D07, và khôn
 model chạy một lượt cho mỗi bài D01–D10 trên Claude Code `-p`. T034a và T034b chạy bản `c114d3f` (phép thử viết
 lại ở T031). T034c chạy bản `0da20a7`: đưa `references/terms-and-lead-ins.md` (phép thử V19) vào bước đọc của
 tuyến bài, vì ở T034a/b không model nào mở file này, và thêm vào `SKILL.md` danh sách dạng hay lọt khi bài đọc
-trôi, viết theo luật chứ không chép từ bài nào. Dòng bản cũ là `1c3e9b7`, chạy cùng lời nhờ.
+trôi, viết theo luật chứ không chép từ bài nào. T034d chạy bản `29ec914`, sau review: danh sách bỏ dạng câu chấm
+phẩy vì nó bám sát một lỗi đã đánh dấu (D01#3), bỏ các dạng catalog V9 không có ca giữ để quyết, và giữ nhãn
+*Lưu ý:*, *Ghi chú:* ở dạng dấu hai chấm. Dòng bản cũ là `1c3e9b7`, chạy cùng lời nhờ.
 
 | Lượt | Bản | Opus, nhóm từ vựng | Opus, cụm giữ bị vỡ | Sonnet, nhóm từ vựng | Sonnet, cụm giữ bị vỡ |
 |---|---|---|---|---|---|
@@ -139,13 +141,17 @@ trôi, viết theo luật chứ không chép từ bài nào. Dòng bản cũ là
 | T034a | `c114d3f` | 6/15 | 3/36 | 1/15 | 0/36 |
 | T034b | `c114d3f` | 5/15 | 0/36 | 2/15 | 0/36 |
 | T034c | `0da20a7` | 8/15 | 0/36 | 2/15 | 0/36 |
+| T034d | `29ec914` | 7/15 | 2/36 | 3/15 | 0/36 |
 
-Ở T034c, Opus sửa được cả hai lỗi từ nghề hiểu sai (D02#1, D05#1), là hai lỗi chưa model nào sửa ở T034a/b.
-Sonnet chỉ sửa D05#4 và D09#3. Ở hầu hết câu có lỗi, bài Sonnet trả về giữ nguyên từng chữ, dù nó đã mở các
-catalog chứa phép thử. Ở D01#4, cả T034a lẫn T034c, Sonnet đều viết *"Tôi chỉ gửi một tin mỗi ngày"*, là một
-cách sửa đúng ý nhưng chưa có trong cột Sửa chấp nhận của phiếu, nên chưa được tính. Ngoài các cụm đã đánh dấu,
-Opus sửa 55 chỗ và Sonnet sửa 16 chỗ, chưa ai chấm. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên chênh
-lệch một hai lỗi giữa các lượt chưa đủ để kết luận.
+Opus đã sửa D02#1 (*hàng chậm*) ở cả T034a và T034b. Lỗi từ nghề còn lại, D05#1 (*xếp hàng*), chỉ được sửa ở
+T034c và không được sửa lại ở T034d, nên một lượt chưa đủ để nói việc đưa V19 vào bước đọc đã giải quyết lỗi này.
+Hai cụm giữ Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a. Sonnet sửa được 3/15 ở T034d (D01#6, D05#4,
+D09#3), vẫn xa mức khoảng một phần ba của cổng chặn; ở hầu hết câu có lỗi, bài Sonnet trả về giữ nguyên từng
+chữ, dù nó đã mở các catalog chứa phép thử. Ở D01#4, T034a và T034c, Sonnet viết *"Tôi chỉ gửi một tin mỗi
+ngày"*. Phiếu D01 nhận *"Mỗi ngày tôi chỉ gửi một tin"*, còn ca DT01 không nhận *chỉ gửi*, vì có thể đọc thành
+ngày nào cũng gửi; hai nguồn này vênh nhau từ trước vòng T034 và chưa được phân xử. Ngoài các cụm đã đánh dấu,
+ở T034d Opus sửa 45 chỗ và Sonnet sửa 7 chỗ, chưa ai chấm. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên
+chênh lệch một hai lỗi giữa các lượt chưa đủ để kết luận.
 
 **Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
 Ca DT dùng nguyên đoạn văn trong bài chỉnh chứa câu của ca. Ca LX dùng đúng văn bản của fixture và được so khớp
