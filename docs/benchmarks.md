@@ -142,6 +142,7 @@ phẩy vì nó bám sát một lỗi đã đánh dấu (D01#3), bỏ các dạng
 | T034b | `c114d3f` | 5/15 | 0/36 | 2/15 | 0/36 |
 | T034c | `0da20a7` | 9/15 | 0/36 | 3/15 | 0/36 |
 | T034d | `29ec914` | 8/15 | 2/36 | 5/15 | 0/36 |
+| T034e | `45a552e` | 8/15 | 0/36 | 3/15 | 0/36 |
 
 Opus đã sửa D02#1 (*hàng chậm*) ở cả T034a và T034b. Lỗi từ nghề còn lại, D05#1 (*xếp hàng*), chỉ được sửa ở
 T034c và không được sửa lại ở T034d, nên một lượt chưa đủ để nói việc đưa V19 vào bước đọc đã giải quyết lỗi này.
@@ -156,8 +157,12 @@ Bảng trên chấm theo phiếu sau các phán quyết của Fio ngày 24/11/20
 này của Opus ở T034c/d và của Sonnet ở T034d bị tính là trượt. Ở D01#4, phiếu nhận thêm *"Tôi chỉ gửi một tin mỗi
 ngày"*, cách Sonnet viết ở T034a và T034c, và *"Tôi gửi tối đa một tin mỗi ngày"*, cách Sonnet viết ở T034d; ca
 DT01 bỏ câu không nhận *chỉ gửi*. Các phán quyết chỉ đổi
-các ô của T034; số của T030 không đổi. Ngoài các cụm đã đánh dấu,
-ở T034d Opus sửa 45 chỗ và Sonnet sửa 7 chỗ, chưa ai chấm. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên
+các ô của T034; số của T030 không đổi. T034e chạy bản `45a552e`, sau review dự phòng của PR 91:
+dạng dấu hai chấm giữ câu có phần sau nêu nguyên nhân (ca HF05), dạng động từ một tiếng giữ động từ tự đủ nghĩa như
+*đứng* (dòng giữ D09#g2), dạng tiếng đơn bỏ gợi ý trùng với lỗi D09#3, và dạng từ nghề dùng ví dụ người ngoài nghề dễ
+hiểu sai. Ở T034e, Opus sửa D01#6, D02#1, D02#4, D02#5, D04#1, D05#1, D05#4 và D09#3, Sonnet sửa D01#4, D02#4 và
+D05#4; không model nào làm vỡ cụm giữ nào. Ngoài các cụm đã đánh dấu,
+ở T034d Opus sửa 45 chỗ và Sonnet sửa 7 chỗ, ở T034e Opus sửa 42 chỗ và Sonnet sửa 2 chỗ, chưa ai chấm. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên
 chênh lệch một hai lỗi giữa các lượt chưa đủ để kết luận.
 
 **Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
