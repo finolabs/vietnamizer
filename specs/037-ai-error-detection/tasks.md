@@ -17,7 +17,7 @@
 - [x] T005 [P] [US5] `references/ai-error-lexicon.md` intro and `scripts/lexicon_check.py` docstring: rows are known examples, an article with no hit is not clean, the scanner is a maintainer tool outside the package; public Vietnamese text through Vietnamizer
 - [x] T006 [P] [US5] Consumer documents: `AGENTS.md` (file table, "Không có evaluator ngoài"), `README.md`, `docs/architecture.md`, `docs/usage.md`, `docs/plugin-distribution.md`, `PRIVACY.md`, `SECURITY.md`: the package is Markdown only, the scanner is a source-only maintainer tool; public Vietnamese text through Vietnamizer in Fio's voice
 - [x] T007 [US5] `docs/changelog.md` 0.17.0 entry (still unreleased): no scanner in the package; build both archives with `scripts/package-skill.sh` and `python3 scripts/package-plugin.py`, check neither holds a script (SC-006); run `python3 scripts/validate-package.py`, `tests.test_package_security`, `tests.test_skill_contract`, `tests.test_scan_lexicon`, `tests.test_distribution` (one per command)
-- [ ] T008 [US5] Pull request for Phase 2 with `review-gate` code and security reviews posted; merge only on Fio's go
+- [x] T008 [US5] Pull request for Phase 2 with `review-gate` code and security reviews posted; merge only on Fio's go (PR #76: code and security reviews APPROVE at head ff7dc26, merged by Fio as c914e74)
 
 ## Phase 3: Development pool (FR-009, FR-010)
 
