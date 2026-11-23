@@ -28,7 +28,7 @@
 
 ## Phase 4: Recognition tests and detection pass (US1, US2, US3; one pull request)
 
-Writers read D01–D03 and D06–D08 only (plan P2).
+Writers read D01–D03 and D06–D08 only (plan P2); since decision 8 they read D01–D10 and never D11–D22.
 
 - [x] T013 [US1] Red: guards in `tests/test_skill_contract.py` for the V9 calque test (contracts/skill-text.md rows 1 and 4)
 - [x] T014 [US1] Write **Phép thử nhận diện** for V9 in `references/sentence-structure.md` (research.md R2), with at least three examples from the tuning articles or HF/LX, and its **Không flag**; T013 green
@@ -44,16 +44,16 @@ Writers read D01–D03 and D06–D08 only (plan P2).
 
 Writers may read D01–D10. Nobody who edits skill text, rules, calibration or tests opens D11–D22 or their sheets.
 
-- [ ] T030 Diagnostic run on D01–D10 with the candidate, Opus 5.5 and Sonnet 5.5 on Claude Code `-p`: per marked error, not flagged / flagged and kept (reason) / fixed; raw outputs kept outside Git; counts in `docs/benchmarks.md` "Spec 037"
+- [ ] T030 Diagnostic run on D01–D10 with the candidate, Opus 5.5 and Sonnet 5.5 on Claude Code `-p`: per marked error, not flagged / flagged and kept (reason) / fixed; raw outputs kept outside Git; counts in `docs/benchmarks.md` "Spec 037". The prompt asks for the skill's own phrase inventory ("Kê cụm khi biên tập toàn bài") after the article; a first attempt on 23/11/2026 that asked for every phrase weighed with reasons was refused by the API safeguards in 19 of 20 runs
 - [ ] T031 [US1] [US2] Red then green: restructure the three tests from T030's result: an ambiguity question that also reaches V19 trade terms, keep rules for operational genres narrowed to labels, table cells and bullets, examples as rule-based fix and keep pairs with no example quoted from a scored article; guards in `tests/test_skill_contract.py`
-- [ ] T032 [P] Generate D15–D16 with `claude-opus-5-5` and D17–D22 with `gpt-6.1-sol` (research.md R5 prompt), five genres across D11–D22, stored with D11–D14 outside Git; a fresh agent pre-marks all twelve
-- [ ] T033 Fio, or a marker Fio names, reviews the twelve sheets (decision 5); commit ids and SHA-256 of D11–D22 in `benchmarks/dev-037-manifest.json`; fewer than 20 lexicon-kind errors in total means more articles before T035
+- [ ] T032 [P] Generate D15–D16 with `claude-opus-5-5` and D17–D22 with `gpt-6.1-sol` (research.md R5 prompt), each by a fresh agent that loads no skill and reads no file; five genres across D11–D22; all twelve in `artifacts/dev-037-gate2/articles/` with their own `artifacts/dev-037-gate2/plan.json` (id, generator, genre); a fresh agent pre-marks all twelve
+- [ ] T033 Fio, or a marker Fio names, reviews the twelve sheets (decision 5); commit ids and SHA-256 of D11–D22 in a new `benchmarks/dev-037-gate2-manifest.json` built with `holdout_036.py manifest artifacts/dev-037-gate2/articles`; fewer than 20 lexicon-kind errors in total means more articles before T035
 - [ ] T034 Development iteration on D01–D10 only (as T020), scored with `holdout_036.py`, raw outputs kept
 - [ ] T035 Gate run (plan P3 as amended): 0.16.2 and the candidate on D11–D22, two runs per model per article, on Claude Code `-p`; counts in `docs/benchmarks.md`. Pass: T023. Fail: Fio decides between another round and stopping spec 037
 
 ## Phase 5: Gate and freeze (FR-012)
 
-- [ ] T022 Gate run (plan P3; on Claude Code `-p` since Fio's 21/11/2026 ruling): 0.16.2 and the candidate on D04–D05 and D09–D10, Opus 5.5 and Sonnet 5.5; record counts in the PR or `docs/benchmarks.md` development section. Fail: back to T020 (the gate articles then become tuning articles and the next gate needs new development articles). **Run 21/11/2026 on Claude Code `-p`** (Fio: no Cowork): candidate 1c3e9b7 Opus 1/4, Sonnet 0/4 lexicon-kind, guards 1/12 and 0/12 (0.16.2: 0/4, 0/4, guards 1/12 each); **failed**, counts in `docs/benchmarks.md` "Spec 037"
+- [x] T022 Gate run (plan P3; on Claude Code `-p` since Fio's 21/11/2026 ruling): 0.16.2 and the candidate on D04–D05 and D09–D10, Opus 5.5 and Sonnet 5.5; record counts in the PR or `docs/benchmarks.md` development section. Fail: back to T020 (the gate articles then become tuning articles and the next gate needs new development articles). **Run 21/11/2026 on Claude Code `-p`** (Fio: no Cowork): candidate 1c3e9b7 Opus 1/4, Sonnet 0/4 lexicon-kind, guards 1/12 and 0/12 (0.16.2: 0/4, 0/4, guards 1/12 each); **failed**, counts in `docs/benchmarks.md` "Spec 037"; the next gate is T035
 - [ ] T023 Freeze: record the candidate commit; build the test skill from it
 
 ## Phase 6: Holdout batch (runner only; FR-013–FR-017)
@@ -77,7 +77,7 @@ Writers may read D01–D10. Nobody who edits skill text, rules, calibration or t
 | FR-008 lexicon kept, scanner out | T002–T007 |
 | FR-009–FR-010 development pool | T009–T012 |
 | FR-011 isolation | all; T024–T027 by the runner |
-| FR-012 gate, freeze, two runs | T022, T023, T027 |
+| FR-012 gate, freeze, two runs | T022, T030–T035, T023, T027 |
 | FR-013–FR-017 measurement | T024–T027 |
 | FR-018 release | T029 |
 | SC-001–SC-005 | T026, T027 |
@@ -88,5 +88,6 @@ Writers may read D01–D10. Nobody who edits skill text, rules, calibration or t
 
 - Phase 2 is independent of Phases 3–4 except `tests/test_skill_contract.py` and `references/writing-workflow.md` (Phase 4 starts after Phase 2 merges).
 - T009 before T010–T012; T011 before T014, T016, T019.
+- Phase 4b after the replan pull request merges: T030 before T031; T031 before T034; T032 before T033; T033 and T034 before T035; T035 passes before T023.
 - Phase 5 after Phase 4 merges; Phase 6 after T023; Phase 7 after T027 and Fio's go.
 - Parallel: T005 ∥ T006; T015 ∥ T014 (different files).

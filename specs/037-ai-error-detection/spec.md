@@ -32,12 +32,12 @@ Source: `docs/benchmarks.md` "Holdout 036" (main `ccfe199`). Out-of-span edits (
 
 ## Settled decisions after the T022 gate (Fio, 23/11/2026, native question tool)
 
-8. **Second development round, designed from a root-cause review.** The T022 gate failed (Opus 1/4, Sonnet 0/4 lexicon-kind errors). An advisor review, read-only and by a Claude reviewer on a separate install, found that the test examples quote 7 of the 11 tuning errors word for word, that keep rules in the same catalogs veto 3 of the 4 gate errors, that no test reaches V19 (trade terms read the wrong way), that tuning and gate articles differ in genre, and that a 4-error gate cannot tell a working change from noise. Fio chose to follow its plan:
+8. **Second development round, designed from a root-cause review.** The T022 gate failed (Opus 1/4, Sonnet 0/4 lexicon-kind errors). An advisor review, read-only and by a Claude reviewer on a separate install, found that the test examples quote 7 of the 11 tuning errors word for word, that keep rules in the same catalogs likely veto 3 of the 4 gate errors (its reading from the sheets and the rules; the raw outputs were lost), that no test reaches V19 (trade terms read the wrong way), that tuning and gate articles differ in genre, and that a 4-error gate cannot tell a working change from noise. Fio chose to follow its plan:
    - D04, D05, D09 and D10 become tuning articles, so all of D01–D10 tune.
    - The round starts with a diagnostic run on D01–D10 that records, for every marked error, whether the phrase was not flagged, flagged and kept (with the reason given), or fixed; raw outputs are kept.
-   - Tests change by structure, not by more examples from scored articles: a question on ambiguity that also reaches V19 trade terms; keep rules for operational genres narrowed to labels, table cells and bullets; examples written as rule-based fix and keep pairs; no example quoted from an article that is scored.
-   - A new gate pool D11–D22: twelve articles, six by `claude-opus-5-5` (D11–D16) and six by `gpt-6.1-sol` (D17–D22), across the five genres, marked as decision 5 says. The gate needs at least 20 lexicon-kind errors across the pool, aiming at 4 or more per kind; when the marked sheets hold fewer, more articles are added before the gate runs. D11–D14 were written on 23/11/2026 and count toward the six by Opus.
-   - The gate runs on Claude Code `-p` (Fio, 21/11/2026), two runs per model per article, raw outputs kept; P3's ratios apply to the pooled count.
+   - Tests change by structure, not by more examples from scored articles: a question on ambiguity that also reaches V19 trade terms, asked only when the text itself shows a second meaning or a reader outside the trade could take the everyday one; keep rules for operational genres narrowed to labels, table cells and bullets; the V15 keep rule for *việc* plus a clause no longer protects a causal *Với việc X, Y*; examples written as rule-based fix and keep pairs; no example quoted from an article that is scored.
+   - A new gate pool D11–D22: twelve articles, six by `claude-opus-5-5` (D11–D16) and six by `gpt-6.1-sol` (D17–D22), across the five genres, marked as decision 5 says. The gate needs at least 20 lexicon-kind errors across the pool and at least 4 per kind; when the marked sheets hold fewer, more articles are added before the gate runs. D11–D14 were written on 23/11/2026 by a fresh `claude-opus-5-5` subagent that loaded no skill and read no file, with research R5's prompt, and count toward the six by Opus; the coordinating session has not read them, and no session that has read D11–D22 edits skill text, rules, calibration or tests.
+   - The gate runs on Claude Code `-p` (Fio, 21/11/2026), two runs per model per article, raw outputs kept; P3's ratios apply to the pooled count; a person judges near-miss fixes that the accepted-fix match does not count.
 
    Not taken: another wording round on D01–D10 alone; a four-article gate written by Opus alone.
 
@@ -72,7 +72,7 @@ A user pastes a 1,200-word AI draft about retail operations into Vietnamizer on 
 
 1. **Given** a development sentence whose verb–object pair renders an English collocation word for word and has a common Vietnamese equivalent, **When** the agent edits the article, **Then** the inventory has a row for it and the output replaces only that phrase.
 2. **Given** a calque that has become standard Vietnamese in the genre (for example *đóng vai trò*), **When** the test fires, **Then** **Không flag** keeps it byte-identical.
-3. **Given** a term the trade uses in English or as a fixed loan translation for its readers, **When** the reader is in the trade, **Then** it is kept (V19 owns that judgment).
+3. **Given** a term the trade uses in English or as a fixed loan translation for its readers, **When** the reader is in the trade, **Then** it is kept (V19 owns that judgment). Since decision 8 the ambiguity question still applies when the text itself shows a second meaning of the term or a reader outside the trade could take the everyday one.
 
 ---
 
@@ -141,7 +141,7 @@ A user on any host runs a whole-article edit. The package holds no executable fi
 - A phrase that is a calque and also a clipped compound (*giữ nghĩa và giọng*): one inventory row, one fix, as spec 036's overlap rule says.
 - A calque inside a quotation, code, a link target, frontmatter or a proper name: protected zone, never edited (SKILL.md "Trước khi làm").
 - A calque the source author clearly chose for effect (irony, a quoted English idiom marked as such): kept.
-- English inline terms (*ROI*, *checkout*) are V19's question of reader and field, not the calque test.
+- English inline terms (*ROI*, *checkout*) are V19's question of reader and field, not the calque test; decision 8's ambiguity question covers Vietnamese trade terms a reader can take the wrong way.
 - Genres that only get T1–T6 (contracts, legal, ceremonial, changelog, commit, UI strings, poetry): the three tests do not run.
 - A very long article: the pass still visits every sentence in scope; the plan bounds the cost and reports time and tokens.
 - A voice profile whose preferred phrasing is a calque: the error fix wins unless the test's **Không flag** covers that register (spec 036 FR-016 stays).
@@ -216,7 +216,7 @@ A user on any host runs a whole-article edit. The package holds no executable fi
 ## Out of scope
 
 - Runtime calls to Jev/TypeSafe or any external evaluator (Principle V; decision 1).
-- Misread trade jargon (V19, L07) beyond keeping its current text; no holdout error was marked of that kind.
+- Misread trade jargon (V19, L07) beyond keeping its current text and decision 8's ambiguity question; no holdout error was marked of that kind.
 - Any new executable code in the package.
 - Changes to spec 036's files (T044 and O7 are recorded by the coordinator separately).
 - Code, reference or constitution changes in this pull request.
