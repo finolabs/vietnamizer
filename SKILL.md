@@ -65,8 +65,8 @@ hỏi bốn câu cho từng câu văn.
 (1) Một cụm động từ, khung câu hay từ nối khi dịch ngược từng chữ có ra ngay một cách nói quen của tiếng Anh,
 mà người Việt viết thể loại này thường nói khác không (V9)? (2) Một tiếng đơn làm thực từ, ở vai và nghĩa đang
 dùng, có cần một từ hai tiếng chứa nó không (V20)? (3) Một danh từ tập thể như *đội*, *nhóm*, *bên* đã cho biết
-nhóm nào chưa (V20)? (4) Một từ nghề có thể bị hiểu theo nghĩa thường ngày, hoặc mang hai nghĩa trong cùng bài
-không (V19, `references/terms-and-lead-ins.md`)? Câu đọc trôi chảy chưa phải là câu không có lỗi. Có ứng viên thì mở đúng catalog để đọc phép
+nhóm nào chưa (V20)? (4) Một từ nghề có thể bị hiểu theo nghĩa thường ngày khi bài viết cho người ngoài nghề, hoặc
+mang hai nghĩa trong cùng bài không (V19, `references/terms-and-lead-ins.md`)? Câu đọc trôi chảy chưa phải là câu không có lỗi. Có ứng viên thì mở đúng catalog để đọc phép
 thử đầy đủ và Không flag trước khi sửa. Tự đọc bảng dạng lỗi và dò bài, nhưng không coi bảng là đủ. Skill được cấp inline mà không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào.
 
 Rà soát văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn rà soát

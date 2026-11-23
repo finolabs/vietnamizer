@@ -9,7 +9,7 @@ Các chốt và quyền sửa do core sở hữu; không đọc tiếp nhóm kh�
 
 Dạng *dịch sát* có trong bảng `references/ai-error-lexicon.md`: L07.
 
-**Phép thử nhận diện, từ nghề:** với mỗi từ nghề tiếng Việt trong câu, hỏi hai câu. (1) Người đọc của bài, nhất là người ngoài nghề, có thể hiểu theo nghĩa thường ngày không? (2) Trong chính bài này có một nghĩa khác của cùng từ không? Một trong hai câu đúng thì từ ấy là ứng viên: dùng cách nói người đọc hiểu đúng ý, hoặc thêm tiếng cho rõ nghĩa. Ví dụ, viết theo quy tắc chứ không chép từ bài nào:
+**Phép thử nhận diện, từ nghề:** với mỗi từ nghề tiếng Việt trong câu, hỏi hai câu. (1) Bài viết cho người ngoài nghề, và người đọc ấy có thể hiểu theo nghĩa thường ngày không? (2) Trong chính bài này có một nghĩa khác của cùng từ không? Một trong hai câu đúng thì từ ấy là ứng viên: dùng cách nói người đọc hiểu đúng ý, hoặc thêm tiếng cho rõ nghĩa. Ví dụ, viết theo quy tắc chứ không chép từ bài nào:
 - Thông báo gửi khách: *"Lô hàng của quý khách đang bị treo ở cảng"* → *"Lô hàng của quý khách đang bị giữ lại ở cảng"*.
 - Báo cáo vừa nói khách đổi hàng, vừa nói khách đổi size: *"đơn đổi tăng 20%"* → *"đơn đổi size tăng 20%"* khi câu nói về đổi size.
 - Giữ *"số đơn chốt trong ca"* trong báo cáo gửi trưởng ca, vì người đọc là người trong nghề và bài không dùng *chốt* theo nghĩa nào khác.
@@ -18,7 +18,7 @@ Dạng *dịch sát* có trong bảng `references/ai-error-lexicon.md`: L07.
 
 **Sửa:** với tài liệu nội bộ, giữ hoặc trả lại thuật ngữ tiếng Anh khi mẫu văn, tài liệu cùng repo hoặc cách dùng ổn định của ngành cho thấy đó là tên gọi quen thuộc: *deploy, cloud, endpoint, benchmark, deadline*. Với nội dung học thuật hoặc viết cho người ngoài ngành, dùng từ tiếng Việt đã phổ biến; nếu cần giữ thuật ngữ tiếng Anh thì giải thích ở lần xuất hiện đầu. Không tự thêm tiếng Anh chỉ vì văn bản thuộc ngành kỹ thuật. Với từ nghề dễ hiểu sai, dùng từ người đọc hiểu đúng ý: *"biên tập bản nháp AI và bản dịch sát"* → *"...và bản dịch thô"* khi ý là bản dịch còn gượng. Khi chưa rõ người đọc hoặc giọng cần đổi, giữ cách dùng thuật ngữ ổn định trong nguồn; không suy yêu cầu thuần Việt từ riêng nhãn thể loại. Có từ tiếng Việt tương đương chưa đủ để dịch đồng loạt; cần chỉ ra vấn đề với người đọc, cách dùng hoặc yêu cầu hiện tại.
 
-**Không flag:** người viết chủ động thuần Việt hoá nhất quán; văn bản dành cho người đọc ngoài ngành đã dùng từ tiếng Việt phổ biến (không thêm lại tiếng Anh); thuật ngữ chưa có từ tiếng Việt tương đương; cách chêm tiếng Anh xuất hiện ổn định trong mẫu văn của người dùng. Không sửa khi chưa biết cộng đồng đó thực sự gọi thuật ngữ như thế nào. Giữ từ nghề khi người đọc là người trong nghề, như hướng dẫn cho biên tập viên hay catalog của chính skill, trừ khi chính bài có một nghĩa khác của cùng từ hoặc câu đọc theo nghĩa thường ngày cũng thông.
+**Không flag:** người viết chủ động thuần Việt hoá nhất quán; văn bản dành cho người đọc ngoài ngành đã dùng từ tiếng Việt phổ biến (không thêm lại tiếng Anh); thuật ngữ chưa có từ tiếng Việt tương đương; cách chêm tiếng Anh xuất hiện ổn định trong mẫu văn của người dùng. Không sửa khi chưa biết cộng đồng đó thực sự gọi thuật ngữ như thế nào. Giữ từ nghề khi người đọc là người trong nghề, như hướng dẫn cho biên tập viên hay catalog của chính skill, trừ khi chính bài có một nghĩa khác của cùng từ, hoặc bài viết cho người ngoài nghề và người đọc ấy dễ hiểu từ theo nghĩa thường ngày.
 
 ### V21. Tàn dư lượt hội thoại của trợ lý
 

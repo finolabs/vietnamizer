@@ -608,6 +608,8 @@ class SkillContractTest(unittest.TestCase):
             "người trong nghề",
             "*Với việc X, Y*",
             "*không ai*",
+            "Cả buổi sáng không ai hỏi giá",
+            "*Lưu ý:*",
             "Giữ *\"Với hàng bán theo thùng",
         ):
             with self.subTest(phrase=phrase):
@@ -634,12 +636,13 @@ class SkillContractTest(unittest.TestCase):
         block = self.pattern_block("references/terms-and-lead-ins.md", "V19")
         self.assertEqual(block.count("**Phép thử nhận diện"), 1)
         test = block.split("**Phép thử nhận diện, từ nghề:**", 1)[1].split("**Vì sao:**", 1)[0]
-        for phrase in ("hiểu theo nghĩa thường ngày", "một nghĩa khác của cùng từ", "giữ"):
+        for phrase in ("hiểu theo nghĩa thường ngày", "một nghĩa khác của cùng từ", "- Giữ *", "Bài viết cho người ngoài nghề"):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, test)
         self.assertGreaterEqual(test.count("→"), 2)
         keep = block.split("**Không flag:**", 1)[1]
         self.assertIn("trừ khi chính bài", keep)
+        self.assertIn("bài viết cho người ngoài nghề và người đọc ấy", keep)
 
     def test_v20_clipped_and_collective_recognition_tests(self) -> None:
         block = self.recognition_block("references/missing-words.md", "V20")
@@ -661,7 +664,8 @@ class SkillContractTest(unittest.TestCase):
         keep = block.split("**Không flag:**", 1)[1]
         self.assertIn("chỉ áp cho nhãn, ô bảng và dòng liệt kê", keep)
         short = " ".join(read("references/missing-words.md").split("## Phân biệt câu ngắn có chủ ý với câu thiếu từ", 1)[1].split())
-        self.assertIn("câu văn xuôi của hướng dẫn hay báo cáo vẫn cần đủ tiếng", short)
+        self.assertIn("câu văn xuôi của các thể loại ấy vẫn cần đủ tiếng", short)
+        self.assertIn("Tin nhắn và chat vẫn giữ câu rút gọn", short)
 
     def test_long_form_route_loads_both_test_catalogs(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
@@ -676,7 +680,7 @@ class SkillContractTest(unittest.TestCase):
         text = read("SKILL.md")
         for phrase in (
             "hỏi bốn câu cho từng câu văn",
-            "(4) Một từ nghề có thể bị hiểu theo nghĩa thường ngày",
+            "(4) Một từ nghề có thể bị hiểu theo nghĩa thường ngày khi bài viết cho người ngoài nghề",
             "dịch ngược từng chữ",
             "có cần một từ hai tiếng chứa nó không",
             "đã cho biết nhóm nào chưa",

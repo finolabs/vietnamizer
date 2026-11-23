@@ -11,10 +11,10 @@ Dạng *gọi tên* có trong bảng `references/ai-error-lexicon.md`: L06.
 
 **Phép thử nhận diện:** cách nói dịch sát không có danh sách cố định, bài mới nào cũng có thể mang dạng mới, nên đừng chỉ dò những dạng đã gặp. Với mỗi cụm động từ, khung câu và từ nối, hỏi ba câu. (1) Dịch ngược từng chữ sang tiếng Anh thì có ra ngay một cách nói quen của tiếng Anh không, như *no more than two per visit*, *one thing to remember:*, *with X rising*, *no one recorded it*? (2) Với cùng ý đó, người Việt viết bài thuộc thể loại này có thường nói khác không? (3) Người đọc không biết tiếng Anh có thấy cụm ấy lạ, hoặc phải đoán ngược ra tiếng Anh mới hiểu không? Câu (1) và (2) cùng đúng, hoặc câu (3) đúng, thì cụm là ứng viên. Câu đọc trôi chảy chưa phải là bằng chứng nó không dịch sát, vì chính model đã viết ra câu ấy cũng đang đọc lại nó. Các khuôn dưới đây cho biết nên nhìn vào đâu; ví dụ minh hoạ quy tắc, không phải danh sách để so khớp:
 - Phủ định so sánh thay cho *tối đa* hay *chỉ*: *"Khách không mua nhiều hơn hai món mỗi lần"* → *"Mỗi lần khách mua tối đa hai món"* (giữ cả trường hợp khách không mua món nào).
-- Câu dẫn đứng trước dấu hai chấm: *"Một điều cần nhớ: kho đóng cửa lúc 17 giờ"* → *"Cần nhớ là kho đóng cửa lúc 17 giờ"*. Chỗ này chạm T2; sửa một lần.
+- Câu dẫn đứng trước dấu hai chấm: *"Một điều cần nhớ: kho đóng cửa lúc 17 giờ"* → *"Cần nhớ là kho đóng cửa lúc 17 giờ"*. Chỗ này chạm T2; sửa một lần. Giữ nhãn đầu dòng như *Lưu ý:*, *Ghi chú:*, vì đó là nhãn chứ không phải câu dẫn.
 - Khung nguyên nhân *Với việc X, Y* dịch từ *With X ...*: *"Với việc giá xăng tăng, chi phí giao hàng tăng theo"* → *"Do giá xăng tăng, chi phí giao hàng tăng theo"*. Giữ *"Với hàng bán theo thùng, nhập số thùng"*, vì ở đây *với* nghĩa là *đối với*, không nêu nguyên nhân.
-- Chủ ngữ phủ định *không ai* chép từ *no one*: *"Hàng đã nhập nhưng không ai ghi vào sổ"* → *"Hàng đã nhập nhưng chưa được ghi vào sổ"* khi câu nói về việc còn thiếu chứ không trách một người cụ thể.
-- Danh từ trừu tượng ghép theo tiếng Anh: *"tăng mức độ tương tác có ý nghĩa"* (*meaningful engagement*) → *"tăng tương tác thật"*.
+- Chủ ngữ phủ định *không ai* chép từ *no one*, chỉ khi câu nói về một bước còn thiếu của quy trình chứ không nói về người: *"Hàng đã nhập nhưng không ai ghi vào sổ"* → *"Hàng đã nhập nhưng không được ghi vào sổ"*. Giữ *không ai* khi câu thật sự nói về người, như *"Cả buổi sáng không ai hỏi giá"*; đây là cách nói tự nhiên của tiếng Việt.
+- Danh từ trừu tượng ghép theo tiếng Anh: *"mang lại trải nghiệm liền mạch cho khách"* (*a seamless experience*) → *"giúp khách mua hàng suôn sẻ"*, khi câu nói về việc mua hàng.
 
 Phép thử áp cho mọi câu, kể cả câu có số liệu, so sánh và phủ định, vì những câu ấy dễ mang khung tiếng Anh mà vẫn đọc trôi.
 
