@@ -71,10 +71,9 @@ thử đầy đủ và Không flag trước khi sửa. Tự đọc bảng dạng
 
 **Dạng hay lọt khi bài đọc trôi:** Mỗi dạng chỉ là chỗ để hỏi lại câu tương ứng ở trên, không phải lệnh sửa;
 phép thử và Không flag trong catalog vẫn quyết định. Gặp dạng nào thì ghi cụm ấy thành một dòng của bảng kê.
-- Câu mở bằng một cụm ngắn rồi dấu hai chấm, phần sau là cả một mệnh đề, như *"Điều đáng nói: giá đã tăng"*; văn viết thường nối bằng *là* (V9).
-- Phủ định đi với so sánh hay con số (*không … quá*, *không … nhiều hơn*), hoặc *không ai* đứng ở chỗ một bước công việc bị bỏ sót (V9).
-- Hai vế đối nhau tách bằng dấu chấm phẩy, vế sau nhắc lại chủ ngữ bằng *họ*, *nó*: *"Khách không cần thêm mẫu; họ cần hàng về đúng hẹn"* → *"Khách không cần thêm mẫu mà cần hàng về đúng hẹn"* (V9).
-- Cụm danh từ hay tính từ mà dịch ngược ra ngay một cụm quen của tiếng Anh, như *có ý nghĩa*, *liền mạch*, *mang tính*, gắn vào một danh từ trừu tượng (V9).
+- Câu mở bằng một cụm dẫn ngắn rồi dấu hai chấm, phần sau là cả một mệnh đề, như *"Điều đáng nói: giá đã tăng"*; văn viết thường nối bằng *là*. Nhãn như *Lưu ý:*, *Ghi chú:* và lời dẫn trước lời trích thì giữ (V9).
+- Phủ định đi với so sánh với một con số (*không … nhiều hơn* hai món, ba lần), hoặc *không ai* đứng ở chỗ một bước công việc bị bỏ sót (V9).
+- Danh từ trừu tượng ghép theo tiếng Anh, như *trải nghiệm liền mạch*, trong báo cáo hay ghi chú vận hành; bài quảng cáo dùng quen thì giữ (V9).
 - Động từ một tiếng đứng cuối mệnh đề, hoặc ngay sau *để*, *cần*, *bị* mà không có tân ngữ, trong khi văn viết dùng từ hai tiếng chứa nó: *"ca tối thiếu người để kiểm"* → *"để kiểm hàng"* (V20).
 - Tiếng đơn rút từ một thuật ngữ hai tiếng của ngành, nhất là sau *tính*, *kiểm*, *báo cáo*: *"báo cáo nợ cuối tháng"* → *"báo cáo công nợ cuối tháng"* (V20).
 - *Đội*, *nhóm*, *bên* đi với *của bạn*, *của mình*, *của công ty* khi câu nói về toàn bộ nhân sự (V20).

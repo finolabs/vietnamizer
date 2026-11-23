@@ -715,7 +715,12 @@ class SkillContractTest(unittest.TestCase):
         for tag in ("(V9)", "(V19)", "(V20)"):
             with self.subTest(tag=tag):
                 self.assertIn(tag, block)
-        self.assertIn("Mỗi dạng chỉ là chỗ để hỏi", " ".join(block.split()))
+        flat = " ".join(block.split())
+        for phrase in ("Mỗi dạng chỉ là chỗ để hỏi", "không phải lệnh sửa", "phép thử và Không flag trong catalog vẫn quyết định",
+                       "*Lưu ý:*", "bài quảng cáo dùng quen thì giữ"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, flat)
+        self.assertNotIn("; họ cần", flat)
 
     def test_long_form_route_must_open_both_catalogs(self) -> None:
         text = read("SKILL.md")
