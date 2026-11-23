@@ -18,20 +18,20 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 **Project Type**: agent skill package (Markdown only after this change).
 **Performance Goals**: none capped; time per article (tokens where shown; Cowork shows none) reported against 0.16.2 (spec SC-005).
 **Constraints**: `SKILL.md` ≤ 550 lines (139 today); pattern count 55; constitution 2.9.0 unchanged; holdout isolation (spec FR-011); at most two holdout runs (FR-012).
-**Scale/Scope**: three recognition tests; one detection pass; 10 development articles; 56 holdout outputs on H01–H14 and 24 on H15–H20 per batch.
+**Scale/Scope**: three recognition tests; one detection pass; 10 tuning articles and a gate pool of 12 (decision 8); 56 holdout outputs on H01–H14 and 24 on H15–H20 per batch.
 
 ## Plan decisions (plan author, reviewable in this PR)
 
 | # | Decision | Why |
 |---|---|---|
 | P1 | Development pool D01–D10 as research.md R5: two articles per holdout genre, D01–D05 by `claude-opus-5-5`, D06–D10 by `gpt-6.1-sol` (research R5), pre-marked by a fresh agent, reviewed by Fio or a marker Fio names (decision 5) | Mirrors the holdout's public shape without its content; keeps Gemini unseen for H15–H20 |
-| P2 | Split the pool: D01–D03 and D06–D08 (6 articles) are for writing and tuning the tests; D04–D05 and D09–D10 (4 articles) are the development gate, never read by the person writing tests | Principle IV inside the development set: a threshold is not proven on the cases that tuned it, and the holdout should not be the first unseen text |
-| P3 | Development gate before the holdout run: on the 4 gate articles, scored with `holdout_036.py`, Opus fixes at least half and Sonnet at least a third of the lexicon-kind errors, and neither breaks more guards than 0.16.2 on the same articles | The same ratios as the release bar; failing them on development text means the holdout run would be wasted |
+| P2 | Split the pool: D01–D03 and D06–D08 (6 articles) are for writing and tuning the tests; D04–D05 and D09–D10 (4 articles) are the development gate, never read by the person writing tests. Amended 23/11/2026 (spec decision 8): all of D01–D10 tune; the gate pool is D11–D22 | Principle IV inside the development set: a threshold is not proven on the cases that tuned it, and the holdout should not be the first unseen text |
+| P3 | Development gate before the holdout run: on the 4 gate articles, scored with `holdout_036.py`, Opus fixes at least half and Sonnet at least a third of the lexicon-kind errors, and neither breaks more guards than 0.16.2 on the same articles. Amended 23/11/2026 (spec decision 8): gate pool D11–D22 with at least 20 lexicon-kind errors, two runs per model per article, ratios over the pooled count | The same ratios as the release bar; failing them on development text means the holdout run would be wasted |
 | P4 | Tests live in the pattern catalogs: a **Phép thử nhận diện** paragraph in V9 (`references/sentence-structure.md`) and in V20 (`references/missing-words.md`, covering clipped compounds and bare collectives); the long-form routing row of `SKILL.md` names both catalogs so the pass always has them | Principle III (V patterns own general errors); the pass needs the tests loaded, and loading on suspicion is the 0.16.2 behaviour that missed |
 | P5 | The pass is a new paragraph at the head of "Kê cụm khi biên tập toàn bài" in `references/writing-workflow.md`: walk sentence by sentence, apply the three tests, record hits or "đã xem", fix only after the walk | Reuses spec 036's inventory fields and output rules; one place states the order |
 | P6 | Scanner stays in source, leaves the payload (research.md R7) | Keeps the table parser and LXF fixture tests; removes code and shell commands from every host |
 | P7 | Holdout runner is a fresh session started for the batch that edits no skill file; it reports counts only in the shape of contracts/holdout-report.md | Spec FR-011; the maintainer never sees the holdout |
-| P8 | Development iteration runs on Claude Code headless with the plugin installed from the worktree, Opus 5.5 and Sonnet 5.5; the gate run (P3) and the holdout run are on Cowork with test skills uploaded to Fio's account and disabled after | Cheap iteration where scripts can drive it; the proof host is the one Fio named |
+| P8 | Development iteration runs on Claude Code headless with the plugin installed from the worktree, Opus 5.5 and Sonnet 5.5; the gate run (P3) and the holdout run are on Cowork with test skills uploaded to Fio's account and disabled after. Amended 21/11/2026 (Fio): the gate runs on Claude Code `-p` with the plugin ZIP, not on Cowork | Cheap iteration where scripts can drive it; the proof host is the one Fio named |
 
 ## Constitution Check
 
@@ -40,7 +40,7 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 | I. Vietnamese evidence first | Each test states the error, why, the fix and **Không flag**, with examples from development sources reviewed by a human marker (decision 5). Pass. |
 | II. Meaning and voice | A hit is a candidate; edits pass **Không flag** and the five chốt; guard breaks and judged wrong edits are part of the bar. Pass. |
 | III. General rules vs profiles | Tests sit under V9 and V20; register-bound exceptions stay in **Không flag**. Pass. |
-| IV. Labelled evidence | Tests are tuned on D01–D03/D06–D08, gated on D04–D05/D09–D10, proven on H01–H14 and checked on H15–H20; no case tunes and proves. Pass. |
+| IV. Labelled evidence | Tests are tuned on D01–D10 and gated on D11–D22 (decision 8; round 1 tuned on D01–D03/D06–D08 and gated on D04–D05/D09–D10), proven on H01–H14 and checked on H15–H20; no case tunes and proves. Pass. |
 | V. Self-contained Markdown | The package becomes Markdown only again; 2.9.0 permits a script and does not require one. Pass. |
 | Development gate 1 | Detection is a semantic judgment and stays with the model; no deterministic step is moved into prose. Pass. |
 | Development gate 5 | Release runs `validate-package.py`, `npx skills add . --list`, `claude plugin validate .`, reinstall and byte comparison. Pass. |
@@ -97,7 +97,7 @@ DEEP, several seams (catalogs, workflow, packaging, evidence) with ordering betw
 1. Scanner out of the package with its consumer documents and tests (one pull request; red first: the payload test that rejects `scripts/` fails before the validator change).
 2. Development pool: generate D01–D10, pre-mark, human review (decision 5), commit the manifest.
 3. Recognition tests and the detection pass, written from D01–D03/D06–D08; calibration block DT; phrase guards (red first).
-4. Development iteration on Claude Code; then the gate run on Cowork (P3).
+4. Development iteration on Claude Code; then the gate run (P3). Round 1 failed on 21/11/2026; round 2 (decision 8): diagnostic on D01–D10, restructured tests, gate pool D11–D22 marked, iteration, gate on Claude Code `-p`.
 5. Freeze: record the candidate commit; generate H15–H20; Fio marks them.
 6. Holdout batch by the runner (P7); report counts in `docs/benchmarks.md`.
 7. Release documents (changelog, README version notes) and Fio's go (O1).

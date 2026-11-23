@@ -598,7 +598,7 @@ Mỗi ca ứng với một fixture cùng số trong `tests/fixtures/lexicon/fixt
 
 ## DT01–DT14 · phép thử nhận diện dịch sát, tiếng đơn bị cắt và danh từ tập thể (spec 037)
 
-Ca lấy từ sáu bài phát triển dùng để chỉnh (D01–D03, D06–D08) của spec 037, phiếu do người đánh dấu được Fio chỉ định duyệt ngày 19/11/2026. Đây là ca phát triển đã dùng để viết phép thử nhận diện trong V9 và V20, không phải bằng chứng phép thử có ích; bằng chứng là bốn bài chặn D04, D05, D09, D10 rồi holdout của spec 037. Ca 9 đến 14 là ca chống sửa quá tay. Kết quả chạy agent của khối này, HF01–HF17 và LX01–LX29 ngày 21/11/2026 nằm ở `docs/benchmarks.md`, mục “Spec 037”.
+Ca lấy từ sáu bài phát triển dùng để chỉnh (D01–D03, D06–D08) của spec 037, phiếu do người đánh dấu được Fio chỉ định duyệt ngày 19/11/2026. Đây là ca phát triển đã dùng để viết phép thử nhận diện trong V9 và V20, không phải bằng chứng phép thử có ích; bằng chứng là bài chặn rồi holdout của spec 037. Ngày 21/11/2026 bản ứng viên trượt cổng trên bốn bài chặn đầu D04, D05, D09 và D10, nên bốn bài này nay thành bài chỉnh; cổng mới là D11–D22 (spec 037, quyết định 8). Ca 9 đến 14 là ca chống sửa quá tay. Kết quả chạy agent của khối này, HF01–HF17 và LX01–LX29 ngày 21/11/2026 nằm ở `docs/benchmarks.md`, mục “Spec 037”.
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
