@@ -585,6 +585,10 @@ class SkillContractTest(unittest.TestCase):
             declared += re.findall(r"(?m)^### ([VTBK]\d+)\.", (ROOT / relative).read_text(encoding="utf-8"))
         self.assertEqual(len(declared), 55)
 
+    def pattern_block(self, relative: str, pattern_id: str) -> str:
+        raw = (ROOT / relative).read_text(encoding="utf-8")
+        return " ".join(raw.split(f"### {pattern_id}. ", 1)[1].split("\n### ", 1)[0].split())
+
     def recognition_block(self, relative: str, pattern_id: str) -> str:
         raw = (ROOT / relative).read_text(encoding="utf-8")
         block = raw.split(f"### {pattern_id}. ", 1)[1].split("\n### ", 1)[0]
@@ -602,10 +606,40 @@ class SkillContractTest(unittest.TestCase):
             "Không flag của phép thử",
             "đã thành cách nói thường của tiếng Việt",
             "người trong nghề",
+            "*Với việc X, Y*",
+            "*không ai*",
+            "Giữ *\"Với hàng bán theo thùng",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, test)
         self.assertGreaterEqual(test.count("→"), 3)
+
+    def test_recognition_examples_are_not_quoted_from_scored_articles(self) -> None:
+        # Spec 037 decision 8: examples are written by rule; none is quoted from a development article that is scored.
+        text = read("references/sentence-structure.md") + read("references/missing-words.md") + read("references/terms-and-lead-ins.md")
+        for quoted in ("Tôi không gửi nhiều hơn một tin mỗi ngày", "Còn một chuyện nữa: tôi đã ôm hết mọi việc",
+                       "Tôi nói trước: tôi không thành công", "chưa chắc còn sử dụng có giá trị",
+                       "Bạn đặt vài quy tắc cơ bản", "quy trình nào bị dừng", "Phần nào khó nhất với đội của bạn"):
+            with self.subTest(quoted=quoted):
+                self.assertNotIn(quoted, text)
+
+    def test_v15_keep_rule_does_not_cover_causal_voi_viec(self) -> None:
+        block = self.pattern_block("references/sentence-structure.md", "V15")
+        keep = block.split("**Không flag:**", 1)[1]
+        for phrase in ("*Với việc X, Y*", "nêu nguyên nhân", "V9"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, keep)
+
+    def test_v19_ambiguous_trade_term_test(self) -> None:
+        block = self.pattern_block("references/terms-and-lead-ins.md", "V19")
+        self.assertEqual(block.count("**Phép thử nhận diện"), 1)
+        test = block.split("**Phép thử nhận diện, từ nghề:**", 1)[1].split("**Vì sao:**", 1)[0]
+        for phrase in ("hiểu theo nghĩa thường ngày", "một nghĩa khác của cùng từ", "giữ"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, test)
+        self.assertGreaterEqual(test.count("→"), 2)
+        keep = block.split("**Không flag:**", 1)[1]
+        self.assertIn("trừ khi chính bài", keep)
 
     def test_v20_clipped_and_collective_recognition_tests(self) -> None:
         block = self.recognition_block("references/missing-words.md", "V20")
@@ -615,6 +649,7 @@ class SkillContractTest(unittest.TestCase):
             "tiếng đơn làm thực từ",
             "văn viết cùng ngữ vực có thường dùng một từ hai tiếng chứa nó không",
             "đọc Không flag của V20",
+            "mang hai nghĩa",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, clipped)
@@ -623,6 +658,10 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, collective)
         self.assertGreaterEqual(collective.count("→") + collective.count("giữ"), 3)
+        keep = block.split("**Không flag:**", 1)[1]
+        self.assertIn("chỉ áp cho nhãn, ô bảng và dòng liệt kê", keep)
+        short = " ".join(read("references/missing-words.md").split("## Phân biệt câu ngắn có chủ ý với câu thiếu từ", 1)[1].split())
+        self.assertIn("câu văn xuôi của hướng dẫn hay báo cáo vẫn cần đủ tiếng", short)
 
     def test_long_form_route_loads_both_test_catalogs(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
@@ -636,7 +675,8 @@ class SkillContractTest(unittest.TestCase):
     def test_core_carries_the_three_questions(self) -> None:
         text = read("SKILL.md")
         for phrase in (
-            "hỏi ba câu cho từng câu văn",
+            "hỏi bốn câu cho từng câu văn",
+            "(4) Một từ nghề có thể bị hiểu theo nghĩa thường ngày",
             "dịch ngược từng chữ",
             "có cần một từ hai tiếng chứa nó không",
             "đã cho biết nhóm nào chưa",
@@ -674,11 +714,9 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn(phrase, flat)
 
     def test_recognition_examples_keep_meaning_and_exceptions(self) -> None:
-        self.assertIn("Nói trước là tôi không thành công", read("references/sentence-structure.md"))
-        self.assertNotIn("Nói thật, tôi không thành công", read("references/sentence-structure.md"))
+        self.assertIn("Cần nhớ là kho đóng cửa lúc 17 giờ", read("references/sentence-structure.md"))
         self.assertIn("Ngoại lệ hẹp của quy tắc giữ này", read("references/missing-words.md"))
-        self.assertIn("Mỗi ngày tôi gửi tối đa một tin", read("references/sentence-structure.md"))
-        self.assertNotIn("Mỗi ngày tôi chỉ gửi một tin\"", read("references/sentence-structure.md"))
+        self.assertIn("Mỗi lần khách mua tối đa hai món", read("references/sentence-structure.md"))
 
     def test_first_safeguard_defines_an_error_against_the_author(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
@@ -697,7 +735,8 @@ class SkillContractTest(unittest.TestCase):
         for phrase in (
             "lượt dò từng câu",
             "đi qua mọi câu trong phạm vi được giao",
-            "ba phép thử nhận diện",
+            "bốn phép thử nhận diện",
+            "Câu có số liệu, so sánh, phủ định",
             "Câu không có ứng viên vẫn ghi là đã xem",
             "Chỉ bắt đầu sửa sau khi đã dò hết",
             "sửa nhỏ không lập bảng kê",

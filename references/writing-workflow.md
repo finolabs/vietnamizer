@@ -37,9 +37,12 @@ Kiến thức đúng nhưng ngoài nguồn không tự thuộc nhiệm vụ biê
 
 Chỉ làm trên tuyến bài (biên tập toàn bài hoặc viết từ brief/outline); sửa nhỏ không lập bảng kê. Trước khi
 sửa, chạy một lượt dò từng câu và lập bảng kê cụm cho riêng mình, không ghi ra file và không dùng công cụ nào
-ngoài việc đọc. Lượt này đi qua mọi câu trong phạm vi được giao và áp cho từng câu ba phép thử nhận diện, gồm
-phép thử dịch sát của V9 trong `references/sentence-structure.md`, cùng hai phép thử tiếng đơn bị cắt và danh
-từ tập thể đứng trơ của V20 trong `references/missing-words.md`. Đừng chỉ dò các dạng đã có trong bảng dạng lỗi,
+ngoài việc đọc. Lượt này đi qua mọi câu trong phạm vi được giao và áp cho từng câu bốn phép thử nhận diện, gồm
+phép thử dịch sát của V9 trong `references/sentence-structure.md`, hai phép thử tiếng đơn bị cắt và danh từ tập
+thể đứng trơ của V20 trong `references/missing-words.md`, và phép thử từ nghề dễ hiểu sai của V19 trong
+`references/terms-and-lead-ins.md`. Với mỗi câu, xét lần lượt mọi cụm động từ, khung câu và từ nối, mọi tiếng đơn
+làm thực từ, mọi danh từ tập thể và mọi từ nghề. Câu có số liệu, so sánh, phủ định hay mở đầu bằng giới từ là
+chỗ dễ sót nhất; đừng bỏ qua chúng chỉ vì câu đọc trôi. Đừng chỉ dò các dạng đã có trong bảng dạng lỗi,
 vì bài mới thường mang dạng khác. Mỗi ứng viên thành một dòng của bảng kê. Câu không có ứng viên vẫn ghi là đã
 xem. Chỉ bắt đầu sửa sau khi đã dò hết phạm vi được giao, để việc tìm lỗi không bị lẫn với việc sửa.
 
