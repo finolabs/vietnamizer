@@ -71,13 +71,13 @@ thử đầy đủ và Không flag trước khi sửa. Tự đọc bảng dạng
 
 **Dạng hay lọt khi bài đọc trôi:** Mỗi dạng chỉ là chỗ để hỏi lại câu tương ứng ở trên, không phải lệnh sửa;
 phép thử và Không flag trong catalog vẫn quyết định. Gặp dạng nào thì ghi cụm ấy thành một dòng của bảng kê.
-- Câu mở bằng một cụm dẫn ngắn rồi dấu hai chấm, phần sau là cả một mệnh đề, như *"Điều đáng nói: giá đã tăng"*; văn viết thường nối bằng *là*. Nhãn như *Lưu ý:*, *Ghi chú:* và lời dẫn trước lời trích thì giữ (V9).
+- Câu mở bằng một cụm dẫn ngắn rồi dấu hai chấm, phần sau là cả một mệnh đề, như *"Điều đáng nói: giá đã tăng"*; văn viết thường nối bằng *là*. Nhãn như *Lưu ý:*, *Ghi chú:* và lời dẫn trước lời trích thì giữ; khi phần sau nêu nguyên nhân hay kết quả của phần trước cũng giữ, vì nối bằng *là* sẽ thêm một quan hệ mà bản gốc không nói (V9).
 - Phủ định đi với so sánh với một con số (*không … nhiều hơn* hai món, ba lần), hoặc *không ai* đứng ở chỗ một bước công việc bị bỏ sót (V9).
 - Danh từ trừu tượng ghép theo tiếng Anh, như *trải nghiệm liền mạch*, trong báo cáo hay ghi chú vận hành; bài quảng cáo dùng quen thì giữ (V9).
-- Động từ một tiếng đứng cuối mệnh đề, hoặc ngay sau *để*, *cần*, *bị* mà không có tân ngữ, trong khi văn viết dùng từ hai tiếng chứa nó: *"ca tối thiếu người để kiểm"* → *"để kiểm hàng"* (V20).
-- Tiếng đơn rút từ một thuật ngữ hai tiếng của ngành, nhất là sau *tính*, *kiểm*, *báo cáo*: *"báo cáo nợ cuối tháng"* → *"báo cáo công nợ cuối tháng"* (V20).
+- Động từ một tiếng đứng cuối mệnh đề, hoặc ngay sau *để*, *cần*, *bị* mà không có tân ngữ, trong khi văn viết dùng từ hai tiếng chứa nó: *"ca tối thiếu người để kiểm"* → *"để kiểm hàng"*. Động từ tự đủ nghĩa ở vai đang dùng, như *đứng*, *sập* khi nói về máy móc, thì giữ (V20).
+- Tiếng đơn rút từ một thuật ngữ hai tiếng của ngành: *"báo cáo nợ cuối tháng"* → *"báo cáo công nợ cuối tháng"* (V20).
 - *Đội*, *nhóm*, *bên* đi với *của bạn*, *của mình*, *của công ty* khi câu nói về toàn bộ nhân sự (V20).
-- Cụm nghề có một chữ trùng nghĩa thường ngày, như *treo đơn*, *xả hàng*, *đẩy hàng*, trong bài viết cho người ngoài nghề (V19).
+- Cụm nghề có một chữ trùng nghĩa thường ngày, như *treo đơn* hay *ăn hàng* (nhập hàng), trong bài viết cho người ngoài nghề (V19).
 
 Rà soát văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn rà soát
 V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà soát T1–T6, vì theo quan sát (chưa đo) đây là lỗi AI hay mắc nhất;
