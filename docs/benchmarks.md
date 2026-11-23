@@ -141,18 +141,20 @@ phẩy vì nó bám sát một lỗi đã đánh dấu (D01#3), bỏ các dạng
 | T034a | `c114d3f` | 6/15 | 3/36 | 2/15 | 0/36 |
 | T034b | `c114d3f` | 5/15 | 0/36 | 2/15 | 0/36 |
 | T034c | `0da20a7` | 9/15 | 0/36 | 3/15 | 0/36 |
-| T034d | `29ec914` | 8/15 | 2/36 | 4/15 | 0/36 |
+| T034d | `29ec914` | 8/15 | 2/36 | 5/15 | 0/36 |
 
 Opus đã sửa D02#1 (*hàng chậm*) ở cả T034a và T034b. Lỗi từ nghề còn lại, D05#1 (*xếp hàng*), chỉ được sửa ở
 T034c và không được sửa lại ở T034d, nên một lượt chưa đủ để nói việc đưa V19 vào bước đọc đã giải quyết lỗi này.
-Hai cụm giữ Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a. Sonnet sửa được 4/15 ở T034d (D01#6, D02#4,
-D05#4, D09#3), vẫn dưới mức khoảng một phần ba của cổng chặn; ở hầu hết câu có lỗi, bài Sonnet trả về giữ nguyên
-từng chữ, dù nó đã mở các catalog chứa phép thử.
+Hai cụm giữ Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a. Sonnet sửa được 5/15 ở T034d (D01#4, D01#6,
+D02#4, D05#4, D09#3), đúng bằng mức khoảng một phần ba của cổng chặn, nhưng chỉ trong một lượt trên chính các bài
+dùng để chỉnh; ba lượt còn lại của Sonnet trên bản mới được 2 đến 3/15, và cổng chặn chấm trên D11–D22. Ở hầu hết
+câu có lỗi, bài Sonnet trả về giữ nguyên từng chữ, dù nó đã mở các catalog chứa phép thử.
 
-Bảng trên chấm theo phiếu sau hai phán quyết của Fio ngày 24/11/2026. Ở D02#4, phiếu và ca DT06 nhận thêm *chưa
+Bảng trên chấm theo phiếu sau các phán quyết của Fio ngày 24/11/2026. Ở D02#4, phiếu và ca DT06 nhận thêm *chưa
 được cập nhật*, cùng cách sửa mà ví dụ V9 dùng sau PR 90 (*không được* dễ đọc thành lệnh cấm); trước đó cách sửa
 này của Opus ở T034c/d và của Sonnet ở T034d bị tính là trượt. Ở D01#4, phiếu nhận thêm *"Tôi chỉ gửi một tin mỗi
-ngày"*, cách Sonnet viết ở T034a và T034c, và ca DT01 bỏ câu không nhận *chỉ gửi*. Hai phán quyết chỉ đổi
+ngày"*, cách Sonnet viết ở T034a và T034c, và *"Tôi gửi tối đa một tin mỗi ngày"*, cách Sonnet viết ở T034d; ca
+DT01 bỏ câu không nhận *chỉ gửi*. Các phán quyết chỉ đổi
 các ô của T034; số của T030 không đổi. Ngoài các cụm đã đánh dấu,
 ở T034d Opus sửa 45 chỗ và Sonnet sửa 7 chỗ, chưa ai chấm. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên
 chênh lệch một hai lỗi giữa các lượt chưa đủ để kết luận.
