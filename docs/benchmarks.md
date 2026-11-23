@@ -117,7 +117,7 @@ Số liệu chấm theo phiếu đã thêm hai cách sửa ngày 23/11/2026 (spe
 | Opus 5.5 | 10/15 | 1/21, 3 dòng chưa chấm | 2/32 (chín bài, không tính D10) |
 | Sonnet 5.5 | 6/15 | 1/21, 3 dòng chưa chấm | 0/36 |
 
-Các sửa nằm ngoài cụm đã đánh dấu chưa ai chấm: 98 sửa của Opus và 6 sửa của Sonnet.
+Ngoài các cụm đã đánh dấu, Opus còn sửa 25 chỗ trên chín bài và Sonnet sửa 6 chỗ trên mười bài; chưa ai chấm những chỗ này.
 
 Với Opus, bảng kê cho biết lỗi bị sót ở bước nào. Trong 5 lỗi nhóm từ vựng chưa sửa, 4 lỗi không có dòng nào
 trong bảng kê (D01#3, D02#4, D03#2 và D05#1, lỗi từ nghề hiểu sai *xếp hàng*), còn 1 lỗi có trong bảng kê nhưng
