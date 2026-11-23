@@ -26,7 +26,7 @@ thành đoạn đều nhau hoặc tự thêm hook, đối lập, ví dụ, CTA. 
 ## Khai triển và đối chiếu
 
 Viết từ ý theo cách triển khai đã chọn. Rà soát kết hợp từ, nghĩa câu, liên kết đoạn và giọng; có nghi vấn mới
-tra catalog core chỉ đúng nhóm, ngoài hai catalog đã mở cho lượt dò. Sửa lỗi cần pattern và Không flag; theo mẫu cần căn cứ mẫu đúng phạm vi,
+tra catalog core chỉ đúng nhóm, ngoài ba catalog đã mở cho lượt dò. Sửa lỗi cần pattern và Không flag; theo mẫu cần căn cứ mẫu đúng phạm vi,
 không bịa lỗi để hợp thức hóa chuyển giọng. Lượng sửa/tỉ lệ dài ngắn không chứng minh chất lượng.
 
 Đối chiếu hai chiều theo core với nguồn đầy đủ, cả ý rơi từ bước tách ý. Kiểm hàm ý của đề mục/danh sách.

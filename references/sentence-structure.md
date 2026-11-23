@@ -13,8 +13,8 @@ Dạng *gọi tên* có trong bảng `references/ai-error-lexicon.md`: L06.
 - Phủ định so sánh thay cho *tối đa* hay *chỉ*: *"Khách không mua nhiều hơn hai món mỗi lần"* → *"Mỗi lần khách mua tối đa hai món"* (giữ cả trường hợp khách không mua món nào).
 - Câu dẫn đứng trước dấu hai chấm: *"Một điều cần nhớ: kho đóng cửa lúc 17 giờ"* → *"Cần nhớ là kho đóng cửa lúc 17 giờ"*. Chỗ này chạm T2; sửa một lần. Giữ nhãn đầu dòng như *Lưu ý:*, *Ghi chú:*, vì đó là nhãn chứ không phải câu dẫn.
 - Khung nguyên nhân *Với việc X, Y* dịch từ *With X ...*: *"Với việc giá xăng tăng, chi phí giao hàng tăng theo"* → *"Do giá xăng tăng, chi phí giao hàng tăng theo"*. Giữ *"Với hàng bán theo thùng, nhập số thùng"*, vì ở đây *với* nghĩa là *đối với*, không nêu nguyên nhân.
-- Chủ ngữ phủ định *không ai* chép từ *no one*, chỉ khi câu nói về một bước còn thiếu của quy trình chứ không nói về người: *"Hàng đã nhập nhưng không ai ghi vào sổ"* → *"Hàng đã nhập nhưng không được ghi vào sổ"*. Giữ *không ai* khi câu thật sự nói về người, như *"Cả buổi sáng không ai hỏi giá"*; đây là cách nói tự nhiên của tiếng Việt.
-- Danh từ trừu tượng ghép theo tiếng Anh: *"mang lại trải nghiệm liền mạch cho khách"* (*a seamless experience*) → *"giúp khách mua hàng suôn sẻ"*, khi câu nói về việc mua hàng.
+- Chủ ngữ phủ định *không ai* chép từ *no one*, chỉ khi câu nói về một bước còn thiếu của quy trình chứ không nói về người: *"Hàng đã nhập nhưng không ai ghi vào sổ"* → *"Hàng đã nhập nhưng chưa được ghi vào sổ"*; trong hướng dẫn thao tác, *không được* dễ đọc thành lệnh cấm, nên dùng *chưa được*. Giữ *không ai* khi câu thật sự nói về người, như *"Cả buổi sáng không ai hỏi giá"*; đây là cách nói tự nhiên của tiếng Việt.
+- Danh từ trừu tượng ghép theo tiếng Anh: *"mang lại trải nghiệm liền mạch cho khách"* (*a seamless experience*) → *"giúp khách mua hàng suôn sẻ"*, khi câu nằm trong báo cáo hay ghi chú vận hành và nói về việc mua hàng. Bài quảng cáo đã dùng quen *trải nghiệm liền mạch* thì giữ, vì đó là cách nói của thể loại ấy.
 
 Phép thử áp cho mọi câu, kể cả câu có số liệu, so sánh và phủ định, vì những câu ấy dễ mang khung tiếng Anh mà vẫn đọc trôi.
 
