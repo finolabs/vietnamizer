@@ -4,7 +4,7 @@
     {
       "id": "D01",
       "article_sha256": "92ff82e0b08864dbe4c9cb53f7d2340c16fa0eb6bc02a6cf9b7469d714cc8a4a",
-      "sheet_sha256": "1031bb8250050419d2b5d0c0e06b437203e17a4ad9184bcfe2678ab5aba1612b"
+      "sheet_sha256": "674c07bc3486d8d39aa488db33fb6e8ce675a7c7d6dc00fb657f8eb7170fbc4b"
     },
     {
       "id": "D02",
@@ -24,7 +24,7 @@
     {
       "id": "D05",
       "article_sha256": "8f9ea57e4789d3e05069b2fe1ceed060edd3332cecd3f881e95f2943903b9e46",
-      "sheet_sha256": "49d8c7e8d7248be6af89d13648afc4b8e2fb62adcb70f3e79da2610eef4fb0cf"
+      "sheet_sha256": "466cda8168df683972ac0930d0a657f25ca20596b3dd9a17df34519b4d6b1aa0"
     },
     {
       "id": "D06",
@@ -52,5 +52,5 @@
       "sheet_sha256": "3323db66ddf64667629a619c36ed27cb7dd56ec1aa9f63a38916b7dc4829f5ec"
     }
   ],
-  "manifest_sha256": "75c879634274c4af958dad1212678ab887ec8e35867bf74ace9db42940666c9d"
+  "manifest_sha256": "7f938f5e309ade98d723dd0f06360c0a8142010d4a28ebe4c57149a67d255bda"
 }
