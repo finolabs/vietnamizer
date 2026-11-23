@@ -149,7 +149,7 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn(phrase, catalog)
         terms = read("references/terms-and-lead-ins.md")
         self.assertIn("### V19. Chêm tiếng Anh hoặc từ nghề không hợp người đọc hoặc lĩnh vực", terms)
-        self.assertIn("Giữ từ nghề khi người đọc là người trong nghề", terms)
+        self.assertIn("Giữ từ nghề khi bài viết cho người trong nghề", terms)
         missing = read("references/missing-words.md")
         self.assertIn("*nghĩa* và *giọng* nên thành *ngữ nghĩa* và *giọng văn*", missing)
         self.assertIn("chỉ sửa chỗ này khi không làm đổi giọng", missing)
@@ -611,17 +611,24 @@ class SkillContractTest(unittest.TestCase):
             "Cả buổi sáng không ai hỏi giá",
             "*Lưu ý:*",
             "Giữ *\"Với hàng bán theo thùng",
+            "*\"Hàng đã nhập nhưng chưa được ghi vào sổ\"*",
+            "Bài quảng cáo",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, test)
         self.assertGreaterEqual(test.count("→"), 3)
+        self.assertNotIn("không được ghi vào sổ", test)
 
     def test_recognition_examples_are_not_quoted_from_scored_articles(self) -> None:
         # Spec 037 decision 8: examples are written by rule; none is quoted from a development article that is scored.
-        text = read("references/sentence-structure.md") + read("references/missing-words.md") + read("references/terms-and-lead-ins.md")
+        text = (read("SKILL.md") + read("references/sentence-structure.md") + read("references/missing-words.md")
+                + read("references/terms-and-lead-ins.md") + read("references/writing-workflow.md"))
         for quoted in ("Tôi không gửi nhiều hơn một tin mỗi ngày", "Còn một chuyện nữa: tôi đã ôm hết mọi việc",
                        "Tôi nói trước: tôi không thành công", "chưa chắc còn sử dụng có giá trị",
-                       "Bạn đặt vài quy tắc cơ bản", "quy trình nào bị dừng", "Phần nào khó nhất với đội của bạn"):
+                       "Bạn đặt vài quy tắc cơ bản", "quy trình nào bị dừng", "Phần nào khó nhất với đội của bạn",
+                       "nhóm hàng chậm giảm", "không ai cập nhật trạng thái", "dòng tiền đủ để hoàn",
+                       "Phạm vi tính tồn", "xếp hàng chậm ở", "bao nhiêu loại mì", "Với việc TTPP",
+                       "điểm phần trăm"):
             with self.subTest(quoted=quoted):
                 self.assertNotIn(quoted, text)
 
@@ -640,9 +647,11 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, test)
         self.assertGreaterEqual(test.count("→"), 2)
-        keep = block.split("**Không flag:**", 1)[1]
-        self.assertIn("trừ khi chính bài", keep)
-        self.assertIn("bài viết cho người ngoài nghề và người đọc ấy", keep)
+        keep = " ".join(block.split("**Không flag:**", 1)[1].split())
+        self.assertIn("Giữ từ nghề khi bài viết cho người trong nghề", keep)
+        self.assertIn("trừ khi chính bài dùng một nghĩa khác của cùng từ", keep)
+        self.assertIn("Bài viết cho người ngoài nghề không thuộc quy tắc giữ này", keep)
+        self.assertNotIn("khi người đọc là người trong nghề, như hướng dẫn cho biên tập viên hay catalog của chính skill, trừ khi", keep)
 
     def test_v20_clipped_and_collective_recognition_tests(self) -> None:
         block = self.recognition_block("references/missing-words.md", "V20")
@@ -666,17 +675,22 @@ class SkillContractTest(unittest.TestCase):
         short = " ".join(read("references/missing-words.md").split("## Phân biệt câu ngắn có chủ ý với câu thiếu từ", 1)[1].split())
         self.assertIn("câu văn xuôi của các thể loại ấy vẫn cần đủ tiếng", short)
         self.assertIn("Tin nhắn và chat vẫn giữ câu rút gọn", short)
+        self.assertNotIn("như trước", short)
+        genres = "hướng dẫn thao tác, ghi chú vận hành, tài liệu kỹ thuật và báo cáo"
+        self.assertIn(genres, " ".join(keep.split()))
+        self.assertIn(genres, short)
 
     def test_long_form_route_loads_both_test_catalogs(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         long_row = next(line for line in raw.splitlines() if line.startswith("| Biên tập toàn bài hoặc viết từ brief/outline |"))
         small_row = next(line for line in raw.splitlines() if line.startswith("| Sửa một cụm/câu, rà soát cục bộ |"))
-        for catalog in ("`references/missing-words.md`", "`references/sentence-structure.md`"):
+        for catalog in ("`references/missing-words.md`", "`references/sentence-structure.md`",
+                        "`references/terms-and-lead-ins.md`"):
             with self.subTest(catalog=catalog):
                 self.assertIn(catalog, long_row)
                 self.assertNotIn(catalog, small_row)
 
-    def test_core_carries_the_three_questions(self) -> None:
+    def test_core_carries_the_four_questions(self) -> None:
         text = read("SKILL.md")
         for phrase in (
             "hỏi bốn câu cho từng câu văn",
@@ -689,28 +703,44 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
 
+    def test_core_lists_shapes_that_slip(self) -> None:
+        # T034: shapes a fast read passes over, written by rule; each points to its test.
+        text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        block = text.split("**Dạng hay lọt khi bài đọc trôi:**", 1)[1].split("\n\n", 1)[0]
+        cues = [line for line in block.splitlines() if line.startswith("- ")]
+        self.assertGreaterEqual(len(cues), 6)
+        for cue in cues:
+            with self.subTest(cue=cue):
+                self.assertRegex(cue, r"\((V9|V19|V20)\)")
+        for tag in ("(V9)", "(V19)", "(V20)"):
+            with self.subTest(tag=tag):
+                self.assertIn(tag, block)
+        self.assertIn("Mỗi dạng chỉ là chỗ để hỏi", " ".join(block.split()))
+
     def test_long_form_route_must_open_both_catalogs(self) -> None:
         text = read("SKILL.md")
         for phrase in (
-            "Trên tuyến bài, mở cả `references/sentence-structure.md` và `references/missing-words.md` trước khi sửa câu nào",
+            "Trên tuyến bài, mở cả `references/sentence-structure.md`, `references/missing-words.md` và "
+            "`references/terms-and-lead-ins.md` trước khi sửa câu nào",
             "kể cả khi bài đọc trôi chảy và chưa thấy nghi vấn nào",
-            "Hai catalog này là ngoại lệ của các câu tiết kiệm đọc bên dưới",
-            "Ngoài hai catalog bắt buộc của tuyến bài, catalog là bảng tra",
+            "Ba catalog này là ngoại lệ của các câu tiết kiệm đọc bên dưới",
+            "Ngoài ba catalog bắt buộc của tuyến bài, catalog là bảng tra",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
-        self.assertIn("ngoài hai catalog đã mở cho lượt dò", read("references/writing-workflow.md"))
+        self.assertIn("ngoài ba catalog đã mở cho lượt dò", read("references/writing-workflow.md"))
 
     def test_long_form_read_gate_comes_first(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         body = raw.split("\n---\n", 1)[1]
         gate = body.split("## Trước khi làm", 1)[0]
         for path in ("`references/writing-workflow.md`", "`references/missing-words.md`",
-                     "`references/sentence-structure.md`", "`references/ai-error-lexicon.md`"):
+                     "`references/sentence-structure.md`", "`references/terms-and-lead-ins.md`",
+                     "`references/ai-error-lexicon.md`"):
             with self.subTest(path=path):
                 self.assertIn(path, gate)
         flat = " ".join(gate.split())
-        for phrase in ("Chưa đọc xong bốn file này thì chưa trả bài",
+        for phrase in ("Chưa đọc xong năm file này thì chưa trả bài",
                        "quy định dạng đầu ra, không miễn bước đọc",
                        "File đã nạp và còn nguyên trong context thì không cần đọc lại",
                        "host không có công cụ đọc file thì dùng phần được cấp"):
