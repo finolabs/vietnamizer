@@ -4,12 +4,12 @@
     {
       "id": "D01",
       "article_sha256": "92ff82e0b08864dbe4c9cb53f7d2340c16fa0eb6bc02a6cf9b7469d714cc8a4a",
-      "sheet_sha256": "674c07bc3486d8d39aa488db33fb6e8ce675a7c7d6dc00fb657f8eb7170fbc4b"
+      "sheet_sha256": "602dd7a29bc23cdb9875bb0bae2e0f5bb12b0f4dd38c26bc5ead02196d81f3b2"
     },
     {
       "id": "D02",
       "article_sha256": "03ea2d4dd2e9d63d8a6f8a6cf2bc57b742327386bfb6e1d3be0ebf44db4a7393",
-      "sheet_sha256": "400698a62a2de02198a12c785364b8670e8f4dfa162e74e5be9c628ffaf06869"
+      "sheet_sha256": "023c0e372eaf6c02747b8a5aa87f268402d432ca64380a51ad3cbf8eb81eb588"
     },
     {
       "id": "D03",
@@ -52,5 +52,5 @@
       "sheet_sha256": "3323db66ddf64667629a619c36ed27cb7dd56ec1aa9f63a38916b7dc4829f5ec"
     }
   ],
-  "manifest_sha256": "7f938f5e309ade98d723dd0f06360c0a8142010d4a28ebe4c57149a67d255bda"
+  "manifest_sha256": "681c724d840db855921faf0fa33b7afa0599cac562bc1a227e5e9502dee17bc5"
 }

@@ -602,12 +602,12 @@ Ca lấy từ sáu bài phát triển dùng để chỉnh (D01–D03, D06–D08)
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
-| 1 | Blog cá nhân: *“Tôi không gửi nhiều hơn một tin mỗi ngày, vì chính tôi cũng ghét mấy nhóm nhắn suốt.”* | *“Mỗi ngày tôi gửi tối đa một tin, vì...”*; không dùng *chỉ gửi một tin*, vì có thể đọc thành ngày nào cũng gửi | V9: phủ định so sánh dịch từ *no more than* |
+| 1 | Blog cá nhân: *“Tôi không gửi nhiều hơn một tin mỗi ngày, vì chính tôi cũng ghét mấy nhóm nhắn suốt.”* | *“Mỗi ngày tôi gửi tối đa một tin, vì...”* hoặc *“Mỗi ngày tôi chỉ gửi một tin, vì...”* | V9: phủ định so sánh dịch từ *no more than* |
 | 2 | Blog cá nhân: *“Còn một chuyện nữa: tôi đã ôm hết mọi việc.”* | *“Còn một chuyện nữa là tôi đã ôm hết mọi việc.”*; giữ *ôm hết mọi việc* | V9 câu dẫn *one more thing:*, chạm T2; sửa một lần |
 | 3 | Blog cá nhân: *“Tôi nói trước: tôi không thành công rực rỡ gì đâu.”* | *“Nói trước là tôi không thành công rực rỡ gì đâu.”*; không đổi ý báo trước thành *nói thật* | V9 câu dẫn dịch sát cùng dấu hai chấm |
 | 4 | Bài chuyên môn SaaS: *“...chưa chắc còn sử dụng có giá trị.”* | *“...chưa chắc còn dùng sản phẩm thực sự.”* (hoặc *dùng sản phẩm hiệu quả*) | V9 danh từ trừu tượng dịch từ *meaningful usage* |
 | 5 | Giới thiệu phần mềm: *“Bạn đặt vài quy tắc cơ bản: mỗi ca cần ít nhất một bạn pha chế chính...”* | *“Bạn thiết lập vài quy tắc cơ bản...”*; dấu hai chấm trước danh sách quy tắc giữ hay tách theo T2 | V9 động từ dịch từ *set some rules* |
-| 6 | Bài chuyên môn: *“Hàng trả về từ điểm bán nằm trong kho nhưng không ai cập nhật trạng thái.”* | *“...nhưng không được cập nhật trạng thái.”* | V9 chủ ngữ *không ai* theo khung tiếng Anh thay cho bị động |
+| 6 | Bài chuyên môn: *“Hàng trả về từ điểm bán nằm trong kho nhưng không ai cập nhật trạng thái.”* | *“...nhưng chưa được cập nhật trạng thái.”* hoặc *“...nhưng không được cập nhật trạng thái.”* | V9 chủ ngữ *không ai* theo khung tiếng Anh thay cho bị động |
 | 7 | Bài chuyên môn SaaS: *“...nên lưu thêm sự kiện cụ thể: quy trình nào bị dừng, ai quyết định...”* | *“...quy trình nào bị dừng lại...”* | V20 tiếng đơn bị cắt; dấu hai chấm theo T2 |
 | 8 | Bài chuyên môn, câu hỏi cuối bài: *“Phần nào khó nhất với đội của bạn?”* | *“Phần nào khó nhất với đội ngũ của bạn?”* | V20 *đội* chỉ cả đội ngũ của người đọc |
 | 9 | Blog cá nhân bán hàng: *“...miễn phí ship...”* | Giữ nguyên | Không flag của phép thử V9: cách nói đã quen trong lời bán hàng thân mật |
