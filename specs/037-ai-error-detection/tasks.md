@@ -48,7 +48,7 @@ Writers may read D01–D10. Nobody who edits skill text, rules, calibration or t
 - [x] T031 [US1] [US2] Red then green: restructure the three tests from T030's result: an ambiguity question that also reaches V19 trade terms, keep rules for operational genres narrowed to labels, table cells and bullets, examples as rule-based fix and keep pairs with no example quoted from a scored article; guards in `tests/test_skill_contract.py`
 - [ ] T032 [P] Generate D15–D16 with `claude-opus-5-5` and D17–D22 with `gpt-6.1-sol` (research.md R5 prompt), each by a fresh agent that loads no skill and reads no file; five genres across D11–D22; all twelve in `artifacts/dev-037-gate2/articles/` with their own `artifacts/dev-037-gate2/plan.json` (id, generator, genre); a fresh agent pre-marks all twelve
 - [ ] T033 Fio, or a marker Fio names, reviews the twelve sheets (decision 5); commit ids and SHA-256 of D11–D22 in a new `benchmarks/dev-037-gate2-manifest.json` built with `holdout_036.py manifest artifacts/dev-037-gate2/articles`; fewer than 20 lexicon-kind errors in total means more articles before T035
-- [ ] T034 Development iteration on D01–D10 only (as T020), scored with `holdout_036.py`, raw outputs kept
+- [x] T034 Development iteration on D01–D10 only (as T020), scored with `holdout_036.py`, raw outputs kept. Four rounds (T034a–d, 23–24/11/2026, PR 91): Opus 5–9/15, Sonnet 2–5/15 lexicon-kind; counts in `docs/benchmarks.md`
 - [ ] T035 Gate run (plan P3 as amended): 0.16.2 and the candidate on D11–D22, two runs per model per article, on Claude Code `-p`; counts in `docs/benchmarks.md`. Pass: T023. Fail: Fio decides between another round and stopping spec 037
 
 ## Phase 5: Gate and freeze (FR-012)

@@ -147,7 +147,8 @@ Opus đã sửa D02#1 (*hàng chậm*) ở cả T034a và T034b. Lỗi từ ngh�
 T034c và không được sửa lại ở T034d, nên một lượt chưa đủ để nói việc đưa V19 vào bước đọc đã giải quyết lỗi này.
 Hai cụm giữ Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a. Sonnet sửa được 5/15 ở T034d (D01#4, D01#6,
 D02#4, D05#4, D09#3), đúng bằng mức khoảng một phần ba của cổng chặn, nhưng chỉ trong một lượt trên chính các bài
-dùng để chỉnh; ba lượt còn lại của Sonnet trên bản mới được 2 đến 3/15, và cổng chặn chấm trên D11–D22. Ở hầu hết
+dùng để chỉnh; ba lượt còn lại của Sonnet trên text viết lại ở T031 (T034a, T034b trên `c114d3f`, T034c trên
+`0da20a7`) được 2 đến 3/15, và cổng chặn chấm trên D11–D22. Ở hầu hết
 câu có lỗi, bài Sonnet trả về giữ nguyên từng chữ, dù nó đã mở các catalog chứa phép thử.
 
 Bảng trên chấm theo phiếu sau các phán quyết của Fio ngày 24/11/2026. Ở D02#4, phiếu và ca DT06 nhận thêm *chưa
