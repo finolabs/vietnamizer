@@ -114,13 +114,17 @@ Số liệu chấm theo phiếu đã thêm hai cách sửa ngày 23/11/2026 (spe
 
 | Model | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi |
 |---|---|---|---|
-| Opus 5.5 | 10/15 | 1/21 | 6/36 |
-| Sonnet 5.5 | 6/15 | 1/21 | 0/36 |
+| Opus 5.5 | 10/15 | 1/21, 3 dòng chưa chấm | 2/32 (chín bài, không tính D10) |
+| Sonnet 5.5 | 6/15 | 1/21, 3 dòng chưa chấm | 0/36 |
+
+Các sửa nằm ngoài cụm đã đánh dấu chưa ai chấm: 98 sửa của Opus và 6 sửa của Sonnet.
 
 Với Opus, bảng kê cho biết lỗi bị sót ở bước nào. Trong 5 lỗi nhóm từ vựng chưa sửa, 4 lỗi không có dòng nào
 trong bảng kê (D01#3, D02#4, D03#2 và D05#1, lỗi từ nghề hiểu sai *xếp hàng*), còn 1 lỗi có trong bảng kê nhưng
-được giữ (D09#3, *tồn*). Như vậy chỗ hỏng chính là bước dò, chưa phải luật giữ. Bốn trong sáu cụm cần giữ bị
-đổi nằm ở D10, nơi bộ lọc an toàn cắt câu trả lời của Opus giữa bài, nên bản chấm D10 thiếu hai mục cuối. Sonnet
+được giữ (D09#3, *tồn*). Như vậy chỗ hỏng chính là bước dò, chưa phải luật giữ. Ở D10, bộ lọc an toàn chặn câu
+trả lời của Opus, nên file đầu ra chỉ có lời báo bị chặn, không có chữ nào của bài. Vì vậy bảng không tính bốn cụm
+cần giữ của D10 cho Opus. D10 không có dòng lỗi nào, nên hai cột lỗi không đổi. Hai cụm cần giữ Opus đã đổi là
+D04#g1 và D09#g1. Sonnet
 sửa được ba lỗi của D01, một lỗi của D02, D03 và D07, và không sửa lỗi nào trong bốn bài chặn cũ.
 
 **Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
