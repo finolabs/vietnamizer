@@ -159,7 +159,7 @@ A user on any host runs a whole-article edit. The package holds no executable fi
 **Recognition tests**
 
 - **FR-001**: The catalog text of V9 (calques), V20 (clipped compounds and bare collective nouns) MUST state a recognition test for each of the three kinds: questions the agent answers about one phrase in context, each with its **Không flag**. A test describes a class of error, not a word list (decision 1).
-- **FR-002**: Each test MUST carry at least three worked examples, positive and guard, drawn only from development sources (FR-009); no example may come from the holdout.
+- **FR-002**: Each test MUST carry at least three worked examples, positive and guard, drawn only from development sources (FR-009); no example may come from the holdout. Since decision 8 the examples are written by the maintainer to illustrate the rule, and none is quoted from a development article that is scored (D01–D22); sheet rows stay in `calibration/test-cases.md`.
 - **FR-003**: The tests MUST sit under existing patterns: no new pattern number, the count stays 55, and AGENTS.md "Ngưỡng thêm pattern" holds. Each test states why the form is an error and how to fix it (Principle I).
 - **FR-004**: A test hit is a candidate. An edit is kept only after the owning pattern's **Không flag** and the five chốt, as today.
 
