@@ -104,8 +104,8 @@ bài chạy một lượt cho mỗi model và mỗi phiên bản, tổng cộng 
 
 Mức P3 đòi Opus sửa ít nhất một nửa và Sonnet ít nhất một phần ba số lỗi nhóm từ vựng, tức 2/4 cho mỗi model.
 Cả hai model đều không đạt, nên cổng trượt. Bản ứng viên không làm vỡ thêm cụm cần giữ nào so với 0.16.2. Trên
-sáu bài chỉnh, cũng bản này sửa được 6–7 trên 11 lỗi, nên các phép thử V9 và V20 hiện mới khớp với bài chỉnh,
-chưa áp dụng được cho bài mới.
+sáu bài chỉnh, ở lượt c9 và c10 (spec 037, mục O2), cũng bản này sửa được 6–7 trên 11 lỗi nhóm từ vựng, nên
+các phép thử V9 và V20 hiện mới khớp với bài chỉnh, chưa áp dụng được cho bài mới.
 
 **Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
 Ca DT dùng nguyên đoạn văn trong bài chỉnh chứa câu của ca. Ca LX dùng đúng văn bản của fixture và được so khớp
@@ -119,8 +119,9 @@ từng ký tự với cột Mong đợi. Ca HF và DT do agent chạy so với c
 | LX01–LX29 | 14 khớp, 4 hiểu nhầm đầu vào, 11 lệch | 15 khớp, 6 hiểu nhầm đầu vào, 8 lệch |
 
 HF18 chưa chạy, vì ca này cần một hồ sơ thương hiệu đã lưu. Hiểu nhầm đầu vào nghĩa là model coi một đoạn rất
-ngắn (lời nhắn chat, nhãn nút, ghi chú) là lời nhờ của người dùng và hỏi lại bài cần sửa. Đây là lỗi của cách
-dựng ca, không phải của pattern. Trong các ca LX lệch, cả hai model đều chưa sửa hoặc sửa chưa đủ LX04, LX07, LX11, LX16 và LX23
+ngắn (lời nhắn chat, nhãn nút, ghi chú) là lời nhờ của người dùng và hỏi lại bài cần sửa. Nhiều khả năng đây là
+lỗi của cách dựng ca hơn là của pattern, nhưng chưa có lượt chạy nào kiểm điều này. Trong các ca LX lệch, cả hai
+model đều chưa sửa hoặc sửa chưa đủ LX04, LX07, LX11, LX16 và LX23
 (*giữ nghĩa*, *bản dịch sát*, *Đội* đầu dòng danh sách), đều làm vỡ LX06 (*giữ nghĩa vụ*) và đều đổi dấu gạch
 nối mềm của LX26. Riêng Opus còn sửa *đội* viết thường giữa câu (LX24) và sửa trong lời trích (LX28).
 

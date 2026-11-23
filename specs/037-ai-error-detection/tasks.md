@@ -37,12 +37,23 @@ Writers read D01–D03 and D06–D08 only (plan P2).
 - [x] T017 [US1] Red then green: `SKILL.md` long-form routing row names `references/missing-words.md` and `references/sentence-structure.md`; the small-edit row does not
 - [x] T018 [US1] Red then green: the detection pass at the head of "Kê cụm khi biên tập toàn bài" in `references/writing-workflow.md` (contracts/skill-text.md row 6); check `SKILL.md` stays ≤ 550 lines and the pattern count stays 55 with `python3 scripts/validate-package.py`
 - [x] T019 [P] [US3] `calibration/test-cases.md` block DT: positive and guard cases for each test from the tuning articles; agent runs of DT, HF01–HF18 and LX01–LX29 recorded as a development result (DT block written; agent runs of DT, HF01–HF17 and LX01–LX29 on candidate 1c3e9b7 recorded 21/11/2026 in `docs/benchmarks.md` "Spec 037"; HF18 not run, it needs a saved brand profile)
-- [x] T020 [US1] Development iteration (plan P8): run Opus 5.5 and Sonnet 5.5 on Claude Code over the tuning articles, score with `holdout_036.py`, adjust the tests from those articles only; stop when the tuning articles clear the P3 ratios
+- [ ] T020 [US1] Development iteration (plan P8): run Opus 5.5 and Sonnet 5.5 on Claude Code over the tuning articles, score with `holdout_036.py`, adjust the tests from those articles only; stop when the tuning articles clear the P3 ratios. Round 1 (c1–c10) done 21/11/2026 and failed the T022 gate; round 2 is T030–T035 (spec decision 8)
 - [ ] T021 Pull request for Phase 4 with `review-gate` reviews posted; Vietnamese text through Vietnamizer's own review; merge only on Fio's go
+
+## Phase 4b: Second development round (spec decision 8)
+
+Writers may read D01–D10. Nobody who edits skill text, rules, calibration or tests opens D11–D22 or their sheets.
+
+- [ ] T030 Diagnostic run on D01–D10 with the candidate, Opus 5.5 and Sonnet 5.5 on Claude Code `-p`: per marked error, not flagged / flagged and kept (reason) / fixed; raw outputs kept outside Git; counts in `docs/benchmarks.md` "Spec 037"
+- [ ] T031 [US1] [US2] Red then green: restructure the three tests from T030's result: an ambiguity question that also reaches V19 trade terms, keep rules for operational genres narrowed to labels, table cells and bullets, examples as rule-based fix and keep pairs with no example quoted from a scored article; guards in `tests/test_skill_contract.py`
+- [ ] T032 [P] Generate D15–D16 with `claude-opus-5-5` and D17–D22 with `gpt-6.1-sol` (research.md R5 prompt), five genres across D11–D22, stored with D11–D14 outside Git; a fresh agent pre-marks all twelve
+- [ ] T033 Fio, or a marker Fio names, reviews the twelve sheets (decision 5); commit ids and SHA-256 of D11–D22 in `benchmarks/dev-037-manifest.json`; fewer than 20 lexicon-kind errors in total means more articles before T035
+- [ ] T034 Development iteration on D01–D10 only (as T020), scored with `holdout_036.py`, raw outputs kept
+- [ ] T035 Gate run (plan P3 as amended): 0.16.2 and the candidate on D11–D22, two runs per model per article, on Claude Code `-p`; counts in `docs/benchmarks.md`. Pass: T023. Fail: Fio decides between another round and stopping spec 037
 
 ## Phase 5: Gate and freeze (FR-012)
 
-- [ ] T022 Gate run on Cowork (plan P3): 0.16.2 and the candidate on D04–D05 and D09–D10, Opus 5.5 and Sonnet 5.5; record counts in the PR or `docs/benchmarks.md` development section. Fail: back to T020 (the gate articles then become tuning articles and the next gate needs new development articles). **Run 21/11/2026 on Claude Code `-p`** (Fio: no Cowork): candidate 1c3e9b7 Opus 1/4, Sonnet 0/4 lexicon-kind, guards 1/12 and 0/12 (0.16.2: 0/4, 0/4, guards 1/12 each); **failed**, counts in `docs/benchmarks.md` "Spec 037"
+- [ ] T022 Gate run (plan P3; on Claude Code `-p` since Fio's 21/11/2026 ruling): 0.16.2 and the candidate on D04–D05 and D09–D10, Opus 5.5 and Sonnet 5.5; record counts in the PR or `docs/benchmarks.md` development section. Fail: back to T020 (the gate articles then become tuning articles and the next gate needs new development articles). **Run 21/11/2026 on Claude Code `-p`** (Fio: no Cowork): candidate 1c3e9b7 Opus 1/4, Sonnet 0/4 lexicon-kind, guards 1/12 and 0/12 (0.16.2: 0/4, 0/4, guards 1/12 each); **failed**, counts in `docs/benchmarks.md` "Spec 037"
 - [ ] T023 Freeze: record the candidate commit; build the test skill from it
 
 ## Phase 6: Holdout batch (runner only; FR-013–FR-017)

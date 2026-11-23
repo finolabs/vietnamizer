@@ -30,6 +30,17 @@ Source: `docs/benchmarks.md` "Holdout 036" (main `ccfe199`). Out-of-span edits (
 6. **0.16.2 is rerun in the same batch** as the candidate, same models and settings, outputs labelled at random. Not taken: reusing the T044 scores as the baseline.
 7. **H15–H20 are generated after the text freeze and reported beside the bar.** The six Gemini articles that spec 036 moved to the next version are generated after this version's skill text is frozen, marked by Fio and run in the same batch; they are reported separately as a fully fresh holdout and do not count toward the bar of decision 3. Not taken: folding them into a 20-article bar; keeping them for a later version.
 
+## Settled decisions after the T022 gate (Fio, 23/11/2026, native question tool)
+
+8. **Second development round, designed from a root-cause review.** The T022 gate failed (Opus 1/4, Sonnet 0/4 lexicon-kind errors). An advisor review, read-only and by a Claude reviewer on a separate install, found that the test examples quote 7 of the 11 tuning errors word for word, that keep rules in the same catalogs veto 3 of the 4 gate errors, that no test reaches V19 (trade terms read the wrong way), that tuning and gate articles differ in genre, and that a 4-error gate cannot tell a working change from noise. Fio chose to follow its plan:
+   - D04, D05, D09 and D10 become tuning articles, so all of D01–D10 tune.
+   - The round starts with a diagnostic run on D01–D10 that records, for every marked error, whether the phrase was not flagged, flagged and kept (with the reason given), or fixed; raw outputs are kept.
+   - Tests change by structure, not by more examples from scored articles: a question on ambiguity that also reaches V19 trade terms; keep rules for operational genres narrowed to labels, table cells and bullets; examples written as rule-based fix and keep pairs; no example quoted from an article that is scored.
+   - A new gate pool D11–D22: twelve articles, six by `claude-opus-5-5` (D11–D16) and six by `gpt-6.1-sol` (D17–D22), across the five genres, marked as decision 5 says. The gate needs at least 20 lexicon-kind errors across the pool, aiming at 4 or more per kind; when the marked sheets hold fewer, more articles are added before the gate runs. D11–D14 were written on 23/11/2026 and count toward the six by Opus.
+   - The gate runs on Claude Code `-p` (Fio, 21/11/2026), two runs per model per article, raw outputs kept; P3's ratios apply to the pooled count.
+
+   Not taken: another wording round on D01–D10 alone; a four-article gate written by Opus alone.
+
 ## Open decisions
 
 | # | Decision | Owner | Unblocks when |
