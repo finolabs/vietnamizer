@@ -4,7 +4,7 @@
     {
       "id": "D01",
       "article_sha256": "92ff82e0b08864dbe4c9cb53f7d2340c16fa0eb6bc02a6cf9b7469d714cc8a4a",
-      "sheet_sha256": "b89530b08789f843c80ece411340a5c7b075aa3140f4d005b43cb8f29e323a14"
+      "sheet_sha256": "d22c5dee25e52d8616601f2ac3a70b082a8ceab69487b45bef2e0c9ea7d709cd"
     },
     {
       "id": "D02",
@@ -52,5 +52,5 @@
       "sheet_sha256": "3323db66ddf64667629a619c36ed27cb7dd56ec1aa9f63a38916b7dc4829f5ec"
     }
   ],
-  "manifest_sha256": "9f4fcb6c4885a4da5c32edb8018542b1f17fa4e0f8a4df65cdaf6127120273c9"
+  "manifest_sha256": "15c7ac9b8a044018178fc3cb9b6890e83befb4ee7a1bb5a7b4c4592dabb4e04c"
 }
