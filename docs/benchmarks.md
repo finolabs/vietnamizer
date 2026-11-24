@@ -138,8 +138,8 @@ phẩy vì nó bám sát một lỗi đã đánh dấu (D01#3), bỏ các dạng
 | Lượt | Bản | Opus, nhóm từ vựng | Opus, cụm giữ bị vỡ | Sonnet, nhóm từ vựng | Sonnet, cụm giữ bị vỡ |
 |---|---|---|---|---|---|
 | T030o / T030s | `1c3e9b7` (bản cũ) | 9/15 | 1/36 | 6/15 | 0/36 |
-| T034a | `c114d3f` | 6/15 | 3/36 | 2/15 | 0/36 |
-| T034b | `c114d3f` | 5/15 | 0/36 | 2/15 | 0/36 |
+| T034a | `c114d3f` | 7/15 | 3/36 | 2/15 | 0/36 |
+| T034b | `c114d3f` | 6/15 | 0/36 | 2/15 | 0/36 |
 | T034c | `0da20a7` | 9/15 | 0/36 | 3/15 | 0/36 |
 | T034d | `29ec914` | 8/15 | 2/36 | 5/15 | 0/36 |
 | T034e | `45a552e` | 8/15 | 0/36 | 3/15 | 0/36 |
@@ -167,8 +167,8 @@ D02#4 và D05#4.
 Bảng trên chấm theo phiếu sau các phán quyết của Fio ngày 24/11/2026. Ở D02#4, phiếu và ca DT06 nhận thêm *chưa
 được cập nhật*, cùng cách sửa mà ví dụ V9 dùng sau PR 90 (*không được* dễ đọc thành lệnh cấm); trước đó cách sửa
 này của Opus ở T034c/d và của Sonnet ở T034d bị tính là trượt. Ở D01#4, phiếu nhận thêm *"Tôi chỉ gửi một tin mỗi
-ngày"*, cách Sonnet viết ở T034a và T034c, và *"Tôi gửi tối đa một tin mỗi ngày"*, cách Sonnet viết ở T034d; ca
-DT01 bỏ câu không nhận *chỉ gửi*. Các phán quyết chỉ đổi các ô của T034; số của T030 không đổi.
+ngày"*, cách Sonnet viết ở T034a và T034c, và *"Tôi gửi tối đa một tin mỗi ngày"*, cách Sonnet viết ở T034d, và *"Tôi không gửi quá một tin mỗi ngày"*, cách Opus viết ở T034a và T034b;
+ca DT01 bỏ câu không nhận *chỉ gửi* và nhận thêm *không gửi quá*. Các phán quyết chỉ đổi các ô của T034; số của T030 không đổi.
 
 Ngoài các cụm đã đánh dấu, Opus sửa 45, 42 và 24 chỗ ở T034d, T034e và T034f, Sonnet sửa 7, 2 và 13 chỗ; chưa ai
 chấm những chỗ này. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên chênh lệch một hai lỗi giữa các lượt chưa
