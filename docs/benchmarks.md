@@ -142,23 +142,37 @@ phẩy vì nó bám sát một lỗi đã đánh dấu (D01#3), bỏ các dạng
 | T034b | `c114d3f` | 5/15 | 0/36 | 2/15 | 0/36 |
 | T034c | `0da20a7` | 9/15 | 0/36 | 3/15 | 0/36 |
 | T034d | `29ec914` | 8/15 | 2/36 | 5/15 | 0/36 |
+| T034e | `45a552e` | 8/15 | 0/36 | 3/15 | 0/36 |
+| T034f | `45e5ed5` | 7/15 | 0/36 | 4/15 | 1/36 |
 
-Opus đã sửa D02#1 (*hàng chậm*) ở cả T034a và T034b. Lỗi từ nghề còn lại, D05#1 (*xếp hàng*), chỉ được sửa ở
-T034c và không được sửa lại ở T034d, nên một lượt chưa đủ để nói việc đưa V19 vào bước đọc đã giải quyết lỗi này.
-Hai cụm giữ Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a. Sonnet sửa được 5/15 ở T034d (D01#4, D01#6,
-D02#4, D05#4, D09#3), đúng bằng mức khoảng một phần ba của cổng chặn, nhưng chỉ trong một lượt trên chính các bài
-dùng để chỉnh; ba lượt còn lại của Sonnet trên text viết lại ở T031 (T034a, T034b trên `c114d3f`, T034c trên
-`0da20a7`) được 2 đến 3/15, và cổng chặn chấm trên D11–D22. Ở hầu hết
-câu có lỗi, bài Sonnet trả về giữ nguyên từng chữ, dù nó đã mở các catalog chứa phép thử.
+T034e chạy bản `45a552e`, sau review dự phòng của PR 91. Bản này giữ dấu hai chấm khi phần sau nêu nguyên nhân
+hay kết quả, giữ động từ một tiếng tự đủ nghĩa như *đứng*, *sập*, bỏ gợi ý trùng với lỗi D09#3, và đổi ví dụ từ nghề
+sang *ăn hàng*. T034f chạy bản `45e5ed5`, sau review của PR 92: dạng dấu hai chấm khớp ca HF05 (tách câu, không thêm
+*vì*, *do*), và ví dụ động từ bỏ *đứng*, vì chữ này trùng dòng giữ D09#g2.
+
+Opus đã sửa D02#1 (*hàng chậm*) ở mọi lượt từ T034a. Lỗi từ nghề còn lại, D05#1 (*xếp hàng*), được sửa ở T034c và
+T034e nhưng không ở T034d và T034f, nên chưa nói được việc đưa V19 vào bước đọc đã giải quyết lỗi này. Hai cụm giữ
+Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a; ở T034e và T034f Opus không làm vỡ cụm giữ nào.
+
+Sonnet sửa được 2 đến 5/15 trong sáu lượt trên text viết lại ở T031: 2/15 ở T034a và T034b, 3/15 ở T034c và T034e,
+4/15 ở T034f, 5/15 ở T034d. Mức 5/15 của T034d đúng bằng khoảng một phần ba của cổng chặn, nhưng chỉ là một lượt
+trên chính các bài dùng để chỉnh, và cổng chặn chấm trên D11–D22. Ở hầu hết câu có lỗi, bài Sonnet trả về giữ
+nguyên từng chữ, dù nó đã mở các catalog chứa phép thử. Ở T034f, Sonnet viết lại cả câu chứa D05#g1 (*nhận hàng
+theo lồng (roll cage)*), nên cụm giữ ấy tính là vỡ; mới có một lượt nên chưa gắn được nguyên nhân.
+
+Lỗi sửa được ở hai lượt cuối: T034e, Opus sửa D01#6, D02#1, D02#4, D02#5, D04#1, D05#1, D05#4 và D09#3, Sonnet sửa
+D01#4, D02#4 và D05#4. T034f, Opus sửa D01#4, D01#6, D02#1, D02#4, D04#1, D05#4 và D09#3, Sonnet sửa D01#2, D01#6,
+D02#4 và D05#4.
 
 Bảng trên chấm theo phiếu sau các phán quyết của Fio ngày 24/11/2026. Ở D02#4, phiếu và ca DT06 nhận thêm *chưa
 được cập nhật*, cùng cách sửa mà ví dụ V9 dùng sau PR 90 (*không được* dễ đọc thành lệnh cấm); trước đó cách sửa
 này của Opus ở T034c/d và của Sonnet ở T034d bị tính là trượt. Ở D01#4, phiếu nhận thêm *"Tôi chỉ gửi một tin mỗi
 ngày"*, cách Sonnet viết ở T034a và T034c, và *"Tôi gửi tối đa một tin mỗi ngày"*, cách Sonnet viết ở T034d; ca
-DT01 bỏ câu không nhận *chỉ gửi*. Các phán quyết chỉ đổi
-các ô của T034; số của T030 không đổi. Ngoài các cụm đã đánh dấu,
-ở T034d Opus sửa 45 chỗ và Sonnet sửa 7 chỗ, chưa ai chấm. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên
-chênh lệch một hai lỗi giữa các lượt chưa đủ để kết luận.
+DT01 bỏ câu không nhận *chỉ gửi*. Các phán quyết chỉ đổi các ô của T034; số của T030 không đổi.
+
+Ngoài các cụm đã đánh dấu, Opus sửa 45, 42 và 24 chỗ ở T034d, T034e và T034f, Sonnet sửa 7, 2 và 13 chỗ; chưa ai
+chấm những chỗ này. Mỗi bản chỉ có một đến hai lượt cho mỗi model, nên chênh lệch một hai lỗi giữa các lượt chưa
+đủ để kết luận.
 
 **Ca chạy tay T019.** Mỗi ca chạy một lượt cho mỗi model trên bản ứng viên, kèm thể loại ghi trong cột Đầu vào.
 Ca DT dùng nguyên đoạn văn trong bài chỉnh chứa câu của ca. Ca LX dùng đúng văn bản của fixture và được so khớp

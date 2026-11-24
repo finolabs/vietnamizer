@@ -680,7 +680,7 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn(genres, " ".join(keep.split()))
         self.assertIn(genres, short)
 
-    def test_long_form_route_loads_both_test_catalogs(self) -> None:
+    def test_long_form_route_loads_the_three_test_catalogs(self) -> None:
         raw = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         long_row = next(line for line in raw.splitlines() if line.startswith("| Biên tập toàn bài hoặc viết từ brief/outline |"))
         small_row = next(line for line in raw.splitlines() if line.startswith("| Sửa một cụm/câu, rà soát cục bộ |"))
@@ -721,8 +721,14 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, flat)
         self.assertNotIn("; họ cần", flat)
+        for phrase in ("chưa nói rõ quan hệ", "không thêm *vì*, *do*", "tách câu", "Động từ tự đủ nghĩa", "*ăn hàng*"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, flat)
+        for phrase in ("nhất là sau *tính*", "*xả hàng*", "*đẩy hàng*", "*đứng*"):
+            with self.subTest(absent=phrase):
+                self.assertNotIn(phrase, flat)
 
-    def test_long_form_route_must_open_both_catalogs(self) -> None:
+    def test_long_form_route_must_open_the_three_catalogs(self) -> None:
         text = read("SKILL.md")
         for phrase in (
             "Trên tuyến bài, mở cả `references/sentence-structure.md`, `references/missing-words.md` và "
