@@ -53,18 +53,24 @@ thành một dòng, kể cả khi Không flag cho giữ. Nghi vấn tìm đượ
 chồng lên nhau gộp thành một dòng, lấy phần hợp của chúng và sửa một lần: *giữ nghĩa và giọng* →
 *giữ ngữ nghĩa và giọng văn*. Dòng `giữ` để nguyên cụm, không đổi byte nào.
 
-Ứng viên ở front matter, code hay địa chỉ link thì ghi `giữ: vùng bảo toàn`. Ứng viên trong ngoặc kép chỉ giữ
+Tên riêng, tên thương hiệu, sản phẩm, tổ chức, chức danh, tên nhóm đã có định danh (*nhóm Kho Miền Nam*,
+*đội Giao Nhanh*) và từ nghề mà bài dùng đúng nghĩa cho người đọc của nó không phải ứng viên: không đổi byte
+nào, kể cả để thêm tiếng, dịch sang tiếng Việt hay thêm chú thích. Ứng viên ở front matter, code hay địa chỉ link thì ghi `giữ: vùng bảo toàn`. Ứng viên trong ngoặc kép chỉ giữ
 khi đó là trích nguyên văn; thuật ngữ đặt trong ngoặc để nhấn được xét như mọi dòng khác. Blockquote làm ghi
 chú hay tóm tắt được xét như văn xuôi, trừ khi chính nó là trích dẫn.
 
-Khi biên tập, sửa tại chỗ theo các dòng `sửa`, không dựng lại câu hay đoạn từ bảng kê. Viết từ brief vẫn
+Khi biên tập, sửa tại chỗ theo các dòng `sửa`, không dựng lại câu hay đoạn từ bảng kê. Chỉ đổi những cụm có dòng
+`sửa`; câu không có dòng `sửa` trả về đúng từng byte như bản gốc. Trước khi trả, đối bảng kê với bài sắp trả:
+dòng `sửa` nào bài còn để nguyên thì sửa ngay; chỗ nào bài đã đổi mà không có dòng `sửa` thì đưa về như gốc. Viết từ brief vẫn
 khai triển theo các bước ở trên, rồi lập bảng kê trên bản vừa viết. Bảng kê là việc nội bộ, không trả cùng bài.
 Người dùng yêu cầu rõ thì trình nó trong giới hạn 5 dòng ghi chú của mục Trả kết quả trong `SKILL.md`; cũng có
 thể dùng một dòng của nó để hỏi đúng một điểm.
 
 ## Thứ tự: sửa lỗi, áp giọng, rồi dò lại
 
-Trên tuyến bài, sửa lỗi theo bảng kê trước, rồi mới áp giọng (mẫu, hồ sơ hay card), sau đó dò lại. Lượt dò
+Trên tuyến bài, sửa lỗi theo bảng kê trước, rồi mới áp giọng (mẫu, hồ sơ hay card), sau đó dò lại. Biên tập
+không có mẫu hay hồ sơ thì bước áp giọng không đổi thêm chữ nào: giọng của tác giả là giọng của bài, card chỉ
+giúp nhận ra lỗi. Lượt dò
 lại xem lại bảng dạng lỗi, các đoạn vừa sửa và năm chốt. Không có hồ sơ giọng vẫn dò
 lại, sau lượt sửa lỗi và sau mỗi lần sửa thêm do review.
 
