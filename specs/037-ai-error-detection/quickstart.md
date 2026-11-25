@@ -27,11 +27,11 @@ Edit D01–D03 and D06–D08 with the plugin installed from the worktree on Clau
 python3 benchmarks/holdout_036.py score artifacts/dev-037/articles/runs.json
 ```
 
-Read the outputs and sheets of the tuning articles only. Since decision 8 these are D01–D10; never open D11–D22 while writing tests.
+Read the outputs and sheets of the tuning articles only. Since decision 8 these are D01–D10; never open D11–D34 while writing tests.
 
 ## 3. Gate (plan P3)
 
-Run 0.16.2 and the candidate on the gate pool D11–D22 on Claude Code `-p` (decision 8; Fio, 21/11/2026), two runs per model per article, score, and compare with P3. Fail: back to step 2. Pass: record the candidate commit (freeze).
+Run 0.16.2 and the candidate on the gate pool D11–D34 on Claude Code `-p` (decision 8; Fio, 21/11/2026), two runs per model per article, score, and compare with P3. Fail: back to step 2. Pass: record the candidate commit (freeze).
 
 ## 4. Holdout batch (runner only)
 

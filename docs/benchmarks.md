@@ -156,7 +156,7 @@ Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a; ở T034e v
 
 Sonnet sửa được 2 đến 5/15 trong sáu lượt trên text viết lại ở T031: 2/15 ở T034a và T034b, 3/15 ở T034c và T034e,
 4/15 ở T034f, 5/15 ở T034d. Mức 5/15 của T034d đúng bằng khoảng một phần ba của cổng chặn, nhưng chỉ là một lượt
-trên chính các bài dùng để chỉnh, và cổng chặn chấm trên D11–D22. Ở hầu hết câu có lỗi, bài Sonnet trả về giữ
+trên chính các bài dùng để chỉnh, và cổng chặn chấm trên D11–D34 (mở rộng từ D11–D22 ngày 24/11/2026). Ở hầu hết câu có lỗi, bài Sonnet trả về giữ
 nguyên từng chữ, dù nó đã mở các catalog chứa phép thử. Ở T034f, Sonnet viết lại cả câu chứa D05#g1 (*nhận hàng
 theo lồng (roll cage)*), nên cụm giữ ấy tính là vỡ; mới có một lượt nên chưa gắn được nguyên nhân.
 
