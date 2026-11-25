@@ -36,7 +36,7 @@ assets/                                       icon và wordmark SVG sáng/tối
 .codex-plugin/plugin.json                     manifest và nhận diện plugin Codex
 .plugin-skills/vietnamizer/SKILL.md          adapter source, nạp root SKILL.md; không sao chép rule
 .plugin-skills/help/SKILL.md                 adapter help, nạp references/help.md
-.claude-plugin/                              manifest và catalog Claude Code
+.claude-plugin/                              manifest Claude Code
 .antigravity-plugin/plugin.json               manifest Antigravity
 scripts/validate-package.py                   kiểm tra tính đồng bộ của gói
 scripts/package-skill.sh                      tạo hai artifact cài đặt
