@@ -55,7 +55,7 @@
   - No narration between tool calls.
   - Keep every rule, with one owner per rule.
 - [x] T011 [US1] Run the existing contract, package security, distribution and consistency tests, two modules per command. Follow moved text in the tests without dropping a rule (FR-008). Run `python3 scripts/validate-package.py`.
-- [ ] T012 [US1] Lower `max_bytes` to the candidate's measured bytes with `python3 scripts/route_budget.py --write`. Confirm that `whole-article` is below `baseline_bytes` in `benchmarks/route-budget.json`.
+- [x] T012 [US1] Lower `max_bytes` to the candidate's measured bytes with `python3 scripts/route_budget.py --write`. Confirm that `whole-article` is below `baseline_bytes` in `benchmarks/route-budget.json`.
 - [x] T013 [US1] Early check (plan P4).
   - Run D01–D10 with `v0162.zip` and the candidate ZIP, two runs per model per article, through `.finolabs/harness-038/run_round.py`.
   - Report mean cost, writes, output, time and turns per model and version, plus fixes and guard breaks as counts.
