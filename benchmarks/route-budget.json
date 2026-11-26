@@ -3,35 +3,35 @@
  "routes": {
   "short-edit": {
    "baseline_bytes": 14444,
-   "max_bytes": 13080
+   "max_bytes": 14444
   },
   "whole-article": {
    "baseline_bytes": 18359,
-   "max_bytes": 16832
+   "max_bytes": 18359
   },
   "long-or-multi-round": {
    "baseline_bytes": 17687,
-   "max_bytes": 16323
+   "max_bytes": 17687
   },
   "follow-sample": {
    "baseline_bytes": 20619,
-   "max_bytes": 19255
+   "max_bytes": 20619
   },
   "voice-profile": {
    "baseline_bytes": 82498,
-   "max_bytes": 81134
+   "max_bytes": 82498
   },
   "help": {
    "baseline_bytes": 21596,
-   "max_bytes": 20232
+   "max_bytes": 21596
   },
   "review-only": {
    "baseline_bytes": 24534,
-   "max_bytes": 23007
+   "max_bytes": 24534
   },
   "typography-only": {
    "baseline_bytes": 26735,
-   "max_bytes": 25371
+   "max_bytes": 26735
   }
  }
 }

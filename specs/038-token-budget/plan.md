@@ -1,6 +1,6 @@
 # Implementation Plan: Cut the token cost of each edit
 
-**Branch**: `spec/038-token-budget` | **Date**: 2026-11-26 | **Spec**: [spec.md](spec.md)
+**Branch**: `spec/038-token-budget` | **Date**: 2026-11-26 | **Spec**: [spec.md](spec.md) | **Status**: stopped on 26/11/2026 (spec "Closure")
 
 **Input**: `specs/038-token-budget/spec.md` (Fio, 26/11/2026: "Token trước"; FR-004 tolerance "Lệch tối đa 2"). Router depth NORMAL, trigger `consumers`: the change moves text between files that every route and the contract tests read.
 

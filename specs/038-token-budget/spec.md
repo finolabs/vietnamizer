@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-26
 
-**Status**: Planned ([plan.md](plan.md)); tasks in [tasks.md](tasks.md); not implemented
+**Status**: Stopped on 26/11/2026 (Fio: "Dừng, giữ công cụ"). The gate failed; the skill text stays as 0.16.2 and only the route budget check is kept. See "Closure" at the end.
 
 **Input**: Fio, 26/11/2026, choosing between two directions for the next Vietnamizer version ("Token trước"). Make each edit cost fewer tokens and less time without losing quality, so the skill works well on Claude Cowork and cloud hosts, which run no local scripts. Voice-profile storage on Cowork and cloud is a later spec, 039. This spec depends on PR 95, which puts the package back to the 0.16.2 text; it starts from that text.
 
@@ -128,3 +128,19 @@ A maintainer changing skill text can see how many bytes each route loads, so a l
 - No new pattern, rule or detection is added. Quality is held, not improved.
 - Voice-profile storage on Cowork and cloud is out of scope; it is spec 039.
 - The work starts after PR 95 merges.
+
+## Closure (26/11/2026)
+
+- **Built and kept:** `scripts/route_budget.py`, `benchmarks/route-budget.json` (budgets equal to the 0.16.2 bytes) and `tests/test_route_budget.py`; the read-logging runner in `.finolabs/harness-038/` (outside Git); the route cases RB01–RB08 in `calibration/test-cases.md`, not yet run.
+- **Built and reverted:** candidate B (`SKILL.md` 13,080 bytes, workflow read with the card in one step). The skill text on main stays exactly 0.16.2.
+- **What the measurements showed:**
+  - A near-empty skill costs 36–39% less than 0.16.2, so skill text is a minority of the cost per run.
+  - On D01–D10, B saved 17.2% (Opus) and 7.9% (Sonnet).
+  - On the D11–D34 gate, B saved 1.9% on Opus, and Sonnet cost 7.9% more with 5 fewer other fixes and 5 more broken guards, because B made Sonnet read the workflow it skipped in 29 of 48 0.16.2 runs.
+  - The D01–D10 gains were within run-to-run noise.
+- **Why it stops:** without removing rules, about 2% is left to gain, inside the noise. Fio chose to stop and keep the tooling.
+- **Not done:** T016–T019 (voice-profile split, deferred to spec 039; route case runs), T020 and T021 beyond the AGENTS and architecture lines, and the release tasks T022–T026.
+- **Lessons for spec 039 and later:**
+  - Measure on the gate pool early, with enough runs to beat noise.
+  - A rule that makes a model follow the route more faithfully can raise its cost and its edit rate.
+

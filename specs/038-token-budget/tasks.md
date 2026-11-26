@@ -1,5 +1,7 @@
 # Tasks: Cut the token cost of each edit
 
+**Status**: stopped on 26/11/2026 (spec "Closure"); candidate B reverted, route budget check kept. Unchecked tasks were not done.
+
 **Input**: [spec.md](spec.md), [plan.md](plan.md), [research.md](research.md), [data-model.md](data-model.md), [contracts/](contracts/), [quickstart.md](quickstart.md)
 
 **Tests**: The constitution's release gate 1 requires a red test first for every behavior change. That covers the budget check, the route reads and the moved text. Run at most two test modules per command, and check `uptime` first.
@@ -102,8 +104,8 @@
 
 **Goal**: The budget check runs with the tests and is documented.
 
-- [ ] T020 [P] [US3] Document `scripts/route_budget.py` and `benchmarks/route-budget.json` in `AGENTS.md` (repository files table and release checks) and `docs/architecture.md`. Say that it runs outside the package.
-- [ ] T021 [US3] Add `python3 scripts/route_budget.py` to the release checks list in `AGENTS.md`. Confirm that `tests/test_route_budget.py` runs it.
+- [x] T020 [P] [US3] Document `scripts/route_budget.py` and `benchmarks/route-budget.json` in `AGENTS.md` (repository files table and release checks) and `docs/architecture.md`. Say that it runs outside the package.
+- [x] T021 [US3] Add `python3 scripts/route_budget.py` to the release checks list in `AGENTS.md`. Confirm that `tests/test_route_budget.py` runs it.
 
 ## Phase 6: Polish and release
 
