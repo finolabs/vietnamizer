@@ -35,7 +35,7 @@ Quality is measured on D01–D10 while tuning, then gated once on D11–D34. The
 **Project Type**: Agent skill package (Markdown).
 
 **Performance Goals**:
-- Whole-article cost per run at least 25% lower than 0.16.2 per model (SC-001).
+- Whole-article cost per run at least 10% lower than 0.16.2 per model, target 10–15% (SC-001, lowered after the floor probe).
 - Time per run lower (SC-002).
 - Always-loaded text at most 10 KB (SC-005).
 
@@ -115,7 +115,7 @@ calibration/test-cases.md        # 8 manual route cases (RB01–RB08)
   4. Write the manual cases RB01–RB08.
 - **P4. Early check on D01–D10.**
   - Run 0.16.2 and the candidate, two runs per model per article, about 80 runs.
-  - When the saving is under 15% for a model, stop and report to Fio before any gate run.
+  - When the saving is under 5% for a model, stop and report to Fio before any gate run.
   - Quality on D01–D10 is reported but not used as the bar.
 - **P5. Manual route cases.** RB01–RB08, once per model, on 0.16.2 and the candidate. Pass when the expected outcome holds and the bytes read are not higher.
 - **P6. Gate on D11–D34.**

@@ -59,12 +59,12 @@
 - [ ] T013 [US1] Early check (plan P4).
   - Run D01–D10 with `v0162.zip` and the candidate ZIP, two runs per model per article, through `.finolabs/harness-038/run_round.py`.
   - Report mean cost, writes, output, time and turns per model and version, plus fixes and guard breaks as counts.
-  - When the saving is under 15% for a model, stop and report to Fio before T014.
+  - When the saving is under 5% for a model, stop and report to Fio before T014.
 - [ ] T014 [US1] Gate (plan P6).
   - Run D11–D34 with both versions in one batch, two runs per model per article, all runs valid.
   - Score with `python3 benchmarks/holdout_036.py score`.
   - Pass when every condition below holds per model:
-    - mean cost is at least 25% lower than 0.16.2;
+    - mean cost is at least 10% lower than 0.16.2;
     - mean time is lower;
     - lexicon-kind fixes, other fixes and guard breaks are no worse than 0.16.2 by more than 2 each.
   - A fail allows one retry, after a change made from D01–D10 only.

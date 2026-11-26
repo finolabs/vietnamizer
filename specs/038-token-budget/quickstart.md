@@ -14,13 +14,13 @@ Prerequisites:
 3. **Early check (P4).**
    - Run the harness on D01–D10 with both versions, two runs per model per article.
    - The harness discards and reruns invalid runs (contract [run-record](contracts/run-record.md)).
-   - Compare mean cost per model. Under a 15% saving for a model: stop and report to Fio.
+   - Compare mean cost per model. Under a 5% saving for a model: stop and report to Fio.
 4. **Manual route cases (P5).** Run RB01–RB08 from `calibration/test-cases.md` once per model per version. Record pass or fail and the bytes read.
 5. **Gate (P6).**
    - Run the harness on D11–D34 with both versions in one batch, two runs per model per article.
    - Score with `python3 benchmarks/holdout_036.py score <index>`.
    - Pass when, for each model:
-     - mean cost is at least 25% lower;
+     - mean cost is at least 10% lower;
      - mean time is lower;
      - lexicon-kind fixes, other fixes and guard breaks are within 2 of 0.16.2.
 6. **Report.** Put the counts in `docs/benchmarks.md`: model ids, host, date, manifest hash and package commits.

@@ -37,7 +37,11 @@ On Opus, the skill-driven writes are about 16k tokens after the first call. They
 2. Make the whole-article route read fewer and smaller files.
 3. Cut text the agent writes between tool calls. For example, tell it to read what the route needs in one step, then write the article once.
 
-**Feasibility**: SC-001 asks for 25%, about $0.08 per Opus run. Saving half of the Opus skill-driven writes (about 8k tokens at $8/M) gives about $0.064, or 20%. A further 1k of output gives about $0.02. 25% is reachable but tight. The plan therefore puts an early check on D01–D10 (P4) before any gate run.
+**Feasibility** (superseded by R2b): SC-001 first asked for 25%, about $0.08 per Opus run. Saving half of the Opus skill-driven writes (about 8k tokens at $8/M) gives about $0.064, or 20%. A further 1k of output gives about $0.02. 25% is reachable but tight. The plan therefore puts an early check on D01–D10 (P4) before any gate run.
+
+## R2b. Floor probe (26/11/2026)
+
+With a 707-byte stub skill on D01–D04 (one run per model and version), the mean cost was Opus $0.207 against $0.339 for 0.16.2 and Sonnet $0.095 against $0.148. So the skill text drives at most 39% (Opus) and 36% (Sonnet) of the cost; the rest is the host, the article and the output. A 25% cut would need about two thirds of the whole-article text gone, which conflicts with FR-001. Fio lowered the target to about 10–15% (SC-001).
 
 ## R3. Other installs leak into the runs
 

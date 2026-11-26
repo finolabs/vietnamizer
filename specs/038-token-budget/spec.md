@@ -13,6 +13,7 @@
 ### Session 2026-11-26
 
 - Q: How much worse than 0.16.2 may the candidate be on D11–D34 and still pass? → A: At most 2 per count, per model (Fio: "Lệch tối đa 2").
+- Q: The floor probe (26/11/2026, D01–D04) shows skill text is only 36–39% of the cost per run (Opus $0.34 → $0.21, Sonnet $0.15 → $0.10 with a near-empty skill), so 25% would need about two thirds of the whole-article text cut. Keep 25% with a much leaner core, or lower the target? → A: Lower it to about 10–15% and keep every rule (Fio: "Hạ xuống ~10–15%").
 
 ## Background: what an edit costs today
 
@@ -41,7 +42,7 @@ A user asks Vietnamizer to edit a whole article: a blog post, a LinkedIn post, a
 
 **Acceptance Scenarios**:
 
-1. **Given** the D11–D34 pool and the T035 prompt, **When** the candidate edits each article twice per model, **Then** the mean cost per run is at least 25% lower than 0.16.2 for Opus 5.5 and for Sonnet 5.5.
+1. **Given** the D11–D34 pool and the T035 prompt, **When** the candidate edits each article twice per model, **Then** the mean cost per run is at least 10% lower than 0.16.2 for Opus 5.5 and for Sonnet 5.5.
 2. **Given** the same runs, **When** they are scored with the existing scorer, **Then** fixes and guard breaks per model stay within the quality tolerance in FR-004.
 3. **Given** a short edit (one phrase or sentence), **When** the user asks for it, **Then** the agent still reads only the catalog of the suspected pattern, as in 0.16.2, and reads no more than before.
 
@@ -110,7 +111,7 @@ A maintainer changing skill text can see how many bytes each route loads, so a l
 
 ### Measurable Outcomes
 
-- **SC-001**: A whole-article edit costs at least 25% less per run than 0.16.2, for Opus 5.5 and for Sonnet 5.5, on D11–D34.
+- **SC-001**: A whole-article edit costs at least 10% less per run than 0.16.2, for Opus 5.5 and for Sonnet 5.5, on D11–D34 (target 10–15%; lowered from 25% after the floor probe, Fio 26/11/2026).
 - **SC-002**: Time per run is lower than 0.16.2 for both models on D11–D34.
 - **SC-003**: Fixes and guard breaks on D11–D34 meet FR-004 for both models.
 - **SC-004**: Every manual case of the other routes passes, and none reads more bytes than on 0.16.2.
