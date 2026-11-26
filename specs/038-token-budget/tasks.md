@@ -8,7 +8,7 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Confirm PR 95 is merged, then rebase `spec/038-token-budget` on main. Check that `git diff v0.16.2 HEAD -- SKILL.md references/ profiles/ assets/ agents/` is empty before any text change.
+- [x] T001 Confirm PR 95 is merged, then rebase `spec/038-token-budget` on main. Check that `git diff v0.16.2 HEAD -- SKILL.md references/ profiles/ assets/ agents/` is empty before any text change.
 - [ ] T002 Build `.finolabs/harness-038/v0162.zip` from tag `v0.16.2` with `scripts/package-plugin.py` in a clean checkout of the tag. Record its SHA-256 in `.finolabs/harness-038/README.md`.
 
 ## Phase 2: Foundational (harness and budget check)
