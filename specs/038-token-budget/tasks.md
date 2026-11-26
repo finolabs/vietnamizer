@@ -46,20 +46,20 @@
   - `SKILL.md` is at most 10,240 bytes.
   - The five gates, the data boundary, the frozen zones and every route row stay in `SKILL.md`.
   - The card table and the whole-article read list live in `references/writing-workflow.md`.
-- [ ] T009 [US1] Rewrite `SKILL.md` to at most 10 KB, and make T008 green. Keep it to the scope, the data boundary and frozen zones, the five gates, and a routing table whose rows name files only. Move these out:
+- [x] T009 [US1] Rewrite `SKILL.md` to at most 10 KB, and make T008 green. Keep it to the scope, the data boundary and frozen zones, the five gates, and a routing table whose rows name files only. Move these out:
   - the card table and the whole-article read details, to `references/writing-workflow.md`;
   - the return-format details of rare routes, to the file each route reads.
-- [ ] T010 [US1] Shorten the whole-article route in `references/writing-workflow.md`.
+- [x] T010 [US1] Shorten the whole-article route in `references/writing-workflow.md`.
   - One step lists every file to read before writing.
   - The agent reads them together, then writes the article once.
   - No narration between tool calls.
   - Keep every rule, with one owner per rule.
-- [ ] T011 [US1] Run the existing contract, package security, distribution and consistency tests, two modules per command. Follow moved text in the tests without dropping a rule (FR-008). Run `python3 scripts/validate-package.py`.
+- [x] T011 [US1] Run the existing contract, package security, distribution and consistency tests, two modules per command. Follow moved text in the tests without dropping a rule (FR-008). Run `python3 scripts/validate-package.py`.
 - [ ] T012 [US1] Lower `max_bytes` to the candidate's measured bytes with `python3 scripts/route_budget.py --write`. Confirm that `whole-article` is below `baseline_bytes` in `benchmarks/route-budget.json`.
-- [ ] T013 [US1] Early check (plan P4).
+- [x] T013 [US1] Early check (plan P4).
   - Run D01–D10 with `v0162.zip` and the candidate ZIP, two runs per model per article, through `.finolabs/harness-038/run_round.py`.
   - Report mean cost, writes, output, time and turns per model and version, plus fixes and guard breaks as counts.
-  - When the saving is under 5% for a model, stop and report to Fio before T014.
+  - When the saving is under 5% for a model, stop and report to Fio before T014. Ran 26/11/2026 on D01–D10, two runs per model per article: candidate A (13,476 bytes) Opus −9.7%, Sonnet −5.9%; candidate B (`SKILL.md` 13,080 bytes, whole-article route 16,832 against 18,359) Opus −17.2%, Sonnet −7.9%; fixes and guard breaks within the tolerance for both.
 - [ ] T014 [US1] Gate (plan P6).
   - Run D11–D34 with both versions in one batch, two runs per model per article, all runs valid.
   - Score with `python3 benchmarks/holdout_036.py score`.
