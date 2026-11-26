@@ -12,7 +12,6 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 from distribution_assets import ASSETS, validate_svg
-from lexicon_check import case_index, check_lexicon, pattern_ids
 import xml.etree.ElementTree as ET
 
 
@@ -81,9 +80,7 @@ EXPECTED_PROFILE_DIRECTORIES = {
     if PurePosixPath(relative).parent.name == "styles"
 }
 PACKAGE_PAYLOAD = {"LICENSE", "SKILL.md", "profiles", "references", "agents", "assets"}
-# Scanner là công cụ của maintainer: repo nguồn phải có nó (check_lexicon dùng bộ đọc bảng của nó),
-# payload đã stage và archive không được có scripts/.
-SCANNER_FILE = "scripts/scan-lexicon.py"
+# Script là công cụ của maintainer trong repo nguồn; payload đã stage và archive không được có scripts/.
 STAGED_FORBIDDEN_DIRECTORIES = {"scripts"}
 # Payload đã stage không được chứa mã ở bất kỳ đâu, kể cả trong thư mục bị bỏ qua như __pycache__.
 STAGED_FORBIDDEN_SUFFIXES = (".py", ".sh", ".js", ".mjs", ".ts")
@@ -103,7 +100,6 @@ REFERENCE_FILES = {
     "references/voice-sources.md",
     "references/brand-voice.md",
     "references/help.md",
-    "references/ai-error-lexicon.md",
 }
 CALIBRATION_FILES = {
     "calibration/LOG.md",
@@ -159,8 +155,6 @@ def validate_payload_tree(root: Path, source_checkout: bool = False) -> None:
     Ở payload đã stage, các thư mục đó MUST NOT xuất hiện.
     """
     checked_names = set(PACKAGE_PAYLOAD) | (set(SOURCE_ONLY_DIRECTORIES) if source_checkout else set())
-    if source_checkout:
-        checked_names |= {SCANNER_FILE}
     if not source_checkout:
         for current, directories, files in os.walk(root, followlinks=False):
             base = Path(current)
@@ -221,7 +215,7 @@ def validate_payload_tree(root: Path, source_checkout: bool = False) -> None:
         if not path.exists() and not path.is_symlink():
             fail(f"Thiếu payload bắt buộc: {relative}")
             continue
-        expected_kind = "file" if relative in {"LICENSE", "SKILL.md", SCANNER_FILE} else "directory"
+        expected_kind = "file" if relative in {"LICENSE", "SKILL.md"} else "directory"
         validate_entry(path, expected_kind)
 
     for directory_name, expected_files in EXACT_DIRECTORY_FILES.items():
@@ -609,15 +603,6 @@ for profile_path in STYLE_PROFILE_CARDS:
     profile = read(profile_path)
     if f"`{STYLE_REGISTRY}`" not in profile:
         fail(f"{profile_path} chưa trỏ tới `{STYLE_REGISTRY}`")
-
-# --- Bảng dạng lỗi AI ---------------------------------------------------
-
-lexicon_text = read("references/ai-error-lexicon.md")
-if lexicon_text:
-    for message in check_lexicon(
-        lexicon_text, pattern_ids(ROOT), case_index(read("calibration/test-cases.md"))
-    ):
-        fail(message)
 
 # --- Package payload ----------------------------------------------------
 

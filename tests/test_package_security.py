@@ -570,7 +570,6 @@ class PackageSecurityTest(unittest.TestCase):
                 with zipfile.ZipFile(repo / "dist" / archive_name) as package:
                     names = set(package.namelist())
                 self.assertFalse({name for name in names if name.startswith(prefix + "scripts/")})
-                self.assertIn(prefix + "references/ai-error-lexicon.md", names)
                 code = {name for name in names if name.endswith((".py", ".sh", ".js", ".mjs", ".ts"))}
                 self.assertEqual(code, set())
 
@@ -584,7 +583,7 @@ class PackageSecurityTest(unittest.TestCase):
                 package.extractall(payload)
             scripts = payload / "vietnamizer" / "scripts"
             scripts.mkdir(exist_ok=True)
-            shutil.copy2(repo / "scripts" / "scan-lexicon.py", scripts / "scan-lexicon.py")
+            shutil.copy2(repo / "scripts" / "validate-package.py", scripts / "validate-package.py")
 
             result = self.run_payload_validator(repo, payload / "vietnamizer")
 
@@ -609,7 +608,7 @@ class PackageSecurityTest(unittest.TestCase):
                 self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
                 self.assertIn(nested, result.stderr)
 
-    def test_validator_rejects_scanner_copy_in_packager(self) -> None:
+    def test_validator_rejects_script_copy_in_packager(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))
             script_path = repo / "scripts" / "package-skill.sh"
@@ -618,7 +617,7 @@ class PackageSecurityTest(unittest.TestCase):
             self.assertIn(marker, script)
             script = script.replace(
                 marker,
-                'mkdir -p "$STAGE/scripts"\ncp -P "$ROOT/scripts/scan-lexicon.py" "$STAGE/scripts/"\n' + marker,
+                'mkdir -p "$STAGE/scripts"\ncp -P "$ROOT/scripts/validate-package.py" "$STAGE/scripts/"\n' + marker,
                 1,
             )
             script_path.write_text(script, encoding="utf-8")
@@ -627,16 +626,6 @@ class PackageSecurityTest(unittest.TestCase):
 
             self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("package-skill.sh phải chỉ chép public payload", result.stderr)
-
-    def test_source_checkout_requires_the_scanner(self) -> None:
-        with tempfile.TemporaryDirectory() as temporary_directory:
-            repo = self.copy_package_fixture(Path(temporary_directory))
-            (repo / "scripts" / "scan-lexicon.py").unlink()
-
-            result = self.run_package_validator(repo)
-
-            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
-            self.assertIn("scripts/scan-lexicon.py", result.stderr)
 
 
 if __name__ == "__main__":

@@ -96,9 +96,7 @@ Vài điều nên biết trước khi bắt đầu:
 ## Cách hoạt động, dữ liệu và hỗ trợ
 
 Plugin nạp hướng dẫn Markdown, profile và bảng tra đi kèm. Không có MCP server, hook, bước cài
-dependency hay chương trình chạy nền. Khi biên tập cả bài, agent dò các dạng lỗi AI đã gặp theo bảng
-`references/ai-error-lexicon.md`, rồi kê từng cụm đáng ngờ trong từng đoạn trước khi sửa. Agent tự đọc bảng,
-không chạy script hay lệnh nào. Skill chỉ xử lý phần văn bản bạn giao để biên tập, và không tự
+dependency hay chương trình chạy nền. Skill chỉ xử lý phần văn bản bạn giao để biên tập, và không tự
 tìm mẫu giọng trong memory hay lịch sử hội thoại. Agent có thể đọc hay sửa file bạn giao trong phạm
 vi cụ thể, theo quyền và cơ chế xác nhận của host. Đó không phải quyền quét các file khác để thu
 thập dữ liệu.

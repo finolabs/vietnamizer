@@ -208,6 +208,9 @@ trên Claude Code (`claude -p`, `--plugin-dir`), mỗi model hai lượt mỗi b
 | Sonnet 5.5 | 0.16.2 | 3/70 | 10/50 | 18/256 | 179 |
 | Sonnet 5.5 | `45e5ed5` | 4/70 | 0/50 | 4/256 | 77 |
 
+Chi phí trung bình mỗi lượt (Claude Code báo `total_cost_usd`): Opus $0,35 với 0.16.2 và $0,65 với `45e5ed5` (tăng
+87%), Sonnet $0,15 và $0,31 (tăng 108%); thời gian mỗi lượt Opus 54 s và 79 s, Sonnet 33 s và 52 s.
+
 Cổng không đạt. Plan P3 đòi Opus sửa ít nhất 35/70 và Sonnet ít nhất 24/70, và không model nào làm vỡ nhiều cụm
 giữ hơn 0.16.2. Opus sửa 28/70 (gấp đôi 0.16.2) nhưng làm vỡ 33 cụm giữ so với 20. Sonnet sửa 4/70 và gần như
 không đổi bài: ít cụm giữ bị vỡ hơn 0.16.2, nhưng không sửa lỗi khác nào. Bản trả về của mọi lượt dài bằng bài

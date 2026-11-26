@@ -182,8 +182,8 @@ Xong khi host liệt kê `vietnamizer` và người dùng biết phải mở ses
 
 ## Nền tảng hỗ trợ
 
-Gói chỉ gồm Markdown, profile, asset và manifest, không có script nào. Agent tự đọc bảng dạng lỗi khi
-biên tập bài dài, nên skill chạy trên mọi hệ điều hành mà host chạy (macOS, Linux, Windows). Các script
+Gói chỉ gồm Markdown, profile, asset và manifest, không có script nào, nên skill chạy trên mọi hệ điều
+hành mà host chạy (macOS, Linux, Windows). Các script
 đóng gói và kiểm tra trong repo cần Bash và Python 3; chúng không nằm trong gói.
 
 | Host | Cách cài | Ghi chú |
@@ -196,7 +196,7 @@ biên tập bài dài, nên skill chạy trên mọi hệ điều hành mà host
 
 ## Cài đặt theo nền tảng
 
-Bản hiện tại là **0.17.0**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
+Bản hiện tại là **0.16.2**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ### Skills CLI
 
@@ -273,7 +273,6 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Lịch sử phiên bản
 
-- **0.17.0** — Khi biên tập cả bài, agent dò các dạng lỗi AI đã gặp theo bảng mới `references/ai-error-lexicon.md` (từ ghép bị cắt, cách nói dịch sát, từ nghề dễ hiểu sai, *Đội* đứng trơ), kê từng cụm đáng ngờ trong từng đoạn, sửa lỗi trước rồi mới áp giọng và dò lại. Gói không kèm script nào.
 - **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà soát cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn rà soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới; Vietnamizer tự biên tập 42 file của chính gói.
 - **0.16.1** — Mô tả plugin ngắn lại để catalog `finolabs/plugins` pin được bản mới; nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt; gọi lại hồ sơ đã lưu bằng tên.

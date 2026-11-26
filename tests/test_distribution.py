@@ -240,6 +240,8 @@ class DistributionTest(unittest.TestCase):
                 self.assertEqual(archive.read("LICENSE"), (repo / "LICENSE").read_bytes())
                 self.assertFalse(any(name.startswith((".agents/", ".specify/", "specs/", "tests/", "output/")) for name in names))
                 self.assertFalse(any("/advisor/" in name for name in names))
+                self.assertFalse(any(name.startswith("scripts/") or "/scripts/" in name for name in names))
+                self.assertFalse(any(name.endswith((".py", ".sh", ".js", ".mjs", ".ts")) for name in names))
 
     def test_plugin_package_rejects_missing_asset_before_replacing_good_archive(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

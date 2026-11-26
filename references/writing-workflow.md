@@ -26,52 +26,12 @@ thành đoạn đều nhau hoặc tự thêm hook, đối lập, ví dụ, CTA. 
 ## Khai triển và đối chiếu
 
 Viết từ ý theo cách triển khai đã chọn. Rà soát kết hợp từ, nghĩa câu, liên kết đoạn và giọng; có nghi vấn mới
-tra catalog core chỉ đúng nhóm, ngoài ba catalog đã mở cho lượt dò. Sửa lỗi cần pattern và Không flag; theo mẫu cần căn cứ mẫu đúng phạm vi,
+tra catalog core chỉ đúng nhóm. Sửa lỗi cần pattern và Không flag; theo mẫu cần căn cứ mẫu đúng phạm vi,
 không bịa lỗi để hợp thức hóa chuyển giọng. Lượng sửa/tỉ lệ dài ngắn không chứng minh chất lượng.
 
 Đối chiếu hai chiều theo core với nguồn đầy đủ, cả ý rơi từ bước tách ý. Kiểm hàm ý của đề mục/danh sách.
 Không biến khuyến nghị thành lệnh, tập hợp thành quy trình, điều kiện thành nguyên nhân đã xác nhận.
 Kiến thức đúng nhưng ngoài nguồn không tự thuộc nhiệm vụ biên tập hoặc khai triển brief.
-
-## Kê cụm khi biên tập toàn bài
-
-Chỉ làm trên tuyến bài (biên tập toàn bài hoặc viết từ brief/outline); sửa nhỏ không lập bảng kê. Trước khi
-sửa, chạy một lượt dò từng câu và lập bảng kê cụm cho riêng mình, không ghi ra file và không dùng công cụ nào
-ngoài việc đọc. Lượt này đi qua mọi câu trong phạm vi được giao và áp cho từng câu bốn phép thử nhận diện, gồm
-phép thử dịch sát của V9 trong `references/sentence-structure.md`, hai phép thử tiếng đơn bị cắt và danh từ tập
-thể đứng trơ của V20 trong `references/missing-words.md`, và phép thử từ nghề dễ hiểu sai của V19 trong
-`references/terms-and-lead-ins.md`. Với mỗi câu, xét lần lượt mọi cụm động từ, khung câu và từ nối, mọi tiếng đơn
-làm thực từ, mọi danh từ tập thể và mọi từ nghề. Câu có số liệu, so sánh, phủ định hay mở đầu bằng giới từ là
-chỗ dễ sót nhất; đừng bỏ qua chúng chỉ vì câu đọc trôi. Đừng chỉ dò các dạng đã có trong bảng dạng lỗi,
-vì bài mới thường mang dạng khác. Mỗi ứng viên thành một dòng của bảng kê. Câu không có ứng viên vẫn ghi là đã
-xem. Chỉ bắt đầu sửa sau khi đã dò hết phạm vi được giao, để việc tìm lỗi không bị lẫn với việc sửa.
-
-Mỗi dòng của bảng kê có: cụm như đang viết, đoạn chứa nó, pattern hoặc mục của bảng
-`references/ai-error-lexicon.md` bị nghi, căn cứ (ngữ vực, quy chiếu, tiếng đứng cạnh), cách sửa ở đơn vị
-nhỏ nhất (chốt 4) và kết quả xét Không flag: `sửa`, hoặc `giữ` kèm lý do. Mọi ứng viên của bảng dạng lỗi đều
-thành một dòng, kể cả khi Không flag cho giữ. Nghi vấn tìm được khi đọc catalog cũng là một dòng. Các ứng viên
-chồng lên nhau gộp thành một dòng, lấy phần hợp của chúng và sửa một lần: *giữ nghĩa và giọng* →
-*giữ ngữ nghĩa và giọng văn*. Dòng `giữ` để nguyên cụm, không đổi byte nào.
-
-Ứng viên ở front matter, code hay địa chỉ link thì ghi `giữ: vùng bảo toàn`. Ứng viên trong ngoặc kép chỉ giữ
-khi đó là trích nguyên văn; thuật ngữ đặt trong ngoặc để nhấn được xét như mọi dòng khác. Blockquote làm ghi
-chú hay tóm tắt được xét như văn xuôi, trừ khi chính nó là trích dẫn.
-
-Khi biên tập, sửa tại chỗ theo các dòng `sửa`, không dựng lại câu hay đoạn từ bảng kê. Viết từ brief vẫn
-khai triển theo các bước ở trên, rồi lập bảng kê trên bản vừa viết. Bảng kê là việc nội bộ, không trả cùng bài.
-Người dùng yêu cầu rõ thì trình nó trong giới hạn 5 dòng ghi chú của mục Trả kết quả trong `SKILL.md`; cũng có
-thể dùng một dòng của nó để hỏi đúng một điểm.
-
-## Thứ tự: sửa lỗi, áp giọng, rồi dò lại
-
-Trên tuyến bài, sửa lỗi theo bảng kê trước, rồi mới áp giọng (mẫu, hồ sơ hay card), sau đó dò lại. Lượt dò
-lại xem lại bảng dạng lỗi, các đoạn vừa sửa và năm chốt. Không có hồ sơ giọng vẫn dò
-lại, sau lượt sửa lỗi và sau mỗi lần sửa thêm do review.
-
-Khi nét giọng va với sửa lỗi thì sửa lỗi thắng. Hồ sơ hay mẫu chỉ làm một dạng trong bảng thành chấp nhận
-được khi cột Không flag của dòng đó bao gồm ngữ vực ấy. Lượt áp giọng mà tạo lại một dạng trong bảng ngoài
-Không flag thì dòng đó quay về `sửa` và bỏ phần áp giọng ở chỗ ấy. Phần sửa lỗi và phần chỉnh giọng vẫn phải
-tách được khi nhìn lại.
 
 ## Rà câu, đoạn và toàn bài
 

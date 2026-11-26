@@ -4,7 +4,7 @@
 
 ## Kiến trúc
 
-`SKILL.md` là nguồn chuẩn về điều phối và chốt; từng catalog sở hữu duy nhất nội dung pattern được core uỷ quyền. Đây là cấu trúc source 0.17.0:
+`SKILL.md` là nguồn chuẩn về điều phối và chốt; từng catalog sở hữu duy nhất nội dung pattern được core uỷ quyền. Đây là cấu trúc source 0.16.2:
 
 ```text
 SKILL.md                                      core gọn: phạm vi, chốt, tuyến đọc và trả kết quả
@@ -28,7 +28,6 @@ references/voice-analysis.md            hướng dẫn phân tích giọng tiế
 references/voice-sources.md             nguồn mẫu: dán bài, file export, trang qua trình duyệt (tài khoản cá nhân; trang thương hiệu và Trang Facebook của chính người dùng từ URL họ đưa)
 references/brand-voice.md               dựng hồ sơ giọng thương hiệu từ tài liệu người dùng đưa
 references/help.md                      hướng dẫn một màn hình và bước thiết lập giọng
-references/ai-error-lexicon.md          bảng dạng lỗi AI đã gặp L01–L08, chỉ đọc trên tuyến bài
 calibration/LOG.md                            bằng chứng dùng để sửa quy tắc chung (chỉ trong repo, không vào gói)
 calibration/test-cases.md                    ca kiểm thử chạy tay cho từng pattern (chỉ trong repo, không vào gói)
 agents/openai.yaml                            tên hiển thị và lời gọi mặc định
@@ -41,8 +40,6 @@ assets/                                       icon và wordmark SVG sáng/tối
 scripts/validate-package.py                   kiểm tra tính đồng bộ của gói
 scripts/package-skill.sh                      tạo hai artifact cài đặt
 scripts/package-plugin.py                     kiểm metadata và tạo ZIP plugin ba nền tảng
-scripts/lexicon_check.py                      kiểm cấu trúc bảng dạng lỗi (ngoài gói)
-tests/fixtures/lexicon/                       fixture LXF01–LXF29 cho scanner (ngoài gói)
 README.md                                    giới thiệu ngắn, bằng chứng trực quan và điều hướng
 docs/installation.md, docs/usage.md           cài đặt, cách dùng, phạm vi và dữ liệu
 docs/style-and-voice.md                       hướng dẫn giọng mẫu và phong cách
@@ -58,8 +55,7 @@ benchmarks/                                   corpus, runner pilot giọng và p
 
 Ngoài các file từ `.specify/` trở xuống, `docs/`, manifest source và adapter discovery
 cũng phục vụ source hoặc phát triển, không nằm trong gói `vietnamizer.skill`.
-Thư mục `scripts/` chỉ có trong repo nguồn và phục vụ maintainer, kể cả `scripts/scan-lexicon.py` (tìm ứng viên theo
-bảng dạng lỗi, dùng cho test cấu trúc bảng); gói không chứa thư mục này.
+Thư mục `scripts/` chỉ có trong repo nguồn và phục vụ maintainer; gói không chứa thư mục này.
 
 Generated agent skills, Spec Kit integration state, raw run và scratch output được giữ local.
 Xem [hướng dẫn đóng góp](../CONTRIBUTING.md) để cài tooling maintainer và chạy kiểm tra offline.

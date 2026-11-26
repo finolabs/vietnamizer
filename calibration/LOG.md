@@ -794,3 +794,16 @@ Một agent không sửa skill đề xuất 16 lỗi và 40 cụm cần giữ. N
 (quyết định 5, sửa ngày 18/11/2026) và giữ cả 16 lỗi đề xuất. Phiếu chốt có 36 lỗi, trong đó 15 lỗi
 thuộc bốn nhóm của bảng từ vựng, và 36 cụm cần giữ. Bài và phiếu nằm ngoài Git; mã băm ở
 `benchmarks/dev-037-manifest.json`. O2 vẫn mở cho đến khi có phép thử viết từ các phiếu này.
+
+## 2026-11-26 · gỡ phần dò lỗi AI (spec 036 và 037)
+
+**Nguồn:** cổng T035 và T036 của spec 037 trên 24 bài D11–D34 (`docs/benchmarks.md`). Bản `45e5ed5` sửa 28/70
+lỗi nhóm từ vựng với Opus so với 13 của 0.16.2, nhưng làm vỡ 33 cụm cần giữ so với 20; Sonnet sửa 4/70 so với 3
+và không sửa lỗi khác nào (0.16.2 sửa 10/50). Mỗi lượt tốn hơn 0.16.2 87% với Opus và 108% với Sonnet.
+**Khác biệt:** model ít khi nhận ra cách nói dịch sát do chính nó viết; đẩy việc dò làm Opus sửa cả chỗ đúng,
+còn luật giữ chỗ đúng làm Sonnet gần như không sửa.
+**Phân loại:** cơ chế dò không đạt, không phải pattern sai.
+**Quyết định:** Fio dừng spec 037 và gỡ toàn bộ phần dò lỗi ngày 26/11/2026; skill text, profile và manifest
+trở lại đúng 0.16.2, không phát hành 0.17.0. Gỡ bảng `references/ai-error-lexicon.md`, scanner, `lexicon_check.py`,
+fixture LXF và các ca LX01–LX29, DT01–DT14; ca HF01–HF18 của 0.16.2 vẫn giữ. Các mục cũ ở trên giữ nguyên làm hồ sơ lịch sử.
+

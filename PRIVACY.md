@@ -4,9 +4,6 @@
 cốt lõi không có máy chủ riêng, telemetry hoặc bước gửi văn bản đến dịch vụ của maintainer.
 Plugin không khai báo MCP server, hook hay quyền đăng nhập vào dịch vụ bên ngoài.
 
-Gói không chứa script nào. Agent tự đọc bảng đi kèm để dò lỗi; nó không ghi bài ra file tạm và không
-chạy lệnh nào trên máy hay sandbox của host cho việc này.
-
 Văn bản đưa vào Claude hoặc Codex vẫn được xử lý theo cấu hình, quyền truy cập và chính sách dữ
 liệu của nền tảng đó. Cài skill không làm văn bản trở thành dữ liệu chỉ xử lý trên máy.
 

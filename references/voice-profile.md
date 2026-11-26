@@ -284,8 +284,6 @@ và đọc hồ sơ, báo hồ sơ đã khớp, rồi hỏi bài cần sửa hay
 một dòng thì trình sổ hoặc bỏ dòng đó sau khi họ đồng ý; không xóa file hồ sơ.
 
 Dùng `references/voice-from-samples.md` để áp bằng chứng vào bản viết/biên tập được giao.
-Trên tuyến bài, áp hồ sơ sau lượt sửa lỗi và trước lượt dò lại, theo mục Thứ tự trong
-`references/writing-workflow.md`.
 Bản hồ sơ người dùng đã sửa bằng tay là bản có thẩm quyền về nội dung phong cách; không khôi phục
 bản cũ. Kiểm đầu hồ sơ có `type: vietnamizer-voice-profile` và `schema: 1` trước khi dùng hay trích bất cứ
 gì. Đầu hồ sơ không đúng thì dừng, không dùng và không trích chữ nào từ file; chỉ báo file ở vị trí đó không
