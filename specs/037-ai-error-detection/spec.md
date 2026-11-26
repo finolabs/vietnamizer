@@ -2,7 +2,7 @@
 
 **Feature Branch**: `spec/037-ai-error-detection`
 **Created**: 2026-11-17
-**Status**: Planned ([plan.md](plan.md)); tasks in [tasks.md](tasks.md); no implementation yet.
+**Status**: Stopped on 26/11/2026 (Fio: "Dừng đi, dù bộ nhãn do người duyệt cũng không thể vượt mọi case được"). The development gate failed twice (T035, T036); the holdout never ran. See "Closure" at the end.
 **Input**: Fio, 17/11/2026, after the spec 036 release proof (T044): hold 0.17.0 and open a new spec that makes Vietnamizer actually detect AI errors in fresh Vietnamese text, chiefly calques (*dịch sát*), and also clipped compounds (*từ ghép bị cắt*) and bare collective nouns (*danh từ tập thể đứng trơ*). Delegated by the coordinator session `local_c94f3fc0-fa20-4142-8374-d4a879f60b8f`. Router depth DEEP, trigger `uncertainty`: no measured mechanism yet makes a model notice an error it writes itself, and every whole-article edit changes.
 
 ## Background: what the 036 holdout showed
@@ -225,3 +225,17 @@ A user on any host runs a whole-article edit. The package holds no executable fi
 - Any new executable code in the package.
 - Changes to spec 036's files (T044 and O7 are recorded by the coordinator separately).
 - Code, reference or constitution changes in this pull request.
+
+## Closure (26/11/2026)
+
+Spec 037 stops without meeting its bar. Counts are in `docs/benchmarks.md` ("Spec 037: cổng T035 trên D11–D34").
+
+- **What was built and merged:** recognition tests for calques (V9), clipped compounds and bare collective nouns (V20) and misread trade terms (V19); a per-sentence detection pass and a read gate on the whole-article route; the scanner moved out of the package; the dev cases DT01–DT14; the scorer and marking tools.
+- **What the gate showed:** on D11–D34, the candidate `45e5ed5` (T035) fixed 28/70 lexicon-kind errors with Opus 5.5 (bar 35) but broke 33 guards against 20 for 0.16.2, and Sonnet 5.5 fixed 4/70 (bar 24). The second round `19e8e71` (T036) did worse with Opus (25/70, 40 guards) and Sonnet (5/70), and was reverted.
+- **Why it stops:**
+  - A model rarely sees the calques it writes itself.
+  - Pushing detection makes Opus edit correct text, while the keep-what-is-right rule freezes Sonnet.
+  - Gains on the tuning articles D01–D10 did not carry to fresh articles.
+  - Fio judged that no label set, human-reviewed or not, can cover every case well enough to make further text tuning worth it.
+- **Not done:** T020–T021 as written, T023–T029 (freeze, H15–H20, holdout runs, report, release pull request). H15–H20 were never generated.
+- **Open for the release decision:** main carries the spec 036 and 037 text under version 0.17.0, unreleased. Neither spec showed it fixes more errors than 0.16.2, and on D11–D34 Opus breaks more guards with it. Whether to release that text, or revert the detection parts first, is Fio's decision (O1).

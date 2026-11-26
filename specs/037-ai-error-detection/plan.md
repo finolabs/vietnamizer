@@ -1,6 +1,6 @@
 # Implementation Plan: Detect AI errors in fresh Vietnamese text
 
-**Branch**: `spec/037-ai-error-detection` | **Date**: 2026-11-17 | **Spec**: [spec.md](spec.md)
+**Branch**: `spec/037-ai-error-detection` | **Date**: 2026-11-17 | **Spec**: [spec.md](spec.md) | **Status**: stopped on 26/11/2026 (spec "Closure")
 
 **Input**: `specs/037-ai-error-detection/spec.md` (settled decisions 1–7). Depth DEEP, trigger `uncertainty`. Next release keeps the number 0.17.0 (spec FR-018).
 
