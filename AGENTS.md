@@ -52,6 +52,7 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `scripts/validate-package.py` | Kiểm tra version, số hiệu pattern, danh mục trong docs, điều hướng README và giới hạn dòng |
 | `scripts/package-skill.sh` | Đóng gói `dist/vietnamizer.skill` và `dist/vietnamizer-claude-org.zip` |
 | `scripts/package-plugin.py` | Kiểm metadata/asset và tạo ZIP plugin ba nền tảng từ cùng public payload |
+| `scripts/route_budget.py`, `benchmarks/route-budget.json`, `tests/test_route_budget.py` | Công cụ của maintainer, ngoài gói (spec 038): cộng số byte mỗi tuyến trong bảng tuyến của `SKILL.md` phải đọc và báo lỗi khi một tuyến vượt ngân sách đã ghi; `--write` không cho vượt mức 0.16.2 |
 | `docs/plugin-distribution.md` | Hướng dẫn kiểm cài đặt; plugin phân phối qua catalog chung `finolabs/plugins`, không có marketplace riêng |
 | `PRIVACY.md`, `TERMS.md` | Thông tin dữ liệu và điều kiện dùng gói mã nguồn mở |
 | `SECURITY.md` | Ranh giới bảo mật và kênh báo lỗi riêng, không dùng Issues công khai |
@@ -111,7 +112,7 @@ cho resolver và registry, còn `SKILL.md` sở hữu thứ tự gọi.
 - **Version:** `metadata.version` trong `SKILL.md`, mục mới nhất trong `docs/changelog.md`, bản tóm tắt phiên bản trong `README.md` và `version` trong ba manifest `.claude-plugin/`, `.codex-plugin/`, `.antigravity-plugin/` phải giống nhau. Giữ version bên trong `metadata`; không đặt khoá `version` ở cấp cao nhất của frontmatter vì một số nền tảng không nhận khoá này. Catalog chung `finolabs/plugins` không ghi version. Catalog `.claude-plugin/marketplace.json` ghim `ref` vào tag phát hành (đang là `v0.16.2`), còn `.agents/plugins/marketplace.json` của Codex chưa ghim nên theo nhánh mặc định. Sau mỗi tag, chuyển `ref` sang tag mới bằng một pull request ở `finolabs/plugins`, khi chủ repo đồng ý.
 - **Giới hạn dòng:** `SKILL.md` tối đa 550 dòng, profile blog tối đa 320 dòng, profile kỹ thuật tối đa 220 dòng. Các file trong `references/` không bị giới hạn.
 - **Nguồn:** khi thêm pattern dựa trên tài liệu bên ngoài, phải thêm nguồn vào `docs/sources.md` và giữ đường dẫn từ `README.md`, ghi đúng mức độ tin cậy. Nếu chỉ là suy luận, phải nói rõ là suy luận. Không tự tạo nguồn hoặc số liệu tần suất.
-- **Kiểm tra trước khi phát hành:** chạy `python3 scripts/validate-package.py`, `python3 scripts/package-plugin.py`, `npx skills add . --list`, `claude plugin validate .` và `claude plugin validate .claude-plugin/plugin.json --strict` và `agy plugin validate .`. Plugin ZIP phải chứa đúng hai skill, `vietnamizer` và `help`; icon và manifest phải resolve trong gói. Giữ root `SKILL.md` canonical, chỉ đổi layout trong output sinh ra.
+- **Kiểm tra trước khi phát hành:** chạy `python3 scripts/validate-package.py`, `python3 scripts/route_budget.py`, `python3 scripts/package-plugin.py`, `npx skills add . --list`, `claude plugin validate .` và `claude plugin validate .claude-plugin/plugin.json --strict` và `agy plugin validate .`. Plugin ZIP phải chứa đúng hai skill, `vietnamizer` và `help`; icon và manifest phải resolve trong gói. Giữ root `SKILL.md` canonical, chỉ đổi layout trong output sinh ra.
 
 ## Khi sửa nội dung
 

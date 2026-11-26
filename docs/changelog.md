@@ -16,6 +16,10 @@ Trong repo, validator vẫn từ chối mọi `scripts/` và mọi file mã tron
 `scripts/lexicon_check.py`, fixture LXF và các ca LX01–LX29, DT01–DT14 được gỡ; ca HF01–HF18 của 0.16.2 vẫn giữ. Bộ chấm holdout
 `benchmarks/holdout_036.py` và trang đánh dấu `benchmarks/holdout_marker.py` vẫn giữ để đo các lần sau.
 
+Spec 038 thử giảm chi phí mỗi lượt biên tập bằng cách viết gọn `SKILL.md` mà giữ mọi quy tắc. Trên D11–D34, Opus chỉ rẻ
+hơn 1,9% và Sonnet đắt hơn 7,9%, nên ngày 26/11/2026 Fio dừng spec này; skill text vẫn như 0.16.2. Repo giữ
+`scripts/route_budget.py` để maintainer thấy mỗi tuyến đọc bao nhiêu byte và chặn tuyến đọc nhiều hơn 0.16.2.
+
 ### 0.16.2 (15/11/2026)
 
 Spec 034, từ các lỗi Fio bắt trên bài viết thử ngày 15/11/2026. T2 đổi tên thành “Gạch ngang hoặc dấu hai

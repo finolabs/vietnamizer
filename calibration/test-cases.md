@@ -559,3 +559,20 @@ Ca lấy từ các bài viết thử mà Fio bắt lỗi ngày 15/11/2026; chưa
 | 16 | Nhãn nút ngắn trong giao diện: *“Giữ giọng”* | Giữ nguyên | V20 Không flag: nhãn ngắn |
 | 17 | Báo cáo trang trọng: *“Bản dịch giữ nghĩa của nguyên tác.”* | Giữ nguyên | V20 Không flag: câu trang trọng đã đủ ý, *giữ nghĩa* đúng nghĩa |
 | 18 | Có hồ sơ thương hiệu tên *Acme*; yêu cầu: *“Sửa giúp bài giới thiệu sản phẩm mới của Acme.”* | Không áp hồ sơ *Acme*; biên tập với giọng hiện có của bài | Bài chỉ nhắc tên thương hiệu thì chưa phải là gọi hồ sơ |
+
+## RB01–RB08 · tuyến không có trong bộ cổng (spec 038)
+
+Ca kiểm từng tuyến mà bộ D11–D34 không đo, chạy một lượt mỗi model trên 0.16.2 và bản ứng viên, có ghi file
+đã đọc. Đầu vào là văn bản dựng cho ca, không lấy từ bài phát triển hay holdout. Đạt khi kết quả đúng Mong đợi
+và bản ứng viên không đọc nhiều byte hơn 0.16.2.
+
+| # | Đầu vào | Mong đợi | Vì sao |
+|---|---|---|---|
+| RB01 | Viết đoạn giới thiệu khoảng 80 chữ cho tiệm sửa xe đạp từ bốn ý cho sẵn | Đọc workflow và một card; đủ bốn ý, không thêm dữ kiện (chốt 2) | Tuyến viết từ brief |
+| RB02 | Sửa một đoạn văn cứng theo mẫu ba câu thân mật | Đọc `references/voice-from-samples.md`; giữ đủ ý, giọng gần mẫu, không nhập chuyện của mẫu | Tuyến theo mẫu |
+| RB03 | Học giọng viết từ hai bài người dùng tự viết | Đọc `references/voice-profile.md`; hỏi câu đồng ý trước khi phân tích, không lưu gì | Tuyến học hồ sơ, opt-in |
+| RB04 | Gọi `/vietnamizer:vietnamizer giong-cong-viec` khi chưa có sổ hồ sơ | Không tìm hồ sơ ở memory hay lịch sử; báo không thấy hồ sơ hoặc hỏi, không bịa giọng | Gọi lại hồ sơ chỉ qua sổ |
+| RB05 | Dựng giọng thương hiệu từ bộ quy chuẩn bốn dòng | Đọc `references/voice-profile.md` và `references/brand-voice.md`; hỏi xác nhận nói thay thương hiệu, không lưu khi chưa được yêu cầu | Tuyến giọng thương hiệu |
+| RB06 | Hỏi Vietnamizer làm được gì | Đọc `references/help.md`, không đọc catalog hay card | Tuyến help |
+| RB07 | Nhận xét một câu có dấu hai chấm giữa câu, không sửa | Không trả bản sửa; nhận xét riêng nghĩa và cách viết, nêu T2 | Tuyến chỉ review |
+| RB08 | Chỉ sửa dấu câu và viết hoa | Đọc `references/typography.md`; chỉ đổi dấu cách, dấu chấm than và chữ hoa đầu câu, không đổi từ | Tuyến chỉ typography |
