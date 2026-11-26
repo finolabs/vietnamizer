@@ -8,7 +8,7 @@
 
 The aim is to make each run load less new text while keeping every 0.16.2 behavior. Most of the cost is new context (64–66%) and output (about 30%), not the number of turns (research R1).
 
-- **P1:** `SKILL.md` shrinks to at most 10 KB. It keeps the scope, the data boundary, the five gates and a pointer-only routing table.
+- **P1:** `SKILL.md` shrinks (first goal 10 KB, dropped on 26/11/2026; see spec SC-005). It keeps the scope, the data boundary, the five gates and a pointer-only routing table.
 - **P2:** route-only text moves to the files those routes already read.
 - **P3:** `voice-profile.md` splits by task behind an index.
 - **P4:** a maintainer check pins the bytes each route reads.
@@ -35,9 +35,9 @@ Quality is measured on D01–D10 while tuning, then gated once on D11–D34. The
 **Project Type**: Agent skill package (Markdown).
 
 **Performance Goals**:
-- Whole-article cost per run at least 10% lower than 0.16.2 per model, target 10–15% (SC-001, lowered after the floor probe).
+- Whole-article cost per run at least 10% lower than 0.16.2 for Opus and 7% for Sonnet (SC-001 as settled on 26/11/2026).
 - Time per run lower (SC-002).
-- Always-loaded text at most 10 KB (SC-005).
+- Always-loaded text smaller than 0.16.2's `SKILL.md` (SC-005; the 10 KB goal was dropped).
 
 **Constraints**:
 - Every 0.16.2 behavior is kept (FR-001).
@@ -85,7 +85,7 @@ specs/038-token-budget/
 ### Source Code (repository root)
 
 ```text
-SKILL.md                         # at most 10 KB: scope, boundary, gates, pointer routing table
+SKILL.md                         # shorter wording, same rules (reverted when the spec stopped)
 references/writing-workflow.md   # gains the card table and the whole-article read list
 references/voice-profile.md      # becomes a short index
 references/voice-profile-*.md    # learn, apply, update, registry parts

@@ -39,7 +39,7 @@ A user asks Vietnamizer to edit a whole article: a blog post, a LinkedIn post, a
 
 **Why this priority**: Whole-article editing is the most common use and the one the existing gate pool measures. It is where the read cost is highest.
 
-**Independent Test**: Run the candidate on D11–D34 with the T035 prompt and settings, two runs per model per article. Compare cost, tokens, time, fixes and guard breaks with the T035 0.16.2 runs.
+**Independent Test**: Run the candidate on D11–D34 with the T035 prompt and settings, two runs per model per article. Compare cost, tokens, time, fixes and guard breaks with 0.16.2 run again in the same batch (FR-005).
 
 **Acceptance Scenarios**:
 

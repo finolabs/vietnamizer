@@ -33,6 +33,8 @@ class RouteBudgetTest(unittest.TestCase):
         for route in ("short-edit", "whole-article", "long-or-multi-round", "follow-sample", "voice-profile",
                       "help", "review-only", "typography-only"):
             self.assertIn(route, result.stdout)
+        whole = next(line for line in result.stdout.splitlines() if line.startswith("whole-article "))
+        self.assertIn("SKILL.md, references/writing-workflow.md", whole)
 
     def test_adding_a_file_to_the_whole_article_route_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -121,6 +123,29 @@ class RouteBudgetTest(unittest.TestCase):
             result = self.run_check(repo, "--write")
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertEqual(outside.read_text(encoding="utf-8"), before)
+
+    def test_symlinked_skill_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.copy_repo(Path(temporary))
+            real = Path(temporary) / "SKILL-real.md"
+            real.write_text((repo / "SKILL.md").read_text(encoding="utf-8"), encoding="utf-8")
+            (repo / "SKILL.md").unlink()
+            (repo / "SKILL.md").symlink_to(real)
+            result = self.run_check(repo)
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("SKILL.md", result.stdout + result.stderr)
+
+    def test_symlinked_budget_is_not_read(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.copy_repo(Path(temporary))
+            budget = repo / "benchmarks" / "route-budget.json"
+            outside = Path(temporary) / "outside.json"
+            outside.write_text(budget.read_text(encoding="utf-8"), encoding="utf-8")
+            budget.unlink()
+            budget.symlink_to(outside)
+            result = self.run_check(repo)
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("không đọc", result.stdout + result.stderr)
 
 
 if __name__ == "__main__":

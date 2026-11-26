@@ -60,11 +60,13 @@ def table_rows(skill: str) -> list[list[str]]:
     return rows
 
 
-def measure() -> tuple[dict[str, int], list[str]]:
-    skill_path = ROOT / "SKILL.md"
+def measure() -> tuple[dict[str, int], dict[str, list[str]], list[str]]:
+    skill_path = inside("SKILL.md")
+    if skill_path is None or not skill_path.is_file():
+        return {}, {}, ["SKILL.md: thiếu, là symlink hoặc ra ngoài repo"]
     skill = skill_path.read_text(encoding="utf-8")
     base = skill_path.stat().st_size
-    totals, problems = {}, []
+    totals, listed, problems = {}, {}, []
     for cells in table_rows(skill):
         route = next((rid for prefix, rid in ROUTES if cells[0].startswith(prefix)), None)
         if route is None:
@@ -82,14 +84,18 @@ def measure() -> tuple[dict[str, int], list[str]]:
                 continue
             size += path.stat().st_size
         totals[route] = size
+        listed[route] = files
     for _, rid in ROUTES:
         if rid not in totals and not any(p.startswith(f"{rid}:") for p in problems):
             problems.append(f"{rid}: không tìm thấy dòng trong bảng tuyến")
-    return totals, problems
+    return totals, listed, problems
 
 
 def main(argv: list[str]) -> int:
-    totals, problems = measure()
+    totals, listed, problems = measure()
+    if inside("benchmarks/route-budget.json") is None:
+        print("benchmarks/route-budget.json hoặc thư mục của nó là symlink hoặc ra ngoài repo; không đọc", file=sys.stderr)
+        return 1
     budget = json.loads(BUDGET.read_text(encoding="utf-8")) if BUDGET.exists() else {"schema": 1, "routes": {}}
     routes = budget.setdefault("routes", {})
     if "--write" in argv:
@@ -114,7 +120,7 @@ def main(argv: list[str]) -> int:
     failed = list(problems)
     for route, size in totals.items():
         limit = routes.get(route, {}).get("max_bytes")
-        print(f"{route} {size} / {limit}")
+        print(f"{route} {size} / {limit}: " + ", ".join(["SKILL.md", *listed.get(route, [])]))
         if limit is None:
             failed.append(f"{route}: chưa có ngân sách")
         elif size > limit:
