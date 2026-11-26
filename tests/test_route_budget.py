@@ -31,7 +31,8 @@ class RouteBudgetTest(unittest.TestCase):
         result = subprocess.run([sys.executable, "-I", str(SCRIPT)], cwd=ROOT, capture_output=True, text=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         for route in ("short-edit", "whole-article", "long-or-multi-round", "follow-sample", "voice-profile",
-                      "help", "review-only", "typography-only"):
+                      "help", "review-only", "typography-only", "voice-profile-learn", "voice-profile-save",
+                      "voice-profile-apply", "voice-profile-update", "voice-profile-reminder"):
             self.assertIn(route, result.stdout)
         whole = next(line for line in result.stdout.splitlines() if line.startswith("whole-article "))
         self.assertIn("SKILL.md, references/writing-workflow.md", whole)
@@ -54,6 +55,16 @@ class RouteBudgetTest(unittest.TestCase):
             result = self.run_check(repo)
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("whole-article", result.stdout + result.stderr)
+
+    def test_growth_in_a_voice_profile_part_fails_its_task(self) -> None:
+        """Spec 039 review: the split parts are measured per task, not hidden behind the index."""
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.copy_repo(Path(temporary))
+            part = repo / "references" / "voice-profile-apply.md"
+            part.write_text(part.read_text(encoding="utf-8") + "\nThêm một dòng.\n", encoding="utf-8")
+            result = self.run_check(repo)
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("voice-profile-apply:", result.stdout)
 
     def test_missing_file_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

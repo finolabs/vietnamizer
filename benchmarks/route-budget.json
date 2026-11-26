@@ -32,6 +32,26 @@
   "typography-only": {
    "baseline_bytes": 26735,
    "max_bytes": 26719
+  },
+  "voice-profile-learn": {
+   "baseline_bytes": 98421,
+   "max_bytes": 69100
+  },
+  "voice-profile-save": {
+   "baseline_bytes": 82498,
+   "max_bytes": 71985
+  },
+  "voice-profile-apply": {
+   "baseline_bytes": 88673,
+   "max_bytes": 64214
+  },
+  "voice-profile-update": {
+   "baseline_bytes": 82498,
+   "max_bytes": 68792
+  },
+  "voice-profile-reminder": {
+   "baseline_bytes": 55460,
+   "max_bytes": 16662
   }
  }
 }

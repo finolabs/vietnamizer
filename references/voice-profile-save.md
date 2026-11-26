@@ -19,8 +19,10 @@ tự nêu tên kho ấy thì nói quy tắc nào chặn, đưa các kho còn l�
 
 Host có hai loại:
 
-- **Có thư mục ghi được:** phiên có thư mục mà agent ghi được bằng công cụ file của host, như thư mục
-  người dùng gắn vào Cowork trên máy hay thư mục làm việc của Claude Code. Thư mục ấy là thư mục project.
+- **Có thư mục ghi được:** phiên có thư mục mà người dùng đã gắn hay mở làm project và agent ghi được bằng
+  công cụ file của host, như thư mục gắn vào Cowork trên máy hay thư mục làm việc của Claude Code. Thư mục ấy là
+  thư mục project. Thư mục tạm, sandbox hay thư mục đầu ra mà host cấp cho riêng một cuộc trò chuyện không phải
+  thư mục project, vì phiên sau không còn nó.
   Đề nghị thêm kho “thư mục project này (`.vietnamizer/`)” theo đoạn **Kho project** dưới đây.
 - **Không có thư mục ghi được:** Chat và các host không đọc được file trên máy, thường là claude.ai bản
   web, Desktop, Mobile và Cowork chạy trên cloud. Đề nghị thêm “Bộ nhớ của Chat” theo mục “Bản gọn trong

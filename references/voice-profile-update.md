@@ -29,7 +29,8 @@ thêm dữ liệu cá nhân, bí mật hoặc lời người khác vào diff hay
 như “đừng dùng từ này”, ghi đúng phạm vi người dùng nêu, không giả làm kết luận từ mẫu.
 
 Chỉ ghi bản cập nhật sau khi người dùng xác nhận lưu **diff đã thấy**, tại đúng đích đã
-chọn; áp lại mục 4 nếu đổi đích hoặc cần tạo thư mục. Chưa xác nhận thì giữ bản đề xuất
+chọn, theo quy tắc ghi của kho ấy ở `references/voice-profile-save.md` mục 4, kể cả khi giữ nguyên đích (Orrery
+dùng `base_revision`, bản gọn thay đúng bản cũ, chỉ báo đã lưu khi host xác nhận); áp lại cả mục 4 nếu đổi đích hoặc cần tạo thư mục. Chưa xác nhận thì giữ bản đề xuất
 trong hội thoại, không sửa bản lưu. Không đưa phản hồi này vào nhật ký hiệu chuẩn chung.
 
 ## 7. Chấm đoạn mẫu và kiểm A/B (FR-015, FR-016; spec 030 FR-010–FR-013)
