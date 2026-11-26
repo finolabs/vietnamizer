@@ -805,5 +805,5 @@ còn luật giữ chỗ đúng làm Sonnet gần như không sửa.
 **Phân loại:** cơ chế dò không đạt, không phải pattern sai.
 **Quyết định:** Fio dừng spec 037 và gỡ toàn bộ phần dò lỗi ngày 26/11/2026; skill text, profile và manifest
 trở lại đúng 0.16.2, không phát hành 0.17.0. Gỡ bảng `references/ai-error-lexicon.md`, scanner, `lexicon_check.py`,
-fixture LXF và các ca HF11–HF18, LX01–LX29, DT01–DT14. Các mục cũ ở trên giữ nguyên làm hồ sơ lịch sử.
+fixture LXF và các ca LX01–LX29, DT01–DT14; ca HF01–HF18 của 0.16.2 vẫn giữ. Các mục cũ ở trên giữ nguyên làm hồ sơ lịch sử.
 

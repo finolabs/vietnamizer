@@ -13,7 +13,7 @@ Opus nó sửa thêm lỗi nhưng làm vỡ nhiều cụm cần giữ hơn 0.16.
 lượt tốn gần gấp đôi chi phí. Ngày 26/11/2026 Fio quyết định gỡ toàn bộ phần này và không phát hành 0.17.0
 (`docs/benchmarks.md`). Skill text, profile và manifest trở lại đúng như 0.16.2, nên bản cài không đổi.
 Trong repo, validator vẫn từ chối mọi `scripts/` và mọi file mã trong gói. Scanner `scripts/scan-lexicon.py`,
-`scripts/lexicon_check.py`, fixture LXF và các ca HF11–HF18, LX01–LX29, DT01–DT14 được gỡ. Bộ chấm holdout
+`scripts/lexicon_check.py`, fixture LXF và các ca LX01–LX29, DT01–DT14 được gỡ; ca HF01–HF18 của 0.16.2 vẫn giữ. Bộ chấm holdout
 `benchmarks/holdout_036.py` và trang đánh dấu `benchmarks/holdout_marker.py` vẫn giữ để đo các lần sau.
 
 ### 0.16.2 (15/11/2026)
