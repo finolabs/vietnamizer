@@ -60,7 +60,7 @@
   - Run D01–D10 with `v0162.zip` and the candidate ZIP, two runs per model per article, through `.finolabs/harness-038/run_round.py`.
   - Report mean cost, writes, output, time and turns per model and version, plus fixes and guard breaks as counts.
   - When the saving is under 5% for a model, stop and report to Fio before T014. Ran 26/11/2026 on D01–D10, two runs per model per article: candidate A (13,476 bytes) Opus −9.7%, Sonnet −5.9%; candidate B (`SKILL.md` 13,080 bytes, whole-article route 16,832 against 18,359) Opus −17.2%, Sonnet −7.9%; fixes and guard breaks within the tolerance for both.
-- [ ] T014 [US1] Gate (plan P6).
+- [x] T014 [US1] Gate (plan P6). Ran 26/11/2026, 192 valid runs: FAIL. Opus −1.9% cost (bar −10%), quality within tolerance; Sonnet +7.9% cost (bar −7%), other fixes 5 → 0 and guard breaks 11 → 16 (tolerance 2). Sonnet read the workflow in 41/48 runs against 19/48 on 0.16.2; the D01–D10 savings (Opus −17%) were within run-to-run noise.
   - Run D11–D34 with both versions in one batch, two runs per model per article, all runs valid.
   - Score with `python3 benchmarks/holdout_036.py score`.
   - Pass when every condition below holds per model:

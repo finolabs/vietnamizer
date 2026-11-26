@@ -233,6 +233,24 @@ trước đó một ngày); 12 lượt trả lỗi được chạy lại.
 Cổng vẫn không đạt, và Opus kém hơn `45e5ed5` (28/70, 33 cụm giữ bị vỡ). Mức tăng của Sonnet trên D01–D10 không sang
 được D11–D34: đó là các bài đã dùng để chỉnh từ T034, nên nhiều khả năng skill text đang khớp với chính chúng.
 
+## Spec 038: cổng chi phí trên D11–D34 (26/11/2026)
+
+Bản `cand-b` (spec 038) viết gọn `SKILL.md` từ 14.444 xuống 13.080 byte, giữ mọi quy tắc, và yêu cầu đọc workflow
+cùng card trong một lượt. Chạy trên Claude Code (`claude -p`, `--plugin-dir`), mỗi model hai lượt mỗi bài, 192
+lượt, mọi lượt ghi lại file đã đọc và chỉ nạp skill từ gói của chính nó. 0.16.2 chạy lại trong cùng đợt.
+
+| Model | Phiên bản | Chi phí mỗi lượt | Thời gian | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi |
+|---|---|---|---|---|---|---|
+| Opus 5.5 | 0.16.2 | $0,339 | 55,5 s | 10/70 | 10/50 | 17/256 |
+| Opus 5.5 | `cand-b` | $0,332 (−1,9%) | 54,2 s | 12/70 | 10/50 | 18/256 |
+| Sonnet 5.5 | 0.16.2 | $0,142 | 32,1 s | 1/70 | 5/50 | 11/256 |
+| Sonnet 5.5 | `cand-b` | $0,154 (+7,9%) | 33,6 s | 2/70 | 0/50 | 16/256 |
+
+Cổng không đạt. Với 0.16.2, Sonnet bỏ qua workflow ở 29 trên 48 lượt; bản ứng viên khiến nó đọc workflow ở
+41 lượt, nên tốn hơn và sửa ngoài cụm nhiều hơn (172 so với 130 chỗ). Opus đọc như nhau ở hai bản, nên phần chữ
+bớt được (khoảng 1,5 KB) chỉ giảm chừng 2%. Trên D01–D10, cùng bản này giảm 17% với Opus; chênh lệch đó nằm trong
+mức dao động giữa các đợt chạy. Đo với một skill gần như rỗng, skill chỉ chiếm 36–39% chi phí mỗi lượt.
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày
