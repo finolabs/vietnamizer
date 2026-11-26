@@ -77,7 +77,7 @@
 
 **Independent test**: Run RB01–RB08 once per model per version, with reads logged.
 
-- [ ] T015 [P] [US2] Write the manual cases RB01–RB08 in `calibration/test-cases.md`, one per route:
+- [x] T015 [P] [US2] Write the manual cases RB01–RB08 in `calibration/test-cases.md`, one per route:
   - writing from a brief;
   - following a sample;
   - learning a voice profile;
@@ -88,14 +88,14 @@
   - typography only.
 
   Each case states its input, the expected outcome, and the files 0.16.2 reads for it.
-- [ ] T016 [US2] Write red tests in `tests/test_skill_contract.py` for the voice-profile split, before the split:
+- [ ] T016 [US2] (Deferred to spec 039, 26/11/2026: the measured route never reads `references/voice-profile.md`, and many of its phrases are pinned by the contract tests, so splitting it here costs more risk than it saves; spec 039 reworks profiles for Cowork anyway.) Write red tests in `tests/test_skill_contract.py` for the voice-profile split, before the split:
   - `references/voice-profile.md` is an index under 4 KB that names the parts;
   - applying a saved profile points only to the apply part;
   - every rule of the old file appears in exactly one part.
-- [ ] T017 [US2] Split `references/voice-profile.md` into the index and the parts `references/voice-profile-learn.md`, `references/voice-profile-apply.md`, `references/voice-profile-update.md` and `references/voice-profile-registry.md`.
+- [ ] T017 [US2] (Deferred to spec 039, 26/11/2026: the measured route never reads `references/voice-profile.md`, and many of its phrases are pinned by the contract tests, so splitting it here costs more risk than it saves; spec 039 reworks profiles for Cowork anyway.) Split `references/voice-profile.md` into the index and the parts `references/voice-profile-learn.md`, `references/voice-profile-apply.md`, `references/voice-profile-update.md` and `references/voice-profile-registry.md`.
   - Update the pointers in `SKILL.md`, `references/voice-sources.md`, `references/brand-voice.md` and `references/help.md`.
   - Make T016 green.
-- [ ] T018 [US2] Add the new parts to `REFERENCE_FILES` in `scripts/validate-package.py`, and to any reference list in `tests/test_distribution.py`. Run the validator and both test modules. Then run `python3 scripts/route_budget.py --write` again.
+- [ ] T018 [US2] (Deferred to spec 039, 26/11/2026: the measured route never reads `references/voice-profile.md`, and many of its phrases are pinned by the contract tests, so splitting it here costs more risk than it saves; spec 039 reworks profiles for Cowork anyway.) Add the new parts to `REFERENCE_FILES` in `scripts/validate-package.py`, and to any reference list in `tests/test_distribution.py`. Run the validator and both test modules. Then run `python3 scripts/route_budget.py --write` again.
 - [ ] T019 [US2] Run RB01–RB08 through the harness, once per model per version. Record pass or fail and the bytes read per case in `docs/benchmarks.md`. A case that fails, or reads more than on 0.16.2, blocks the release (SC-004).
 
 ## Phase 5: User Story 3 - maintainers see the cost (P3)
