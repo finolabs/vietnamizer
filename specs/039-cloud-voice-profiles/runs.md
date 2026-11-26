@@ -8,7 +8,11 @@ Claude Code `-p`, model `claude-sonnet-5-5`, candidate plugin built from this br
 | PJ02 | Pass, one issue | Read the project registry and exactly one profile; did not read the home registry. Before it read the whole apply part, it ran one Glob for the profile name in the parent folder. The first run read both registries in one command and grepped the part; fixed in `be3ab5d`. |
 | PJ03 | Pass | Index, apply part, project registry, one profile. The home registry was not read. |
 | PJ04 | Not run | Needs a row in the home registry; see above. |
-| PJ05–PJ07 | Not run | The Finos Chrome was not connected to the session, and claude.ai needs the candidate skill uploaded to the account first. |
+| PJ05 | Pass | claude.ai through the Finos Chrome, candidate skill uploaded by Fio, Drive connector on. Offered Orrery and Google Drive with folder `Vietnamizer` and file `giong-thu-cloud.md`. "Bộ nhớ của Chat" was not offered because Fio's own instructions forbid host memory, as the save rules require. After creating the folder, the agent saw that the Drive belongs to another Google account than the one in Fio's instructions and asked before writing; Fio said to go on. The file holds the full profile; it was not shared and no permission changed. With no compact copy, the next-call phrase named the Drive file. |
+| PJ06 | Pass, two issues | New chat, call by Drive location. Read the index, the apply part and exactly one Drive file, then checked the raw header. Issues: it searched the whole Drive with `title contains 'giong-thu-cloud'` instead of the exact name in the folder; the edit kept "vô cùng hào hứng" and "xuất sắc", so the applied voice was weak. The compact-copy path (the `Bản đầy đủ` line) was not exercised, because Fio's account does not use host memory. |
+| PJ07 | Not run | Turning the Drive connector off is in claude.ai settings, which Claude in Chrome cannot open. |
+
+Test data left in Fio's account: the Drive file `Vietnamizer/giong-thu-cloud.md` and its folder, and two chats ("Học giọng viết LinkedIn", "Sửa bài theo giọng Vietnamizer").
 | PJ08 | Pass | Saw the Git work tree, did not offer the project store, created nothing. Stopped before the next turn, which would have written to the real home store. |
 
 Local Cowork desktop was not run: Chrome cannot drive it.
