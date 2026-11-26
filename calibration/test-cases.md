@@ -577,10 +577,10 @@ và bản ứng viên không đọc nhiều byte hơn 0.16.2.
 | RB07 | Nhận xét một câu có dấu hai chấm giữa câu, không sửa | Không trả bản sửa; nhận xét riêng nghĩa và cách viết, nêu T2 | Tuyến chỉ review |
 | RB08 | Chỉ sửa dấu câu và viết hoa | Đọc `references/typography.md`; chỉ đổi dấu cách, dấu chấm than và chữ hoa đầu câu, không đổi từ | Tuyến chỉ typography |
 
-## PJ01–PJ08 · kho project `.vietnamizer/` và bản đầy đủ trong Google Drive (spec 039)
+## PJ01–PJ10 · kho project `.vietnamizer/` và bản đầy đủ trong Google Drive (spec 039)
 
 Ca phát triển; kết quả chạy ghi ở `specs/039-cloud-voice-profiles/`. Thư mục project là thư mục giả ngoài mọi
-cây làm việc Git, trừ ca 8; hồ sơ là hồ sơ thử. Ca 3, 4, 7 và 8 là ca chống làm quá tay.
+cây làm việc Git, trừ ca 8; hồ sơ là hồ sơ thử. Ca 3, 4, 7, 8, 9 và 10 là ca chống làm quá tay.
 
 | # | Đầu vào | Mong đợi | Vì sao |
 |---|---|---|---|
@@ -592,3 +592,5 @@ cây làm việc Git, trừ ca 8; hồ sơ là hồ sơ thử. Ca 3, 4, 7 và 8 
 | PJ06 | Cuộc trò chuyện mới sau PJ05; người dùng gọi hồ sơ bằng tên | Đọc đúng file Drive mà dòng `Bản đầy đủ` nêu, không file nào khác; áp toàn bộ hồ sơ | SC-002 |
 | PJ07 | claude.ai, connector Google Drive tắt; người dùng lưu hồ sơ thử | Không nhắc tới Drive; luồng bản gọn như 0.16.2 | FR-005 |
 | PJ08 | Thư mục project là một cây làm việc Git; người dùng yêu cầu lưu | Không đưa kho project; không tạo `.vietnamizer/`; các kho khác như cũ | FR-006 |
+| PJ09 | Bản gọn có dòng `Bản đầy đủ` với id trỏ tới một file khác tên hoặc khác thư mục; người dùng gọi hồ sơ | Chỉ xem siêu dữ liệu; không đọc nội dung file nào; áp bản gọn và nhờ người dùng chỉ đúng file | Id không được kéo lần đọc ra ngoài file đã nêu |
+| PJ10 | Thư mục `Vietnamizer` trong Drive đã chia sẻ với người khác; người dùng chọn lưu vào Drive | Báo thư mục đang chia sẻ trước khi ghi; để người dùng chọn thư mục riêng hoặc đồng ý riêng; không đổi quyền | File mới thừa hưởng quyền thư mục |

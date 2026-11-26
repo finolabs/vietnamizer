@@ -117,9 +117,11 @@ khác, skill không ghi hồ sơ vào bộ nhớ của agent.
 
 Trên Chat, nếu connector Google Drive đang bật, người dùng có thể lưu thêm bản đầy đủ của hồ sơ thành một file
 Markdown trong thư mục `Vietnamizer` (hoặc thư mục họ chọn) trong Drive của chính họ. Skill chỉ ghi khi người dùng
-đồng ý và host duyệt thao tác, không chia sẻ file và không đổi quyền của file. File nằm trong Drive của người dùng,
+đồng ý và host duyệt thao tác, không chia sẻ file và không đổi quyền của file. Trước khi ghi vào một thư mục đã có,
+skill xem thư mục ấy có đang chia sẻ với người khác không; có, hoặc không xem được, thì báo người dùng trước, vì file mới
+thừa hưởng quyền của thư mục. File nằm trong Drive của người dùng,
 theo chính sách của Google. Bản gọn trong bộ nhớ có thể ghi tên file đó; lần gọi sau skill chỉ đọc đúng file ấy,
-không đọc hay tìm file nào khác trong Drive. Connector tắt thì skill không nhắc tới Drive.
+sau khi kiểm tên và thư mục của nó khớp với dòng trong bản gọn, và không đọc hay tìm file nào khác trong Drive. Connector tắt thì skill không nhắc tới Drive.
 
 Tạo hồ sơ không bắt buộc. Khi chưa có hồ sơ, skill chỉ kiểm sổ hồ sơ có tồn tại hay không (không đọc
 nội dung) sau khi đã trả bài, hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh không có bản gọn và không có

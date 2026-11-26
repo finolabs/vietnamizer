@@ -84,7 +84,10 @@ Không thấy công cụ Drive thì không nhắc tới Drive. Câu chọn kho n
 Drive của chính người dùng; người dùng có thể đổi thư mục. Kiểm đích là kiểm đúng file `<slug>.md` trong đúng thư mục
 đó, không tìm hay liệt kê gì khác trong Drive. Chưa có thư mục thì câu chọn kho nói sẽ tạo nó; câu trả lời đồng ý là
 câu đồng ý riêng cho việc tạo đúng thư mục ấy. File chứa toàn bộ hồ sơ, đúng nội dung đã trình, ở dạng Markdown.
-Chỉ ghi sau câu đồng ý của người dùng và hộp duyệt của host. Người dùng từ chối ở hộp duyệt hay ghi lỗi thì nói chưa
+Trước khi ghi vào một thư mục đã có, chỉ xem quyền truy cập của thư mục ấy (siêu dữ liệu, không đọc file nào): thư mục
+chia sẻ với người khác, nằm trong bộ nhớ dùng chung, hay không xem được quyền thì nói rõ người khác có thể thấy hồ sơ
+và để người dùng chọn thư mục riêng tư khác, hoặc đồng ý riêng việc ghi vào đó. Thư mục do agent vừa tạo ở gốc Drive của
+người dùng thì riêng tư. Chỉ ghi sau câu đồng ý của người dùng và hộp duyệt của host. Người dùng từ chối ở hộp duyệt hay ghi lỗi thì nói chưa
 lưu vào Drive và không ghi nơi khác; bản gọn vẫn có thể lưu như dưới đây. Chỉ báo đã lưu khi connector trả về file đã
 tạo, rồi nêu thư mục và tên file. Không chia sẻ file và không đổi quyền của file.
 

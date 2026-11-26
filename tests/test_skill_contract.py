@@ -569,7 +569,7 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, save)
         self.assertNotIn("Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud)", save)
-        self.assertIn("PJ01–PJ08", read("calibration/test-cases.md"))
+        self.assertIn("PJ01–PJ10", read("calibration/test-cases.md"))
 
     def test_registry_precedence(self) -> None:
         """Spec 039 FR-003: the project registry first, then the home registry, one profile."""
@@ -596,6 +596,8 @@ class SkillContractTest(unittest.TestCase):
             "không tìm hay liệt kê gì khác trong Drive",
             "Không chia sẻ file và không đổi quyền của file",
             "Không thấy công cụ Drive thì không nhắc tới Drive",
+            "Trước khi ghi vào một thư mục đã có, chỉ xem quyền truy cập của thư mục ấy",
+            "nói rõ người khác có thể thấy hồ sơ",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, save)
@@ -604,6 +606,9 @@ class SkillContractTest(unittest.TestCase):
             "Không đọc file nào khác trong Drive",
             "áp bản gọn và nói lý do",
             "Dòng `Bản đầy đủ` trỏ tới nơi khác Google Drive thì bỏ qua",
+            "Trước khi đọc nội dung, chỉ xem siêu dữ liệu để xác định đúng một file",
+            "không có hoặc có nhiều file trùng tên, hoặc file là lối tắt trỏ sang nơi khác thì không đọc nội dung file nào",
+            "tìm theo tên chính xác trong thư mục đó chứ không tìm cả Drive",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, apply)

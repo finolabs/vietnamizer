@@ -17,4 +17,6 @@ Test data left in Fio's account: the Drive file `Vietnamizer/giong-thu-cloud.md`
 
 Local Cowork desktop was not run: Chrome cannot drive it.
 
-Route bytes for applying a saved profile: index plus apply part, 16,341 bytes, against 41,016 in 0.16.2 (−60%, SC-004).
+Route bytes for applying a saved profile: index plus apply part, 17,023 bytes after the review fixes, against 41,016 in 0.16.2 (−58%, SC-004). `scripts/route_budget.py` now measures each voice-profile task against its 0.16.2 equivalent.
+
+PJ09 (a mismatched Drive id) and PJ10 (a shared Drive folder) were added after the security review and have not been run.
