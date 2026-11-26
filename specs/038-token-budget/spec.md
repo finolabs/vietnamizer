@@ -92,7 +92,7 @@ A maintainer changing skill text can see how many bytes each route loads, so a l
 - **FR-002**: The text loaded on every run MUST be smaller than 0.16.2's `SKILL.md`. Content that only some routes need MUST move to files that only those routes read.
 - **FR-003**: Each route MUST read no more bytes than in 0.16.2. A route that read a large reference MUST read only the section it needs, for example applying a profile without reading how to learn one.
 - **FR-004**: On D11–D34, for each model, the candidate's fixes (lexicon-kind and other) and guard breaks MUST be no worse than 0.16.2 by more than 2 per count (Fio, 26/11/2026: "Lệch tối đa 2"): Opus fixes at least 11/70 lexicon-kind and 10/50 other errors and breaks at most 22 guards; Sonnet fixes at least 1/70 and 8/50 and breaks at most 20 guards.
-- **FR-005**: The measurement MUST reuse the T035 setup: the same pool D11–D34, prompt, host (Claude Code `-p`), plugin install from a ZIP, scorer `benchmarks/holdout_036.py` and the T035 0.16.2 runs as the baseline. It reports cost, total tokens, output tokens, time and tool turns per run, beside fixes and guard breaks.
+- **FR-005**: The measurement MUST reuse the T035 setup: the same pool D11–D34, prompt, host (Claude Code `-p`), plugin install from a ZIP, scorer `benchmarks/holdout_036.py`, with 0.16.2 run again in the same batch as the baseline, because the T035 runs did not log reads and cannot be shown free of the user-installed plugin (research R3). Every run logs its reads; a run that loads skill text from outside its own package is discarded and rerun. It reports cost, total tokens, output tokens, time and tool turns per run, beside fixes and guard breaks.
 - **FR-006**: Per constitution Principle IV, iterating on the text MUST use the development articles D01–D10 only. D11–D34 is run as the gate at most twice: one candidate and one retry.
 - **FR-007**: Each route the pool does not measure (writing from a brief, following a sample, learning and applying a voice profile, brand voice, help, review only, typography only) MUST get at least one manual case. The case records the files read and the expected outcome, and runs once per model on 0.16.2 and on the candidate.
 - **FR-008**: The skill contract tests MUST pass. A test may change only to follow text that moved, never to drop a rule.
@@ -121,7 +121,7 @@ A maintainer changing skill text can see how many bytes each route loads, so a l
 
 - Claude Code `-p` is the measuring host, as in T035. Cowork shows no token counts, so the saving is measured there by proxy: fewer and smaller reads cost less on any host that bills by tokens. One Cowork check per model is optional and needs Fio's account.
 - The runner's `~/.claude/CLAUDE.md` is loaded on every run, as in T035. It adds the same cost to both versions, so it does not change the difference.
-- The T035 0.16.2 runs stay valid as the baseline because the 0.16.2 package bytes are unchanged. If the gate runs much later, or the host or models change, 0.16.2 runs again in the same batch.
+- The T035 0.16.2 numbers in the Background table are the planning reference only; the gate baseline is a fresh 0.16.2 batch (FR-005).
 - The labels of D11–D34 (agent, three Codex reviewers and the Antigravity decider, no human review) are reused as they are. This spec compares two versions on the same labels and does not need them to be perfect.
 - No new pattern, rule or detection is added. Quality is held, not improved.
 - Voice-profile storage on Cowork and cloud is out of scope; it is spec 039.
