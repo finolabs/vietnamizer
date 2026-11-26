@@ -9,30 +9,30 @@
 ## Phase 1: Setup
 
 - [x] T001 Confirm PR 95 is merged, then rebase `spec/038-token-budget` on main. Check that `git diff v0.16.2 HEAD -- SKILL.md references/ profiles/ assets/ agents/` is empty before any text change.
-- [ ] T002 Build `.finolabs/harness-038/v0162.zip` from tag `v0.16.2` with `scripts/package-plugin.py` in a clean checkout of the tag. Record its SHA-256 in `.finolabs/harness-038/README.md`.
+- [x] T002 Build `.finolabs/harness-038/v0162.zip` from tag `v0.16.2` with `scripts/package-plugin.py` in a clean checkout of the tag. Record its SHA-256 in `.finolabs/harness-038/README.md`.
 
 ## Phase 2: Foundational (harness and budget check)
 
-- [ ] T003 Write `.finolabs/harness-038/run_round.py` from `.finolabs/harness-037/gate/run_round.py`.
+- [x] T003 Write `.finolabs/harness-038/run_round.py` from `.finolabs/harness-037/gate/run_round.py`.
   - Run `claude -p` with `--output-format stream-json --verbose`.
   - Parse every `tool_use` into `reads`, and take `cost_usd`, `cache_write`, `cache_read`, `output`, `seconds` and `turns` from the result's `modelUsage`.
   - Set `valid` false when a skill load or read path lies outside the run's own plugin install path ([contracts/run-record.md](contracts/run-record.md)).
   - Rerun invalid runs up to twice. Write only valid runs to the index.
-- [ ] T004 Probe the harness on D02, one run per model with `v0162.zip`.
+- [x] T004 Probe the harness on D02, one run per model with `v0162.zip`.
   - Confirm `valid` is true and the reads match research R2.
   - Confirm that a run without `--plugin-dir` is marked invalid.
-- [ ] T005 [P] Write the red tests for the budget check in `tests/test_route_budget.py`:
+- [x] T005 [P] Write the red tests for the budget check in `tests/test_route_budget.py`:
   - the current tree passes;
   - adding a file to the `whole-article` row fails and names that route (SC-006);
   - a missing file fails;
   - an unmapped row fails;
   - `--write` refuses to set `max_bytes` above `baseline_bytes`.
-- [ ] T006 Implement `scripts/route_budget.py` per [contracts/route-budget.md](contracts/route-budget.md).
+- [x] T006 Implement `scripts/route_budget.py` per [contracts/route-budget.md](contracts/route-budget.md).
   - Parse the table under `## Chọn đúng tuyến đọc`.
   - Map rows to the route ids `short-edit`, `whole-article`, `long-or-multi-round`, `follow-sample`, `voice-profile`, `help`, `review-only` and `typography-only`.
   - Count `SKILL.md` once per route.
   - Make T005 green.
-- [ ] T007 Run `python3 scripts/route_budget.py --write` on the 0.16.2 text to create `benchmarks/route-budget.json`, with `baseline_bytes` equal to `max_bytes` for every route. Commit it with T005 and T006.
+- [x] T007 Run `python3 scripts/route_budget.py --write` on the 0.16.2 text to create `benchmarks/route-budget.json`, with `baseline_bytes` equal to `max_bytes` for every route. Commit it with T005 and T006.
 
 **Checkpoint**: the harness logs clean runs, and the 0.16.2 bytes per route are recorded.
 
