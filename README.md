@@ -114,8 +114,10 @@ nói “Thiết lập giọng” là được (trên Claude Code có thêm `/vie
 5. **Chấm thử.** Từ 0 đến 10 đoạn mẫu, mỗi đoạn chấm Kém, Trung bình, Khá hoặc Tốt. Kết quả là đánh giá
    của riêng bạn, không phải điểm đo chất lượng.
 6. **Lưu.** Chỉ lưu khi bạn yêu cầu, vào Orrery, Obsidian hoặc một thư mục Markdown (gợi ý
-   `~/.agents/vietnamizer/profiles`), kèm tên trong sổ hồ sơ `~/.agents/vietnamizer/registry.md`. Trên Chat,
-   hồ sơ thành bản gọn trong bộ nhớ của Chat sau khi bạn đồng ý ([PRIVACY.md](PRIVACY.md)).
+   `~/.agents/vietnamizer/profiles`), kèm tên trong sổ hồ sơ `~/.agents/vietnamizer/registry.md`. Trong Cowork
+   trên máy, hồ sơ và sổ lưu được ngay trong thư mục project, ở `.vietnamizer/`. Trên Chat, hồ sơ thành bản gọn
+   trong bộ nhớ của Chat sau khi bạn đồng ý, và nếu connector Google Drive đang bật thì lưu thêm được bản đầy đủ
+   vào Drive của bạn ([PRIVACY.md](PRIVACY.md)).
 
 Lần sau, gọi hồ sơ bằng tên, ví dụ `/vietnamizer:vietnamizer giong-cong-viec` (plugin Claude Code),
 `$vietnamizer giong-cong-viec` (Codex), hoặc nói “Viết lại bài này theo hồ sơ giong-cong-viec”. Dùng

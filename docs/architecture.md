@@ -23,7 +23,12 @@ references/terminology-consistency.md          bảng thuật ngữ và quét nh
 references/function-words.md                    bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán
 references/style-resolution.md              bộ giải ngữ cảnh, precedence và registry đường dẫn
 references/voice-from-samples.md                đọc mẫu được giao, rút đặc tính giọng có phạm vi và kiểm bản sửa
-references/voice-profile.md                     tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên
+references/voice-profile.md                     mục lục tuyến hồ sơ giọng có tên, trỏ tới một phần cho mỗi việc
+references/voice-profile-learn.md               xin đồng ý đọc, soạn và trình hồ sơ
+references/voice-profile-save.md                lưu hồ sơ: file, kho project `.vietnamizer/`, Orrery, Obsidian, Google Drive, bộ nhớ của Chat
+references/voice-profile-apply.md               sổ hồ sơ, gọi và áp đúng một hồ sơ
+references/voice-profile-update.md              cập nhật hồ sơ, chấm đoạn mẫu, kiểm A/B
+references/voice-profile-reminder.md            nhắc tạo hồ sơ khi chưa có
 references/voice-analysis.md            hướng dẫn phân tích giọng tiếng Việt và mẫu hồ sơ
 references/voice-sources.md             nguồn mẫu: dán bài, file export, trang qua trình duyệt (tài khoản cá nhân; trang thương hiệu và Trang Facebook của chính người dùng từ URL họ đưa)
 references/brand-voice.md               dựng hồ sơ giọng thương hiệu từ tài liệu người dùng đưa

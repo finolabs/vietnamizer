@@ -391,7 +391,7 @@ Ca 3, 5, 6 và 9 là ca chống sửa quá tay.
 ## PR01–PR26 · gọi lại hồ sơ qua sổ hồ sơ, bộ nhớ của Chat và lời nhắc (spec 032)
 
 Ca phát triển chưa chạy bằng agent; không phải bằng chứng cải thiện. Sổ là `~/.agents/vietnamizer/registry.md`
-theo `references/voice-profile.md` mục 4; tên và đường dẫn là giả định. Ca 3, 8, 9, 10, 11, 12, 15, 18, 19,
+theo `references/voice-profile-apply.md` mục 5; tên và đường dẫn là giả định. Ca 3, 8, 9, 10, 11, 12, 15, 18, 19,
 22, 23, 25 và 26 là ca chống làm quá tay.
 
 | # | Đầu vào | Mong đợi | Vì sao |
@@ -576,3 +576,19 @@ và bản ứng viên không đọc nhiều byte hơn 0.16.2.
 | RB06 | Hỏi Vietnamizer làm được gì | Đọc `references/help.md`, không đọc catalog hay card | Tuyến help |
 | RB07 | Nhận xét một câu có dấu hai chấm giữa câu, không sửa | Không trả bản sửa; nhận xét riêng nghĩa và cách viết, nêu T2 | Tuyến chỉ review |
 | RB08 | Chỉ sửa dấu câu và viết hoa | Đọc `references/typography.md`; chỉ đổi dấu cách, dấu chấm than và chữ hoa đầu câu, không đổi từ | Tuyến chỉ typography |
+
+## PJ01–PJ08 · kho project `.vietnamizer/` và bản đầy đủ trong Google Drive (spec 039)
+
+Ca phát triển; kết quả chạy ghi ở `specs/039-cloud-voice-profiles/`. Thư mục project là thư mục giả ngoài mọi
+cây làm việc Git, trừ ca 8; hồ sơ là hồ sơ thử. Ca 3, 4, 7 và 8 là ca chống làm quá tay.
+
+| # | Đầu vào | Mong đợi | Vì sao |
+|---|---|---|---|
+| PJ01 | Phiên có thư mục project ghi được, chưa có `.vietnamizer/`; người dùng học hồ sơ từ bài dán rồi yêu cầu lưu tên “Giọng thử dự án” | Kho đưa ra có “thư mục project này (`.vietnamizer/`)”; câu hỏi nêu đường dẫn tuyệt đối `<project>/.vietnamizer/profiles/giong-thu-du-an.md` và nói sẽ tạo thư mục; chỉ ghi sau câu đồng ý; câu hỏi sổ nêu `<project>/.vietnamizer/registry.md` | FR-002, câu đồng ý tạo thư mục |
+| PJ02 | Phiên mới cùng thư mục, sau PJ01; người dùng gõ `/vietnamizer:vietnamizer giong-thu-du-an` kèm bản nháp | Đọc sổ project và đúng file hồ sơ ấy, áp toàn bộ hồ sơ; nêu tên và vị trí | SC-001 |
+| PJ03 | Sổ project có một dòng `personal`; sổ ở home có dòng `personal` mặc định khác; người dùng viết *“Viết lại theo giọng của tôi”* | Dùng hồ sơ của sổ project; không đọc hồ sơ nào ở home | Sổ project đi trước |
+| PJ04 | Sổ project không có `giong-cong-viec`; sổ ở home có; người dùng gõ `/vietnamizer:vietnamizer giong-cong-viec` | Sang sổ ở home, đọc đúng một hồ sơ, không gộp dòng hai sổ | FR-003 |
+| PJ05 | claude.ai, connector Google Drive bật; người dùng lưu hồ sơ thử | Kho đưa ra có “Bộ nhớ của Chat” và “Google Drive”, nêu thư mục `Vietnamizer` và tên `<slug>.md`; file chỉ tạo sau câu đồng ý và hộp duyệt; file có toàn bộ hồ sơ; bản gọn có dòng `Bản đầy đủ` | FR-004 |
+| PJ06 | Cuộc trò chuyện mới sau PJ05; người dùng gọi hồ sơ bằng tên | Đọc đúng file Drive mà dòng `Bản đầy đủ` nêu, không file nào khác; áp toàn bộ hồ sơ | SC-002 |
+| PJ07 | claude.ai, connector Google Drive tắt; người dùng lưu hồ sơ thử | Không nhắc tới Drive; luồng bản gọn như 0.16.2 | FR-005 |
+| PJ08 | Thư mục project là một cây làm việc Git; người dùng yêu cầu lưu | Không đưa kho project; không tạo `.vietnamizer/`; các kho khác như cũ | FR-006 |

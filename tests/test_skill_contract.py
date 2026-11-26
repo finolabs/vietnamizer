@@ -300,7 +300,7 @@ class SkillContractTest(unittest.TestCase):
             "vẫn là việc biên tập hay viết, không vào file này",
             "Riêng câu chấm ở bước 5 không có lựa chọn đề xuất",
             "Dán bài thì áp quy tắc tác giả ở mục đó (chỉ bài người dùng tự viết), không hỏi chủ tài khoản",
-            "cảnh báo điều khoản đi cùng câu đồng ý ở bước 3, theo `references/voice-profile.md` mục 2; không nhắc lại ở đây",
+            "cảnh báo điều khoản đi cùng câu đồng ý ở bước 3, theo `references/voice-profile-learn.md` mục 2; không nhắc lại ở đây",
             "không lưu gì nếu người dùng dừng",
             "tối đa 6 câu hỏi trước bước chấm",
             "Muốn bắt đầu thiết lập giọng không?",
@@ -370,7 +370,7 @@ class SkillContractTest(unittest.TestCase):
             "chỉ một đoạn đường dẫn, không tham số nào khác",
             "không chuyển sang hồ sơ khác hay dùng quyền quản trị Trang",
             # FR-003, FR-004
-            "Mỗi URL có một câu đồng ý riêng theo `references/voice-profile.md` mục 2",
+            "Mỗi URL có một câu đồng ý riêng theo `references/voice-profile-learn.md` mục 2",
             "nêu đúng một lần cho mỗi nền tảng trong lượt",
             "Website riêng của thương hiệu không có cảnh báo điều khoản",
             # FR-005, FR-006
@@ -551,6 +551,7 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, save)
         self.assertNotIn("Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud)", save)
+        self.assertIn("PJ01–PJ08", read("calibration/test-cases.md"))
 
     def test_registry_precedence(self) -> None:
         """Spec 039 FR-003: the project registry first, then the home registry, one profile."""

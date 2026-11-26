@@ -94,7 +94,12 @@ bằng câu “theo giọng của tôi”. Lời gọi do chính người dùng 
 và đúng một hồ sơ khớp tên; skill nói rõ đã đọc hồ sơ nào, ở đâu. Skill không đọc hồ sơ khác, và khi không
 có hồ sơ khớp thì không dò kho, thư mục, bộ nhớ hay lịch sử mà hỏi người dùng.
 
-Sổ hồ sơ là file `~/.agents/vietnamizer/registry.md` trên máy người dùng. Mỗi dòng chỉ ghi tên, loại,
+Sổ hồ sơ là file `~/.agents/vietnamizer/registry.md` trên máy người dùng. Khi phiên có một thư mục
+project mà agent ghi được (thư mục gắn vào Cowork trên máy, hay thư mục làm việc của Claude Code), người dùng
+có thể chọn lưu hồ sơ ngay trong thư mục đó, ở `.vietnamizer/profiles/`, với sổ riêng `.vietnamizer/registry.md`.
+Kho project nằm trên máy người dùng, cùng thư mục project, và không đồng bộ đi đâu nếu thư mục đó không đồng bộ.
+Skill không tạo `.vietnamizer/` trong cây Git hay thư mục chỉ dẫn của agent, và không ghi vào bộ nhớ project của
+Cowork. Khi gọi hồ sơ, skill đọc sổ của project trước, rồi mới tới sổ ở home nếu sổ project không có tên đó. Mỗi dòng chỉ ghi tên, loại,
 hồ sơ cá nhân mặc định, kho và vị trí của một hồ sơ; sổ không chứa nội dung hồ sơ hay bài viết. Skill chỉ
 thêm hoặc sửa dòng khi người dùng đồng ý, kể cả lần đầu tạo thư mục chứa sổ. Sổ không nằm trong cây Git
 hay trong file chỉ dẫn của agent, và không host nào tự nạp nó. Người dùng có thể mở, sửa hoặc xóa sổ bất
@@ -109,6 +114,12 @@ lưu theo chính sách của họ; người dùng xem, sửa hoặc xóa bản g
 theo cách của nó, nên câu đầu chỉ là chỉ dẫn cho model chứ không phải giới hạn kỹ thuật; skill nhờ người dùng xem
 câu ấy còn nguyên sau khi ghi. Trên các host
 khác, skill không ghi hồ sơ vào bộ nhớ của agent.
+
+Trên Chat, nếu connector Google Drive đang bật, người dùng có thể lưu thêm bản đầy đủ của hồ sơ thành một file
+Markdown trong thư mục `Vietnamizer` (hoặc thư mục họ chọn) trong Drive của chính họ. Skill chỉ ghi khi người dùng
+đồng ý và host duyệt thao tác, không chia sẻ file và không đổi quyền của file. File nằm trong Drive của người dùng,
+theo chính sách của Google. Bản gọn trong bộ nhớ có thể ghi tên file đó; lần gọi sau skill chỉ đọc đúng file ấy,
+không đọc hay tìm file nào khác trong Drive. Connector tắt thì skill không nhắc tới Drive.
 
 Tạo hồ sơ không bắt buộc. Khi chưa có hồ sơ, skill chỉ kiểm sổ hồ sơ có tồn tại hay không (không đọc
 nội dung) sau khi đã trả bài, hoặc trên Chat xem bộ nhớ đang có trong ngữ cảnh không có bản gọn và không có
@@ -134,8 +145,8 @@ bản chuẩn. Skill không tự cập nhật từ phản hồi, không tự n�
 không ghi hồ sơ vào nhật ký hiệu chuẩn chung. Nếu cần bản mẫu tạm ngoài hội thoại, skill đặt ngoài cây thư mục Git và
 xóa khi quy trình kết thúc hoặc người dùng dừng.
 
-Skill không gửi hồ sơ hay mẫu giọng tới dịch vụ ngoài. Ngoài kho người dùng chọn (file, Orrery, Obsidian
-hoặc bộ nhớ của Chat), hồ sơ và mẫu chỉ nằm trong ngữ cảnh hội thoại của agent mà người dùng chọn.
+Skill không gửi hồ sơ hay mẫu giọng tới dịch vụ ngoài. Ngoài kho người dùng chọn (file, thư mục project, Orrery, Obsidian,
+Google Drive hoặc bộ nhớ của Chat), hồ sơ và mẫu chỉ nằm trong ngữ cảnh hội thoại của agent mà người dùng chọn.
 
 Từ bản 0.14.0, Vietnamizer không còn runner đánh giá ngoài (Jev/TypeSafe) và không đọc
 `TYPESAFE_API_KEY`. Các bản cũ hơn có tuyến đó; lịch sử nằm trong `docs/changelog.md`.
