@@ -88,6 +88,10 @@ Vài điều nên biết trước khi bắt đầu:
   riêng, `$vietnamizer <tên>` trên Codex,
   hay câu “theo hồ sơ <tên>”), nói kèm chỗ lưu nếu hồ sơ chưa có trong sổ hồ sơ, hoặc dán hồ sơ vào yêu
   cầu; mỗi lần chỉ áp một hồ sơ.
+- **Lưu ở đâu.** Skill chỉ đưa ra những kho nó thấy dùng được: file Markdown, Orrery, Obsidian, thư mục
+  project đang mở (`.vietnamizer/`, như thư mục gắn vào Cowork trên máy) và, trên Chat, bộ nhớ của Chat hay
+  Google Drive của bạn khi connector Drive đang bật. Thư mục project nằm trong một repo Git thì skill không đề
+  nghị lưu vào đó ([PRIVACY.md](../PRIVACY.md)).
 - **Gọi hồ sơ bằng tên là đồng ý đọc.** Lời gọi bạn tự gõ được tính là đồng ý cho skill đọc sổ hồ sơ và đúng một hồ
   sơ khớp tên, nên skill không hỏi lại; riêng hồ sơ thương hiệu áp cho văn bản riêng tư thì skill vẫn hỏi
   xác nhận trước. Yêu cầu của bạn trong lượt hiện tại luôn được ưu tiên hơn hồ sơ

@@ -4,7 +4,20 @@
 
 ## Lịch sử phiên bản
 
-### Chưa phát hành
+### 0.16.3 (27/11/2026)
+
+Spec 039, hồ sơ giọng trên Cowork và host cloud. Phiên có thư mục mà người dùng gắn hay mở làm project, nằm ngoài
+cây Git, lưu được hồ sơ vào `.vietnamizer/profiles/<slug>.md` của thư mục đó, kèm sổ `.vietnamizer/registry.md`;
+lần gọi đọc sổ project trước, rồi mới tới `~/.agents/vietnamizer/registry.md`, mỗi lần một sổ. Trên Chat, khi agent
+thấy công cụ của connector Google Drive, người dùng lưu thêm được bản đầy đủ vào thư mục `Vietnamizer` trong Drive
+của chính họ; trước khi đọc, skill chỉ xem siêu dữ liệu để xác định đúng một file, và trước khi ghi thì xem thư mục
+hay file đó có đang chia sẻ không. `references/voice-profile.md` thành mục lục, cộng năm phần theo việc (học, lưu,
+áp, cập nhật, nhắc); áp một hồ sơ đọc 17.023 byte của tuyến thay cho 41.016. `scripts/route_budget.py` đo thêm từng
+việc của tuyến hồ sơ giọng. Constitution lên 2.11.0. Thêm ca PJ01–PJ10; PJ01–PJ06 và PJ08 đã chạy bằng agent,
+PJ07, PJ09, PJ10 và Cowork trên máy tính chưa chạy (`specs/039-cloud-voice-profiles/runs.md`). Bản nâng cấp không
+cần làm gì thêm: sổ và hồ sơ cũ vẫn dùng như trước.
+
+Hai mục dưới đây ghi các thử nghiệm không phát hành trước 0.16.3.
 
 Spec 036 và 037 thử dạy agent tự bắt lỗi tiếng Việt kiểu AI, chủ yếu cách nói dịch sát: một bảng dạng lỗi
 L01–L08, các phép thử nhận diện cho V9, V19 và V20, một cổng đọc và một lượt dò từng câu trên tuyến bài. Trên
@@ -158,6 +171,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.16.3** — Hồ sơ giọng lưu được trong thư mục project (`.vietnamizer/`) và bản đầy đủ trong Google Drive của bạn; tuyến hồ sơ giọng tách theo việc, áp hồ sơ đọc ít hơn khoảng 58%. Constitution lên 2.11.0. Giữ 55 pattern.
 - **0.16.2** — T2 bắt cả dấu hai chấm giữa câu văn xuôi và luôn được rà; V9, V19 bắt cách nói dịch sát và từ nghề dễ hiểu sai; V20 luôn được soát, gồm *đội* đứng trơ; banner README mới. Giữ 55 pattern. Chưa chạy agent trên các ca mới.
 - **0.16.1** — Mô tả plugin ngắn lại còn 151 ký tự, giống nhau ở ba manifest và catalog `finolabs/plugins`, để catalog pin được bản mới. Nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` hay `/vietnamizer:vietnamizer cá nhân` qua sổ hồ sơ; trên Chat lưu bản gọn trong bộ nhớ; tạo hồ sơ không bắt buộc, lời nhắc tắt được hẳn cả trên Chat. Constitution lên 2.8.0. Chưa chạy agent trên các ca mới.
