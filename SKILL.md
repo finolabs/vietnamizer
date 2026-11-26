@@ -7,7 +7,7 @@ description: |
   biên tập và theo mẫu khi được yêu cầu rõ; học/lưu/áp dụng hồ sơ giọng khi được yêu cầu.
 license: MIT
 metadata:
-  version: "0.17.0"
+  version: "0.16.2"
 ---
 
 # Vietnamizer
@@ -15,16 +15,6 @@ metadata:
 Viết từ ý được giao hoặc biên tập phần được giao, giữ nghĩa và đúng giọng. Core này sở hữu
 phạm vi, thứ tự đọc và các chốt; catalog được trỏ bên dưới sở hữu duy nhất nội dung pattern.
 Không nạp toàn bộ thư viện. Không suy tác giả AI từ văn phong hoặc kết quả rà lỗi.
-
-## Biên tập hay viết cả bài: đọc trước khi trả
-
-Khi việc được giao là biên tập toàn bài hoặc viết từ brief/outline, việc đầu tiên là dùng công cụ đọc file
-để mở năm file sau, đường dẫn tính từ thư mục của skill: `references/writing-workflow.md`,
-`references/missing-words.md`, `references/sentence-structure.md`, `references/terms-and-lead-ins.md` và
-`references/ai-error-lexicon.md`. Chưa đọc xong năm file này thì chưa trả bài, kể cả khi bài đọc trôi chảy. Yêu cầu “chỉ trả bài đã sửa” hay
-“không giải thích” quy định dạng đầu ra, không miễn bước đọc. File đã nạp và còn nguyên trong context thì
-không cần đọc lại; host không có công cụ đọc file thì dùng phần được cấp và nói một lần phần nào chưa có.
-Sau đó làm theo tuyến bài ở bảng dưới.
 
 ## Trước khi làm
 
@@ -50,34 +40,13 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Việc được giao | Đọc thêm trước khi làm | Không đọc mặc định |
 |---|---|---|
 | Sửa một cụm/câu, rà soát cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
-| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md`, `references/missing-words.md`, `references/sentence-structure.md` và `references/terms-and-lead-ins.md` (phép thử nhận diện của V20, V9 và V19), `references/ai-error-lexicon.md` và một card theo bảng mục đích | Các catalog khác chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
+| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
 | Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/terminology-consistency.md` trên tuyến bài | Bài ngắn, sửa một cụm |
 | Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
 | Học, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”), kể cả gọi lại hồ sơ đã lưu (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”), kể cả học từ bài LinkedIn/Facebook của chính người dùng; dựng, cập nhật hoặc áp dụng hồ sơ thương hiệu người dùng gọi bằng tên; chấm đoạn mẫu của một hồ sơ | `references/voice-profile.md`; học từ export, trang mạng xã hội hay trang thương hiệu qua trình duyệt thì thêm `references/voice-sources.md`; dựng giọng thương hiệu thì thêm `references/brand-voice.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
 | Hỏi Vietnamizer làm được gì, hỏi cách dùng Vietnamizer, “bắt đầu dùng Vietnamizer”, “thiết lập giọng” (“sửa giúp”, “viết hướng dẫn”, “bắt đầu sửa bài” vẫn là biên tập hay viết) | `references/help.md` | Mọi catalog, profile/card, file của người dùng |
 | Chỉ review/nhận xét, không sửa | Trước khi nhận xét, đọc năm chốt bên dưới; với cả bài đọc `references/writing-workflow.md` và card; có mẫu đọc `references/voice-from-samples.md`; tra catalog khi cần kiểm pattern | Không tự sửa hoặc coi tên file là bằng chứng đã đọc |
 | Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
-
-Trên tuyến bài, mở cả `references/sentence-structure.md`, `references/missing-words.md` và
-`references/terms-and-lead-ins.md` trước khi sửa câu nào, kể cả khi bài đọc trôi chảy và chưa thấy nghi vấn nào.
-Phép thử nhận diện của V9, V20 và V19 nằm ở đó, và lỗi AI thường đọc rất trôi. Ba catalog này là ngoại lệ của các câu tiết kiệm đọc bên dưới. Sau đó, trước khi sửa,
-hỏi bốn câu cho từng câu văn.
-(1) Một cụm động từ, khung câu hay từ nối khi dịch ngược từng chữ có ra ngay một cách nói quen của tiếng Anh,
-mà người Việt viết thể loại này thường nói khác không (V9)? (2) Một tiếng đơn làm thực từ, ở vai và nghĩa đang
-dùng, có cần một từ hai tiếng chứa nó không (V20)? (3) Một danh từ tập thể như *đội*, *nhóm*, *bên* đã cho biết
-nhóm nào chưa (V20)? (4) Một từ nghề có thể bị hiểu theo nghĩa thường ngày khi bài viết cho người ngoài nghề, hoặc
-mang hai nghĩa trong cùng bài không (V19, `references/terms-and-lead-ins.md`)? Câu đọc trôi chảy chưa phải là câu không có lỗi. Có ứng viên thì mở đúng catalog để đọc phép
-thử đầy đủ và Không flag trước khi sửa. Tự đọc bảng dạng lỗi và dò bài, nhưng không coi bảng là đủ. Skill được cấp inline mà không có file bảng thì nói một lần là chưa có bảng, vẫn rà catalog như thường và không tự đặt ra dòng nào.
-
-**Dạng hay lọt khi bài đọc trôi:** Mỗi dạng chỉ là chỗ để hỏi lại câu tương ứng ở trên, không phải lệnh sửa;
-phép thử và Không flag trong catalog vẫn quyết định. Gặp dạng nào thì ghi cụm ấy thành một dòng của bảng kê.
-- Câu mở bằng một cụm dẫn ngắn rồi dấu hai chấm, phần sau là cả một mệnh đề, như *"Điều đáng nói: giá đã tăng"*; văn viết thường nối bằng *là*. Nhãn như *Lưu ý:*, *Ghi chú:* và lời dẫn trước lời trích thì giữ. Khi phần sau nêu một sự việc khác mà bản gốc chưa nói rõ quan hệ với phần trước, không nối bằng *là* và không thêm *vì*, *do*; tách câu nếu cần (V9).
-- Phủ định đi với so sánh với một con số (*không … nhiều hơn* hai món, ba lần), hoặc *không ai* đứng ở chỗ một bước công việc bị bỏ sót (V9).
-- Danh từ trừu tượng ghép theo tiếng Anh, như *trải nghiệm liền mạch*, trong báo cáo hay ghi chú vận hành; bài quảng cáo dùng quen thì giữ (V9).
-- Động từ một tiếng đứng cuối mệnh đề, hoặc ngay sau *để*, *cần*, *bị* mà không có tân ngữ, trong khi văn viết dùng từ hai tiếng chứa nó: *"ca tối thiếu người để kiểm"* → *"để kiểm hàng"*. Động từ tự đủ nghĩa ở vai đang dùng, như *sập* khi nói về hệ thống, thì giữ (V20).
-- Tiếng đơn rút từ một thuật ngữ hai tiếng của ngành: *"báo cáo nợ cuối tháng"* → *"báo cáo công nợ cuối tháng"* (V20).
-- *Đội*, *nhóm*, *bên* đi với *của bạn*, *của mình*, *của công ty* khi câu nói về toàn bộ nhân sự (V20).
-- Cụm nghề có một chữ trùng nghĩa thường ngày, như *treo đơn* hay *ăn hàng* (nhập hàng), trong bài viết cho người ngoài nghề (V19).
 
 Rà soát văn bản bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn rà soát
 V20 (từ ghép bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà soát T1–T6, vì theo quan sát (chưa đo) đây là lỗi AI hay mắc nhất;
@@ -95,7 +64,7 @@ chưa có căn cứ thì giữ nguyên hoặc hỏi đúng điểm làm đổi n
 | Diễn đạt/đề mục/viện dẫn hoặc siêu dữ liệu ở tài liệu kỹ thuật/doanh nghiệp/học thuật | `profiles/enterprise-technical/rules.md` — K1–K7 |
 
 V/T là lỗi ngôn ngữ/typography; B/K phụ thuộc thể loại. Không đem một lỗi của blog sang hợp đồng.
-Ngoài ba catalog bắt buộc của tuyến bài, catalog là bảng tra, không phải lệnh đọc mọi nhóm hay mẫu để cài vào bài. Tra từng mục hoặc
+Catalog là bảng tra, không phải lệnh đọc mọi nhóm hay mẫu để cài vào bài. Tra từng mục hoặc
 khoảng heading khi công cụ hỗ trợ; nếu chỉ đọc được cả file, dừng ở file cần dùng. File đã nạp
 và còn nguyên trong context không cần đọc lại. Được cấp inline hết thì chỉ áp đúng phần, không
 nói đã gỡ context. Không có công cụ thì dùng phần được cấp, nêu giới hạn cần thiết.
@@ -119,10 +88,7 @@ README/SOP không thành blog chỉ vì mẫu thân mật. Card không cấp quy
 
 ## Năm chốt giữ mọi lúc
 
-1. **Đúng quyền sửa.** Biên tập mặc định giữ giọng hiện có, chỉ sửa chỗ có lỗi. Một chỗ chỉ là lỗi khi
-   cách viết của tác giả sai, cụt hoặc làm người đọc hiểu nhầm ở thể loại này. Có một cách viết khác cũng
-   đúng, dài hơn hay quen hơn thì chưa phải lỗi, nên giữ nguyên từng chữ: thêm tiếng cho một từ đơn vẫn
-   dùng được, thêm hư từ hay loại từ vào câu đã rõ, hoặc viết lại một mệnh đề đúng đều là đổi giọng. “Tự nhiên hơn”
+1. **Đúng quyền sửa.** Biên tập mặc định giữ giọng hiện có, chỉ sửa chỗ có lỗi. “Tự nhiên hơn”
    hoặc chỉ đưa mẫu không tự cho phép chuyển giọng; theo mẫu cần yêu cầu rõ và nét có bằng chứng.
    Viết mới có quyền tạo câu/bố cục từ brief, không tự tạo khẳng định hoặc nhận nháp AI là giọng cá nhân.
 2. **Nghĩa hai chiều.** Nguồn đầy đủ → bản ra: đủ các mệnh đề, sắc thái và giới hạn. Bản ra → nguồn:

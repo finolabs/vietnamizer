@@ -4,31 +4,17 @@
 
 ## Lịch sử phiên bản
 
-### 0.17.0 (chưa phát hành)
+### Chưa phát hành
 
-Spec 036. Constitution lên 2.9.0: Principle V cho gói kèm script chạy tại chỗ khi skill vẫn làm đủ việc mà
-không cần nó, script chỉ dùng thư viện chuẩn của Python, không gọi mạng, không đọc secret, không ghi file và
-chỉ in ứng viên. Thêm `references/ai-error-lexicon.md`, bảng L01–L08 lấy từ HF01–HF18: *rườm*, *bỡ*,
-*giữ nghĩa*, *giữ giọng*, *nghĩa và giọng* (V20), *gọi tên* (V9), *dịch sát* (V19) và *Đội* đứng trơ đầu
-câu (V20); mỗi dòng có cách sửa, ngữ vực lỗi, tiếng láng giềng loại trừ và Không flag. Tuyến biên tập cả bài
-và viết từ brief đọc bảng, đi qua từng đoạn để lập bảng kê cụm nội bộ, sửa tại chỗ và giữ nguyên từng byte ở
-chỗ Không flag cho giữ; sửa lỗi trước, áp giọng sau, rồi dò lại. V20, V9 và V19 trỏ tới mã dòng của mình.
-Spec 036 thêm script tùy chọn `scripts/scan-lexicon.py` vào gói (spec 037 bên dưới đã đưa nó ra khỏi gói). Script đọc văn bản qua stdin, bỏ qua chỗ khớp trong front matter, code,
-địa chỉ link, ngoặc kép và blockquote, rồi in JSON các ứng viên; host không chạy được thì agent tự đọc bảng. Thêm fixture LXF01–LXF29, ca LX01–LX29 và
-`tests/test_scan_lexicon.py`; validator kiểm bảng và khi đó chỉ nhận đúng script này dưới `scripts/` của gói.
-Vẫn 55 pattern. HF01–HF18 và LX01–LX29 là ca phát triển. Trên holdout 14 bài, bản này chưa sửa được nhiều
-lỗi hơn 0.16.2 (`docs/benchmarks.md`), nên chưa phát hành.
-
-Spec 037 (phần đã làm). `scripts/scan-lexicon.py` ra khỏi gói và chỉ còn là công cụ của maintainer trong repo;
-gói lại chỉ gồm Markdown, profile, asset và manifest, và validator từ chối mọi `scripts/` trong payload. Bảng
-dạng lỗi và bảng kê cụm vẫn giữ; bảng chỉ ghi những dạng đã gặp, không khớp dòng nào chưa có nghĩa là bài sạch. V9 có phép thử nhận diện cách
-nói dịch sát (dịch ngược từng chữ, hỏi người Việt có nói khác không), V20 có phép thử cho tiếng đơn bị cắt và
-danh từ tập thể đứng trơ; tuyến bài đọc cả ba catalog và chạy một lượt dò từng câu trước khi sửa. Mục đầu
-tiên của `SKILL.md` là cổng đọc: biên tập hay viết cả bài thì mở workflow, ba catalog và bảng dạng lỗi trước
-khi trả bài, và yêu cầu chỉ trả bài đã sửa không miễn bước đọc này. Chốt 1 nói rõ thế nào là lỗi: cách viết
-của tác giả sai, cụt hoặc làm hiểu nhầm; có một cách viết khác cũng đúng thì giữ nguyên từng chữ. Thêm ca
-DT01–DT14 lấy từ sáu bài phát triển. Spec 037 dừng ngày 26/11/2026: trên 24 bài D11–D34, bản này không đạt
-cổng phát triển hai lần, holdout chưa chạy lại (`docs/benchmarks.md`).
+Spec 036 và 037 thử dạy agent tự bắt lỗi tiếng Việt kiểu AI, chủ yếu cách nói dịch sát: một bảng dạng lỗi
+L01–L08, các phép thử nhận diện cho V9, V19 và V20, một cổng đọc và một lượt dò từng câu trên tuyến bài. Trên
+holdout 14 bài của spec 036 và cổng phát triển 24 bài D11–D34 của spec 037, bản này không đạt mức đề ra: với
+Opus nó sửa thêm lỗi nhưng làm vỡ nhiều cụm cần giữ hơn 0.16.2, với Sonnet nó gần như không sửa gì, và mỗi
+lượt tốn gần gấp đôi chi phí. Ngày 26/11/2026 Fio quyết định gỡ toàn bộ phần này và không phát hành 0.17.0
+(`docs/benchmarks.md`). Skill text, profile và manifest trở lại đúng như 0.16.2, nên bản cài không đổi.
+Trong repo, validator vẫn từ chối mọi `scripts/` và mọi file mã trong gói. Scanner `scripts/scan-lexicon.py`,
+`scripts/lexicon_check.py`, fixture LXF và các ca HF11–HF18, LX01–LX29, DT01–DT14 được gỡ. Bộ chấm holdout
+`benchmarks/holdout_036.py` và trang đánh dấu `benchmarks/holdout_marker.py` vẫn giữ để đo các lần sau.
 
 ### 0.16.2 (15/11/2026)
 
@@ -168,7 +154,6 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
-- **0.17.0** — Bảng dạng lỗi AI L01–L08, bảng kê cụm trên tuyến bài, thứ tự sửa lỗi rồi áp giọng rồi dò lại; constitution 2.9.0; gói không kèm script. Giữ 55 pattern. Holdout 14 bài chưa đạt, chưa phát hành.
 - **0.16.2** — T2 bắt cả dấu hai chấm giữa câu văn xuôi và luôn được rà; V9, V19 bắt cách nói dịch sát và từ nghề dễ hiểu sai; V20 luôn được soát, gồm *đội* đứng trơ; banner README mới. Giữ 55 pattern. Chưa chạy agent trên các ca mới.
 - **0.16.1** — Mô tả plugin ngắn lại còn 151 ký tự, giống nhau ở ba manifest và catalog `finolabs/plugins`, để catalog pin được bản mới. Nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage Facebook, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt của host, từ tối đa ba URL bạn đưa, mỗi URL một câu đồng ý gọi tên thương hiệu và URL; chỉ đọc thân bài thương hiệu đã đăng, từ chối trang đối thủ, dừng khi trang không mang tên thương hiệu bạn nêu. Trang Facebook mang tên chính bạn học được thành hồ sơ cá nhân sau cảnh báo và xác nhận. Gọi lại hồ sơ đã lưu bằng `/vietnamizer:vietnamizer <tên>` hay `/vietnamizer:vietnamizer cá nhân` qua sổ hồ sơ; trên Chat lưu bản gọn trong bộ nhớ; tạo hồ sơ không bắt buộc, lời nhắc tắt được hẳn cả trên Chat. Constitution lên 2.8.0. Chưa chạy agent trên các ca mới.
