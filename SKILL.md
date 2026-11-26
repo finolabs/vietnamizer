@@ -12,9 +12,8 @@ metadata:
 
 # Vietnamizer
 
-Viết từ ý được giao hoặc biên tập phần được giao, giữ nghĩa và đúng giọng. Core sở hữu phạm vi, thứ tự đọc
-và các chốt; mỗi catalog sở hữu duy nhất pattern của nó. Không nạp cả thư viện. Không suy tác giả AI từ văn
-phong hay kết quả rà lỗi.
+Viết từ ý hoặc biên tập phần được giao, giữ nghĩa và đúng giọng. Core sở hữu phạm vi, thứ tự đọc và các
+chốt; mỗi catalog sở hữu pattern của nó. Không nạp cả thư viện, không suy tác giả AI từ văn phong.
 
 ## Trước khi làm
 
@@ -38,14 +37,14 @@ chính tả đang dùng nhất quán; quy chuẩn được giao có thể quyế
 
 | Việc được giao | Đọc thêm trước khi làm | Không đọc mặc định |
 |---|---|---|
-| Sửa một cụm/câu, rà soát cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
+| Sửa một cụm/câu, rà soát cục bộ | Catalog đúng nghi vấn ở bảng dưới | Workflow, resolver, card, guide mẫu |
 | Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích, đọc cùng một lượt | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
-| Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/terminology-consistency.md` trên tuyến bài | Bài ngắn, sửa một cụm |
-| Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn khi mẫu đã đủ |
+| Bài dài hoặc nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi | Thêm `references/terminology-consistency.md` | Bài ngắn |
+| Theo mẫu được giao | Thêm `references/voice-from-samples.md`; đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn khi mẫu đã đủ |
 | Học, lưu, gọi lại (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”) hoặc áp dụng hồ sơ giọng cá nhân hay thương hiệu khi được yêu cầu rõ, kể cả từ bài LinkedIn/Facebook của chính người dùng; chấm đoạn mẫu của hồ sơ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”) | `references/voice-profile.md`; học từ export, mạng xã hội hay trang thương hiệu thêm `references/voice-sources.md`; giọng thương hiệu thêm `references/brand-voice.md`; áp dụng thêm guide mẫu | Biên tập thông thường |
 | Hỏi Vietnamizer làm được gì, cách dùng, “bắt đầu dùng Vietnamizer”, “thiết lập giọng” (“sửa giúp”, “viết hướng dẫn”, “bắt đầu sửa bài” vẫn là biên tập hay viết) | `references/help.md` | Mọi catalog, profile/card, file của người dùng |
 | Chỉ review/nhận xét, không sửa | Năm chốt bên dưới; cả bài thì `references/writing-workflow.md` và card; có mẫu thì `references/voice-from-samples.md`; catalog khi cần kiểm pattern | Không tự sửa hay coi tên file là bằng chứng đã đọc |
-| Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, profile/card, guide mẫu |
+| Chỉ typography theo cổng trên | `references/typography.md` khi định sửa T | Workflow, card, guide mẫu |
 
 Rà soát bằng nghĩa, cách kết hợp từ và chức năng câu/đoạn, rồi tra nhóm có nghi vấn; luôn rà soát V20 (từ ghép
 bị viết thành từ đơn) trên văn xuôi ngoài nhánh chỉ rà soát T1–T6, vì theo quan sát (chưa đo) đây là lỗi AI hay
@@ -62,10 +61,9 @@ và Không flag. Lỗi có thể thuộc nhiều nhóm thì đọc phần cần 
 | Sáo ngữ, nhịp, xưng hô hoặc ngữ vực ở blog/chat/marketing | `profiles/personal-blog/rules.md` — B1–B17 |
 | Diễn đạt/đề mục/viện dẫn hoặc siêu dữ liệu ở tài liệu kỹ thuật/doanh nghiệp/học thuật | `profiles/enterprise-technical/rules.md` — K1–K7 |
 
-V/T là lỗi ngôn ngữ/typography; B/K phụ thuộc thể loại, không đem lỗi của blog sang hợp đồng. Catalog là bảng
-tra, không phải lệnh đọc mọi nhóm: tra từng mục hoặc khoảng heading khi công cụ cho phép, không thì dừng ở file
-cần dùng. File đã nạp và còn trong context không đọc lại. Được cấp inline thì chỉ áp đúng phần; không có công
-cụ đọc thì dùng phần được cấp và nêu giới hạn cần thiết.
+V/T là lỗi ngôn ngữ/typography; B/K theo thể loại, không đem lỗi của blog sang hợp đồng. Catalog là bảng tra:
+tra đúng mục khi công cụ cho phép, không đọc mọi nhóm, không đọc lại file còn trong context. Được cấp inline thì
+chỉ áp đúng phần; không có công cụ đọc thì dùng phần được cấp và nêu giới hạn.
 
 ## Chọn card khi làm bài
 
@@ -79,9 +77,8 @@ cụ đọc thì dùng phần được cấp và nêu giới hạn cần thiết
 | SOP/báo cáo/biên bản/vận hành | `profiles/enterprise-technical/styles/business-operations.md` |
 | Giáo trình/đề án/nghiên cứu | `profiles/enterprise-technical/styles/academic-analysis.md` |
 
-Tối đa một card tương thích mỗi phần. Chỉ đọc `references/style-resolution.md` khi mục đích/người đọc/quan hệ
-chưa rõ, xung đột hoặc pha chức năng; không suy giọng chỉ từ tên kênh. Blog công nghệ vẫn có thể là blog;
-README/SOP không thành blog chỉ vì mẫu thân mật. Card không cấp quyền chuyển giọng hay thêm ý.
+Tối đa một card mỗi phần. Chỉ đọc `references/style-resolution.md` khi mục đích/người đọc chưa rõ, xung đột
+hoặc pha chức năng; không suy giọng từ tên kênh; blog công nghệ vẫn là blog, README/SOP không thành blog vì mẫu thân mật. Card không cấp quyền chuyển giọng hay thêm ý.
 
 ## Năm chốt giữ mọi lúc
 
@@ -109,8 +106,7 @@ README/SOP không thành blog chỉ vì mẫu thân mật. Card không cấp quy
 
 ## Làm và kiểm lại
 
-Sửa nhỏ: hiểu ý/phạm vi → tra nghi vấn → sửa vừa đủ → đối chiếu nguồn và đọc lại câu trong đoạn. Làm bài: theo
-workflow, không cần outline thành file. Trước khi trả, khôi phục và so byte vùng bảo toàn; mọi sửa sau review
+Sửa nhỏ: hiểu ý → tra nghi vấn → sửa vừa đủ → đối chiếu nguồn và đọc lại câu trong đoạn. Làm bài theo workflow. Trước khi trả, khôi phục và so byte vùng bảo toàn; mọi sửa sau review
 phải kiểm lại nghĩa phần bị ảnh hưởng. Không thấy lỗi có căn cứ thì giữ nguyên. Phản hồi của người dùng áp
 dụng đúng tác vụ, không tự lưu hồ sơ hoặc viết calibration; chỉ bảo trì skill khi được giao rõ.
 

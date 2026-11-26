@@ -1,8 +1,7 @@
 # Làm bài từ ý: biên tập và viết mới
 
-Chỉ đọc cho toàn bài/phần có tổ chức nội dung hoặc viết từ brief/outline. Sửa một câu đã rõ phạm vi
-đi tuyến sửa nhỏ của core. Core sở hữu năm chốt, vùng bảo toàn và quyền đổi giọng; workflow không thêm quyền.
-Không cần tạo file outline hoặc gọi thêm model.
+Cho toàn bài hoặc viết từ brief/outline; sửa một câu đi tuyến sửa nhỏ của core. Core sở hữu năm chốt, vùng
+bảo toàn và quyền đổi giọng; workflow không thêm quyền, không tạo file outline hay gọi thêm model.
 
 ## Tách ý và chọn cách viết
 
@@ -41,4 +40,4 @@ giọng/quan hệ nhất quán, nhấn đúng chỗ, không san mọi câu cùng
 khi được giao rà soát/nhận xét, không chèn ghi chú vào bản chỉ yêu cầu trả bài cuối.
 
 Cuối cùng khôi phục/so byte và kiểm phần sửa sau review theo core. Chưa chứng minh tương đương nghĩa thì
-thu hẹp/hoàn nguyên, không chọn vì trôi chảy hơn. EW01–EW16 là ca phát triển chưa chạy pilot, không chứng minh cải thiện.
+thu hẹp/hoàn nguyên, không chọn vì trôi chảy hơn.
