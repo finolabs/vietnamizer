@@ -598,6 +598,7 @@ class SkillContractTest(unittest.TestCase):
             "Không thấy công cụ Drive thì không nhắc tới Drive",
             "Trước khi ghi vào một thư mục đã có, chỉ xem quyền truy cập của thư mục ấy",
             "nói rõ người khác có thể thấy hồ sơ",
+            "khi ghi đè hay cập nhật một file đã có thì xem cả quyền của chính file đó",
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, save)

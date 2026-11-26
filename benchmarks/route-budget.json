@@ -39,7 +39,7 @@
   },
   "voice-profile-save": {
    "baseline_bytes": 82498,
-   "max_bytes": 72994
+   "max_bytes": 73104
   },
   "voice-profile-apply": {
    "baseline_bytes": 88673,
@@ -47,7 +47,7 @@
   },
   "voice-profile-update": {
    "baseline_bytes": 82498,
-   "max_bytes": 69298
+   "max_bytes": 69408
   },
   "voice-profile-reminder": {
    "baseline_bytes": 55460,
