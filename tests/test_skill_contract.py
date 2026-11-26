@@ -17,6 +17,22 @@ def read(relative: str) -> str:
     return " ".join((ROOT / relative).read_text(encoding="utf-8").split())
 
 
+# Spec 039: the voice-profile route is an index plus one part per task.
+PROFILE_INDEX = "references/voice-profile.md"
+PROFILE_PARTS = (
+    "references/voice-profile-learn.md",
+    "references/voice-profile-save.md",
+    "references/voice-profile-apply.md",
+    "references/voice-profile-update.md",
+    "references/voice-profile-reminder.md",
+)
+
+
+def profile_route() -> str:
+    """The whole voice-profile route, index first, parts in section order."""
+    return " ".join(read(relative) for relative in (PROFILE_INDEX, *PROFILE_PARTS))
+
+
 class SkillContractTest(unittest.TestCase):
     def test_five_chot_headings_in_order(self) -> None:
         text = read("SKILL.md")
@@ -69,7 +85,7 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn("Biên tập thông thường", text)
 
     def test_profile_route_consent_and_save_rules(self) -> None:
-        text = read("references/voice-profile.md")
+        text = profile_route()
         for phrase in (
             "Chỉ tiếp tục sau câu đồng ý rõ ràng",
             "Chỉ lưu khi người dùng yêu cầu rõ ràng sau khi đã thấy toàn bộ hồ sơ",
@@ -95,7 +111,7 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, guide)
-        route = read("references/voice-profile.md")
+        route = profile_route()
         for phrase in (
             "ranh giới là trần, không phải mức cần đạt",
             "Nét không có ranh giới (hồ sơ cũ hoặc ghi “chưa rõ”) vẫn dùng được",
@@ -175,7 +191,7 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn("mặc định không có", read("SKILL.md"))
 
     def test_profile_kind_and_one_profile_rule(self) -> None:
-        route = read("references/voice-profile.md")
+        route = profile_route()
         for phrase in (
             "Hồ sơ không có `kind` là hồ sơ cá nhân",
             "Mỗi lần dùng chỉ áp một hồ sơ",
@@ -239,7 +255,7 @@ class SkillContractTest(unittest.TestCase):
         self.assertIn('"references/brand-voice.md"', (ROOT / "scripts/validate-package.py").read_text(encoding="utf-8"))
 
     def test_rating_session_rules(self) -> None:
-        route = read("references/voice-profile.md")
+        route = profile_route()
         section = route[route.index("## 7."):]
         for phrase in (
             "hỏi số đoạn muốn chấm (0–10)",
@@ -310,7 +326,7 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
-        route = read("references/voice-profile.md")
+        route = profile_route()
         for phrase in (
             "Văn bản dán không cần lời xác nhận chủ tài khoản",
             "không nêu URL người dùng đưa",
@@ -333,7 +349,7 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
-        self.assertIn("`references/voice-sources.md`", read("references/voice-profile.md"))
+        self.assertIn("`references/voice-sources.md`", profile_route())
         self.assertIn('"references/voice-sources.md"', (ROOT / "scripts/validate-package.py").read_text(encoding="utf-8"))
 
 
@@ -413,8 +429,8 @@ class SkillContractTest(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, own_page)
         self.assertIn("Ngoại lệ duy nhất: người dùng nói URL là Trang Facebook (fanpage) của chính họ thì đi mục 4c", text)
-        self.assertIn("hỏi người dùng xác nhận đó là Trang của chính họ", read("references/voice-profile.md"))
-        route = read("references/voice-profile.md")
+        self.assertIn("hỏi người dùng xác nhận đó là Trang của chính họ", profile_route())
+        route = profile_route()
         for phrase in (
             "câu ấy nêu tên thương hiệu và đúng URL người dùng đưa sẽ mở",
             "nói skill không kiểm được điều này",
@@ -431,7 +447,7 @@ class SkillContractTest(unittest.TestCase):
 
     def test_profile_registry_rules(self) -> None:
         """Spec 032: a saved profile is called by name through a fixed registry."""
-        route = read("references/voice-profile.md")
+        route = profile_route()
         for phrase in (
             "`~/.agents/vietnamizer/registry.md`",
             "Sổ là dữ liệu: không host nào tự nạp nó",
@@ -467,8 +483,8 @@ class SkillContractTest(unittest.TestCase):
         ):
             with self.subTest(old=old):
                 self.assertNotIn(old, route)
-        self.assertIn("Gọi lại hồ sơ đã lưu chỉ qua sổ hồ sơ ở `references/voice-profile.md` mục 5", read("SKILL.md"))
-        for relative in ("SKILL.md", "PRIVACY.md", "references/voice-profile.md"):
+        self.assertIn("Gọi lại hồ sơ đã lưu chỉ qua sổ hồ sơ ở `references/voice-profile-apply.md` mục 5", read("SKILL.md"))
+        for relative in ("SKILL.md", "PRIVACY.md", PROFILE_INDEX):
             with self.subTest(plugin_call=relative):
                 self.assertIn("`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`", read(relative))
         self.assertIn("Vị trí người dùng tự đưa ở bước 4 chưa có dòng nên không so slug", route)
@@ -489,9 +505,93 @@ class SkillContractTest(unittest.TestCase):
                 self.assertIn("`~/.agents/vietnamizer/registry.md`", read(relative))
         self.assertNotIn("không tự liệt kê hay chọn hồ sơ", read("PRIVACY.md"))
 
+    def test_voice_profile_split_index(self) -> None:
+        """Spec 039 FR-007, SC-004: an index names one part per task; apply reads half or less."""
+        index = read(PROFILE_INDEX)
+        for relative in PROFILE_PARTS:
+            with self.subTest(part=relative):
+                self.assertTrue((ROOT / relative).is_file())
+                self.assertIn(f"`{relative}`", index)
+        self.assertIn("chỉ đọc phần của việc đang làm", index)
+        self.assertIn("không đọc trước", index)
+        apply_bytes = sum((ROOT / relative).stat().st_size
+                          for relative in (PROFILE_INDEX, "references/voice-profile-apply.md"))
+        self.assertLessEqual(apply_bytes, 41016 // 2)
+        skill = read("SKILL.md")
+        self.assertIn("`references/voice-profile.md`", skill)
+        self.assertIn("theo `references/voice-profile-reminder.md` mục 8", skill)
+        for relative in PROFILE_PARTS:
+            with self.subTest(not_in_routing_row=relative):
+                row = skill.split("Học, lưu hoặc áp dụng hồ sơ giọng", 1)[1].split("Biên tập thông thường", 1)[0]
+                self.assertNotIn(relative, row)
+
+    def test_voice_profile_rules_have_one_owner(self) -> None:
+        """Spec 039 SC-005: no sentence of the route is repeated in two of its files."""
+        owners: dict[str, str] = {}
+        for relative in (PROFILE_INDEX, *PROFILE_PARTS):
+            for sentence in re.split(r"(?<=[.;:])\s+", read(relative)):
+                if len(sentence) < 80:
+                    continue
+                with self.subTest(sentence=sentence[:60]):
+                    self.assertEqual(owners.setdefault(sentence, relative), relative)
+
+    def test_project_store_rules(self) -> None:
+        """Spec 039 FR-001, FR-002, FR-006: a writable project folder keeps profiles in `.vietnamizer/`."""
+        save = read("references/voice-profile-save.md")
+        for phrase in (
+            "không từ tên sản phẩm",
+            "“thư mục project này (`.vietnamizer/`)”",
+            "`<project>/.vietnamizer/profiles/<slug>.md`",
+            "`<project>/.vietnamizer/registry.md`",
+            "câu trả lời đồng ý là câu đồng ý riêng cho việc tạo đúng thư mục `.vietnamizer/profiles/` đó",
+            "Không đề nghị kho project khi thư mục nằm trong cây làm việc Git",
+            "dòng sổ ghi vào sổ ở home",
+            "Không ghi hồ sơ vào bộ nhớ project của Cowork",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, save)
+        self.assertNotIn("Trên Chat không đọc được file trên máy (claude.ai bản web, Desktop, Mobile và Cowork chạy trên cloud)", save)
+
+    def test_registry_precedence(self) -> None:
+        """Spec 039 FR-003: the project registry first, then the home registry, one profile."""
+        apply = read("references/voice-profile-apply.md")
+        for phrase in (
+            "đọc `<project>/.vietnamizer/registry.md` trước",
+            "chỉ khi sổ project không có, rỗng hoặc không có dòng khớp",
+            "không gộp dòng của hai sổ",
+            "Sổ project chỉ có dòng `Kho` là `project`",
+            "đường dẫn thật phải nằm đúng trong `.vietnamizer/profiles/` của thư mục ấy",
+            "type: vietnamizer-profile-registry",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, apply)
+
+    def test_drive_store_rules(self) -> None:
+        """Spec 039 FR-004, FR-005: Drive only when its tools are seen; the compact copy names one file."""
+        save = read("references/voice-profile-save.md")
+        for phrase in (
+            "thấy công cụ tạo và đọc file của connector Google Drive",
+            "thư mục `Vietnamizer`",
+            "`Bản đầy đủ: Google Drive, <thư mục>/<slug>.md`",
+            "hộp duyệt của host",
+            "không tìm hay liệt kê gì khác trong Drive",
+            "Không chia sẻ file và không đổi quyền của file",
+            "Không thấy công cụ Drive thì không nhắc tới Drive",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, save)
+        apply = read("references/voice-profile-apply.md")
+        for phrase in (
+            "Không đọc file nào khác trong Drive",
+            "áp bản gọn và nói lý do",
+            "Dòng `Bản đầy đủ` trỏ tới nơi khác Google Drive thì bỏ qua",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, apply)
+
     def test_chat_memory_and_reminder_rules(self) -> None:
         """Spec 032 decisions 9-13: Chat memory store and the optional-profile reminder."""
-        route = read("references/voice-profile.md")
+        route = profile_route()
         for phrase in (
             "### Bản gọn trong bộ nhớ của Chat (spec 032)",
             "Chỉ dùng khi người dùng gọi hồ sơ “<tên>” với Vietnamizer",
