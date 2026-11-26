@@ -1,5 +1,7 @@
 # Hồ sơ giọng: gọi và áp hồ sơ đã lưu
 
+Đọc cả file này trước khi tra; các bước dựa vào nhau.
+
 ## 5. Gọi lại đúng hồ sơ (FR-012–014, FR-021; spec 032, spec 039)
 
 Lời gọi là tin nhắn của chính người dùng gọi một hồ sơ đã lưu: `/vietnamizer <tên>` hoặc
@@ -58,8 +60,8 @@ dưới đây thì áp toàn bộ hồ sơ thay cho bản gọn và nói đã d�
 
 ### Tra trên host có file
 
-1. Đọc sổ. Phiên có thư mục project thì đọc `<project>/.vietnamizer/registry.md` trước, rồi `~/.agents/vietnamizer/registry.md`
-   chỉ khi sổ project không có, rỗng hoặc không có dòng khớp. Phiên gắn nhiều thư mục thì chỉ xem đúng đường
+1. Đọc sổ, mỗi lần một sổ. Phiên có thư mục project thì đọc `<project>/.vietnamizer/registry.md` trước, rồi `~/.agents/vietnamizer/registry.md`
+   chỉ khi sổ project không có, rỗng hoặc không có dòng khớp; không đọc hai sổ cùng lúc. Phiên gắn nhiều thư mục thì chỉ xem đúng đường
    `.vietnamizer/registry.md` của từng thư mục đã gắn; hai sổ project cùng có dòng khớp thì hỏi dùng thư mục nào.
    Khớp ở sổ nào thì chỉ dùng sổ đó, không gộp dòng của hai sổ. Không có sổ, sổ rỗng hoặc
    đầu sổ không đúng `type: vietnamizer-profile-registry` thì coi như sổ không có dòng nào; không dựng lại sổ bằng cách dò kho.

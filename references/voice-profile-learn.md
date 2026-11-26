@@ -63,6 +63,7 @@ giá trị riêng. Không đưa sở thích cá nhân vào quy tắc chung hay `
 Trình **toàn bộ** hồ sơ, gồm thông tin nguồn và mọi mục trong template, để người dùng xem
 và sửa trước bất kỳ thao tác lưu nào. Sửa bản nháp theo phản hồi rồi trình lại toàn bộ bản
 sẽ lưu. Chưa có yêu cầu lưu rõ ràng thì dừng ở bản nháp trong hội thoại.
+Trình xong bản nháp đầu tiên thì mời chấm đoạn mẫu theo `references/voice-profile-update.md` mục 7.
 
 Nét có căn cứ về mức hoặc vị trí áp thì ghi kèm `ranh giới`; mẫu mâu thuẫn hoặc chưa đủ mà người
 dùng có thể tự chốt thì ghi vào `Điểm chưa quyết` thay vì đưa lên Giọng chung, theo
