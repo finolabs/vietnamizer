@@ -111,7 +111,7 @@ The profile route reads `references/voice-profile.md` (41 KB) for every profile 
 - **FR-005**: Without a writable folder or a Drive connector, the 0.16.2 compact memory flow MUST be unchanged.
 - **FR-006**: The skill MUST NOT create `.vietnamizer/` inside a Git work tree, behind a symlink, or in an instruction or memory location unless the user names that place. All 0.16.2 consent, scope and privacy rules stay.
 - **FR-007**: `references/voice-profile.md` MUST be split by task: learn, save and registry, apply, update and rate. A short index names the parts. Every rule keeps exactly one owner, and every pinned phrase stays findable.
-- **FR-008**: The constitution's "Tuyến hồ sơ giọng" constraint MUST be amended first. Today it fixes the registry at `~/.agents/vietnamizer/registry.md` and lists cloud Cowork as a Chat host. The amendment adds the project registry and the Drive store. Fio approves the exact text (MINOR bump, 2.9.0 → 2.10.0).
+- **FR-008**: The constitution's "Tuyến hồ sơ giọng" constraint MUST be amended first. Today it fixes the registry at `~/.agents/vietnamizer/registry.md` and lists cloud Cowork as a Chat host. The amendment adds the project registry and the Drive store. Fio approves the exact text (MINOR bump, 2.10.0 → 2.11.0).
 - **FR-009**: `PRIVACY.md`, `references/help.md`, README and `docs/style-and-voice.md` MUST describe the new stores. They also say that a project store stays on the user's computer and a Drive file lives in the user's own Drive.
 - **FR-010**: Verification:
   - Contract tests for every new rule.
