@@ -198,7 +198,7 @@ hành mà host chạy (macOS, Linux, Windows). Các script
 
 ## Cài đặt theo nền tảng
 
-Bản hiện tại là **0.16.2**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
+Bản hiện tại là **0.16.3**. [Tải các gói từ GitHub Release](https://github.com/finolabs/vietnamizer/releases/latest).
 
 ### Skills CLI
 
@@ -275,6 +275,7 @@ Skill không kiểm được tài khoản hay quyền nói thay thương hiệu 
 
 ## Lịch sử phiên bản
 
+- **0.16.3** — Cowork trên máy lưu hồ sơ giọng ngay trong thư mục project (`.vietnamizer/`); trên Chat lưu thêm được bản đầy đủ vào Google Drive của bạn; áp một hồ sơ đã lưu đọc ít hơn khoảng 58%.
 - **0.16.2** — Bắt dấu hai chấm giữa câu văn xuôi (T2, luôn được rà soát cùng gạch ngang); bắt cụm động từ dịch sát từ tiếng Anh (V9) và từ nghề dễ hiểu sai như *bản dịch sát* (V19); luôn rà soát từ ghép bị viết thành từ đơn và *đội* đứng trơ (V20); README gọn lại, banner và sơ đồ thiết lập giọng mới; Vietnamizer tự biên tập 42 file của chính gói.
 - **0.16.1** — Mô tả plugin ngắn lại để catalog `finolabs/plugins` pin được bản mới; nội dung skill không đổi.
 - **0.16.0** — Hồ sơ giọng thương hiệu đọc được fanpage, trang công ty LinkedIn hoặc blog của thương hiệu qua trình duyệt; gọi lại hồ sơ đã lưu bằng tên.
