@@ -14,6 +14,7 @@
 
 - Q: How much worse than 0.16.2 may the candidate be on D11–D34 and still pass? → A: At most 2 per count, per model (Fio: "Lệch tối đa 2").
 - Q: The floor probe (26/11/2026, D01–D04) shows skill text is only 36–39% of the cost per run (Opus $0.34 → $0.21, Sonnet $0.15 → $0.10 with a near-empty skill), so 25% would need about two thirds of the whole-article text cut. Keep 25% with a much leaner core, or lower the target? → A: Lower it to about 10–15% and keep every rule (Fio: "Hạ xuống ~10–15%").
+- Q: On D01–D10 candidate B saves 17.2% on Opus and 7.9% on Sonnet; Sonnet often loads only `SKILL.md`, so more would mean cutting rules. Gate B with a lower Sonnet bar, or cut more? → A: Gate B; Opus keeps 10%, Sonnet needs 7% (Fio, 26/11/2026: "Gate với B").
 
 ## Background: what an edit costs today
 
@@ -111,11 +112,11 @@ A maintainer changing skill text can see how many bytes each route loads, so a l
 
 ### Measurable Outcomes
 
-- **SC-001**: A whole-article edit costs at least 10% less per run than 0.16.2, for Opus 5.5 and for Sonnet 5.5, on D11–D34 (target 10–15%; lowered from 25% after the floor probe, Fio 26/11/2026).
+- **SC-001**: A whole-article edit costs at least 10% less per run than 0.16.2 for Opus 5.5 and at least 7% less for Sonnet 5.5, on D11–D34 (lowered from 25% after the floor probe and, for Sonnet, after T013; Fio 26/11/2026).
 - **SC-002**: Time per run is lower than 0.16.2 for both models on D11–D34.
 - **SC-003**: Fixes and guard breaks on D11–D34 meet FR-004 for both models.
 - **SC-004**: Every manual case of the other routes passes, and none reads more bytes than on 0.16.2.
-- **SC-005**: The text every run loads is at least 30% smaller than 0.16.2's `SKILL.md` (14 KB).
+- **SC-005**: The text every run loads is smaller than 0.16.2's `SKILL.md` (14,444 bytes); candidate B is 13,080 (−9%). The first goal of 30% was dropped with the cost target, because cutting more would remove rules (FR-001).
 - **SC-006**: The maintainer check catches a test change that adds a file to the whole-article route.
 
 ## Assumptions
