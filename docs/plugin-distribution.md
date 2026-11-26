@@ -135,7 +135,7 @@ Repo này không giữ marketplace riêng. Codex gom mỗi marketplace thành m�
 catalog riêng sẽ tách khỏi nhóm Finolabs. Plugin được liệt kê ở catalog chung
 [`finolabs/plugins`](https://github.com/finolabs/plugins), gồm `.claude-plugin/marketplace.json`
 và `.agents/plugins/marketplace.json` cùng tên `finolabs`. Catalog của Claude Code ghim plugin vào
-tag phát hành (`ref`, đang là `v0.16.2`); catalog của Codex chưa ghim nên theo nhánh mặc định. Vì vậy
+tag phát hành (`ref`, đang là `v0.16.3`); catalog của Codex chưa ghim nên theo nhánh mặc định. Vì vậy
 nhánh `main` và tag `v*` cần được bảo vệ. Catalog do maintainer kiểm soát giúp người dùng
 đăng ký nguồn và cài plugin, nhưng không phải dấu hiệu OpenAI hoặc Anthropic đã review hay bảo
 chứng plugin.
