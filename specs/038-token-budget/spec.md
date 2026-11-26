@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-26
 
-**Status**: Draft
+**Status**: Planned ([plan.md](plan.md)); tasks in [tasks.md](tasks.md); not implemented
 
 **Input**: Fio, 26/11/2026, choosing between two directions for the next Vietnamizer version ("Token trước"). Make each edit cost fewer tokens and less time without losing quality, so the skill works well on Claude Cowork and cloud hosts, which run no local scripts. Voice-profile storage on Cowork and cloud is a later spec, 039. This spec depends on PR 95, which puts the package back to the 0.16.2 text; it starts from that text.
 
