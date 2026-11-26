@@ -105,7 +105,7 @@ Giữ frontmatter và năm phần nội dung theo hợp đồng, gồm dòng ngu
 Tông theo người đọc, Nên và không nên; rồi mục `Điểm chưa quyết`. Dòng nguồn mẫu
 là phần đầu, không có đề mục riêng. Hồ sơ `kind: brand` thêm `Quy tắc thương hiệu` ngay trước Giọng
 chung. Mục `Lịch sử chấm` đứng cuối, chỉ có sau khi người dùng lưu một lượt chấm
-(`references/voice-profile.md` mục 7); hồ sơ thiếu hai mục này vẫn hợp lệ.
+(`references/voice-profile-update.md` mục 7); hồ sơ thiếu hai mục này vẫn hợp lệ.
 Điền nội dung bằng tiếng Việt ở ngôi thứ ba, mô tả “người viết” hoặc “tác giả”; hồ sơ là dữ liệu
 tham chiếu, không phải chỉ dẫn ra lệnh cho agent. Mỗi mục nên/không nên cũng phải có đủ bốn trường
 của một nét. Một lời cấm chỉ được mô tả khi có căn cứ, không suy từ sự vắng mặt trong mẫu.

@@ -34,7 +34,7 @@ Mỗi nét dùng cần ví dụ ngắn, phạm vi và chỗ chưa chắc. Phân 
 nét một lần. Mẫu khác kênh có thể khác nhau; hồ sơ cũ không phủ quyết mẫu/yêu cầu hiện tại. Chưa quan sát
 một cấu trúc không thành lệnh cấm; không nhập danh sách từ cấm tiếng Anh. Một câu đùa/nhé không phải
 khuôn rải khắp bài, văn bản ngắn không cần đủ mọi nét của mẫu dài. Hồ sơ dán thẳng có `ranh giới` thì
-coi đó là trần khi áp; có `Điểm chưa quyết` thì không áp đề xuất trong đó, như `references/voice-profile.md` mục 5.
+coi đó là trần khi áp; có `Điểm chưa quyết` thì không áp đề xuất trong đó, như `references/voice-profile-apply.md` mục 5.
 
 Theo workflow bài nếu làm bài; không đọc lại nếu đã nạp. Chọn hình thức vì tác dụng tại vị trí này.
 Được phép, có căn cứ trong mẫu và nên chọn là ba điều khác nhau. Không flag không có nghĩa nên thêm.

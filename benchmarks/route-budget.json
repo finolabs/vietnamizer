@@ -3,35 +3,55 @@
  "routes": {
   "short-edit": {
    "baseline_bytes": 14444,
-   "max_bytes": 14444
+   "max_bytes": 14428
   },
   "whole-article": {
    "baseline_bytes": 18359,
-   "max_bytes": 18359
+   "max_bytes": 18343
   },
   "long-or-multi-round": {
    "baseline_bytes": 17687,
-   "max_bytes": 17687
+   "max_bytes": 17671
   },
   "follow-sample": {
    "baseline_bytes": 20619,
-   "max_bytes": 20619
+   "max_bytes": 20609
   },
   "voice-profile": {
    "baseline_bytes": 82498,
-   "max_bytes": 82498
+   "max_bytes": 45728
   },
   "help": {
    "baseline_bytes": 21596,
-   "max_bytes": 21596
+   "max_bytes": 21590
   },
   "review-only": {
    "baseline_bytes": 24534,
-   "max_bytes": 24534
+   "max_bytes": 24524
   },
   "typography-only": {
    "baseline_bytes": 26735,
-   "max_bytes": 26735
+   "max_bytes": 26719
+  },
+  "voice-profile-learn": {
+   "baseline_bytes": 98421,
+   "max_bytes": 69100
+  },
+  "voice-profile-save": {
+   "baseline_bytes": 82498,
+   "max_bytes": 73104
+  },
+  "voice-profile-apply": {
+   "baseline_bytes": 88673,
+   "max_bytes": 64717
+  },
+  "voice-profile-update": {
+   "baseline_bytes": 82498,
+   "max_bytes": 69408
+  },
+  "voice-profile-reminder": {
+   "baseline_bytes": 55460,
+   "max_bytes": 16662
   }
  }
 }

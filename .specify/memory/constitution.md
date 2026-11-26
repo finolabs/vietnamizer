@@ -1,5 +1,16 @@
 <!--
 Sync Impact Report
+- Version change: 2.10.0 -> 2.11.0 (MINOR: the voice-profile constraint gains two stores, a project
+  registry in `.vietnamizer/` of an attached project folder and a full copy in the user's Google Drive;
+  no principle's obligation is removed).
+- Owner approval: 2026-11-26, Fio approved the exact text in specs/039-cloud-voice-profiles/contracts/
+  constitution-amendment.md ("Duyệt").
+- Modified constraint "Tuyến hồ sơ giọng": the registry read is the open project's
+  `.vietnamizer/registry.md` when present, else `~/.agents/vietnamizer/registry.md`; a Drive copy may be
+  saved and named in the compact copy, read back only by that name.
+- Principle V unchanged: stores are written through the host's own tools and connectors.
+- Previous amendment: 2.9.0 -> 2.10.0 (below).
+
 - Version change: 2.9.0 -> 2.10.0 (MINOR: the version-sync set and the pre-release check list are
   widened to match `AGENTS.md`; no principle's obligation is removed).
 - Owner approval: Fio, 21/11/2026, "Theo AGENTS.md đi vậy cần update constitution luôn", after four
@@ -234,7 +245,10 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   yêu cầu rõ, tại kho hoặc đường dẫn do họ chọn. Skill không được tự tìm hồ sơ hay mẫu trong bộ nhớ
   của agent, lịch sử hội thoại hoặc kho lưu; chỉ đọc hồ sơ người dùng dán hoặc chỉ định. Người dùng
   có thể chỉ định một hồ sơ đã lưu bằng tên, bằng chữ `cá nhân` hoặc bằng câu “theo giọng của tôi”
-  ngay trong tin nhắn của mình. Khi đó skill được đọc sổ hồ sơ `~/.agents/vietnamizer/registry.md`.
+  ngay trong tin nhắn của mình. Khi đó skill được đọc sổ hồ sơ của project đang mở, tức file `.vietnamizer/registry.md` trong thư mục
+  project người dùng đã gắn vào phiên và agent ghi được; không có sổ ấy thì đọc sổ
+  `~/.agents/vietnamizer/registry.md`. Hồ sơ lưu theo project nằm trong `.vietnamizer/profiles/` của
+  chính thư mục đó, chỉ khi người dùng chọn lưu vào project.
   Sổ chỉ ghi tên, loại, kho và vị trí của từng hồ sơ, cùng hồ sơ cá nhân nào là mặc định; sổ không
   chứa nội dung hồ sơ. Lời gọi của người dùng được tính là đồng ý cho skill đọc sổ và đọc đúng một
   hồ sơ khớp tên. Skill không đọc hồ sơ nào khác và không dò kho khi không có hồ sơ khớp. Chỉ thêm
@@ -245,7 +259,10 @@ Evaluator ngoài (Jev/TypeSafe) đã bị gỡ theo quyết định owner ngày 
   bằng câu nói rõ chỉ dùng khi người dùng gọi tên hồ sơ với Vietnamizer, và không chứa trích đoạn
   bài viết. Trước khi ghi, người dùng xem đúng văn bản sẽ ghi, được báo bộ nhớ nạp vào mọi cuộc trò
   chuyện và được gợi ý lưu trong một Project để thu hẹp phạm vi; chỉ ghi khi họ đồng ý. Người dùng
-  xoá được bản gọn trong phần cài đặt của Chat. Skill chỉ áp bản gọn ấy khi người dùng gọi tên nó.
+  xoá được bản gọn trong phần cài đặt của Chat. Skill chỉ áp bản gọn ấy khi người dùng gọi tên nó. Khi host có connector Google Drive, người dùng có thể
+  chọn lưu thêm bản đầy đủ của hồ sơ thành một file Markdown trong Drive của chính họ. Bản gọn có thể ghi tên
+  file đó để lần gọi sau đọc đúng file ấy. Skill chỉ ghi khi người dùng đồng ý và host duyệt thao tác; lần gọi
+  chỉ đọc đúng file đã ghi tên, không đọc hay tìm file nào khác trong Drive.
   Trên các host khác, skill không ghi hồ sơ vào bộ nhớ của agent. Khi người dùng chưa có hồ sơ,
   skill vẫn sửa bài ngay theo giọng hiện có và chỉ nhắc một dòng, tối đa một lần mỗi phiên, rằng có
   thể tạo hồ sơ; tạo hay không là do người dùng. Để biết đã có hồ sơ chưa, skill chỉ kiểm sổ hồ sơ
@@ -288,4 +305,4 @@ không tương thích một principle, MINOR khi thêm hoặc mở rộng govern
 Mọi spec và review MUST kiểm tra các principle này. Complexity không truy ngược được tới outcome
 hoặc acceptance criterion MUST bị bỏ.
 
-**Version**: 2.10.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-21
+**Version**: 2.11.0 | **Ratified**: 2026-09-26 | **Last Amended**: 2026-11-26

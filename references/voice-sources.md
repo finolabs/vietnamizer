@@ -15,14 +15,14 @@ Chưa có nguồn thì giới thiệu ba cách theo thứ tự này, chưa đọ
    nhân đọc tài khoản của chính người dùng, đã đăng nhập sẵn (mục 4a), hoặc Trang Facebook mang tên
    chính người dùng từ URL họ đưa (mục 4c); hồ sơ `kind: brand` đọc trang công khai của thương hiệu từ URL
    người dùng đưa (mục 4b). Công cụ được liệt kê trong phiên mà chưa nạp schema (khai báo trễ) cũng
-   tính là có, như quy tắc kho lưu ở `references/voice-profile.md` mục 4; nạp schema khi người dùng chọn
+   tính là có, như quy tắc kho lưu ở `references/voice-profile-save.md` mục 4; nạp schema khi người dùng chọn
    cách này. Không có công cụ đó thì nói cách này không dùng được ở host hiện tại; công cụ tải trang
    (fetch, download) không thay cho công cụ trình duyệt.
 
 ## 2. Chủ tài khoản
 
 Trước khi đọc export hay trang, hỏi người dùng xác nhận đó là tài khoản của chính họ. Lời xác nhận này
-nằm trong chính câu xin đồng ý đọc (`references/voice-profile.md` mục 2), không thành câu hỏi riêng. Skill
+nằm trong chính câu xin đồng ý đọc (`references/voice-profile-learn.md` mục 2), không thành câu hỏi riêng. Skill
 không kiểm được danh tính và dựa vào lời xác nhận đó. Người dùng nói đó là của người khác thì không học
 giọng ấy và không đọc trang của người khác; đề nghị dùng bài do chính họ viết. Mục 3 (file export) cũng
 dùng cho bài của thương hiệu khi người dùng được phép tải export của trang; tài liệu thương hiệu và lời
@@ -72,7 +72,7 @@ Trên phiên người dùng đã đăng nhập sẵn, với tài khoản ngườ
 
 - Trước khi đọc, báo rõ: điều khoản của LinkedIn và của Facebook (Meta) đều cấm truy cập hay thu thập
   dữ liệu tự động khi chưa được phép, và tài khoản có thể bị hạn chế. Cảnh báo này nêu đúng một lần, ngay
-  trước câu đồng ý đọc (`references/voice-profile.md` mục 2). Chỉ đọc khi người dùng quyết định tiếp tục;
+  trước câu đồng ý đọc (`references/voice-profile-learn.md` mục 2). Chỉ đọc khi người dùng quyết định tiếp tục;
   không thì đề nghị dán bài hoặc file export.
 - Chỉ mở đường dẫn tài khoản của chính mình do nền tảng cấp, không mở URL tùy ý người dùng đưa:
   LinkedIn `https://www.linkedin.com/in/me/recent-activity/all/`, Facebook `https://www.facebook.com/me`.
@@ -117,7 +117,7 @@ Chỉ dùng khi dựng hoặc cập nhật hồ sơ `kind: brand`, cho thương 
 - **Cảnh báo và đồng ý.** Với Facebook và LinkedIn, cảnh báo điều khoản ở mục 4a nêu đúng một lần cho mỗi
   nền tảng trong lượt, ngay trước câu đồng ý đầu tiên của nền tảng đó; chỉ tiếp tục khi người dùng quyết
   định đi tiếp. Website riêng của thương hiệu không có cảnh báo điều khoản. Mỗi URL có một câu đồng ý
-  riêng theo `references/voice-profile.md` mục 2; chưa có câu trả lời đồng ý thì chưa mở URL đó.
+  riêng theo `references/voice-profile-learn.md` mục 2; chưa có câu trả lời đồng ý thì chưa mở URL đó.
 - **Kiểm trang trước khi đọc.** Mở URL rồi kiểm, chưa đọc bài: trang không chuyển hướng sang trang hay
   host khác; là trang thương hiệu chứ không phải trang cá nhân (fanpage có dòng “Trang · <hạng mục>” và
   nút Thích hoặc Theo dõi, không có nút Thêm bạn bè hay số bạn bè; trang công ty có nút Theo dõi, ngành và
@@ -180,7 +180,7 @@ hỏi xác nhận.
 - **Cảnh báo và xác nhận.** Trước câu đồng ý, nêu cảnh báo điều khoản của Facebook (Meta) ở mục 4a, đúng
   một lần trong lượt; đã nêu ở mục 4b trong cùng lượt thì không nêu lại. Với mọi URL của mục này, kể cả khi
   đến từ mục 4b, luôn nói rõ: skill không kiểm được Trang có phải của người dùng không, và học giọng của
-  người khác là không được phép. Câu đồng ý theo `references/voice-profile.md` mục 2 nêu đúng URL sẽ mở và
+  người khác là không được phép. Câu đồng ý theo `references/voice-profile-learn.md` mục 2 nêu đúng URL sẽ mở và
   hỏi người dùng xác nhận đó là Trang của chính họ. Người dùng nói Trang là của người khác thì không đọc.
 - **Kiểm trang.** Như mục 4b: không chuyển hướng (trừ các trường hợp mục 4b không tính), có dấu hiệu Trang
   (“Trang · <hạng mục>”, nút Thích hoặc Theo dõi, không có nút Thêm bạn bè) và mang tên người dùng xác nhận.

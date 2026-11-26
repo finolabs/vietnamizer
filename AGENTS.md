@@ -28,7 +28,8 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `references/function-words.md` | Bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán |
 | `references/style-resolution.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
 | `references/voice-from-samples.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/voice-profile.md` |
-| `references/voice-profile.md` | Tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên, cá nhân (mặc định) hoặc thương hiệu, mỗi lần một hồ sơ; đọc mẫu sau đồng ý, chỉ lưu khi người dùng yêu cầu rõ tại nơi họ chọn; gọi lại hồ sơ đã lưu qua sổ hồ sơ `~/.agents/vietnamizer/registry.md` |
+| `references/voice-profile.md` | Mục lục và mục 1 của tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên, cá nhân (mặc định) hoặc thương hiệu, mỗi lần một hồ sơ; trỏ tới đúng một phần cho mỗi việc |
+| `references/voice-profile-learn.md`, `references/voice-profile-save.md`, `references/voice-profile-apply.md`, `references/voice-profile-update.md`, `references/voice-profile-reminder.md` | Các phần của tuyến hồ sơ giọng: đồng ý và soạn; lưu (file, kho project `.vietnamizer/`, Orrery, Obsidian, Google Drive, bộ nhớ của Chat); gọi và áp qua sổ project rồi sổ `~/.agents/vietnamizer/registry.md`; cập nhật, chấm, A/B; lời nhắc |
 | `references/voice-sources.md` | Ba nguồn mẫu: dán bài, file export LinkedIn/Facebook, trang qua công cụ trình duyệt host sẵn có (mục 4a tài khoản của chính người dùng; mục 4b trang công khai của thương hiệu từ tối đa ba URL người dùng đưa, đường đọc cố định, từ chối trang đối thủ; mục 4c Trang Facebook mang tên chính người dùng cho hồ sơ cá nhân, sau cảnh báo và xác nhận); xác nhận chủ tài khoản, chỉ giữ bài tự viết, cảnh báo điều khoản LinkedIn và Facebook, không xử lý mật khẩu hay cookie |
 | `references/brand-voice.md` | Dựng hồ sơ `kind: brand` từ bộ quy chuẩn, bài đã đăng (dán, export của trang, hoặc trang đọc qua trình duyệt theo `references/voice-sources.md` mục 4b) và tài liệu nội bộ người dùng đưa, sau lời xác nhận được nói thay thương hiệu; quy tắc thương hiệu tách khỏi nét quan sát, mâu thuẫn vào điểm chưa quyết, lược tên nhân viên và khách hàng |
 | `references/help.md` | Hướng dẫn một màn hình và bước thiết lập giọng (loại giọng, nguồn, đồng ý, học, chấm, lưu); không đọc file của người dùng, không lưu nếu người dùng dừng |
@@ -157,9 +158,10 @@ từ chối file chỉ dẫn của agent và chỉ ghi vào cây Git khi đượ
 ghi một dòng (tên, loại, mặc định, kho, vị trí; không có nội dung) vào sổ hồ sơ
 `~/.agents/vietnamizer/registry.md` và skill in câu gọi lần sau. Khi áp dụng, chỉ đọc hồ sơ người dùng
 dán, chỉ định hoặc gọi bằng tên, `cá nhân` hay “theo giọng của tôi”; lời gọi ấy cho đọc sổ và đúng một hồ
-sơ khớp, không dò kho và không nạp hồ sơ ở phiên sau khi người dùng chưa gọi. Riêng Chat không có file
+sơ khớp, không dò kho và không nạp hồ sơ ở phiên sau khi người dùng chưa gọi. Phiên có thư mục project ghi được (Cowork trên máy) lưu được hồ sơ
+và sổ trong `.vietnamizer/` của thư mục đó, và sổ project được tra trước sổ ở home. Riêng Chat không có file
 (claude.ai, Desktop, Mobile, Cowork chạy trên cloud) lưu được bản gọn khoảng 1.200 ký tự trong bộ nhớ của
-Chat, có câu chặn phạm vi, sau khi người dùng xem đúng văn bản và đồng ý; host khác không ghi hồ sơ vào bộ
+Chat, có câu chặn phạm vi, sau khi người dùng xem đúng văn bản và đồng ý, kèm bản đầy đủ trong Google Drive khi connector bật; host khác không ghi hồ sơ vào bộ
 nhớ của agent. Tạo hồ sơ không bắt buộc: chưa có hồ sơ thì vẫn sửa bài ngay và chỉ nhắc một dòng mỗi phiên.
 
 Mỗi đặc tính cần có phạm vi áp dụng và một ví dụ ngắn đã loại dữ liệu cá nhân. Không chép nguyên văn bản, không lưu dữ liệu cá nhân hoặc bí mật vào hồ sơ, không dùng hồ sơ của người này cho người khác. Yêu cầu trong lượt hiện tại luôn được ưu tiên hơn hồ sơ đã lưu; hồ sơ không thay đổi năm chốt trong `SKILL.md`.

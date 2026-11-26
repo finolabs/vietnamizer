@@ -5,6 +5,7 @@
 "Đọc thêm trước khi làm", cộng byte của chúng với SKILL.md và so với benchmarks/route-budget.json.
 Mã thoát: 0 khi mọi tuyến trong ngân sách, 1 khi có tuyến vượt, thiếu file hoặc dòng chưa có tuyến.
 `--write` ghi số đo hiện tại làm max_bytes (lần đầu ghi cả baseline_bytes), không cho vượt baseline.
+Spec 039: tuyến hồ sơ giọng còn đo từng việc (TASKS), bằng file của tuyến cộng phần việc ấy đọc thêm.
 """
 import json
 import re
@@ -23,6 +24,14 @@ ROUTES = (
     ("Hỏi Vietnamizer", "help"),
     ("Chỉ review", "review-only"),
     ("Chỉ typography", "typography-only"),
+)
+# (việc, tuyến gốc hoặc None nếu chỉ SKILL.md, các file việc ấy đọc thêm)
+TASKS = (
+    ("voice-profile-learn", "voice-profile", ("references/voice-profile-learn.md", "references/voice-analysis.md")),
+    ("voice-profile-save", "voice-profile", ("references/voice-profile-save.md", "references/voice-profile-apply.md")),
+    ("voice-profile-apply", "voice-profile", ("references/voice-profile-apply.md", "references/voice-from-samples.md")),
+    ("voice-profile-update", "voice-profile", ("references/voice-profile-update.md", "references/voice-profile-save.md")),
+    ("voice-profile-reminder", None, ("references/voice-profile-reminder.md",)),
 )
 PATH = re.compile(r"`((?:references|profiles)/[^`\s]+\.md)`")
 
@@ -85,6 +94,19 @@ def measure() -> tuple[dict[str, int], dict[str, list[str]], list[str]]:
             size += path.stat().st_size
         totals[route] = size
         listed[route] = files
+    for task, route, extra in TASKS:
+        if route is not None and route not in totals:
+            continue
+        files = (listed[route] if route else []) + [f for f in extra if route is None or f not in listed[route]]
+        size = base
+        for relative in files:
+            path = inside(relative)
+            if path is None or not path.is_file():
+                problems.append(f"{task}: thiếu file, symlink hoặc ra ngoài repo: {relative}")
+                continue
+            size += path.stat().st_size
+        totals[task] = size
+        listed[task] = files
     for _, rid in ROUTES:
         if rid not in totals and not any(p.startswith(f"{rid}:") for p in problems):
             problems.append(f"{rid}: không tìm thấy dòng trong bảng tuyến")
