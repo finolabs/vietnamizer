@@ -214,6 +214,22 @@ không đổi bài: ít cụm giữ bị vỡ hơn 0.16.2, nhưng không sửa l
 gốc, nên không có lượt nào hỏi lại hay bỏ dở. Theo spec, Fio quyết định làm thêm một vòng hay dừng spec 037;
 0.17.0 chưa phát hành.
 
+**Vòng T036 (25–26/11/2026).** Fio cho làm thêm một vòng. Chẩn đoán chỉ dùng số đếm của T035: Sonnet để nguyên
+phần lớn câu có lỗi (60 trên 66 lỗi sót), còn Opus làm vỡ nhiều tên riêng, nhóm có tên và từ nghề hơn, và sửa thêm
+nhiều chỗ ngoài cụm đã đánh dấu. Bản `19e8e71` bắt mọi chỗ sửa phải có dòng `sửa` trong bảng kê, loại tên riêng, nhóm
+có tên và từ nghề dùng đúng khỏi ứng viên, và không đổi thêm chữ nào ở bước áp giọng khi không có mẫu. Trên D01–D10
+(T036a, hai lượt), Opus sửa 13/30 và Sonnet 11/30 lỗi nhóm từ vựng, không vỡ cụm giữ nào (T034f, một lượt: 7/15 và
+4/15). Cổng chạy lại trên D11–D34 chỉ với bản ứng viên, đặt cạnh các lượt 0.16.2 của T035 (cùng prompt và cách chạy,
+trước đó một ngày); 12 lượt trả lỗi được chạy lại.
+
+| Model | Phiên bản | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi | Sửa ngoài cụm (chưa chấm) |
+|---|---|---|---|---|---|
+| Opus 5.5 | `19e8e71` | 25/70 | 15/50 | 40/256 | 385 |
+| Sonnet 5.5 | `19e8e71` | 5/70 | 6/50 | 5/256 | 72 |
+
+Cổng vẫn không đạt, và Opus kém hơn `45e5ed5` (28/70, 33 cụm giữ bị vỡ). Mức tăng của Sonnet trên D01–D10 không sang
+được D11–D34: đó là các bài đã dùng để chỉnh từ T034, nên nhiều khả năng skill text đang khớp với chính chúng.
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày
