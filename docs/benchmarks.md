@@ -156,7 +156,7 @@ Opus làm vỡ ở T034d (D04#g1, D10#g3) cũng đã vỡ ở T034a; ở T034e v
 
 Sonnet sửa được 2 đến 5/15 trong sáu lượt trên text viết lại ở T031: 2/15 ở T034a và T034b, 3/15 ở T034c và T034e,
 4/15 ở T034f, 5/15 ở T034d. Mức 5/15 của T034d đúng bằng khoảng một phần ba của cổng chặn, nhưng chỉ là một lượt
-trên chính các bài dùng để chỉnh, và cổng chặn chấm trên D11–D22. Ở hầu hết câu có lỗi, bài Sonnet trả về giữ
+trên chính các bài dùng để chỉnh, và cổng chặn chấm trên D11–D34 (mở rộng từ D11–D22 ngày 24/11/2026). Ở hầu hết câu có lỗi, bài Sonnet trả về giữ
 nguyên từng chữ, dù nó đã mở các catalog chứa phép thử. Ở T034f, Sonnet viết lại cả câu chứa D05#g1 (*nhận hàng
 theo lồng (roll cage)*), nên cụm giữ ấy tính là vỡ; mới có một lượt nên chưa gắn được nguyên nhân.
 
@@ -191,6 +191,44 @@ lỗi của cách dựng ca hơn là của pattern, nhưng chưa có lượt ch�
 model đều chưa sửa hoặc sửa chưa đủ LX04, LX07, LX11, LX16 và LX23
 (*giữ nghĩa*, *bản dịch sát*, *Đội* đầu dòng danh sách), đều làm vỡ LX06 (*giữ nghĩa vụ*) và đều đổi dấu gạch
 nối mềm của LX26. Riêng Opus còn sửa *đội* viết thường giữa câu (LX24) và sửa trong lời trích (LX28).
+
+## Spec 037: cổng T035 trên D11–D34 (25/11/2026)
+
+Đây là kết quả phát triển, không phải holdout. Bộ cổng gồm 24 bài D11–D34 (manifest
+`benchmarks/dev-037-gate2-manifest.json`, `1f388f615f4c`), có 35 lỗi nhóm từ vựng (33 *dịch sát*, 2 *từ nghề*),
+25 lỗi khác và 128 cụm cần giữ. Nhãn do agent đề xuất, ba model Codex duyệt độc lập và decider Antigravity phân xử
+chỗ lệch; không người nào duyệt nhãn. Bản 0.16.2 và bản ứng viên `45e5ed5` (text skill bằng main `e03d542`) chạy
+trên Claude Code (`claude -p`, `--plugin-dir`), mỗi model hai lượt mỗi bài, 192 lượt, không lượt nào lỗi. Số dưới
+đây cộng gộp hai lượt.
+
+| Model | Phiên bản | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi | Sửa ngoài cụm (chưa chấm) |
+|---|---|---|---|---|---|
+| Opus 5.5 | 0.16.2 | 13/70 | 12/50 | 20/256 | 277 |
+| Opus 5.5 | `45e5ed5` | 28/70 | 16/50 | 33/256 | 369 |
+| Sonnet 5.5 | 0.16.2 | 3/70 | 10/50 | 18/256 | 179 |
+| Sonnet 5.5 | `45e5ed5` | 4/70 | 0/50 | 4/256 | 77 |
+
+Cổng không đạt. Plan P3 đòi Opus sửa ít nhất 35/70 và Sonnet ít nhất 24/70, và không model nào làm vỡ nhiều cụm
+giữ hơn 0.16.2. Opus sửa 28/70 (gấp đôi 0.16.2) nhưng làm vỡ 33 cụm giữ so với 20. Sonnet sửa 4/70 và gần như
+không đổi bài: ít cụm giữ bị vỡ hơn 0.16.2, nhưng không sửa lỗi khác nào. Bản trả về của mọi lượt dài bằng bài
+gốc, nên không có lượt nào hỏi lại hay bỏ dở. Theo spec, Fio quyết định làm thêm một vòng hay dừng spec 037;
+0.17.0 chưa phát hành.
+
+**Vòng T036 (25–26/11/2026).** Fio cho làm thêm một vòng. Chẩn đoán chỉ dùng số đếm của T035: Sonnet để nguyên
+phần lớn câu có lỗi (60 trên 66 lỗi sót), còn Opus làm vỡ nhiều tên riêng, nhóm có tên và từ nghề hơn, và sửa thêm
+nhiều chỗ ngoài cụm đã đánh dấu. Bản `19e8e71` bắt mọi chỗ sửa phải có dòng `sửa` trong bảng kê, loại tên riêng, nhóm
+có tên và từ nghề dùng đúng khỏi ứng viên, và không đổi thêm chữ nào ở bước áp giọng khi không có mẫu. Trên D01–D10
+(T036a, hai lượt), Opus sửa 13/30 và Sonnet 11/30 lỗi nhóm từ vựng, không vỡ cụm giữ nào (T034f, một lượt: 7/15 và
+4/15). Cổng chạy lại trên D11–D34 chỉ với bản ứng viên, đặt cạnh các lượt 0.16.2 của T035 (cùng prompt và cách chạy,
+trước đó một ngày); 12 lượt trả lỗi được chạy lại.
+
+| Model | Phiên bản | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi | Sửa ngoài cụm (chưa chấm) |
+|---|---|---|---|---|---|
+| Opus 5.5 | `19e8e71` | 25/70 | 15/50 | 40/256 | 385 |
+| Sonnet 5.5 | `19e8e71` | 5/70 | 6/50 | 5/256 | 72 |
+
+Cổng vẫn không đạt, và Opus kém hơn `45e5ed5` (28/70, 33 cụm giữ bị vỡ). Mức tăng của Sonnet trên D01–D10 không sang
+được D11–D34: đó là các bài đã dùng để chỉnh từ T034, nên nhiều khả năng skill text đang khớp với chính chúng.
 
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 

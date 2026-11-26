@@ -1,6 +1,6 @@
 # Implementation Plan: Detect AI errors in fresh Vietnamese text
 
-**Branch**: `spec/037-ai-error-detection` | **Date**: 2026-11-17 | **Spec**: [spec.md](spec.md)
+**Branch**: `spec/037-ai-error-detection` | **Date**: 2026-11-17 | **Spec**: [spec.md](spec.md) | **Status**: stopped on 26/11/2026 (spec "Closure")
 
 **Input**: `specs/037-ai-error-detection/spec.md` (settled decisions 1–7). Depth DEEP, trigger `uncertainty`. Next release keeps the number 0.17.0 (spec FR-018).
 
@@ -25,8 +25,8 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 | # | Decision | Why |
 |---|---|---|
 | P1 | Development pool D01–D10 as research.md R5: two articles per holdout genre, D01–D05 by `claude-opus-5-5`, D06–D10 by `gpt-6.1-sol` (research R5), pre-marked by a fresh agent, reviewed by Fio or a marker Fio names (decision 5) | Mirrors the holdout's public shape without its content; keeps Gemini unseen for H15–H20 |
-| P2 | Split the pool: D01–D03 and D06–D08 (6 articles) are for writing and tuning the tests; D04–D05 and D09–D10 (4 articles) are the development gate, never read by the person writing tests. Amended 23/11/2026 (spec decision 8): all of D01–D10 tune; the gate pool is D11–D22 | Principle IV inside the development set: a threshold is not proven on the cases that tuned it, and the holdout should not be the first unseen text |
-| P3 | Development gate before the holdout run: on the 4 gate articles, scored with `holdout_036.py`, Opus fixes at least half and Sonnet at least a third of the lexicon-kind errors, and neither breaks more guards than 0.16.2 on the same articles. Amended 23/11/2026 (spec decision 8): gate pool D11–D22 with at least 20 lexicon-kind errors, two runs per model per article, ratios over the pooled count | The same ratios as the release bar; failing them on development text means the holdout run would be wasted |
+| P2 | Split the pool: D01–D03 and D06–D08 (6 articles) are for writing and tuning the tests; D04–D05 and D09–D10 (4 articles) are the development gate, never read by the person writing tests. Amended 23/11/2026 (spec decision 8): all of D01–D10 tune; the gate pool is D11–D22, widened to D11–D34 on 24/11/2026 | Principle IV inside the development set: a threshold is not proven on the cases that tuned it, and the holdout should not be the first unseen text |
+| P3 | Development gate before the holdout run: on the 4 gate articles, scored with `holdout_036.py`, Opus fixes at least half and Sonnet at least a third of the lexicon-kind errors, and neither breaks more guards than 0.16.2 on the same articles. Amended 23/11/2026 (spec decision 8): gate pool D11–D22 with at least 20 lexicon-kind errors (D11–D34 since 24/11/2026; per-kind floor of 4 for *dịch sát* only, Fio 25/11/2026), two runs per model per article, ratios over the pooled count | The same ratios as the release bar; failing them on development text means the holdout run would be wasted |
 | P4 | Tests live in the pattern catalogs: a **Phép thử nhận diện** paragraph in V9 (`references/sentence-structure.md`) and in V20 (`references/missing-words.md`, covering clipped compounds and bare collectives); the long-form routing row of `SKILL.md` names both catalogs so the pass always has them | Principle III (V patterns own general errors); the pass needs the tests loaded, and loading on suspicion is the 0.16.2 behaviour that missed |
 | P5 | The pass is a new paragraph at the head of "Kê cụm khi biên tập toàn bài" in `references/writing-workflow.md`: walk sentence by sentence, apply the three tests, record hits or "đã xem", fix only after the walk | Reuses spec 036's inventory fields and output rules; one place states the order |
 | P6 | Scanner stays in source, leaves the payload (research.md R7) | Keeps the table parser and LXF fixture tests; removes code and shell commands from every host |
@@ -40,7 +40,7 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 | I. Vietnamese evidence first | Each test states the error, why, the fix and **Không flag**, with examples from development sources reviewed by a human marker (decision 5). Pass. |
 | II. Meaning and voice | A hit is a candidate; edits pass **Không flag** and the five chốt; guard breaks and judged wrong edits are part of the bar. Pass. |
 | III. General rules vs profiles | Tests sit under V9 and V20; register-bound exceptions stay in **Không flag**. Pass. |
-| IV. Labelled evidence | Tests are tuned on D01–D10 and gated on D11–D22 (decision 8; round 1 tuned on D01–D03/D06–D08 and gated on D04–D05/D09–D10), proven on H01–H14 and checked on H15–H20; no case tunes and proves. Pass. |
+| IV. Labelled evidence | Tests are tuned on D01–D10 and gated on D11–D34 (decision 8; round 1 tuned on D01–D03/D06–D08 and gated on D04–D05/D09–D10), to be proven on H01–H14 and checked on H15–H20 (as designed; the spec stopped before the holdout ran, and the gate pool was used for counts-only diagnosis in T036); no case tunes and proves. Pass. |
 | V. Self-contained Markdown | The package becomes Markdown only again; 2.9.0 permits a script and does not require one. Pass. |
 | Development gate 1 | Detection is a semantic judgment and stays with the model; no deterministic step is moved into prose. Pass. |
 | Development gate 5 | Release runs `validate-package.py`, `npx skills add . --list`, `claude plugin validate .`, reinstall and byte comparison. Pass. |
