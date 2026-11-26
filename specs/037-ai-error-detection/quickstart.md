@@ -35,4 +35,6 @@ Run 0.16.2 and the candidate on the gate pool D11–D34 on Claude Code `-p` (dec
 
 ## 4. Holdout batch (runner only)
 
+Not run: decision 3 as amended on 25/11/2026 skipped the holdout, and the spec stopped on 26/11/2026. The steps below are the original design.
+
 The runner generates H15–H20 with Gemini after the freeze, Fio marks them, then the runner runs H01–H14 and H15–H20 with both versions on Cowork, scores with `holdout_036.py score`, collects Fio's judgments with `holdout_036.py edits`, and returns contracts/holdout-report.md.

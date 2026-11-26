@@ -40,7 +40,7 @@ Teach the agent to recognise three kinds of AI error by their shape instead of b
 | I. Vietnamese evidence first | Each test states the error, why, the fix and **Không flag**, with examples from development sources reviewed by a human marker (decision 5). Pass. |
 | II. Meaning and voice | A hit is a candidate; edits pass **Không flag** and the five chốt; guard breaks and judged wrong edits are part of the bar. Pass. |
 | III. General rules vs profiles | Tests sit under V9 and V20; register-bound exceptions stay in **Không flag**. Pass. |
-| IV. Labelled evidence | Tests are tuned on D01–D10 and gated on D11–D34 (decision 8; round 1 tuned on D01–D03/D06–D08 and gated on D04–D05/D09–D10), proven on H01–H14 and checked on H15–H20; no case tunes and proves. Pass. |
+| IV. Labelled evidence | Tests are tuned on D01–D10 and gated on D11–D34 (decision 8; round 1 tuned on D01–D03/D06–D08 and gated on D04–D05/D09–D10), to be proven on H01–H14 and checked on H15–H20 (as designed; the spec stopped before the holdout ran, and the gate pool was used for counts-only diagnosis in T036); no case tunes and proves. Pass. |
 | V. Self-contained Markdown | The package becomes Markdown only again; 2.9.0 permits a script and does not require one. Pass. |
 | Development gate 1 | Detection is a semantic judgment and stays with the model; no deterministic step is moved into prose. Pass. |
 | Development gate 5 | Release runs `validate-package.py`, `npx skills add . --list`, `claude plugin validate .`, reinstall and byte comparison. Pass. |
