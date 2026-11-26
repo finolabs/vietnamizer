@@ -27,6 +27,23 @@ ROUTES = (
 PATH = re.compile(r"`((?:references|profiles)/[^`\s]+\.md)`")
 
 
+def inside(relative: str) -> Path | None:
+    """Trả đường dẫn trong repo, hoặc None khi có `..`, symlink hay trỏ ra ngoài repo."""
+    if ".." in Path(relative).parts:
+        return None
+    path, root = ROOT / relative, ROOT.resolve()
+    current = ROOT
+    for part in Path(relative).parts:
+        current = current / part
+        if current.is_symlink():
+            return None
+    try:
+        path.resolve().relative_to(root)
+    except ValueError:
+        return None
+    return path
+
+
 def table_rows(skill: str) -> list[list[str]]:
     start = skill.index(HEADING)
     rows, seen_table = [], False
@@ -56,7 +73,10 @@ def measure() -> tuple[dict[str, int], list[str]]:
         files = list(dict.fromkeys(PATH.findall(cells[1] if len(cells) > 1 else "")))
         size = base
         for relative in files:
-            path = ROOT / relative
+            path = inside(relative)
+            if path is None:
+                problems.append(f"{route}: đường dẫn ra ngoài repo hoặc qua symlink: {relative}")
+                continue
             if not path.is_file():
                 problems.append(f"{route}: thiếu file {relative}")
                 continue
@@ -85,6 +105,9 @@ def main(argv: list[str]) -> int:
             entry["max_bytes"] = size
         if refused:
             print("\n".join(refused), file=sys.stderr)
+            return 1
+        if BUDGET.is_symlink() or BUDGET.parent.is_symlink():
+            print("benchmarks/route-budget.json hoặc thư mục của nó là symlink; không ghi", file=sys.stderr)
             return 1
         BUDGET.parent.mkdir(parents=True, exist_ok=True)
         BUDGET.write_text(json.dumps(budget, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

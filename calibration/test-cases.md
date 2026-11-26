@@ -576,4 +576,3 @@ và bản ứng viên không đọc nhiều byte hơn 0.16.2.
 | RB06 | Hỏi Vietnamizer làm được gì | Đọc `references/help.md`, không đọc catalog hay card | Tuyến help |
 | RB07 | Nhận xét một câu có dấu hai chấm giữa câu, không sửa | Không trả bản sửa; nhận xét riêng nghĩa và cách viết, nêu T2 | Tuyến chỉ review |
 | RB08 | Chỉ sửa dấu câu và viết hoa | Đọc `references/typography.md`; chỉ đổi dấu cách, dấu chấm than và chữ hoa đầu câu, không đổi từ | Tuyến chỉ typography |
-

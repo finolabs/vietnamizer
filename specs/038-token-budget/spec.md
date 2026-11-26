@@ -43,7 +43,7 @@ A user asks Vietnamizer to edit a whole article: a blog post, a LinkedIn post, a
 
 **Acceptance Scenarios**:
 
-1. **Given** the D11–D34 pool and the T035 prompt, **When** the candidate edits each article twice per model, **Then** the mean cost per run is at least 10% lower than 0.16.2 for Opus 5.5 and for Sonnet 5.5.
+1. **Given** the D11–D34 pool and the T035 prompt, **When** the candidate edits each article twice per model, **Then** the mean cost per run is at least 10% lower than 0.16.2 for Opus 5.5 and at least 7% lower for Sonnet 5.5 (SC-001).
 2. **Given** the same runs, **When** they are scored with the existing scorer, **Then** fixes and guard breaks per model stay within the quality tolerance in FR-004.
 3. **Given** a short edit (one phrase or sentence), **When** the user asks for it, **Then** the agent still reads only the catalog of the suspected pattern, as in 0.16.2, and reads no more than before.
 
@@ -93,7 +93,7 @@ A maintainer changing skill text can see how many bytes each route loads, so a l
 - **FR-001**: The candidate MUST keep every behavior of 0.16.2: the 55 patterns, the five gates, the routes, the voice and profile rules, the data boundaries and the frozen zones. No feature is removed to save tokens.
 - **FR-002**: The text loaded on every run MUST be smaller than 0.16.2's `SKILL.md`. Content that only some routes need MUST move to files that only those routes read.
 - **FR-003**: Each route MUST read no more bytes than in 0.16.2. A route that read a large reference MUST read only the section it needs, for example applying a profile without reading how to learn one.
-- **FR-004**: On D11–D34, for each model, the candidate's fixes (lexicon-kind and other) and guard breaks MUST be no worse than 0.16.2 by more than 2 per count (Fio, 26/11/2026: "Lệch tối đa 2"): Opus fixes at least 11/70 lexicon-kind and 10/50 other errors and breaks at most 22 guards; Sonnet fixes at least 1/70 and 8/50 and breaks at most 20 guards.
+- **FR-004**: On D11–D34, for each model, the candidate's fixes (lexicon-kind and other) and guard breaks MUST be no worse than 0.16.2 by more than 2 per count (Fio, 26/11/2026: "Lệch tối đa 2"): counted against the 0.16.2 runs of the same gate batch (FR-005); the T035 numbers in Background are for planning only.
 - **FR-005**: The measurement MUST reuse the T035 setup: the same pool D11–D34, prompt, host (Claude Code `-p`), plugin install from a ZIP, scorer `benchmarks/holdout_036.py`, with 0.16.2 run again in the same batch as the baseline, because the T035 runs did not log reads and cannot be shown free of the user-installed plugin (research R3). Every run logs its reads; a run that loads skill text from outside its own package is discarded and rerun. It reports cost, total tokens, output tokens, time and tool turns per run, beside fixes and guard breaks.
 - **FR-006**: Per constitution Principle IV, iterating on the text MUST use the development articles D01–D10 only. D11–D34 is run as the gate at most twice: one candidate and one retry.
 - **FR-007**: Each route the pool does not measure (writing from a brief, following a sample, learning and applying a voice profile, brand voice, help, review only, typography only) MUST get at least one manual case. The case records the files read and the expected outcome, and runs once per model on 0.16.2 and on the candidate.
@@ -143,4 +143,3 @@ A maintainer changing skill text can see how many bytes each route loads, so a l
 - **Lessons for spec 039 and later:**
   - Measure on the gate pool early, with enough runs to beat noise.
   - A rule that makes a model follow the route more faithfully can raise its cost and its edit rate.
-

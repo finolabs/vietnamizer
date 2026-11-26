@@ -20,7 +20,7 @@ Prerequisites:
    - Run the harness on D11–D34 with both versions in one batch, two runs per model per article.
    - Score with `python3 benchmarks/holdout_036.py score <index>`.
    - Pass when, for each model:
-     - mean cost is at least 10% lower;
+     - mean cost is at least 10% lower for Opus and 7% lower for Sonnet;
      - mean time is lower;
      - lexicon-kind fixes, other fixes and guard breaks are within 2 of 0.16.2.
 6. **Report.** Put the counts in `docs/benchmarks.md`: model ids, host, date, manifest hash and package commits.

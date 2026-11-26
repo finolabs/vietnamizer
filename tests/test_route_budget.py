@@ -86,6 +86,42 @@ class RouteBudgetTest(unittest.TestCase):
             self.assertIn("help", result.stdout + result.stderr)
             self.assertEqual(json.loads(budget_path.read_text(encoding="utf-8"))["routes"]["help"]["baseline_bytes"], 10)
 
+    def test_path_outside_repo_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.copy_repo(Path(temporary))
+            (Path(temporary) / "outside.md").write_text("x", encoding="utf-8")
+            skill = repo / "SKILL.md"
+            text = skill.read_text(encoding="utf-8")
+            text = text.replace("`references/help.md` |", "`references/help.md` và `references/../../outside.md` |", 1)
+            skill.write_text(text, encoding="utf-8")
+            result = self.run_check(repo)
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("ra ngoài repo", result.stdout + result.stderr)
+
+    def test_symlinked_reference_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.copy_repo(Path(temporary))
+            target = repo / "references" / "help.md"
+            (Path(temporary) / "real.md").write_text(target.read_text(encoding="utf-8"), encoding="utf-8")
+            target.unlink()
+            target.symlink_to(Path(temporary) / "real.md")
+            result = self.run_check(repo)
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertIn("symlink", result.stdout + result.stderr)
+
+    def test_write_refuses_symlinked_budget(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = self.copy_repo(Path(temporary))
+            budget = repo / "benchmarks" / "route-budget.json"
+            outside = Path(temporary) / "outside.json"
+            outside.write_text(budget.read_text(encoding="utf-8"), encoding="utf-8")
+            budget.unlink()
+            budget.symlink_to(outside)
+            before = outside.read_text(encoding="utf-8")
+            result = self.run_check(repo, "--write")
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+            self.assertEqual(outside.read_text(encoding="utf-8"), before)
+
 
 if __name__ == "__main__":
     unittest.main()
