@@ -4,14 +4,15 @@
 
 ## Lịch sử phiên bản
 
-### Chưa phát hành
+### 0.16.4 (27/11/2026)
 
-Spec 040, bốn card mới cho kiểu người viết hay gặp: `customer-reply` (trả lời một khách hàng) thuộc `personal-blog`;
-`internal-announcement` (thông báo gửi nhân viên), `product-requirements` (PRD, spec, ADR) và `news-report` (tin,
-thông cáo báo chí) thuộc `enterprise-technical`. Bảng card trong `SKILL.md` thành danh sách theo họ nên `SKILL.md`
-không lớn thêm. Thêm ca WS01–WS12. Trên D11–D34, chi phí ngang 0.16.3; tổng số lỗi Sonnet sửa được kém đi 2, chạm mép ngưỡng, riêng lỗi khác giảm 3
-(`docs/benchmarks.md`). Bản
-nâng cấp không cần làm gì thêm.
+Spec 040, bốn card mới cho kiểu người viết hay gặp: `customer-reply` (trả lời một khách hàng) thuộc
+`personal-blog`; `internal-announcement` (thông báo gửi nhân viên), `product-requirements` (PRD, spec, ADR) và
+`news-report` (tin, thông cáo báo chí) thuộc `enterprise-technical`. Bảng card trong `SKILL.md` thành danh sách
+theo họ nên `SKILL.md` không lớn thêm. Thêm ca WS01–WS12. Trên D11–D34, bản đo (commit `c34fa45`, trước hai sửa
+theo review và lượt biên tập câu chữ) có chi phí ngang 0.16.3; tổng số lỗi Sonnet sửa được kém đi 2, chạm mép
+ngưỡng, riêng lỗi khác giảm 3 (`docs/benchmarks.md`). Bốn card mới được biên tập câu chữ bằng Vietnamizer trước khi
+phát hành. Bản nâng cấp không cần làm gì thêm.
 
 ### 0.16.3 (27/11/2026)
 
@@ -180,6 +181,7 @@ cách chuyển nằm trong [hướng dẫn cài](installation.md#codex-plugin). 
 
 Mô tả hiển thị của plugin dùng chung một câu tiếng Việt ở cả ba manifest và catalog, kèm bộ từ khóa thống nhất.
 
+- **0.16.4** — Bốn style card mới: `customer-reply`, `internal-announcement`, `product-requirements`, `news-report`; danh sách card theo họ, `SKILL.md` không lớn thêm. Giữ 55 pattern.
 - **0.16.3** — Hồ sơ giọng lưu được trong thư mục project (`.vietnamizer/`) và bản đầy đủ trong Google Drive của bạn; tuyến hồ sơ giọng tách theo việc, áp hồ sơ đọc ít hơn khoảng 58%. Constitution lên 2.11.0. Giữ 55 pattern.
 - **0.16.2** — T2 bắt cả dấu hai chấm giữa câu văn xuôi và luôn được rà; V9, V19 bắt cách nói dịch sát và từ nghề dễ hiểu sai; V20 luôn được soát, gồm *đội* đứng trơ; banner README mới. Giữ 55 pattern. Chưa chạy agent trên các ca mới.
 - **0.16.1** — Mô tả plugin ngắn lại còn 151 ký tự, giống nhau ở ba manifest và catalog `finolabs/plugins`, để catalog pin được bản mới. Nội dung skill không đổi.
