@@ -61,7 +61,7 @@ class RouteBudgetTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             repo = self.copy_repo(Path(temporary))
             part = repo / "references" / "voice-profile-apply.md"
-            part.write_text(part.read_text(encoding="utf-8") + "\nThêm một dòng.\n", encoding="utf-8")
+            part.write_text(part.read_text(encoding="utf-8") + "\n" + "Thêm một dòng. " * 40 + "\n", encoding="utf-8")
             result = self.run_check(repo)
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("voice-profile-apply:", result.stdout)
