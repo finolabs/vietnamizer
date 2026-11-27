@@ -719,8 +719,10 @@ class StyleCardListTest(unittest.TestCase):
             with self.subTest(family=family):
                 self.assertTrue(line.startswith(f"- `{family}`: "), line)
                 self.assertTrue(line.endswith("."), line)
-                ids = re.findall(r"`([a-z]+(?:-[a-z]+)+)`", line.split(": ", 1)[1])
-                self.assertEqual(ids, cards)
+                pairs = [re.fullmatch(r"([^`;]*[^`;\s]) `([a-z]+(?:-[a-z]+)+)`", pair)
+                         for pair in line.split(": ", 1)[1][:-1].split("; ")]
+                self.assertTrue(all(pairs), line)
+                self.assertEqual([pair.group(2) for pair in pairs], cards)
 
     def test_skill_names_no_full_card_path(self) -> None:
         self.assertNotRegex(raw("SKILL.md"), r"profiles/[a-z-]+/styles/[a-z-]+\.md")

@@ -208,6 +208,25 @@ class PackageSecurityTest(unittest.TestCase):
             self.assertIn("personal-narrative", result.stderr)
             self.assertIn("Cách kết", result.stderr)
 
+    def test_validator_rejects_malformed_card_list_items(self) -> None:
+        variants = {
+            "missing purpose": ("trả lời một khách hàng `customer-reply`", "`customer-reply`"),
+            "comma separator": ("`persuasive-marketing`; trả lời", "`persuasive-marketing`, trả lời"),
+            "extra single-word id": ("`customer-reply`.", "`customer-reply` `blog`."),
+        }
+        for name, (old, new) in variants.items():
+            with self.subTest(variant=name), tempfile.TemporaryDirectory() as temporary_directory:
+                repo = self.copy_package_fixture(Path(temporary_directory))
+                skill_path = repo / "SKILL.md"
+                skill = skill_path.read_text(encoding="utf-8")
+                self.assertIn(old, skill)
+                skill_path.write_text(skill.replace(old, new, 1), encoding="utf-8")
+
+                result = self.run_package_validator(repo)
+
+                self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn("personal-blog", result.stderr)
+
     def test_validator_rejects_extra_style_card_file(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             repo = self.copy_package_fixture(Path(temporary_directory))

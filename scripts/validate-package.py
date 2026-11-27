@@ -595,7 +595,12 @@ else:
         if not line.startswith(prefix) or not line.endswith("."):
             fail(f"SKILL.md: mục card của họ `{family}` phải mở bằng `{prefix}` và kết bằng dấu chấm")
             continue
-        listed = re.findall(r"`([a-z0-9]+(?:-[a-z0-9]+)+)`", line[len(prefix):])
+        pairs = [re.fullmatch(r"([^`;]*[^`;\s]) `([a-z0-9]+(?:-[a-z0-9]+)+)`", pair)
+                 for pair in line[len(prefix):-1].split("; ")]
+        if not all(pairs):
+            fail(f"SKILL.md: mục card của họ `{family}` phải gồm các cặp `mục đích `card`` ngăn bằng `; `")
+            continue
+        listed = [pair.group(2) for pair in pairs]
         if listed != cards:
             fail(f"SKILL.md: họ `{family}` phải liệt kê đúng card theo thứ tự {cards}, đang là {listed}")
 if len(card_block.encode("utf-8")) > STYLE_CARD_LIST_MAX_BYTES:
