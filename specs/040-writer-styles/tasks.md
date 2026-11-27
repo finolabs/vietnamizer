@@ -104,7 +104,7 @@ Run tests at most two modules per command, and check `uptime` first.
 
 - [x] T023 [P] (`docs/style-and-voice.md`, `docs/architecture.md` and `AGENTS.md` done early in c34fa45, since the validator requires the docs list) Update `docs/style-and-voice.md` so it lists all 11 cards. Update `README.md` and `docs/architecture.md` where they count or name the cards (FR-009).
 - [x] T024 [P] Update `references/help.md` if its feature map names the cards. Add an `Unreleased` entry to `docs/changelog.md`.
-- [ ] T025 Run T017 again, then run `review-gate`: Codex code review and security review on the PR, posted through `post_review.py`. Push and open the PR only on Fio's go.
+- [x] T025 Run T017 again, then run `review-gate`: Codex code review and security review on the PR, posted through `post_review.py`. Push and open the PR only on Fio's go.
 
 ## Dependencies
 

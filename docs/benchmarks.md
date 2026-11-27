@@ -275,7 +275,8 @@ Nếu tính riêng từng số như spec 038, cổng không đạt: lỗi khác 
 chặn chiều kém đi. Fio chấp nhận cách cộng gộp
 (27/11/2026), và đây là ngoại lệ quyết định sau khi đã thấy kết quả, không chạy lại cổng. Số cụm cần giữ bị đổi
 của Opus tăng đúng 2, chạm mép ngưỡng; chi phí lệch dưới 1%. Sau lượt đo, hai card đổi câu chữ theo review:
-`product-requirements` (cách hiểu *có thể*) và `news-report` (ngôi kể). Lượt đo không gồm hai thay đổi này.
+`product-requirements` (cách hiểu *có thể*) và `news-report` (ngôi kể). Lượt đo không gồm hai thay đổi này, và
+cũng không gồm lượt biên tập câu chữ bằng Vietnamizer cho bốn card mới trước khi phát hành 0.16.4.
 
 Ca định tuyến WS01–WS12 (`calibration/test-cases.md`, maintainer dựng) chạy mười lượt mỗi ca trên bản ứng viên;
 MS01–MS14 chạy hai lượt mỗi ca trên cả hai bản. Một lượt "chọn" card khi card duy nhất nó đọc là card đó.

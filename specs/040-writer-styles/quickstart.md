@@ -52,7 +52,7 @@ python3 benchmarks/holdout_036.py score <index>
 Count card picks from the read log of each run.
 
 **Pass, per model (Opus 5.5 and Sonnet 5.5):**
-- fixes and guard breaks are each within 2 of the base arm;
+- fixes and guard breaks are each no worse than the base arm by more than 2 (fewer fixes or more guard breaks), as spec 038 FR-004;
 - mean cost per run is at most 5% above the base arm;
 - in every WS and MS run that reads a card, the card is the expected one, and no run reads a wrong card;
 - the card-read rate per model and arm is recorded beside it.
