@@ -31,11 +31,11 @@ python3 scripts/route_budget.py
 
 ## 2. Probe before the full run (research R4)
 
-Build the base zip (v0.16.3) and the candidate zip into `.finolabs/harness-040/`. Then run WS01, WS04, WS07 and WS10 on the base arm only, 5 reps per model.
+Build the base zip (v0.16.3) and the candidate zip into `.finolabs/harness-040/`. Then run WS01, WS04, WS07 and WS10 on the base arm only, 5 reps per model. (Run on 27/11/2026 on both arms, 2 reps per model.)
 
 The base arm has no new card, so this step does not test whether those cards are picked. It counts how often a run reads any card at all.
 
-**Go when** at least 9 of 10 runs per model read some card. Otherwise stop and ask Fio how a run that reads no card is counted.
+Record the rate; it is not a gate. Fio settled on 27/11/2026 that the full run follows the probe whatever the rate, and that SC-004 counts only runs that read a card.
 
 ## 3. Early model run (SC-003, SC-004)
 
@@ -54,8 +54,8 @@ Count card picks from the read log of each run.
 **Pass, per model (Opus 5.5 and Sonnet 5.5):**
 - fixes and guard breaks are each within 2 of the base arm;
 - mean cost per run is at most 5% above the base arm;
-- every WS case picks its expected card in at least 9 of 10 runs;
-- MS01–MS14 pick the same cards as on the base arm.
+- in every WS and MS run that reads a card, the card is the expected one, and no run reads a wrong card;
+- the card-read rate per model and arm is recorded beside it.
 
 ## 4. Record
 

@@ -42,7 +42,7 @@ Run tests at most two modules per command, and check `uptime` first.
 **Independent test:**
 - WS01–WS03 are present and well-formed;
 - the card passes the contract tests;
-- in the model run, WS01 picks `customer-reply` in ≥9 of 10 runs per model.
+- in the model run, every run of WS01 that reads a card reads `customer-reply` (SC-004 as amended 27/11/2026).
 
 - [x] T006 [P] [US1] Add red tests to `tests/test_skill_contract.py` for each new card:
   - the canonical heading and the eight fields;

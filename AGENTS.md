@@ -14,9 +14,9 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 |---|---|
 | `SKILL.md` | Kiểm tra thể loại, bộ điều phối tuyến đọc, cổng dữ liệu/thể loại, năm chốt và cách trả kết quả; uỷ quyền nội dung V/T cho catalog. **Đây là nguồn chuẩn.** |
 | `profiles/personal-blog/rules.md` | B1–B17 cho blog, bài cá nhân, nội dung công việc và marketing |
-| `profiles/personal-blog/styles/` | Bốn style card tương thích với profile có tác giả hiện diện |
+| `profiles/personal-blog/styles/` | Năm style card tương thích với profile có tác giả hiện diện |
 | `profiles/enterprise-technical/rules.md` | K1–K7 cùng các giới hạn riêng của tài liệu kỹ thuật, doanh nghiệp và học thuật |
-| `profiles/enterprise-technical/styles/` | Ba style card cho hướng dẫn kỹ thuật, vận hành và học thuật |
+| `profiles/enterprise-technical/styles/` | Sáu style card cho hướng dẫn kỹ thuật, vận hành, học thuật, thông báo nội bộ, tài liệu yêu cầu và tin |
 | `references/missing-words.md`, `references/sentence-structure.md`, `references/terms-and-lead-ins.md` | Nguồn canonical duy nhất V1–V25, chia theo nghi vấn; không đọc cả ba mặc định |
 | `references/typography.md` | Nguồn canonical duy nhất T1–T6; cổng áp dụng ở core |
 | `references/writing-workflow.md` | Workflow meaning-first cho bài/phần có tổ chức, không dùng cho sửa nhỏ |
