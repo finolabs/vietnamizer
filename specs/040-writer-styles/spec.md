@@ -22,6 +22,7 @@
 
 - Q: An id-only table still grows `SKILL.md` by 133 bytes (research R1). May the card table become a two-item list, one item per family, with the path pattern written once? → A: Yes (Fio: "Duyệt, làm tiếp").
 - Q: In the early model run every routing miss was a run that read no card; no run read a wrong card, and 0.16.3 also read no card on 15 of 16 short probe runs. How do no-card runs count toward SC-004? → A: SC-004 counts the runs that read a card: each must read the expected card, and no run may read a wrong one. The card-read rate is reported beside it, per model and arm (Fio: "Đếm card đúng khi đọc").
+- Q: Counted per kind as in spec 038, Sonnet's other fixes fell from 5 to 2 (−3), past the bar of 2; summed, its fixes went from 7 to 5 (−2). Rerun the gate once, or accept the summed count? → A: Accept, as a recorded exception decided after the results were seen: for this run SC-003 counts fixes as one sum (lexicon-kind plus other) per model (Fio: "Chấp nhận, gộp số").
 
 ## Background: what the seven cards already cover
 
@@ -144,7 +145,7 @@ Every user, whatever the card, pays no more per edit than on 0.16.2 beyond the a
 
 - **SC-001**: Eleven cards pass the validator and contract tests; `SKILL.md` is no larger than before (FR-003).
 - **SC-002**: `route_budget.py` passes with no `max_bytes` raised.
-- **SC-003**: On D11–D34, per model, fixes and guard breaks differ from the base by at most 2, and mean cost per run rises by at most 5%.
+- **SC-003**: On D11–D34, per model, fixes and guard breaks differ from the base by at most 2, and mean cost per run rises by at most 5%. Fixes are one sum, lexicon-kind plus other: an exception Fio accepted on 27/11/2026 after the run (Clarifications).
 - **SC-004**: In every run of WS01–WS12 and MS01–MS14 that reads a card, the card read is the expected one; no run reads a wrong card. The share of runs that read a card is reported per model and arm, and no pass bar applies to it (Clarifications 2026-11-27).
 - **SC-005**: No new card contains a claim about Vietnamese convention without a source in `docs/sources.md` or an inference label.
 

@@ -270,9 +270,11 @@ lượt mỗi nhánh, chấm bằng `benchmarks/holdout_036.py score`:
 | Sonnet 5.5 | 0.16.3 | $0,162 | 32,9 s | 2/70 | 5/50 | 12/256 | 38/48 |
 | Sonnet 5.5 | ứng viên | $0,161 (−0,2%) | 32,3 s | 3/70 | 2/50 | 10/256 | 35/48 |
 
-Cổng chưa đạt. Ngưỡng của spec 038 tính riêng từng số đếm. Lỗi khác mà Sonnet sửa được giảm từ 5 xuống 2, lệch 3, vượt
-mức 2. Các số còn lại nằm trong ngưỡng: số cụm cần giữ bị đổi của Opus tăng đúng 2, chạm mép ngưỡng, và chi phí
-lệch dưới 1%. Spec 038 cho chạy lại cổng một lần.
+Nếu tính riêng từng số như spec 038, cổng không đạt: lỗi khác mà Sonnet sửa được giảm từ 5 xuống 2, lệch 3, vượt mức
+2. Cộng hai loại lỗi thì Sonnet sửa 7 → 5 (−2) và Opus 25 → 29, đều trong ngưỡng. Fio chấp nhận cách cộng gộp
+(27/11/2026), và đây là ngoại lệ quyết định sau khi đã thấy kết quả, không chạy lại cổng. Số cụm cần giữ bị đổi
+của Opus tăng đúng 2, chạm mép ngưỡng; chi phí lệch dưới 1%. Sau lượt đo, hai card đổi câu chữ theo review:
+`product-requirements` (cách hiểu *có thể*) và `news-report` (ngôi kể). Lượt đo không gồm hai thay đổi này.
 
 Ca định tuyến WS01–WS12 (`calibration/test-cases.md`, maintainer dựng) chạy mười lượt mỗi ca trên bản ứng viên;
 MS01–MS14 chạy hai lượt mỗi ca trên cả hai bản. Một lượt "chọn" card khi card duy nhất nó đọc là card đó.
