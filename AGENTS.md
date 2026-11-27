@@ -26,7 +26,7 @@ Skill được viết riêng cho tiếng Việt, không phải bản dịch củ
 | `scripts/check-consistency.py` | Công cụ tùy chọn ngoài gói: đếm dấu thanh, i/y, dấu phân cách số, cách tự xưng; kết quả là ứng viên, không sửa file |
 | `calibration/register-notes.md` | Mẫu ghi chú ngữ vực có nhãn xuất xứ, chưa có số đo; không phải luật |
 | `references/function-words.md` | Bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán |
-| `references/style-resolution.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới bảy style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
+| `references/style-resolution.md` | Năm chiều ngữ cảnh, thứ tự ưu tiên và registry trỏ tới mười một style card khi lựa chọn chưa rõ/pha chức năng; không sở hữu pattern |
 | `references/voice-from-samples.md` | Cách rút đặc tính, tiếp nhận tham chiếu chuyên môn có xuất xứ và khai triển theo mẫu trong chế độ do `SKILL.md` chọn; kiểm nghĩa/giọng riêng, không sở hữu precedence hay pattern; việc lưu hồ sơ thuộc tuyến opt-in trong `references/voice-profile.md` |
 | `references/voice-profile.md` | Mục lục và mục 1 của tuyến opt-in tạo, lưu, áp dụng và cập nhật hồ sơ giọng có tên, cá nhân (mặc định) hoặc thương hiệu, mỗi lần một hồ sơ; trỏ tới đúng một phần cho mỗi việc |
 | `references/voice-profile-learn.md`, `references/voice-profile-save.md`, `references/voice-profile-apply.md`, `references/voice-profile-update.md`, `references/voice-profile-reminder.md` | Các phần của tuyến hồ sơ giọng: đồng ý và soạn; lưu (file, kho project `.vietnamizer/`, Orrery, Obsidian, Google Drive, bộ nhớ của Chat); gọi và áp qua sổ project rồi sổ `~/.agents/vietnamizer/registry.md`; cập nhật, chấm, A/B; lời nhắc |

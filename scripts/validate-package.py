@@ -33,15 +33,27 @@ PATTERN_OWNERS = {
 }
 PATTERN_FIELDS = ["Dấu hiệu", "Vì sao", "Sửa", "Không flag"]
 
-STYLE_CARDS = [
-    "personal-narrative",
-    "work-coordination",
-    "public-expertise",
-    "persuasive-marketing",
-    "technical-guide",
-    "business-operations",
-    "academic-analysis",
-]
+# Thứ tự trong mỗi họ là thứ tự card trong khối danh sách ở SKILL.md và trong registry.
+STYLE_FAMILIES = {
+    "personal-blog": [
+        "personal-narrative",
+        "work-coordination",
+        "public-expertise",
+        "persuasive-marketing",
+        "customer-reply",
+    ],
+    "enterprise-technical": [
+        "technical-guide",
+        "business-operations",
+        "academic-analysis",
+        "internal-announcement",
+        "product-requirements",
+        "news-report",
+    ],
+}
+STYLE_CARDS = [card_id for cards in STYLE_FAMILIES.values() for card_id in cards]
+STYLE_CARD_LIST_LEAD = "Mục đích/người đọc đã rõ → card, đọc `profiles/<họ>/styles/<card>.md`:"
+STYLE_CARD_LIST_MAX_BYTES = 764
 STYLE_REGISTRY = "references/style-resolution.md"
 STYLE_CARD_FIELDS = [
     "Dùng khi",
@@ -54,14 +66,10 @@ STYLE_CARD_FIELDS = [
     "Ca kiểm thử",
 ]
 STYLE_PROFILE_CARDS = {
-    "profiles/personal-blog/rules.md": {
-        card_id: f"profiles/personal-blog/styles/{card_id}.md"
-        for card_id in STYLE_CARDS[:4]
-    },
-    "profiles/enterprise-technical/rules.md": {
-        card_id: f"profiles/enterprise-technical/styles/{card_id}.md"
-        for card_id in STYLE_CARDS[4:]
-    },
+    f"profiles/{family}/rules.md": {
+        card_id: f"profiles/{family}/styles/{card_id}.md" for card_id in cards
+    }
+    for family, cards in STYLE_FAMILIES.items()
 }
 EXPECTED_PROFILE_FILES = {
     PurePosixPath(profile_path).relative_to("profiles").as_posix()
@@ -572,10 +580,28 @@ for card_id, _profile_id, card_path in expected_registry_rows:
     missing_fields = [field for field in STYLE_CARD_FIELDS if f"- **{field}:**" not in card]
     if missing_fields:
         fail(f"Style card `{card_id}` thiếu field: {missing_fields}")
-    if f"`{card_path}`" not in skill:
-        fail(f"SKILL.md chưa trỏ tới style card `{card_path}`")
 if f"`{STYLE_REGISTRY}`" not in skill:
     fail(f"SKILL.md chưa trỏ tới `{STYLE_REGISTRY}`")
+card_section = skill.split("## Chọn card khi làm bài\n", 1)
+card_block = card_section[1].strip().split("\n\n", 1)[0] if len(card_section) == 2 else ""
+card_lines = card_block.splitlines()
+if not card_lines or card_lines[0] != STYLE_CARD_LIST_LEAD:
+    fail("SKILL.md: khối card phải mở bằng dòng mẫu đường dẫn `profiles/<họ>/styles/<card>.md`")
+elif len(card_lines) != 1 + len(STYLE_FAMILIES):
+    fail(f"SKILL.md: khối card phải có đúng {len(STYLE_FAMILIES)} mục, mỗi họ một mục")
+else:
+    for line, (family, cards) in zip(card_lines[1:], STYLE_FAMILIES.items()):
+        prefix = f"- `{family}`: "
+        if not line.startswith(prefix) or not line.endswith("."):
+            fail(f"SKILL.md: mục card của họ `{family}` phải mở bằng `{prefix}` và kết bằng dấu chấm")
+            continue
+        listed = re.findall(r"`([a-z0-9]+(?:-[a-z0-9]+)+)`", line[len(prefix):])
+        if listed != cards:
+            fail(f"SKILL.md: họ `{family}` phải liệt kê đúng card theo thứ tự {cards}, đang là {listed}")
+if len(card_block.encode("utf-8")) > STYLE_CARD_LIST_MAX_BYTES:
+    fail(f"SKILL.md: khối card dài hơn {STYLE_CARD_LIST_MAX_BYTES} byte")
+if re.search(r"profiles/[a-z0-9-]+/styles/[a-z0-9-]+\.md", skill):
+    fail("SKILL.md không ghi đường dẫn card đầy đủ; dùng mẫu đường dẫn trong khối card")
 if f"`{STYLE_REGISTRY}`" not in guides["style-and-voice"]:
     fail(f"docs/style-and-voice.md chưa trỏ tới `{STYLE_REGISTRY}`")
 for card_id in STYLE_CARDS:

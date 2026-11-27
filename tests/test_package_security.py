@@ -522,10 +522,14 @@ class PackageSecurityTest(unittest.TestCase):
                 "profiles/personal-blog/styles/work-coordination.md",
                 "profiles/personal-blog/styles/public-expertise.md",
                 "profiles/personal-blog/styles/persuasive-marketing.md",
+                "profiles/personal-blog/styles/customer-reply.md",
                 "profiles/enterprise-technical/rules.md",
                 "profiles/enterprise-technical/styles/technical-guide.md",
                 "profiles/enterprise-technical/styles/business-operations.md",
                 "profiles/enterprise-technical/styles/academic-analysis.md",
+                "profiles/enterprise-technical/styles/internal-announcement.md",
+                "profiles/enterprise-technical/styles/product-requirements.md",
+                "profiles/enterprise-technical/styles/news-report.md",
             }
             actual_profile_files = {
                 name

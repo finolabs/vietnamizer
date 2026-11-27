@@ -66,7 +66,7 @@ Thư mục `scripts/` chỉ có trong repo nguồn và phục vụ maintainer; g
 Generated agent skills, Spec Kit integration state, raw run và scratch output được giữ local.
 Xem [hướng dẫn đóng góp](../CONTRIBUTING.md) để cài tooling maintainer và chạy kiểm tra offline.
 
-Bộ giải phong cách dùng đúng bảy card trong [hướng dẫn phong cách](style-and-voice.md). Nội dung chuẩn của từng card nằm
+Bộ giải phong cách dùng đúng mười một card trong [hướng dẫn phong cách](style-and-voice.md). Nội dung chuẩn của từng card nằm
 trong thư mục `styles/` của profile tương thích; `references/style-resolution.md` chỉ sở hữu cách
 chọn card, thứ tự ưu tiên và registry đường dẫn.
 

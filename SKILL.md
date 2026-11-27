@@ -40,7 +40,7 @@ nhập liệu chỉ xử lý nếu yêu cầu gồm trình bày/chính tả. Kh�
 | Việc được giao | Đọc thêm trước khi làm | Không đọc mặc định |
 |---|---|---|
 | Sửa một cụm/câu, rà soát cục bộ | Chỉ catalog đúng nghi vấn ở bảng dưới; đọc ngữ cảnh cần hiểu | Workflow bài, resolver, profile/card, guide mẫu |
-| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo bảng mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
+| Biên tập toàn bài hoặc viết từ brief/outline | `references/writing-workflow.md` và một card theo mục đích | Các catalog chưa có nghi vấn, resolver nếu lựa chọn đã rõ |
 | Bài dài hoặc sửa nhiều vòng, thuật ngữ/xưng hô/cách viết số có thể trôi giữa các phần | Thêm `references/terminology-consistency.md` trên tuyến bài | Bài ngắn, sửa một cụm |
 | Theo mẫu được giao | Thêm `references/voice-from-samples.md` trên tuyến bài; với đoạn nhỏ chỉ guide và phạm vi ấy | Danh mục nguồn tham khảo khi mẫu đã đủ |
 | Học, lưu hoặc áp dụng hồ sơ giọng cá nhân theo yêu cầu rõ (hồ sơ dán trong yêu cầu sửa bài: “Theo mẫu”), kể cả gọi lại hồ sơ đã lưu (`/vietnamizer <tên>` hay `/vietnamizer:vietnamizer <tên>`, `cá nhân`, “theo giọng của tôi”), kể cả học từ bài LinkedIn/Facebook của chính người dùng; dựng, cập nhật hoặc áp dụng hồ sơ thương hiệu người dùng gọi bằng tên; chấm đoạn mẫu của một hồ sơ | `references/voice-profile.md`; học từ export, trang mạng xã hội hay trang thương hiệu qua trình duyệt thì thêm `references/voice-sources.md`; dựng giọng thương hiệu thì thêm `references/brand-voice.md`; áp dụng thì thêm guide mẫu | Biên tập thông thường |
@@ -71,15 +71,9 @@ nói đã gỡ context. Không có công cụ thì dùng phần được cấp, 
 
 ## Chọn card khi làm bài
 
-| Mục đích/người đọc đã rõ | Card |
-|---|---|
-| Kể trải nghiệm/blog cá nhân | `profiles/personal-blog/styles/personal-narrative.md` |
-| Chat/phối hợp công việc | `profiles/personal-blog/styles/work-coordination.md` |
-| Chia sẻ chuyên môn/thương hiệu cá nhân | `profiles/personal-blog/styles/public-expertise.md` |
-| Marketing có mục tiêu thuyết phục | `profiles/personal-blog/styles/persuasive-marketing.md` |
-| README/API/hướng dẫn tra cứu | `profiles/enterprise-technical/styles/technical-guide.md` |
-| SOP/báo cáo/biên bản/vận hành | `profiles/enterprise-technical/styles/business-operations.md` |
-| Giáo trình/đề án/nghiên cứu | `profiles/enterprise-technical/styles/academic-analysis.md` |
+Mục đích/người đọc đã rõ → card, đọc `profiles/<họ>/styles/<card>.md`:
+- `personal-blog`: kể trải nghiệm/blog cá nhân `personal-narrative`; chat/phối hợp công việc `work-coordination`; chia sẻ chuyên môn/thương hiệu cá nhân `public-expertise`; marketing thuyết phục `persuasive-marketing`; trả lời một khách hàng `customer-reply`.
+- `enterprise-technical`: README/API/hướng dẫn tra cứu `technical-guide`; SOP/báo cáo/biên bản/vận hành `business-operations`; giáo trình/đề án/nghiên cứu `academic-analysis`; thông báo/thư gửi nhân viên `internal-announcement`; PRD/spec/ADR/tiêu chí nghiệm thu `product-requirements`; tin/thông cáo báo chí `news-report`.
 
 Chọn tối đa một card tương thích mỗi phần. Chỉ đọc `references/style-resolution.md` khi
 mục đích/người đọc/quan hệ chưa rõ, có xung đột hoặc pha chức năng; không suy giọng chỉ từ tên kênh.

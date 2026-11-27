@@ -672,5 +672,79 @@ class SkillContractTest(unittest.TestCase):
         cases = read("calibration/test-cases.md")
         self.assertIn("PR01–PR26", cases)
 
+
+# Spec 040: eleven style cards, listed in SKILL.md as one item per family.
+CARD_FAMILIES = {
+    "personal-blog": [
+        "personal-narrative", "work-coordination", "public-expertise",
+        "persuasive-marketing", "customer-reply",
+    ],
+    "enterprise-technical": [
+        "technical-guide", "business-operations", "academic-analysis",
+        "internal-announcement", "product-requirements", "news-report",
+    ],
+}
+NEW_CARDS = {
+    "customer-reply": ("personal-blog", ["bồi thường", "giảm giá", "thời hạn", "nhận lỗi", "lời hứa"]),
+    "internal-announcement": ("enterprise-technical", ["phê duyệt", "quyền lợi", "mốc ngày", "lý do", "lời cảm ơn"]),
+    "product-requirements": ("enterprise-technical", ["*phải*", "*nên*", "*có thể*", "vai trò", "con số", "điều kiện", "mức ưu tiên"]),
+    "news-report": ("enterprise-technical", ["động từ tường thuật", "nguồn dẫn", "chức danh", "nhận định", "so sánh nhất"]),
+}
+CARD_LIST_LEAD = "Mục đích/người đọc đã rõ → card, đọc `profiles/<họ>/styles/<card>.md`:"
+
+
+def raw(relative: str) -> str:
+    return (ROOT / relative).read_text(encoding="utf-8")
+
+
+def card_list_block() -> str:
+    skill = raw("SKILL.md")
+    section = skill.split("## Chọn card khi làm bài\n", 1)[1]
+    return section.strip().split("\n\n", 1)[0]
+
+
+def card_field(card: str, field: str) -> str:
+    match = re.search(rf"(?m)^- \*\*{re.escape(field)}:\*\* (.+)$", card)
+    return match.group(1) if match else ""
+
+
+class StyleCardListTest(unittest.TestCase):
+    def test_card_list_shape(self) -> None:
+        block = card_list_block()
+        lines = block.splitlines()
+        self.assertEqual(lines[0], CARD_LIST_LEAD)
+        self.assertEqual(len(lines), 1 + len(CARD_FAMILIES))
+        self.assertLessEqual(len(block.encode("utf-8")), 764)
+        for line, (family, cards) in zip(lines[1:], CARD_FAMILIES.items()):
+            with self.subTest(family=family):
+                self.assertTrue(line.startswith(f"- `{family}`: "), line)
+                self.assertTrue(line.endswith("."), line)
+                ids = re.findall(r"`([a-z]+(?:-[a-z]+)+)`", line.split(": ", 1)[1])
+                self.assertEqual(ids, cards)
+
+    def test_skill_names_no_full_card_path(self) -> None:
+        self.assertNotRegex(raw("SKILL.md"), r"profiles/[a-z-]+/styles/[a-z-]+\.md")
+
+    def test_new_cards_follow_the_contract(self) -> None:
+        cases = raw("calibration/test-cases.md")
+        for card_id, (family, must_name) in NEW_CARDS.items():
+            path = f"profiles/{family}/styles/{card_id}.md"
+            with self.subTest(card=card_id):
+                card = raw(path)
+                self.assertRegex(card, rf"(?m)^# `{card_id}`: ")
+                self.assertLessEqual(len(card.encode("utf-8")), 1500)
+                for field in ("Dùng khi", "Thanh ngữ vực", "Xưng hô", "Nhịp", "Thuật ngữ",
+                              "Cách kết", "Không tự thêm", "Ca kiểm thử"):
+                    self.assertTrue(card_field(card, field), field)
+                additions = card_field(card, "Không tự thêm")
+                for item in must_name:
+                    self.assertIn(item, additions)
+                cited = re.findall(r"WS\d\d", card_field(card, "Ca kiểm thử"))
+                self.assertEqual(len(cited), 3)
+                for case in cited:
+                    self.assertRegex(cases, rf"(?m)^\| {case} \| maintainer dựng \|")
+                self.assertIn(f"`{path}`", raw("references/style-resolution.md"))
+
+
 if __name__ == "__main__":
     unittest.main()
