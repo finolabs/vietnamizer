@@ -251,6 +251,52 @@ Cổng không đạt. Với 0.16.2, Sonnet bỏ qua workflow ở 29 trên 48 lư
 bớt được (khoảng 1,5 KB) chỉ giảm chừng 2%. Trên D01–D10, cùng bản này giảm 17% với Opus; chênh lệch đó nằm trong
 mức dao động giữa các đợt chạy. Đo với một skill gần như rỗng, skill chỉ chiếm 36–39% chi phí mỗi lượt.
 
+## Spec 040: card cho kiểu người viết (27/11/2026)
+
+Bản ứng viên thêm bốn card (`customer-reply`, `internal-announcement`, `product-requirements`, `news-report`) và
+đổi bảng card trong `SKILL.md` thành danh sách theo họ. Chạy trên Claude Code (`claude -p`, `--plugin-dir`) ngày
+27/11/2026, Opus 5.5 (`claude-opus-5-5`) và Sonnet 5.5 (`claude-sonnet-5-5`), so với 0.16.3 trong cùng đợt. Gói
+0.16.3 là tag `v0.16.3` (`ad83883`, zip `540d1344ec1c…`); gói ứng viên là commit `c34fa45` (zip `0fa12a8ebce9…`).
+Cả 576 lượt đều hợp lệ: mỗi lượt chỉ nạp skill từ gói của chính nó và ghi lại file đã đọc. Tổng chi phí khoảng $102.
+
+Cổng D11–D34 (manifest `benchmarks/dev-037-gate2-manifest.json`, SHA-256 `5ee6221f1677…`), hai lượt mỗi bài, 48
+lượt mỗi nhánh, chấm bằng `benchmarks/holdout_036.py score`:
+
+| Model | Phiên bản | Chi phí mỗi lượt | Thời gian | Lỗi nhóm từ vựng đã sửa | Lỗi khác đã sửa | Cụm cần giữ bị đổi | Lượt có đọc card |
+|---|---|---|---|---|---|---|---|
+| Opus 5.5 | 0.16.3 | $0,363 | 56,3 s | 9/70 | 16/50 | 26/256 | 48/48 |
+| Opus 5.5 | ứng viên | $0,364 (+0,4%) | 56,5 s | 11/70 | 18/50 | 28/256 | 48/48 |
+| Sonnet 5.5 | 0.16.3 | $0,162 | 32,9 s | 2/70 | 5/50 | 12/256 | 38/48 |
+| Sonnet 5.5 | ứng viên | $0,161 (−0,2%) | 32,3 s | 3/70 | 2/50 | 10/256 | 35/48 |
+
+Cổng đạt: mỗi số đếm lệch tối đa 2 so với 0.16.3 và chi phí không tăng quá 5%. Số cụm cần giữ bị đổi của Opus
+tăng đúng 2, chạm mép ngưỡng.
+
+Ca định tuyến WS01–WS12 (`calibration/test-cases.md`, maintainer dựng) chạy mười lượt mỗi ca trên bản ứng viên;
+MS01–MS14 chạy hai lượt mỗi ca trên cả hai bản. Một lượt "chọn" card khi card duy nhất nó đọc là card đó.
+
+| Ca | Opus: đúng card / có đọc card / lượt | Sonnet: đúng card / có đọc card / lượt |
+|---|---|---|
+| WS01 | 10/10/10 | 3/3/10 |
+| WS02 | 9/9/10 | 2/2/10 |
+| WS03 | 6/6/10 | 0/0/10 |
+| WS04 | 9/9/10 | 7/7/10 |
+| WS05 | 7/7/10 | 4/4/10 |
+| WS06 | 8/8/10 | 0/0/10 |
+| WS07 | 8/8/10 | 6/6/10 |
+| WS08 | 2/2/10 | 0/0/10 |
+| WS09 | 1/1/10 | 0/0/10 |
+| WS10 | 7/7/10 | 3/3/10 |
+| WS11 | 5/5/10 | 0/0/10 |
+| WS12 | 6/6/10 | 1/1/10 |
+| MS01–MS14, 0.16.3 | 12/12/28 | 1/1/28 |
+| MS01–MS14, ứng viên | 10/10/28 | 1/1/28 |
+
+Không lượt nào đọc nhầm card. Mọi lượt trượt đều là lượt không đọc card nào; với đoạn ngắn, 0.16.3 cũng vậy (lượt
+dò WS01, WS04, WS07, WS10: 0.16.3 đọc card ở 1/16 lượt). Vì thế SC-004 đếm trên các lượt có đọc card (Fio,
+27/11/2026), và tỉ lệ đọc card ghi riêng như trên. Ca ngắn không phải bài thật: ở bài dài D11–D34, Opus đọc card
+ở mọi lượt.
+
 ## Trước/sau: sửa chỗ cần sửa, giữ chỗ đã đúng
 
 Ba ví dụ dưới đây là **đầu ra thật trong lượt hồi quy trên cùng Codex** ngày
