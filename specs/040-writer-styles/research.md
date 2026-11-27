@@ -59,7 +59,7 @@ Most of those are whole-article edits, where the route table says to read one ca
 
 **Decision.**
 - The first paid step is a probe: 4 routing cases, 5 runs per model, on the base arm.
-- If the base arm reads a card in fewer than 9 of 10 runs on cases whose purpose is clear, the bar in FR-010 cannot be met by card content. In that case the plan stops and asks Fio to choose. One option is to count a run that reads no card but whose output meets the "giữ" and "không được" columns as a pass. The other is to accept a lower bar.
+- Historical, retired on 27/11/2026 (spec Clarifications): if the base arm reads a card in fewer than 9 of 10 runs on cases whose purpose is clear, the bar in FR-010 cannot be met by card content. In that case the plan stopped and asked Fio to choose. One option is to count a run that reads no card but whose output meets the "giữ" and "không được" columns as a pass. The other is to accept a lower bar.
 - The probe costs about $3 (20 short runs), against about $95 for the full run (R6).
 
 ## R5. Sources for convention claims (FR-008)

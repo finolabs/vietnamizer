@@ -271,7 +271,8 @@ lượt mỗi nhánh, chấm bằng `benchmarks/holdout_036.py score`:
 | Sonnet 5.5 | ứng viên | $0,161 (−0,2%) | 32,3 s | 3/70 | 2/50 | 10/256 | 35/48 |
 
 Nếu tính riêng từng số như spec 038, cổng không đạt: lỗi khác mà Sonnet sửa được giảm từ 5 xuống 2, lệch 3, vượt mức
-2. Cộng hai loại lỗi thì Sonnet sửa 7 → 5 (−2) và Opus 25 → 29, đều trong ngưỡng. Fio chấp nhận cách cộng gộp
+2. Cộng hai loại lỗi thì Sonnet sửa 7 → 5 (kém đi 2, chạm mép ngưỡng) và Opus 25 → 29 (tốt hơn); ngưỡng của spec 038 chỉ
+chặn chiều kém đi. Fio chấp nhận cách cộng gộp
 (27/11/2026), và đây là ngoại lệ quyết định sau khi đã thấy kết quả, không chạy lại cổng. Số cụm cần giữ bị đổi
 của Opus tăng đúng 2, chạm mép ngưỡng; chi phí lệch dưới 1%. Sau lượt đo, hai card đổi câu chữ theo review:
 `product-requirements` (cách hiểu *có thể*) và `news-report` (ngôi kể). Lượt đo không gồm hai thay đổi này.

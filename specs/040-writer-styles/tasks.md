@@ -91,7 +91,7 @@ Run tests at most two modules per command, and check `uptime` first.
   - `python3 scripts/route_budget.py`.
   Every check must pass.
 - [x] T018 Commit Phase 2–6 as atomic commits, per `commit-messages`: tests, then validator and list, then each card with its cases.
-- [x] T019 [US4] (Run as 2 reps on both arms, then the full run regardless, per Fio 27/11/2026.) Build the candidate zip from the branch head into `.finolabs/harness-040/cand.zip`. Run the probe: WS01, WS04, WS07 and WS10 on `v0163.zip`, 5 reps per model, through the heavy-job lock. Proceed only if at least 9 of 10 runs per model read some card. Otherwise stop and ask Fio (plan, "Open decisions").
+- [x] T019 [US4] (Run as 2 reps on both arms, then the full run regardless, per Fio 27/11/2026.) Build the candidate zip from the branch head into `.finolabs/harness-040/cand.zip`. Run the probe: WS01, WS04, WS07 and WS10 on `v0163.zip`, 5 reps per model, through the heavy-job lock. Historical: the original procedure proceeded only if at least 9 of 10 runs per model read some card; this stop condition was retired on 27/11/2026, and the probe rate is now recorded, not gated.
 - [x] T020 [US4] Run the full model run per research R6, in one batch, through the heavy-job lock:
   - D11–D34 on both arms, 2 reps × 2 models;
   - MS01–MS14 on both arms, 2 reps;

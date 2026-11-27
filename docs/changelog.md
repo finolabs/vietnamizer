@@ -9,7 +9,7 @@
 Spec 040, bốn card mới cho kiểu người viết hay gặp: `customer-reply` (trả lời một khách hàng) thuộc `personal-blog`;
 `internal-announcement` (thông báo gửi nhân viên), `product-requirements` (PRD, spec, ADR) và `news-report` (tin,
 thông cáo báo chí) thuộc `enterprise-technical`. Bảng card trong `SKILL.md` thành danh sách theo họ nên `SKILL.md`
-không lớn thêm. Thêm ca WS01–WS12. Trên D11–D34, chi phí ngang 0.16.3; tổng số lỗi sửa được nằm trong ngưỡng, riêng lỗi khác của Sonnet giảm 3
+không lớn thêm. Thêm ca WS01–WS12. Trên D11–D34, chi phí ngang 0.16.3; tổng số lỗi Sonnet sửa được kém đi 2, chạm mép ngưỡng, riêng lỗi khác giảm 3
 (`docs/benchmarks.md`). Bản
 nâng cấp không cần làm gì thêm.
 
