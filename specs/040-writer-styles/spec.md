@@ -18,6 +18,10 @@
 - Q: How is spec 040 measured before it is accepted? → A: Static tests plus an early model run on Sonnet and Opus, on the old gate pool and the new cases, with enough runs to beat noise, compared with 0.16.2 (Fio: "Test + chạy model sớm").
 - Q: What is the pass bar of the model run? → A: As in spec 038, each quality count (fixes, guard breaks) may differ by at most 2 per model; mean cost per run rises by at most 5%; each new routing case picks the right card in at least 9 of 10 runs per model (Fio: "Như 038 + chi phí ≤5%").
 
+### Session 2026-11-27
+
+- Q: An id-only table still grows `SKILL.md` by 133 bytes (research R1). May the card table become a two-item list, one item per family, with the path pattern written once? → A: Yes (Fio: "Duyệt, làm tiếp").
+
 ## Background: what the seven cards already cover
 
 Style cards live under `profiles/*/styles/`, are chosen from the purpose table in `SKILL.md` ("Chọn card khi làm bài") and, only when the purpose is unclear, by `references/style-resolution.md`. Each card is a contract of eight fields (Dùng khi, Thanh ngữ vực, Xưng hô, Nhịp, Thuật ngữ, Cách kết, Không tự thêm, Ca kiểm thử), pinned by `scripts/validate-package.py` and the contract tests, with positive and leak cases in `calibration/test-cases.md` (MS01–MS14).
@@ -98,7 +102,7 @@ Every user, whatever the card, pays no more per edit than on 0.16.2 beyond the a
 
 **Acceptance Scenarios**:
 
-1. **Given** the compacted card table, **When** `route_budget.py` runs, **Then** every route is at or under its current `max_bytes`, and `SKILL.md` is no larger than before.
+1. **Given** the compacted card list, **When** `route_budget.py` runs, **Then** every route is at or under its current `max_bytes`, and `SKILL.md` is no larger than before.
 2. **Given** a whole-article edit, **When** the agent picks a card, **Then** it reads one card file of the same size class as today (about 1.2–1.5 KB) and does not need `references/style-resolution.md` to find the card's file.
 
 ### Edge Cases
@@ -116,7 +120,7 @@ Every user, whatever the card, pays no more per edit than on 0.16.2 beyond the a
 
 - **FR-001**: The package MUST add four cards with the eight existing fields: `customer-reply` under `personal-blog`; `internal-announcement`, `product-requirements` and `news-report` under `enterprise-technical`. The family of each is the one stated in the settled question; the plan may move a card only with Fio's yes.
 - **FR-002**: Each new card MUST stay within the size class of the existing cards (no card above 1,500 bytes) and MUST own no pattern; it supports rhythm, address, terms and endings only, as the resolver already says.
-- **FR-003**: The card table in `SKILL.md` MUST list the card id per purpose row and give the path once as a pattern, so that `SKILL.md` is no larger than its 0.16.2 size (14,444 bytes, or the size on main after spec 039 merges, whichever is smaller) and the agent can open the card without reading the resolver. Each row MUST still let the agent tell the card's family.
+- **FR-003**: The card list in `SKILL.md` MUST be one item per family, pairing each purpose with its card id, and give the path once as a pattern (shape in [contracts/card-list.md](contracts/card-list.md)), so that `SKILL.md` is no larger than its 0.16.2 size (14,444 bytes, or the size on main after spec 039 merges, whichever is smaller) and the agent can open the card without reading the resolver. Each card's family MUST be visible from the item it sits in.
 - **FR-004**: `scripts/validate-package.py` MUST accept the compacted table and keep every current check: each registered card exists, has its canonical heading and the eight fields, appears in the resolver registry and in `docs/style-and-voice.md`, and the table in `SKILL.md` reaches it.
 - **FR-005**: `references/style-resolution.md` MUST list the four cards in its registry and MAY gain at most one line of disambiguation per new card; its size MUST NOT grow by more than 600 bytes, since it is read only when the purpose is unclear.
 - **FR-006**: Each new card's "Không tự thêm" MUST name the additions that change meaning for that function: for `customer-reply`, compensation, discounts, deadlines, admissions of fault and promises; for `internal-announcement`, approvals, benefits, dates, reasons and thanks; for `product-requirements`, obligation strength (*phải/nên/có thể*), actors, numbers, conditions and priorities; for `news-report`, reporting-verb strength, attributions, titles, opinions and superlatives.
@@ -130,7 +134,7 @@ Every user, whatever the card, pays no more per edit than on 0.16.2 beyond the a
 ### Key Entities
 
 - **Style card**: a Markdown file under `profiles/<family>/styles/<id>.md` with eight fields; describes a writing function and its reader, never a person or company.
-- **Card table row**: one purpose and one card id in `SKILL.md`; the only place the agent looks when the purpose is clear.
+- **Card list entry**: one purpose and one card id in its family's item in `SKILL.md`; the only place the agent looks when the purpose is clear.
 - **Routing case**: a calibration case that names the expected card, what must be kept and what must not happen.
 
 ## Success Criteria *(mandatory)*
