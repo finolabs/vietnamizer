@@ -23,7 +23,7 @@ Giữ vùng bảo toàn trước. Chia khi mục đích, người đọc hoặc 
 chia phần. Vai trò nhỏ như định nghĩa hoặc đối chiếu trong cùng phần không tạo profile mới.
 Chọn một card tương thích mỗi phần; không đem nhịp/đại từ/CTA của phần này sang phần khác.
 Blog công nghệ có tác giả vẫn thuộc blog; README/SOP/tra cứu giữ kỹ thuật dù mẫu thân mật.
-Card mới ghi ranh giới với card gần nhất ở mục Dùng khi; PRD bàn trong chat vẫn là `work-coordination`.
+Ranh giới với card gần nhất ghi ở mục Dùng khi của từng card; PRD bàn trong chat vẫn dùng `work-coordination`.
 Typography-only không có card. Đọc thêm rules B/K chỉ khi có nghi vấn phụ thuộc thể loại, không
 vì đã chọn một card mà tự nạp toàn profile. Không cần cài đủ nét của card vào bài.
 

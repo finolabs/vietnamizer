@@ -598,9 +598,9 @@ cây làm việc Git, trừ ca 8; hồ sơ là hồ sơ thử. Ca 3, 4, 7, 8, 9 
 ## WS01–WS12 · card cho kiểu người viết (spec 040)
 
 Ca phát triển do maintainer dựng, không phải holdout. Mỗi card mới có một ca dương và hai ca chống rò; mỗi
-ca chống rò giữ dữ kiện của ca dương nhưng đổi mục đích hoặc người đọc, giống MS01–MS14. Lời gọi là biên
-tập toàn bài. Đạt khi mọi lượt có đọc card đều đọc đúng Card mong đợi và không đọc card khác, bản ra giữ đủ cột Phải
-giữ và không phạm cột Không được. Tỉ lệ lượt có đọc card được ghi riêng, không có ngưỡng (spec 040, 27/11/2026).
+ca chống rò giữ dữ kiện của ca dương nhưng đổi mục đích hoặc người đọc, giống MS01–MS14. Mỗi lời gọi là một
+yêu cầu biên tập toàn bài. Đạt khi mọi lượt có đọc card đều đọc đúng Card mong đợi và không đọc card
+khác, bản ra giữ đủ cột Phải giữ và không phạm cột Không được. Tỉ lệ lượt có đọc card được ghi riêng, không có ngưỡng (spec 040, 27/11/2026).
 
 | Ca | Nguồn | Context và đầu vào | Card mong đợi | Phải giữ | Không được |
 |---|---|---|---|---|---|
