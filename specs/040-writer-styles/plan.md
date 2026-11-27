@@ -119,8 +119,8 @@ The work spans several files with a paid run in the middle, so it needs ordering
 
 | Decision | Owner | Blocks |
 |---|---|---|
-| FR-003 says "table" and the plan ships a list (R1) | Fio confirms or rejects | Spec text; implementation may start, since the list meets every measured requirement |
-| If the probe shows fewer than 9 of 10 runs reading any card, how such a run is counted (R4) | Fio | The full model run only |
+| FR-003 says "table" and the plan ships a list (R1) | Settled 27/11/2026: the list ("Duyệt, làm tiếp") | — |
+| How a run that reads no card counts (R4) | Settled 27/11/2026: SC-004 counts only runs that read a card ("Đếm card đúng khi đọc") | — |
 
 ## Complexity Tracking
 

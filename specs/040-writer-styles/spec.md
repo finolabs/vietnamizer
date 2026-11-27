@@ -21,6 +21,7 @@
 ### Session 2026-11-27
 
 - Q: An id-only table still grows `SKILL.md` by 133 bytes (research R1). May the card table become a two-item list, one item per family, with the path pattern written once? → A: Yes (Fio: "Duyệt, làm tiếp").
+- Q: In the early model run every routing miss was a run that read no card; no run read a wrong card, and 0.16.3 also read no card on 15 of 16 short probe runs. How do no-card runs count toward SC-004? → A: SC-004 counts the runs that read a card: each must read the expected card, and no run may read a wrong one. The card-read rate is reported beside it, per model and arm (Fio: "Đếm card đúng khi đọc").
 
 ## Background: what the seven cards already cover
 
@@ -144,7 +145,7 @@ Every user, whatever the card, pays no more per edit than on 0.16.2 beyond the a
 - **SC-001**: Eleven cards pass the validator and contract tests; `SKILL.md` is no larger than before (FR-003).
 - **SC-002**: `route_budget.py` passes with no `max_bytes` raised.
 - **SC-003**: On D11–D34, per model, fixes and guard breaks differ from the base by at most 2, and mean cost per run rises by at most 5%.
-- **SC-004**: Every new routing case picks the expected card in at least 9 of 10 runs per model, and MS01–MS14 keep their expected cards.
+- **SC-004**: In every run of WS01–WS12 and MS01–MS14 that reads a card, the card read is the expected one; no run reads a wrong card. The share of runs that read a card is reported per model and arm, and no pass bar applies to it (Clarifications 2026-11-27).
 - **SC-005**: No new card contains a claim about Vietnamese convention without a source in `docs/sources.md` or an inference label.
 
 ## Assumptions
