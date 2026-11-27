@@ -213,6 +213,7 @@ class PackageSecurityTest(unittest.TestCase):
             "missing purpose": ("trả lời một khách hàng `customer-reply`", "`customer-reply`"),
             "comma separator": ("`persuasive-marketing`; trả lời", "`persuasive-marketing`, trả lời"),
             "extra single-word id": ("`customer-reply`.", "`customer-reply` `blog`."),
+            "double space separator": ("`persuasive-marketing`; trả lời", "`persuasive-marketing`;  trả lời"),
         }
         for name, (old, new) in variants.items():
             with self.subTest(variant=name), tempfile.TemporaryDirectory() as temporary_directory:

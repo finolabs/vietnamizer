@@ -719,7 +719,7 @@ class StyleCardListTest(unittest.TestCase):
             with self.subTest(family=family):
                 self.assertTrue(line.startswith(f"- `{family}`: "), line)
                 self.assertTrue(line.endswith("."), line)
-                pairs = [re.fullmatch(r"([^`;]*[^`;\s]) `([a-z]+(?:-[a-z]+)+)`", pair)
+                pairs = [re.fullmatch(r"([^`;\s](?:[^`;]*[^`;\s])?) `([a-z]+(?:-[a-z]+)+)`", pair)
                          for pair in line.split(": ", 1)[1][:-1].split("; ")]
                 self.assertTrue(all(pairs), line)
                 self.assertEqual([pair.group(2) for pair in pairs], cards)

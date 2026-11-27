@@ -595,7 +595,7 @@ else:
         if not line.startswith(prefix) or not line.endswith("."):
             fail(f"SKILL.md: mục card của họ `{family}` phải mở bằng `{prefix}` và kết bằng dấu chấm")
             continue
-        pairs = [re.fullmatch(r"([^`;]*[^`;\s]) `([a-z0-9]+(?:-[a-z0-9]+)+)`", pair)
+        pairs = [re.fullmatch(r"([^`;\s](?:[^`;]*[^`;\s])?) `([a-z0-9]+(?:-[a-z0-9]+)+)`", pair)
                  for pair in line[len(prefix):-1].split("; ")]
         if not all(pairs):
             fail(f"SKILL.md: mục card của họ `{family}` phải gồm các cặp `mục đích `card`` ngăn bằng `; `")
