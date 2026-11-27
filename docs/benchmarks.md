@@ -257,7 +257,8 @@ Bản ứng viên thêm bốn card (`customer-reply`, `internal-announcement`, `
 đổi bảng card trong `SKILL.md` thành danh sách theo họ. Chạy trên Claude Code (`claude -p`, `--plugin-dir`) ngày
 27/11/2026, Opus 5.5 (`claude-opus-5-5`) và Sonnet 5.5 (`claude-sonnet-5-5`), so với 0.16.3 trong cùng đợt. Gói
 0.16.3 là tag `v0.16.3` (`ad83883`, zip `540d1344ec1c…`); gói ứng viên là commit `c34fa45` (zip `0fa12a8ebce9…`).
-Cả 576 lượt đều hợp lệ: mỗi lượt chỉ nạp skill từ gói của chính nó và ghi lại file đã đọc. Tổng chi phí khoảng $102.
+Cả 576 lượt đều hợp lệ: 192 lượt cổng, 32 lượt dò (WS01, WS04, WS07, WS10, hai lượt mỗi model trên cả hai bản), 112
+lượt MS và 240 lượt WS. Mỗi lượt chỉ nạp skill từ gói của chính nó và ghi lại file đã đọc. Tổng chi phí khoảng $102.
 
 Cổng D11–D34 (manifest `benchmarks/dev-037-gate2-manifest.json`, SHA-256 `5ee6221f1677…`), hai lượt mỗi bài, 48
 lượt mỗi nhánh, chấm bằng `benchmarks/holdout_036.py score`:
@@ -269,8 +270,9 @@ lượt mỗi nhánh, chấm bằng `benchmarks/holdout_036.py score`:
 | Sonnet 5.5 | 0.16.3 | $0,162 | 32,9 s | 2/70 | 5/50 | 12/256 | 38/48 |
 | Sonnet 5.5 | ứng viên | $0,161 (−0,2%) | 32,3 s | 3/70 | 2/50 | 10/256 | 35/48 |
 
-Cổng đạt: mỗi số đếm lệch tối đa 2 so với 0.16.3 và chi phí không tăng quá 5%. Số cụm cần giữ bị đổi của Opus
-tăng đúng 2, chạm mép ngưỡng.
+Cổng chưa đạt. Ngưỡng của spec 038 tính riêng từng số đếm. Lỗi khác mà Sonnet sửa được giảm từ 5 xuống 2, lệch 3, vượt
+mức 2. Các số còn lại nằm trong ngưỡng: số cụm cần giữ bị đổi của Opus tăng đúng 2, chạm mép ngưỡng, và chi phí
+lệch dưới 1%. Spec 038 cho chạy lại cổng một lần.
 
 Ca định tuyến WS01–WS12 (`calibration/test-cases.md`, maintainer dựng) chạy mười lượt mỗi ca trên bản ứng viên;
 MS01–MS14 chạy hai lượt mỗi ca trên cả hai bản. Một lượt "chọn" card khi card duy nhất nó đọc là card đó.
@@ -293,7 +295,7 @@ MS01–MS14 chạy hai lượt mỗi ca trên cả hai bản. Một lượt "ch�
 | MS01–MS14, ứng viên | 10/10/28 | 1/1/28 |
 
 Không lượt nào đọc nhầm card. Mọi lượt trượt đều là lượt không đọc card nào; với đoạn ngắn, 0.16.3 cũng vậy (lượt
-dò WS01, WS04, WS07, WS10: 0.16.3 đọc card ở 1/16 lượt). Vì thế SC-004 đếm trên các lượt có đọc card (Fio,
+dò: 0.16.3 đọc card ở 1/16 lượt, bản ứng viên ở 12/16). Vì thế SC-004 đếm trên các lượt có đọc card (Fio,
 27/11/2026), và tỉ lệ đọc card ghi riêng như trên. Ca ngắn không phải bài thật: ở bài dài D11–D34, Opus đọc card
 ở mọi lượt.
 
