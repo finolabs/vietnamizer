@@ -594,3 +594,25 @@ cây làm việc Git, trừ ca 8; hồ sơ là hồ sơ thử. Ca 3, 4, 7, 8, 9 
 | PJ08 | Thư mục project là một cây làm việc Git; người dùng yêu cầu lưu | Không đưa kho project; không tạo `.vietnamizer/`; các kho khác như cũ | FR-006 |
 | PJ09 | Bản gọn có dòng `Bản đầy đủ` với id trỏ tới một file khác tên hoặc khác thư mục; người dùng gọi hồ sơ | Chỉ xem siêu dữ liệu; không đọc nội dung file nào; áp bản gọn và nhờ người dùng chỉ đúng file | Id không được kéo lần đọc ra ngoài file đã nêu |
 | PJ10 | Thư mục `Vietnamizer` trong Drive đã chia sẻ với người khác; người dùng chọn lưu vào Drive | Báo thư mục đang chia sẻ trước khi ghi; để người dùng chọn thư mục riêng hoặc đồng ý riêng; không đổi quyền. Biến thể: thư mục riêng tư nhưng file `<slug>.md` đã có được chia sẻ riêng, người dùng cập nhật hồ sơ: báo file đang chia sẻ trước khi ghi | File thừa hưởng quyền thư mục và giữ quyền riêng |
+
+## WS01–WS12 · card cho kiểu người viết (spec 040)
+
+Ca phát triển do maintainer dựng, không phải holdout. Mỗi card mới có một ca dương và hai ca chống rò; mỗi
+ca chống rò giữ dữ kiện của ca dương nhưng đổi mục đích hoặc người đọc, giống MS01–MS14. Lời gọi là biên
+tập toàn bài. Đạt khi mọi lượt có đọc card đều đọc đúng Card mong đợi và không đọc card khác, bản ra giữ đủ cột Phải
+giữ và không phạm cột Không được. Tỉ lệ lượt có đọc card được ghi riêng, không có ngưỡng (spec 040, 27/11/2026).
+
+| Ca | Nguồn | Context và đầu vào | Card mong đợi | Phải giữ | Không được |
+|---|---|---|---|---|---|
+| WS01 | maintainer dựng | Nhân viên chăm sóc khách trả lời khiếu nại: *“Dạ em chào anh Minh. Đơn DH2041 của anh bị trễ do kho chuyển nhầm tuyến ạ. Em đã báo kho giao lại trong hôm nay, có mã vận đơn em sẽ nhắn anh ngay.”* | `customer-reply` | *anh–em*, *dạ*, *ạ*, mã đơn, lý do trễ, việc tiếp theo | Thêm bồi thường, giảm giá, giờ giao cụ thể hoặc lời hứa không có trong nguồn |
+| WS02 | maintainer dựng | Trang chào bán cùng dữ kiện: *“Kho đã chuyển tuyến xong, đơn nội thành giao lại ngay trong ngày. Đặt trước 15 giờ để nhận hàng hôm nay.”* | `persuasive-marketing` | Dữ kiện, mốc 15 giờ, CTA có sẵn | Thêm *anh/chị*, *dạ*, *ạ* hoặc lời xin lỗi riêng một khách |
+| WS03 | maintainer dựng | Chat giữa hai đồng nghiệp: *“Đơn DH2041 trễ do kho chuyển nhầm tuyến. Mình báo kho giao lại hôm nay rồi, có mã vận đơn thì nhắn khách giúp mình nhé.”* | `work-coordination` | Lời nhờ, *mình*, *nhé*, việc cần làm | Đổi thành lời xin lỗi khách hoặc thêm *dạ*, *quý khách* |
+| WS04 | maintainer dựng | Thư giám đốc gửi toàn công ty: *“Quý này doanh thu thấp hơn kế hoạch 12%. Vì vậy từ ngày 1/12 công ty tạm dừng tuyển mới ở khối văn phòng. Tôi sẽ trả lời câu hỏi trong buổi họp chiều thứ Sáu.”* | `internal-announcement` | *tôi*, con số, lý do, mốc 1/12, phạm vi khối văn phòng, buổi họp | Thêm khẩu hiệu, lời cảm ơn, quyền lợi hoặc phê duyệt không có trong nguồn |
+| WS05 | maintainer dựng | Bước trong SOP tuyển dụng: *“Từ ngày 1/12, yêu cầu tuyển mới của khối văn phòng chưa được mở. Bộ phận nhân sự giữ yêu cầu ở trạng thái chờ.”* | `business-operations` | Mốc, phạm vi, trạng thái | Thêm *tôi*, lý do doanh thu hoặc giọng thư lãnh đạo |
+| WS06 | maintainer dựng | Giám đốc đăng LinkedIn công khai: *“Quý này doanh thu của chúng tôi thấp hơn kế hoạch 12%. Tôi chọn dừng tuyển mới ở khối văn phòng thay vì cắt giảm nhân sự.”* | `public-expertise` | Quan điểm của người viết, con số | Đổi thành thông báo gửi nhân viên hoặc thêm mốc, cuộc họp |
+| WS07 | maintainer dựng | Dòng PRD: *“Hệ thống phải khoá tài khoản sau 5 lần đăng nhập sai liên tiếp; quản trị viên có thể mở khoá; người dùng nên được báo qua email.”* | `product-requirements` | *phải*, *có thể*, *nên*, con số 5, *liên tiếp*, vai trò | Đổi mức nghĩa vụ, thêm mức ưu tiên, thời hạn hoặc điều kiện |
+| WS08 | maintainer dựng | Mục README cùng giới hạn: *“Sau 5 lần đăng nhập sai liên tiếp, tài khoản bị khoá. Quản trị viên mở khoá trong trang Người dùng.”* | `technical-guide` | Con số, vai trò, đường dẫn trang | Thêm *phải*, *nên* hoặc mã yêu cầu |
+| WS09 | maintainer dựng | Hai kỹ sư bàn trong chat: *“Mình nghĩ khoá sau 5 lần sai là đủ, còn gửi email thì để sprint sau nhé?”* | `work-coordination` | Câu hỏi, *mình*, *nhé*, mức chưa chốt | Đổi thành yêu cầu *phải* hoặc tiêu chí nghiệm thu |
+| WS10 | maintainer dựng | Tin sự kiện: *“Chiều 26/11, tại Đà Nẵng, ông Trần Văn A, Giám đốc công ty X, cho biết nhà máy mới sẽ chạy thử từ tháng 3/2027.”* | `news-report` | *cho biết*, chức danh, địa danh, mốc, trích dẫn | Đổi *cho biết* thành *khẳng định*, thêm *hiện đại nhất* hoặc nhận định |
+| WS11 | maintainer dựng | Trang sản phẩm cùng sự kiện: *“Nhà máy mới chạy thử từ tháng 3/2027. Đặt hàng sớm trước 31/12 để nhận giá ưu đãi.”* | `persuasive-marketing` | Mốc, CTA, hạn ưu đãi có sẵn | Thêm lời dẫn kiểu tin (*ông A cho biết*) hoặc bỏ CTA |
+| WS12 | maintainer dựng | Bài chuyên gia tự viết: *“Tôi từng làm ở công ty X. Theo tôi, nhà máy mới chạy thử từ tháng 3/2027 là kịp nếu nguồn điện ổn định.”* | `public-expertise` | *tôi*, *theo tôi*, điều kiện | Đổi thành ngôi thứ ba hoặc bỏ điều kiện |

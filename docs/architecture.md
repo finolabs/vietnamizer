@@ -15,9 +15,9 @@ references/typography.md                      T1–T6
 references/writing-workflow.md                  workflow bài, không nạp khi sửa nhỏ
 references/style-sources.md                 nguồn mẫu chuyên môn, không nạp khi đã có mẫu
 profiles/personal-blog/rules.md                B1–B17 cho văn bản có giọng cá nhân
-profiles/personal-blog/styles/                 bốn style card có tác giả hiện diện
+profiles/personal-blog/styles/                 năm style card có tác giả hiện diện
 profiles/enterprise-technical/rules.md       K1–K7 và giới hạn của văn kỹ thuật, học thuật
-profiles/enterprise-technical/styles/        ba style card kỹ thuật, vận hành và học thuật
+profiles/enterprise-technical/styles/        sáu style card kỹ thuật, vận hành, học thuật, thông báo, yêu cầu và tin
 references/sino-vietnamese.md             bảng tra và điều kiện phải giữ thuật ngữ
 references/terminology-consistency.md          bảng thuật ngữ và quét nhất quán cho bài dài
 references/function-words.md                    bảng tra hư từ, loại từ, tiểu từ và câu hỏi chẩn đoán
@@ -66,7 +66,7 @@ Thư mục `scripts/` chỉ có trong repo nguồn và phục vụ maintainer; g
 Generated agent skills, Spec Kit integration state, raw run và scratch output được giữ local.
 Xem [hướng dẫn đóng góp](../CONTRIBUTING.md) để cài tooling maintainer và chạy kiểm tra offline.
 
-Bộ giải phong cách dùng đúng bảy card trong [hướng dẫn phong cách](style-and-voice.md). Nội dung chuẩn của từng card nằm
+Bộ giải phong cách dùng đúng mười một card trong [hướng dẫn phong cách](style-and-voice.md). Nội dung chuẩn của từng card nằm
 trong thư mục `styles/` của profile tương thích; `references/style-resolution.md` chỉ sở hữu cách
 chọn card, thứ tự ưu tiên và registry đường dẫn.
 

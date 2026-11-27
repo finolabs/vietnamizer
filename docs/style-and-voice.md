@@ -36,9 +36,13 @@ năng được chia theo phần, không ép chung một giọng.
 | [`work-coordination`](../profiles/personal-blog/styles/work-coordination.md) | Chat, bình luận và lời nhờ trong công việc | `personal-blog` |
 | [`public-expertise`](../profiles/personal-blog/styles/public-expertise.md) | LinkedIn, bài quan điểm hoặc chia sẻ chuyên môn | `personal-blog` |
 | [`persuasive-marketing`](../profiles/personal-blog/styles/persuasive-marketing.md) | Nội dung giới thiệu có mục tiêu và CTA thật | `personal-blog` |
+| [`customer-reply`](../profiles/personal-blog/styles/customer-reply.md) | Thư, tin nhắn trả lời đúng một khách hàng: khiếu nại, báo giá, giao trễ | `personal-blog` |
 | [`technical-guide`](../profiles/enterprise-technical/styles/technical-guide.md) | README, văn xuôi API và hướng dẫn xử lý lỗi | `enterprise-technical` |
 | [`business-operations`](../profiles/enterprise-technical/styles/business-operations.md) | SOP, báo cáo, biên bản và bàn giao | `enterprise-technical` |
 | [`academic-analysis`](../profiles/enterprise-technical/styles/academic-analysis.md) | Giáo trình, đề án và nghiên cứu | `enterprise-technical` |
+| [`internal-announcement`](../profiles/enterprise-technical/styles/internal-announcement.md) | Thông báo, thư của người ký gửi toàn bộ nhân viên | `enterprise-technical` |
+| [`product-requirements`](../profiles/enterprise-technical/styles/product-requirements.md) | PRD, spec, đề xuất tính năng, ADR và tiêu chí nghiệm thu | `enterprise-technical` |
+| [`news-report`](../profiles/enterprise-technical/styles/news-report.md) | Tin, bài tường thuật sự kiện và thông cáo báo chí | `enterprise-technical` |
 
 Card không phải khuôn để “làm màu” và không tự tạo lý do sửa. Yêu cầu hiện tại được ưu tiên;
 ràng buộc thể loại và năm quy tắc chốt chặn vẫn giới hạn mọi thay đổi; mẫu/hồ sơ chỉ được dùng khi

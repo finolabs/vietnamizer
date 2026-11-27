@@ -1,6 +1,6 @@
 # Giải lựa chọn phong cách khi chưa rõ hoặc pha chức năng
 
-Chỉ đọc khi bảng mục đích của core chưa đủ, tức là khi ngữ cảnh thiếu/mâu thuẫn hoặc tài liệu pha chức năng.
+Chỉ đọc khi danh sách card của core chưa đủ, tức là khi ngữ cảnh thiếu/mâu thuẫn hoặc tài liệu pha chức năng.
 Không đọc file này như điều kiện bắt buộc trước mọi câu sửa. Core sở hữu quyền sửa, dữ liệu,
 vùng bảo toàn và năm chốt; resolver chỉ chọn cách viết giữa các lựa chọn còn hợp lệ.
 
@@ -23,6 +23,7 @@ Giữ vùng bảo toàn trước. Chia khi mục đích, người đọc hoặc 
 chia phần. Vai trò nhỏ như định nghĩa hoặc đối chiếu trong cùng phần không tạo profile mới.
 Chọn một card tương thích mỗi phần; không đem nhịp/đại từ/CTA của phần này sang phần khác.
 Blog công nghệ có tác giả vẫn thuộc blog; README/SOP/tra cứu giữ kỹ thuật dù mẫu thân mật.
+Card mới ghi ranh giới với card gần nhất ở mục Dùng khi; PRD bàn trong chat vẫn là `work-coordination`.
 Typography-only không có card. Đọc thêm rules B/K chỉ khi có nghi vấn phụ thuộc thể loại, không
 vì đã chọn một card mà tự nạp toàn profile. Không cần cài đủ nét của card vào bài.
 
@@ -47,9 +48,13 @@ Mẫu khác kênh không được trộn thành giọng trung bình; hồ sơ kh
 | `work-coordination` | `personal-blog` | `profiles/personal-blog/styles/work-coordination.md` |
 | `public-expertise` | `personal-blog` | `profiles/personal-blog/styles/public-expertise.md` |
 | `persuasive-marketing` | `personal-blog` | `profiles/personal-blog/styles/persuasive-marketing.md` |
+| `customer-reply` | `personal-blog` | `profiles/personal-blog/styles/customer-reply.md` |
 | `technical-guide` | `enterprise-technical` | `profiles/enterprise-technical/styles/technical-guide.md` |
 | `business-operations` | `enterprise-technical` | `profiles/enterprise-technical/styles/business-operations.md` |
 | `academic-analysis` | `enterprise-technical` | `profiles/enterprise-technical/styles/academic-analysis.md` |
+| `internal-announcement` | `enterprise-technical` | `profiles/enterprise-technical/styles/internal-announcement.md` |
+| `product-requirements` | `enterprise-technical` | `profiles/enterprise-technical/styles/product-requirements.md` |
+| `news-report` | `enterprise-technical` | `profiles/enterprise-technical/styles/news-report.md` |
 
 Đọc đúng card được chọn, không đọc các card khác chỉ để so. Card chỉ hỗ trợ nhịp, xưng hô,
 thuật ngữ và cách kết trong phạm vi hợp lệ, không sở hữu pattern hoặc thêm quyền sửa. Metadata
